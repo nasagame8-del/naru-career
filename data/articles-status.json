@@ -1,0 +1,84 @@
+{
+  "articles": [
+    {
+      "slug": "second-new-grad-it-career-change",
+      "status": "draft",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false
+    },
+    {
+      "slug": "agent-comparison-2026",
+      "status": "draft",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false
+    },
+    {
+      "slug": "web-industry-guide",
+      "status": "draft",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false
+    },
+    {
+      "slug": "second-new-grad-programming-career-change",
+      "status": "needs_experience",
+      "experience_filled": false,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "agent-site-vs-agent-usage",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "bizreach-second-new-grad",
+      "status": "needs_experience",
+      "experience_filled": false,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "what-is-second-new-grad",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "agent-referral-vs-self-apply",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "interview-failure-why-this-job",
+      "status": "needs_experience",
+      "experience_filled": false,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "aio-seo-industry-inside",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    }
+  ]
+}
