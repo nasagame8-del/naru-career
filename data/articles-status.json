@@ -42,8 +42,8 @@
     },
     {
       "slug": "bizreach-second-new-grad",
-      "status": "needs_experience",
-      "experience_filled": false,
+      "status": "factchecked",
+      "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
       "note_published": false
@@ -66,8 +66,8 @@
     },
     {
       "slug": "interview-failure-why-this-job",
-      "status": "needs_experience",
-      "experience_filled": false,
+      "status": "factchecked",
+      "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
       "note_published": false
