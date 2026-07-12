@@ -195,7 +195,7 @@ export default async function ArticlePage(props: {
                         href={`/articles/${a.slug}`}
                         className="group block bg-white rounded-lg overflow-hidden border border-line hover:shadow-md transition-shadow"
                       >
-                        <div className="aspect-[1.91/1] relative bg-line">
+                        <div className="aspect-card relative bg-line">
                           {a.hasCardImage ? (
                             <Image
                               src={`/images/articles/${a.slug}-card.png`}

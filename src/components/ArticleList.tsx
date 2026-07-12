@@ -18,16 +18,16 @@ export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
           <Link
             key={article.slug}
             href={`/articles/${article.slug}`}
-            className="flex gap-5 py-5 group transition-colors hover:bg-bg-soft -mx-3 px-3 rounded"
+            className="flex gap-4 py-5 group transition-colors hover:bg-bg-soft -mx-3 px-3 rounded"
           >
-            <div className="w-[200px] aspect-[1.91/1] shrink-0 rounded overflow-hidden relative bg-line">
+            <div className="w-[120px] sm:w-[200px] aspect-card shrink-0 rounded overflow-hidden relative bg-line">
               {article.hasCardImage ? (
                 <Image
                   src={`/images/articles/${article.slug}-card.png`}
                   alt=""
                   fill
                   className="object-cover"
-                  sizes="200px"
+                  sizes="(max-width: 640px) 120px, 200px"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
@@ -36,7 +36,7 @@ export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
               )}
             </div>
             <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h3 className="font-bold text-ink leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+              <h3 className="font-bold text-ink text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-accent transition-colors">
                 {article.title}
               </h3>
               <div className="flex items-center gap-2 mt-2">

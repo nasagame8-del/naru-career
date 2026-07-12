@@ -76,6 +76,21 @@ h1 {
   margin-bottom: 1rem;
 }
 
+/* OGP card aspect ratio (1.91:1) */
+.aspect-card {
+  aspect-ratio: 1.91 / 1;
+}
+
+/* Hide scrollbar for horizontal scroll areas */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Article prose styles */
 .prose h2 {
   font-size: 1.5rem;

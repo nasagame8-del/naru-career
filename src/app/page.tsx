@@ -30,7 +30,7 @@ export default function Home() {
                   href={`/articles/${article.slug}`}
                   className="group block bg-white rounded-lg overflow-hidden border border-line hover:shadow-lg transition-all duration-150 hover:-translate-y-0.5"
                 >
-                  <div className="aspect-[1.91/1] relative bg-line">
+                  <div className="aspect-card relative bg-line overflow-hidden">
                     {article.hasCardImage ? (
                       <Image
                         src={`/images/articles/${article.slug}-card.png`}
