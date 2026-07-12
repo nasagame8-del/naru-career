@@ -1,0 +1,26 @@
+{
+  "doda": {
+    "name": "doda",
+    "url": "",
+    "cta_text": "dodaで求人を探してみる",
+    "asp": ""
+  },
+  "workport": {
+    "name": "ワークポート",
+    "url": "",
+    "cta_text": "ワークポートに無料相談する",
+    "asp": ""
+  },
+  "agent_neo": {
+    "name": "第二新卒エージェントneo",
+    "url": "",
+    "cta_text": "無料相談してみる",
+    "asp": "アクセストレード"
+  },
+  "agent_hataraku": {
+    "name": "ハタラクティブ",
+    "url": "",
+    "cta_text": "まずは求人を見てみる",
+    "asp": "A8.net"
+  }
+}

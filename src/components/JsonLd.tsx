@@ -1,0 +1,106 @@
+import type { FAQ, ArticleMeta } from "@/lib/articles";
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com";
+
+const authorPerson = {
+  "@type": "Person",
+  name: "著者名",
+  url: `${baseUrl}/about`,
+  jobTitle: "AIO対策企業勤務・転職メディア運営",
+  description:
+    "24歳・転職1回。AIO対策企業で人材紹介・派遣会社向けSEO/AIO戦略を担当。第二新卒の転職実体験を発信。",
+  sameAs: [
+    "https://x.com/AIAlto2026",
+    "https://note.com/altogenerative20",
+  ],
+};
+
+export function ArticleJsonLd({ article }: { article: ArticleMeta }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified || article.datePublished,
+    author: authorPerson,
+    publisher: {
+      "@type": "Organization",
+      name: "NARU",
+      url: baseUrl,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/articles/${article.slug}`,
+    },
+    description: article.excerpt,
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+export function FAQJsonLd({ faqs }: { faqs: FAQ[] }) {
+  if (faqs.length === 0) return null;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+export function BreadcrumbJsonLd({
+  items,
+}: {
+  items: { name: string; href: string }[];
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${baseUrl}${item.href}`,
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+export function PersonJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    ...authorPerson,
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}

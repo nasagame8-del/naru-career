@@ -1,0 +1,280 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { getArticle, getArticleSlugs, getAllArticleMetas } from "@/lib/articles";
+import { FAQSection } from "@/components/FAQSection";
+import { ShareButtons } from "@/components/ShareButtons";
+import { TableOfContents } from "@/components/TableOfContents";
+import {
+  ArticleJsonLd,
+  FAQJsonLd,
+  BreadcrumbJsonLd,
+} from "@/components/JsonLd";
+
+export async function generateStaticParams() {
+  return getArticleSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await props.params;
+  const article = await getArticle(slug);
+  return {
+    title: article.title,
+    description: article.excerpt,
+    alternates: {
+      canonical: `/articles/${slug}`,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: "article",
+      publishedTime: article.datePublished,
+      modifiedTime: article.dateModified,
+      ...(article.hasCardImage && {
+        images: [`/images/articles/${slug}-card.png`],
+      }),
+    },
+  };
+}
+
+const categoryAccent: Record<string, { tag: string; border: string; faq: string; cssVar: string }> = {
+  体験談: {
+    tag: "bg-amber-soft text-amber",
+    border: "border-amber",
+    faq: "border-amber",
+    cssVar: "#B5691B",
+  },
+  エージェント比較: {
+    tag: "bg-accent-soft text-accent",
+    border: "border-accent",
+    faq: "border-accent",
+    cssVar: "#1F6F66",
+  },
+  業界解説: {
+    tag: "bg-bg-soft text-ink-soft",
+    border: "border-gray",
+    faq: "border-gray",
+    cssVar: "#8B8D91",
+  },
+};
+
+export default async function ArticlePage(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await props.params;
+  const article = await getArticle(slug);
+  const allArticles = getAllArticleMetas();
+  const relatedArticles = allArticles
+    .filter((a) => a.slug !== slug && a.category === article.category)
+    .slice(0, 4);
+
+  const accent = categoryAccent[article.category] || categoryAccent["業界解説"];
+
+  const breadcrumbs = [
+    { name: "ホーム", href: "/" },
+    { name: article.category, href: `/#articles` },
+    { name: article.title, href: `/articles/${slug}` },
+  ];
+
+  const categoryTagStyle: Record<string, string> = {
+    体験談: "bg-amber-soft text-amber",
+    エージェント比較: "bg-accent-soft text-accent",
+    業界解説: "bg-gray-soft text-gray",
+  };
+
+  return (
+    <>
+      <ArticleJsonLd article={article} />
+      <FAQJsonLd faqs={article.faq} />
+      <BreadcrumbJsonLd items={breadcrumbs} />
+
+      <div className="max-w-5xl mx-auto px-4 py-8">
+        {/* パンくずリスト */}
+        <nav className="text-sm text-ink-soft mb-6 flex items-center gap-1.5 flex-wrap">
+          <Link href="/" className="hover:text-accent transition-colors">
+            ホーム
+          </Link>
+          <span>/</span>
+          <span>{article.category}</span>
+          <span>/</span>
+          <span className="text-ink">{article.title}</span>
+        </nav>
+
+        <div className="flex gap-10">
+          {/* 本文エリア */}
+          <article className="flex-1 max-w-[680px]">
+            <span
+              className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${accent.tag}`}
+            >
+              {article.category}
+            </span>
+            <h1 className="text-2xl md:text-3xl font-semibold leading-tight mt-3 mb-4">
+              {article.title}
+            </h1>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-4 text-sm text-ink-soft font-mono">
+                <time>公開: {article.datePublished}</time>
+                {article.dateModified !== article.datePublished && (
+                  <time>更新: {article.dateModified}</time>
+                )}
+              </div>
+              <ShareButtons slug={slug} title={article.title} />
+            </div>
+
+            {/* PR表記（cta_agentsがある記事のみ） */}
+            {article.cta_agents.length > 0 && (
+              <div className="bg-bg-soft border border-line rounded-lg px-4 py-3 mb-6">
+                <p className="text-[12px] text-ink-soft leading-relaxed">
+                  本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。
+                  <Link
+                    href="/privacy#ads"
+                    className="text-accent hover:underline ml-1"
+                  >
+                    詳しくはプライバシーポリシーをご覧ください
+                  </Link>
+                </p>
+              </div>
+            )}
+
+            {/* リード文 */}
+            <p className="text-ink-soft leading-relaxed mb-8">
+              {article.excerpt}
+            </p>
+
+            {/* インライン目次 */}
+            <TableOfContents headings={article.headings} />
+
+            {/* 記事本文 */}
+            <div
+              className="prose"
+              style={{ "--category-color": accent.cssVar } as React.CSSProperties}
+              dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+            />
+
+            {/* FAQセクション */}
+            <FAQSection faqs={article.faq} accentColor={accent.faq} />
+
+            {/* まとめCTA */}
+            {article.cta_agents.length > 0 && (
+              <section className="mt-12 p-6 bg-accent-soft rounded-lg">
+                <h2 className="text-lg font-bold mb-3">
+                  まずは無料相談から始めてみませんか？
+                </h2>
+                <p className="text-sm text-ink-soft mb-4">
+                  第二新卒の転職は、プロのサポートを受けることで成功率が大きく上がります。
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="#" className="cta-button justify-center">
+                    エージェントに無料相談する
+                  </Link>
+                </div>
+                <p className="text-[10px] text-ink-soft mt-3">
+                  ※提携先のサービスです
+                </p>
+              </section>
+            )}
+
+            {/* 記事末尾シェアボタン */}
+            <div className="mt-10 pt-6 border-t border-line">
+              <ShareButtons slug={slug} title={article.title} />
+            </div>
+
+            {/* 関連記事セクション */}
+            {relatedArticles.length > 0 && (
+              <section className="mt-12">
+                <h2 className="text-lg font-bold mb-6">関連記事</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {relatedArticles.map((a) => {
+                    const relTagStyle =
+                      categoryTagStyle[a.category] ?? categoryTagStyle["業界解説"];
+                    return (
+                      <Link
+                        key={a.slug}
+                        href={`/articles/${a.slug}`}
+                        className="group block bg-white rounded-lg overflow-hidden border border-line hover:shadow-md transition-shadow"
+                      >
+                        <div className="aspect-[1.91/1] relative bg-line">
+                          {a.hasCardImage ? (
+                            <Image
+                              src={`/images/articles/${a.slug}-card.png`}
+                              alt=""
+                              fill
+                              className="object-cover"
+                              sizes="300px"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <span className="text-ink-soft text-xs">thumb</span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-3">
+                          <h3 className="font-bold text-sm text-ink leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                            {a.title}
+                          </h3>
+                          <div className="flex items-center gap-2 mt-1.5">
+                            <span
+                              className={`text-[10px] font-mono font-medium px-1.5 py-0.5 rounded ${relTagStyle}`}
+                            >
+                              {a.category}
+                            </span>
+                            <time className="text-[10px] text-ink-soft font-mono">
+                              {a.datePublished}
+                            </time>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+          </article>
+
+          {/* サイドバー */}
+          <aside className="hidden lg:block w-64 shrink-0">
+            <div className="sticky top-8 space-y-8">
+              {/* 著者情報 */}
+              <div className="border border-line rounded-lg p-5">
+                <p className="font-bold text-sm mb-2">著者について</p>
+                <p className="text-sm text-ink-soft leading-relaxed">
+                  24歳・転職1回。AIO対策企業で人材紹介・派遣会社向けのSEO/AIO戦略を担当。エージェントの裏側を知る立場から転職情報を発信。
+                </p>
+                <Link
+                  href="/about"
+                  className="text-sm text-accent hover:underline mt-2 inline-block"
+                >
+                  プロフィールを見る →
+                </Link>
+              </div>
+
+              {/* サイドバー目次 */}
+              {article.headings.length > 0 && (
+                <div className="border border-line rounded-lg p-5">
+                  <p className="font-bold text-sm mb-3">目次</p>
+                  <ol className="space-y-1.5">
+                    {article.headings.map((h, i) => (
+                      <li key={h.id}>
+                        <a
+                          href={`#${h.id}`}
+                          className="text-xs text-ink-soft hover:text-accent transition-colors leading-relaxed flex gap-1.5"
+                        >
+                          <span className="font-mono text-ink-soft/60 shrink-0">
+                            {i + 1}.
+                          </span>
+                          {h.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </div>
+          </aside>
+        </div>
+      </div>
+    </>
+  );
+}
