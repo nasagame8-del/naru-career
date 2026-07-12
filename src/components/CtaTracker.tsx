@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    gtag?: (...args: unknown[]) => void;
+    dataLayer?: Record<string, unknown>[];
   }
 }
 
@@ -13,11 +13,12 @@ export function CtaTracker() {
     function handleClick(e: MouseEvent) {
       const target = e.target as HTMLElement;
       const link = target.closest<HTMLAnchorElement>("a.cta-button");
-      if (!link || !window.gtag) return;
+      if (!link) return;
 
-      const agentName = link.textContent?.trim() || "unknown";
-      window.gtag("event", "cta_click", {
-        agent_name: agentName,
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "cta_click",
+        agent_name: link.textContent?.trim() || "unknown",
         link_url: link.href,
       });
     }

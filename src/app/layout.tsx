@@ -3,7 +3,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { CategoryNavBar } from "@/components/CategoryNavBar";
 import { Footer } from "@/components/Footer";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/GoogleTagManager";
+import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CtaTracker } from "@/components/CtaTracker";
 
 export const metadata: Metadata = {
@@ -56,7 +57,9 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="min-h-screen flex flex-col antialiased">
-        <GoogleAnalytics />
+        <GoogleTagManager />
+        <GoogleTagManagerNoscript />
+        <MicrosoftClarity />
         <CtaTracker />
         <Header />
         <CategoryNavBar />

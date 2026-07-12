@@ -49,6 +49,9 @@ export default function PrivacyPage() {
             </a>
             をご確認ください。
           </p>
+          <p>
+            当サイトでは、Microsoft社が提供するアクセス解析ツール「Microsoft Clarity」も利用しています。このツールは、サイト内での操作（クリック、スクロール等）を匿名で記録し、サイト改善のために使用します。入力フォームの内容等、個人情報にあたる可能性のある情報は自動的にマスクされ、収集されません。
+          </p>
 
           <h2 id="ads">広告について</h2>
           <p>
@@ -79,7 +82,7 @@ export default function PrivacyPage() {
           <p className="text-ink-soft text-sm mt-8">
             制定日: 2026年7月10日
             <br />
-            最終更新日: 2026年7月12日
+            最終更新日: 2026年7月13日
           </p>
         </div>
       </div>
