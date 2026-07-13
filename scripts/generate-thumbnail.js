@@ -10,7 +10,7 @@
  *   node scripts/generate-thumbnail.js --batch --force
  */
 
-require("dotenv").config({ path: ".env.local" });
+require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
