@@ -103,6 +103,38 @@
       "factchecked": true,
       "note_rewritten": true,
       "note_published": false
+    },
+    {
+      "slug": "it-industry-quit-myth",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "resume-writing-second-new-grad",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "job-change-timing-3months",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "how-to-resign-experience",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
     }
   ]
 }
