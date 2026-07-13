@@ -11,7 +11,10 @@ export function Footer() {
               第二新卒のIT転職ガイド
             </p>
           </div>
-          <nav className="flex gap-6 text-sm text-ink-soft">
+          <nav className="flex flex-wrap gap-6 text-sm text-ink-soft">
+            <Link href="/glossary" className="hover:text-accent transition-colors">
+              用語集
+            </Link>
             <Link href="/about" className="hover:text-accent transition-colors">
               著者について
             </Link>
