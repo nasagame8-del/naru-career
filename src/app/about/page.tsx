@@ -4,7 +4,7 @@ import { PersonJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 export const metadata: Metadata = {
   title: "著者について",
   description:
-    "24歳・転職1回。AIO対策企業に勤務しながら、第二新卒のIT/Web転職体験を発信する著者のプロフィール。",
+    "24歳・転職1回。AIO対策企業に営業職として勤務しながら、第二新卒のIT/Web転職体験を発信する著者のプロフィール。",
   alternates: {
     canonical: "/about",
   },
@@ -29,7 +29,7 @@ export default function AboutPage() {
             24歳。新卒で入社した会社を1年で退職し、第二新卒としてIT/Web業界にキャリアチェンジしました。
           </p>
           <p>
-            現在はAIO（AI Optimization）対策を手がける企業に勤務し、人材紹介・人材派遣会社のクライアントに対してSEO/AIO戦略を提供しています。エージェント側の集客・マーケティングの仕組みを内側から見てきた立場から、第二新卒としての自分自身の転職体験と合わせて、転職活動の情報を発信しています。
+            現在はAIO（AI Optimization）対策を手がける企業に営業職として勤務しています。本業は人材紹介・人材派遣会社をクライアントとした法人営業（テレアポ〜商談〜クロージング〜契約〜コンサルティング）です。自社のマーケティングやAIO戦略への関与は、時間外・休日に自主的に取り組んでいる領域で、そこで得た知見と第二新卒としての自分自身の転職体験を合わせて、転職活動の情報を発信しています。
           </p>
           <h2>このメディアについて</h2>
           <p>
@@ -43,7 +43,7 @@ export default function AboutPage() {
             <li>新卒入社 → 1年で退職</li>
             <li>転職サービス3社を利用</li>
             <li>第二新卒としてIT/Web企業に転職</li>
-            <li>現在：AIO対策企業に勤務</li>
+            <li>現在：AIO対策企業に営業職として勤務</li>
           </ul>
         </div>
       </div>

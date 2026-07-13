@@ -240,7 +240,7 @@ export default async function ArticlePage(props: {
               <div className="border border-line rounded-lg p-5">
                 <p className="font-bold text-sm mb-2">著者について</p>
                 <p className="text-sm text-ink-soft leading-relaxed">
-                  24歳・転職1回。AIO対策企業で人材紹介・派遣会社向けのSEO/AIO戦略を担当。エージェントの裏側を知る立場から転職情報を発信。
+                  24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。エージェントの裏側を知る立場から転職情報を発信。
                 </p>
                 <Link
                   href="/about"

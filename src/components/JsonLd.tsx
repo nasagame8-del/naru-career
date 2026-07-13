@@ -6,9 +6,9 @@ const authorPerson = {
   "@type": "Person",
   name: "著者名",
   url: `${baseUrl}/about`,
-  jobTitle: "AIO対策企業勤務・転職メディア運営",
+  jobTitle: "AIO対策企業・営業職 / 転職メディア運営",
   description:
-    "24歳・転職1回。AIO対策企業で人材紹介・派遣会社向けSEO/AIO戦略を担当。第二新卒の転職実体験を発信。",
+    "24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。第二新卒の転職実体験を発信。",
   sameAs: [
     "https://x.com/AIAlto2026",
     "https://note.com/altogenerative20",
