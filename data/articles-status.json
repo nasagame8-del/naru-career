@@ -79,6 +79,30 @@
       "factchecked": true,
       "note_rewritten": true,
       "note_published": false
+    },
+    {
+      "slug": "second-new-grad-retirement-pay",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "recruitment-agency-business-model",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "agent-free-and-cancel",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
     }
   ]
 }
