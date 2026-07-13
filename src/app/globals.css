@@ -131,6 +131,20 @@ h1 {
   margin-bottom: 0.375rem;
 }
 
+/* 太字 */
+.prose strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* 蛍光ペン風ハイライト */
+.prose mark {
+  background: linear-gradient(transparent 60%, var(--amber-soft) 60%);
+  color: inherit;
+  font-weight: 700;
+  padding: 0 0.125em;
+}
+
 .prose a {
   color: var(--accent);
   text-decoration: underline;

@@ -97,6 +97,12 @@ export async function getArticle(slug: string): Promise<Article> {
     ""
   );
 
+  // ==テキスト== → <mark>テキスト</mark> (蛍光ペン風ハイライト)
+  processedContent = processedContent.replace(
+    /==(.*?)==/g,
+    (_match, text: string) => `<mark>${text}</mark>`
+  );
+
   const result = await remark()
     .use(remarkGfm)
     .use(remarkBreaks)
