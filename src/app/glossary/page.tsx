@@ -133,46 +133,6 @@ const glossaryData: GlossaryCategory[] = [
       },
     ],
   },
-  {
-    title: "AIO/SEO用語",
-    terms: [
-      {
-        term: "SEOとは",
-        definition:
-          "Search Engine Optimizationの略で、Googleなどの検索エンジンの検索結果で、自社サイトが上位表示されるように対策することです。キーワード選定、コンテンツの質、被リンクなど複数の要素が評価に関わります。",
-      },
-      {
-        term: "AIOとは",
-        definition:
-          "AI Optimizationの略で、ChatGPT検索、Google AI Overviews、Perplexityなどの生成AI検索機能に、自社の情報が適切に扱われるよう最適化することです。SEOを土台にしつつ、E-E-A-T（専門性・経験・権威性・信頼性）や構造化データの整備がより重要になります。",
-        relatedArticle: {
-          slug: "aio-seo-industry-inside",
-          title:
-            "未経験からAIO/SEO業界に入ってみて分かったこと",
-        },
-      },
-      {
-        term: "GEOとは",
-        definition:
-          "Generative Engine Optimizationの略で、AIOの中でも特に「生成AIがそのまま引用・生成材料として使いたくなる文章を作る」ことに焦点を当てた考え方です。QCEP法（Question→Conclusion→Evidence→Proof）のような構成が推奨されます。",
-      },
-      {
-        term: "AEOとは",
-        definition:
-          "Answer Engine Optimizationの略で、AIが質問に直接回答する際、自社コンテンツが回答の材料として使われるよう最適化することです。FAQ構造、PREP法（結論→理由→具体例→結論の再提示）のような構成が推奨されます。",
-      },
-      {
-        term: "構造化データとは",
-        definition:
-          "Webページの内容を、検索エンジンやAIが機械的に理解しやすい形式（JSON-LD等）で記述したデータです。記事の著者情報、FAQ、パンくずリストなどを構造化データとして出力することで、検索結果やAI回答での扱われ方が改善されることがあります。",
-      },
-      {
-        term: "E-E-A-Tとは",
-        definition:
-          "Experience（経験）・Expertise（専門性）・Authoritativeness（権威性）・Trustworthiness（信頼性）の頭文字です。Googleが検索品質評価の指標として重視している考え方で、実体験に基づく一次情報や、著者の専門性の明示が評価されやすいとされています。",
-      },
-    ],
-  },
 ];
 
 // FAQPage JSON-LD用に全用語をフラット化
