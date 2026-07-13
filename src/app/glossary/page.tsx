@@ -91,7 +91,7 @@ const glossaryData: GlossaryCategory[] = [
       {
         term: "RPO（採用代行）とは",
         definition:
-          "Recruitment Process Outsourcingの略で、企業の採用業務（母集団形成、書類選考、面接調整など）の一部または全部を外部に委託する仕組みです。人材紹介・人材派遣会社がこのサービスを提供しているケースも多く、著者自身も業務でRPO関連のSEO/AIO戦略に携わっています。",
+          "Recruitment Process Outsourcingの略で、企業の採用業務（母集団形成、書類選考、面接調整など）の一部または全部を外部に委託する仕組みです。人材紹介・人材派遣会社がこのサービスを提供しているケースも多く、採用市場を理解する上で押さえておきたい用語です。",
       },
     ],
   },
