@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { CategoryNavBar } from "@/components/CategoryNavBar";
@@ -42,21 +43,16 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap"
-          rel="stylesheet"
-          media="print"
-          // @ts-expect-error -- onLoad triggers swap to all media after async load
-          onLoad="this.media='all'"
-        />
-        <noscript>
-          <link
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap"
-            rel="stylesheet"
-          />
-        </noscript>
       </head>
       <body className="min-h-screen flex flex-col antialiased">
+        <Script id="google-fonts-loader" strategy="afterInteractive">
+          {`
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap';
+            document.head.appendChild(link);
+          `}
+        </Script>
         <GoogleTagManager />
         <GoogleTagManagerNoscript />
         <MicrosoftClarity />
