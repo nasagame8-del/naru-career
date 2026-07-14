@@ -17,7 +17,7 @@ export default function Home() {
             PICKUP
           </span>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {featured.map((article) => {
+            {featured.map((article, index) => {
               const tagStyle =
                 article.category === "体験談"
                   ? "bg-amber-soft text-amber"
@@ -38,6 +38,7 @@ export default function Home() {
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
+                        priority
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
