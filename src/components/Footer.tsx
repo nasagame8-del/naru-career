@@ -12,6 +12,9 @@ export function Footer() {
             </p>
           </div>
           <nav className="flex flex-wrap gap-6 text-sm text-ink-soft">
+            <Link href="/diagnosis" className="hover:text-accent transition-colors">
+              適職診断
+            </Link>
             <Link href="/glossary" className="hover:text-accent transition-colors">
               用語集
             </Link>
