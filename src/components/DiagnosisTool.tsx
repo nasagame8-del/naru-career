@@ -27,7 +27,6 @@ const JOB_TYPES: Record<JobType, JobTypeInfo> = {
       { slug: "second-new-grad-programming-career-change", title: "プログラミング未経験から第二新卒でIT転職する方法" },
     ],
     agents: [
-      { key: "workport", name: "ワークポート", reason: "IT/Web業界に強い" },
       { key: "doda", name: "doda", reason: "未経験OKのIT求人が豊富" },
     ],
   },
