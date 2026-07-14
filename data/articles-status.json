@@ -2,7 +2,7 @@
   "articles": [
     {
       "slug": "second-new-grad-it-career-change",
-      "status": "draft",
+      "status": "needs_review",
       "experience_filled": false,
       "factchecked": false,
       "note_rewritten": false,
@@ -10,7 +10,7 @@
     },
     {
       "slug": "agent-comparison-2026",
-      "status": "draft",
+      "status": "needs_review",
       "experience_filled": false,
       "factchecked": false,
       "note_rewritten": false,
@@ -18,7 +18,7 @@
     },
     {
       "slug": "web-industry-guide",
-      "status": "draft",
+      "status": "needs_review",
       "experience_filled": false,
       "factchecked": false,
       "note_rewritten": false,
@@ -26,7 +26,7 @@
     },
     {
       "slug": "second-new-grad-programming-career-change",
-      "status": "needs_experience",
+      "status": "needs_review",
       "experience_filled": false,
       "factchecked": true,
       "note_rewritten": true,
@@ -34,7 +34,7 @@
     },
     {
       "slug": "agent-site-vs-agent-usage",
-      "status": "factchecked",
+      "status": "needs_review",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
@@ -42,7 +42,7 @@
     },
     {
       "slug": "bizreach-second-new-grad",
-      "status": "factchecked",
+      "status": "needs_review",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
@@ -50,7 +50,7 @@
     },
     {
       "slug": "what-is-second-new-grad",
-      "status": "factchecked",
+      "status": "needs_review",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
@@ -58,7 +58,7 @@
     },
     {
       "slug": "agent-referral-vs-self-apply",
-      "status": "factchecked",
+      "status": "needs_review",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
@@ -66,7 +66,7 @@
     },
     {
       "slug": "interview-failure-why-this-job",
-      "status": "factchecked",
+      "status": "needs_review",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
@@ -74,7 +74,7 @@
     },
     {
       "slug": "aio-seo-industry-inside",
-      "status": "factchecked",
+      "status": "needs_review",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,

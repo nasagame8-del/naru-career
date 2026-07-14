@@ -10,7 +10,7 @@
  *   OPENAI_PROOFREAD_MODEL  — 使用モデル(デフォルト: gpt-5.5)
  */
 
-require("dotenv").config();
+require("dotenv").config({ path: [".env.local", ".env"] });
 
 const fs = require("fs");
 const path = require("path");
