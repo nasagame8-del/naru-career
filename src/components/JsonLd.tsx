@@ -4,7 +4,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com";
 
 const authorPerson = {
   "@type": "Person",
-  name: "著者名",
+  name: "アルト",
   url: `${baseUrl}/about`,
   jobTitle: "AIO対策企業・営業職 / 転職メディア運営",
   description:

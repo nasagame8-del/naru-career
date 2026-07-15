@@ -238,7 +238,8 @@ export default async function ArticlePage(props: {
             <div className="sticky top-8 space-y-8">
               {/* 著者情報 */}
               <div className="border border-line rounded-lg p-5">
-                <p className="font-bold text-sm mb-2">著者について</p>
+                <p className="font-bold text-sm mb-2">この記事を書いた人</p>
+                <p className="font-semibold text-sm mb-1">アルト</p>
                 <p className="text-sm text-ink-soft leading-relaxed">
                   24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。エージェントの裏側を知る立場から転職情報を発信。
                 </p>
