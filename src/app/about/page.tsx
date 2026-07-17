@@ -39,32 +39,30 @@ export default function AboutPage() {
           <h2>転職活動の実績</h2>
         </div>
 
-        <div className="border border-line rounded-lg bg-bg-soft my-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 divide-x divide-y divide-line">
-            <div className="flex flex-col items-center px-4 py-5">
-              <span className="font-mono text-xl font-medium text-ink">約3ヶ月</span>
-              <span className="text-[11px] text-ink-soft mt-1">転職活動期間</span>
-              <span className="text-[10px] text-ink-soft">2025年8月〜</span>
-            </div>
-            <div className="flex flex-col items-center px-4 py-5">
-              <span className="font-mono text-xl font-medium text-ink">約30社</span>
-              <span className="text-[11px] text-ink-soft mt-1">応募社数</span>
-              <span className="text-[10px] text-ink-soft">エージェント+自己応募</span>
-            </div>
-            <div className="flex flex-col items-center px-4 py-5">
-              <span className="font-mono text-xl font-medium text-ink">2社</span>
-              <span className="text-[11px] text-ink-soft mt-1">内定獲得</span>
-            </div>
-            <div className="flex flex-col items-center px-4 py-5">
-              <span className="font-mono text-xl font-medium text-accent">350→400万</span>
-              <span className="text-[11px] text-ink-soft mt-1">年収の変化</span>
-              <span className="text-[10px] text-ink-soft">飲食業界 → IT/Web業界</span>
-            </div>
-            <div className="flex flex-col items-center px-4 py-5 col-span-2 sm:col-span-2">
-              <span className="text-sm font-medium text-ink">doda・ワークポート</span>
-              <span className="text-[11px] text-ink-soft mt-1">利用した転職サービス</span>
-              <span className="text-[10px] text-ink-soft">ワークポートはビズリーチ経由で接点</span>
-            </div>
+        {/* 年収の変化 — メインカード */}
+        <div className="border-2 border-amber rounded-lg bg-amber-soft my-6 px-6 py-5 flex flex-col items-center text-center">
+          <span className="text-[11px] font-medium text-amber tracking-wide mb-1">年収の変化</span>
+          <span className="font-mono text-3xl font-semibold text-amber">350万 → 400万</span>
+          <span className="text-[11px] text-ink-soft mt-1">飲食業界 → IT/Web業界</span>
+        </div>
+
+        {/* サブ実績 — 均等4列 */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 border border-line rounded-lg bg-bg-soft mb-6">
+          <div className="flex flex-col items-center px-4 py-5 border-b sm:border-b-0 border-r border-line">
+            <span className="font-mono text-xl font-medium text-ink">約3ヶ月</span>
+            <span className="text-[11px] text-ink-soft mt-1">活動期間（2025年8月〜）</span>
+          </div>
+          <div className="flex flex-col items-center px-4 py-5 border-b sm:border-b-0 sm:border-r border-line">
+            <span className="font-mono text-xl font-medium text-ink">約30社</span>
+            <span className="text-[11px] text-ink-soft mt-1">応募社数</span>
+          </div>
+          <div className="flex flex-col items-center px-4 py-5 border-r border-line">
+            <span className="font-mono text-xl font-medium text-ink">2社</span>
+            <span className="text-[11px] text-ink-soft mt-1">内定獲得</span>
+          </div>
+          <div className="flex flex-col items-center px-4 py-5">
+            <span className="text-sm font-medium text-ink">doda・ワークポート</span>
+            <span className="text-[11px] text-ink-soft mt-1">利用サービス</span>
           </div>
         </div>
 
