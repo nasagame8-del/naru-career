@@ -61,8 +61,8 @@ export default function AboutPage() {
               </span>
             </div>
 
-            {/* サブ実績 — 4列グリッド */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
+            {/* サブ実績 — 4列グリッド（最後のカードだけ幅広） */}
+            <div className="grid grid-cols-2 md:grid-cols-[1fr_1fr_1fr_1.4fr] gap-5 md:gap-6">
               <div className="bg-white/90 rounded-lg px-4 py-5 text-center shadow-sm border border-white/60">
                 <span className="block font-sans text-xl md:text-2xl font-bold text-ink whitespace-nowrap">
                   約3ヶ月
@@ -88,8 +88,8 @@ export default function AboutPage() {
                 </span>
               </div>
               <div className="bg-white/90 rounded-lg px-4 py-5 text-center shadow-sm border border-white/60">
-                <span className="block font-sans text-base md:text-lg font-bold text-ink">
-                  doda<span className="inline md:hidden">・</span><wbr className="hidden md:inline" />ワークポート
+                <span className="block font-sans text-sm md:text-base font-bold text-ink">
+                  doda・<br />ワークポート
                 </span>
                 <span className="block text-xs text-ink-soft mt-1">
                   利用サービス
