@@ -25,6 +25,7 @@ export type ArticleMeta = {
   cta_agents: string[];
   note_published: boolean;
   hasCardImage: boolean;
+  hasHeroImage: boolean;
 };
 
 export type Heading = {
@@ -62,6 +63,9 @@ export function getArticleMeta(slug: string): ArticleMeta {
     note_published: data.note_published ?? false,
     hasCardImage: fs.existsSync(
       path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
+    ),
+    hasHeroImage: fs.existsSync(
+      path.join(process.cwd(), "public", "images", "articles", `${slug}-hero.png`)
     ),
   };
 }
@@ -132,6 +136,9 @@ export async function getArticle(slug: string): Promise<Article> {
     note_published: data.note_published ?? false,
     hasCardImage: fs.existsSync(
       path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
+    ),
+    hasHeroImage: fs.existsSync(
+      path.join(process.cwd(), "public", "images", "articles", `${slug}-hero.png`)
     ),
     headings,
     contentHtml: htmlStr,
