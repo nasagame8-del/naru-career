@@ -62,36 +62,36 @@ export default function AboutPage() {
             </div>
 
             {/* サブ実績 — 4列グリッド */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
-                <span className="block font-sans text-2xl md:text-3xl font-bold text-white">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
+              <div className="bg-white/90 rounded-lg px-4 py-5 text-center shadow-sm border border-white/60">
+                <span className="block font-sans text-xl md:text-2xl font-bold text-ink whitespace-nowrap">
                   約3ヶ月
                 </span>
-                <span className="block text-xs text-white/70 mt-1">
+                <span className="block text-xs text-ink-soft mt-1">
                   活動期間（2025年8月〜）
                 </span>
               </div>
-              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
-                <span className="block font-sans text-2xl md:text-3xl font-bold text-white">
+              <div className="bg-white/90 rounded-lg px-4 py-5 text-center shadow-sm border border-white/60">
+                <span className="block font-sans text-xl md:text-2xl font-bold text-ink whitespace-nowrap">
                   約30社
                 </span>
-                <span className="block text-xs text-white/70 mt-1">
+                <span className="block text-xs text-ink-soft mt-1">
                   応募社数
                 </span>
               </div>
-              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
-                <span className="block font-sans text-2xl md:text-3xl font-bold text-white">
+              <div className="bg-white/90 rounded-lg px-4 py-5 text-center shadow-sm border border-white/60">
+                <span className="block font-sans text-xl md:text-2xl font-bold text-ink whitespace-nowrap">
                   2社
                 </span>
-                <span className="block text-xs text-white/70 mt-1">
+                <span className="block text-xs text-ink-soft mt-1">
                   内定獲得
                 </span>
               </div>
-              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
-                <span className="block font-sans text-lg md:text-xl font-bold text-white">
-                  doda・ワークポート
+              <div className="bg-white/90 rounded-lg px-4 py-5 text-center shadow-sm border border-white/60">
+                <span className="block font-sans text-base md:text-lg font-bold text-ink">
+                  doda<span className="inline md:hidden">・</span><wbr className="hidden md:inline" />ワークポート
                 </span>
-                <span className="block text-xs text-white/70 mt-1">
+                <span className="block text-xs text-ink-soft mt-1">
                   利用サービス
                 </span>
               </div>
