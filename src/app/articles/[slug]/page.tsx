@@ -102,20 +102,6 @@ export default async function ArticlePage(props: {
           <span className="text-ink">{article.title}</span>
         </nav>
 
-        {/* アイキャッチ画像 */}
-        {article.hasHeroImage && (
-          <div className="mb-8 rounded-xl overflow-hidden">
-            <Image
-              src={`/images/articles/${slug}-hero.png`}
-              alt=""
-              width={1600}
-              height={600}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        )}
-
         <div className="flex gap-10">
           {/* 本文エリア */}
           <article className="flex-1 max-w-[680px]">
@@ -136,6 +122,20 @@ export default async function ArticlePage(props: {
               </div>
               <ShareButtons slug={slug} title={article.title} />
             </div>
+
+            {/* アイキャッチ画像 */}
+            {article.hasHeroImage && (
+              <div className="mb-8 rounded-xl overflow-hidden">
+                <Image
+                  src={`/images/articles/${slug}-hero.png`}
+                  alt=""
+                  width={1600}
+                  height={600}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+            )}
 
             {/* PR表記（cta_agentsがある記事のみ） */}
             {article.cta_agents.length > 0 && (
