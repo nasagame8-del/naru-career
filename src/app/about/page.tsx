@@ -39,32 +39,65 @@ export default function AboutPage() {
           <h2>転職活動の実績</h2>
         </div>
 
-        {/* 年収の変化 — メインカード */}
-        <div className="border-2 border-amber rounded-lg bg-amber-soft my-6 px-6 py-5 flex flex-col items-center text-center">
-          <span className="text-[11px] font-medium text-amber tracking-wide mb-1">年収の変化</span>
-          <span className="font-mono text-3xl font-semibold text-amber">350万 → 400万</span>
-          <span className="text-[11px] text-ink-soft mt-1">飲食業界 → IT/Web業界</span>
-        </div>
+        {/* 実績セクション — 背景画像 + HTMLテキスト */}
+        <section
+          className="relative my-6 rounded-xl overflow-hidden bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/about-stats-bg.png')" }}
+        >
+          {/* 半透明オーバーレイ */}
+          <div className="absolute inset-0 bg-black/40" />
 
-        {/* サブ実績 — 均等4列 */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 border border-line rounded-lg bg-bg-soft mb-6">
-          <div className="flex flex-col items-center px-4 py-5 border-b sm:border-b-0 border-r border-line">
-            <span className="font-mono text-xl font-medium text-ink">約3ヶ月</span>
-            <span className="text-[11px] text-ink-soft mt-1">活動期間（2025年8月〜）</span>
+          <div className="relative z-10 px-6 py-10 md:px-10 md:py-14">
+            {/* 主役 — 年収の変化 */}
+            <div className="text-center mb-10">
+              <span className="text-sm font-medium text-amber-soft tracking-widest uppercase">
+                年収の変化
+              </span>
+              <div className="font-sans text-4xl md:text-5xl font-bold text-white mt-2 tracking-tight">
+                350万 → 400万
+              </div>
+              <span className="inline-block mt-2 text-sm text-white/80">
+                飲食業界 → IT/Web業界
+              </span>
+            </div>
+
+            {/* サブ実績 — 4列グリッド */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
+                <span className="block font-sans text-2xl md:text-3xl font-bold text-white">
+                  約3ヶ月
+                </span>
+                <span className="block text-xs text-white/70 mt-1">
+                  活動期間（2025年8月〜）
+                </span>
+              </div>
+              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
+                <span className="block font-sans text-2xl md:text-3xl font-bold text-white">
+                  約30社
+                </span>
+                <span className="block text-xs text-white/70 mt-1">
+                  応募社数
+                </span>
+              </div>
+              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
+                <span className="block font-sans text-2xl md:text-3xl font-bold text-white">
+                  2社
+                </span>
+                <span className="block text-xs text-white/70 mt-1">
+                  内定獲得
+                </span>
+              </div>
+              <div className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-5 text-center">
+                <span className="block font-sans text-lg md:text-xl font-bold text-white">
+                  doda・ワークポート
+                </span>
+                <span className="block text-xs text-white/70 mt-1">
+                  利用サービス
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col items-center px-4 py-5 border-b sm:border-b-0 sm:border-r border-line">
-            <span className="font-mono text-xl font-medium text-ink">約30社</span>
-            <span className="text-[11px] text-ink-soft mt-1">応募社数</span>
-          </div>
-          <div className="flex flex-col items-center px-4 py-5 border-r border-line">
-            <span className="font-mono text-xl font-medium text-ink">2社</span>
-            <span className="text-[11px] text-ink-soft mt-1">内定獲得</span>
-          </div>
-          <div className="flex flex-col items-center px-4 py-5">
-            <span className="text-sm font-medium text-ink">doda・ワークポート</span>
-            <span className="text-[11px] text-ink-soft mt-1">利用サービス</span>
-          </div>
-        </div>
+        </section>
 
         <div className="prose">
           <h2>このメディアについて</h2>
