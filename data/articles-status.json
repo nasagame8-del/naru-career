@@ -135,6 +135,30 @@
       "factchecked": true,
       "note_rewritten": true,
       "note_published": false
+    },
+    {
+      "slug": "what-is-web-industry",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "it-web-industry-real-work-culture",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "second-new-grad-job-change-traps",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
     }
   ]
 }
