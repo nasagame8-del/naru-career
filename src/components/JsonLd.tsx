@@ -4,8 +4,10 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com";
 
 const authorPerson = {
   "@type": "Person",
-  name: "アルト",
+  name: "磯貝アルト",
+  alternateName: "アルト",
   url: `${baseUrl}/about`,
+  image: `${baseUrl}/images/author-avatar.webp`,
   jobTitle: "AIO対策企業・営業職 / 転職メディア運営",
   description:
     "24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。第二新卒の転職実体験を発信。",
@@ -112,7 +114,7 @@ export function WebSiteJsonLd() {
     name: "NARU",
     url: baseUrl,
     description:
-      "第二新卒のIT/Web転職ガイド。著者アルトの実体験をベースに、転職エージェント比較・業界解説・体験談を掲載。",
+      "第二新卒のIT/Web転職ガイド。著者・磯貝アルトの実体験をベースに、転職エージェント比較・業界解説・体験談を掲載。",
     author: authorPerson,
     publisher: {
       "@type": "Organization",

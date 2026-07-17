@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | NARU",
   },
   description:
-    "著者アルトの実体験（24歳・転職1回）をベースに、第二新卒がIT/Web業界へキャリアチェンジするためのノウハウを発信。転職エージェント比較・業界解説・体験談を掲載。",
+    "著者・磯貝アルトの実体験（24歳・転職1回）をベースに、第二新卒がIT/Web業界へキャリアチェンジするためのノウハウを発信。転職エージェント比較・業界解説・体験談を掲載。",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com"),
   alternates: {
     canonical: "/",

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PersonJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "アルト（著者）について",
+  title: "磯貝アルト（著者）について",
   description:
-    "「NARU」運営者・アルトのプロフィール。24歳・転職1回。AIO対策企業に営業職として勤務しながら、第二新卒のIT/Web転職体験を発信。",
+    "「NARU」運営者・磯貝アルトのプロフィール。24歳・転職1回。AIO対策企業に営業職として勤務しながら、第二新卒のIT/Web転職体験を発信。",
   alternates: {
     canonical: "/about",
   },
@@ -21,18 +22,33 @@ export default function AboutPage() {
         ]}
       />
       <div className="max-w-2xl mx-auto px-4 py-16">
-        <h1 className="text-2xl md:text-3xl font-semibold mb-8">
-          著者について — アルト
-        </h1>
+        <div className="flex items-start gap-6 mb-8">
+          <div className="shrink-0">
+            <Image
+              src="/images/author-avatar.webp"
+              alt="磯貝アルトのイラストアバター"
+              width={96}
+              height={96}
+              className="rounded-full"
+            />
+            <span className="block text-[10px] text-ink-soft text-center mt-1">※イラストです</span>
+          </div>
+          <div>
+            <h1 className="text-2xl md:text-3xl font-semibold">
+              著者について — 磯貝アルト
+            </h1>
+            <p className="text-sm text-ink-soft mt-1">NARU 運営者</p>
+          </div>
+        </div>
         <div className="prose">
           <p>
-            「NARU」は、アルトが個人で運営する第二新卒向けの転職メディアです。
+            「NARU」は、磯貝アルトが個人で運営する第二新卒向けの転職メディアです。
           </p>
           <p>
-            運営者のアルトは、24歳で新卒入社した飲食業界の会社を1年で退職し、第二新卒としてIT/Web業界にキャリアチェンジしました。現在はAIO（AI Optimization）対策を手がける企業に営業職として勤務しています。人材紹介・人材派遣会社を主要クライアントとする、SEO/AIO領域の法人営業を担当しています。テレアポから商談、契約後のコンサルティングまでを一気通貫で行っており、業務の傍らでSEO/AIOの実務知識を独学しています。
+            運営者の磯貝アルトは、24歳で新卒入社した飲食業界の会社を1年で退職し、第二新卒としてIT/Web業界にキャリアチェンジしました。現在はAIO（AI Optimization）対策を手がける企業に営業職として勤務しています。人材紹介・人材派遣会社を主要クライアントとする、SEO/AIO領域の法人営業を担当しています。テレアポから商談、契約後のコンサルティングまでを一気通貫で行っており、業務の傍らでSEO/AIOの実務知識を独学しています。
           </p>
           <p>
-            アルトが実際に経験した転職活動の知見と、AIO対策企業で得た業界知識を合わせて、第二新卒の転職に役立つ情報を発信しています。
+            磯貝アルトが実際に経験した転職活動の知見と、AIO対策企業で得た業界知識を合わせて、第二新卒の転職に役立つ情報を発信しています。
           </p>
 
           {/* 転職活動の実績 */}
@@ -102,10 +118,10 @@ export default function AboutPage() {
         <div className="prose">
           <h2>このメディアについて</h2>
           <p>
-            「NARU」は、アルト自身の転職活動で感じた「リアルな情報が少ない」という課題から生まれた、第二新卒のIT転職ガイドです。サイト名の「NARU」と著者名の「アルト」は別の固有名詞です。
+            「NARU」は、磯貝アルト自身の転職活動で感じた「リアルな情報が少ない」という課題から生まれた、第二新卒のIT転職ガイドです。サイト名の「NARU」と著者名の「磯貝アルト」は別の固有名詞です。
           </p>
           <p>
-            転職エージェントの比較記事や業界解説は、すべてアルトの実体験をベースにしています。AIに体験談を捏造させることはせず、アルトが実際に経験したことだけを発信しています。
+            転職エージェントの比較記事や業界解説は、すべて磯貝アルトの実体験をベースにしています。AIに体験談を捏造させることはせず、磯貝アルトが実際に経験したことだけを発信しています。
           </p>
           <h2>経歴</h2>
           <ul>

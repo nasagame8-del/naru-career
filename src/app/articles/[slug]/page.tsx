@@ -252,8 +252,20 @@ export default async function ArticlePage(props: {
             <div className="sticky top-8 space-y-8">
               {/* 著者情報 */}
               <div className="border border-line rounded-lg p-5">
-                <p className="font-bold text-sm mb-2">この記事を書いた人</p>
-                <p className="font-semibold text-sm mb-1">アルト</p>
+                <p className="font-bold text-sm mb-3">この記事を書いた人</p>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="shrink-0">
+                    <Image
+                      src="/images/author-avatar.webp"
+                      alt="磯貝アルトのイラストアバター"
+                      width={48}
+                      height={48}
+                      className="rounded-full"
+                    />
+                    <span className="block text-[9px] text-ink-soft text-center mt-0.5">※アバター</span>
+                  </div>
+                  <p className="font-semibold text-sm">磯貝アルト</p>
+                </div>
                 <p className="text-sm text-ink-soft leading-relaxed">
                   24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。エージェントの裏側を知る立場から転職情報を発信。
                 </p>
