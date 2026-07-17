@@ -77,8 +77,31 @@ async function generateThumbnail(slug) {
 
     const rawBuffer = Buffer.from(result.data[0].b64_json, "base64");
 
+    // 1536x1024 (3:2) → 1200x630 (1.91:1) 変換
+    // fit: "cover" だと上下がクロップされるため、
+    // まず中央から1.91:1の領域を切り出してからリサイズする
+    const meta = await sharp(rawBuffer).metadata();
+    const srcW = meta.width;
+    const srcH = meta.height;
+    const targetRatio = WIDTH / HEIGHT; // 1.9047...
+    const srcRatio = srcW / srcH;
+
+    let extractLeft = 0, extractTop = 0, extractW = srcW, extractH = srcH;
+    if (srcRatio < targetRatio) {
+      // 元画像が目標より縦長 → 上下を切る（中央基準）
+      extractH = Math.round(srcW / targetRatio);
+      extractTop = Math.round((srcH - extractH) / 2);
+      extractW = srcW;
+    } else {
+      // 元画像が目標より横長 → 左右を切る（中央基準）
+      extractW = Math.round(srcH * targetRatio);
+      extractLeft = Math.round((srcW - extractW) / 2);
+      extractH = srcH;
+    }
+
     const resized = await sharp(rawBuffer)
-      .resize(WIDTH, HEIGHT, { fit: "cover" })
+      .extract({ left: extractLeft, top: extractTop, width: extractW, height: extractH })
+      .resize(WIDTH, HEIGHT)
       .png()
       .toBuffer();
 
