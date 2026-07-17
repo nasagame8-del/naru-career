@@ -159,6 +159,54 @@
       "factchecked": true,
       "note_rewritten": true,
       "note_published": false
+    },
+    {
+      "slug": "alumni-hiring",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "referral-hiring",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "direct-recruiting",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "casual-interview",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "skill-based-hiring",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
+    },
+    {
+      "slug": "ai-interview-screening",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false
     }
   ]
 }
