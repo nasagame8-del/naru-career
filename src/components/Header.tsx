@@ -1,17 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
-
-function LogoWordmark() {
-  return (
-    <Image
-      src="/logo-wordmark.png"
-      alt="NARU"
-      width={140}
-      height={36}
-      priority
-    />
-  );
-}
 
 function XIcon() {
   return (
@@ -33,8 +20,8 @@ export function Header() {
   return (
     <header className="border-b border-line">
       <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <LogoWordmark />
+        <Link href="/" className="text-2xl font-bold tracking-wide text-accent">
+          NARU
         </Link>
         <div className="flex items-center gap-5">
           <nav className="hidden sm:flex items-center gap-6 text-sm text-ink-soft">
