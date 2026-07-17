@@ -104,3 +104,28 @@ export function PersonJsonLd() {
     />
   );
 }
+
+export function WebSiteJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "NARU",
+    url: baseUrl,
+    description:
+      "第二新卒のIT/Web転職ガイド。著者アルトの実体験をベースに、転職エージェント比較・業界解説・体験談を掲載。",
+    author: authorPerson,
+    publisher: {
+      "@type": "Organization",
+      name: "NARU",
+      url: baseUrl,
+      founder: authorPerson,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
