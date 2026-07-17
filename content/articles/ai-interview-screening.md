@@ -89,3 +89,9 @@ AI面接の導入は今後さらに加速するでしょう。第二新卒がこ
 最後に、**AIを「敵」ではなく「ツール」として捉える**こと。AI面接に限らず、[ダイレクトリクルーティング](/articles/direct-recruiting)や[リファラル採用](/articles/referral-hiring)、[アルムナイ採用](/articles/alumni-hiring)など、採用手法は多様化しています。AIは選考の一部を効率化しているだけであり、最終的に人を採用するのは人です。
 
 採用に関する用語を体系的に理解したい方は、[用語集](/glossary)もあわせて参考にしてください。
+
+## あわせて読みたい記事
+
+- [面接で「なぜこの職種を志望するのか」と聞かれて詰まった話](/articles/interview-failure-why-this-job)
+- [カジュアル面談とは？本選考との違いと活用法](/articles/casual-interview)
+- [スキルベース採用とは？学歴より実力で評価される時代](/articles/skill-based-hiring)

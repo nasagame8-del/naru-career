@@ -76,6 +76,12 @@ note_published: false
 
 スカウト型サービスの用語解説や仕組みの詳細は[用語集ページ](/glossary)にもまとめています。
 
+## あわせて読みたい記事
+
+- [ビズリーチは第二新卒でも使える？実際に登録してみた結果](/articles/bizreach-second-new-grad)
+- [【実体験】第二新卒の転職で使ったエージェント比較](/articles/agent-comparison-2026)
+- [リファラル採用とは？社員紹介の仕組みと注意点](/articles/referral-hiring)
+
 ## よくある質問
 
 ### Q. ダイレクトリクルーティングとヘッドハンティングは同じですか？

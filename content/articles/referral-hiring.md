@@ -68,6 +68,12 @@ note_published: false
 
 各用語の詳しい解説は[用語集ページ](/glossary)にまとめています。
 
+## あわせて読みたい記事
+
+- [エージェント紹介 vs 自己応募、内定に近かったのは？](/articles/agent-referral-vs-self-apply)
+- [アルムナイ採用とは？一度辞めた会社に戻れる時代](/articles/alumni-hiring)
+- [ダイレクトリクルーティングとは？スカウト型転職の仕組み](/articles/direct-recruiting)
+
 ## よくある質問
 
 ### Q. リファラル採用で紹介者にインセンティブは出ますか？

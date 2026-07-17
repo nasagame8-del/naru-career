@@ -72,6 +72,12 @@ note_published: false
 
 各用語の詳しい解説は[用語集ページ](/glossary)にまとめているので、気になるものがあればチェックしてみてください。
 
+## あわせて読みたい記事
+
+- [リファラル採用とは？社員紹介の仕組みと注意点](/articles/referral-hiring)
+- [退職の伝え方、有給・ボーナスはどうだった？](/articles/how-to-resign-experience)
+- [第二新卒とは？定義・年齢/年数の目安](/articles/what-is-second-new-grad)
+
 ## よくある質問
 
 ### Q. アルムナイ採用で戻る場合、面接はありますか？

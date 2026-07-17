@@ -80,3 +80,9 @@ note_published: false
 [カジュアル面談](/articles/casual-interview)の場で「御社ではどんなスキルを重視していますか？」と直接聞くのも有効な方法です。企業が求めるスキルと自分のスキルのギャップを事前に把握しておけば、選考の準備精度が格段に上がります。
 
 採用手法のトレンドとしては、[ダイレクトリクルーティング](/articles/direct-recruiting)や[リファラル採用](/articles/referral-hiring)、[アルムナイ採用](/articles/alumni-hiring)なども広がっています。[AI面接](/articles/ai-interview-screening)のようにテクノロジーを活用した選考手法も増えており、スキルの可視化・定量化はますます重要になるでしょう。採用に関する用語を体系的に知りたい方は、[用語集](/glossary)もあわせてご覧ください。
+
+## あわせて読みたい記事
+
+- [プログラミング未経験でもIT転職できる？](/articles/second-new-grad-programming-career-change)
+- [職務経歴書、第二新卒はここで差がつく](/articles/resume-writing-second-new-grad)
+- [Web業界とは？未経験から目指す人が知っておくべき職種](/articles/what-is-web-industry)
