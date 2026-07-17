@@ -1,140 +1,22 @@
 {
   "articles": [
     {
-      "slug": "second-new-grad-it-career-change",
-      "status": "needs_review",
-      "experience_filled": false,
-      "factchecked": false,
-      "note_rewritten": false,
-      "note_published": false
-    },
-    {
-      "slug": "agent-comparison-2026",
-      "status": "needs_review",
-      "experience_filled": false,
-      "factchecked": false,
-      "note_rewritten": false,
-      "note_published": false
-    },
-    {
-      "slug": "web-industry-guide",
-      "status": "needs_review",
-      "experience_filled": false,
-      "factchecked": false,
-      "note_rewritten": false,
-      "note_published": false
-    },
-    {
-      "slug": "second-new-grad-programming-career-change",
-      "status": "needs_review",
-      "experience_filled": false,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "agent-site-vs-agent-usage",
-      "status": "needs_review",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "bizreach-second-new-grad",
-      "status": "needs_review",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
       "slug": "what-is-second-new-grad",
       "status": "needs_review",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-07-21"
     },
     {
-      "slug": "agent-referral-vs-self-apply",
+      "slug": "second-new-grad-it-career-change",
       "status": "needs_review",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "interview-failure-why-this-job",
-      "status": "needs_review",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "aio-seo-industry-inside",
-      "status": "needs_review",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "second-new-grad-retirement-pay",
-      "status": "factchecked",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "recruitment-agency-business-model",
-      "status": "factchecked",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "agent-free-and-cancel",
-      "status": "factchecked",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "it-industry-quit-myth",
-      "status": "factchecked",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "resume-writing-second-new-grad",
-      "status": "factchecked",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "job-change-timing-3months",
-      "status": "factchecked",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
-    },
-    {
-      "slug": "how-to-resign-experience",
-      "status": "factchecked",
-      "experience_filled": true,
-      "factchecked": true,
-      "note_rewritten": true,
-      "note_published": false
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-07-23"
     },
     {
       "slug": "what-is-web-industry",
@@ -142,7 +24,8 @@
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-07-25"
     },
     {
       "slug": "it-web-industry-real-work-culture",
@@ -150,31 +33,89 @@
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-07-28"
     },
     {
-      "slug": "second-new-grad-job-change-traps",
+      "slug": "web-industry-guide",
+      "status": "needs_review",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-07-30"
+    },
+    {
+      "slug": "aio-seo-industry-inside",
+      "status": "needs_review",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-08-01"
+    },
+    {
+      "slug": "it-industry-quit-myth",
       "status": "factchecked",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-08-04"
     },
     {
-      "slug": "alumni-hiring",
+      "slug": "agent-comparison-2026",
+      "status": "needs_review",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-08-06"
+    },
+    {
+      "slug": "agent-site-vs-agent-usage",
+      "status": "needs_review",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-08-08"
+    },
+    {
+      "slug": "agent-referral-vs-self-apply",
+      "status": "needs_review",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-08-11"
+    },
+    {
+      "slug": "agent-free-and-cancel",
       "status": "factchecked",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-08-13"
     },
     {
-      "slug": "referral-hiring",
+      "slug": "recruitment-agency-business-model",
       "status": "factchecked",
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-08-15"
+    },
+    {
+      "slug": "bizreach-second-new-grad",
+      "status": "needs_review",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-08-18"
     },
     {
       "slug": "direct-recruiting",
@@ -182,7 +123,26 @@
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-08-20"
+    },
+    {
+      "slug": "referral-hiring",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-08-22"
+    },
+    {
+      "slug": "alumni-hiring",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-08-25"
     },
     {
       "slug": "casual-interview",
@@ -190,7 +150,8 @@
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-08-27"
     },
     {
       "slug": "skill-based-hiring",
@@ -198,7 +159,8 @@
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-08-29"
     },
     {
       "slug": "ai-interview-screening",
@@ -206,7 +168,71 @@
       "experience_filled": true,
       "factchecked": true,
       "note_rewritten": true,
-      "note_published": false
+      "note_published": false,
+      "scheduled_publish": "2026-09-01"
+    },
+    {
+      "slug": "interview-failure-why-this-job",
+      "status": "needs_review",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-09-03"
+    },
+    {
+      "slug": "second-new-grad-job-change-traps",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-09-05"
+    },
+    {
+      "slug": "resume-writing-second-new-grad",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-09-08"
+    },
+    {
+      "slug": "second-new-grad-programming-career-change",
+      "status": "needs_review",
+      "experience_filled": false,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-09-10"
+    },
+    {
+      "slug": "job-change-timing-3months",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-09-12"
+    },
+    {
+      "slug": "how-to-resign-experience",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-09-15"
+    },
+    {
+      "slug": "second-new-grad-retirement-pay",
+      "status": "factchecked",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": true,
+      "note_published": false,
+      "scheduled_publish": "2026-09-17"
     }
   ]
 }
