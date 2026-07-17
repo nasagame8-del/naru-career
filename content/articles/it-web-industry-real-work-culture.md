@@ -12,8 +12,7 @@ faq:
     answer: "裁量が大きい反面、業務範囲が広く自走力が求められます。また大手と比べて福利厚生が手薄なため、結婚・住宅購入などのライフプランが組みにくいと感じる場面があります。良くも悪くも自分次第の環境です。"
   - question: "IT/Web業界ではどんなツールを使いますか？"
     answer: "僕の場合はGA4（Google Analytics 4）、Google Search Console、SEO分析ツール、Claude（生成AI）を日常的に使っています。プログラミングは一切不要で、ノーコードツールだけで業務が成り立っています。"
-cta_agents:
-  - doda
+cta_agents: []
 note_published: false
 ---
 
