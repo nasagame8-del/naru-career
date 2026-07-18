@@ -3,17 +3,34 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-type Props = {
-  /** /agent-diagnosis or /diagnosis */
+type BannerConfig = {
   href: string;
+  title: string;
+  description: string;
+  btnText: string;
 };
 
-export function DiagnosisBanner({ href }: Props) {
+const CTA_FOCUS_MAP: Record<string, BannerConfig> = {
+  "ai-interview": {
+    href: "/ai-interview-check",
+    title: "あなたの回答、AIはどう見る？",
+    description: "4つの質問でAI面接の評価ポイントをチェック。無料・登録不要です。",
+    btnText: "AI面接チェックを受ける",
+  },
+};
+
+type Props = {
+  /** /agent-diagnosis or /diagnosis（ctaFocus未設定時のフォールバック） */
+  href: string;
+  /** frontmatterのctaFocus値 */
+  ctaFocus?: string;
+};
+
+export function DiagnosisBanner({ href, ctaFocus }: Props) {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    // セッション内で既に閉じていたら表示しない
     if (sessionStorage.getItem("diagnosis-banner-dismissed")) {
       setDismissed(true);
       return;
@@ -41,16 +58,21 @@ export function DiagnosisBanner({ href }: Props) {
 
   if (dismissed || !visible) return null;
 
-  const isAgent = href === "/agent-diagnosis";
-  const title = isAgent
-    ? "自分に合うエージェントが分からない方へ"
-    : "自分に向いている職種を知りたい方へ";
-  const btnText = isAgent ? "エージェント相性診断" : "適職診断を受けてみる";
+  // ctaFocusがマップにあればそれを使い、なければ既存の2択ロジック
+  const config: BannerConfig = ctaFocus && CTA_FOCUS_MAP[ctaFocus]
+    ? CTA_FOCUS_MAP[ctaFocus]
+    : {
+        href,
+        title: href === "/agent-diagnosis"
+          ? "自分に合うエージェントが分からない方へ"
+          : "自分に向いている職種を知りたい方へ",
+        description: "5つの質問に答えるだけ。完全無料・登録不要です。",
+        btnText: href === "/agent-diagnosis" ? "エージェント相性診断" : "適職診断を受けてみる",
+      };
 
   return (
     <div className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-auto md:right-6 md:w-[360px] z-40 animate-slide-up">
       <div className="bg-white border border-line shadow-lg md:rounded-xl p-4 md:p-5 relative">
-        {/* 閉じるボタン */}
         <button
           onClick={close}
           aria-label="閉じる"
@@ -61,15 +83,13 @@ export function DiagnosisBanner({ href }: Props) {
           </svg>
         </button>
 
-        <p className="text-[13px] font-bold text-ink pr-8 mb-1.5">{title}</p>
-        <p className="text-[11px] text-ink-soft leading-relaxed mb-3">
-          5つの質問に答えるだけ。完全無料・登録不要です。
-        </p>
+        <p className="text-[13px] font-bold text-ink pr-8 mb-1.5">{config.title}</p>
+        <p className="text-[11px] text-ink-soft leading-relaxed mb-3">{config.description}</p>
         <Link
-          href={href}
+          href={config.href}
           className="block w-full bg-accent text-white text-center font-bold text-[13px] py-2.5 rounded-full hover:bg-accent/90 transition-colors"
         >
-          {btnText}
+          {config.btnText}
         </Link>
       </div>
     </div>

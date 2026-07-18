@@ -73,6 +73,7 @@ export type ArticleMeta = {
   note_published: boolean;
   summary: string[];
   resume_template: boolean;
+  ctaFocus: string;
   hasCardImage: boolean;
   hasHeroImage: boolean;
 };
@@ -112,6 +113,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     note_published: data.note_published ?? false,
     summary: data.summary ?? [],
     resume_template: data.resume_template ?? false,
+    ctaFocus: data.ctaFocus ?? "",
     hasCardImage: fs.existsSync(
       path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
     ),
@@ -138,6 +140,16 @@ export async function getArticle(slug: string): Promise<Article> {
       const noteText = cta.affiliate === false ? "" : `<span class="cta-note">※提携先のサービスです</span>`;
       return `<a href="${href}" class="cta-button" rel="${relAttr}" target="_blank">${cta.cta_text}（${cta.name}）</a>${noteText}`;
     }
+  );
+
+  // Process widget placeholders (comparison tables, flow diagrams)
+  processedContent = processedContent.replace(
+    /\[COMPARISON_TABLE:([\w-]+)\]/g,
+    (_match, id: string) => `<div data-widget="comparison-table" data-widget-id="${id}"></div>`
+  );
+  processedContent = processedContent.replace(
+    /\[FLOW_DIAGRAM:([\w-]+)\]/g,
+    (_match, id: string) => `<div data-widget="flow-diagram" data-widget-id="${id}"></div>`
   );
 
   // Process EXPERIENCE placeholders
@@ -192,6 +204,7 @@ export async function getArticle(slug: string): Promise<Article> {
     note_published: data.note_published ?? false,
     summary: data.summary ?? [],
     resume_template: data.resume_template ?? false,
+    ctaFocus: data.ctaFocus ?? "",
     hasCardImage: fs.existsSync(
       path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
     ),

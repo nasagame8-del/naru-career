@@ -54,6 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/ai-interview-check`,
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     ...categoryEntries,
     ...articleEntries,
   ];

@@ -13,6 +13,8 @@ import {
 import { DiagnosisBanner } from "@/components/DiagnosisBanner";
 import { TemplateDownload } from "@/components/TemplateDownload";
 import { getNoteLinkMap } from "@/lib/note-feed";
+import { ArticleBody } from "@/components/ArticleBody";
+import { ARTICLE_WIDGETS } from "@/lib/article-widgets";
 
 export const revalidate = 3600;
 
@@ -217,10 +219,11 @@ export default async function ArticlePage(props: {
             <TableOfContents headings={article.headings} />
 
             {/* 記事本文 */}
-            <div
+            <ArticleBody
               className="prose"
               style={{ "--category-color": accent.cssVar } as React.CSSProperties}
-              dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+              contentHtml={article.contentHtml}
+              widgets={ARTICLE_WIDGETS[slug] ?? []}
             />
 
             {/* 職務経歴書テンプレートのダウンロード */}
@@ -387,6 +390,7 @@ export default async function ArticlePage(props: {
             ? "/agent-diagnosis"
             : "/diagnosis"
         }
+        ctaFocus={article.ctaFocus || undefined}
       />
     </>
   );
