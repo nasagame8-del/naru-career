@@ -109,38 +109,36 @@ async function fetchGSCData() {
     // シートの全データを取得（ヘッダー行 + データ行）
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "A:F", // Date, Query, Page, Clicks, Impressions, CTR, Position
+      range: "A:G", // Date, Query, Page, Clicks, Impressions, CTR, Position
     });
 
     const rows = res.data.values;
-    if (!rows || rows.length < 2) {
+    if (!rows || rows.length < 1) {
       return { configured: true, error: "シートにデータがありません" };
     }
 
-    const headers = rows[0].map((h: string) => h.toLowerCase().trim());
-    const dateIdx = headers.findIndex((h: string) => h.includes("date"));
-    const queryIdx = headers.findIndex((h: string) => h.includes("query") || h.includes("検索"));
-    const clickIdx = headers.findIndex((h: string) => h.includes("click"));
-    const impIdx = headers.findIndex((h: string) => h.includes("impression") || h.includes("表示"));
-    const ctrIdx = headers.findIndex((h: string) => h.includes("ctr"));
-    const posIdx = headers.findIndex((h: string) => h.includes("position") || h.includes("順位"));
+    // ヘッダーなしのシート: 列順は Date, Query, Page, Clicks, Impressions, CTR, Position
+    const dateIdx = 0;
+    const queryIdx = 1;
+    const clickIdx = 3;
+    const impIdx = 4;
+    const ctrIdx = 5;
+    const posIdx = 6;
 
-    // 直近7日のデータをフィルタ
     const now = new Date();
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
     let latestDate = "";
 
     let totalClicks = 0;
     let totalImpressions = 0;
-    let totalCtr = 0;
     let totalPosition = 0;
     let count = 0;
     const queryMap = new Map<string, number>();
 
-    for (let i = 1; i < rows.length; i++) {
+    for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
-      const dateStr = dateIdx >= 0 ? row[dateIdx] : "";
-      if (!dateStr) continue;
+      const dateStr = row[dateIdx] || "";
+      if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) continue;
 
       if (dateStr > latestDate) latestDate = dateStr;
 
@@ -149,20 +147,16 @@ async function fetchGSCData() {
 
       const clicks = Number(row[clickIdx] || 0);
       const impressions = Number(row[impIdx] || 0);
-      const ctr = Number(row[ctrIdx] || 0);
-      const position = Number(row[posIdx] || 0);
+      const position = Number(String(row[posIdx] || 0).replace(/[^0-9.]/g, ""));
 
       totalClicks += clicks;
       totalImpressions += impressions;
-      totalCtr += ctr;
       totalPosition += position;
       count++;
 
-      if (queryIdx >= 0) {
-        const query = row[queryIdx] || "";
-        if (query) {
-          queryMap.set(query, (queryMap.get(query) || 0) + clicks);
-        }
+      const query = row[queryIdx] || "";
+      if (query) {
+        queryMap.set(query, (queryMap.get(query) || 0) + clicks);
       }
     }
 
@@ -184,7 +178,7 @@ async function fetchGSCData() {
       daysSinceLatest,
       totalClicks,
       totalImpressions,
-      avgCtr: count > 0 ? (totalCtr / count * 100).toFixed(1) : "0",
+      avgCtr: totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(1) : "0",
       avgPosition: count > 0 ? (totalPosition / count).toFixed(1) : "0",
       topQueries,
     };
