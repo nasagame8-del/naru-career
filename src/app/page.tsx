@@ -34,7 +34,7 @@ export default function Home() {
                     {article.hasCardImage ? (
                       <Image
                         src={`/images/articles/${article.slug}-card.png`}
-                        alt=""
+                        alt={`${article.title}｜${article.category}記事のサムネイル画像`}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -42,7 +42,7 @@ export default function Home() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <span className="text-ink-soft text-sm">thumbnail</span>
+                        <span className="text-ink-soft text-sm">{article.category}</span>
                       </div>
                     )}
                   </div>

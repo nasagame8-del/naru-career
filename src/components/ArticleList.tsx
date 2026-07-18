@@ -24,14 +24,14 @@ export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
               {article.hasCardImage ? (
                 <Image
                   src={`/images/articles/${article.slug}-card.png`}
-                  alt=""
+                  alt={`${article.title}｜${article.category}記事のサムネイル画像`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 120px, 200px"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-ink-soft text-xs">thumb</span>
+                  <span className="text-ink-soft text-xs">{article.category}</span>
                 </div>
               )}
             </div>

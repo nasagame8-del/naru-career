@@ -164,6 +164,23 @@ h1 {
   color: #18594f;
 }
 
+/* インライン用語定義（用語集へのリンク付き） */
+.prose dfn.glossary-term {
+  font-style: normal;
+}
+
+.prose dfn.glossary-term a {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.prose dfn.glossary-term a:hover {
+  color: var(--accent);
+}
+
 .prose table {
   width: 100%;
   border-collapse: collapse;

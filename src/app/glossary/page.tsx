@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { GLOSSARY_ANCHORS } from "@/lib/glossary-links";
 
 export const metadata: Metadata = {
   title: "用語集",
@@ -216,8 +217,9 @@ function Accordion({
   term: string;
   children: React.ReactNode;
 }) {
+  const anchor = GLOSSARY_ANCHORS[term];
   return (
-    <details className="group border-b border-line">
+    <details id={anchor} className="group border-b border-line scroll-mt-24">
       <summary className="flex items-center justify-between cursor-pointer py-4 text-ink font-bold text-[15px] hover:text-accent transition-colors list-none [&::-webkit-details-marker]:hidden">
         <span>{term}</span>
         <span className="text-ink-soft text-xs shrink-0 ml-4 transition-transform group-open:rotate-180">
