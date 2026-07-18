@@ -176,8 +176,10 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
                   <thead><tr className="border-b border-gray-100"><th className="text-left py-1.5 text-gray-500 font-medium text-xs">パス</th><th className="text-right py-1.5 text-gray-500 font-medium text-xs">PV</th></tr></thead>
                   <tbody>
                     {ga4.topPages.map((p, i) => (
-                      <tr key={i} className="border-b border-gray-50">
-                        <td className="py-1.5 text-xs font-mono">{p.path}</td>
+                      <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
+                        <td className="py-1.5 text-xs font-mono">
+                          <a href={`https://naru-career.com${p.path}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{p.path}</a>
+                        </td>
                         <td className="py-1.5 text-right text-xs font-bold">{p.views.toLocaleString()}</td>
                       </tr>
                     ))}
@@ -220,8 +222,10 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
                   <thead><tr className="border-b border-gray-100"><th className="text-left py-1.5 text-gray-500 font-medium text-xs">クエリ</th><th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th></tr></thead>
                   <tbody>
                     {gsc.topQueries.map((q, i) => (
-                      <tr key={i} className="border-b border-gray-50">
-                        <td className="py-1.5 text-xs">{q.query}</td>
+                      <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
+                        <td className="py-1.5 text-xs">
+                          <a href={`https://www.google.com/search?q=${encodeURIComponent(q.query)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{q.query}</a>
+                        </td>
                         <td className="py-1.5 text-right text-xs font-bold">{q.clicks}</td>
                       </tr>
                     ))}
@@ -247,7 +251,7 @@ function SiteTab({ site, keywords }: { site: DashboardData["site"]; keywords: Ke
             {site.scheduled.map((a) => (
               <li key={a.slug} className="flex items-center gap-3 text-sm">
                 <span className="font-mono text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded">{a.scheduled_publish}</span>
-                <span className="text-gray-700">{a.slug}</span>
+                <a href={`https://naru-career.com/articles/${a.slug}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{a.slug}</a>
                 <StatusBadge status={a.status} />
               </li>
             ))}
@@ -259,7 +263,7 @@ function SiteTab({ site, keywords }: { site: DashboardData["site"]; keywords: Ke
         {site.reviewDue.length > 0 ? (
           <ul className="space-y-1">
             {site.reviewDue.map((a) => (
-              <li key={a.slug} className="text-sm text-gray-700">{a.slug} <span className="text-gray-400">（{a.lastReviewDate}）</span></li>
+              <li key={a.slug} className="text-sm"><a href={`https://naru-career.com/articles/${a.slug}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{a.slug}</a> <span className="text-gray-400">（{a.lastReviewDate}）</span></li>
             ))}
           </ul>
         ) : <p className="text-sm text-green-600">すべて最新です</p>}
@@ -291,11 +295,19 @@ function SiteTab({ site, keywords }: { site: DashboardData["site"]; keywords: Ke
 
 // ── ASP Tab ──
 
+const ASP_URLS: Record<string, string> = {
+  "A8.net": "https://www.a8.net/",
+  "アクセストレード": "https://www.accesstrade.ne.jp/",
+  "バリューコマース": "https://www.valuecommerce.ne.jp/",
+  "afb": "https://www.afi-b.com/",
+};
+
 function AspTab({ asps }: { asps: Asp[] }) {
   return (
     <div className="space-y-4">
       {asps.map((asp) => (
-        <Card key={asp.name} title={asp.name} badge={<StatusBadge status={asp.status} />} subtitle={`更新: ${asp.updatedAt}`}>
+        <Card key={asp.name} title={asp.name} badge={<StatusBadge status={asp.status} />} subtitle={`更新: ${asp.updatedAt}`}
+          titleLink={ASP_URLS[asp.name]}>
           {asp.programs.length > 0 ? (
             <table className="w-full text-sm">
               <thead><tr className="border-b border-gray-100">
@@ -338,10 +350,10 @@ function CtaTab({ cta }: { cta: Record<string, CtaEntry> | null }) {
           {Object.entries(cta).map(([key, e]) => (
             <tr key={key} className={`border-b border-gray-50 ${!e.url ? "bg-red-50/40" : ""}`}>
               <td className="py-1.5 font-mono text-[10px]">{key}</td>
-              <td className="py-1.5 text-xs">{e.name}</td>
+              <td className="py-1.5 text-xs">{e.url ? <a href={e.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{e.name}</a> : e.name}</td>
               <td className="py-1.5 text-xs text-gray-500">{e.asp || "-"}</td>
               <td className="py-1.5">{e.affiliate === false ? <span className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">なし</span> : <span className="text-[10px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded">あり</span>}</td>
-              <td className="py-1.5">{e.url ? <span className="text-[10px] text-green-600">設定済み</span> : <span className="text-[10px] font-bold text-red-600">未設定</span>}</td>
+              <td className="py-1.5">{e.url ? <a href={e.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-green-600 hover:underline">設定済み ↗</a> : <span className="text-[10px] font-bold text-red-600">未設定</span>}</td>
             </tr>
           ))}
         </tbody>
@@ -352,12 +364,16 @@ function CtaTab({ cta }: { cta: Record<string, CtaEntry> | null }) {
 
 // ── Shared Components ──
 
-function Card({ title, badge, subtitle, children }: { title: string; badge?: React.ReactNode; subtitle?: string; children: React.ReactNode }) {
+function Card({ title, badge, subtitle, titleLink, children }: { title: string; badge?: React.ReactNode; subtitle?: string; titleLink?: string; children: React.ReactNode }) {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-4">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <h3 className="font-bold text-sm text-gray-900">{title}</h3>
+          {titleLink ? (
+            <a href={titleLink} target="_blank" rel="noopener noreferrer" className="font-bold text-sm text-blue-600 hover:underline">{title} ↗</a>
+          ) : (
+            <h3 className="font-bold text-sm text-gray-900">{title}</h3>
+          )}
           {badge}
         </div>
         {subtitle && <span className="text-[10px] text-gray-400">{subtitle}</span>}
