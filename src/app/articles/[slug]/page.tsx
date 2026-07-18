@@ -10,6 +10,7 @@ import {
   FAQJsonLd,
   BreadcrumbJsonLd,
 } from "@/components/JsonLd";
+import { DiagnosisBanner } from "@/components/DiagnosisBanner";
 
 export async function generateStaticParams() {
   return getArticleSlugs().map((slug) => ({ slug }));
@@ -314,6 +315,15 @@ export default async function ArticlePage(props: {
           </aside>
         </div>
       </div>
+
+      {/* スクロール連動型の診断バナー */}
+      <DiagnosisBanner
+        href={
+          article.category === "エージェント比較" || article.cta_agents.length > 0
+            ? "/agent-diagnosis"
+            : "/diagnosis"
+        }
+      />
     </>
   );
 }
