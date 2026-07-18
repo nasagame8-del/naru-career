@@ -178,6 +178,26 @@ export default async function ArticlePage(props: {
               {article.excerpt}
             </p>
 
+            {/* NARU Point */}
+            <div className="relative bg-accent/[0.04] border border-accent/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
+              {/* 右上の折れ紙モチーフ */}
+              <div className="absolute top-0 right-0 w-10 h-10">
+                <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-accent/10 border-l-[40px] border-l-transparent" />
+                <div className="absolute top-[3px] right-[3px] w-0 h-0 border-t-[12px] border-t-white border-l-[12px] border-l-transparent" />
+              </div>
+              {/* ラベル */}
+              <div className="flex items-center gap-2 mb-2.5">
+                <span className="inline-flex items-center gap-1.5 bg-accent text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z" /></svg>
+                  NARU Point
+                </span>
+              </div>
+              {/* excerpt を再利用 */}
+              <p className="text-[14px] text-ink leading-relaxed font-medium">
+                {article.excerpt}
+              </p>
+            </div>
+
             {/* この記事で分かること（AIフレンドリーな要約） */}
             {article.summary.length > 0 && (
               <div className={`border-l-[3px] ${accent.border} bg-bg-soft rounded-r-lg px-5 py-4 mb-8`}>
