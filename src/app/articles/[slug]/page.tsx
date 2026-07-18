@@ -12,6 +12,9 @@ import {
 } from "@/components/JsonLd";
 import { DiagnosisBanner } from "@/components/DiagnosisBanner";
 import { TemplateDownload } from "@/components/TemplateDownload";
+import { getNoteLinkMap } from "@/lib/note-feed";
+
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return getArticleSlugs().map((slug) => ({ slug }));
@@ -73,6 +76,10 @@ export default async function ArticlePage(props: {
     .slice(0, 4);
 
   const accent = categoryAccent[article.category] || categoryAccent["業界解説"];
+
+  // note連携: 対応するnote記事があればリンクを表示
+  const noteLinkMap = await getNoteLinkMap();
+  const noteLink = noteLinkMap.get(slug);
 
   // affiliate判定
   const ctaRegistry = getCTARegistry();
@@ -201,6 +208,24 @@ export default async function ArticlePage(props: {
 
             {/* FAQセクション */}
             <FAQSection faqs={article.faq} accentColor={accent.faq} />
+
+            {/* note版リンク */}
+            {noteLink && (
+              <div className="mt-10 p-5 bg-bg-soft border border-line rounded-lg flex items-start gap-3">
+                <span className="text-2xl shrink-0" aria-hidden="true">📝</span>
+                <div>
+                  <p className="font-bold text-sm mb-1">この記事のnote版はこちら</p>
+                  <a
+                    href={noteLink.noteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-accent hover:underline"
+                  >
+                    {noteLink.noteTitle}
+                  </a>
+                </div>
+              </div>
+            )}
 
             {/* まとめCTA */}
             {article.cta_agents.length > 0 && (
