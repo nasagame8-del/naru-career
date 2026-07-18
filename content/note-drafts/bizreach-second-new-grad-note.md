@@ -50,4 +50,4 @@ original_slug: "bizreach-second-new-grad"
 
 ---
 📝 詳しいビズリーチ体験とサービスの組み合わせ方は、ブログ記事にまとめています。
-👉 [ビズリーチは第二新卒でも使える？実際に登録してみた結果](自社サイトURL)
+👉 [ビズリーチは第二新卒でも使える？実際に登録してみた結果](https://naru-career.com/articles/bizreach-second-new-grad)
