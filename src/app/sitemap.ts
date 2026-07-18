@@ -48,6 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/agent-diagnosis`,
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
     ...categoryEntries,
     ...articleEntries,
   ];

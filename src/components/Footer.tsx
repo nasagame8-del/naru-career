@@ -15,6 +15,9 @@ export function Footer() {
             <Link href="/diagnosis" className="hover:text-accent transition-colors">
               適職診断
             </Link>
+            <Link href="/agent-diagnosis" className="hover:text-accent transition-colors">
+              エージェント相性診断
+            </Link>
             <Link href="/glossary" className="hover:text-accent transition-colors">
               用語集
             </Link>
