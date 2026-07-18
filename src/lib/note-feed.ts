@@ -90,3 +90,84 @@ export async function getNoteLinkMap(): Promise<Map<string, NoteLink>> {
 
   return result;
 }
+
+// ── 最新note投稿一覧（トップページ表示用） ──
+
+export interface NotePost {
+  title: string;
+  url: string;
+  pubDate: string;
+  thumbnail: string | null;
+  slug: string | null;
+}
+
+/**
+ * noteの最新投稿を取得し、新しい順にlimit件返す。
+ * - RSSのmedia:thumbnailがあればそれを使用
+ * - 対応するnote-drafts画像があればフォールバック
+ */
+export async function getLatestNotePosts(limit = 6): Promise<NotePost[]> {
+  let xml: string;
+  try {
+    const res = await fetch(NOTE_RSS_URL, { next: { revalidate: 3600 } });
+    if (!res.ok) return [];
+    xml = await res.text();
+  } catch {
+    return [];
+  }
+
+  const items = xml.match(/<item>[\s\S]*?<\/item>/g);
+  if (!items) return [];
+
+  const draftMap = getNoteDraftMap();
+  const imagesDir = path.join(process.cwd(), "content", "note-drafts-images");
+  const posts: NotePost[] = [];
+
+  for (const item of items) {
+    const titleMatch = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>|<title>(.*?)<\/title>/);
+    const linkMatch = item.match(/<link>(.*?)<\/link>/);
+    const pubDateMatch = item.match(/<pubDate>(.*?)<\/pubDate>/);
+    const mediaThumbnailMatch = item.match(/<media:thumbnail>(.*?)<\/media:thumbnail>/);
+
+    if (!titleMatch || !linkMatch) continue;
+
+    const rssTitle = titleMatch[1] ?? titleMatch[2] ?? "";
+    const rssLink = linkMatch[1];
+    const pubDate = pubDateMatch?.[1] || "";
+    const mediaThumbnail = mediaThumbnailMatch?.[1] || null;
+
+    // slug突き合わせ
+    const normRssTitle = normalise(rssTitle);
+    let matchedSlug: string | undefined;
+    matchedSlug = draftMap.get(normRssTitle);
+    if (!matchedSlug) {
+      for (const [normDraftTitle, slug] of draftMap.entries()) {
+        if (normRssTitle.startsWith(normDraftTitle) || normDraftTitle.startsWith(normRssTitle)) {
+          matchedSlug = slug;
+          break;
+        }
+      }
+    }
+
+    // サムネイル: RSS画像 > 自前note-header画像 > null
+    let thumbnail = mediaThumbnail;
+    if (!thumbnail && matchedSlug) {
+      const localImage = path.join(imagesDir, `${matchedSlug}-note-header.png`);
+      if (fs.existsSync(localImage)) {
+        thumbnail = `/note-images/${matchedSlug}-note-header.png`;
+      }
+    }
+
+    posts.push({
+      title: rssTitle,
+      url: rssLink,
+      pubDate,
+      thumbnail,
+      slug: matchedSlug || null,
+    });
+  }
+
+  // 新しい順
+  posts.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+  return posts.slice(0, limit);
+}

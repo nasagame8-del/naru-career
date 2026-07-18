@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllArticleMetas } from "@/lib/articles";
 import { CategoryTabs } from "@/components/CategoryTabs";
+import { LatestNotePosts } from "@/components/LatestNotePosts";
 
 export default function Home() {
   const articles = getAllArticleMetas();
@@ -95,6 +96,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 最新のnote投稿 */}
+      <LatestNotePosts />
     </>
   );
 }
