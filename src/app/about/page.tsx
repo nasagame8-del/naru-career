@@ -92,7 +92,7 @@ export default function AboutPage() {
           </p>
           <p>
             現在は、AIO（AI
-            Optimization）対策を手がける企業で法人営業として勤務しています。人材紹介会社・人材派遣会社を中心としたクライアントに対し、SEO・AIO領域の提案から商談、契約後のコンサルティングまで一貫して担当しています。
+            Optimization）対策を手がける企業で法人営業として勤務しています。人材紹介会社・人材派遣会社や不動産業界など、さまざまな業界のクライアントに対し、SEO・AIO領域の提案から商談、契約後のコンサルティングまで一貫して担当しています。
           </p>
           <p>
             転職活動を経験した当事者としての視点と、現在の検索マーケティング・AI領域での実務経験を活かし、「第二新卒が納得して転職できる情報」を発信しています。
@@ -117,7 +117,7 @@ export default function AboutPage() {
                   "担当領域",
                   "SEO・AIO提案営業、コンサルティング",
                 ],
-                ["主なクライアント", "人材紹介会社・人材派遣会社"],
+                ["主なクライアント", "人材紹介会社・人材派遣会社、不動産業界 など"],
               ].map(([label, value]) => (
                 <tr key={label} className="border-b border-line last:border-b-0">
                   <th className="text-left px-4 py-3 bg-bg-soft font-medium text-ink-soft w-[140px] align-top">
