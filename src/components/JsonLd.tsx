@@ -10,7 +10,7 @@ const authorPerson = {
   image: `${baseUrl}/images/author-avatar.webp`,
   jobTitle: "AIO対策企業・営業職 / 転職メディア運営",
   description:
-    "24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。第二新卒の転職実体験を発信。",
+    "第二新卒で飲食業界からIT/Web業界へ転職。AIO対策企業で人材紹介・人材派遣会社を中心にSEO・AIO領域の法人営業を担当。転職メディア「NARU」を個人運営。",
   sameAs: [
     "https://x.com/AIAlto2026",
     "https://note.com/altogenerative20",
