@@ -1,0 +1,36 @@
+{
+  "asps": [
+    {
+      "name": "A8.net",
+      "status": "approved",
+      "updatedAt": "2026-07-18",
+      "programs": [
+        { "name": "ハタラクティブ", "key": "agent_hataraku", "status": "approved" },
+        { "name": "AXIS Agent", "key": "axis_agent", "status": "pending" },
+        { "name": "キャリアチケット", "key": "career_ticket", "status": "pending" }
+      ]
+    },
+    {
+      "name": "アクセストレード",
+      "status": "approved",
+      "updatedAt": "2026-07-18",
+      "programs": [
+        { "name": "第二新卒エージェントneo", "key": "agent_neo", "status": "pending" }
+      ]
+    },
+    {
+      "name": "バリューコマース",
+      "status": "pending",
+      "updatedAt": "2026-07-18",
+      "programs": [
+        { "name": "ビズリーチ", "key": "bizreach", "status": "pending" }
+      ]
+    },
+    {
+      "name": "afb",
+      "status": "not_registered",
+      "updatedAt": "2026-07-18",
+      "programs": []
+    }
+  ]
+}
