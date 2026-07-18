@@ -1,3 +1,9 @@
+---
+title: "飲食業界からIT/Webベンチャーに転職して驚いたこと3つ"
+type: "note"
+original_slug: "it-web-industry-real-work-culture"
+---
+
 # 飲食業界からIT/Webベンチャーに転職して驚いたこと3つ
 
 「IT業界って未経験でも大丈夫なの？」

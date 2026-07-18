@@ -1,5 +1,5 @@
 ---
-title: "飲食業界の経験を"スキル"に翻訳して転職した話"
+title: "飲食業界の経験を『スキル』に翻訳して転職した話"
 type: "note"
 original_slug: "skill-based-hiring"
 ---
