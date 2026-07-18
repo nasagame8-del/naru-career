@@ -8,12 +8,20 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 type JobType = "engineer" | "marketer" | "cs" | "sales" | "pm";
 
+type AgentRecommendation = {
+  key: string;
+  name: string;
+  reason: string;
+  affiliate: boolean;
+  url?: string;
+};
+
 type JobTypeInfo = {
   label: string;
   emoji: string;
   description: string;
   articles: { slug: string; title: string }[];
-  agents: { key: string; name: string; reason: string }[];
+  agents: AgentRecommendation[];
 };
 
 const JOB_TYPES: Record<JobType, JobTypeInfo> = {
@@ -27,7 +35,8 @@ const JOB_TYPES: Record<JobType, JobTypeInfo> = {
       { slug: "second-new-grad-programming-career-change", title: "プログラミング未経験から第二新卒でIT転職する方法" },
     ],
     agents: [
-      { key: "doda", name: "doda", reason: "未経験OKのIT求人が豊富" },
+      { key: "doda", name: "doda", reason: "未経験OKのIT求人が豊富", affiliate: true },
+      { key: "neo_career_agent", name: "第二新卒エージェントneo", reason: "20代未経験のIT転職に特化したサポート", affiliate: false, url: "https://www.daini-agent.jp/" },
     ],
   },
   marketer: {
@@ -40,7 +49,8 @@ const JOB_TYPES: Record<JobType, JobTypeInfo> = {
       { slug: "web-industry-guide", title: "未経験からWeb業界を目指す人のための業界ガイド" },
     ],
     agents: [
-      { key: "doda", name: "doda", reason: "マーケ職の求人が見つかりやすい" },
+      { key: "doda", name: "doda", reason: "マーケ職の求人が見つかりやすい", affiliate: true },
+      { key: "neo_career_agent", name: "第二新卒エージェントneo", reason: "未経験からのマーケ転職を個別サポート", affiliate: false, url: "https://www.daini-agent.jp/" },
     ],
   },
   cs: {
@@ -52,7 +62,8 @@ const JOB_TYPES: Record<JobType, JobTypeInfo> = {
       { slug: "web-industry-guide", title: "未経験からWeb業界を目指す人のための業界ガイド" },
     ],
     agents: [
-      { key: "doda", name: "doda", reason: "CS職の求人が増加中" },
+      { key: "doda", name: "doda", reason: "CS職の求人が増加中", affiliate: true },
+      { key: "neo_career_agent", name: "第二新卒エージェントneo", reason: "カスタマーサクセス職への転職相談が可能", affiliate: false, url: "https://www.daini-agent.jp/" },
     ],
   },
   sales: {
@@ -65,8 +76,8 @@ const JOB_TYPES: Record<JobType, JobTypeInfo> = {
       { slug: "agent-comparison-2026", title: "第二新卒の転職で使ったエージェント比較" },
     ],
     agents: [
-      { key: "doda", name: "doda", reason: "営業職の求人が最も多い" },
-      { key: "agent_neo", name: "第二新卒エージェントneo", reason: "第二新卒の営業転職に特化" },
+      { key: "doda", name: "doda", reason: "営業職の求人が最も多い", affiliate: true },
+      { key: "neo_career_agent", name: "第二新卒エージェントneo", reason: "第二新卒の営業転職に特化したサポート", affiliate: false, url: "https://www.daini-agent.jp/" },
     ],
   },
   pm: {
@@ -79,7 +90,8 @@ const JOB_TYPES: Record<JobType, JobTypeInfo> = {
       { slug: "second-new-grad-it-career-change", title: "第二新卒がIT/Web業界へ転職する完全ガイド" },
     ],
     agents: [
-      { key: "doda", name: "doda", reason: "ディレクター求人を幅広くカバー" },
+      { key: "doda", name: "doda", reason: "ディレクター求人を幅広くカバー", affiliate: true },
+      { key: "neo_career_agent", name: "第二新卒エージェントneo", reason: "未経験からのディレクター転職を相談可能", affiliate: false, url: "https://www.daini-agent.jp/" },
     ],
   },
 };
@@ -389,14 +401,40 @@ function DiagnosisResult({ jobType, venturePercent }: { jobType: JobType; ventur
       {info.agents.length > 0 && (
         <div className="mb-8">
           <h4 className="text-sm font-bold mb-3">このタイプにおすすめのエージェント</h4>
+
+          {/* PR表記（affiliate案件が含まれる場合） */}
+          {info.agents.some((a) => a.affiliate) && (
+            <div className="bg-bg-soft border border-line rounded-lg px-3 py-2 mb-3">
+              <p className="text-[11px] text-ink-soft leading-relaxed">
+                {info.agents.some((a) => !a.affiliate)
+                  ? "本ページの一部リンクはプロモーションを含みます。広告を含まないリンクと区別せず掲載していますが、紹介内容・評価はいずれも公平に記載しています。"
+                  : "本ページはプロモーションを含みます。"}
+              </p>
+            </div>
+          )}
+
           <div className="space-y-3">
             {info.agents.map((agent) => (
               <div key={agent.key} className="border border-line rounded-lg p-4">
                 <p className="font-bold text-sm">{agent.name}</p>
                 <p className="text-xs text-ink-soft mt-1">{agent.reason}</p>
-                <Link href="#" className="cta-button mt-3 text-sm !px-5 !py-2.5">
-                  無料相談してみる
-                </Link>
+                {agent.url ? (
+                  <a
+                    href={agent.url}
+                    target="_blank"
+                    rel={agent.affiliate ? "nofollow sponsored" : "nofollow"}
+                    className="cta-button mt-3 text-sm !px-5 !py-2.5"
+                  >
+                    {agent.affiliate ? "無料相談してみる" : "公式サイトを見る"}
+                  </a>
+                ) : (
+                  <span className="inline-block mt-3 text-sm text-ink-soft px-5 py-2.5 bg-line rounded-lg">
+                    準備中
+                  </span>
+                )}
+                {agent.affiliate && (
+                  <p className="text-[10px] text-ink-soft mt-2">※提携先のサービスです</p>
+                )}
               </div>
             ))}
           </div>

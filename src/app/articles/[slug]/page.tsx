@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { getArticle, getArticleSlugs, getAllArticleMetas } from "@/lib/articles";
+import { getArticle, getArticleSlugs, getAllArticleMetas, getCTARegistry } from "@/lib/articles";
 import { FAQSection } from "@/components/FAQSection";
 import { ShareButtons } from "@/components/ShareButtons";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -72,6 +72,16 @@ export default async function ArticlePage(props: {
 
   const accent = categoryAccent[article.category] || categoryAccent["業界解説"];
 
+  // affiliate判定
+  const ctaRegistry = getCTARegistry();
+  const hasAffiliate = article.cta_agents.some(
+    (key) => ctaRegistry[key]?.affiliate !== false
+  );
+  const hasNonAffiliate = article.cta_agents.some(
+    (key) => ctaRegistry[key]?.affiliate === false
+  );
+  const isMixed = hasAffiliate && hasNonAffiliate;
+
   const breadcrumbs = [
     { name: "ホーム", href: "/" },
     { name: article.category, href: `/#articles` },
@@ -137,11 +147,13 @@ export default async function ArticlePage(props: {
               </div>
             )}
 
-            {/* PR表記（cta_agentsがある記事のみ） */}
-            {article.cta_agents.length > 0 && (
+            {/* PR表記（affiliate案件がある記事のみ） */}
+            {hasAffiliate && (
               <div className="bg-bg-soft border border-line rounded-lg px-4 py-3 mb-6">
                 <p className="text-[12px] text-ink-soft leading-relaxed">
-                  本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。
+                  {isMixed
+                    ? "本記事の一部リンクはプロモーションを含みます。広告を含まないリンクと区別せず掲載していますが、紹介内容・評価はいずれも公平に記載しています。"
+                    : "本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。"}
                   <Link
                     href="/privacy#ads"
                     className="text-accent hover:underline ml-1"

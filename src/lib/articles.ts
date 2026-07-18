@@ -83,7 +83,9 @@ export async function getArticle(slug: string): Promise<Article> {
       const cta = ctaRegistry[key];
       if (!cta) return "";
       const href = cta.url || "#";
-      return `<a href="${href}" class="cta-button" rel="nofollow sponsored" target="_blank">${cta.cta_text}（${cta.name}）</a><span class="cta-note">※提携先のサービスです</span>`;
+      const relAttr = cta.affiliate === false ? "nofollow" : "nofollow sponsored";
+      const noteText = cta.affiliate === false ? "" : `<span class="cta-note">※提携先のサービスです</span>`;
+      return `<a href="${href}" class="cta-button" rel="${relAttr}" target="_blank">${cta.cta_text}（${cta.name}）</a>${noteText}`;
     }
   );
 
@@ -155,14 +157,15 @@ export function getAllArticleMetas(): ArticleMeta[] {
     );
 }
 
-type CTAEntry = {
+export type CTAEntry = {
   name: string;
   url: string;
   cta_text: string;
   asp: string;
+  affiliate?: boolean;
 };
 
-function getCTARegistry(): Record<string, CTAEntry> {
+export function getCTARegistry(): Record<string, CTAEntry> {
   const registryPath = path.join(process.cwd(), "data", "cta-registry.json");
   if (!fs.existsSync(registryPath)) return {};
   return JSON.parse(fs.readFileSync(registryPath, "utf-8"));
