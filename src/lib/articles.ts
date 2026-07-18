@@ -5,8 +5,55 @@ import { remark } from "remark";
 import html from "remark-html";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
+import { GLOSSARY_MATCHERS } from "./glossary-links";
 
 const articlesDir = path.join(process.cwd(), "content", "articles");
+
+/**
+ * 記事HTML内で、用語集に対応する専門用語の「初出箇所」を <dfn> でマークアップする。
+ * - schema.org の DefinedTerm マイクロデータを併用し、用語集ページの該当項目へリンクする。
+ * - 既存の <a> リンク内・見出し(h1〜h6)内・HTMLタグの属性内はマッチ対象から除外する。
+ * - 各用語は記事内で一度だけ（初出のみ）マークアップする。
+ */
+function annotateGlossaryTerms(htmlStr: string): string {
+  // タグとテキストに分割（<...> をタグとして扱う）
+  const tokens = htmlStr.split(/(<[^>]+>)/);
+  const done = new Set<string>();
+  let anchorDepth = 0;
+  let headingDepth = 0;
+
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.startsWith("<")) {
+      if (/^<a[\s>]/i.test(token)) anchorDepth++;
+      else if (/^<\/a>/i.test(token)) anchorDepth = Math.max(0, anchorDepth - 1);
+      else if (/^<h[1-6][\s>]/i.test(token)) headingDepth++;
+      else if (/^<\/h[1-6]>/i.test(token)) headingDepth = Math.max(0, headingDepth - 1);
+      continue;
+    }
+    // リンク内・見出し内のテキストはスキップ
+    if (anchorDepth > 0 || headingDepth > 0) continue;
+
+    let text = token;
+    for (const matcher of GLOSSARY_MATCHERS) {
+      if (done.has(matcher.anchor)) continue;
+      for (const alias of matcher.aliases) {
+        const idx = text.indexOf(alias);
+        if (idx === -1) continue;
+        const replacement =
+          `<dfn class="glossary-term" itemscope itemtype="https://schema.org/DefinedTerm">` +
+          `<a href="/glossary#${matcher.anchor}" itemprop="url">` +
+          `<span itemprop="name">${alias}</span></a></dfn>`;
+        text = text.slice(0, idx) + replacement + text.slice(idx + alias.length);
+        done.add(matcher.anchor);
+        break;
+      }
+    }
+    tokens[i] = text;
+  }
+
+  return tokens.join("");
+}
 
 export type FAQ = {
   question: string;
@@ -24,6 +71,8 @@ export type ArticleMeta = {
   faq: FAQ[];
   cta_agents: string[];
   note_published: boolean;
+  summary: string[];
+  resume_template: boolean;
   hasCardImage: boolean;
   hasHeroImage: boolean;
 };
@@ -61,6 +110,8 @@ export function getArticleMeta(slug: string): ArticleMeta {
     faq: data.faq ?? [],
     cta_agents: data.cta_agents ?? [],
     note_published: data.note_published ?? false,
+    summary: data.summary ?? [],
+    resume_template: data.resume_template ?? false,
     hasCardImage: fs.existsSync(
       path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
     ),
@@ -125,6 +176,9 @@ export async function getArticle(slug: string): Promise<Article> {
     return `<h2 id="${id}">${text}</h2>`;
   });
 
+  // 専門用語の初出箇所に <dfn>（DefinedTermマイクロデータ付き）を付与
+  htmlStr = annotateGlossaryTerms(htmlStr);
+
   return {
     slug,
     title: data.title ?? "",
@@ -136,6 +190,8 @@ export async function getArticle(slug: string): Promise<Article> {
     faq: data.faq ?? [],
     cta_agents: data.cta_agents ?? [],
     note_published: data.note_published ?? false,
+    summary: data.summary ?? [],
+    resume_template: data.resume_template ?? false,
     hasCardImage: fs.existsSync(
       path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
     ),

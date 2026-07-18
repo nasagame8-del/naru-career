@@ -146,7 +146,7 @@ export default async function CategoryPage(props: {
                         {article.hasCardImage ? (
                           <Image
                             src={`/images/articles/${article.slug}-card.png`}
-                            alt=""
+                            alt={`${article.title}｜${article.category}記事のサムネイル画像`}
                             width={320}
                             height={168}
                             className="w-full h-full object-cover"
@@ -154,7 +154,7 @@ export default async function CategoryPage(props: {
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-ink-soft text-xs">
-                            thumb
+                            {article.category}
                           </div>
                         )}
                       </div>

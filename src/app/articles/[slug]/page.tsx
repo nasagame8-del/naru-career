@@ -11,6 +11,7 @@ import {
   BreadcrumbJsonLd,
 } from "@/components/JsonLd";
 import { DiagnosisBanner } from "@/components/DiagnosisBanner";
+import { TemplateDownload } from "@/components/TemplateDownload";
 
 export async function generateStaticParams() {
   return getArticleSlugs().map((slug) => ({ slug }));
@@ -139,7 +140,7 @@ export default async function ArticlePage(props: {
               <div className="mb-8 rounded-xl overflow-hidden">
                 <Image
                   src={`/images/articles/${slug}-hero.png`}
-                  alt=""
+                  alt={`${article.title}｜${article.category}記事のアイキャッチ画像`}
                   width={1600}
                   height={600}
                   className="w-full h-auto"
@@ -170,6 +171,21 @@ export default async function ArticlePage(props: {
               {article.excerpt}
             </p>
 
+            {/* この記事で分かること（AIフレンドリーな要約） */}
+            {article.summary.length > 0 && (
+              <div className={`border-l-[3px] ${accent.border} bg-bg-soft rounded-r-lg px-5 py-4 mb-8`}>
+                <p className="font-bold text-sm mb-2">この記事で分かること</p>
+                <ul className="space-y-1.5">
+                  {article.summary.map((point, i) => (
+                    <li key={i} className="text-sm text-ink-soft leading-relaxed flex gap-2">
+                      <span className="text-accent shrink-0" aria-hidden="true">✓</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* インライン目次 */}
             <TableOfContents headings={article.headings} />
 
@@ -179,6 +195,9 @@ export default async function ArticlePage(props: {
               style={{ "--category-color": accent.cssVar } as React.CSSProperties}
               dangerouslySetInnerHTML={{ __html: article.contentHtml }}
             />
+
+            {/* 職務経歴書テンプレートのダウンロード */}
+            {article.resume_template && <TemplateDownload />}
 
             {/* FAQセクション */}
             <FAQSection faqs={article.faq} accentColor={accent.faq} />
@@ -226,7 +245,7 @@ export default async function ArticlePage(props: {
                           {a.hasCardImage ? (
                             <Image
                               src={`/images/articles/${a.slug}-card.png`}
-                              alt=""
+                              alt={`${a.title}｜${a.category}記事のサムネイル画像`}
                               fill
                               className="object-cover"
                               sizes="300px"
