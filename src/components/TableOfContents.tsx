@@ -1,10 +1,16 @@
 import type { Heading } from "@/lib/articles";
+import { MiniAlto } from "./MiniAlto";
 
 export function TableOfContents({ headings }: { headings: Heading[] }) {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="bg-bg-soft border border-line rounded-lg p-5 mb-10">
+    <nav className="relative bg-bg-soft border border-line rounded-lg p-5 mb-10">
+      {/* ミニアルト(guide) — デスクトップのみ表示 */}
+      <div className="hidden sm:block absolute -right-2 -top-6">
+        <MiniAlto pose="guide" size={56} />
+      </div>
+
       <p className="font-bold text-sm mb-3">目次</p>
       <ol className="space-y-1.5">
         {headings.map((h, i) => (
