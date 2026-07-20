@@ -87,7 +87,7 @@ export function DiagnosisBanner({ href, ctaFocus }: Props) {
         <p className="text-[11px] text-ink-soft leading-relaxed mb-3">{config.description}</p>
         <Link
           href={config.href}
-          className="block w-full bg-accent text-white text-center font-bold text-[13px] py-2.5 rounded-full hover:bg-accent/90 transition-colors"
+          className="block w-full bg-primary text-white text-center font-bold text-[13px] py-2.5 rounded-full hover:bg-primary/90 transition-colors"
         >
           {config.btnText}
         </Link>

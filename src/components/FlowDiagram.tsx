@@ -27,7 +27,7 @@ export function FlowDiagram({ steps, caption }: FlowDiagramProps) {
             {i < steps.length - 1 && (
               <div className="flow-arrow-h">
                 <svg width="28" height="20" viewBox="0 0 28 20" fill="none">
-                  <path d="M0 10h22M18 4l8 6-8 6" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M0 10h22M18 4l8 6-8 6" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             )}
@@ -51,7 +51,7 @@ export function FlowDiagram({ steps, caption }: FlowDiagramProps) {
             {i < steps.length - 1 && (
               <div className="flow-arrow-v">
                 <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-                  <path d="M10 0v18M4 14l6 8 6-8" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M10 0v18M4 14l6 8 6-8" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             )}

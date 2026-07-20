@@ -14,7 +14,7 @@ export default function Home() {
       {/* 注目記事セクション */}
       <section className="bg-bg-soft border-b border-line">
         <div className="max-w-5xl mx-auto px-4 py-10">
-          <span className="inline-block font-mono text-[11px] font-medium tracking-[0.2em] text-accent uppercase mb-6">
+          <span className="inline-block font-mono text-[11px] font-medium tracking-[0.2em] text-primary uppercase mb-6">
             PICKUP
           </span>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -23,7 +23,7 @@ export default function Home() {
                 article.category === "体験談"
                   ? "bg-amber-soft text-amber"
                   : article.category === "エージェント比較"
-                    ? "bg-accent-soft text-accent"
+                    ? "bg-primary-soft text-primary"
                     : "bg-gray-soft text-gray";
               return (
                 <Link
@@ -48,7 +48,7 @@ export default function Home() {
                     )}
                   </div>
                   <div className="p-4">
-                    <h3 className="font-bold text-ink text-sm leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                    <h3 className="font-bold text-ink text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                       {article.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-2">

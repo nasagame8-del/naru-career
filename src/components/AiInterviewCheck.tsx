@@ -75,16 +75,16 @@ export function AiInterviewCheck() {
         </p>
         <div className="space-y-2 mb-6 text-left max-w-xs mx-auto">
           <p className="flex items-center gap-2 text-sm text-ink">
-            <span className="text-accent">&#10003;</span> 4問・約1分で完了
+            <span className="text-primary">&#10003;</span> 4問・約1分で完了
           </p>
           <p className="flex items-center gap-2 text-sm text-ink">
-            <span className="text-accent">&#10003;</span> 各問にAI面接の評価ポイント解説つき
+            <span className="text-primary">&#10003;</span> 各問にAI面接の評価ポイント解説つき
           </p>
           <p className="flex items-center gap-2 text-sm text-ink">
-            <span className="text-accent">&#10003;</span> 登録不要・完全無料
+            <span className="text-primary">&#10003;</span> 登録不要・完全無料
           </p>
         </div>
-        <button onClick={handleStart} className="w-full max-w-xs bg-accent text-white font-bold py-3.5 rounded-full text-[15px] hover:bg-accent/90 transition-colors">
+        <button onClick={handleStart} className="w-full max-w-xs bg-primary text-white font-bold py-3.5 rounded-full text-[15px] hover:bg-primary/90 transition-colors">
           チェックを始める
         </button>
       </div>
@@ -98,8 +98,8 @@ export function AiInterviewCheck() {
       <div>
         <div className="text-center mb-6">
           <p className="text-xs text-ink-soft mb-2">あなたの結果</p>
-          <div className="bg-accent-soft rounded-2xl px-6 py-6">
-            <p className="text-3xl font-bold text-accent">{awareCount} / {QUESTIONS.length}</p>
+          <div className="bg-primary-soft rounded-2xl px-6 py-6">
+            <p className="text-3xl font-bold text-primary">{awareCount} / {QUESTIONS.length}</p>
             <p className="text-sm text-ink-soft mt-1">AI面接の評価ポイントを把握済み</p>
           </div>
         </div>
@@ -120,13 +120,13 @@ export function AiInterviewCheck() {
 
         <div className="space-y-3 mb-6">
           <h3 className="font-bold text-sm text-ink mb-2">関連記事</h3>
-          <Link href="/articles/ai-interview-screening" className="block px-4 py-3 rounded-lg border border-line hover:border-accent hover:bg-accent-soft transition-colors text-sm text-ink font-medium">
+          <Link href="/articles/ai-interview-screening" className="block px-4 py-3 rounded-lg border border-line hover:border-primary hover:bg-primary-soft transition-colors text-sm text-ink font-medium">
             AI面接・適性検査とは？採用側のAI活用を知れば対策が見える →
           </Link>
-          <Link href="/articles/interview-failure-why-this-job" className="block px-4 py-3 rounded-lg border border-line hover:border-accent hover:bg-accent-soft transition-colors text-sm text-ink font-medium">
+          <Link href="/articles/interview-failure-why-this-job" className="block px-4 py-3 rounded-lg border border-line hover:border-primary hover:bg-primary-soft transition-colors text-sm text-ink font-medium">
             面接で「なぜこの職種を志望するのか」と聞かれて詰まった話 →
           </Link>
-          <Link href="/articles/casual-interview" className="block px-4 py-3 rounded-lg border border-line hover:border-accent hover:bg-accent-soft transition-colors text-sm text-ink font-medium">
+          <Link href="/articles/casual-interview" className="block px-4 py-3 rounded-lg border border-line hover:border-primary hover:bg-primary-soft transition-colors text-sm text-ink font-medium">
             カジュアル面談とは？本選考の面接との違い →
           </Link>
         </div>
@@ -150,7 +150,7 @@ export function AiInterviewCheck() {
           <span className="text-[12px] text-ink-soft">{Math.round(progress)}%</span>
         </div>
         <div className="h-[5px] bg-bg-soft rounded-full overflow-hidden">
-          <div className="h-full bg-accent rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+          <div className="h-full bg-primary rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
       </div>
 
@@ -160,10 +160,10 @@ export function AiInterviewCheck() {
         {q.options.map((opt, i) => (
           <button key={i} onClick={() => setSelected(opt.aware)}
             className={`w-full text-left px-4 py-3.5 rounded-2xl border transition-all flex items-center gap-3 ${
-              selected === opt.aware ? "border-accent bg-accent-soft" : "border-line bg-white hover:border-accent/40"
+              selected === opt.aware ? "border-primary bg-primary-soft" : "border-line bg-white hover:border-primary/40"
             }`}>
             <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-              selected === opt.aware ? "border-accent bg-accent" : "border-line"
+              selected === opt.aware ? "border-primary bg-primary" : "border-line"
             }`}>
               {selected === opt.aware && <span className="block w-2 h-2 rounded-full bg-white" />}
             </span>
@@ -174,7 +174,7 @@ export function AiInterviewCheck() {
 
       <button onClick={handleNext} disabled={selected === null}
         className={`w-full py-3.5 rounded-full font-bold text-[13px] transition-colors ${
-          selected !== null ? "bg-accent text-white hover:bg-accent/90" : "bg-bg-soft text-ink-soft/50 cursor-not-allowed"
+          selected !== null ? "bg-primary text-white hover:bg-primary/90" : "bg-bg-soft text-ink-soft/50 cursor-not-allowed"
         }`}>
         {step + 1 >= QUESTIONS.length ? "結果を見る" : "次の質問へ"}
       </button>

@@ -11,7 +11,7 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
           <li key={h.id}>
             <a
               href={`#${h.id}`}
-              className="text-sm text-ink-soft hover:text-accent transition-colors leading-relaxed flex gap-2"
+              className="text-sm text-ink-soft hover:text-primary transition-colors leading-relaxed flex gap-2"
             >
               <span className="font-mono text-xs text-ink-soft/60 mt-0.5 shrink-0">
                 {i + 1}.
