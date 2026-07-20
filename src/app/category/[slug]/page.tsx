@@ -6,6 +6,7 @@ import { getAllArticleMetas, type ArticleMeta } from "@/lib/articles";
 import { CATEGORIES, isValidCategorySlug } from "@/lib/categories";
 import { BreadcrumbJsonLd, FAQJsonLd } from "@/components/JsonLd";
 import { FAQSection } from "@/components/FAQSection";
+import { MiniAlto } from "@/components/MiniAlto";
 
 export function generateStaticParams() {
   return Object.keys(CATEGORIES).map((slug) => ({ slug }));
@@ -190,9 +191,10 @@ export default async function CategoryPage(props: {
             </ol>
           </section>
         ) : (
-          <p className="text-ink-soft py-10 text-center">
-            このカテゴリの記事はまだありません。
-          </p>
+          <div className="py-10 text-center">
+            <MiniAlto pose="think" size={120} className="mx-auto mb-4" />
+            <p className="text-ink-soft">このカテゴリの記事はまだありません。</p>
+          </div>
         )}
 
         {/* ── FAQセクション ── */}

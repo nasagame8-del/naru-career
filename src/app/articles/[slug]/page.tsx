@@ -12,6 +12,7 @@ import {
 } from "@/components/JsonLd";
 import { DiagnosisBanner } from "@/components/DiagnosisBanner";
 import { TemplateDownload } from "@/components/TemplateDownload";
+import { MiniAlto } from "@/components/MiniAlto";
 import { getNoteLinkMap } from "@/lib/note-feed";
 import { ArticleBody } from "@/components/ArticleBody";
 import { ARTICLE_WIDGETS } from "@/lib/article-widgets";
@@ -252,7 +253,10 @@ export default async function ArticlePage(props: {
 
             {/* まとめCTA */}
             {article.cta_agents.length > 0 && (
-              <section className="mt-12 p-6 bg-primary-soft rounded-lg">
+              <section className="mt-12 p-6 bg-primary-soft rounded-lg relative">
+                <div className="absolute -top-6 right-4 hidden sm:block">
+                  <MiniAlto pose="guide" size={56} />
+                </div>
                 <h2 className="text-lg font-bold mb-3">
                   まずは無料相談から始めてみませんか？
                 </h2>
@@ -278,7 +282,10 @@ export default async function ArticlePage(props: {
             {/* 関連記事セクション */}
             {relatedArticles.length > 0 && (
               <section className="mt-12">
-                <h2 className="text-lg font-bold mb-6">関連記事</h2>
+                <div className="flex items-center gap-2 mb-6">
+                  <h2 className="text-lg font-bold">関連記事</h2>
+                  <MiniAlto pose="read" size={40} />
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {relatedArticles.map((a) => {
                     const relTagStyle =
@@ -349,12 +356,15 @@ export default async function ArticlePage(props: {
                 <p className="text-sm text-ink-soft leading-relaxed">
                   24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。エージェントの裏側を知る立場から転職情報を発信。
                 </p>
-                <Link
-                  href="/about"
-                  className="text-sm text-primary hover:underline mt-2 inline-block"
-                >
-                  プロフィールを見る →
-                </Link>
+                <div className="flex items-center justify-between mt-2">
+                  <Link
+                    href="/about"
+                    className="text-sm text-primary hover:underline"
+                  >
+                    プロフィールを見る →
+                  </Link>
+                  <MiniAlto pose="bow" size={48} />
+                </div>
               </div>
 
               {/* サイドバー目次 */}
