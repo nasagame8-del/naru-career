@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getAllArticleMetas } from "@/lib/articles";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { LatestNotePosts } from "@/components/LatestNotePosts";
+import { HeroSection } from "@/components/HeroSection";
 
 export default function Home() {
   const articles = getAllArticleMetas();
@@ -11,6 +12,9 @@ export default function Home() {
 
   return (
     <>
+      {/* ヒーローセクション */}
+      <HeroSection />
+
       {/* 注目記事セクション */}
       <section className="bg-bg-soft border-b border-line">
         <div className="max-w-5xl mx-auto px-4 py-10">
