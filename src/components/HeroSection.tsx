@@ -20,9 +20,9 @@ export function HeroSection() {
             </div>
 
             {/* 2段目: キャッチコピー — モバイル中央/PC左揃え */}
-            <h1 className="font-serif text-lg md:text-[21px] font-bold text-ink leading-[1.55] mb-2 text-center md:text-left whitespace-nowrap">
-              <span className="inline-block">第二新卒の僕が、</span><br />
-              <span className="inline-block">30社応募して見つけた</span><br />
+            <h1 className="font-serif text-lg md:text-[18px] font-bold text-ink leading-[1.55] mb-2 text-center md:text-left">
+              <span className="inline-block">第二新卒の僕が、</span><br className="md:hidden" />
+              <span className="inline-block">30社応募して見つけた</span><br className="md:hidden" />
               <span className="inline-block">「自分らしい働き方」</span>
             </h1>
 
