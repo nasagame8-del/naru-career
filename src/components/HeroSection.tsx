@@ -4,18 +4,45 @@ import Image from "next/image";
 export function HeroSection() {
   return (
     <section className="bg-bg border-b border-line overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 py-10 md:py-16">
-        <div className="flex flex-col md:flex-row md:items-center md:gap-12">
-          {/* 左カラム: コピー */}
-          <div className="flex-1 mb-8 md:mb-0">
-            <h1 className="font-serif text-[26px] md:text-[32px] font-bold text-ink leading-[1.4] tracking-tight mb-4">
-              第二新卒の僕が、<br className="hidden md:inline" />
-              30社応募して見つけた<br />
-              「自分らしい働き方」
+      <div className="max-w-5xl mx-auto px-4 py-6 md:py-10">
+        <div className="flex flex-col md:flex-row md:items-start md:gap-6">
+          {/* 左カラム */}
+          <div className="flex-1 min-w-0 mb-4 md:mb-0 md:pt-2">
+            {/* 1段目: 手書きコピー */}
+            <div className="-rotate-[1.5deg] mb-1">
+              <Image
+                src="/images/hero-note-tegaki.png"
+                alt="失敗も、迷いも、ぜんぶ書きます。"
+                width={500}
+                height={200}
+                className="w-[240px] md:w-[320px] h-auto"
+              />
+            </div>
+
+            {/* 2段目: キャッチコピー（改行位置を固定） */}
+            <h1 className="font-serif text-lg md:text-[21px] font-bold text-ink leading-[1.55] mb-2">
+              <span className="inline-block">第二新卒の僕が、</span><br />
+              <span className="inline-block">30社応募して見つけた</span><br />
+              <span className="inline-block">「自分らしい働き方」</span>
             </h1>
-            <p className="text-sm md:text-[15px] text-ink-soft leading-relaxed mb-6 max-w-md">
+
+            {/* 3段目: 説明文 */}
+            <p className="text-[13px] md:text-sm text-ink-soft leading-relaxed mb-5 max-w-lg">
               新卒で入社した飲食企業を1年で退職。そこから第二新卒でIT/Web業界へ転職した僕のリアルな体験と、役立つ情報を発信しています。
             </p>
+
+            {/* モバイル: ボタンの前にイラスト */}
+            <div className="md:hidden mb-5 px-2">
+              <Image
+                src="/images/hero-alto-desk-transparent.webp"
+                alt="デスクでノートパソコンに向かう著者・磯貝アルトのイラスト"
+                width={720}
+                height={480}
+                priority
+                className="w-full h-auto"
+              />
+            </div>
+
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/#articles"
@@ -32,31 +59,16 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* 右カラム: 写真カード風イラスト */}
-          <div className="relative flex-shrink-0 md:w-[380px]">
-            {/* メインカード */}
-            <div className="bg-surface border border-line rounded-lg p-2 rotate-[1.5deg] shadow-sm">
-              <Image
-                src="/images/hero-alto-desk.webp"
-                alt="デスクでノートパソコンに向かう著者・磯貝アルトのイラスト"
-                width={720}
-                height={480}
-                priority
-                className="rounded w-full h-auto"
-              />
-            </div>
-
-            {/* 手書き風メモ（HTMLテキスト） */}
-            <div className="absolute -bottom-4 -left-3 md:-left-6 bg-surface border border-line rounded px-3 py-2 -rotate-[2deg] shadow-sm max-w-[200px]">
-              <p className="text-[13px] text-ink-soft italic leading-snug">
-                失敗も、迷いも、<br />ぜんぶ書きます。
-              </p>
-            </div>
-
-            {/* AI生成開示 */}
-            <p className="text-[10px] text-ink-soft mt-6 text-center md:text-right -rotate-0">
-              ※このイラストはAIで生成したイラストです。実在の人物ではありません。
-            </p>
+          {/* 右カラム（デスクトップのみ） */}
+          <div className="hidden md:flex flex-shrink-0 w-[560px] -mr-12 items-end self-end">
+            <Image
+              src="/images/hero-alto-desk-transparent.webp"
+              alt="デスクでノートパソコンに向かう著者・磯貝アルトのイラスト"
+              width={1120}
+              height={747}
+              priority
+              className="w-full h-auto"
+            />
           </div>
         </div>
       </div>
