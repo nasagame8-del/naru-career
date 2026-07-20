@@ -165,7 +165,7 @@ function StartScreen({ onStart }: { onStart: () => void }) {
         {/* CTAボタン — 人物イラスト直下 */}
         <button
           onClick={onStart}
-          className="w-full bg-accent text-white font-bold py-3.5 rounded-full text-[15px] hover:bg-accent/90 transition-colors shadow-lg shadow-accent/20 mb-5"
+          className="w-full bg-primary text-white font-bold py-3.5 rounded-full text-[15px] hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 mb-5"
         >
           診断をスタートする
         </button>
@@ -174,17 +174,17 @@ function StartScreen({ onStart }: { onStart: () => void }) {
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-4 mb-4">
           <div className="flex justify-between text-center">
             <div className="flex-1">
-              <svg className="mx-auto mb-1.5 text-accent" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/><path d="M8 7l1 1 2-2" stroke="currentColor" strokeWidth="1.5"/></svg>
+              <svg className="mx-auto mb-1.5 text-primary" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/><path d="M8 7l1 1 2-2" stroke="currentColor" strokeWidth="1.5"/></svg>
               <p className="text-[12px] font-bold text-ink">質問は全5問</p>
               <p className="text-[10px] text-ink-soft">約2〜3分で完了</p>
             </div>
             <div className="flex-1 border-x border-line/50">
-              <svg className="mx-auto mb-1.5 text-accent" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <svg className="mx-auto mb-1.5 text-primary" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
               <p className="text-[12px] font-bold text-ink">完全無料</p>
               <p className="text-[10px] text-ink-soft">登録不要</p>
             </div>
             <div className="flex-1">
-              <svg className="mx-auto mb-1.5 text-accent" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+              <svg className="mx-auto mb-1.5 text-primary" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg>
               <p className="text-[12px] font-bold text-ink">個人情報の入力</p>
               <p className="text-[10px] text-ink-soft">は不要です</p>
             </div>
@@ -216,14 +216,14 @@ function RouteScreen({ onSelect }: { onSelect: (r: Route) => void }) {
 
       <div className="space-y-3">
         <button onClick={() => onSelect("shinsotsu")}
-          className="w-full text-left px-5 py-4 rounded-2xl border border-line bg-white hover:border-accent transition-all flex items-center gap-4">
-          <span className="w-10 h-10 rounded-full bg-accent-soft flex items-center justify-center shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
+          className="w-full text-left px-5 py-4 rounded-2xl border border-line bg-white hover:border-primary transition-all flex items-center gap-4">
+          <span className="w-10 h-10 rounded-full bg-primary-soft flex items-center justify-center shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
           </span>
           <div><p className="font-bold text-[14px] text-ink">新卒（就活中）</p><p className="text-[11px] text-ink-soft mt-0.5">これから初めての就職活動をする方</p></div>
         </button>
         <button onClick={() => onSelect("daini")}
-          className="w-full text-left px-5 py-4 rounded-2xl border border-line bg-white hover:border-accent transition-all flex items-center gap-4">
+          className="w-full text-left px-5 py-4 rounded-2xl border border-line bg-white hover:border-primary transition-all flex items-center gap-4">
           <span className="w-10 h-10 rounded-full bg-amber-soft flex items-center justify-center shrink-0">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
           </span>
@@ -245,11 +245,11 @@ function ProgressHeader({ step, total }: { step: number; total: number }) {
           Q.{String(step).padStart(2, "0")}
         </span>
         <span className="text-[12px] text-ink-soft">
-          <span className="font-bold text-accent">{String(step).padStart(2, "0")}</span> / {String(total).padStart(2, "0")}
+          <span className="font-bold text-primary">{String(step).padStart(2, "0")}</span> / {String(total).padStart(2, "0")}
         </span>
       </div>
       <div className="h-[5px] bg-bg-soft rounded-full overflow-hidden">
-        <div className="h-full bg-accent rounded-full transition-all duration-500 ease-out" style={{ width: `${pct}%` }} />
+        <div className="h-full bg-primary rounded-full transition-all duration-500 ease-out" style={{ width: `${pct}%` }} />
       </div>
     </div>
   );
@@ -281,11 +281,11 @@ function QuizScreen({ step, total, q, sel, onSel, onNext, onBack }: {
           return (
             <button key={opt.value} onClick={() => onSel(opt.value)}
               className={`w-full text-left px-4 py-3.5 rounded-2xl border transition-all flex items-center gap-3 ${
-                active ? "border-accent bg-accent-soft" : "border-line bg-white hover:border-accent/40"
+                active ? "border-primary bg-primary-soft" : "border-line bg-white hover:border-primary/40"
               }`}>
               {/* ラジオドット */}
               <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
-                active ? "border-accent bg-accent" : "border-line"
+                active ? "border-primary bg-primary" : "border-line"
               }`}>
                 {active && <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
               </span>
@@ -303,7 +303,7 @@ function QuizScreen({ step, total, q, sel, onSel, onNext, onBack }: {
         </button>
         <button onClick={onNext} disabled={!sel}
           className={`flex-1 py-3 rounded-full font-bold text-[13px] transition-colors ${
-            sel ? "bg-accent text-white hover:bg-accent/90" : "bg-bg-soft text-ink-soft/50 cursor-not-allowed"
+            sel ? "bg-primary text-white hover:bg-primary/90" : "bg-bg-soft text-ink-soft/50 cursor-not-allowed"
           }`}>
           {step >= total ? "結果を見る" : "次の質問へ"}
         </button>
@@ -327,15 +327,15 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
       {/* 結果ヘッダー */}
       <div className="text-center mb-6">
         <p className="text-[12px] text-ink-soft mb-3">あなたに合うエージェントは...</p>
-        <div className="bg-accent-soft rounded-2xl px-6 py-7">
-          <p className="text-[11px] text-accent font-bold tracking-wider mb-1">あなたの診断結果</p>
+        <div className="bg-primary-soft rounded-2xl px-6 py-7">
+          <p className="text-[11px] text-primary font-bold tracking-wider mb-1">あなたの診断結果</p>
           <h2 className="text-[24px] font-bold text-ink leading-tight">{agent.name}</h2>
         </div>
       </div>
 
       {/* おすすめの理由 */}
-      <div className="border border-accent/20 rounded-2xl p-5 mb-6">
-        <h4 className="text-[13px] font-bold text-accent mb-2">あなたにおすすめの理由</h4>
+      <div className="border border-primary/20 rounded-2xl p-5 mb-6">
+        <h4 className="text-[13px] font-bold text-primary mb-2">あなたにおすすめの理由</h4>
         <p className="text-[12px] text-ink-soft leading-relaxed">
           あなたの回答傾向から、{agent.name}のサービス特性が最もマッチしていると判定されました。以下の特徴があなたの転職・就職活動スタイルに合っています。
         </p>
@@ -346,7 +346,7 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
         {agent.features.map((f, i) => (
           <div key={i} className="flex gap-3 items-start">
             <span className={`block w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-white text-[11px] font-bold ${
-              i === 0 ? "bg-accent" : i === 1 ? "bg-amber" : "bg-accent/60"
+              i === 0 ? "bg-primary" : i === 1 ? "bg-amber" : "bg-primary/60"
             }`}>{i + 1}</span>
             <div>
               <p className="font-bold text-[13px] text-ink">{f.title}</p>
@@ -360,7 +360,7 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
       <div className="mb-3">
         {agent.url ? (
           <a href={agent.url} target="_blank" rel={agent.affiliate ? "nofollow sponsored" : "nofollow"}
-            className="block w-full bg-accent text-white font-bold py-4 rounded-full text-center text-[14px] hover:bg-accent/90 transition-colors shadow-lg shadow-accent/20">
+            className="block w-full bg-primary text-white font-bold py-4 rounded-full text-center text-[14px] hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
             {agent.ctaText}
           </a>
         ) : (

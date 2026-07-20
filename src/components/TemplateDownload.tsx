@@ -19,7 +19,7 @@ function trackDownload(format: "word" | "pdf") {
 
 export function TemplateDownload() {
   return (
-    <section className="mt-12 border border-accent rounded-lg bg-accent-soft p-6">
+    <section className="mt-12 border border-primary rounded-lg bg-primary-soft p-6">
       <h2 className="text-lg font-bold mb-2">
         職務経歴書テンプレートを無料配布しています
       </h2>

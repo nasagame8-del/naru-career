@@ -11,7 +11,7 @@ export async function LatestNotePosts() {
       <div className="max-w-5xl mx-auto px-4 py-12">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <span className="inline-block font-mono text-[11px] font-medium tracking-[0.2em] text-accent uppercase mb-2">
+            <span className="inline-block font-mono text-[11px] font-medium tracking-[0.2em] text-primary uppercase mb-2">
               NOTE
             </span>
             <h2 className="text-xl font-bold text-ink">最新のnote投稿</h2>
@@ -20,7 +20,7 @@ export async function LatestNotePosts() {
             href="https://note.com/altogenerative20"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-accent hover:underline hidden sm:block"
+            className="text-sm text-primary hover:underline hidden sm:block"
           >
             もっと見る →
           </a>
@@ -58,7 +58,7 @@ export async function LatestNotePosts() {
 
               {/* テキスト */}
               <div className="p-4">
-                <h3 className="font-bold text-sm text-ink leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                <h3 className="font-bold text-sm text-ink leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                   {post.title}
                 </h3>
                 {post.pubDate && (
@@ -81,7 +81,7 @@ export async function LatestNotePosts() {
             href="https://note.com/altogenerative20"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-accent hover:underline"
+            className="text-sm text-primary hover:underline"
           >
             もっと見る →
           </a>

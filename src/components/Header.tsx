@@ -32,10 +32,10 @@ export function Header() {
         </Link>
         <div className="flex items-center gap-5">
           <nav className="hidden sm:flex items-center gap-6 text-sm text-ink-soft">
-            <Link href="/#articles" className="hover:text-accent transition-colors">
+            <Link href="/#articles" className="hover:text-primary transition-colors">
               記事一覧
             </Link>
-            <Link href="/about" className="hover:text-accent transition-colors">
+            <Link href="/about" className="hover:text-primary transition-colors">
               著者について
             </Link>
           </nav>

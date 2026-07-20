@@ -42,13 +42,13 @@ function sortByReadingOrder(
 /* ── カテゴリごとのスタイルマップ ── */
 const categoryStyles: Record<string, string> = {
   体験談: "bg-amber-soft text-amber",
-  エージェント比較: "bg-accent-soft text-accent",
+  エージェント比較: "bg-primary-soft text-primary",
   業界解説: "bg-gray-soft text-gray",
 };
 
 const stepBadgeStyles: Record<string, string> = {
   体験談: "bg-amber text-white",
-  エージェント比較: "bg-accent text-white",
+  エージェント比較: "bg-primary text-white",
   業界解説: "bg-gray text-white",
 };
 
@@ -63,8 +63,8 @@ export default async function CategoryPage(props: {
     (a) => a.category === cat.name
   );
   const articles = sortByReadingOrder(allArticles, cat.readingOrder);
-  const badgeStyle = stepBadgeStyles[cat.name] ?? "bg-accent text-white";
-  const tagStyle = categoryStyles[cat.name] ?? "bg-accent-soft text-accent";
+  const badgeStyle = stepBadgeStyles[cat.name] ?? "bg-primary text-white";
+  const tagStyle = categoryStyles[cat.name] ?? "bg-primary-soft text-primary";
 
   return (
     <>
@@ -79,7 +79,7 @@ export default async function CategoryPage(props: {
       <div className="max-w-5xl mx-auto px-4 pt-12 pb-16">
         {/* パンくず */}
         <nav className="text-sm text-ink-soft mb-6 flex items-center gap-1.5">
-          <Link href="/" className="hover:text-accent transition-colors">
+          <Link href="/" className="hover:text-primary transition-colors">
             ホーム
           </Link>
           <span>/</span>
@@ -94,7 +94,7 @@ export default async function CategoryPage(props: {
               href={`/category/${s}`}
               className={`px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-colors relative ${
                 s === slug
-                  ? "text-accent after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-accent"
+                  ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary"
                   : "text-ink-soft hover:text-ink"
               }`}
             >
@@ -130,7 +130,7 @@ export default async function CategoryPage(props: {
                   <li key={article.slug}>
                     <Link
                       href={`/articles/${article.slug}`}
-                      className="flex items-start gap-4 p-4 rounded-lg border border-line hover:border-accent/30 hover:bg-bg-soft transition-all group"
+                      className="flex items-start gap-4 p-4 rounded-lg border border-line hover:border-primary/30 hover:bg-bg-soft transition-all group"
                     >
                       {/* ステップバッジ */}
                       <span
@@ -168,12 +168,12 @@ export default async function CategoryPage(props: {
                             {article.category}
                           </span>
                           {isInOrder && i === 0 && (
-                            <span className="text-[11px] font-medium text-accent">
+                            <span className="text-[11px] font-medium text-primary">
                               まず読むべき記事
                             </span>
                           )}
                         </div>
-                        <h3 className="font-bold text-ink leading-snug group-hover:text-accent transition-colors line-clamp-2 text-[15px]">
+                        <h3 className="font-bold text-ink leading-snug group-hover:text-primary transition-colors line-clamp-2 text-[15px]">
                           {article.title}
                         </h3>
                         <p className="text-sm text-ink-soft mt-1 line-clamp-2 hidden md:block">
@@ -211,9 +211,9 @@ export default async function CategoryPage(props: {
                 <Link
                   key={link.slug}
                   href={`/category/${link.slug}`}
-                  className="block p-5 rounded-lg border border-line hover:border-accent/30 hover:bg-bg-soft transition-all group"
+                  className="block p-5 rounded-lg border border-line hover:border-primary/30 hover:bg-bg-soft transition-all group"
                 >
-                  <span className="text-base font-bold text-ink group-hover:text-accent transition-colors">
+                  <span className="text-base font-bold text-ink group-hover:text-primary transition-colors">
                     {link.label} →
                   </span>
                   <p className="text-sm text-ink-soft mt-1.5 leading-relaxed">

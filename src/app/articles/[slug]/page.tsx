@@ -51,13 +51,13 @@ const categoryAccent: Record<string, { tag: string; border: string; faq: string;
     tag: "bg-amber-soft text-amber",
     border: "border-amber",
     faq: "border-amber",
-    cssVar: "#B5691B",
+    cssVar: "#D29A4A",
   },
   エージェント比較: {
-    tag: "bg-accent-soft text-accent",
-    border: "border-accent",
-    faq: "border-accent",
-    cssVar: "#1F6F66",
+    tag: "bg-primary-soft text-primary",
+    border: "border-primary",
+    faq: "border-primary",
+    cssVar: "#7A3E2E",
   },
   業界解説: {
     tag: "bg-bg-soft text-ink-soft",
@@ -101,7 +101,7 @@ export default async function ArticlePage(props: {
 
   const categoryTagStyle: Record<string, string> = {
     体験談: "bg-amber-soft text-amber",
-    エージェント比較: "bg-accent-soft text-accent",
+    エージェント比較: "bg-primary-soft text-primary",
     業界解説: "bg-gray-soft text-gray",
   };
 
@@ -114,7 +114,7 @@ export default async function ArticlePage(props: {
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* パンくずリスト */}
         <nav className="text-sm text-ink-soft mb-6 flex items-center gap-1.5 flex-wrap">
-          <Link href="/" className="hover:text-accent transition-colors">
+          <Link href="/" className="hover:text-primary transition-colors">
             ホーム
           </Link>
           <span>/</span>
@@ -167,7 +167,7 @@ export default async function ArticlePage(props: {
                     : "本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。"}
                   <Link
                     href="/privacy#ads"
-                    className="text-accent hover:underline ml-1"
+                    className="text-primary hover:underline ml-1"
                   >
                     詳しくはプライバシーポリシーをご覧ください
                   </Link>
@@ -181,7 +181,7 @@ export default async function ArticlePage(props: {
             </p>
 
             {/* NARU Point */}
-            <div className="relative bg-accent/[0.04] border border-accent/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
+            <div className="relative bg-primary/[0.04] border border-primary/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
               {/* 右上の折れ紙モチーフ */}
               <div className="absolute top-0 right-0 w-10 h-10">
                 <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-accent/10 border-l-[40px] border-l-transparent" />
@@ -189,7 +189,7 @@ export default async function ArticlePage(props: {
               </div>
               {/* ラベル */}
               <div className="flex items-center gap-2 mb-2.5">
-                <span className="inline-flex items-center gap-1.5 bg-accent text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
+                <span className="inline-flex items-center gap-1.5 bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z" /></svg>
                   NARU Point
                 </span>
@@ -207,7 +207,7 @@ export default async function ArticlePage(props: {
                 <ul className="space-y-1.5">
                   {article.summary.map((point, i) => (
                     <li key={i} className="text-sm text-ink-soft leading-relaxed flex gap-2">
-                      <span className="text-accent shrink-0" aria-hidden="true">✓</span>
+                      <span className="text-primary shrink-0" aria-hidden="true">✓</span>
                       <span>{point}</span>
                     </li>
                   ))}
@@ -242,7 +242,7 @@ export default async function ArticlePage(props: {
                     href={noteLink.noteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-accent hover:underline"
+                    className="text-sm text-primary hover:underline"
                   >
                     {noteLink.noteTitle}
                   </a>
@@ -252,7 +252,7 @@ export default async function ArticlePage(props: {
 
             {/* まとめCTA */}
             {article.cta_agents.length > 0 && (
-              <section className="mt-12 p-6 bg-accent-soft rounded-lg">
+              <section className="mt-12 p-6 bg-primary-soft rounded-lg">
                 <h2 className="text-lg font-bold mb-3">
                   まずは無料相談から始めてみませんか？
                 </h2>
@@ -305,7 +305,7 @@ export default async function ArticlePage(props: {
                           )}
                         </div>
                         <div className="p-3">
-                          <h3 className="font-bold text-sm text-ink leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                          <h3 className="font-bold text-sm text-ink leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                             {a.title}
                           </h3>
                           <div className="flex items-center gap-2 mt-1.5">
@@ -351,7 +351,7 @@ export default async function ArticlePage(props: {
                 </p>
                 <Link
                   href="/about"
-                  className="text-sm text-accent hover:underline mt-2 inline-block"
+                  className="text-sm text-primary hover:underline mt-2 inline-block"
                 >
                   プロフィールを見る →
                 </Link>
@@ -366,7 +366,7 @@ export default async function ArticlePage(props: {
                       <li key={h.id}>
                         <a
                           href={`#${h.id}`}
-                          className="text-xs text-ink-soft hover:text-accent transition-colors leading-relaxed flex gap-1.5"
+                          className="text-xs text-ink-soft hover:text-primary transition-colors leading-relaxed flex gap-1.5"
                         >
                           <span className="font-mono text-ink-soft/60 shrink-0">
                             {i + 1}.

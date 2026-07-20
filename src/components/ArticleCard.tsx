@@ -3,13 +3,13 @@ import type { ArticleMeta } from "@/lib/articles";
 
 const categoryStyles: Record<string, string> = {
   体験談: "bg-amber-soft text-amber",
-  エージェント比較: "bg-accent-soft text-accent",
+  エージェント比較: "bg-primary-soft text-primary",
   業界解説: "bg-gray-soft text-gray",
 };
 
 const barColors: Record<string, string> = {
   体験談: "bg-amber",
-  エージェント比較: "bg-accent",
+  エージェント比較: "bg-primary",
   業界解説: "bg-gray",
 };
 

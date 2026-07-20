@@ -294,7 +294,7 @@ function DiagnosisQuiz({ onComplete }: { onComplete: (type: JobType, venture: nu
         </div>
         <div className="h-1.5 bg-line rounded-full overflow-hidden">
           <div
-            className="h-full bg-accent rounded-full transition-all duration-300"
+            className="h-full bg-primary rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -320,7 +320,7 @@ function DiagnosisQuiz({ onComplete }: { onComplete: (type: JobType, venture: nu
                 handleCultureAnswer((opt as { venture: number }).venture);
               }
             }}
-            className="w-full text-left px-5 py-4 rounded-lg border border-line bg-white hover:border-accent hover:bg-accent-soft transition-all duration-150 text-sm leading-relaxed"
+            className="w-full text-left px-5 py-4 rounded-lg border border-line bg-white hover:border-primary hover:bg-primary-soft transition-all duration-150 text-sm leading-relaxed"
           >
             {opt.label}
           </button>
@@ -355,7 +355,7 @@ function DiagnosisResult({ jobType, venturePercent }: { jobType: JobType; ventur
         </div>
         <div className="h-3 bg-line rounded-full overflow-hidden flex">
           <div
-            className="h-full bg-accent transition-all duration-500"
+            className="h-full bg-primary transition-all duration-500"
             style={{ width: `${stablePercent}%` }}
           />
           <div
@@ -365,7 +365,7 @@ function DiagnosisResult({ jobType, venturePercent }: { jobType: JobType; ventur
         </div>
         <div className="flex items-center justify-between text-[10px] text-ink-soft mt-1">
           <span className="flex items-center gap-1">
-            <span className="inline-block w-2 h-2 rounded-full bg-accent" />安定
+            <span className="inline-block w-2 h-2 rounded-full bg-primary" />安定
           </span>
           <span className="flex items-center gap-1">
             <span className="inline-block w-2 h-2 rounded-full bg-amber" />ベンチャー
@@ -388,7 +388,7 @@ function DiagnosisResult({ jobType, venturePercent }: { jobType: JobType; ventur
               <Link
                 key={a.slug}
                 href={`/articles/${a.slug}`}
-                className="block px-4 py-3 rounded-lg border border-line hover:border-accent hover:bg-accent-soft transition-colors text-sm text-ink font-medium"
+                className="block px-4 py-3 rounded-lg border border-line hover:border-primary hover:bg-primary-soft transition-colors text-sm text-ink font-medium"
               >
                 {a.title} →
               </Link>
@@ -461,7 +461,7 @@ function DiagnosisResult({ jobType, venturePercent }: { jobType: JobType; ventur
       <div className="mt-6">
         <Link
           href="/diagnosis"
-          className="text-sm text-accent hover:underline"
+          className="text-sm text-primary hover:underline"
         >
           もう一度診断する →
         </Link>

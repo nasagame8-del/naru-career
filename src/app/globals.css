@@ -1,23 +1,30 @@
 @import "tailwindcss";
 
+/* ── Editorial Modern Design System ── */
 :root {
-  --bg: #FFFFFF;
-  --bg-soft: #F6F5F1;
-  --ink: #1D1E20;
-  --ink-soft: #5C5E63;
-  --line: #E6E4DD;
-  --accent: #1F6F66;
-  --accent-soft: #E4EFEC;
-  --amber: #B5691B;
-  --amber-soft: #F7EBDD;
+  --bg: #FBF8F3;
+  --bg-soft: #F3EDE4;
+  --surface: #FFFFFF;
+  --ink: #252525;
+  --ink-soft: #666666;
+  --line: #E6DED4;
+  --primary: #7A3E2E;
+  --primary-soft: #F0E4DE;
+  --accent: #D29A4A;
+  --accent-soft: #F5EAD6;
+  --amber: #D29A4A;
+  --amber-soft: #F5EAD6;
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-amber: var(--amber);
@@ -25,7 +32,8 @@
   --color-gray: #8B8D91;
   --color-gray-soft: #EDEDEC;
   --font-sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  --font-serif: "Shippori Mincho", "Yu Mincho", serif;
+  --font-heading: "Shippori Mincho", "Yu Mincho", serif;
+  --font-serif: var(--font-heading);
   --font-mono: "JetBrains Mono", monospace;
 }
 
@@ -63,7 +71,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--accent);
+  background: var(--primary);
   color: #fff;
   padding: 0.875rem 2rem;
   border-radius: 8px;
@@ -73,7 +81,7 @@ h1 {
 }
 
 .cta-button:hover {
-  background: #18594f;
+  background: #5C2E1F;
   transform: translateY(-1px);
 }
 
@@ -155,13 +163,13 @@ h1 {
 }
 
 .prose a {
-  color: var(--accent);
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .prose a:hover {
-  color: #18594f;
+  color: #5C2E1F;
 }
 
 /* インライン用語定義（用語集へのリンク付き） */
@@ -172,13 +180,13 @@ h1 {
 .prose dfn.glossary-term a {
   color: inherit;
   text-decoration: underline dotted;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--primary);
   text-underline-offset: 3px;
   cursor: help;
 }
 
 .prose dfn.glossary-term a:hover {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .prose table:not(.comparison-table) {
@@ -233,14 +241,14 @@ h1 {
 }
 
 .comparison-col-a {
-  background: var(--accent);
+  background: var(--primary);
   color: #fff;
   border-right: 1px solid rgba(255,255,255,0.2);
 }
 
 .comparison-col-b {
-  background: var(--amber);
-  color: #fff;
+  background: var(--accent);
+  color: var(--ink);
 }
 
 .comparison-table tbody td {
@@ -323,7 +331,7 @@ h1 {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--primary);
   color: #fff;
   display: flex;
   align-items: center;

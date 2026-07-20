@@ -2,7 +2,7 @@ import type { FAQ } from "@/lib/articles";
 
 export function FAQSection({
   faqs,
-  accentColor = "bg-accent",
+  accentColor = "bg-primary",
 }: {
   faqs: FAQ[];
   accentColor?: string;

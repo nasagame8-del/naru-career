@@ -14,7 +14,7 @@ export function CategoryNavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-accent w-full">
+    <nav className="bg-primary w-full">
       <div className="max-w-5xl mx-auto px-4 overflow-x-auto">
         <ul className="flex items-center h-10 gap-0 whitespace-nowrap">
           {NAV_ITEMS.map(({ label, href }) => {

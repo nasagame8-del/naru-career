@@ -220,7 +220,7 @@ function Accordion({
   const anchor = GLOSSARY_ANCHORS[term];
   return (
     <details id={anchor} className="group border-b border-line scroll-mt-24">
-      <summary className="flex items-center justify-between cursor-pointer py-4 text-ink font-bold text-[15px] hover:text-accent transition-colors list-none [&::-webkit-details-marker]:hidden">
+      <summary className="flex items-center justify-between cursor-pointer py-4 text-ink font-bold text-[15px] hover:text-primary transition-colors list-none [&::-webkit-details-marker]:hidden">
         <span>{term}</span>
         <span className="text-ink-soft text-xs shrink-0 ml-4 transition-transform group-open:rotate-180">
           ▼
@@ -251,7 +251,7 @@ export default function GlossaryPage() {
 
         {glossaryData.map((category) => (
           <section key={category.title} className="mb-12">
-            <h2 className="text-lg font-bold mb-4 pl-3 border-l-[3px] border-accent">
+            <h2 className="text-lg font-bold mb-4 pl-3 border-l-[3px] border-primary">
               {category.title}
             </h2>
             <div>
@@ -261,7 +261,7 @@ export default function GlossaryPage() {
                   {t.relatedArticle && (
                     <Link
                       href={`/articles/${t.relatedArticle.slug}`}
-                      className="inline-block mt-3 text-accent hover:underline text-xs"
+                      className="inline-block mt-3 text-primary hover:underline text-xs"
                     >
                       関連記事: {t.relatedArticle.title} →
                     </Link>

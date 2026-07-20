@@ -273,7 +273,7 @@ export default function AboutPage() {
         <div className="my-4 border border-line rounded-lg divide-y divide-line">
           {aboutFaqs.map((faq) => (
             <details key={faq.question} className="group">
-              <summary className="flex items-center justify-between cursor-pointer px-5 py-4 text-[15px] font-bold text-ink hover:text-accent transition-colors list-none [&::-webkit-details-marker]:hidden">
+              <summary className="flex items-center justify-between cursor-pointer px-5 py-4 text-[15px] font-bold text-ink hover:text-primary transition-colors list-none [&::-webkit-details-marker]:hidden">
                 <span>{faq.question}</span>
                 <span className="text-ink-soft text-xs shrink-0 ml-4 transition-transform group-open:rotate-180">
                   ▼

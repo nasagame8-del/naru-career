@@ -4,7 +4,7 @@ import type { ArticleMeta } from "@/lib/articles";
 
 const categoryStyles: Record<string, string> = {
   体験談: "bg-amber-soft text-amber",
-  エージェント比較: "bg-accent-soft text-accent",
+  エージェント比較: "bg-primary-soft text-primary",
   業界解説: "bg-gray-soft text-gray",
 };
 
@@ -36,7 +36,7 @@ export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
               )}
             </div>
             <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h3 className="font-bold text-ink text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+              <h3 className="font-bold text-ink text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                 {article.title}
               </h3>
               <div className="flex items-center gap-2 mt-2">

@@ -18,7 +18,7 @@ export function CategoryTabs({ articles }: { articles: ArticleMeta[] }) {
       {/* カテゴリタブ */}
       <div className="relative">
         <div className="flex overflow-x-auto border-b border-line mb-6 scrollbar-hide">
-          <span className="px-5 py-2.5 text-sm font-medium whitespace-nowrap text-accent relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-accent">
+          <span className="px-5 py-2.5 text-sm font-medium whitespace-nowrap text-primary relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary">
             すべて
           </span>
           {Object.entries(CATEGORIES).map(([slug, cat]) => (
