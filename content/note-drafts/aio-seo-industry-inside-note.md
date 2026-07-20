@@ -57,4 +57,4 @@ original_slug: "aio-seo-industry-inside"
 
 ---
 📝 営業からマーケティングへの染み出し方、もっと詳しい話はブログ記事にまとめています。
-👉 [AIO対策企業に営業職で入社。そこからマーケティングを独学した話](自社サイトURL)
+👉 [AIO対策企業に営業職で入社。そこからマーケティングを独学した話](https://naru-career.com/articles/aio-seo-industry-inside)
