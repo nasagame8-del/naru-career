@@ -88,5 +88,13 @@
     "cta_text": "公式サイトを見る",
     "asp": "none",
     "affiliate": false
+  },
+  "yumecareer": {
+    "name": "ユメキャリ",
+    "url": "",
+    "cta_text": "詳細を見る",
+    "asp": "A8.net",
+    "affiliate": true,
+    "note": "適職診断の結果ページ(営業系タイプ: ナイト/デーモンロード/アドベンチャラー/バード)でのみ表示。A8計測URLを取得後にurlフィールドに設定すること"
   }
 }

@@ -101,6 +101,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 適職診断への導線 */}
+      <section className="border-t border-line">
+        <div className="max-w-5xl mx-auto px-4 py-10">
+          <a
+            href="https://tekishoku-shindan-omega.vercel.app?utm_source=naru&utm_medium=referral&utm_campaign=top"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 bg-white border border-line rounded-lg p-5 hover:shadow-lg transition-all duration-150 hover:-translate-y-0.5"
+          >
+            <Image
+              src="/images/mini/alto-mini-idea.png"
+              alt=""
+              width={48}
+              height={48}
+              className="flex-shrink-0"
+            />
+            <div>
+              <p className="font-bold text-sm text-ink group-hover:text-primary transition-colors">
+                自分がどんな仕事に向いているか、3分の適職診断で見てみませんか？
+              </p>
+              <p className="text-xs text-ink-soft mt-1">
+                10の質問に答えるだけ。RPGキャラクターで16タイプの適職を診断します
+              </p>
+            </div>
+            <span className="ml-auto text-primary text-sm font-medium flex-shrink-0">
+              診断する →
+            </span>
+          </a>
+        </div>
+      </section>
+
       {/* 最新のnote投稿 */}
       <LatestNotePosts />
     </>
