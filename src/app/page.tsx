@@ -105,9 +105,7 @@ export default function Home() {
       <section className="border-t border-line">
         <div className="max-w-5xl mx-auto px-4 py-10">
           <a
-            href="https://tekishoku-shindan-omega.vercel.app?utm_source=naru&utm_medium=referral&utm_campaign=top"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/shindan"
             className="group flex items-center gap-4 bg-white border border-line rounded-lg p-5 hover:shadow-lg transition-all duration-150 hover:-translate-y-0.5"
           >
             <Image

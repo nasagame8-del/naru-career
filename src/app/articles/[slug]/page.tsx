@@ -342,9 +342,7 @@ export default async function ArticlePage(props: {
             {/* 適職診断への導線(テンプレートレベル) */}
             <div className="mt-10 pt-6 border-t border-line">
               <a
-                href="https://tekishoku-shindan-omega.vercel.app?utm_source=naru&utm_medium=referral&utm_campaign=article_footer"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/shindan"
                 className="group flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors"
               >
                 <MiniAlto pose="idea" size={36} />
