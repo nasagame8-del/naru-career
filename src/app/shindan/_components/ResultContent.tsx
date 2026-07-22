@@ -15,26 +15,13 @@ import {
 
 const SITE_URL = "https://naru-career.com";
 
-async function fetchShareImage(slug: string, format: "instagram" | "ogp") {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15000);
-  try {
-    const res = await fetch(
-      `/shindan/result/${slug}/share-image?format=${format}`,
-      { signal: controller.signal }
-    );
-    if (!res.ok) throw new Error(`Share image failed: ${res.status}`);
-    return await res.blob();
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
 async function handleInstagramShare(
   slug: string,
   typeName: string
 ): Promise<"shared" | "downloaded" | "cancelled"> {
-  const blob = await fetchShareImage(slug, "instagram");
+  const res = await fetch(`/shindan/share/${slug}.png`);
+  if (!res.ok) throw new Error(`Share image load failed: ${res.status}`);
+  const blob = await res.blob();
   const file = new File([blob], `shindan-${slug}.png`, { type: "image/png" });
 
   // Mobile: Web Share API (shows Instagram in the share sheet)
