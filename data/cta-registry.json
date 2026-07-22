@@ -91,10 +91,10 @@
   },
   "yumecareer": {
     "name": "ユメキャリ",
-    "url": "",
+    "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892664088",
     "cta_text": "詳細を見る",
-    "asp": "A8.net",
+    "asp": "バリューコマース",
     "affiliate": true,
-    "note": "適職診断の結果ページ(営業系タイプ: ナイト/デーモンロード/アドベンチャラー/バード)でのみ表示。A8計測URLを取得後にurlフィールドに設定すること"
+    "note": "適職診断の結果ページ(営業系タイプ: ナイト/デーモンロード/アドベンチャラー/バード)でのみ表示"
   }
 }

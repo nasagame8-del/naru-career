@@ -98,7 +98,7 @@ export const SURVEY_URL =
 export const YUMECAREER_TYPE_IDS = new Set([2, 8, 14, 6]);
 
 // プレースホルダ: A8計測URLをここに差し替え
-export const YUMECAREER_URL = "https://example.com/yumecareer-placeholder";
+export const YUMECAREER_URL = "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892664088";
 
 export const AFFILIATE_DISCLOSURE =
   "当サイトは一部のリンクにアフィリエイト広告を利用しています。リンクを経由して商品・サービスの申し込みがあった場合、当サイトに報酬が支払われることがあります。ただし、記事の内容やランキングへの影響は一切ありません。広告の有無にかかわらず、実体験に基づいた正確な情報を提供しています。詳細はプライバシーポリシーをご覧ください。";

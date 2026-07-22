@@ -162,7 +162,7 @@ export default function ResultContent({
                   className="cta-yumecareer-btn"
                   href={YUMECAREER_URL}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                   onClick={() => trackEvent("cta_yumecareer")}
                 >
                   詳細を見る
