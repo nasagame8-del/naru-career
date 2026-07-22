@@ -581,25 +581,55 @@ a {
 /* ── Share ── */
 .share-section {
   margin: 20px 0 6px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.share-btn-x {
+.share-btn-x,
+.share-btn-image {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 28px;
+  padding: 12px 24px;
   border-radius: 10px;
-  background: #000;
-  color: #fff;
   font-family: "Reggae One", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
   transition: transform 0.12s ease, opacity 0.12s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.share-btn-x {
+  background: #000;
+  color: #fff;
 }
 .share-btn-x:hover {
   transform: translateY(-2px);
   opacity: 0.85;
+}
+
+.share-btn-image {
+  background: #7A3E2E;
+  color: #fff;
+}
+.share-btn-image:hover:not(:disabled) {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+.share-btn-image:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.share-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #6a4f22;
+  margin: 6px 0 0;
+  opacity: 0.8;
 }
 
 .result-profile {

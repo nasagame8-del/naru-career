@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { TypeInfo, TYPE_COLORS } from "../_lib/data";
 import { trackEvent } from "../_lib/analytics";
 import {
@@ -13,6 +14,49 @@ import {
 } from "../_lib/cta-data";
 
 const SITE_URL = "https://naru-career.com";
+
+async function fetchShareImage(slug: string, format: "instagram" | "ogp") {
+  const res = await fetch(
+    `/shindan/result/${slug}/share-image?format=${format}`
+  );
+  if (!res.ok) throw new Error("Failed to fetch share image");
+  const blob = await res.blob();
+  return blob;
+}
+
+async function handleImageShare(slug: string, typeName: string) {
+  const blob = await fetchShareImage(slug, "instagram");
+  const file = new File([blob], `shindan-${slug}.png`, { type: "image/png" });
+
+  if (
+    typeof navigator !== "undefined" &&
+    navigator.canShare?.({ files: [file] })
+  ) {
+    try {
+      await navigator.share({
+        files: [file],
+        title: `適職診断結果: ${typeName}`,
+        text: `私の適職タイプは【${typeName}】でした！ #適職診断 #転職`,
+      });
+      trackEvent("share_native", { type: slug });
+      return "shared";
+    } catch (e) {
+      if (e instanceof Error && e.name === "AbortError") return "cancelled";
+    }
+  }
+
+  // Fallback: download
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `shindan-${slug}.png`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  trackEvent("share_image_download", { type: slug });
+  return "downloaded";
+}
 
 export default function ResultContent({
   typeId,
@@ -29,6 +73,9 @@ export default function ResultContent({
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
   const articles = getArticlesForType(typeId);
   const showYumecareer = YUMECAREER_TYPE_IDS.has(typeId);
+  const [imageShareState, setImageShareState] = useState<
+    "idle" | "loading" | "done"
+  >("idle");
 
   return (
     <div className="result-inner">
@@ -51,20 +98,51 @@ export default function ResultContent({
           </div>
         </div>
 
-        {/* ── X共有ボタン ── */}
+        {/* ── シェアボタン ── */}
         <div className="share-section">
           <a
             className="share-btn-x"
             href={tweetUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("share_x", { type: typeInfo.slug })}
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
             結果をXでシェア
           </a>
+          <button
+            className="share-btn-image"
+            disabled={imageShareState === "loading"}
+            onClick={async () => {
+              setImageShareState("loading");
+              try {
+                await handleImageShare(typeInfo.slug, typeInfo.name);
+              } catch {
+                // Silently handle errors
+              }
+              setImageShareState("done");
+              setTimeout(() => setImageShareState("idle"), 3000);
+            }}
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+            {imageShareState === "loading"
+              ? "画像を生成中…"
+              : imageShareState === "done"
+                ? "保存しました！"
+                : "画像を保存してシェア"}
+          </button>
         </div>
+        {imageShareState === "done" && (
+          <p className="share-hint">
+            ダウンロードした画像をInstagram等に手動でアップロードしてください
+          </p>
+        )}
 
         {/* ── 向いている環境 ── */}
         <h2 className="sec-title sec-good-env">向いている環境</h2>
