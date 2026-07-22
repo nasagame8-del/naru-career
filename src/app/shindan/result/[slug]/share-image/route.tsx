@@ -5,25 +5,33 @@ import { TYPES16, TYPE_COLORS, SLUG_TO_ID } from "../../../_lib/data";
 const INSTA_SIZE = { width: 1080, height: 1920 };
 const OGP_SIZE = { width: 1200, height: 630 };
 
-const GOOGLE_FONT_URL =
+// Vercel Serverless Functionからは自分自身のoriginへfetchできないため、
+// 固定の外部URLを使う
+const ASSET_BASE = "https://naru-career.com";
+
+const GOOGLE_FONT_CSS =
   "https://fonts.googleapis.com/css2?family=Reggae+One&display=swap";
 
 async function loadGoogleFont(): Promise<ArrayBuffer> {
-  const cssRes = await fetch(GOOGLE_FONT_URL, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    },
+  const cssRes = await fetch(GOOGLE_FONT_CSS, {
+    headers: { "User-Agent": "Mozilla/5.0 (compatible; Next.js ImageResponse)" },
   });
   const css = await cssRes.text();
   const match = css.match(/src:\s*url\(([^)]+)\)/);
-  if (!match) throw new Error("Font URL not found in CSS");
+  if (!match) throw new Error("Font URL not found");
   const fontRes = await fetch(match[1]);
   return fontRes.arrayBuffer();
 }
 
+async function loadImage(path: string): Promise<string> {
+  const res = await fetch(`${ASSET_BASE}${path}`);
+  if (!res.ok) throw new Error(`Asset load failed: ${path}`);
+  const buf = await res.arrayBuffer();
+  return `data:image/png;base64,${Buffer.from(buf).toString("base64")}`;
+}
+
 export async function GET(
-  req: NextRequest,
+  _req: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
@@ -34,14 +42,22 @@ export async function GET(
 
   const t = TYPES16[id];
   const color = TYPE_COLORS[id] || "#b06a1c";
-  const format = req.nextUrl.searchParams.get("format");
+  const format = _req.nextUrl.searchParams.get("format");
   const isInsta = format === "instagram";
   const size = isInsta ? INSTA_SIZE : OGP_SIZE;
 
-  const fontData = await loadGoogleFont();
+  let fontData: ArrayBuffer;
+  let charSrc: string;
 
-  // Use absolute URL for character image (ImageResponse supports URL strings in img src)
-  const charUrl = `${req.nextUrl.origin}/shindan/types/type${id}.png`;
+  try {
+    [fontData, charSrc] = await Promise.all([
+      loadGoogleFont(),
+      loadImage(`/shindan/types/type${id}.png`),
+    ]);
+  } catch (e) {
+    console.error("Asset loading error:", e);
+    return new Response(`Asset loading failed: ${e}`, { status: 500 });
+  }
 
   const sentences = t.desc.split("。").filter(Boolean);
   const catchphrase =
@@ -86,14 +102,11 @@ export async function GET(
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={charUrl}
+            src={charSrc}
             width={520}
             height={520}
             alt=""
-            style={{
-              objectFit: "contain",
-              marginBottom: "48px",
-            }}
+            style={{ objectFit: "contain", marginBottom: "48px" }}
           />
           <div
             style={{
@@ -139,12 +152,7 @@ export async function GET(
             }}
           >
             <div
-              style={{
-                fontSize: "32px",
-                color: "#fff",
-                letterSpacing: "0.08em",
-                marginBottom: "14px",
-              }}
+              style={{ fontSize: "32px", color: "#fff", letterSpacing: "0.08em", marginBottom: "14px" }}
             >
               RPG適職診断 by NARU
             </div>
@@ -156,9 +164,7 @@ export async function GET(
       ),
       {
         ...size,
-        fonts: [
-          { name: "Reggae One", data: fontData, style: "normal" as const, weight: 400 as const },
-        ],
+        fonts: [{ name: "Reggae One", data: fontData, style: "normal" as const, weight: 400 as const }],
       }
     );
   }
@@ -189,15 +195,11 @@ export async function GET(
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={charUrl}
+          src={charSrc}
           width={400}
           height={400}
           alt=""
-          style={{
-            objectFit: "contain",
-            marginLeft: "50px",
-            position: "relative",
-          }}
+          style={{ objectFit: "contain", marginLeft: "50px", position: "relative" }}
         />
         <div
           style={{
@@ -209,9 +211,7 @@ export async function GET(
             position: "relative",
           }}
         >
-          <div
-            style={{ fontSize: "24px", color: "#ffe6a8", letterSpacing: "0.1em", marginBottom: "12px" }}
-          >
+          <div style={{ fontSize: "24px", color: "#ffe6a8", letterSpacing: "0.1em", marginBottom: "12px" }}>
             あなたの適職タイプは…
           </div>
           <div
@@ -225,22 +225,16 @@ export async function GET(
           >
             {t.name}
           </div>
-          <div
-            style={{ fontSize: "20px", color: "#d0d4de", lineHeight: 1.6, marginBottom: "14px" }}
-          >
+          <div style={{ fontSize: "20px", color: "#d0d4de", lineHeight: 1.6, marginBottom: "14px" }}>
             {catchphrase}
           </div>
-          <div style={{ fontSize: "16px", color: "#fff" }}>
-            RPG適職診断 by NARU
-          </div>
+          <div style={{ fontSize: "16px", color: "#fff" }}>RPG適職診断 by NARU</div>
         </div>
       </div>
     ),
     {
       ...size,
-      fonts: [
-        { name: "Reggae One", data: fontData, style: "normal" as const, weight: 400 as const },
-      ],
+      fonts: [{ name: "Reggae One", data: fontData, style: "normal" as const, weight: 400 as const }],
     }
   );
 }
