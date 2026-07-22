@@ -66,8 +66,12 @@ export async function GET(
     // Character image not found
   }
 
-  // Short catchphrase from desc (first sentence)
-  const catchphrase = t.desc.split("。")[0] + "。";
+  // Use full desc (2 sentences) for richer content
+  const sentences = t.desc.split("。").filter(Boolean);
+  const catchphrase =
+    sentences.length >= 2
+      ? sentences[0] + "。" + sentences[1] + "。"
+      : t.desc;
 
   if (isInsta) {
     return new ImageResponse(
@@ -110,9 +114,7 @@ export async function GET(
               left: 0,
               width: "100%",
               height: "100%",
-              background: bgSrc
-                ? "rgba(0,0,0,0.35)"
-                : "transparent",
+              background: bgSrc ? "rgba(0,0,0,0.3)" : "transparent",
               display: "flex",
             }}
           />
@@ -125,7 +127,7 @@ export async function GET(
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
-              padding: "80px 60px",
+              padding: "100px 60px",
               width: "100%",
               height: "100%",
             }}
@@ -133,49 +135,38 @@ export async function GET(
             {/* Lead text */}
             <div
               style={{
-                fontSize: "36px",
+                fontSize: "40px",
                 color: "#ffe6a8",
                 letterSpacing: "0.12em",
-                marginBottom: "32px",
+                marginBottom: "40px",
               }}
             >
               あなたの適職タイプは…
             </div>
 
-            {/* Character */}
+            {/* Character — large, no border */}
             {charSrc && (
-              <div
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={charSrc}
+                width={520}
+                height={520}
+                alt=""
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "400px",
-                  height: "400px",
-                  borderRadius: "24px",
-                  background: `${color}30`,
-                  border: `4px solid ${color}`,
-                  marginBottom: "40px",
-                  overflow: "hidden",
+                  objectFit: "contain",
+                  marginBottom: "48px",
+                  filter: `drop-shadow(0 4px 24px ${color}60)`,
                 }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={charSrc}
-                  width={360}
-                  height={360}
-                  alt=""
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
+              />
             )}
 
             {/* Type name */}
             <div
               style={{
-                fontSize: "64px",
+                fontSize: "76px",
                 color: "#fff",
-                textShadow: `0 2px 24px ${color}80`,
-                marginBottom: "24px",
+                textShadow: `0 3px 30px ${color}80`,
+                marginBottom: "32px",
                 textAlign: "center",
                 lineHeight: 1.2,
               }}
@@ -183,15 +174,15 @@ export async function GET(
               {t.name}
             </div>
 
-            {/* Catchphrase */}
+            {/* Catchphrase — full desc */}
             <div
               style={{
-                fontSize: "28px",
-                color: "#d8dce6",
-                lineHeight: 1.6,
+                fontSize: "32px",
+                color: "#e0e4ee",
+                lineHeight: 1.7,
                 textAlign: "center",
-                maxWidth: "900px",
-                marginBottom: "48px",
+                maxWidth: "920px",
+                marginBottom: "40px",
               }}
             >
               {catchphrase}
@@ -200,13 +191,13 @@ export async function GET(
             {/* Strength */}
             <div
               style={{
-                fontSize: "26px",
+                fontSize: "30px",
                 color: "#ffe6a8",
-                marginBottom: "80px",
+                marginBottom: "60px",
                 textAlign: "center",
               }}
             >
-              {t.strength}
+              おすすめ職種：{t.strength}
             </div>
 
             {/* Credit & URL */}
@@ -221,17 +212,17 @@ export async function GET(
             >
               <div
                 style={{
-                  fontSize: "28px",
+                  fontSize: "32px",
                   color: "#fff",
                   letterSpacing: "0.08em",
-                  marginBottom: "12px",
+                  marginBottom: "14px",
                 }}
               >
-                適職診断 by NARU
+                RPG適職診断 by NARU
               </div>
               <div
                 style={{
-                  fontSize: "20px",
+                  fontSize: "22px",
                   color: "#8a9ab0",
                 }}
               >
@@ -295,50 +286,26 @@ export async function GET(
             left: 0,
             width: "100%",
             height: "100%",
-            background: bgSrc
-              ? "rgba(0,0,0,0.4)"
-              : "transparent",
+            background: bgSrc ? "rgba(0,0,0,0.35)" : "transparent",
             display: "flex",
           }}
         />
 
-        {/* Decorative border */}
-        <div
-          style={{
-            position: "absolute",
-            inset: "16px",
-            border: `3px solid ${color}40`,
-            borderRadius: "20px",
-            display: "flex",
-          }}
-        />
-
-        {/* Character */}
+        {/* Character — large, no border */}
         {charSrc && (
-          <div
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={charSrc}
+            width={400}
+            height={400}
+            alt=""
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "300px",
-              height: "300px",
-              marginLeft: "60px",
-              borderRadius: "20px",
-              background: `${color}22`,
-              border: `4px solid ${color}`,
-              overflow: "hidden",
+              objectFit: "contain",
+              marginLeft: "50px",
               position: "relative",
+              filter: `drop-shadow(0 4px 20px ${color}60)`,
             }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={charSrc}
-              width={260}
-              height={260}
-              alt=""
-              style={{ objectFit: "contain" }}
-            />
-          </div>
+          />
         )}
 
         {/* Text */}
@@ -348,49 +315,49 @@ export async function GET(
             flexDirection: "column",
             marginLeft: "40px",
             flex: 1,
-            paddingRight: "60px",
+            paddingRight: "50px",
             position: "relative",
           }}
         >
           <div
             style={{
-              fontSize: "22px",
+              fontSize: "24px",
               color: "#ffe6a8",
               letterSpacing: "0.1em",
-              marginBottom: "10px",
+              marginBottom: "12px",
             }}
           >
             あなたの適職タイプは…
           </div>
           <div
             style={{
-              fontSize: "46px",
+              fontSize: "52px",
               color: "#fff",
               lineHeight: 1.2,
               textShadow: `0 2px 20px ${color}80`,
-              marginBottom: "12px",
+              marginBottom: "16px",
             }}
           >
             {t.name}
           </div>
           <div
             style={{
-              fontSize: "18px",
-              color: "#c0c8d8",
-              lineHeight: 1.5,
-              marginBottom: "12px",
+              fontSize: "20px",
+              color: "#d0d4de",
+              lineHeight: 1.6,
+              marginBottom: "14px",
             }}
           >
             {catchphrase}
           </div>
           <div
             style={{
-              fontSize: "16px",
+              fontSize: "18px",
               color: "#ffe6a8",
               marginBottom: "16px",
             }}
           >
-            {t.strength}
+            おすすめ：{t.strength}
           </div>
           <div
             style={{
@@ -401,9 +368,9 @@ export async function GET(
             }}
           >
             <div style={{ fontSize: "16px", color: "#fff" }}>
-              適職診断 by NARU
+              RPG適職診断 by NARU
             </div>
-            <div style={{ fontSize: "13px", color: "#8a9ab0" }}>
+            <div style={{ fontSize: "14px", color: "#8a9ab0" }}>
               naru-career.com/shindan
             </div>
           </div>
