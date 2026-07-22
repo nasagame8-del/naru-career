@@ -417,7 +417,7 @@ export default async function ArticlePage(props: {
         href={
           article.category === "エージェント比較" || article.cta_agents.length > 0
             ? "/agent-diagnosis"
-            : "/diagnosis"
+            : "/shindan"
         }
         ctaFocus={article.ctaFocus || undefined}
       />

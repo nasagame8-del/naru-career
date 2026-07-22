@@ -12,8 +12,8 @@ export function Footer() {
             </p>
           </div>
           <nav className="flex flex-wrap gap-6 text-sm text-ink-soft">
-            <Link href="/diagnosis" className="hover:text-primary transition-colors">
-              適職診断
+            <Link href="/shindan" className="hover:text-primary transition-colors">
+              RPG適職診断
             </Link>
             <Link href="/agent-diagnosis" className="hover:text-primary transition-colors">
               エージェント相性診断
