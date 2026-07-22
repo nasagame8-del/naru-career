@@ -16,12 +16,18 @@ import {
 const SITE_URL = "https://naru-career.com";
 
 async function fetchShareImage(slug: string, format: "instagram" | "ogp") {
-  const res = await fetch(
-    `/shindan/result/${slug}/share-image?format=${format}`
-  );
-  if (!res.ok) throw new Error("Failed to fetch share image");
-  const blob = await res.blob();
-  return blob;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  try {
+    const res = await fetch(
+      `/shindan/result/${slug}/share-image?format=${format}`,
+      { signal: controller.signal }
+    );
+    if (!res.ok) throw new Error(`Share image failed: ${res.status}`);
+    return await res.blob();
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 async function handleInstagramShare(
@@ -78,7 +84,7 @@ export default function ResultContent({
   const articles = getArticlesForType(typeId);
   const showYumecareer = YUMECAREER_TYPE_IDS.has(typeId);
   const [instaState, setInstaState] = useState<
-    "idle" | "loading" | "shared" | "downloaded"
+    "idle" | "loading" | "shared" | "downloaded" | "error"
   >("idle");
 
   return (
@@ -127,10 +133,11 @@ export default function ResultContent({
                   typeInfo.name
                 );
                 setInstaState(result === "cancelled" ? "idle" : result);
-              } catch {
-                setInstaState("idle");
+              } catch (e) {
+                console.error("Instagram share error:", e);
+                setInstaState("error");
               }
-              setTimeout(() => setInstaState("idle"), 4000);
+              setTimeout(() => setInstaState("idle"), 5000);
             }}
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
@@ -138,11 +145,13 @@ export default function ResultContent({
             </svg>
             {instaState === "loading"
               ? "画像を生成中…"
-              : instaState === "shared"
-                ? "シェアしました！"
-                : instaState === "downloaded"
-                  ? "画像を保存しました！"
-                  : "Instagramでシェア"}
+              : instaState === "error"
+                ? "エラーが発生しました"
+                : instaState === "shared"
+                  ? "シェアしました！"
+                  : instaState === "downloaded"
+                    ? "画像を保存しました！"
+                    : "Instagramでシェア"}
           </button>
         </div>
         {instaState === "downloaded" && (
