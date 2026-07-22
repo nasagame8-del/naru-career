@@ -5,10 +5,21 @@ import { TYPES16, TYPE_COLORS, SLUG_TO_ID } from "../../../_lib/data";
 const INSTA_SIZE = { width: 1080, height: 1920 };
 const OGP_SIZE = { width: 1200, height: 630 };
 
-async function loadAsset(url: string): Promise<ArrayBuffer> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to load asset: ${url}`);
-  return res.arrayBuffer();
+const GOOGLE_FONT_URL =
+  "https://fonts.googleapis.com/css2?family=Reggae+One&display=swap";
+
+async function loadGoogleFont(): Promise<ArrayBuffer> {
+  const cssRes = await fetch(GOOGLE_FONT_URL, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    },
+  });
+  const css = await cssRes.text();
+  const match = css.match(/src:\s*url\(([^)]+)\)/);
+  if (!match) throw new Error("Font URL not found in CSS");
+  const fontRes = await fetch(match[1]);
+  return fontRes.arrayBuffer();
 }
 
 export async function GET(
@@ -27,14 +38,10 @@ export async function GET(
   const isInsta = format === "instagram";
   const size = isInsta ? INSTA_SIZE : OGP_SIZE;
 
-  const origin = req.nextUrl.origin;
+  const fontData = await loadGoogleFont();
 
-  const [fontData, charBuf] = await Promise.all([
-    loadAsset(`${origin}/shindan/fonts/ReggaeOne-Regular.ttf`),
-    loadAsset(`${origin}/shindan/types/type${id}.png`),
-  ]);
-
-  const charSrc = `data:image/png;base64,${Buffer.from(charBuf).toString("base64")}`;
+  // Use absolute URL for character image (ImageResponse supports URL strings in img src)
+  const charUrl = `${req.nextUrl.origin}/shindan/types/type${id}.png`;
 
   const sentences = t.desc.split("。").filter(Boolean);
   const catchphrase =
@@ -77,15 +84,15 @@ export async function GET(
           >
             あなたの適職タイプは…
           </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={charSrc}
+            src={charUrl}
             width={520}
             height={520}
             alt=""
             style={{
               objectFit: "contain",
               marginBottom: "48px",
-              filter: `drop-shadow(0 4px 24px ${color}60)`,
             }}
           />
           <div
@@ -150,12 +157,7 @@ export async function GET(
       {
         ...size,
         fonts: [
-          {
-            name: "Reggae One",
-            data: fontData,
-            style: "normal" as const,
-            weight: 400 as const,
-          },
+          { name: "Reggae One", data: fontData, style: "normal" as const, weight: 400 as const },
         ],
       }
     );
@@ -185,8 +187,9 @@ export async function GET(
             display: "flex",
           }}
         />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={charSrc}
+          src={charUrl}
           width={400}
           height={400}
           alt=""
@@ -194,7 +197,6 @@ export async function GET(
             objectFit: "contain",
             marginLeft: "50px",
             position: "relative",
-            filter: `drop-shadow(0 4px 20px ${color}60)`,
           }}
         />
         <div
@@ -208,12 +210,7 @@ export async function GET(
           }}
         >
           <div
-            style={{
-              fontSize: "24px",
-              color: "#ffe6a8",
-              letterSpacing: "0.1em",
-              marginBottom: "12px",
-            }}
+            style={{ fontSize: "24px", color: "#ffe6a8", letterSpacing: "0.1em", marginBottom: "12px" }}
           >
             あなたの適職タイプは…
           </div>
@@ -229,12 +226,7 @@ export async function GET(
             {t.name}
           </div>
           <div
-            style={{
-              fontSize: "20px",
-              color: "#d0d4de",
-              lineHeight: 1.6,
-              marginBottom: "14px",
-            }}
+            style={{ fontSize: "20px", color: "#d0d4de", lineHeight: 1.6, marginBottom: "14px" }}
           >
             {catchphrase}
           </div>
@@ -247,12 +239,7 @@ export async function GET(
     {
       ...size,
       fonts: [
-        {
-          name: "Reggae One",
-          data: fontData,
-          style: "normal" as const,
-          weight: 400 as const,
-        },
+        { name: "Reggae One", data: fontData, style: "normal" as const, weight: 400 as const },
       ],
     }
   );
