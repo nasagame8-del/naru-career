@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { type NextRequest } from "next/server";
 import { TYPES16, TYPE_COLORS, SLUG_TO_ID } from "../../../_lib/data";
 
-const INSTA_SIZE = { width: 1080, height: 1920 };
+const INSTA_SIZE = { width: 1080, height: 1350 };
 const OGP_SIZE = { width: 1200, height: 630 };
 
 // Vercel Serverless Functionからは自分自身のoriginへfetchできないため、
