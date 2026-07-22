@@ -587,41 +587,35 @@ a {
   flex-wrap: wrap;
 }
 
-.share-btn-x,
-.share-btn-image {
+.share-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 12px 22px;
   border-radius: 10px;
   font-family: "Reggae One", sans-serif;
-  font-size: 14px;
+  font-size: 13.5px;
   cursor: pointer;
   transition: transform 0.12s ease, opacity 0.12s ease;
   border: none;
   text-decoration: none;
+  color: #fff;
+}
+.share-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+.share-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 .share-btn-x {
   background: #000;
-  color: #fff;
-}
-.share-btn-x:hover {
-  transform: translateY(-2px);
-  opacity: 0.85;
 }
 
-.share-btn-image {
-  background: #7A3E2E;
-  color: #fff;
-}
-.share-btn-image:hover:not(:disabled) {
-  transform: translateY(-2px);
-  opacity: 0.85;
-}
-.share-btn-image:disabled {
-  opacity: 0.6;
-  cursor: wait;
+.share-btn-insta {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
 }
 
 .share-hint {

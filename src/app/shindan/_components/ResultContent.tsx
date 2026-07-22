@@ -24,10 +24,14 @@ async function fetchShareImage(slug: string, format: "instagram" | "ogp") {
   return blob;
 }
 
-async function handleImageShare(slug: string, typeName: string) {
+async function handleInstagramShare(
+  slug: string,
+  typeName: string
+): Promise<"shared" | "downloaded" | "cancelled"> {
   const blob = await fetchShareImage(slug, "instagram");
   const file = new File([blob], `shindan-${slug}.png`, { type: "image/png" });
 
+  // Mobile: Web Share API (shows Instagram in the share sheet)
   if (
     typeof navigator !== "undefined" &&
     navigator.canShare?.({ files: [file] })
@@ -45,7 +49,7 @@ async function handleImageShare(slug: string, typeName: string) {
     }
   }
 
-  // Fallback: download
+  // Desktop fallback: download the image
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
@@ -73,8 +77,8 @@ export default function ResultContent({
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
   const articles = getArticlesForType(typeId);
   const showYumecareer = YUMECAREER_TYPE_IDS.has(typeId);
-  const [imageShareState, setImageShareState] = useState<
-    "idle" | "loading" | "done"
+  const [instaState, setInstaState] = useState<
+    "idle" | "loading" | "shared" | "downloaded"
   >("idle");
 
   return (
@@ -101,7 +105,7 @@ export default function ResultContent({
         {/* ── シェアボタン ── */}
         <div className="share-section">
           <a
-            className="share-btn-x"
+            className="share-btn share-btn-x"
             href={tweetUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -110,37 +114,40 @@ export default function ResultContent({
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
-            結果をXでシェア
+            Xでシェア
           </a>
           <button
-            className="share-btn-image"
-            disabled={imageShareState === "loading"}
+            className="share-btn share-btn-insta"
+            disabled={instaState === "loading"}
             onClick={async () => {
-              setImageShareState("loading");
+              setInstaState("loading");
               try {
-                await handleImageShare(typeInfo.slug, typeInfo.name);
+                const result = await handleInstagramShare(
+                  typeInfo.slug,
+                  typeInfo.name
+                );
+                setInstaState(result === "cancelled" ? "idle" : result);
               } catch {
-                // Silently handle errors
+                setInstaState("idle");
               }
-              setImageShareState("done");
-              setTimeout(() => setImageShareState("idle"), 3000);
+              setTimeout(() => setInstaState("idle"), 4000);
             }}
           >
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <polyline points="21 15 16 10 5 21" />
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
             </svg>
-            {imageShareState === "loading"
+            {instaState === "loading"
               ? "画像を生成中…"
-              : imageShareState === "done"
-                ? "保存しました！"
-                : "画像を保存してシェア"}
+              : instaState === "shared"
+                ? "シェアしました！"
+                : instaState === "downloaded"
+                  ? "画像を保存しました！"
+                  : "Instagramでシェア"}
           </button>
         </div>
-        {imageShareState === "done" && (
+        {instaState === "downloaded" && (
           <p className="share-hint">
-            ダウンロードした画像をInstagram等に手動でアップロードしてください
+            保存した画像をInstagramのストーリーズやフィードに投稿してください
           </p>
         )}
 
