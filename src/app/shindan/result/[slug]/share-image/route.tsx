@@ -34,6 +34,7 @@ export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  try {
   const { slug } = await params;
   const id = SLUG_TO_ID[slug];
   if (id === undefined) {
@@ -237,4 +238,11 @@ export async function GET(
       fonts: [{ name: "Reggae One", data: fontData, style: "normal" as const, weight: 400 as const }],
     }
   );
+  } catch (e) {
+    console.error("share-image error:", e);
+    return new Response(
+      JSON.stringify({ error: String(e), stack: e instanceof Error ? e.stack : undefined }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
 }
