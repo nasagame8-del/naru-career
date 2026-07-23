@@ -57,20 +57,15 @@ export default async function TypeHubPage({ params }: Props) {
     <div className="shindan-wrapper">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* レイヤー1: RPG背景(bg.png) */}
-      <div style={{ position: "fixed", inset: 0, zIndex: 0, background: "url(/shindan/bg.png) center / cover fixed" }} />
-
-      {/* レイヤー2: タイプ別背景(share-bg) */}
-      <div style={{ position: "fixed", inset: 0, zIndex: 1 }}>
+      {/* 背景: RPG背景の上にタイプ別背景を重ねる */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/images/shindan/share-bg/${slug}.png`}
-          alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.25 }}
-        />
+        <img src="/shindan/bg.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={`/images/shindan/share-bg/${slug}.png`} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.3 }} />
       </div>
 
-      {/* レイヤー3: 羊皮紙カード+コンテンツ */}
+      {/* 羊皮紙カード+コンテンツ */}
       <div id="result-screen" className="screen" style={{ position: "fixed" }}>
         <div className="result-inner">
           <div className="result-page" style={{ "--accent": color } as React.CSSProperties}>
