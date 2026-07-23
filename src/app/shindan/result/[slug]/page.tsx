@@ -40,8 +40,22 @@ export default async function ResultPage({ params }: Props) {
   const typeInfo = TYPES16[id];
 
   return (
-    <section id="result-screen" className="screen" style={{ position: "fixed" }}>
-      <ResultContent typeId={id} typeInfo={typeInfo} />
-    </section>
+    <div className="result-3layer">
+      {/* 第1層: title-bg.png（全タイプ共通ベース背景） */}
+      <div className="result-layer1" />
+
+      {/* 第2層: タイプ別背景（半透明） */}
+      <div
+        className="result-layer2"
+        style={{ backgroundImage: `url(/images/shindan/share-bg/${slug}.png)` }}
+      />
+
+      {/* 第3層: 結果コンテンツ */}
+      <div className="result-layer3">
+        <div className="result-card">
+          <ResultContent typeId={id} typeInfo={typeInfo} />
+        </div>
+      </div>
+    </div>
   );
 }
