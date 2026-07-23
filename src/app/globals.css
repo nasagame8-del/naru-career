@@ -162,14 +162,19 @@ h1 {
   padding: 0 0.125em;
 }
 
-.prose a {
+.prose a:not(.cta-button) {
   color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.prose a:hover {
+.prose a:not(.cta-button):hover {
   color: #5C2E1F;
+}
+
+.prose a.cta-button {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* インライン用語定義（用語集へのリンク付き） */
