@@ -70,23 +70,12 @@ export default async function TypeHubPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── 全画面RPG背景 ── */}
+      {/* ── タイプ別背景（全画面） ── */}
       <div
         style={{
           position: "fixed",
           inset: 0,
-          background: `url(/shindan/bg.png) center / cover fixed`,
           zIndex: 0,
-        }}
-      />
-
-      {/* ── タイプ別背景オーバーレイ ── */}
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 1,
-          overflow: "hidden",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -99,7 +88,6 @@ export default async function TypeHubPage({ params }: Props) {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.15,
           }}
         />
       </div>
