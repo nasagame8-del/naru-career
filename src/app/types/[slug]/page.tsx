@@ -64,19 +64,12 @@ export default async function TypeHubPage({ params }: Props) {
         height: "calc(100vh - 48px)",
         borderRadius: "16px",
         overflow: "hidden",
+        backgroundImage: `linear-gradient(rgba(251,248,243,0.88),rgba(251,248,243,0.88)), url(/images/shindan/share-bg/${slug}.png)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}>
-        {/* 背景画像（そのまま表示、透過なし） */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/images/shindan/share-bg/${slug}.png`}
-          alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        />
-
         {/* スクロール可能なコンテンツエリア */}
         <div style={{
-          position: "relative",
-          zIndex: 1,
           height: "100%",
           overflowY: "auto",
           padding: "32px 24px 40px",
