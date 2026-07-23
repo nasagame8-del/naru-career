@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TYPES16, TYPE_COLORS, SLUG_TO_ID, ALL_SLUGS } from "../../shindan/_lib/data";
 import { getHubArticles } from "../type-hub-data";
+import "../../shindan/shindan.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,19 +30,19 @@ export default async function TypeHubPage({ params }: Props) {
   const t = TYPES16[id];
   const color = TYPE_COLORS[id] || "#b06a1c";
   const articles = getHubArticles(id);
-  const bgExists = true; // all 16 backgrounds exist
+  const typeName = t.name.split("（")[0];
 
   const faq = [
     {
-      q: `${t.name.split("（")[0]}タイプはどんな仕事に向いていますか？`,
+      q: `${typeName}タイプはどんな仕事に向いていますか？`,
       a: `${t.strength}が向いています。${t.goodEnv}`,
     },
     {
-      q: `${t.name.split("（")[0]}タイプが避けた方がいい環境は？`,
+      q: `${typeName}タイプが避けた方がいい環境は？`,
       a: t.badEnv,
     },
     {
-      q: `第二新卒で${t.name.split("（")[0]}タイプにおすすめの職種は？`,
+      q: `第二新卒で${typeName}タイプにおすすめの職種は？`,
       a: t.careerTip,
     },
   ];
@@ -63,155 +64,190 @@ export default async function TypeHubPage({ params }: Props) {
   };
 
   return (
-    <>
+    <div className="shindan-wrapper">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── ヒーロー ── */}
-      <section
-        className="relative overflow-hidden"
-        style={{ minHeight: "340px" }}
+      {/* ── 全画面RPG背景 ── */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background: `url(/shindan/bg.png) center / cover fixed`,
+          zIndex: 0,
+        }}
+      />
+
+      {/* ── タイプ別背景オーバーレイ ── */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 1,
+          overflow: "hidden",
+        }}
       >
-        {/* 背景画像 */}
-        {bgExists && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={`/images/shindan/share-bg/${slug}.png`}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        )}
-        {/* オーバーレイ */}
-        <div
-          className="absolute inset-0"
-          style={{ background: `linear-gradient(180deg, ${color}dd 0%, ${color}99 100%)` }}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/images/shindan/share-bg/${slug}.png`}
+          alt=""
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.15,
+          }}
         />
-        {/* コンテンツ */}
-        <div className="relative max-w-3xl mx-auto px-4 py-16 text-center text-white">
-          <div className="flex justify-center mb-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`/shindan/types/type${id}.png`}
-              alt={t.name}
-              width={140}
-              height={140}
-              className="rounded-xl"
-              style={{ boxShadow: `0 4px 24px rgba(0,0,0,0.3)` }}
-            />
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-3" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
-            {t.name}
-          </h1>
-          <p className="text-lg opacity-90 max-w-xl mx-auto leading-relaxed">
-            {t.desc}
-          </p>
-          <div className="mt-6">
-            <Link
-              href="/shindan"
-              className="inline-block px-6 py-2.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors backdrop-blur"
-            >
-              診断を受けてみる →
-            </Link>
-          </div>
-        </div>
-      </section>
+      </div>
 
-      {/* ── 本文 ── */}
-      <div className="max-w-3xl mx-auto px-4 py-12 space-y-12">
+      {/* ── スクロールコンテンツ ── */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          minHeight: "100vh",
+          overflowY: "auto",
+        }}
+      >
+        {/* 羊皮紙カード */}
+        <div className="result-inner" style={{ padding: "24px 0" }}>
+          <div
+            className="result-page"
+            style={{ "--accent": color } as React.CSSProperties}
+          >
+            {/* ── ヘッダー ── */}
+            <div className="result-hero">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="result-char"
+                src={`/shindan/types/type${id}.png`}
+                alt={t.name}
+              />
+              <div className="result-hero-text">
+                <span className="result-lead">{typeName}タイプの特徴</span>
+                <h1 className="result-title">{t.name}</h1>
+                <p className="result-desc">{t.desc}</p>
+              </div>
+            </div>
 
-        {/* 向いている環境 */}
-        <section>
-          <h2 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <span className="w-1.5 h-6 rounded-full" style={{ background: "#3f9e57" }} />
-            向いている環境
-          </h2>
-          <p className="text-ink-soft leading-relaxed">{t.goodEnv}</p>
-        </section>
+            {/* ── おすすめ職種 ── */}
+            <h2 className="sec-title sec-career">おすすめ職種</h2>
+            <p>{t.strength}</p>
 
-        {/* 消耗しやすい環境 */}
-        <section>
-          <h2 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <span className="w-1.5 h-6 rounded-full" style={{ background: "#d65a5a" }} />
-            消耗しやすい環境
-          </h2>
-          <p className="text-ink-soft leading-relaxed">{t.badEnv}</p>
-        </section>
+            {/* ── 向いている環境 ── */}
+            <h2 className="sec-title sec-good-env">向いている環境</h2>
+            <p>{t.goodEnv}</p>
 
-        {/* 第二新卒×IT/Webの狙い目 */}
-        <section>
-          <h2 className="text-xl font-bold mb-3 flex items-center gap-2">
-            <span className="w-1.5 h-6 rounded-full" style={{ background: "#e0842f" }} />
-            第二新卒×IT/Webの狙い目
-          </h2>
-          <p className="text-ink-soft leading-relaxed">{t.careerTip}</p>
-        </section>
+            {/* ── 消耗しやすい環境 ── */}
+            <h2 className="sec-title sec-bad-env">消耗しやすい環境</h2>
+            <p>{t.badEnv}</p>
 
-        {/* おすすめ記事 */}
-        <section>
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <span className="w-1.5 h-6 rounded-full" style={{ background: color }} />
-            {t.name.split("（")[0]}タイプにおすすめの記事
-          </h2>
-          <div className="grid gap-3">
-            {articles.map((a) => (
-              <Link
-                key={a.slug}
-                href={`/articles/${a.slug}`}
-                className="group flex items-center gap-3 p-4 bg-white border border-line rounded-lg hover:shadow-md transition-all hover:-translate-y-0.5"
-              >
-                <span
-                  className="w-1 h-8 rounded-full shrink-0"
-                  style={{ background: color }}
-                />
-                <span className="text-sm font-medium text-ink group-hover:text-primary transition-colors">
-                  {a.title}
-                </span>
-                <span className="ml-auto text-xs text-ink-soft shrink-0">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
+            {/* ── 第二新卒×IT/Webの狙い目 ── */}
+            <h2 className="sec-title" style={{ borderLeftColor: "#e0842f", color: "#b25c14" }}>
+              第二新卒×IT/Webの狙い目
+            </h2>
+            <p>{t.careerTip}</p>
 
-        {/* FAQ */}
-        <section>
-          <h2 className="text-xl font-bold mb-4">よくある質問</h2>
-          <div className="space-y-4">
+            {/* ── おすすめ記事 ── */}
+            <h2 className="sec-title sec-articles">
+              {typeName}タイプにおすすめの記事
+            </h2>
+            <div className="articles-grid">
+              {articles.map((a) => (
+                <a
+                  key={a.slug}
+                  className="article-card"
+                  href={`/articles/${a.slug}`}
+                >
+                  <div className="article-card-title">{a.title}</div>
+                </a>
+              ))}
+            </div>
+
+            {/* ── FAQ ── */}
+            <h2 className="sec-title sec-profile">よくある質問</h2>
             {faq.map((f, i) => (
-              <details key={i} className="group border border-line rounded-lg">
-                <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-medium text-ink">
-                  <span>{f.q}</span>
-                  <span className="text-ink-soft group-open:rotate-180 transition-transform">▼</span>
+              <details
+                key={i}
+                style={{
+                  marginBottom: "8px",
+                  border: "1px solid rgba(120,90,40,0.3)",
+                  borderRadius: "6px",
+                  overflow: "hidden",
+                }}
+              >
+                <summary
+                  style={{
+                    padding: "12px 14px",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    color: "#3a2a12",
+                  }}
+                >
+                  {f.q}
                 </summary>
-                <div className="px-4 pb-4 text-sm text-ink-soft leading-relaxed">
+                <div
+                  style={{
+                    padding: "0 14px 12px",
+                    fontSize: "13.5px",
+                    color: "#5a4524",
+                    lineHeight: 1.7,
+                  }}
+                >
                   {f.a}
                 </div>
               </details>
             ))}
-          </div>
-        </section>
 
-        {/* 他のタイプを見る */}
-        <section className="pt-8 border-t border-line">
-          <h2 className="text-lg font-bold mb-4 text-center">他のタイプを見る</h2>
-          <div className="flex flex-wrap justify-center gap-2">
-            {Object.entries(TYPES16).map(([tid, tt]) => (
-              <Link
-                key={tid}
-                href={`/types/${tt.slug}`}
-                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-                  tt.slug === slug
-                    ? "border-primary bg-primary text-white"
-                    : "border-line text-ink-soft hover:border-primary hover:text-primary"
-                }`}
+            {/* ── 他のタイプ ── */}
+            <div style={{ marginTop: "30px", textAlign: "center" }}>
+              <p
+                style={{
+                  fontFamily: "Reggae One, sans-serif",
+                  fontSize: "16px",
+                  color: "#5a3a14",
+                  marginBottom: "12px",
+                }}
               >
-                {tt.name.split("（")[0]}
-              </Link>
-            ))}
+                他のタイプを見る
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "6px" }}>
+                {Object.entries(TYPES16).map(([tid, tt]) => (
+                  <a
+                    key={tid}
+                    href={`/types/${tt.slug}`}
+                    style={{
+                      fontSize: "11px",
+                      padding: "4px 10px",
+                      borderRadius: "20px",
+                      border: tt.slug === slug
+                        ? `2px solid ${color}`
+                        : "1px solid rgba(120,90,40,0.3)",
+                      background: tt.slug === slug ? color : "rgba(255,252,240,0.5)",
+                      color: tt.slug === slug ? "#fff" : "#5a4524",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {tt.name.split("（")[0]}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* ── 診断ボタン ── */}
+            <div className="result-foot">
+              <a className="retry-link" href="/shindan">
+                診断を受けてみる
+              </a>
+            </div>
           </div>
-        </section>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
