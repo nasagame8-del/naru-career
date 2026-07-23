@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { TYPES16, TYPE_COLORS, SLUG_TO_ID, ALL_SLUGS } from "../../shindan/_lib/data";
 import { getHubArticles } from "../type-hub-data";
+import "../../shindan/shindan.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -52,116 +53,101 @@ export default async function TypeHubPage({ params }: Props) {
     },
   };
 
-  const S: Record<string, React.CSSProperties> = {
-    page: { position: "relative", minHeight: "100vh" },
-    bg: { position: "fixed", inset: 0, zIndex: 0 },
-    bgImg: { position: "absolute" as const, inset: 0, width: "100%", height: "100%", objectFit: "cover" as const },
-    content: { position: "relative", zIndex: 1, maxWidth: "600px", margin: "0 auto", padding: "40px 20px 60px" },
-    header: { textAlign: "center" as const, marginBottom: "36px" },
-    charImg: { width: "140px", height: "140px", objectFit: "contain" as const, margin: "0 auto 16px", display: "block", filter: `drop-shadow(0 4px 16px ${color}80)` },
-    title: { fontSize: "28px", fontWeight: "bold", color: color, marginBottom: "8px" },
-    desc: { fontSize: "14px", color: "#444", lineHeight: 1.7 },
-    section: { marginBottom: "28px" },
-    sectionTitle: { fontSize: "16px", fontWeight: "bold", color: "#333", marginBottom: "8px", paddingLeft: "12px", borderLeft: "4px solid" },
-    text: { fontSize: "14px", color: "#555", lineHeight: 1.7 },
-    articleLink: { display: "block", padding: "12px 14px", marginBottom: "6px", background: "rgba(255,255,255,0.75)", borderRadius: "8px", border: `1px solid ${color}30`, fontSize: "13px", fontWeight: 500, color: "#333", textDecoration: "none" },
-    faqBox: { marginBottom: "6px", background: "rgba(255,255,255,0.7)", borderRadius: "8px", overflow: "hidden" },
-    faqSummary: { padding: "12px 14px", cursor: "pointer", fontSize: "13px", fontWeight: "bold", color: "#333" },
-    faqAnswer: { padding: "0 14px 12px", fontSize: "13px", color: "#555", lineHeight: 1.7 },
-    typeNav: { display: "flex", flexWrap: "wrap" as const, justifyContent: "center", gap: "6px", marginTop: "12px" },
-    typeTag: { fontSize: "11px", padding: "4px 10px", borderRadius: "20px", textDecoration: "none" },
-    cta: { display: "block", textAlign: "center" as const, marginTop: "32px", padding: "14px", background: color, color: "#fff", borderRadius: "10px", fontWeight: "bold", fontSize: "15px", textDecoration: "none" },
-  };
-
   return (
-    <div style={S.page}>
+    <div className="shindan-wrapper">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* 背景 */}
-      <div style={S.bg}>
+      {/* レイヤー1: RPG背景(bg.png) */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, background: "url(/shindan/bg.png) center / cover fixed" }} />
+
+      {/* レイヤー2: タイプ別背景(share-bg) */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 1 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`/images/shindan/share-bg/${slug}.png`} alt="" style={S.bgImg} />
+        <img
+          src={`/images/shindan/share-bg/${slug}.png`}
+          alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.25 }}
+        />
       </div>
 
-      {/* コンテンツ */}
-      <div style={S.content}>
+      {/* レイヤー3: 羊皮紙カード+コンテンツ */}
+      <div id="result-screen" className="screen" style={{ position: "fixed" }}>
+        <div className="result-inner">
+          <div className="result-page" style={{ "--accent": color } as React.CSSProperties}>
 
-        {/* ヘッダー */}
-        <div style={S.header}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`/shindan/types/type${id}.png`} alt={t.name} style={S.charImg} />
-          <h1 style={S.title}>{t.name}</h1>
-          <p style={S.desc}>{t.desc}</p>
-        </div>
+            {/* ヘッダー */}
+            <div className="result-hero">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="result-char" src={`/shindan/types/type${id}.png`} alt={t.name} />
+              <div className="result-hero-text">
+                <span className="result-lead">{typeName}タイプの特徴</span>
+                <h1 className="result-title">{t.name}</h1>
+                <p className="result-desc">{t.desc}</p>
+              </div>
+            </div>
 
-        {/* おすすめ職種 */}
-        <div style={S.section}>
-          <h2 style={{ ...S.sectionTitle, borderLeftColor: color }}>{typeName}タイプのおすすめ職種</h2>
-          <p style={S.text}>{t.strength}</p>
-        </div>
+            {/* おすすめ職種 */}
+            <h2 className="sec-title sec-career">おすすめ職種</h2>
+            <p>{t.strength}</p>
 
-        {/* 向いている環境 */}
-        <div style={S.section}>
-          <h2 style={{ ...S.sectionTitle, borderLeftColor: "#3f9e57" }}>向いている環境</h2>
-          <p style={S.text}>{t.goodEnv}</p>
-        </div>
+            {/* 向いている環境 */}
+            <h2 className="sec-title sec-good-env">向いている環境</h2>
+            <p>{t.goodEnv}</p>
 
-        {/* 消耗しやすい環境 */}
-        <div style={S.section}>
-          <h2 style={{ ...S.sectionTitle, borderLeftColor: "#d65a5a" }}>消耗しやすい環境</h2>
-          <p style={S.text}>{t.badEnv}</p>
-        </div>
+            {/* 消耗しやすい環境 */}
+            <h2 className="sec-title sec-bad-env">消耗しやすい環境</h2>
+            <p>{t.badEnv}</p>
 
-        {/* 第二新卒×IT/Webの狙い目 */}
-        <div style={S.section}>
-          <h2 style={{ ...S.sectionTitle, borderLeftColor: "#e0842f" }}>第二新卒×IT/Webの狙い目</h2>
-          <p style={S.text}>{t.careerTip}</p>
-        </div>
+            {/* 第二新卒×IT/Webの狙い目 */}
+            <h2 className="sec-title" style={{ borderLeftColor: "#e0842f", color: "#b25c14" }}>第二新卒×IT/Webの狙い目</h2>
+            <p>{t.careerTip}</p>
 
-        {/* おすすめ記事 */}
-        <div style={S.section}>
-          <h2 style={{ ...S.sectionTitle, borderLeftColor: color }}>{typeName}タイプにおすすめの記事</h2>
-          {articles.map((a) => (
-            <a key={a.slug} href={`/articles/${a.slug}`} style={S.articleLink}>
-              {a.title}
-            </a>
-          ))}
-        </div>
+            {/* おすすめ記事 */}
+            <h2 className="sec-title sec-articles">{typeName}タイプにおすすめの記事</h2>
+            <div className="articles-grid">
+              {articles.map((a) => (
+                <a key={a.slug} className="article-card" href={`/articles/${a.slug}`}>
+                  <div className="article-card-title">{a.title}</div>
+                </a>
+              ))}
+            </div>
 
-        {/* FAQ */}
-        <div style={S.section}>
-          <h2 style={{ ...S.sectionTitle, borderLeftColor: "#c79a2f" }}>よくある質問</h2>
-          {faq.map((f, i) => (
-            <details key={i} style={S.faqBox}>
-              <summary style={S.faqSummary}>{f.q}</summary>
-              <div style={S.faqAnswer}>{f.a}</div>
-            </details>
-          ))}
-        </div>
-
-        {/* 他のタイプ */}
-        <div style={{ ...S.section, textAlign: "center" }}>
-          <h2 style={{ fontSize: "15px", fontWeight: "bold", color: "#333", marginBottom: "8px" }}>他のタイプを見る</h2>
-          <div style={S.typeNav}>
-            {Object.entries(TYPES16).map(([tid, tt]) => (
-              <a
-                key={tid}
-                href={`/types/${tt.slug}`}
-                style={{
-                  ...S.typeTag,
-                  border: tt.slug === slug ? `2px solid ${color}` : "1px solid rgba(0,0,0,0.15)",
-                  background: tt.slug === slug ? color : "rgba(255,255,255,0.7)",
-                  color: tt.slug === slug ? "#fff" : "#555",
-                }}
-              >
-                {tt.name.split("（")[0]}
-              </a>
+            {/* FAQ */}
+            <h2 className="sec-title sec-profile">よくある質問</h2>
+            {faq.map((f, i) => (
+              <details key={i} style={{ marginBottom: "8px", border: "1px solid rgba(120,90,40,0.3)", borderRadius: "6px", overflow: "hidden" }}>
+                <summary style={{ padding: "12px 14px", cursor: "pointer", fontSize: "14px", fontWeight: "bold", color: "#3a2a12" }}>{f.q}</summary>
+                <div style={{ padding: "0 14px 12px", fontSize: "13.5px", color: "#5a4524", lineHeight: 1.7 }}>{f.a}</div>
+              </details>
             ))}
+
+            {/* 他のタイプ */}
+            <div style={{ marginTop: "30px", textAlign: "center" }}>
+              <p style={{ fontFamily: "Reggae One, sans-serif", fontSize: "16px", color: "#5a3a14", marginBottom: "12px" }}>他のタイプを見る</p>
+              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "6px" }}>
+                {Object.entries(TYPES16).map(([tid, tt]) => (
+                  <a
+                    key={tid}
+                    href={`/types/${tt.slug}`}
+                    style={{
+                      fontSize: "11px", padding: "4px 10px", borderRadius: "20px", textDecoration: "none",
+                      border: tt.slug === slug ? `2px solid ${color}` : "1px solid rgba(120,90,40,0.3)",
+                      background: tt.slug === slug ? color : "rgba(255,252,240,0.5)",
+                      color: tt.slug === slug ? "#fff" : "#5a4524",
+                    }}
+                  >
+                    {tt.name.split("（")[0]}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* 診断ボタン */}
+            <div className="result-foot">
+              <a className="retry-link" href="/shindan">診断を受けてみる</a>
+            </div>
           </div>
         </div>
-
-        {/* 診断ボタン */}
-        <a href="/shindan" style={S.cta}>診断を受けてみる</a>
       </div>
     </div>
   );
