@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/diagnosis`,
+      url: `${baseUrl}/shindan`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.7,

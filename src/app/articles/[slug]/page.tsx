@@ -159,21 +159,28 @@ export default async function ArticlePage(props: {
               </div>
             )}
 
-            {/* PR表記（affiliate案件がある記事のみ） */}
+            {/* PR表記（affiliate案件がある記事のみ・折りたたみ式） */}
             {hasAffiliate && (
-              <div className="bg-bg-soft border border-line rounded-lg px-4 py-3 mb-6">
-                <p className="text-[12px] text-ink-soft leading-relaxed">
-                  {isMixed
-                    ? "本記事の一部リンクはプロモーションを含みます。広告を含まないリンクと区別せず掲載していますが、紹介内容・評価はいずれも公平に記載しています。"
-                    : "本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。"}
-                  <Link
-                    href="/privacy#ads"
-                    className="text-primary hover:underline ml-1"
-                  >
-                    詳しくはプライバシーポリシーをご覧ください
-                  </Link>
-                </p>
-              </div>
+              <details className="mb-4">
+                <summary className="inline-flex items-center gap-1.5 text-[11px] text-ink-soft cursor-pointer hover:text-ink transition-colors">
+                  <span className="border border-ink-soft/30 rounded px-1.5 py-0.5 font-mono font-medium">PR</span>
+                  プロモーションを含みます
+                  <span className="text-[10px]">▼</span>
+                </summary>
+                <div className="mt-2 bg-bg-soft border border-line rounded-lg px-4 py-3">
+                  <p className="text-[12px] text-ink-soft leading-relaxed">
+                    {isMixed
+                      ? "本記事の一部リンクはプロモーションを含みます。広告を含まないリンクと区別せず掲載していますが、紹介内容・評価はいずれも公平に記載しています。"
+                      : "本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。"}
+                    <Link
+                      href="/privacy#ads"
+                      className="text-primary hover:underline ml-1"
+                    >
+                      詳しくはプライバシーポリシーをご覧ください
+                    </Link>
+                  </p>
+                </div>
+              </details>
             )}
 
             {/* リード文 */}
@@ -181,25 +188,24 @@ export default async function ArticlePage(props: {
               {article.excerpt}
             </p>
 
-            {/* NARU Point */}
-            <div className="relative bg-primary/[0.04] border border-primary/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
-              {/* 右上の折れ紙モチーフ */}
-              <div className="absolute top-0 right-0 w-10 h-10">
-                <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-accent/10 border-l-[40px] border-l-transparent" />
-                <div className="absolute top-[3px] right-[3px] w-0 h-0 border-t-[12px] border-t-white border-l-[12px] border-l-transparent" />
+            {/* NARU Point（naruPointフィールドが設定されている記事のみ表示） */}
+            {article.naruPoint && (
+              <div className="relative bg-primary/[0.04] border border-primary/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
+                <div className="absolute top-0 right-0 w-10 h-10">
+                  <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-accent/10 border-l-[40px] border-l-transparent" />
+                  <div className="absolute top-[3px] right-[3px] w-0 h-0 border-t-[12px] border-t-white border-l-[12px] border-l-transparent" />
+                </div>
+                <div className="flex items-center gap-2 mb-2.5">
+                  <span className="inline-flex items-center gap-1.5 bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z" /></svg>
+                    NARU Point
+                  </span>
+                </div>
+                <p className="text-[14px] text-ink leading-relaxed font-medium">
+                  {article.naruPoint}
+                </p>
               </div>
-              {/* ラベル */}
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="inline-flex items-center gap-1.5 bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z" /></svg>
-                  NARU Point
-                </span>
-              </div>
-              {/* excerpt を再利用 */}
-              <p className="text-[14px] text-ink leading-relaxed font-medium">
-                {article.excerpt}
-              </p>
-            </div>
+            )}
 
             {/* この記事で分かること（AIフレンドリーな要約） */}
             {article.summary.length > 0 && (
@@ -332,6 +338,19 @@ export default async function ArticlePage(props: {
                 </div>
               </section>
             )}
+
+            {/* 適職診断への導線(テンプレートレベル) */}
+            <div className="mt-10 pt-6 border-t border-line">
+              <a
+                href="/shindan"
+                className="group flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors"
+              >
+                <MiniAlto pose="idea" size={36} />
+                <span>
+                  自分がどんな仕事に向いているか、3分の適職診断で見てみませんか？
+                </span>
+              </a>
+            </div>
           </article>
 
           {/* サイドバー */}
@@ -398,7 +417,7 @@ export default async function ArticlePage(props: {
         href={
           article.category === "エージェント比較" || article.cta_agents.length > 0
             ? "/agent-diagnosis"
-            : "/diagnosis"
+            : "/shindan"
         }
         ctaFocus={article.ctaFocus || undefined}
       />

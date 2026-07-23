@@ -72,6 +72,7 @@ export type ArticleMeta = {
   cta_agents: string[];
   note_published: boolean;
   summary: string[];
+  naruPoint: string;
   resume_template: boolean;
   ctaFocus: string;
   hasCardImage: boolean;
@@ -112,6 +113,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     cta_agents: data.cta_agents ?? [],
     note_published: data.note_published ?? false,
     summary: data.summary ?? [],
+    naruPoint: data.naruPoint ?? "",
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
     hasCardImage: fs.existsSync(
@@ -203,6 +205,7 @@ export async function getArticle(slug: string): Promise<Article> {
     cta_agents: data.cta_agents ?? [],
     note_published: data.note_published ?? false,
     summary: data.summary ?? [],
+    naruPoint: data.naruPoint ?? "",
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
     hasCardImage: fs.existsSync(

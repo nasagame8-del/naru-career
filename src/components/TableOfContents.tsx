@@ -5,14 +5,13 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="relative bg-bg-soft border border-line rounded-lg p-5 mb-10">
-      {/* ミニアルト(guide) — デスクトップのみ表示 */}
-      <div className="hidden sm:block absolute -right-2 -top-6">
-        <MiniAlto pose="guide" size={56} />
-      </div>
-
-      <p className="font-bold text-sm mb-3">目次</p>
-      <ol className="space-y-1.5">
+    // PC（サイドバーあり）では非表示、モバイルのみ折りたたみで表示
+    <details className="lg:hidden relative bg-bg-soft border border-line rounded-lg p-5 mb-10">
+      <summary className="font-bold text-sm cursor-pointer list-none flex items-center justify-between">
+        <span>目次</span>
+        <span className="text-ink-soft text-xs">タップで開く</span>
+      </summary>
+      <ol className="space-y-1.5 mt-3">
         {headings.map((h, i) => (
           <li key={h.id}>
             <a
@@ -27,6 +26,6 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
           </li>
         ))}
       </ol>
-    </nav>
+    </details>
   );
 }

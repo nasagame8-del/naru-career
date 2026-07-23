@@ -259,6 +259,81 @@
       "note_published": false,
       "scheduled_publish": "2026-09-17",
       "lastReviewDate": "2026-07-14"
+    },
+    {
+      "slug": "promotion-blocked-by-boss",
+      "status": "in_progress",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-07-24",
+      "lastReviewDate": "2026-07-23",
+      "cluster": "current-job-frustration"
+    },
+    {
+      "slug": "unfair-evaluation-not-spoiled",
+      "status": "in_progress",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-07-26",
+      "lastReviewDate": "2026-07-23",
+      "cluster": "current-job-frustration"
+    },
+    {
+      "slug": "certification-exam-on-hold",
+      "status": "in_progress",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-07-29",
+      "lastReviewDate": "2026-07-23",
+      "cluster": "current-job-frustration"
+    },
+    {
+      "slug": "vaguely-want-to-quit",
+      "status": "in_progress",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-07-31",
+      "lastReviewDate": "2026-07-23",
+      "cluster": "current-job-frustration"
+    },
+    {
+      "slug": "small-trigger-to-quit",
+      "status": "in_progress",
+      "experience_filled": false,
+      "factchecked": false,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-08-02",
+      "lastReviewDate": "2026-07-23",
+      "cluster": "current-job-frustration"
     }
-  ]
+  ],
+  "note_only_articles": [
+    {
+      "slug": "quit-after-3months-controversial-01",
+      "title": "入社3ヶ月で「辞めたい」と思うのは異常なのか",
+      "article_type": "controversial",
+      "controversial_number": 1,
+      "status": "draft",
+      "experience_filled": true,
+      "factchecked": false,
+      "note_published": false,
+      "created_date": "2026-07-21",
+      "hashtags": ["#第二新卒", "#転職", "#26卒", "#新社会人", "#辞めたい"]
+    }
+  ],
+  "controversial_rotation": {
+    "frequency": "1 in 3",
+    "total_published": 0,
+    "next_controversial_after": 2,
+    "note": "通常記事2本の後に賛否両論型1本を挟む。効果測定後に1 in 2への引き上げを検討"
+  }
 }
