@@ -147,6 +147,18 @@ export default function ResultContent({
           </p>
         )}
 
+        {/* ── タイプ詳細への導線 ── */}
+        <div className="type-hub-link">
+          <a
+            href={`/types/${typeInfo.slug}`}
+            className="type-hub-btn"
+            style={{ borderColor: accentColor, color: accentColor }}
+            onClick={() => trackEvent("to_type_hub", { type: typeInfo.slug })}
+          >
+            {typeInfo.name.split("（")[0]}タイプの詳細を見る →
+          </a>
+        </div>
+
         {/* ── 向いている環境 ── */}
         <h2 className="sec-title sec-good-env">向いている環境</h2>
         <p>{typeInfo.goodEnv}</p>

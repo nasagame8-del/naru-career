@@ -626,6 +626,25 @@ a {
   opacity: 0.8;
 }
 
+.type-hub-link {
+  margin: 20px 0 6px;
+  text-align: center;
+}
+.type-hub-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid;
+  border-radius: 10px;
+  font-family: "Reggae One", sans-serif;
+  font-size: 14px;
+  background: rgba(255, 252, 240, 0.7);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.type-hub-btn:hover {
+  transform: translateY(-2px);
+  background: #fff;
+}
+
 .result-profile {
   list-style: none;
 }
