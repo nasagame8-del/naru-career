@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 type AspProgram = { name: string; key: string; status: string };
 type Asp = { name: string; status: string; updatedAt: string; programs: AspProgram[] };
 type CtaEntry = { name: string; url: string; cta_text: string; asp: string; affiliate?: boolean };
-type Keyword = { keyword: string; category: string; priority: string; status: string };
+type Keyword = { keyword: string; category?: string; priority: string; status: string; cluster?: string };
 type ScheduledArticle = { slug: string; scheduled_publish: string; status: string };
 type ReviewArticle = { slug: string; lastReviewDate: string };
 type TopPage = { path: string; views: number };
@@ -274,14 +274,17 @@ function SiteTab({ site, keywords }: { site: DashboardData["site"]; keywords: Ke
           <table className="w-full text-sm">
             <thead><tr className="border-b border-gray-100">
               <th className="text-left py-1.5 text-gray-500 font-medium text-xs">キーワード</th>
-              <th className="text-left py-1.5 text-gray-500 font-medium text-xs">カテゴリ</th>
+              <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ステータス</th>
               <th className="text-left py-1.5 text-gray-500 font-medium text-xs">優先度</th>
             </tr></thead>
             <tbody>
               {keywords.map((k) => (
                 <tr key={k.keyword} className="border-b border-gray-50">
-                  <td className="py-1.5 text-xs">{k.keyword}</td>
-                  <td className="py-1.5 text-xs text-gray-500">{k.category}</td>
+                  <td className="py-1.5 text-xs">
+                    {k.keyword}
+                    {k.cluster && <span className="ml-1.5 text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded">{k.cluster}</span>}
+                  </td>
+                  <td className="py-1.5 text-xs text-gray-500">{k.status}</td>
                   <td className="py-1.5"><PriorityBadge priority={k.priority} /></td>
                 </tr>
               ))}

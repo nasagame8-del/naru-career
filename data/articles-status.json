@@ -8,7 +8,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-07-21",
-      "lastReviewDate": "2026-07-11"
+      "lastReviewDate": "2026-07-11",
+      "keyword": "第二新卒とは 定義 年齢",
+      "priority": "high"
     },
     {
       "slug": "second-new-grad-it-career-change",
@@ -18,7 +20,9 @@
       "note_rewritten": false,
       "note_published": false,
       "scheduled_publish": "2026-07-23",
-      "lastReviewDate": "2026-07-10"
+      "lastReviewDate": "2026-07-10",
+      "keyword": "第二新卒 IT 転職",
+      "priority": "high"
     },
     {
       "slug": "what-is-web-industry",
@@ -28,7 +32,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-07-25",
-      "lastReviewDate": "2026-07-17"
+      "lastReviewDate": "2026-07-17",
+      "keyword": "Web業界 未経験 転職",
+      "priority": "medium"
     },
     {
       "slug": "it-web-industry-real-work-culture",
@@ -38,7 +44,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-07-28",
-      "lastReviewDate": "2026-07-17"
+      "lastReviewDate": "2026-07-17",
+      "keyword": "IT業界 未経験でも大丈夫?",
+      "priority": "medium"
     },
     {
       "slug": "web-industry-guide",
@@ -48,7 +56,9 @@
       "note_rewritten": false,
       "note_published": false,
       "scheduled_publish": "2026-07-30",
-      "lastReviewDate": "2026-07-05"
+      "lastReviewDate": "2026-07-05",
+      "keyword": "AIO SEO 未経験 転職",
+      "priority": "medium"
     },
     {
       "slug": "aio-seo-industry-inside",
@@ -58,7 +68,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-01",
-      "lastReviewDate": "2026-07-11"
+      "lastReviewDate": "2026-07-11",
+      "keyword": "AIO SEO 未経験 転職",
+      "priority": "medium"
     },
     {
       "slug": "it-industry-quit-myth",
@@ -68,7 +80,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-04",
-      "lastReviewDate": "2026-07-14"
+      "lastReviewDate": "2026-07-14",
+      "keyword": "IT業界 やめとけ SES やめとけ",
+      "priority": "high"
     },
     {
       "slug": "agent-comparison-2026",
@@ -78,7 +92,9 @@
       "note_rewritten": false,
       "note_published": false,
       "scheduled_publish": "2026-08-06",
-      "lastReviewDate": "2026-07-08"
+      "lastReviewDate": "2026-07-08",
+      "keyword": "第二新卒 転職エージェント 比較",
+      "priority": "high"
     },
     {
       "slug": "agent-site-vs-agent-usage",
@@ -88,7 +104,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-08",
-      "lastReviewDate": "2026-07-11"
+      "lastReviewDate": "2026-07-11",
+      "keyword": "転職サイト 転職エージェント 使い分け",
+      "priority": "high"
     },
     {
       "slug": "agent-referral-vs-self-apply",
@@ -98,7 +116,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-11",
-      "lastReviewDate": "2026-07-11"
+      "lastReviewDate": "2026-07-11",
+      "keyword": "転職エージェント 紹介 自己応募 比較",
+      "priority": "high"
     },
     {
       "slug": "agent-free-and-cancel",
@@ -108,7 +128,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-13",
-      "lastReviewDate": "2026-07-14"
+      "lastReviewDate": "2026-07-14",
+      "keyword": "転職エージェント 無料 なぜ 断る",
+      "priority": "high"
     },
     {
       "slug": "recruitment-agency-business-model",
@@ -118,7 +140,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-15",
-      "lastReviewDate": "2026-07-14"
+      "lastReviewDate": "2026-07-14",
+      "keyword": "人材紹介 仕組み",
+      "priority": "medium"
     },
     {
       "slug": "bizreach-second-new-grad",
@@ -128,7 +152,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-18",
-      "lastReviewDate": "2026-07-11"
+      "lastReviewDate": "2026-07-11",
+      "keyword": "ビズリーチ 第二新卒",
+      "priority": "high"
     },
     {
       "slug": "direct-recruiting",
@@ -198,7 +224,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-09-03",
-      "lastReviewDate": "2026-07-11"
+      "lastReviewDate": "2026-07-11",
+      "keyword": "面接 志望動機 詰まった 失敗",
+      "priority": "medium"
     },
     {
       "slug": "second-new-grad-job-change-traps",
@@ -208,7 +236,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-09-05",
-      "lastReviewDate": "2026-07-17"
+      "lastReviewDate": "2026-07-17",
+      "keyword": "第二新卒 転職 失敗",
+      "priority": "medium"
     },
     {
       "slug": "resume-writing-second-new-grad",
@@ -218,7 +248,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-09-08",
-      "lastReviewDate": "2026-07-14"
+      "lastReviewDate": "2026-07-14",
+      "keyword": "第二新卒 転職 職務経歴書 書き方",
+      "priority": "high"
     },
     {
       "slug": "second-new-grad-programming-career-change",
@@ -228,7 +260,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-09-10",
-      "lastReviewDate": "2026-07-11"
+      "lastReviewDate": "2026-07-11",
+      "keyword": "第二新卒 プログラミング 未経験",
+      "priority": "medium"
     },
     {
       "slug": "job-change-timing-3months",
@@ -238,7 +272,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-09-12",
-      "lastReviewDate": "2026-07-14"
+      "lastReviewDate": "2026-07-14",
+      "keyword": "転職タイミング いつから 第二新卒",
+      "priority": "high"
     },
     {
       "slug": "how-to-resign-experience",
@@ -248,7 +284,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-09-15",
-      "lastReviewDate": "2026-07-14"
+      "lastReviewDate": "2026-07-14",
+      "keyword": "退職 伝え方 第二新卒 有給 ボーナス",
+      "priority": "high"
     },
     {
       "slug": "second-new-grad-retirement-pay",
@@ -258,7 +296,9 @@
       "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-09-17",
-      "lastReviewDate": "2026-07-14"
+      "lastReviewDate": "2026-07-14",
+      "keyword": "第二新卒 退職金 もらえない",
+      "priority": "high"
     },
     {
       "slug": "promotion-blocked-by-boss",
@@ -269,7 +309,9 @@
       "note_published": false,
       "scheduled_publish": "2026-07-24",
       "lastReviewDate": "2026-07-23",
-      "cluster": "current-job-frustration"
+      "cluster": "current-job-frustration",
+      "keyword": "昇進できない 理由 評価 上司 主観",
+      "priority": "high"
     },
     {
       "slug": "unfair-evaluation-not-spoiled",
@@ -280,7 +322,9 @@
       "note_published": false,
       "scheduled_publish": "2026-07-26",
       "lastReviewDate": "2026-07-23",
-      "cluster": "current-job-frustration"
+      "cluster": "current-job-frustration",
+      "keyword": "評価 納得いかない 評価制度 不満",
+      "priority": "high"
     },
     {
       "slug": "certification-exam-on-hold",
@@ -291,7 +335,9 @@
       "note_published": false,
       "scheduled_publish": "2026-07-29",
       "lastReviewDate": "2026-07-23",
-      "cluster": "current-job-frustration"
+      "cluster": "current-job-frustration",
+      "keyword": "資格試験 保留 会社 認定試験 受けさせてもらえない",
+      "priority": "high"
     },
     {
       "slug": "vaguely-want-to-quit",
@@ -302,7 +348,9 @@
       "note_published": false,
       "scheduled_publish": "2026-07-31",
       "lastReviewDate": "2026-07-23",
-      "cluster": "current-job-frustration"
+      "cluster": "current-job-frustration",
+      "keyword": "なんとなく辞めたい 仕事 モヤモヤ",
+      "priority": "high"
     },
     {
       "slug": "small-trigger-to-quit",
@@ -313,7 +361,9 @@
       "note_published": false,
       "scheduled_publish": "2026-08-02",
       "lastReviewDate": "2026-07-23",
-      "cluster": "current-job-frustration"
+      "cluster": "current-job-frustration",
+      "keyword": "転職 きっかけ 決意 タイミング",
+      "priority": "high"
     }
   ],
   "note_only_articles": [
@@ -327,7 +377,13 @@
       "factchecked": false,
       "note_published": false,
       "created_date": "2026-07-21",
-      "hashtags": ["#第二新卒", "#転職", "#26卒", "#新社会人", "#辞めたい"]
+      "hashtags": [
+        "#第二新卒",
+        "#転職",
+        "#26卒",
+        "#新社会人",
+        "#辞めたい"
+      ]
     }
   ],
   "controversial_rotation": {
@@ -335,5 +391,79 @@
     "total_published": 0,
     "next_controversial_after": 2,
     "note": "通常記事2本の後に賛否両論型1本を挟む。効果測定後に1 in 2への引き上げを検討"
-  }
+  },
+  "pending_keywords": [
+    {
+      "keyword": "IT業界 職種 一覧",
+      "category": "業界解説",
+      "priority": "low",
+      "status": "planned\r"
+    },
+    {
+      "keyword": "転職エージェント 仕組み 無料 なぜ",
+      "category": "業界解説",
+      "priority": "high",
+      "status": "in_progress\r"
+    },
+    {
+      "keyword": "転職エージェントは本当に無料なのか",
+      "category": "業界解説",
+      "priority": "medium",
+      "status": "in_progress\r"
+    },
+    {
+      "keyword": "転職エージェントは断ってもいい?",
+      "category": "業界解説",
+      "priority": "medium",
+      "status": "in_progress\r"
+    },
+    {
+      "keyword": "有給休暇は転職時に消化できる?",
+      "category": "業界解説",
+      "priority": "medium",
+      "status": "planned\r"
+    },
+    {
+      "keyword": "退職金 勤続年数 3年未満",
+      "category": "業界解説",
+      "priority": "medium",
+      "status": "in_progress\r"
+    },
+    {
+      "keyword": "ボーナス もらってから 転職 タイミング",
+      "category": "業界解説",
+      "priority": "medium",
+      "status": "in_progress\r"
+    },
+    {
+      "keyword": "退職 有給消化 転職 資金",
+      "category": "業界解説",
+      "priority": "medium",
+      "status": "planned\r"
+    },
+    {
+      "keyword": "第二新卒 面接 逆質問",
+      "category": "体験談",
+      "priority": "high",
+      "status": "planned\r"
+    },
+    {
+      "keyword": "エージェント 合わない 変更",
+      "category": "体験談",
+      "priority": "medium",
+      "status": "planned\r"
+    },
+    {
+      "keyword": "転職エージェント 複数登録 メリット",
+      "category": "エージェント比較",
+      "priority": "medium",
+      "status": "planned\r"
+    },
+    {
+      "keyword": "面接の逆質問 何を聞けばいい?",
+      "category": "業界解説",
+      "priority": "medium",
+      "status": "planned\r"
+    }
+  ]
 }

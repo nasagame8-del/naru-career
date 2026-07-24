@@ -194,8 +194,23 @@ export async function GET() {
   const aspStatus = readJson(path.join(dataDir, "asp-status.json"));
   const articlesStatus = readJson(path.join(dataDir, "articles-status.json"));
   const ctaRegistry = readJson(path.join(dataDir, "cta-registry.json"));
-  const keywords = readCsv(path.join(dataDir, "keywords.csv"));
-  const pendingKeywords = keywords.filter((k) => k.status !== "published");
+
+  // キーワード一覧: articles-status.json から統合取得（keywords.csv廃止）
+  const allArticles = (articlesStatus?.articles || []) as {
+    slug: string; keyword?: string; priority?: string; status: string; cluster?: string;
+  }[];
+  const pendingFromArticles = allArticles
+    .filter((a) => a.keyword && a.status !== "factchecked" && a.status !== "published")
+    .map((a) => ({
+      keyword: a.keyword,
+      priority: a.priority || "medium",
+      status: a.status,
+      cluster: a.cluster || "",
+    }));
+  const pendingOrphan = (articlesStatus?.pending_keywords || []) as {
+    keyword: string; category?: string; priority: string; status: string;
+  }[];
+  const pendingKeywords = [...pendingFromArticles, ...pendingOrphan];
 
   const articleFiles = fs.existsSync(articlesDir)
     ? fs.readdirSync(articlesDir).filter((f) => f.endsWith(".md") && !f.endsWith("-note.md"))
