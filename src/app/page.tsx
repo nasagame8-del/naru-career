@@ -91,7 +91,7 @@ export default function Home() {
             <span className="text-[11px] text-ink-soft mt-0.5">回の転職経験</span>
           </div>
           <div className="flex flex-col items-center px-6 py-1 border-l border-line">
-            <span className="font-mono text-xl font-medium text-ink">3</span>
+            <span className="font-mono text-xl font-medium text-ink">2</span>
             <span className="text-[11px] text-ink-soft mt-0.5">社のサービス利用</span>
           </div>
           <div className="flex flex-col items-center px-6 py-1 border-l border-line">
