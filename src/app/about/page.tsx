@@ -265,6 +265,24 @@ export default function AboutPage() {
             </li>
           </ul>
 
+          {/* 調査へのご協力のお願い */}
+          <h2>調査へのご協力のお願い</h2>
+          <p>
+            NARUでは、第二新卒の転職に関する独自調査を実施しています。実際に転職活動を経験した方の声をもとに、より正確で役立つ情報を発信していくことが目的です。
+          </p>
+          <p>
+            回答は3分程度で完了します。ぜひご協力ください。
+          </p>
+          <p>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScDn4OFzXXGVQ7kOwEN8B1ctymOTfEdV5ml_21noJ6f4whYNw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              第二新卒の転職に関するアンケートに回答する →
+            </a>
+          </p>
+
           {/* よくある質問 */}
           <h2>よくある質問</h2>
         </div>

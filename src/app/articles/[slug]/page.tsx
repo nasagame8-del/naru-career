@@ -351,6 +351,21 @@ export default async function ArticlePage(props: {
                 </span>
               </a>
             </div>
+
+            {/* 独自調査への導線(テンプレートレベル) */}
+            <div className="mt-4">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScDn4OFzXXGVQ7kOwEN8B1ctymOTfEdV5ml_21noJ6f4whYNw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors"
+              >
+                <MiniAlto pose="bow" size={36} />
+                <span>
+                  第二新卒の転職に関する調査にご協力ください（3分）
+                </span>
+              </a>
+            </div>
           </article>
 
           {/* サイドバー */}
