@@ -73,6 +73,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 診断への導線バナー（PICKUP直後） */}
+      <section className="bg-bg border-b border-line">
+        <div className="max-w-5xl mx-auto px-4 py-8">
+          <Link
+            href="/shindan"
+            className="group block bg-primary rounded-xl p-6 text-center hover:bg-primary/90 transition-colors"
+          >
+            <p className="text-white/80 text-xs mb-1">
+              どの記事から読めばいいか迷った方へ
+            </p>
+            <p className="text-white font-bold text-base md:text-lg">
+              まずは2分の適職診断で、あなたに合う記事を見つけませんか？
+            </p>
+            <span className="inline-block mt-3 text-white text-sm font-medium border border-white/40 rounded-lg px-5 py-2 group-hover:bg-white/10 transition-colors">
+              RPG適職診断を始める →
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* 記事一覧セクション */}
       <section id="articles" className="max-w-5xl mx-auto px-4 pt-12 pb-16">
         <h2 className="text-xl font-bold mb-6">記事一覧</h2>

@@ -52,10 +52,10 @@ export function HeroSection() {
                 最新記事を読む
               </Link>
               <Link
-                href="/about"
-                className="inline-flex items-center px-6 py-2.5 bg-surface text-primary text-sm font-bold rounded-lg border border-primary hover:bg-primary-soft transition-colors"
+                href="/shindan"
+                className="inline-flex items-center px-6 py-2.5 bg-ink text-white text-sm font-bold rounded-lg hover:bg-ink/85 transition-colors"
               >
-                プロフィールを見る
+                2分で適職を診断する
               </Link>
             </div>
           </div>

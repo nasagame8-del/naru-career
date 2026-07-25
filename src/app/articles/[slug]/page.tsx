@@ -94,9 +94,16 @@ export default async function ArticlePage(props: {
   );
   const isMixed = hasAffiliate && hasNonAffiliate;
 
+  const categorySlugMap: Record<string, string> = {
+    "体験談": "taiken",
+    "エージェント比較": "agent-comparison",
+    "業界解説": "industry-guide",
+  };
+  const categoryHref = `/category/${categorySlugMap[article.category] || "taiken"}`;
+
   const breadcrumbs = [
     { name: "ホーム", href: "/" },
-    { name: article.category, href: `/#articles` },
+    { name: article.category, href: categoryHref },
     { name: article.title, href: `/articles/${slug}` },
   ];
 
@@ -119,7 +126,9 @@ export default async function ArticlePage(props: {
             ホーム
           </Link>
           <span>/</span>
-          <span>{article.category}</span>
+          <Link href={categoryHref} className="hover:text-primary transition-colors">
+            {article.category}
+          </Link>
           <span>/</span>
           <span className="text-ink">{article.title}</span>
         </nav>
@@ -270,13 +279,13 @@ export default async function ArticlePage(props: {
                   第二新卒の転職は、プロのサポートを受けることで成功率が大きく上がります。
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="#" className="cta-button justify-center">
-                    エージェントに無料相談する
+                  <Link href="/articles/agent-comparison-2026" className="cta-button justify-center">
+                    エージェント比較を見る
+                  </Link>
+                  <Link href="/shindan" className="cta-button justify-center" style={{ background: "var(--ink)" }}>
+                    適職診断を受けてみる
                   </Link>
                 </div>
-                <p className="text-[10px] text-ink-soft mt-3">
-                  ※提携先のサービスです
-                </p>
               </section>
             )}
 
