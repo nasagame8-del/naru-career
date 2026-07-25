@@ -230,12 +230,20 @@ export default function Home() {
 
       {/* ── Result Screen ── */}
       {screen === "result" && (
-        <section id="result-screen" className="screen">
-          <ResultContent
-            typeId={resultTypeId}
-            typeInfo={typeInfo}
-            onRetry={handleRetry}
-          />
+        <section
+          id="result-screen"
+          className="screen result-framed"
+          style={{
+            backgroundImage: `url(/shindan/frames/${typeInfo.slug}.png)`,
+          }}
+        >
+          <div className="result-framed-scroll">
+            <ResultContent
+              typeId={resultTypeId}
+              typeInfo={typeInfo}
+              onRetry={handleRetry}
+            />
+          </div>
         </section>
       )}
 
