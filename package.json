@@ -21,6 +21,7 @@
     "remark-breaks": "^4.0.0",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
+    "resend": "^6.18.0",
     "satori": "^0.26.0"
   },
   "devDependencies": {

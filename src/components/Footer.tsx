@@ -30,6 +30,9 @@ export function Footer() {
             <Link href="/privacy" className="hover:text-primary transition-colors">
               プライバシーポリシー
             </Link>
+            <Link href="/contact" className="hover:text-primary transition-colors">
+              お問い合わせ
+            </Link>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScDn4OFzXXGVQ7kOwEN8B1ctymOTfEdV5ml_21noJ6f4whYNw/viewform"
               target="_blank"
