@@ -47,27 +47,33 @@ export default async function TypeHubPage({ params }: Props) {
     },
   ];
 
-  const jsonLd = {
+  const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: `${t.name}の特徴・向いている仕事`,
     description: t.desc,
     url: `https://naru-career.com/types/${slug}`,
-    mainEntity: {
-      "@type": "FAQPage",
-      mainEntity: faq.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* ── ヒーロー ── */}
