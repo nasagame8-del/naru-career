@@ -947,29 +947,31 @@ a {
 .result-frame-char {
   position: absolute;
   top: 15%;
-  left: 9%;
-  right: 9%;
+  left: 0;
+  right: 0;
   z-index: 2;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   pointer-events: none;
 }
 
 .result-frame-char img {
-  width: 65%;
-  max-width: 220px;
+  width: 55%;
+  max-width: 200px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 0 3px var(--accent, #b06a1c), 0 3px 10px rgba(0, 0, 0, 0.4);
   pointer-events: auto;
 }
 
-/* Scrollable text area — below character, inside frame safe area */
+/* Scrollable text area — below character, inside frame safe area
+   bottom: 22% to clear lower decorations (candles/leaves ~20% from bottom) */
 .result-frame-card-content {
   position: absolute;
   top: 42%;
-  bottom: 19%;
-  left: 9%;
-  right: 9%;
+  bottom: 22%;
+  left: 7%;
+  right: 7%;
   z-index: 1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -1016,6 +1018,16 @@ a {
 
 .result-framed .result-desc {
   font-size: 12.5px;
+  text-align: left;
+}
+
+/* Body text in sections — left-aligned for readability */
+.result-framed .result-page p {
+  text-align: left;
+}
+
+.result-framed .result-profile {
+  text-align: left;
 }
 
 .result-framed .sec-title {
@@ -1038,6 +1050,9 @@ a {
   }
   .result-frame-card-content {
     top: 44%;
+    bottom: 23%;
+    left: 6%;
+    right: 6%;
   }
   .result-framed .result-page {
     font-size: 12px;
