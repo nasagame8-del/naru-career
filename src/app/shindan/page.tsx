@@ -5,7 +5,6 @@ import {
   QUESTIONS,
   TYPE_MAP,
   TYPES16,
-  TYPE_COLORS,
   BATTLES,
   HITS_TO_DEFEAT,
   BATTLE_MS,
@@ -231,34 +230,12 @@ export default function Home() {
 
       {/* ── Result Screen ── */}
       {screen === "result" && (
-        <section
-          id="result-screen"
-          className="screen result-framed"
-          style={{ "--accent": TYPE_COLORS[resultTypeId] || "#b06a1c" } as React.CSSProperties}
-        >
-          <div className="result-frame-card">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="result-frame-card-img"
-              src={`/shindan/frames/${typeInfo.slug}.png`}
-              alt=""
-              aria-hidden="true"
-            />
-            <div className="result-frame-char">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`/shindan/types/type${resultTypeId}.png`}
-                alt={typeInfo.name}
-              />
-            </div>
-            <div className="result-frame-card-content">
-              <ResultContent
-                typeId={resultTypeId}
-                typeInfo={typeInfo}
-                onRetry={handleRetry}
-              />
-            </div>
-          </div>
+        <section id="result-screen" className="screen">
+          <ResultContent
+            typeId={resultTypeId}
+            typeInfo={typeInfo}
+            onRetry={handleRetry}
+          />
         </section>
       )}
 
