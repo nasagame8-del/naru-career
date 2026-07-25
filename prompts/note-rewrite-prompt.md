@@ -29,3 +29,10 @@
 
 ## 公開タイミング
 自社サイトへの公開から1〜2日後に公開すること（インデックス優先権を自社サイトに持たせるため）
+
+## 内部リンク追加メモ（記事公開後に追加すること）
+
+- casual-interview → vaguely-want-to-quit（「なんとなく辞めたい」が公開されたら追加）
+- certification-exam-on-hold → job-type-employment, skill-based-hiring
+- vaguely-want-to-quit → casual-interview, what-is-second-new-grad
+- small-trigger-to-quit → direct-recruiting, casual-interview
