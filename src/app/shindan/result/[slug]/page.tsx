@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { TYPES16, SLUG_TO_ID, ALL_SLUGS } from "../../_lib/data";
+import { TYPES16, TYPE_COLORS, SLUG_TO_ID, ALL_SLUGS } from "../../_lib/data";
 import ResultContent from "../../_components/ResultContent";
 
 type Props = {
@@ -38,10 +38,12 @@ export default async function ResultPage({ params }: Props) {
   const id = SLUG_TO_ID[slug];
   if (id === undefined) notFound();
   const typeInfo = TYPES16[id];
+  const accentColor = TYPE_COLORS[id] || "#b06a1c";
 
   return (
-    <div className="result-framed">
+    <div className="result-framed" style={{ "--accent": accentColor } as React.CSSProperties}>
       <div className="result-frame-card">
+        {/* Frame decoration image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="result-frame-card-img"
@@ -49,6 +51,17 @@ export default async function ResultPage({ params }: Props) {
           alt=""
           aria-hidden="true"
         />
+
+        {/* Character card — fixed in upper portion, does NOT scroll */}
+        <div className="result-frame-char">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/shindan/types/type${id}.png`}
+            alt={typeInfo.name}
+          />
+        </div>
+
+        {/* Scrollable text content — below character */}
         <div className="result-frame-card-content">
           <ResultContent typeId={id} typeInfo={typeInfo} />
         </div>
