@@ -917,40 +917,46 @@ a {
 .result-framed {
   position: fixed;
   inset: 0;
-  background: url("/shindan/title-bg.png") center / cover fixed;
+  background: url("/shindan/title-bg.png") center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.result-framed-scroll {
-  position: absolute;
-  inset: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-/* Frame card — decorative border image as a centered card */
+/* Frame card — sized to fit viewport, maintains frame aspect ratio */
 .result-frame-card {
   position: relative;
-  width: min(94vw, 420px);
-  margin: 20px auto;
-  min-height: 80vh;
+  /* Width constrained by viewport width OR height (keep frame aspect ~970:1720) */
+  width: min(92vw, 400px, calc(94vh * 0.564));
+  aspect-ratio: 970 / 1720;
+  flex-shrink: 0;
 }
 
-/* The frame image, pinned behind content, full width of card */
+/* Frame image fills the card */
 .result-frame-card-img {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: fill;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Content inside the frame, with padding to avoid decorations */
+/* Scrollable content area — clipped to the frame's inner white space */
 .result-frame-card-content {
-  position: relative;
+  position: absolute;
+  /* Percentages matching the frame's inner safe area */
+  top: 14%;
+  bottom: 13%;
+  left: 8%;
+  right: 8%;
   z-index: 1;
-  padding: 18% 10% 20% 10%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Hide scrollbar for cleaner look */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 106, 46, 0.3) transparent;
 }
 
 /* Override result-page inside framed layout */
@@ -967,20 +973,51 @@ a {
   padding: 0;
   color: #3a2a12;
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.result-framed .result-hero {
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  padding-bottom: 12px;
+}
+
+.result-framed .result-char {
+  flex: none;
+  width: 70%;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.result-framed .result-title {
+  font-size: 20px;
+}
+
+.result-framed .sec-title {
+  font-size: 16px;
+  margin: 20px 0 8px;
+}
+
+.result-framed .share-section {
+  margin: 14px 0 6px;
+}
+
+.result-framed .share-btn {
+  padding: 10px 16px;
+  font-size: 12px;
 }
 
 @media (max-width: 480px) {
-  .result-frame-card {
-    width: min(96vw, 380px);
-    margin: 12px auto;
-  }
-  .result-frame-card-content {
-    padding: 22% 8% 26% 8%;
-  }
   .result-framed .result-page {
-    font-size: 13.5px;
+    font-size: 12.5px;
+  }
+  .result-framed .result-title {
+    font-size: 18px;
+  }
+  .result-framed .sec-title {
+    font-size: 14px;
   }
 }
 

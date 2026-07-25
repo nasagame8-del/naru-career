@@ -231,22 +231,20 @@ export default function Home() {
       {/* ── Result Screen ── */}
       {screen === "result" && (
         <section id="result-screen" className="screen result-framed">
-          <div className="result-framed-scroll">
-            <div className="result-frame-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="result-frame-card-img"
-                src={`/shindan/frames/${typeInfo.slug}.png`}
-                alt=""
-                aria-hidden="true"
+          <div className="result-frame-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="result-frame-card-img"
+              src={`/shindan/frames/${typeInfo.slug}.png`}
+              alt=""
+              aria-hidden="true"
+            />
+            <div className="result-frame-card-content">
+              <ResultContent
+                typeId={resultTypeId}
+                typeInfo={typeInfo}
+                onRetry={handleRetry}
               />
-              <div className="result-frame-card-content">
-                <ResultContent
-                  typeId={resultTypeId}
-                  typeInfo={typeInfo}
-                  onRetry={handleRetry}
-                />
-              </div>
             </div>
           </div>
         </section>

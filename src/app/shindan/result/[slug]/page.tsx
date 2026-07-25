@@ -41,18 +41,16 @@ export default async function ResultPage({ params }: Props) {
 
   return (
     <div className="result-framed">
-      <div className="result-framed-scroll">
-        <div className="result-frame-card">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="result-frame-card-img"
-            src={`/shindan/frames/${slug}.png`}
-            alt=""
-            aria-hidden="true"
-          />
-          <div className="result-frame-card-content">
-            <ResultContent typeId={id} typeInfo={typeInfo} />
-          </div>
+      <div className="result-frame-card">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="result-frame-card-img"
+          src={`/shindan/frames/${slug}.png`}
+          alt=""
+          aria-hidden="true"
+        />
+        <div className="result-frame-card-content">
+          <ResultContent typeId={id} typeInfo={typeInfo} />
         </div>
       </div>
     </div>
