@@ -917,11 +917,7 @@ a {
 .result-framed {
   position: fixed;
   inset: 0;
-  background-color: #f5efe6;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  background-attachment: fixed;
+  background: url("/shindan/title-bg.png") center / cover fixed;
 }
 
 .result-framed-scroll {
@@ -929,6 +925,32 @@ a {
   inset: 0;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+/* Frame card — decorative border image as a centered card */
+.result-frame-card {
+  position: relative;
+  width: min(94vw, 420px);
+  margin: 20px auto;
+  min-height: 80vh;
+}
+
+/* The frame image, pinned behind content, full width of card */
+.result-frame-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content inside the frame, with padding to avoid decorations */
+.result-frame-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 18% 10% 20% 10%;
 }
 
 /* Override result-page inside framed layout */
@@ -940,20 +962,25 @@ a {
   background: none;
   border: none;
   box-shadow: none;
-  width: min(82vw, 480px);
-  margin: 0 auto;
-  padding: 18% 0 22% 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   color: #3a2a12;
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
 @media (max-width: 480px) {
+  .result-frame-card {
+    width: min(96vw, 380px);
+    margin: 12px auto;
+  }
+  .result-frame-card-content {
+    padding: 22% 8% 26% 8%;
+  }
   .result-framed .result-page {
-    width: min(78vw, 400px);
-    padding-top: 24%;
-    padding-bottom: 28%;
+    font-size: 13.5px;
   }
 }
 

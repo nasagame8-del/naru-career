@@ -40,14 +40,20 @@ export default async function ResultPage({ params }: Props) {
   const typeInfo = TYPES16[id];
 
   return (
-    <div
-      className="result-framed"
-      style={{
-        backgroundImage: `url(/shindan/frames/${slug}.png)`,
-      }}
-    >
+    <div className="result-framed">
       <div className="result-framed-scroll">
-        <ResultContent typeId={id} typeInfo={typeInfo} />
+        <div className="result-frame-card">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="result-frame-card-img"
+            src={`/shindan/frames/${slug}.png`}
+            alt=""
+            aria-hidden="true"
+          />
+          <div className="result-frame-card-content">
+            <ResultContent typeId={id} typeInfo={typeInfo} />
+          </div>
+        </div>
       </div>
     </div>
   );
