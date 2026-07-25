@@ -60,6 +60,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/guides/second-new-grad-complete-guide`,
+      lastModified: today,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     ...categoryEntries,
     ...articleEntries,
   ];

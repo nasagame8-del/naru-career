@@ -12,6 +12,9 @@ export function Footer() {
             </p>
           </div>
           <nav className="flex flex-wrap gap-6 text-sm text-ink-soft">
+            <Link href="/guides/second-new-grad-complete-guide" className="hover:text-primary transition-colors">
+              転職完全ガイド
+            </Link>
             <Link href="/shindan" className="hover:text-primary transition-colors">
               RPG適職診断
             </Link>
