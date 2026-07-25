@@ -917,7 +917,8 @@ a {
 .result-framed {
   position: fixed;
   inset: 0;
-  background: url("/shindan/title-bg.png") center / cover;
+  background: url("/shindan/title-bg.png") center / 120% auto no-repeat;
+  background-color: #1a1a2e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -943,18 +944,19 @@ a {
   z-index: 0;
 }
 
-/* Scrollable content area — clipped to the frame's inner white space */
+/* Scrollable content area — clipped to the frame's inner safe area.
+   top: below upper decoration (circle icon + branches)
+   bottom: above lower decoration (candles / chess pieces + branches)
+   left/right: inside vertical diamond ornaments */
 .result-frame-card-content {
   position: absolute;
-  /* Percentages matching the frame's inner safe area */
-  top: 14%;
-  bottom: 13%;
-  left: 8%;
-  right: 8%;
+  top: 15%;
+  bottom: 19%;
+  left: 9%;
+  right: 9%;
   z-index: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  /* Hide scrollbar for cleaner look */
   scrollbar-width: thin;
   scrollbar-color: rgba(138, 106, 46, 0.3) transparent;
 }
