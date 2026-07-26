@@ -138,13 +138,13 @@ export default async function ArticlePage(props: {
 
         <div className="flex gap-10">
           {/* 本文エリア */}
-          <article className="flex-1 max-w-[680px]">
+          <article className="flex-1 max-w-[700px]">
             <span
               className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${accent.tag}`}
             >
               {article.category}
             </span>
-            <h1 className="text-2xl md:text-3xl font-semibold leading-tight mt-3 mb-4">
+            <h1 className="text-2xl md:text-[32px] font-semibold leading-tight mt-3 mb-5">
               {article.title}
             </h1>
             <div className="flex items-center justify-between mb-6">

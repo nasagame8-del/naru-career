@@ -109,11 +109,15 @@ h1 {
 }
 
 /* Article prose styles */
+.prose {
+  line-height: 1.85;
+}
+
 .prose h2 {
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   font-weight: 700;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
   padding-left: 0.875rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--line);
@@ -123,8 +127,8 @@ h1 {
 .prose h3 {
   font-size: 1.25rem;
   font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 /* 画像 */
@@ -136,16 +140,16 @@ h1 {
 }
 
 .prose p {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .prose ul, .prose ol {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
 
 .prose li {
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.5rem;
 }
 
 /* 太字 */
