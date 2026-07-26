@@ -35,8 +35,8 @@ export interface SCData {
   current28d?: SCPeriodData;
   previous28d?: SCPeriodData;
   // ダッシュボード用の導出データ
-  rewriteCandidates?: SCRow[];
-  lowCtrPages?: SCRow[];
+  rewriteCandidates?: (SCRow & { priority: "high" | "medium" | "low" })[];
+  lowCtrPages?: (SCRow & { priority: "high" | "medium" | "low" })[];
   surgingPages?: { page: string; current: number; previous: number; changePercent: number; isNew: boolean }[];
   newlyVisible?: { page: string; impressions: number }[];
   actionItems?: string[];
@@ -142,15 +142,30 @@ function deriveInsights(data: {
 }): Pick<SCData, "rewriteCandidates" | "lowCtrPages" | "surgingPages" | "newlyVisible" | "actionItems"> {
   const { current7d, previous7d, current28d } = data;
 
-  // リライト候補: 平均順位11〜20位、表示回数10回以上
-  const rewriteCandidates = current28d.topPages.filter(
-    (p) => p.position >= 11 && p.position <= 20 && p.impressions >= 10
-  );
+  // リライト候補: 平均順位11〜20位、表示回数10回以上 + 優先度
+  const priorityOrder = { high: 0, medium: 1, low: 2 };
+  const rewriteCandidates = current28d.topPages
+    .filter((p) => p.position >= 11 && p.position <= 20 && p.impressions >= 10)
+    .map((p) => {
+      const priority: "high" | "medium" | "low" =
+        p.position <= 15 && p.impressions >= 20 ? "high"
+        : p.position <= 20 && p.impressions >= 10 ? "medium"
+        : "low";
+      return { ...p, priority };
+    })
+    .sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
-  // CTRが低い記事: 表示20回以上、順位1〜20位、CTR 2%未満
-  const lowCtrPages = current28d.topPages.filter(
-    (p) => p.impressions >= 20 && p.position >= 1 && p.position <= 20 && p.ctr < 0.02
-  );
+  // CTRが低い記事: 表示20回以上、順位1〜20位、CTR 2%未満 + 優先度
+  const lowCtrPages = current28d.topPages
+    .filter((p) => p.impressions >= 20 && p.position >= 1 && p.position <= 20 && p.ctr < 0.02)
+    .map((p) => {
+      const priority: "high" | "medium" | "low" =
+        p.position <= 10 && p.ctr < 0.01 ? "high"
+        : p.position <= 20 && p.ctr < 0.02 ? "medium"
+        : "low";
+      return { ...p, priority };
+    })
+    .sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
   // 表示急増記事
   const prevPageMap = new Map(previous7d.topPages.map((p) => [p.keys[0], p.impressions]));

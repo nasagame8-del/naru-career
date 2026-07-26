@@ -32,8 +32,8 @@ type GSCData = {
   previous7d?: SCPeriod;
   current28d?: SCPeriod;
   previous28d?: SCPeriod;
-  rewriteCandidates?: SCRow[];
-  lowCtrPages?: SCRow[];
+  rewriteCandidates?: (SCRow & { priority: "high" | "medium" | "low" })[];
+  lowCtrPages?: (SCRow & { priority: "high" | "medium" | "low" })[];
   surgingPages?: SurgingPage[];
   newlyVisible?: NewlyVisible[];
   actionItems?: string[];
@@ -60,6 +60,38 @@ const TABS: { id: TabId; label: string }[] = [
   { id: "asp", label: "ASP管理" },
   { id: "cta", label: "CTA Registry" },
 ];
+
+// ── 優先度バッジ ──
+const PRIORITY_STYLES: Record<string, string> = {
+  high: "bg-red-50 text-red-700 border-red-200",
+  medium: "bg-amber-50 text-amber-700 border-amber-200",
+  low: "bg-gray-100 text-gray-500 border-gray-200",
+};
+const PRIORITY_LABELS: Record<string, string> = { high: "高", medium: "中", low: "低" };
+
+function PriorityLabel({ priority }: { priority: "high" | "medium" | "low" }) {
+  return (
+    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${PRIORITY_STYLES[priority]}`}>
+      {PRIORITY_LABELS[priority]}
+    </span>
+  );
+}
+
+function PageLink({ url }: { url: string }) {
+  let path = url;
+  let slug = "";
+  try {
+    path = new URL(url).pathname;
+    const m = path.match(/\/articles\/(.+)/);
+    if (m) slug = m[1];
+  } catch { /* keep as-is */ }
+  return (
+    <div>
+      <a href={url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{path}</a>
+      {slug && <div className="text-[10px] text-gray-400 mt-0.5 select-all">content/articles/{slug}.md</div>}
+    </div>
+  );
+}
 
 const STATUS_COLORS: Record<string, string> = {
   approved: "bg-green-100 text-green-800",
@@ -294,22 +326,20 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
                 <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">リライト候補（順位11〜20位・表示10回以上）</h4>
                 <table className="w-full text-sm mb-4">
                   <thead><tr className="border-b border-gray-100">
+                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
                     <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
                     <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
                     <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
                   </tr></thead>
                   <tbody>
-                    {gsc.rewriteCandidates.map((p, i) => {
-                      let path = p.keys[0];
-                      try { path = new URL(p.keys[0]).pathname; } catch { /* keep */ }
-                      return (
-                        <tr key={i} className="border-b border-gray-50">
-                          <td className="py-1.5 text-xs truncate max-w-[200px]">{path}</td>
-                          <td className="py-1.5 text-right text-xs">{p.position.toFixed(1)}</td>
-                          <td className="py-1.5 text-right text-xs">{p.impressions}</td>
-                        </tr>
-                      );
-                    })}
+                    {gsc.rewriteCandidates.map((p, i) => (
+                      <tr key={i} className="border-b border-gray-50">
+                        <td className="py-2"><PriorityLabel priority={p.priority} /></td>
+                        <td className="py-2"><PageLink url={p.keys[0]} /></td>
+                        <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
+                        <td className="py-2 text-right text-xs">{p.impressions}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </>
@@ -322,24 +352,22 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
                 <p className="text-[10px] text-gray-400 mb-2">タイトルやディスクリプション改善の余地がある可能性があります</p>
                 <table className="w-full text-sm mb-4">
                   <thead><tr className="border-b border-gray-100">
+                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
                     <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
                     <th className="text-right py-1.5 text-gray-500 font-medium text-xs">CTR</th>
                     <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
                     <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
                   </tr></thead>
                   <tbody>
-                    {gsc.lowCtrPages.map((p, i) => {
-                      let path = p.keys[0];
-                      try { path = new URL(p.keys[0]).pathname; } catch { /* keep */ }
-                      return (
-                        <tr key={i} className="border-b border-gray-50">
-                          <td className="py-1.5 text-xs truncate max-w-[200px]">{path}</td>
-                          <td className="py-1.5 text-right text-xs">{(p.ctr * 100).toFixed(1)}%</td>
-                          <td className="py-1.5 text-right text-xs">{p.impressions}</td>
-                          <td className="py-1.5 text-right text-xs">{p.position.toFixed(1)}</td>
-                        </tr>
-                      );
-                    })}
+                    {gsc.lowCtrPages.map((p, i) => (
+                      <tr key={i} className="border-b border-gray-50">
+                        <td className="py-2"><PriorityLabel priority={p.priority} /></td>
+                        <td className="py-2"><PageLink url={p.keys[0]} /></td>
+                        <td className="py-2 text-right text-xs">{(p.ctr * 100).toFixed(1)}%</td>
+                        <td className="py-2 text-right text-xs">{p.impressions}</td>
+                        <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </>
@@ -357,18 +385,14 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
                     <th className="text-right py-1.5 text-gray-500 font-medium text-xs">変化</th>
                   </tr></thead>
                   <tbody>
-                    {gsc.surgingPages.map((p, i) => {
-                      let path = p.page;
-                      try { path = new URL(p.page).pathname; } catch { /* keep */ }
-                      return (
-                        <tr key={i} className="border-b border-gray-50">
-                          <td className="py-1.5 text-xs truncate max-w-[200px]">{path}</td>
-                          <td className="py-1.5 text-right text-xs font-bold">{p.current}</td>
-                          <td className="py-1.5 text-right text-xs">{p.previous}</td>
-                          <td className="py-1.5 text-right text-xs text-green-600">{p.isNew ? "新規表示" : `+${p.changePercent.toFixed(0)}%`}</td>
-                        </tr>
-                      );
-                    })}
+                    {gsc.surgingPages.map((p, i) => (
+                      <tr key={i} className="border-b border-gray-50">
+                        <td className="py-2"><PageLink url={p.page} /></td>
+                        <td className="py-2 text-right text-xs font-bold">{p.current}</td>
+                        <td className="py-2 text-right text-xs">{p.previous}</td>
+                        <td className="py-2 text-right text-xs text-green-600">{p.isNew ? "新規表示" : `+${p.changePercent.toFixed(0)}%`}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </>
@@ -379,12 +403,13 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
               <>
                 <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Googleに新しく認識された可能性のある記事</h4>
                 <p className="text-[10px] text-gray-400 mb-2">前28日間の表示が0で、直近7日間に表示が発生。検索結果に表示され始めた可能性があります</p>
-                <ul className="space-y-1">
-                  {gsc.newlyVisible.map((p, i) => {
-                    let path = p.page;
-                    try { path = new URL(p.page).pathname; } catch { /* keep */ }
-                    return <li key={i} className="text-xs text-gray-600">{path}（表示 {p.impressions}回）</li>;
-                  })}
+                <ul className="space-y-2">
+                  {gsc.newlyVisible.map((p, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <PageLink url={p.page} />
+                      <span className="text-xs text-gray-500">表示 {p.impressions}回</span>
+                    </li>
+                  ))}
                 </ul>
               </>
             )}
