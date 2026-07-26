@@ -60,6 +60,12 @@ export type FAQ = {
   answer: string;
 };
 
+export type InlineFAQ = {
+  heading: string;
+  question: string;
+  answer: string;
+};
+
 export type ArticleMeta = {
   slug: string;
   title: string;
@@ -73,6 +79,8 @@ export type ArticleMeta = {
   note_published: boolean;
   summary: string[];
   naruPoint: string;
+  inlineFaq: InlineFAQ[];
+  updateHistory: { date: string; description: string }[];
   resume_template: boolean;
   ctaFocus: string;
   hasCardImage: boolean;
@@ -114,6 +122,8 @@ export function getArticleMeta(slug: string): ArticleMeta {
     note_published: data.note_published ?? false,
     summary: data.summary ?? [],
     naruPoint: data.naruPoint ?? "",
+    inlineFaq: data.inlineFaq ?? [],
+    updateHistory: data.updateHistory ?? [],
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
     hasCardImage: fs.existsSync(
@@ -190,6 +200,21 @@ export async function getArticle(slug: string): Promise<Article> {
     return `<h2 id="${id}">${text}</h2>`;
   });
 
+  // InlineFAQ: 各H2の直後に関連する一問一答を挿入
+  const inlineFaqs: InlineFAQ[] = data.inlineFaq ?? [];
+  if (inlineFaqs.length > 0) {
+    for (const ifaq of inlineFaqs) {
+      // headingの部分一致でH2を特定（見出しテキストを含むh2タグを探す）
+      const escapedHeading = ifaq.heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const h2Regex = new RegExp(
+        `(<h2[^>]*>(?:[^<]*${escapedHeading}[^<]*)</h2>)`,
+        "i"
+      );
+      const faqHtml = `<div class="inline-faq"><p class="inline-faq-q"><strong>Q. ${ifaq.question}</strong></p><p class="inline-faq-a">${ifaq.answer}</p></div>`;
+      htmlStr = htmlStr.replace(h2Regex, `$1${faqHtml}`);
+    }
+  }
+
   // 専門用語の初出箇所に <dfn>（DefinedTermマイクロデータ付き）を付与
   htmlStr = annotateGlossaryTerms(htmlStr);
 
@@ -206,6 +231,8 @@ export async function getArticle(slug: string): Promise<Article> {
     note_published: data.note_published ?? false,
     summary: data.summary ?? [],
     naruPoint: data.naruPoint ?? "",
+    inlineFaq: data.inlineFaq ?? [],
+    updateHistory: data.updateHistory ?? [],
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
     hasCardImage: fs.existsSync(

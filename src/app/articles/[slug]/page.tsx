@@ -116,7 +116,10 @@ export default async function ArticlePage(props: {
   return (
     <>
       <ArticleJsonLd article={article} />
-      <FAQJsonLd faqs={article.faq} />
+      <FAQJsonLd faqs={[
+        ...article.faq,
+        ...article.inlineFaq.map((ifaq) => ({ question: ifaq.question, answer: ifaq.answer })),
+      ]} />
       <BreadcrumbJsonLd items={breadcrumbs} />
 
       <div className="max-w-5xl mx-auto px-4 py-8">
@@ -375,6 +378,21 @@ export default async function ArticlePage(props: {
                 </span>
               </a>
             </div>
+
+            {/* 更新履歴（updateHistoryがある記事のみ） */}
+            {article.updateHistory.length > 0 && (
+              <div className="mt-10 pt-6 border-t border-line">
+                <p className="font-bold text-sm mb-3 text-ink-soft">更新履歴</p>
+                <ul className="text-xs text-ink-soft space-y-1.5">
+                  {article.updateHistory.map((entry, i) => (
+                    <li key={i} className="flex gap-2">
+                      <time className="font-mono shrink-0">{entry.date}</time>
+                      <span>{entry.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </article>
 
           {/* サイドバー */}
