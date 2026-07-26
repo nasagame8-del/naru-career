@@ -50,13 +50,30 @@ type DashboardData = {
   keywords: Keyword[];
   ga4: GA4Data;
   gsc: GSCData;
+  aioChecklist: AIOCheckItem[];
+  internalLinks: { slug: string; outgoing: number; incoming: number }[];
 };
 
-type TabId = "performance" | "site" | "asp" | "cta";
+type AIOCheckItem = {
+  slug: string;
+  title: string;
+  checks: {
+    person: boolean;
+    faq: boolean;
+    experience: boolean;
+    comparisonTable: boolean;
+    authoritativeSource: boolean;
+    image: boolean;
+    updateHistory: boolean;
+  };
+};
+
+type TabId = "performance" | "site" | "asp" | "cta" | "aio";
 
 const TABS: { id: TabId; label: string }[] = [
   { id: "performance", label: "パフォーマンス" },
   { id: "site", label: "サイト管理" },
+  { id: "aio", label: "AIOチェック" },
   { id: "asp", label: "ASP管理" },
   { id: "cta", label: "CTA Registry" },
 ];
@@ -161,6 +178,12 @@ export function DashboardClient() {
         {tab === "site" && <SiteTab site={data.site} keywords={data.keywords} />}
         {tab === "asp" && <AspTab asps={data.asp?.asps || []} />}
         {tab === "cta" && <CtaTab cta={data.cta} />}
+        {tab === "aio" && (
+          <>
+            <AIOCheckTab items={data.aioChecklist || []} />
+            <InternalLinksSection links={data.internalLinks || []} />
+          </>
+        )}
       </main>
 
       <footer className="border-t border-gray-200 py-3 text-center text-[10px] text-gray-400">
@@ -595,6 +618,117 @@ function Unconfigured({ message, vars }: { message: string; vars: string[] }) {
   );
 }
 
+// ── Internal Links Section ──
+function InternalLinksSection({ links }: { links: { slug: string; outgoing: number; incoming: number }[] }) {
+  const candidates = links.filter((l) => l.outgoing < 2 || l.incoming < 2);
+  const sorted = [...candidates].sort((a, b) => (a.outgoing + a.incoming) - (b.outgoing + b.incoming));
+
+  return (
+    <div className="space-y-4 mt-8">
+      <h2 className="text-sm font-bold">内部リンク状況（リンク不足候補: {candidates.length}件）</h2>
+      <div className="overflow-x-auto">
+        <table className="w-full text-[11px] border-collapse">
+          <thead>
+            <tr className="bg-gray-50 border-b">
+              <th className="text-left px-2 py-1.5 font-medium">記事</th>
+              <th className="px-2 py-1.5 font-medium text-center">出リンク</th>
+              <th className="px-2 py-1.5 font-medium text-center">入リンク</th>
+              <th className="px-2 py-1.5 font-medium text-center">状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((l) => (
+              <tr key={l.slug} className="border-b">
+                <td className="px-2 py-1.5 font-mono text-[10px]">{l.slug}</td>
+                <td className="text-center px-2 py-1.5">
+                  <span className={l.outgoing < 2 ? "text-red-500 font-bold" : ""}>{l.outgoing}</span>
+                </td>
+                <td className="text-center px-2 py-1.5">
+                  <span className={l.incoming < 2 ? "text-red-500 font-bold" : ""}>{l.incoming}</span>
+                </td>
+                <td className="text-center px-2 py-1.5">
+                  {l.outgoing < 2 && l.incoming < 2
+                    ? <span className="text-[10px] bg-red-50 text-red-600 px-1.5 py-0.5 rounded">要改善</span>
+                    : <span className="text-[10px] bg-amber-50 text-amber-600 px-1.5 py-0.5 rounded">一部不足</span>
+                  }
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 function ErrorMsg({ message }: { message: string }) {
   return <div className="bg-red-50 border border-red-200 rounded-lg p-3"><p className="text-xs text-red-700 break-all">{message}</p></div>;
+}
+
+// ── AIO Check Tab ──
+const AIO_LABELS: { key: keyof AIOCheckItem["checks"]; label: string }[] = [
+  { key: "person", label: "著者情報" },
+  { key: "faq", label: "FAQ" },
+  { key: "experience", label: "体験談" },
+  { key: "comparisonTable", label: "比較表" },
+  { key: "authoritativeSource", label: "権威ソース" },
+  { key: "image", label: "画像" },
+  { key: "updateHistory", label: "更新履歴" },
+];
+
+function AIOCheckTab({ items }: { items: AIOCheckItem[] }) {
+  const [sortByMissing, setSortByMissing] = useState(false);
+
+  const sorted = [...items].sort((a, b) => {
+    if (!sortByMissing) return a.slug.localeCompare(b.slug);
+    const countMissing = (c: AIOCheckItem["checks"]) =>
+      AIO_LABELS.filter((l) => !c[l.key]).length;
+    return countMissing(b.checks) - countMissing(a.checks);
+  });
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-sm font-bold">AIO観点チェックリスト（{items.length}記事）</h2>
+        <button
+          onClick={() => setSortByMissing(!sortByMissing)}
+          className="text-[11px] px-2 py-1 border rounded hover:bg-gray-50"
+        >
+          {sortByMissing ? "slug順に戻す" : "×が多い順に並べる"}
+        </button>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-[11px] border-collapse">
+          <thead>
+            <tr className="bg-gray-50 border-b">
+              <th className="text-left px-2 py-1.5 font-medium">記事</th>
+              {AIO_LABELS.map((l) => (
+                <th key={l.key} className="px-1.5 py-1.5 font-medium text-center whitespace-nowrap">{l.label}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((item) => {
+              const missingCount = AIO_LABELS.filter((l) => !item.checks[l.key]).length;
+              return (
+                <tr key={item.slug} className={`border-b ${missingCount >= 3 ? "bg-red-50/50" : ""}`}>
+                  <td className="px-2 py-1.5 max-w-[200px] truncate" title={item.title}>
+                    <span className="font-mono text-[10px] text-gray-400">{item.slug}</span>
+                  </td>
+                  {AIO_LABELS.map((l) => (
+                    <td key={l.key} className="text-center px-1.5 py-1.5">
+                      {item.checks[l.key]
+                        ? <span className="text-green-600">○</span>
+                        : <span className="text-red-400">×</span>
+                      }
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }

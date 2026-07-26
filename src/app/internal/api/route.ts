@@ -152,6 +152,55 @@ export async function GET() {
   const aspApproved = aspStatus?.asps?.filter((a: { status: string }) => a.status === "approved").length || 0;
   const aspPending = aspStatus?.asps?.filter((a: { status: string }) => a.status === "pending").length || 0;
 
+  // AIOチェックリスト
+  const aioChecklist = articleFiles.map((f) => {
+    const slug = f.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(articlesDir, f), "utf-8");
+    const { data, content } = matter(raw);
+    const hasPerson = true; // Person構造化データは全記事共通テンプレートで出力
+    const hasFaq = (data.faq?.length || 0) > 0;
+    const hasExperience = /experience-notes|実体験|僕[はがの]|前職/i.test(content);
+    const hasComparisonTable = /comparison-table|ComparisonTable|COMPARISON_TABLE/i.test(content) || (data.widgets?.some((w: { type: string }) => w.type === "comparison-table") ?? false);
+    const hasAuthoritativeSource = /厚生労働省|経済産業省|出典|参考：|参照：|調査[）)]/i.test(content);
+    const hasImage = fs.existsSync(path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`));
+    const hasUpdateHistory = (data.updateHistory?.length || 0) > 0;
+    return {
+      slug,
+      title: data.title || slug,
+      checks: {
+        person: hasPerson,
+        faq: hasFaq,
+        experience: hasExperience,
+        comparisonTable: hasComparisonTable,
+        authoritativeSource: hasAuthoritativeSource,
+        image: hasImage,
+        updateHistory: hasUpdateHistory,
+      },
+    };
+  });
+
+  // 内部リンク分析
+  const internalLinks: { slug: string; outgoing: number; incoming: number }[] = [];
+  const linkMap: Record<string, string[]> = {};
+  for (const f of articleFiles) {
+    const slug = f.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(articlesDir, f), "utf-8");
+    const { content: body } = matter(raw);
+    const outLinks: string[] = [];
+    const linkRegex = /\[.*?\]\(\/articles\/([\w-]+)\)/g;
+    let m;
+    while ((m = linkRegex.exec(body)) !== null) {
+      if (m[1] !== slug) outLinks.push(m[1]);
+    }
+    linkMap[slug] = [...new Set(outLinks)];
+  }
+  for (const f of articleFiles) {
+    const slug = f.replace(/\.md$/, "");
+    const outgoing = linkMap[slug]?.length || 0;
+    const incoming = Object.values(linkMap).filter((links) => links.includes(slug)).length;
+    internalLinks.push({ slug, outgoing, incoming });
+  }
+
   // GA4 & GSC（並列取得）
   const [ga4, gsc] = await Promise.all([fetchGA4Data(), fetchSearchConsoleData()]);
 
@@ -171,5 +220,7 @@ export async function GET() {
     keywords: pendingKeywords,
     ga4,
     gsc,
+    aioChecklist,
+    internalLinks,
   });
 }
