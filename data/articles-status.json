@@ -463,7 +463,36 @@
       "keyword": "面接の逆質問 何を聞けばいい?",
       "category": "業界解説",
       "priority": "medium",
-      "status": "planned\r"
-    }
+      "status": "planned"
+    },
+    { "keyword": "評価制度 おかしい 会社 特徴", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "頑張っても評価されない 会社 続ける", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "上司 嫌われている 評価 下がる", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "異動希望 通らない 対処法", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "新卒 1年 辞める 逃げ", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "3年は働け 辞めた理由", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "退職 決めた瞬間 きっかけ", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "会社 辞めるべき サイン", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "評価面談 聞くべき質問", "category": "体験談", "priority": "high", "status": "planned", "pillar": "退職前の違和感" },
+    { "keyword": "飲食 IT営業 転職 方法", "category": "体験談", "priority": "high", "status": "planned", "pillar": "飲食→IT/Web転職" },
+    { "keyword": "飲食経験 IT企業 評価されたポイント", "category": "体験談", "priority": "high", "status": "planned", "pillar": "飲食→IT/Web転職" },
+    { "keyword": "飲食店 ポータブルスキル 転職", "category": "体験談", "priority": "high", "status": "planned", "pillar": "飲食→IT/Web転職" },
+    { "keyword": "飲食業界 辞めたい 20代 最初にやること", "category": "体験談", "priority": "high", "status": "planned", "pillar": "飲食→IT/Web転職" },
+    { "keyword": "店長経験なし 異業種転職", "category": "体験談", "priority": "high", "status": "planned", "pillar": "飲食→IT/Web転職" },
+    { "keyword": "シフト勤務 土日休み 変わったこと", "category": "体験談", "priority": "high", "status": "planned", "pillar": "飲食→IT/Web転職" },
+    { "keyword": "大手飲食企業 ITベンチャー 違い", "category": "体験談", "priority": "high", "status": "planned", "pillar": "飲食→IT/Web転職" },
+    { "keyword": "第二新卒 30社応募 結果", "category": "体験談", "priority": "high", "status": "planned", "pillar": "応募30社データ" },
+    { "keyword": "書類選考 通った会社 落ちた会社 違い", "category": "体験談", "priority": "high", "status": "planned", "pillar": "応募30社データ" },
+    { "keyword": "自己応募 エージェント経由 通過率 比較", "category": "体験談", "priority": "high", "status": "planned", "pillar": "応募30社データ" },
+    { "keyword": "面接 実際に聞かれた質問 一覧", "category": "体験談", "priority": "high", "status": "planned", "pillar": "応募30社データ" },
+    { "keyword": "内定2社 比較 選んだ理由", "category": "体験談", "priority": "high", "status": "planned", "pillar": "応募30社データ" },
+    { "keyword": "転職活動 かかった期間 第二新卒", "category": "体験談", "priority": "high", "status": "planned", "pillar": "応募30社データ" },
+    { "keyword": "年収 350万 400万 交渉方法", "category": "体験談", "priority": "high", "status": "planned", "pillar": "応募30社データ" },
+    { "keyword": "IT営業 未経験 入社 苦労", "category": "体験談", "priority": "high", "status": "planned", "pillar": "IT/Web企業で働いて分かったこと" },
+    { "keyword": "IT営業 飲食接客 共通点", "category": "体験談", "priority": "high", "status": "planned", "pillar": "IT/Web企業で働いて分かったこと" },
+    { "keyword": "法人営業 未経験 通用したスキル", "category": "体験談", "priority": "high", "status": "planned", "pillar": "IT/Web企業で働いて分かったこと" },
+    { "keyword": "ベンチャー企業 転職 驚いたこと", "category": "体験談", "priority": "high", "status": "planned", "pillar": "IT/Web企業で働いて分かったこと" },
+    { "keyword": "テレアポ つらい 対処法", "category": "体験談", "priority": "high", "status": "planned", "pillar": "IT/Web企業で働いて分かったこと" },
+    { "keyword": "営業 マーケティング 独学 方法", "category": "体験談", "priority": "high", "status": "planned", "pillar": "IT/Web企業で働いて分かったこと" }
   ]
 }
