@@ -65,8 +65,8 @@ export default function ResultContent({
   onRetry?: () => void;
 }) {
   const accentColor = TYPE_COLORS[typeId] || "#b06a1c";
-  const shareText = `私の適職タイプは【${typeInfo.name}】でした！\n#適職診断 #転職`;
-  const shareUrl = `${SITE_URL}/shindan/result/${typeInfo.slug}?utm_source=x&utm_medium=share&utm_campaign=shindan_result`;
+  const shareText = `私の適職タイプは【${typeInfo.name}】でした！\nあなたも受けてみませんか？\n#適職診断 #転職`;
+  const shareUrl = `${SITE_URL}/shindan?utm_source=x&utm_medium=share&utm_campaign=shindan_result`;
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
   const articles = getArticlesForType(typeId);
   const showYumecareer = YUMECAREER_TYPE_IDS.has(typeId);
