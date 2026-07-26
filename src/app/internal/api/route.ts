@@ -87,105 +87,8 @@ async function fetchGA4Data() {
   }
 }
 
-// ── Google Sheets (Search Console データ) ──
-async function fetchGSCData() {
-  const spreadsheetId = process.env.GSC_SPREADSHEET_ID;
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n");
-
-  if (!spreadsheetId || !email || !privateKey) {
-    return { configured: false, error: "スプレッドシート環境変数が未設定です" };
-  }
-
-  try {
-    const { google } = await import("googleapis");
-    const auth = new google.auth.JWT({
-      email,
-      key: privateKey,
-      scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
-    });
-    const sheets = google.sheets({ version: "v4", auth });
-
-    // シートの全データを取得（ヘッダー行 + データ行）
-    const res = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: "A:G", // Date, Query, Page, Clicks, Impressions, CTR, Position
-    });
-
-    const rows = res.data.values;
-    if (!rows || rows.length < 1) {
-      return { configured: true, error: "シートにデータがありません" };
-    }
-
-    // ヘッダーなしのシート: 列順は Date, Query, Page, Clicks, Impressions, CTR, Position
-    const dateIdx = 0;
-    const queryIdx = 1;
-    const clickIdx = 3;
-    const impIdx = 4;
-    const ctrIdx = 5;
-    const posIdx = 6;
-
-    const now = new Date();
-    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    let latestDate = "";
-
-    let totalClicks = 0;
-    let totalImpressions = 0;
-    let totalPosition = 0;
-    let count = 0;
-    const queryMap = new Map<string, number>();
-
-    for (let i = 0; i < rows.length; i++) {
-      const row = rows[i];
-      const dateStr = row[dateIdx] || "";
-      if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) continue;
-
-      if (dateStr > latestDate) latestDate = dateStr;
-
-      const rowDate = new Date(dateStr);
-      if (rowDate < sevenDaysAgo) continue;
-
-      const clicks = Number(row[clickIdx] || 0);
-      const impressions = Number(row[impIdx] || 0);
-      const position = Number(String(row[posIdx] || 0).replace(/[^0-9.]/g, ""));
-
-      totalClicks += clicks;
-      totalImpressions += impressions;
-      totalPosition += position;
-      count++;
-
-      const query = row[queryIdx] || "";
-      if (query) {
-        queryMap.set(query, (queryMap.get(query) || 0) + clicks);
-      }
-    }
-
-    // データ鮮度チェック（最新日が2日以上前なら警告）
-    const latestDateObj = new Date(latestDate);
-    const daysSinceLatest = Math.floor((now.getTime() - latestDateObj.getTime()) / (24 * 60 * 60 * 1000));
-    const stale = daysSinceLatest >= 2;
-
-    // 上位クエリ
-    const topQueries = [...queryMap.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10)
-      .map(([query, clicks]) => ({ query, clicks }));
-
-    return {
-      configured: true,
-      stale,
-      latestDate,
-      daysSinceLatest,
-      totalClicks,
-      totalImpressions,
-      avgCtr: totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(1) : "0",
-      avgPosition: count > 0 ? (totalPosition / count).toFixed(1) : "0",
-      topQueries,
-    };
-  } catch (e) {
-    return { configured: true, error: String(e) };
-  }
-}
+// ── GSC: Search Console API直接取得（lib層に分離）──
+import { fetchSearchConsoleData } from "@/lib/search-console";
 
 export async function GET() {
   const dataDir = path.join(process.cwd(), "data");
@@ -250,7 +153,7 @@ export async function GET() {
   const aspPending = aspStatus?.asps?.filter((a: { status: string }) => a.status === "pending").length || 0;
 
   // GA4 & GSC（並列取得）
-  const [ga4, gsc] = await Promise.all([fetchGA4Data(), fetchGSCData()]);
+  const [ga4, gsc] = await Promise.all([fetchGA4Data(), fetchSearchConsoleData()]);
 
   return NextResponse.json({
     summary: {

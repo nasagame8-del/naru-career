@@ -20,17 +20,23 @@ type GA4Data = {
   topPages?: TopPage[];
 };
 
+type SCRow = { keys: string[]; clicks: number; impressions: number; ctr: number; position: number };
+type SCPeriod = { clicks: number; impressions: number; ctr: number; position: number; topQueries: SCRow[]; topPages: SCRow[] };
+type SurgingPage = { page: string; current: number; previous: number; changePercent: number; isNew: boolean };
+type NewlyVisible = { page: string; impressions: number };
+
 type GSCData = {
   configured: boolean;
   error?: string;
-  stale?: boolean;
-  latestDate?: string;
-  daysSinceLatest?: number;
-  totalClicks?: number;
-  totalImpressions?: number;
-  avgCtr?: string;
-  avgPosition?: string;
-  topQueries?: TopQuery[];
+  current7d?: SCPeriod;
+  previous7d?: SCPeriod;
+  current28d?: SCPeriod;
+  previous28d?: SCPeriod;
+  rewriteCandidates?: SCRow[];
+  lowCtrPages?: SCRow[];
+  surgingPages?: SurgingPage[];
+  newlyVisible?: NewlyVisible[];
+  actionItems?: string[];
 };
 
 type DashboardData = {
@@ -191,46 +197,195 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
         )}
       </Card>
 
-      {/* GSC */}
-      <Card title="Search Console（スプレッドシート経由）">
+      {/* GSC — Search Console API直接取得 */}
+      <Card title="Search Console">
         {!gsc.configured ? (
-          <Unconfigured message={gsc.error || "スプレッドシート環境変数を設定してください"} vars={["GSC_SPREADSHEET_ID"]} />
+          <Unconfigured message={gsc.error || "Search Console環境変数を設定してください"} vars={["SEARCH_CONSOLE_SITE_URL", "GOOGLE_SERVICE_ACCOUNT_EMAIL"]} />
         ) : gsc.error ? (
           <ErrorMsg message={gsc.error} />
         ) : (
           <>
-            {gsc.stale && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg px-4 py-2.5 mb-4">
-                <p className="text-xs text-yellow-800 font-bold">
-                  データ更新が停止している可能性があります
-                </p>
-                <p className="text-[10px] text-yellow-700 mt-0.5">
-                  最新データ: {gsc.latestDate}（{gsc.daysSinceLatest}日前）— Search Analytics for Sheets の Recurrent Requests を確認してください
-                </p>
+            {/* サマリー（7日間） */}
+            {gsc.current7d && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                <Metric label="クリック (7日)" value={gsc.current7d.clicks.toLocaleString()} />
+                <Metric label="表示回数 (7日)" value={gsc.current7d.impressions.toLocaleString()} />
+                <Metric label="平均CTR" value={`${(gsc.current7d.ctr * 100).toFixed(1)}%`} />
+                <Metric label="平均順位" value={gsc.current7d.position.toFixed(1)} />
               </div>
             )}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-              <Metric label="クリック (7日)" value={gsc.totalClicks?.toLocaleString() || "0"} />
-              <Metric label="表示回数 (7日)" value={gsc.totalImpressions?.toLocaleString() || "0"} />
-              <Metric label="平均CTR" value={`${gsc.avgCtr || 0}%`} />
-              <Metric label="平均順位" value={gsc.avgPosition || "-"} />
-            </div>
-            {gsc.topQueries && gsc.topQueries.length > 0 && (
+
+            {/* 前週比 */}
+            {gsc.current7d && gsc.previous7d && gsc.previous7d.impressions > 0 && (
+              <div className="text-[10px] text-gray-500 mb-4">
+                前週比: クリック {gsc.previous7d.clicks > 0 ? `${(((gsc.current7d.clicks - gsc.previous7d.clicks) / gsc.previous7d.clicks) * 100).toFixed(0)}%` : "N/A"} / 表示 {`${(((gsc.current7d.impressions - gsc.previous7d.impressions) / gsc.previous7d.impressions) * 100).toFixed(0)}%`}
+              </div>
+            )}
+
+            {/* 上位クエリ */}
+            {gsc.current7d?.topQueries && gsc.current7d.topQueries.length > 0 && (
               <>
                 <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">上位クエリ（7日間）</h4>
-                <table className="w-full text-sm">
-                  <thead><tr className="border-b border-gray-100"><th className="text-left py-1.5 text-gray-500 font-medium text-xs">クエリ</th><th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th></tr></thead>
+                <table className="w-full text-sm mb-4">
+                  <thead><tr className="border-b border-gray-100">
+                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">クエリ</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+                  </tr></thead>
                   <tbody>
-                    {gsc.topQueries.map((q, i) => (
+                    {gsc.current7d.topQueries.map((q, i) => (
                       <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
-                        <td className="py-1.5 text-xs">
-                          <a href={`https://www.google.com/search?q=${encodeURIComponent(q.query)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{q.query}</a>
-                        </td>
+                        <td className="py-1.5 text-xs"><a href={`https://www.google.com/search?q=${encodeURIComponent(q.keys[0])}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{q.keys[0]}</a></td>
                         <td className="py-1.5 text-right text-xs font-bold">{q.clicks}</td>
+                        <td className="py-1.5 text-right text-xs">{q.impressions}</td>
+                        <td className="py-1.5 text-right text-xs">{q.position.toFixed(1)}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+              </>
+            )}
+
+            {/* 上位ページ */}
+            {gsc.current7d?.topPages && gsc.current7d.topPages.length > 0 && (
+              <>
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">上位ページ（7日間）</h4>
+                <table className="w-full text-sm mb-4">
+                  <thead><tr className="border-b border-gray-100">
+                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+                  </tr></thead>
+                  <tbody>
+                    {gsc.current7d.topPages.map((p, i) => {
+                      let path = p.keys[0];
+                      try { path = new URL(p.keys[0]).pathname; } catch { /* keep as-is */ }
+                      return (
+                        <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
+                          <td className="py-1.5 text-xs truncate max-w-[200px]"><a href={p.keys[0]} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{path}</a></td>
+                          <td className="py-1.5 text-right text-xs font-bold">{p.clicks}</td>
+                          <td className="py-1.5 text-right text-xs">{p.impressions}</td>
+                          <td className="py-1.5 text-right text-xs">{p.position.toFixed(1)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </>
+            )}
+
+            {/* 今週やること */}
+            {gsc.actionItems && gsc.actionItems.length > 0 && (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 mb-4">
+                <h4 className="text-xs font-bold text-blue-800 mb-2">今週やること</h4>
+                <ul className="space-y-1">
+                  {gsc.actionItems.map((item, i) => (
+                    <li key={i} className="text-[11px] text-blue-700">• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* リライト候補 */}
+            {gsc.rewriteCandidates && gsc.rewriteCandidates.length > 0 && (
+              <>
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">リライト候補（順位11〜20位・表示10回以上）</h4>
+                <table className="w-full text-sm mb-4">
+                  <thead><tr className="border-b border-gray-100">
+                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+                  </tr></thead>
+                  <tbody>
+                    {gsc.rewriteCandidates.map((p, i) => {
+                      let path = p.keys[0];
+                      try { path = new URL(p.keys[0]).pathname; } catch { /* keep */ }
+                      return (
+                        <tr key={i} className="border-b border-gray-50">
+                          <td className="py-1.5 text-xs truncate max-w-[200px]">{path}</td>
+                          <td className="py-1.5 text-right text-xs">{p.position.toFixed(1)}</td>
+                          <td className="py-1.5 text-right text-xs">{p.impressions}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </>
+            )}
+
+            {/* CTRが低い記事 */}
+            {gsc.lowCtrPages && gsc.lowCtrPages.length > 0 && (
+              <>
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">CTR改善候補（順位1〜20位・CTR 2%未満）</h4>
+                <p className="text-[10px] text-gray-400 mb-2">タイトルやディスクリプション改善の余地がある可能性があります</p>
+                <table className="w-full text-sm mb-4">
+                  <thead><tr className="border-b border-gray-100">
+                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">CTR</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+                  </tr></thead>
+                  <tbody>
+                    {gsc.lowCtrPages.map((p, i) => {
+                      let path = p.keys[0];
+                      try { path = new URL(p.keys[0]).pathname; } catch { /* keep */ }
+                      return (
+                        <tr key={i} className="border-b border-gray-50">
+                          <td className="py-1.5 text-xs truncate max-w-[200px]">{path}</td>
+                          <td className="py-1.5 text-right text-xs">{(p.ctr * 100).toFixed(1)}%</td>
+                          <td className="py-1.5 text-right text-xs">{p.impressions}</td>
+                          <td className="py-1.5 text-right text-xs">{p.position.toFixed(1)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </>
+            )}
+
+            {/* 表示急増 */}
+            {gsc.surgingPages && gsc.surgingPages.length > 0 && (
+              <>
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">表示急増（前週比+50%以上）</h4>
+                <table className="w-full text-sm mb-4">
+                  <thead><tr className="border-b border-gray-100">
+                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">今週</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">前週</th>
+                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">変化</th>
+                  </tr></thead>
+                  <tbody>
+                    {gsc.surgingPages.map((p, i) => {
+                      let path = p.page;
+                      try { path = new URL(p.page).pathname; } catch { /* keep */ }
+                      return (
+                        <tr key={i} className="border-b border-gray-50">
+                          <td className="py-1.5 text-xs truncate max-w-[200px]">{path}</td>
+                          <td className="py-1.5 text-right text-xs font-bold">{p.current}</td>
+                          <td className="py-1.5 text-right text-xs">{p.previous}</td>
+                          <td className="py-1.5 text-right text-xs text-green-600">{p.isNew ? "新規表示" : `+${p.changePercent.toFixed(0)}%`}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </>
+            )}
+
+            {/* 新規表示 */}
+            {gsc.newlyVisible && gsc.newlyVisible.length > 0 && (
+              <>
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Googleに新しく認識された可能性のある記事</h4>
+                <p className="text-[10px] text-gray-400 mb-2">前28日間の表示が0で、直近7日間に表示が発生。検索結果に表示され始めた可能性があります</p>
+                <ul className="space-y-1">
+                  {gsc.newlyVisible.map((p, i) => {
+                    let path = p.page;
+                    try { path = new URL(p.page).pathname; } catch { /* keep */ }
+                    return <li key={i} className="text-xs text-gray-600">{path}（表示 {p.impressions}回）</li>;
+                  })}
+                </ul>
               </>
             )}
           </>
