@@ -96,5 +96,13 @@
     "asp": "バリューコマース",
     "affiliate": true,
     "note": "適職診断の結果ページ(営業系タイプ: ナイト/デーモンロード/アドベンチャラー/バード)でのみ表示"
+  },
+  "mynavi_job20s": {
+    "name": "マイナビジョブ20's",
+    "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480",
+    "cta_text": "詳細を見る",
+    "asp": "バリューコマース",
+    "affiliate": true,
+    "note": "20代・第二新卒・既卒向け。全タイプ・全職種対象"
   }
 }

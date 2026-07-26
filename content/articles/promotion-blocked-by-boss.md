@@ -3,7 +3,7 @@ title: "昇進できない理由が「上司の主観」だったら?"
 category: "体験談"
 keyword: "昇進できない 理由 評価 上司 主観"
 datePublished: "2026-07-24"
-dateModified: "2026-07-24"
+dateModified: "2026-07-27"
 naruPoint: "「頑張れば報われる」と信じて走り続けていた僕が立ち止まったのは、頑張り方ではなく、走るコースそのものが見えていなかったと気づいた瞬間でした。評価基準が主観に依存している環境では、努力の方向を自分で決められません。"
 excerpt: "昇進できないのは自分の努力不足だと思っていました。でも、何を頑張れば評価されるのかが分からないまま努力し続けること自体が、構造的な問題でした。評価基準が「上司の主観」に依存していた僕の実体験と、その環境で何ができるかをまとめます。"
 summary:
@@ -102,3 +102,5 @@ inlineFaq:
 同じように[評価に納得がいかない状況](/articles/unfair-evaluation-not-spoiled)や、[「なんとなく辞めたい」という漠然とした違和感](/articles/vaguely-want-to-quit)を抱えている方は、あわせて読んでみてください。
 
 転職エージェントに相談することで、自分の市場価値を客観的に知ることもできます。僕が実際に使った[エージェントの比較記事](/articles/agent-comparison-2026)も参考にしてみてください。
+
+20代・第二新卒向けのエージェントとしては、<a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480" rel="nofollow sponsored" target="_blank">マイナビジョブ20's</a>もあります。
