@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { SurveyLink } from "@/components/SurveyLink";
 import { PersonJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -274,13 +275,9 @@ export default function AboutPage() {
             回答は3分程度で完了します。ぜひご協力ください。
           </p>
           <p>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScDn4OFzXXGVQ7kOwEN8B1ctymOTfEdV5ml_21noJ6f4whYNw/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <SurveyLink>
               第二新卒の転職に関するアンケートに回答する →
-            </a>
+            </SurveyLink>
           </p>
 
           {/* よくある質問 */}

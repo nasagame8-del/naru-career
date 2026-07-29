@@ -1,18 +1,4 @@
 {
-  "doda": {
-    "name": "doda",
-    "url": "",
-    "cta_text": "dodaで求人を探してみる",
-    "asp": "",
-    "affiliate": true
-  },
-  "workport": {
-    "name": "ワークポート",
-    "url": "",
-    "cta_text": "ワークポートに無料相談する",
-    "asp": "",
-    "affiliate": true
-  },
   "agent_neo": {
     "name": "第二新卒エージェントneo",
     "url": "",
