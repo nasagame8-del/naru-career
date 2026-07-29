@@ -66,6 +66,11 @@ const worries = [
     desc: "不満の正体を「感情」と「事実」に切り分けて整理します。",
   },
   {
+    slug: "certification-exam-on-hold",
+    title: "資格試験を\"保留\"にされた話",
+    desc: "受けさせてもらえない理由が実力ではなく上司の都合だった実体験。",
+  },
+  {
     slug: "job-change-timing-3months",
     title: "転職タイミング、実際に動いた3ヶ月間の記録",
     desc: "いつ動き出し、何をしたかの実体験タイムラインです。",
