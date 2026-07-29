@@ -111,6 +111,10 @@ IT・Web・ゲーム業界に強みを持つ転職エージェントで、==エ�
 
 [CTA_BUTTON:mynavi_job20s]
 
+新卒・第二新卒向けの就職支援サービスとしては、UZUZ 28新卒もあります。
+
+[CTA_BUTTON:uzuz_28]
+
 ## あわせて読みたい記事
 
 - [転職サイトとエージェント、両方使って分かった使い分け方](/articles/agent-site-vs-agent-usage)

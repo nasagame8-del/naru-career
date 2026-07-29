@@ -116,6 +116,10 @@ dodaで求人を検索していると、自分のスキルや経歴に対して�
 
 [CTA_BUTTON:mynavi_job20s]
 
+新卒・第二新卒向けの就職支援サービスとしては、UZUZ 28新卒もあります。
+
+[CTA_BUTTON:uzuz_28]
+
 ## あわせて読みたい記事
 
 - [【実体験】第二新卒の転職で使ったエージェント比較](/articles/agent-comparison-2026)

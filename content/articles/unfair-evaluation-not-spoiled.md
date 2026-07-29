@@ -119,6 +119,6 @@ widgets:
 
 ==納得できない感覚は、無視するべきノイズではなく、環境を見直すサイン==かもしれません。
 
-転職を具体的に考え始めた方は、まず情報収集から。僕が実際に使った[エージェントの比較記事](/articles/agent-comparison-2026)や、[職務経歴書の書き方](/articles/resume-writing-second-new-grad)も参考にしてみてください。20代・第二新卒向けのエージェントとしては、<a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480" rel="nofollow sponsored" target="_blank">マイナビジョブ20's</a>もあります。
+転職を具体的に考え始めた方は、まず情報収集から。僕が実際に使った[エージェントの比較記事](/articles/agent-comparison-2026)や、[職務経歴書の書き方](/articles/resume-writing-second-new-grad)も参考にしてみてください。20代・第二新卒向けのエージェントとしては、<a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480" rel="nofollow sponsored" target="_blank">マイナビジョブ20's</a>や、新卒・第二新卒向けの就職支援サービス<a href="https://h.accesstrade.net/sp/cc?rk=0100plgp00ovm3" rel="nofollow sponsored" target="_blank">UZUZ 28新卒</a>もあります。
 
 自分がどんな環境に向いているか分からない方は、[適職診断](/shindan)で傾向を知ることもできます。

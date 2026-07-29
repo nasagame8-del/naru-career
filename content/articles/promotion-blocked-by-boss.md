@@ -103,4 +103,4 @@ inlineFaq:
 
 転職エージェントに相談することで、自分の市場価値を客観的に知ることもできます。僕が実際に使った[エージェントの比較記事](/articles/agent-comparison-2026)も参考にしてみてください。
 
-20代・第二新卒向けのエージェントとしては、<a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480" rel="nofollow sponsored" target="_blank">マイナビジョブ20's</a>もあります。
+20代・第二新卒向けのエージェントとしては、<a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480" rel="nofollow sponsored" target="_blank">マイナビジョブ20's</a>や、新卒・第二新卒向けの就職支援サービス<a href="https://h.accesstrade.net/sp/cc?rk=0100plgp00ovm3" rel="nofollow sponsored" target="_blank">UZUZ 28新卒</a>もあります。

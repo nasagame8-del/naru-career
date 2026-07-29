@@ -149,6 +149,10 @@ dodaは==求人数が圧倒的に多く、自分で検索して応募できる�
 
 [CTA_BUTTON:mynavi_job20s]
 
+新卒・第二新卒向けの就職支援サービスとしては、UZUZ 28新卒もあります。
+
+[CTA_BUTTON:uzuz_28]
+
 ## あわせて読みたい記事
 
 - [第二新卒がIT業界に転職するための完全ガイド](/articles/second-new-grad-it-career-change)

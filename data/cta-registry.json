@@ -90,5 +90,13 @@
     "asp": "バリューコマース",
     "affiliate": true,
     "note": "20代・第二新卒・既卒向け。全タイプ・全職種対象"
+  },
+  "uzuz_28": {
+    "name": "UZUZ 28新卒",
+    "url": "https://h.accesstrade.net/sp/cc?rk=0100plgp00ovm3",
+    "cta_text": "詳細を見る",
+    "asp": "アクセストレード",
+    "affiliate": true,
+    "note": "新卒(28卒)・第二新卒向けの就職・転職支援サービス"
   }
 }
