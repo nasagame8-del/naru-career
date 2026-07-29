@@ -354,9 +354,9 @@
     },
     {
       "slug": "small-trigger-to-quit",
-      "status": "in_progress",
-      "experience_filled": false,
-      "factchecked": false,
+      "status": "published",
+      "experience_filled": true,
+      "factchecked": true,
       "note_rewritten": false,
       "note_published": false,
       "scheduled_publish": "2026-08-02",
