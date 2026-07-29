@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { getArticle, getArticleSlugs, getAllArticleMetas, getCTARegistry } from "@/lib/articles";
+import { notFound } from "next/navigation";
+import { getArticle, getArticleSlugs, getAllArticleMetas, getAllSlugs, getCTARegistry } from "@/lib/articles";
 import { FAQSection } from "@/components/FAQSection";
 import { ShareButtons } from "@/components/ShareButtons";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -28,6 +29,8 @@ export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await props.params;
+  const publishedSlugs = getArticleSlugs();
+  if (!publishedSlugs.includes(slug)) return {};
   const article = await getArticle(slug);
   return {
     title: article.title,
@@ -73,6 +76,17 @@ export default async function ArticlePage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
+
+  // 未来日の記事は404を返す
+  const publishedSlugs = getArticleSlugs();
+  if (!publishedSlugs.includes(slug)) {
+    // slugがそもそも存在しないファイルかどうかも確認
+    const allExisting = getAllSlugs();
+    if (!allExisting.includes(slug)) notFound();
+    // ファイルは存在するが未来日 → 404
+    notFound();
+  }
+
   const article = await getArticle(slug);
   const allArticles = getAllArticleMetas();
   const relatedArticles = allArticles

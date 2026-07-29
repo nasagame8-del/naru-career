@@ -97,12 +97,30 @@ export type Article = ArticleMeta & {
   headings: Heading[];
 };
 
-export function getArticleSlugs(): string[] {
+/** 公開日が今日以前かどうか判定（ビルド時の日付基準） */
+function isPublished(datePublished: string): boolean {
+  if (!datePublished) return true; // 日付なしは公開扱い
+  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  return datePublished <= today;
+}
+
+/** 全slugを返す（未来日を含む。generateStaticParams・内部処理用） */
+export function getAllSlugs(): string[] {
   if (!fs.existsSync(articlesDir)) return [];
   return fs
     .readdirSync(articlesDir)
     .filter((f) => f.endsWith(".md") && !f.endsWith("-note.md"))
     .map((f) => f.replace(/\.md$/, ""));
+}
+
+/** 公開済みの記事slugのみ返す */
+export function getArticleSlugs(): string[] {
+  return getAllSlugs().filter((slug) => {
+    const filePath = path.join(articlesDir, `${slug}.md`);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const { data } = matter(fileContent);
+    return isPublished(data.datePublished ?? "");
+  });
 }
 
 export function getArticleMeta(slug: string): ArticleMeta {
