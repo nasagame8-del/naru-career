@@ -59,11 +59,23 @@ async function fetchGA4Data() {
     });
 
     // 人気記事ランキング（7日間、上位10件）
+    // /internal, /api, /members は記事ではないため除外(自分のダッシュボード閲覧等が混入する対策)
     const [topPages] = await client.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
       dimensions: [{ name: "pagePath" }],
       metrics: [{ name: "screenPageViews" }],
+      dimensionFilter: {
+        notExpression: {
+          orGroup: {
+            expressions: [
+              { filter: { fieldName: "pagePath", stringFilter: { matchType: "BEGINS_WITH", value: "/internal" } } },
+              { filter: { fieldName: "pagePath", stringFilter: { matchType: "BEGINS_WITH", value: "/api" } } },
+              { filter: { fieldName: "pagePath", stringFilter: { matchType: "BEGINS_WITH", value: "/members" } } },
+            ],
+          },
+        },
+      },
       orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
       limit: 10,
     });
