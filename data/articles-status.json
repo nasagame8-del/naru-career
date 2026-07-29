@@ -341,9 +341,9 @@
     },
     {
       "slug": "vaguely-want-to-quit",
-      "status": "in_progress",
-      "experience_filled": false,
-      "factchecked": false,
+      "status": "published",
+      "experience_filled": true,
+      "factchecked": true,
       "note_rewritten": false,
       "note_published": false,
       "scheduled_publish": "2026-07-31",

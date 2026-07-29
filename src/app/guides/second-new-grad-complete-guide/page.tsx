@@ -56,6 +56,11 @@ const basics = [
 
 const worries = [
   {
+    slug: "vaguely-want-to-quit",
+    title: "「なんとなく辞めたい」の正体を分解する",
+    desc: "モヤモヤを4つの切り口で言語化するワークと実体験。",
+  },
+  {
     slug: "promotion-blocked-by-boss",
     title: "昇進できない理由が「上司の主観」だったら？",
     desc: "評価基準が不明確な環境で何ができるかを考えます。",
