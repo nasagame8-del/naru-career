@@ -114,6 +114,10 @@ SESは、IT業界への入り口として門戸が広く、多様な現場を経
 
 もし「[今の会社の評価制度に納得がいかない](/articles/promotion-blocked-by-boss)」「[転職すべきか迷っている](/articles/job-change-timing-3months)」という段階であれば、まずは自分が何を重視するのかを整理するところから始めてみてください。
 
+ITエンジニア専門の転職エージェントとしては、TechClipsエージェントもあります。
+
+[CTA_BUTTON:techclips]
+
 ## あわせて読みたい記事
 
 - [「IT業界はやめとけ」と言われて転職した僕が思うこと](/articles/it-industry-quit-myth)

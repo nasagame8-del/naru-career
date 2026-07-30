@@ -98,5 +98,13 @@
     "asp": "アクセストレード",
     "affiliate": true,
     "note": "新卒(28卒)・第二新卒向けの就職・転職支援サービス"
+  },
+  "techclips": {
+    "name": "TechClipsエージェント",
+    "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892669579",
+    "cta_text": "詳細を見る",
+    "asp": "バリューコマース",
+    "affiliate": true,
+    "note": "ITエンジニア専門の転職エージェント。著者の利用経験なし、事実ベースの紹介に留める"
   }
 }
