@@ -107,3 +107,4 @@ note_published: false
 - [面接で「なぜこの職種を志望するのか」と聞かれて詰まった話](/articles/interview-failure-why-this-job)
 - [ダイレクトリクルーティングとは？スカウト型転職の仕組み](/articles/direct-recruiting)
 - [職務経歴書、第二新卒はここで差がつく](/articles/resume-writing-second-new-grad)
+- [リファレンスチェックとは？増えている理由と採用担当者の本音](/articles/reference-check-explained)

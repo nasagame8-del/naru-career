@@ -142,6 +142,7 @@ dodaは==求人数が多く、職務経歴書を仕上げたらすぐに自己�
 - [面接で「なぜこの職種を志望するのか」と聞かれて詰まった話](/articles/interview-failure-why-this-job)
 - [第二新卒がIT業界に転職するための完全ガイド](/articles/second-new-grad-it-career-change)
 - [【実体験】第二新卒の転職で使ったエージェント比較](/articles/agent-comparison-2026)
+- [リファレンスチェックとは？増えている理由と採用担当者の本音](/articles/reference-check-explained)
 
 ## まとめ
 

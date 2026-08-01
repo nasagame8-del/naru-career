@@ -141,6 +141,7 @@ IT・Web業界に強みを持つ転職エージェントで、==面接対策の�
 - [職務経歴書、第二新卒はここで差がつく](/articles/resume-writing-second-new-grad)
 - [第二新卒が陥りやすい転職の罠と回避策](/articles/second-new-grad-job-change-traps)
 - [カジュアル面談とは？本選考との違いと活用法](/articles/casual-interview)
+- [リファレンスチェックとは？増えている理由と採用担当者の本音](/articles/reference-check-explained)
 
 ## よくある質問
 

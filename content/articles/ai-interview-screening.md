@@ -109,3 +109,4 @@ AI面接の導入は今後さらに加速するでしょう。第二新卒がこ
 - [面接で「なぜこの職種を志望するのか」と聞かれて詰まった話](/articles/interview-failure-why-this-job)
 - [カジュアル面談とは？本選考との違いと活用法](/articles/casual-interview)
 - [スキルベース採用とは？学歴より実力で評価される時代](/articles/skill-based-hiring)
+- [リファレンスチェックとは？増えている理由と採用担当者の本音](/articles/reference-check-explained)
