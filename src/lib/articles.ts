@@ -97,10 +97,12 @@ export type Article = ArticleMeta & {
   headings: Heading[];
 };
 
-/** 公開日が今日以前かどうか判定（ビルド時の日付基準） */
+/** 公開日が今日以前かどうか判定（日本時間基準） */
 function isPublished(datePublished: string): boolean {
   if (!datePublished) return true; // 日付なしは公開扱い
-  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  const today = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+  ).toISOString().slice(0, 10);
   return datePublished <= today;
 }
 
