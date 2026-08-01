@@ -370,7 +370,7 @@
       "status": "published",
       "experience_filled": true,
       "factchecked": true,
-      "note_rewritten": false,
+      "note_rewritten": true,
       "note_published": false,
       "scheduled_publish": "2026-08-02",
       "lastReviewDate": "2026-08-02",
