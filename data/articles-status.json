@@ -364,6 +364,18 @@
       "cluster": "current-job-frustration",
       "keyword": "転職 きっかけ 決意 タイミング",
       "priority": "high"
+    },
+    {
+      "slug": "business-outsourcing-conversion-risk",
+      "status": "published",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-08-02",
+      "lastReviewDate": "2026-08-02",
+      "keyword": "正社員 業務委託 切り替え リスク",
+      "priority": "medium"
     }
   ],
   "note_only_articles": [
