@@ -153,6 +153,10 @@ dodaは==求人数が圧倒的に多く、自分で検索して応募できる�
 
 [CTA_BUTTON:uzuz_28]
 
+第二新卒だけでなく、既卒・フリーターからの就職を目指す方には、UZUZの一般就職支援サービスもあります（UZUZ 28新卒とは別のサービスです）。
+
+[CTA_BUTTON:uzuz_general]
+
 ## あわせて読みたい記事
 
 - [第二新卒がIT業界に転職するための完全ガイド](/articles/second-new-grad-it-career-change)

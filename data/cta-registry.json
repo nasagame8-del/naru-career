@@ -106,5 +106,13 @@
     "asp": "バリューコマース",
     "affiliate": true,
     "note": "ITエンジニア専門の転職エージェント。著者の利用経験なし、事実ベースの紹介に留める"
+  },
+  "uzuz_general": {
+    "name": "UZUZ",
+    "url": "https://h.accesstrade.net/sp/cc?rk=0100pw7f00ovm3",
+    "cta_text": "詳細を見る",
+    "asp": "アクセストレード",
+    "affiliate": true,
+    "note": "第二新卒・既卒・フリーター・ニート向けの一般就職支援サービス。著者の利用経験なし、事実ベースの紹介に留める"
   }
 }
