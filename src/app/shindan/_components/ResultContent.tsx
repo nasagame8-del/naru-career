@@ -11,6 +11,7 @@ import {
   YUMECAREER_TYPE_IDS,
   YUMECAREER_URL,
   AFFILIATE_DISCLOSURE,
+  getAffiliateCTAForType,
 } from "../_lib/cta-data";
 
 const SITE_URL = "https://naru-career.com";
@@ -70,6 +71,7 @@ export default function ResultContent({
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
   const articles = getArticlesForType(typeId);
   const showYumecareer = YUMECAREER_TYPE_IDS.has(typeId);
+  const affiliateCTA = getAffiliateCTAForType(typeId);
   const [instaState, setInstaState] = useState<
     "idle" | "loading" | "shared" | "downloaded" | "error"
   >("idle");
@@ -257,6 +259,28 @@ export default function ResultContent({
                   target="_blank"
                   rel="nofollow noopener noreferrer"
                   onClick={() => trackEvent("cta_yumecareer")}
+                >
+                  詳細を見る
+                </a>
+              </div>
+              <p className="cta-affiliate-disclosure">{AFFILIATE_DISCLOSURE}</p>
+            </div>
+          )}
+
+          {affiliateCTA && (
+            <div className="cta-yumecareer">
+              <div className="cta-yumecareer-body">
+                <div className="cta-yumecareer-badge">PR</div>
+                <h3 className="cta-yumecareer-title">{affiliateCTA.name}</h3>
+                <p className="cta-yumecareer-desc">
+                  {affiliateCTA.desc}
+                </p>
+                <a
+                  className="cta-yumecareer-btn"
+                  href={affiliateCTA.url}
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  onClick={() => trackEvent(affiliateCTA.eventName)}
                 >
                   詳細を見る
                 </a>

@@ -100,5 +100,65 @@ export const YUMECAREER_TYPE_IDS = new Set([2, 8, 14, 6]);
 // プレースホルダ: A8計測URLをここに差し替え
 export const YUMECAREER_URL = "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892664088";
 
+// ── タイプ別 提携CTA（ユメキャリ以外） ──
+export type AffiliateCTA = {
+  name: string;
+  url: string;
+  desc: string;
+  eventName: string;
+};
+
+const MYNAVI: AffiliateCTA = {
+  name: "マイナビジョブ20's",
+  url: "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480",
+  desc: "20代・第二新卒・既卒向けの転職エージェントです",
+  eventName: "cta_mynavi_job20s",
+};
+
+const UZUZ_28: AffiliateCTA = {
+  name: "UZUZ 28新卒",
+  url: "https://h.accesstrade.net/sp/cc?rk=0100plgp00ovm3",
+  desc: "新卒・第二新卒向けの就職支援サービスです",
+  eventName: "cta_uzuz_28",
+};
+
+const UZUZ_GENERAL: AffiliateCTA = {
+  name: "UZUZ",
+  url: "https://h.accesstrade.net/sp/cc?rk=0100pw7f00ovm3",
+  desc: "第二新卒・既卒・フリーター向けの就職支援サービスです",
+  eventName: "cta_uzuz_general",
+};
+
+const TECHCLIPS: AffiliateCTA = {
+  name: "TechClipsエージェント",
+  url: "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892669579",
+  desc: "ITエンジニア専門の転職エージェントです",
+  eventName: "cta_techclips",
+};
+
+// typeId → 表示するCTA（ユメキャリ対象の4タイプ以外に1つずつ配置）
+const TYPE_CTA_MAP: Record<number, AffiliateCTA> = {
+  // TechClips: 技術系タイプ
+  5: TECHCLIPS,   // alchemist — 開発・技術職・DX推進
+  15: TECHCLIPS,  // necromancer — 変革推進・尖った専門職
+  // マイナビジョブ20's: 人事・事務・管理系タイプ
+  4: MYNAVI,      // cleric — 人事・カスタマーサポート
+  7: MYNAVI,      // artisan — 事務・制作・品質管理
+  10: MYNAVI,     // guardian — 総務・法務・管理
+  12: MYNAVI,     // paladin — 事業推進・社会貢献
+  // UZUZ 28新卒: 企画・分析・戦略系タイプ
+  1: UZUZ_28,     // wizard — 企画・クリエイティブ
+  3: UZUZ_28,     // sage — 分析・戦略・コンサル
+  9: UZUZ_28,     // ranger — 情報収集・営業企画
+  13: UZUZ_28,    // tactician — 経営企画・データ分析
+  // UZUZ一般: 幅広い対象
+  11: UZUZ_GENERAL, // assassin — 専門職・個人プレイヤー
+  16: UZUZ_GENERAL, // druid
+};
+
+export function getAffiliateCTAForType(typeId: number): AffiliateCTA | null {
+  return TYPE_CTA_MAP[typeId] || null;
+}
+
 export const AFFILIATE_DISCLOSURE =
   "当サイトは一部のリンクにアフィリエイト広告を利用しています。リンクを経由して商品・サービスの申し込みがあった場合、当サイトに報酬が支払われることがあります。ただし、記事の内容やランキングへの影響は一切ありません。広告の有無にかかわらず、実体験に基づいた正確な情報を提供しています。詳細はプライバシーポリシーをご覧ください。";
