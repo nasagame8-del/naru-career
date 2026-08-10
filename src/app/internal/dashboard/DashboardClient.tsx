@@ -21,9 +21,49 @@ type GA4Data = {
 };
 
 type SCRow = { keys: string[]; clicks: number; impressions: number; ctr: number; position: number };
-type SCPeriod = { clicks: number; impressions: number; ctr: number; position: number; topQueries: SCRow[]; topPages: SCRow[] };
+type SCPeriod = { clicks: number; impressions: number; ctr: number; position: number; topQueries: SCRow[]; topPages: SCRow[]; pageQueries: SCRow[] };
 type SurgingPage = { page: string; current: number; previous: number; changePercent: number; isNew: boolean };
 type NewlyVisible = { page: string; impressions: number };
+
+type QuerySuggestion =
+  | { type: "title_improve"; label: string }
+  | { type: "content_strengthen"; label: string }
+  | { type: "growing"; label: string }
+  | { type: "new_query"; label: string }
+  | { type: "high_rank_low_volume"; label: string };
+
+type QueryInsight = {
+  query: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+  pages: { page: string; clicks: number; impressions: number; position: number }[];
+  prevPosition: number | null;
+  positionChange: number | null;
+  prevImpressions: number | null;
+  impressionChange: number | null;
+  suggestion: QuerySuggestion | null;
+};
+
+type EnhancedActionItem = {
+  page: string;
+  slug: string;
+  priority: "high" | "medium" | "low";
+  reasons: string[];
+  suggestions: string[];
+  topQueries: { query: string; position: number; impressions: number; ctr: number }[];
+};
+
+type ThemeStat = {
+  id: string;
+  label: string;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  avgPosition: number;
+  queryCount: number;
+};
 
 type GSCData = {
   configured: boolean;
@@ -37,6 +77,9 @@ type GSCData = {
   surgingPages?: SurgingPage[];
   newlyVisible?: NewlyVisible[];
   actionItems?: string[];
+  queryInsights?: QueryInsight[];
+  enhancedActionItems?: EnhancedActionItem[];
+  themeStats?: ThemeStat[];
 };
 
 type DashboardData = {
@@ -211,9 +254,106 @@ function KPI({ label, value, color }: { label: string; value: number; color?: "r
   );
 }
 
+// ── Collapsible Section ──
+
+function Collapsible({ title, defaultOpen, children }: { title: string; defaultOpen?: boolean; children: React.ReactNode }) {
+  const [open, setOpen] = useState(defaultOpen ?? false);
+  return (
+    <div className="mb-4">
+      <button onClick={() => setOpen(!open)} className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 hover:text-gray-700">
+        <span className="text-[10px]">{open ? "▼" : "▶"}</span>
+        {title}
+      </button>
+      {open && children}
+    </div>
+  );
+}
+
+// ── Suggestion Badge ──
+
+const SUGGESTION_STYLES: Record<string, string> = {
+  title_improve: "bg-amber-50 text-amber-700 border-amber-200",
+  content_strengthen: "bg-blue-50 text-blue-700 border-blue-200",
+  growing: "bg-green-50 text-green-700 border-green-200",
+  new_query: "bg-purple-50 text-purple-700 border-purple-200",
+  high_rank_low_volume: "bg-gray-100 text-gray-600 border-gray-200",
+};
+const SUGGESTION_SHORT: Record<string, string> = {
+  title_improve: "タイトル改善",
+  content_strengthen: "コンテンツ強化",
+  growing: "成長中",
+  new_query: "新規",
+  high_rank_low_volume: "高順位低Vol",
+};
+
+function SuggestionBadge({ suggestion }: { suggestion: QuerySuggestion | null }) {
+  if (!suggestion) return null;
+  return (
+    <span className={`text-[9px] px-1.5 py-0.5 rounded border whitespace-nowrap ${SUGGESTION_STYLES[suggestion.type] || ""}`} title={suggestion.label}>
+      {SUGGESTION_SHORT[suggestion.type] || suggestion.type}
+    </span>
+  );
+}
+
+// ── Sortable Column Header ──
+
+function SortHeader({ label, sortKey, currentKey, asc, onSort }: { label: string; sortKey: string; currentKey: string; asc: boolean; onSort: (key: string) => void }) {
+  const active = sortKey === currentKey;
+  return (
+    <th
+      className="text-right py-1.5 text-gray-500 font-medium text-xs cursor-pointer hover:text-gray-700 select-none whitespace-nowrap"
+      onClick={() => onSort(sortKey)}
+    >
+      {label}{active ? (asc ? " ↑" : " ↓") : ""}
+    </th>
+  );
+}
+
 // ── Performance Tab ──
 
 function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
+  const [querySortKey, setQuerySortKey] = useState<string>("impressions");
+  const [querySortAsc, setQuerySortAsc] = useState(false);
+  const [expandedQuery, setExpandedQuery] = useState<string | null>(null);
+  const [expandedPage, setExpandedPage] = useState<string | null>(null);
+  const [queryShowAll, setQueryShowAll] = useState(false);
+
+  const handleQuerySort = (key: string) => {
+    if (querySortKey === key) {
+      setQuerySortAsc(!querySortAsc);
+    } else {
+      setQuerySortKey(key);
+      setQuerySortAsc(false);
+    }
+  };
+
+  // Sort query insights
+  const sortedInsights = [...(gsc.queryInsights || [])].sort((a, b) => {
+    const getValue = (item: QueryInsight) => {
+      switch (querySortKey) {
+        case "clicks": return item.clicks;
+        case "impressions": return item.impressions;
+        case "ctr": return item.ctr;
+        case "position": return item.position;
+        case "positionChange": return item.positionChange ?? 999;
+        default: return item.impressions;
+      }
+    };
+    const va = getValue(a);
+    const vb = getValue(b);
+    return querySortAsc ? va - vb : vb - va;
+  });
+
+  // Build page→queries map from pageQueries for expanded page view
+  const pageQueriesMap = new Map<string, SCRow[]>();
+  if (gsc.current7d?.pageQueries) {
+    for (const row of gsc.current7d.pageQueries) {
+      const page = row.keys[0];
+      if (!pageQueriesMap.has(page)) pageQueriesMap.set(page, []);
+      pageQueriesMap.get(page)!.push(row);
+    }
+  }
+
   return (
     <div className="space-y-6">
       {/* GA4 */}
@@ -260,6 +400,11 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
           <ErrorMsg message={gsc.error} />
         ) : (
           <>
+            {/* Disclaimer */}
+            <p className="text-[10px] text-gray-400 mb-4">
+              Search Console APIの数値はGoogle Search Consoleの仕様上、すべての検索クエリ・行を完全に取得できない場合があります。改善判断の参考値として利用してください。
+            </p>
+
             {/* サマリー（7日間） */}
             {gsc.current7d && (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
@@ -277,154 +422,319 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
               </div>
             )}
 
-            {/* 上位クエリ */}
-            {gsc.current7d?.topQueries && gsc.current7d.topQueries.length > 0 && (
-              <>
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">上位クエリ（7日間）</h4>
-                <table className="w-full text-sm mb-4">
-                  <thead><tr className="border-b border-gray-100">
-                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">クエリ</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
-                  </tr></thead>
-                  <tbody>
-                    {gsc.current7d.topQueries.map((q, i) => (
-                      <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
-                        <td className="py-1.5 text-xs"><a href={`https://www.google.com/search?q=${encodeURIComponent(q.keys[0])}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{q.keys[0]}</a></td>
-                        <td className="py-1.5 text-right text-xs font-bold">{q.clicks}</td>
-                        <td className="py-1.5 text-right text-xs">{q.impressions}</td>
-                        <td className="py-1.5 text-right text-xs">{q.position.toFixed(1)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </>
-            )}
-
-            {/* 上位ページ */}
-            {gsc.current7d?.topPages && gsc.current7d.topPages.length > 0 && (
-              <>
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">上位ページ（7日間）</h4>
-                <table className="w-full text-sm mb-4">
-                  <thead><tr className="border-b border-gray-100">
-                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
-                  </tr></thead>
-                  <tbody>
-                    {gsc.current7d.topPages.map((p, i) => {
-                      let path = p.keys[0];
-                      try { path = new URL(p.keys[0]).pathname; } catch { /* keep as-is */ }
-                      return (
-                        <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
-                          <td className="py-1.5 text-xs truncate max-w-[200px]"><a href={p.keys[0]} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{path}</a></td>
-                          <td className="py-1.5 text-right text-xs font-bold">{p.clicks}</td>
-                          <td className="py-1.5 text-right text-xs">{p.impressions}</td>
-                          <td className="py-1.5 text-right text-xs">{p.position.toFixed(1)}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </>
-            )}
-
-            {/* 今週やること */}
-            {gsc.actionItems && gsc.actionItems.length > 0 && (
+            {/* 今週やること (Enhanced) */}
+            {gsc.enhancedActionItems && gsc.enhancedActionItems.length > 0 && (
               <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 mb-4">
-                <h4 className="text-xs font-bold text-blue-800 mb-2">今週やること</h4>
-                <ul className="space-y-1">
-                  {gsc.actionItems.map((item, i) => (
-                    <li key={i} className="text-[11px] text-blue-700">• {item}</li>
-                  ))}
-                </ul>
+                <h4 className="text-xs font-bold text-blue-800 mb-3">今週やること</h4>
+                <div className="space-y-3">
+                  {gsc.enhancedActionItems.map((item, i) => {
+                    let pagePath = item.page;
+                    try { pagePath = new URL(item.page).pathname; } catch { /* keep as-is */ }
+                    return (
+                      <div key={i} className="bg-white/60 rounded px-3 py-2">
+                        <div className="flex items-center gap-2 mb-1">
+                          <PriorityLabel priority={item.priority} />
+                          <a href={item.page} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-700 hover:underline font-medium">{pagePath}</a>
+                        </div>
+                        {item.slug && <div className="text-[10px] text-gray-400 mb-1 select-all">content/articles/{item.slug}.md</div>}
+                        <ul className="space-y-0.5 mb-1">
+                          {item.reasons.map((r, ri) => (
+                            <li key={ri} className="text-[11px] text-blue-700">- {r}</li>
+                          ))}
+                        </ul>
+                        <ul className="space-y-0.5 mb-1">
+                          {item.suggestions.map((s, si) => (
+                            <li key={si} className="text-[10px] text-blue-600">→ {s}</li>
+                          ))}
+                        </ul>
+                        {item.topQueries.length > 0 && (
+                          <div className="text-[10px] text-gray-500 mt-1">
+                            関連クエリ: {item.topQueries.map((tq) => `${tq.query} (${tq.position.toFixed(0)}位)`).join(", ")}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
 
-            {/* リライト候補 */}
-            {gsc.rewriteCandidates && gsc.rewriteCandidates.length > 0 && (
-              <>
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">リライト候補（順位11〜20位・表示10回以上）</h4>
-                <table className="w-full text-sm mb-4">
-                  <thead><tr className="border-b border-gray-100">
-                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
-                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
-                  </tr></thead>
-                  <tbody>
-                    {gsc.rewriteCandidates.map((p, i) => (
-                      <tr key={i} className="border-b border-gray-50">
-                        <td className="py-2"><PriorityLabel priority={p.priority} /></td>
-                        <td className="py-2"><PageLink url={p.keys[0]} /></td>
-                        <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
-                        <td className="py-2 text-right text-xs">{p.impressions}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </>
+            {/* 検索クエリ (NEW) */}
+            {sortedInsights.length > 0 && (
+              <Collapsible title={`検索クエリ（${sortedInsights.length}件）`} defaultOpen={true}>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead><tr className="border-b border-gray-100">
+                      <th className="text-left py-1.5 text-gray-500 font-medium text-xs">クエリ</th>
+                      <SortHeader label="クリック" sortKey="clicks" currentKey={querySortKey} asc={querySortAsc} onSort={handleQuerySort} />
+                      <SortHeader label="表示" sortKey="impressions" currentKey={querySortKey} asc={querySortAsc} onSort={handleQuerySort} />
+                      <SortHeader label="CTR" sortKey="ctr" currentKey={querySortKey} asc={querySortAsc} onSort={handleQuerySort} />
+                      <SortHeader label="順位" sortKey="position" currentKey={querySortKey} asc={querySortAsc} onSort={handleQuerySort} />
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs whitespace-nowrap">前週順位</th>
+                      <SortHeader label="順位変化" sortKey="positionChange" currentKey={querySortKey} asc={querySortAsc} onSort={handleQuerySort} />
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs whitespace-nowrap">推奨</th>
+                    </tr></thead>
+                    <tbody>
+                      {(queryShowAll ? sortedInsights : sortedInsights.slice(0, 30)).map((qi, i) => (
+                        <>
+                          <tr
+                            key={`row-${i}`}
+                            className={`border-b border-gray-50 hover:bg-gray-50 ${qi.pages.length > 0 ? "cursor-pointer" : ""}`}
+                            onClick={() => qi.pages.length > 0 && setExpandedQuery(expandedQuery === qi.query ? null : qi.query)}
+                          >
+                            <td className="py-1.5 text-xs">
+                              <div className="flex items-center gap-1">
+                                {qi.pages.length > 0 && <span className="text-[10px] text-gray-400">{expandedQuery === qi.query ? "▼" : "▶"}</span>}
+                                <a href={`https://www.google.com/search?q=${encodeURIComponent(qi.query)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline" onClick={(e) => e.stopPropagation()}>{qi.query}</a>
+                              </div>
+                            </td>
+                            <td className="py-1.5 text-right text-xs font-bold">{qi.clicks}</td>
+                            <td className="py-1.5 text-right text-xs">{qi.impressions}</td>
+                            <td className="py-1.5 text-right text-xs">{(qi.ctr * 100).toFixed(1)}%</td>
+                            <td className="py-1.5 text-right text-xs">{qi.position.toFixed(1)}</td>
+                            <td className="py-1.5 text-right text-xs text-gray-400">{qi.prevPosition !== null ? qi.prevPosition.toFixed(1) : "-"}</td>
+                            <td className="py-1.5 text-right text-xs">
+                              {qi.positionChange !== null ? (
+                                <span className={qi.positionChange < 0 ? "text-green-600" : qi.positionChange > 0 ? "text-red-500" : "text-gray-400"}>
+                                  {qi.positionChange < 0 ? `${qi.positionChange.toFixed(1)}` : qi.positionChange > 0 ? `+${qi.positionChange.toFixed(1)}` : "0"}
+                                </span>
+                              ) : "-"}
+                            </td>
+                            <td className="py-1.5 text-right"><SuggestionBadge suggestion={qi.suggestion} /></td>
+                          </tr>
+                          {expandedQuery === qi.query && qi.pages.length > 0 && (
+                            <tr key={`expanded-${i}`}>
+                              <td colSpan={8} className="bg-gray-50 px-4 py-2">
+                                {qi.pages.length > 1 && (
+                                  <p className="text-[10px] text-amber-600 font-bold mb-1">
+                                    このクエリで{qi.pages.length}ページが表示されています。カニバリゼーションの可能性があります。
+                                  </p>
+                                )}
+                                <table className="w-full text-[11px]">
+                                  <thead><tr className="border-b border-gray-200">
+                                    <th className="text-left py-1 text-gray-500">ページ</th>
+                                    <th className="text-right py-1 text-gray-500">クリック</th>
+                                    <th className="text-right py-1 text-gray-500">表示</th>
+                                    <th className="text-right py-1 text-gray-500">順位</th>
+                                  </tr></thead>
+                                  <tbody>
+                                    {qi.pages.map((p, pi) => {
+                                      let pPath = p.page;
+                                      try { pPath = new URL(p.page).pathname; } catch { /* keep */ }
+                                      return (
+                                        <tr key={pi} className="border-b border-gray-100">
+                                          <td className="py-1"><a href={p.page} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{pPath}</a></td>
+                                          <td className="py-1 text-right">{p.clicks}</td>
+                                          <td className="py-1 text-right">{p.impressions}</td>
+                                          <td className="py-1 text-right">{p.position.toFixed(1)}</td>
+                                        </tr>
+                                      );
+                                    })}
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          )}
+                        </>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {sortedInsights.length > 30 && !queryShowAll && (
+                  <button onClick={() => setQueryShowAll(true)} className="text-xs text-blue-600 hover:underline mt-2">
+                    もっと見る（残り{sortedInsights.length - 30}件）
+                  </button>
+                )}
+              </Collapsible>
             )}
 
-            {/* CTRが低い記事 */}
-            {gsc.lowCtrPages && gsc.lowCtrPages.length > 0 && (
-              <>
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">CTR改善候補（順位1〜20位・CTR 2%未満）</h4>
-                <p className="text-[10px] text-gray-400 mb-2">タイトルやディスクリプション改善の余地がある可能性があります</p>
-                <table className="w-full text-sm mb-4">
-                  <thead><tr className="border-b border-gray-100">
-                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
-                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">CTR</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
-                  </tr></thead>
-                  <tbody>
-                    {gsc.lowCtrPages.map((p, i) => (
-                      <tr key={i} className="border-b border-gray-50">
-                        <td className="py-2"><PriorityLabel priority={p.priority} /></td>
-                        <td className="py-2"><PageLink url={p.keys[0]} /></td>
-                        <td className="py-2 text-right text-xs">{(p.ctr * 100).toFixed(1)}%</td>
-                        <td className="py-2 text-right text-xs">{p.impressions}</td>
-                        <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </>
+            {/* 上位ページ (ENHANCED with accordion) */}
+            {gsc.current7d?.topPages && gsc.current7d.topPages.length > 0 && (
+              <Collapsible title={`上位ページ（${gsc.current7d.topPages.length}件）`} defaultOpen={true}>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead><tr className="border-b border-gray-100">
+                      <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th>
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+                    </tr></thead>
+                    <tbody>
+                      {gsc.current7d.topPages.map((p, i) => {
+                        let pagePath = p.keys[0];
+                        let slug = "";
+                        try {
+                          pagePath = new URL(p.keys[0]).pathname;
+                          const m = pagePath.match(/\/articles\/(.+)/);
+                          if (m) slug = m[1];
+                        } catch { /* keep as-is */ }
+                        const queries = pageQueriesMap.get(p.keys[0]) || [];
+                        const isExpanded = expandedPage === p.keys[0];
+                        return (
+                          <>
+                            <tr
+                              key={`page-${i}`}
+                              className={`border-b border-gray-50 hover:bg-gray-50 ${queries.length > 0 ? "cursor-pointer" : ""}`}
+                              onClick={() => queries.length > 0 && setExpandedPage(isExpanded ? null : p.keys[0])}
+                            >
+                              <td className="py-1.5 text-xs">
+                                <div className="flex items-center gap-1">
+                                  {queries.length > 0 && <span className="text-[10px] text-gray-400">{isExpanded ? "▼" : "▶"}</span>}
+                                  <div>
+                                    <a href={p.keys[0]} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline" onClick={(e) => e.stopPropagation()}>{pagePath}</a>
+                                    {slug && <div className="text-[10px] text-gray-400 mt-0.5 select-all">content/articles/{slug}.md</div>}
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="py-1.5 text-right text-xs font-bold">{p.clicks}</td>
+                              <td className="py-1.5 text-right text-xs">{p.impressions}</td>
+                              <td className="py-1.5 text-right text-xs">{p.position.toFixed(1)}</td>
+                            </tr>
+                            {isExpanded && queries.length > 0 && (
+                              <tr key={`pageq-${i}`}>
+                                <td colSpan={4} className="bg-gray-50 px-4 py-2">
+                                  <p className="text-[10px] text-gray-500 mb-1 font-bold">このページの上位クエリ（最大10件）</p>
+                                  <table className="w-full text-[11px]">
+                                    <thead><tr className="border-b border-gray-200">
+                                      <th className="text-left py-1 text-gray-500">クエリ</th>
+                                      <th className="text-right py-1 text-gray-500">クリック</th>
+                                      <th className="text-right py-1 text-gray-500">表示</th>
+                                      <th className="text-right py-1 text-gray-500">順位</th>
+                                    </tr></thead>
+                                    <tbody>
+                                      {queries
+                                        .sort((a, b) => b.impressions - a.impressions)
+                                        .slice(0, 10)
+                                        .map((q, qi) => (
+                                        <tr key={qi} className="border-b border-gray-100">
+                                          <td className="py-1"><a href={`https://www.google.com/search?q=${encodeURIComponent(q.keys[1])}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{q.keys[1]}</a></td>
+                                          <td className="py-1 text-right">{q.clicks}</td>
+                                          <td className="py-1 text-right">{q.impressions}</td>
+                                          <td className="py-1 text-right">{q.position.toFixed(1)}</td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            )}
+                          </>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </Collapsible>
+            )}
+
+            {/* テーマ別 (NEW) */}
+            {gsc.themeStats && gsc.themeStats.length > 0 && (
+              <Collapsible title="テーマ別">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {gsc.themeStats.map((theme) => (
+                    <div key={theme.id} className="bg-gray-50 rounded-lg p-3">
+                      <p className="text-xs font-bold text-gray-700 mb-1">{theme.label}</p>
+                      <div className="space-y-0.5 text-[10px] text-gray-500">
+                        <p>表示: {theme.impressions.toLocaleString()}</p>
+                        <p>クリック: {theme.clicks.toLocaleString()}</p>
+                        <p>CTR: {(theme.ctr * 100).toFixed(1)}%</p>
+                        <p>平均順位: {theme.avgPosition.toFixed(1)}</p>
+                        <p>クエリ数: {theme.queryCount}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Collapsible>
+            )}
+
+            {/* 改善候補 (ENHANCED - combining rewriteCandidates and lowCtrPages) */}
+            {((gsc.rewriteCandidates && gsc.rewriteCandidates.length > 0) || (gsc.lowCtrPages && gsc.lowCtrPages.length > 0)) && (
+              <Collapsible title="改善候補">
+                {gsc.rewriteCandidates && gsc.rewriteCandidates.length > 0 && (
+                  <>
+                    <p className="text-[10px] text-gray-500 font-bold mb-1">リライト候補（順位11〜20位・表示10回以上）</p>
+                    <div className="overflow-x-auto mb-3">
+                      <table className="w-full text-sm">
+                        <thead><tr className="border-b border-gray-100">
+                          <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
+                          <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                          <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+                          <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+                        </tr></thead>
+                        <tbody>
+                          {gsc.rewriteCandidates.map((p, i) => (
+                            <tr key={i} className="border-b border-gray-50">
+                              <td className="py-2"><PriorityLabel priority={p.priority} /></td>
+                              <td className="py-2"><PageLink url={p.keys[0]} /></td>
+                              <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
+                              <td className="py-2 text-right text-xs">{p.impressions}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
+                {gsc.lowCtrPages && gsc.lowCtrPages.length > 0 && (
+                  <>
+                    <p className="text-[10px] text-gray-500 font-bold mb-1">CTR改善候補（順位1〜20位・CTR 2%未満）</p>
+                    <p className="text-[10px] text-gray-400 mb-2">タイトルやディスクリプション改善の余地がある可能性があります</p>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead><tr className="border-b border-gray-100">
+                          <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
+                          <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                          <th className="text-right py-1.5 text-gray-500 font-medium text-xs">CTR</th>
+                          <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+                          <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+                        </tr></thead>
+                        <tbody>
+                          {gsc.lowCtrPages.map((p, i) => (
+                            <tr key={i} className="border-b border-gray-50">
+                              <td className="py-2"><PriorityLabel priority={p.priority} /></td>
+                              <td className="py-2"><PageLink url={p.keys[0]} /></td>
+                              <td className="py-2 text-right text-xs">{(p.ctr * 100).toFixed(1)}%</td>
+                              <td className="py-2 text-right text-xs">{p.impressions}</td>
+                              <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
+              </Collapsible>
             )}
 
             {/* 表示急増 */}
             {gsc.surgingPages && gsc.surgingPages.length > 0 && (
-              <>
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">表示急増（前週比+50%以上）</h4>
-                <table className="w-full text-sm mb-4">
-                  <thead><tr className="border-b border-gray-100">
-                    <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">今週</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">前週</th>
-                    <th className="text-right py-1.5 text-gray-500 font-medium text-xs">変化</th>
-                  </tr></thead>
-                  <tbody>
-                    {gsc.surgingPages.map((p, i) => (
-                      <tr key={i} className="border-b border-gray-50">
-                        <td className="py-2"><PageLink url={p.page} /></td>
-                        <td className="py-2 text-right text-xs font-bold">{p.current}</td>
-                        <td className="py-2 text-right text-xs">{p.previous}</td>
-                        <td className="py-2 text-right text-xs text-green-600">{p.isNew ? "新規表示" : `+${p.changePercent.toFixed(0)}%`}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </>
+              <Collapsible title={`表示急増（${gsc.surgingPages.length}件）`} defaultOpen={true}>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead><tr className="border-b border-gray-100">
+                      <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs">今週</th>
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs">前週</th>
+                      <th className="text-right py-1.5 text-gray-500 font-medium text-xs">変化</th>
+                    </tr></thead>
+                    <tbody>
+                      {gsc.surgingPages.map((p, i) => (
+                        <tr key={i} className="border-b border-gray-50">
+                          <td className="py-2"><PageLink url={p.page} /></td>
+                          <td className="py-2 text-right text-xs font-bold">{p.current}</td>
+                          <td className="py-2 text-right text-xs">{p.previous}</td>
+                          <td className="py-2 text-right text-xs text-green-600">{p.isNew ? "新規表示" : `+${p.changePercent.toFixed(0)}%`}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Collapsible>
             )}
 
             {/* 新規表示 */}
             {gsc.newlyVisible && gsc.newlyVisible.length > 0 && (
-              <>
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Googleに新しく認識された可能性のある記事</h4>
+              <Collapsible title={`新規表示（${gsc.newlyVisible.length}件）`} defaultOpen={true}>
                 <p className="text-[10px] text-gray-400 mb-2">前28日間の表示が0で、直近7日間に表示が発生。検索結果に表示され始めた可能性があります</p>
                 <ul className="space-y-2">
                   {gsc.newlyVisible.map((p, i) => (
@@ -434,7 +744,7 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
                     </li>
                   ))}
                 </ul>
-              </>
+              </Collapsible>
             )}
           </>
         )}

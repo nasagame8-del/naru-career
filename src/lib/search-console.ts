@@ -7,6 +7,8 @@
  *   SEARCH_CONSOLE_SITE_URL (例: sc-domain:naru-career.com)
  */
 
+import { classifyQuery, QUERY_THEMES } from "./query-themes";
+
 // ── 型定義 ──
 
 export interface SCRow {
@@ -27,6 +29,46 @@ export interface SCPeriodData {
   pageQueries: SCRow[];
 }
 
+export type QuerySuggestion =
+  | { type: "title_improve"; label: string }
+  | { type: "content_strengthen"; label: string }
+  | { type: "growing"; label: string }
+  | { type: "new_query"; label: string }
+  | { type: "high_rank_low_volume"; label: string };
+
+export interface QueryInsight {
+  query: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+  pages: { page: string; clicks: number; impressions: number; position: number }[];
+  prevPosition: number | null;
+  positionChange: number | null;
+  prevImpressions: number | null;
+  impressionChange: number | null;
+  suggestion: QuerySuggestion | null;
+}
+
+export interface EnhancedActionItem {
+  page: string;
+  slug: string;
+  priority: "high" | "medium" | "low";
+  reasons: string[];
+  suggestions: string[];
+  topQueries: { query: string; position: number; impressions: number; ctr: number }[];
+}
+
+export interface ThemeStat {
+  id: string;
+  label: string;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  avgPosition: number;
+  queryCount: number;
+}
+
 export interface SCData {
   configured: boolean;
   error?: string;
@@ -40,6 +82,10 @@ export interface SCData {
   surgingPages?: { page: string; current: number; previous: number; changePercent: number; isNew: boolean }[];
   newlyVisible?: { page: string; impressions: number }[];
   actionItems?: string[];
+  // v2: クエリインサイト
+  queryInsights?: QueryInsight[];
+  enhancedActionItems?: EnhancedActionItem[];
+  themeStats?: ThemeStat[];
 }
 
 // ── 日付ヘルパー（太平洋時間を考慮） ──
@@ -124,9 +170,9 @@ async function fetchPeriod(
 ): Promise<SCPeriodData> {
   const [total, topQueries, topPages, pageQueries] = await Promise.all([
     querySiteTotal(auth, siteUrl, startDate, endDate),
-    querySearchConsole(auth, siteUrl, startDate, endDate, ["query"], 20),
+    querySearchConsole(auth, siteUrl, startDate, endDate, ["query"], 50),
     querySearchConsole(auth, siteUrl, startDate, endDate, ["page"], 20),
-    querySearchConsole(auth, siteUrl, startDate, endDate, ["page", "query"], 50),
+    querySearchConsole(auth, siteUrl, startDate, endDate, ["page", "query"], 100),
   ]);
 
   return { ...total, topQueries, topPages, pageQueries };
@@ -217,6 +263,167 @@ function deriveInsights(data: {
   };
 }
 
+// ── クエリインサイト導出 ──
+
+function deriveQueryInsights(data: {
+  current7d: SCPeriodData;
+  previous7d: SCPeriodData;
+}): Pick<SCData, "queryInsights" | "enhancedActionItems" | "themeStats"> {
+  const { current7d, previous7d } = data;
+
+  // Build query→pages map from pageQueries
+  const queryPagesMap = new Map<string, { page: string; clicks: number; impressions: number; position: number }[]>();
+  for (const row of current7d.pageQueries) {
+    const page = row.keys[0];
+    const query = row.keys[1];
+    if (!queryPagesMap.has(query)) queryPagesMap.set(query, []);
+    queryPagesMap.get(query)!.push({ page, clicks: row.clicks, impressions: row.impressions, position: row.position });
+  }
+
+  // Build previous query map for comparison
+  const prevQueryMap = new Map<string, SCRow>();
+  for (const q of previous7d.topQueries) {
+    prevQueryMap.set(q.keys[0], q);
+  }
+
+  // Build QueryInsight for each topQuery
+  const queryInsights: QueryInsight[] = current7d.topQueries.map((q) => {
+    const query = q.keys[0];
+    const prev = prevQueryMap.get(query);
+    const prevPosition = prev ? prev.position : null;
+    const positionChange = prev ? q.position - prev.position : null;
+    const prevImpressions = prev ? prev.impressions : null;
+    const impressionChange = prev && prev.impressions > 0
+      ? ((q.impressions - prev.impressions) / prev.impressions) * 100
+      : null;
+    const pages = queryPagesMap.get(query) || [];
+
+    // Determine suggestion
+    let suggestion: QuerySuggestion | null = null;
+    if (prevImpressions === null || prevImpressions === 0) {
+      if (q.impressions >= 1) {
+        suggestion = { type: "new_query", label: "新しく表示され始めたクエリです" };
+      }
+    } else if (impressionChange !== null && impressionChange >= 50 && q.impressions >= 5) {
+      suggestion = { type: "growing", label: "表示回数が急増しています。コンテンツ強化の好機です" };
+    }
+    if (!suggestion && q.position >= 1 && q.position <= 20 && q.impressions >= 10 && q.ctr < 0.02) {
+      suggestion = { type: "title_improve", label: "順位に対してCTRが低い可能性があります。タイトル改善の余地があるかもしれません" };
+    }
+    if (!suggestion && q.position >= 11 && q.position <= 30 && q.impressions >= 10) {
+      suggestion = { type: "content_strengthen", label: "もう少しで上位表示の可能性があります。コンテンツ充実が有効かもしれません" };
+    }
+    if (!suggestion && q.position >= 1 && q.position <= 5 && q.impressions < 5) {
+      suggestion = { type: "high_rank_low_volume", label: "高順位ですが検索ボリュームが少ないクエリです" };
+    }
+
+    return {
+      query,
+      clicks: q.clicks,
+      impressions: q.impressions,
+      ctr: q.ctr,
+      position: q.position,
+      pages,
+      prevPosition,
+      positionChange,
+      prevImpressions,
+      impressionChange,
+      suggestion,
+    };
+  });
+
+  // Build themeStats
+  const themeAgg = new Map<string, { impressions: number; clicks: number; totalPosition: number; count: number }>();
+  for (const theme of QUERY_THEMES) {
+    themeAgg.set(theme.id, { impressions: 0, clicks: 0, totalPosition: 0, count: 0 });
+  }
+  for (const qi of queryInsights) {
+    const themeId = classifyQuery(qi.query);
+    const agg = themeAgg.get(themeId)!;
+    agg.impressions += qi.impressions;
+    agg.clicks += qi.clicks;
+    agg.totalPosition += qi.position;
+    agg.count += 1;
+  }
+  const themeStats: ThemeStat[] = QUERY_THEMES
+    .map((theme) => {
+      const agg = themeAgg.get(theme.id)!;
+      return {
+        id: theme.id,
+        label: theme.label,
+        impressions: agg.impressions,
+        clicks: agg.clicks,
+        ctr: agg.impressions > 0 ? agg.clicks / agg.impressions : 0,
+        avgPosition: agg.count > 0 ? agg.totalPosition / agg.count : 0,
+        queryCount: agg.count,
+      };
+    })
+    .filter((t) => t.queryCount > 0);
+
+  // Build enhancedActionItems: group insights by page
+  const pageInsightMap = new Map<string, QueryInsight[]>();
+  for (const qi of queryInsights) {
+    for (const p of qi.pages) {
+      if (!pageInsightMap.has(p.page)) pageInsightMap.set(p.page, []);
+      pageInsightMap.get(p.page)!.push(qi);
+    }
+  }
+
+  const enhancedItems: EnhancedActionItem[] = [];
+  for (const [page, insights] of pageInsightMap) {
+    const reasons: string[] = [];
+    const suggestions: string[] = [];
+    let priority: "high" | "medium" | "low" = "low";
+
+    // Check for high: position 11-20, impressions >= 10
+    const hasRewriteCandidate = insights.some((qi) => qi.position >= 11 && qi.position <= 20 && qi.impressions >= 10);
+    if (hasRewriteCandidate) {
+      priority = "high";
+      reasons.push("順位11〜20位のクエリがあり、内容強化で上位表示の可能性があります");
+      suggestions.push("記事内容の充実・最新情報の追加を検討してください");
+    }
+
+    // Check for medium: CTR < 2%, position 1-20
+    const hasLowCtr = insights.some((qi) => qi.ctr < 0.02 && qi.position >= 1 && qi.position <= 20 && qi.impressions >= 10);
+    if (hasLowCtr) {
+      if (priority === "low") priority = "medium";
+      reasons.push("CTRが低いクエリがあり、タイトル・ディスクリプション改善の余地がある可能性があります");
+      suggestions.push("検索結果での見え方を確認し、タイトルの改善を検討してください");
+    }
+
+    // Check for growing/new
+    const hasGrowing = insights.some((qi) => qi.suggestion?.type === "growing" || qi.suggestion?.type === "new_query");
+    if (hasGrowing) {
+      reasons.push("成長中またはの新規クエリからの流入がある可能性があります");
+      suggestions.push("関連する内部リンクの追加を検討してください");
+    }
+
+    if (reasons.length === 0) continue;
+
+    let slug = "";
+    try {
+      const pathname = new URL(page).pathname;
+      const m = pathname.match(/\/articles\/(.+)/);
+      if (m) slug = m[1];
+    } catch { /* keep empty */ }
+
+    const topQueries = insights
+      .sort((a, b) => b.impressions - a.impressions)
+      .slice(0, 5)
+      .map((qi) => ({ query: qi.query, position: qi.position, impressions: qi.impressions, ctr: qi.ctr }));
+
+    enhancedItems.push({ page, slug, priority, reasons, suggestions, topQueries });
+  }
+
+  // Sort by priority, take top 5
+  const priorityOrder = { high: 0, medium: 1, low: 2 };
+  const enhancedActionItems = enhancedItems
+    .sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority])
+    .slice(0, 5);
+
+  return { queryInsights, enhancedActionItems, themeStats };
+}
+
 // ── メインエクスポート ──
 
 export async function fetchSearchConsoleData(): Promise<SCData> {
@@ -256,6 +463,7 @@ export async function fetchSearchConsoleData(): Promise<SCData> {
     ]);
 
     const insights = deriveInsights({ current7d, previous7d, current28d, previous28d });
+    const queryData = deriveQueryInsights({ current7d, previous7d });
 
     return {
       configured: true,
@@ -264,6 +472,7 @@ export async function fetchSearchConsoleData(): Promise<SCData> {
       current28d,
       previous28d,
       ...insights,
+      ...queryData,
     };
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
