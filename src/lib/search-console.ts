@@ -8,85 +8,13 @@
  */
 
 import { classifyQuery, QUERY_THEMES } from "./query-themes";
+import type {
+  SCRow, SCPeriodData, SCData,
+  QueryInsight, QuerySuggestion, EnhancedActionItem, ThemeStat,
+} from "@/types/search-console";
 
-// ── 型定義 ──
-
-export interface SCRow {
-  keys: string[];
-  clicks: number;
-  impressions: number;
-  ctr: number;
-  position: number;
-}
-
-export interface SCPeriodData {
-  clicks: number;
-  impressions: number;
-  ctr: number;
-  position: number;
-  topQueries: SCRow[];
-  topPages: SCRow[];
-  pageQueries: SCRow[];
-}
-
-export type QuerySuggestion =
-  | { type: "title_improve"; label: string }
-  | { type: "content_strengthen"; label: string }
-  | { type: "growing"; label: string }
-  | { type: "new_query"; label: string }
-  | { type: "high_rank_low_volume"; label: string };
-
-export interface QueryInsight {
-  query: string;
-  clicks: number;
-  impressions: number;
-  ctr: number;
-  position: number;
-  pages: { page: string; clicks: number; impressions: number; position: number }[];
-  prevPosition: number | null;
-  positionChange: number | null;
-  prevImpressions: number | null;
-  impressionChange: number | null;
-  suggestion: QuerySuggestion | null;
-}
-
-export interface EnhancedActionItem {
-  page: string;
-  slug: string;
-  priority: "high" | "medium" | "low";
-  reasons: string[];
-  suggestions: string[];
-  topQueries: { query: string; position: number; impressions: number; ctr: number }[];
-}
-
-export interface ThemeStat {
-  id: string;
-  label: string;
-  impressions: number;
-  clicks: number;
-  ctr: number;
-  avgPosition: number;
-  queryCount: number;
-}
-
-export interface SCData {
-  configured: boolean;
-  error?: string;
-  current7d?: SCPeriodData;
-  previous7d?: SCPeriodData;
-  current28d?: SCPeriodData;
-  previous28d?: SCPeriodData;
-  // ダッシュボード用の導出データ
-  rewriteCandidates?: (SCRow & { priority: "high" | "medium" | "low" })[];
-  lowCtrPages?: (SCRow & { priority: "high" | "medium" | "low" })[];
-  surgingPages?: { page: string; current: number; previous: number; changePercent: number; isNew: boolean }[];
-  newlyVisible?: { page: string; impressions: number }[];
-  actionItems?: string[];
-  // v2: クエリインサイト
-  queryInsights?: QueryInsight[];
-  enhancedActionItems?: EnhancedActionItem[];
-  themeStats?: ThemeStat[];
-}
+// 型を re-export（既存の import 元を壊さない）
+export type { SCRow, SCPeriodData, SCData, QueryInsight, QuerySuggestion, EnhancedActionItem, ThemeStat };
 
 // ── 日付ヘルパー（太平洋時間を考慮） ──
 
