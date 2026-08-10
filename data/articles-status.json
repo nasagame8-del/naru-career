@@ -376,6 +376,18 @@
       "lastReviewDate": "2026-08-02",
       "keyword": "正社員 業務委託 切り替え リスク",
       "priority": "medium"
+    },
+    {
+      "slug": "agent-not-recommended",
+      "status": "published",
+      "experience_filled": true,
+      "factchecked": true,
+      "note_rewritten": false,
+      "note_published": false,
+      "scheduled_publish": "2026-08-10",
+      "lastReviewDate": "2026-08-10",
+      "keyword": "転職エージェント やめたほうがいい おすすめしない",
+      "priority": "high"
     }
   ],
   "note_only_articles": [
