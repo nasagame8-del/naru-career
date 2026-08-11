@@ -32,6 +32,9 @@ export function Header() {
         </Link>
         <div className="flex items-center gap-5">
           <nav className="hidden sm:flex items-center gap-6 text-sm text-ink-soft">
+            <Link href="/shindan" className="hover:text-primary transition-colors font-medium">
+              適職診断
+            </Link>
             <Link href="/#articles" className="hover:text-primary transition-colors">
               記事一覧
             </Link>

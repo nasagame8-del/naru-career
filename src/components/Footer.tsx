@@ -12,8 +12,11 @@ export function Footer() {
             </p>
           </div>
           <nav className="flex flex-wrap gap-6 text-sm text-ink-soft">
-            <Link href="/diagnosis" className="hover:text-primary transition-colors">
-              適職診断
+            <Link href="/guides/second-new-grad-complete-guide" className="hover:text-primary transition-colors">
+              転職完全ガイド
+            </Link>
+            <Link href="/shindan" className="hover:text-primary transition-colors">
+              RPG適職診断
             </Link>
             <Link href="/agent-diagnosis" className="hover:text-primary transition-colors">
               エージェント相性診断
@@ -27,6 +30,17 @@ export function Footer() {
             <Link href="/privacy" className="hover:text-primary transition-colors">
               プライバシーポリシー
             </Link>
+            <Link href="/contact" className="hover:text-primary transition-colors">
+              お問い合わせ
+            </Link>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScDn4OFzXXGVQ7kOwEN8B1ctymOTfEdV5ml_21noJ6f4whYNw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              転職調査にご協力ください
+            </a>
           </nav>
         </div>
         <div className="flex items-center gap-4 mt-8">

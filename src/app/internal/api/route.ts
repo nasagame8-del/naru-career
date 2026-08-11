@@ -59,11 +59,23 @@ async function fetchGA4Data() {
     });
 
     // 人気記事ランキング（7日間、上位10件）
+    // /internal, /api, /members は記事ではないため除外(自分のダッシュボード閲覧等が混入する対策)
     const [topPages] = await client.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
       dimensions: [{ name: "pagePath" }],
       metrics: [{ name: "screenPageViews" }],
+      dimensionFilter: {
+        notExpression: {
+          orGroup: {
+            expressions: [
+              { filter: { fieldName: "pagePath", stringFilter: { matchType: "BEGINS_WITH", value: "/internal" } } },
+              { filter: { fieldName: "pagePath", stringFilter: { matchType: "BEGINS_WITH", value: "/api" } } },
+              { filter: { fieldName: "pagePath", stringFilter: { matchType: "BEGINS_WITH", value: "/members" } } },
+            ],
+          },
+        },
+      },
       orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
       limit: 10,
     });
@@ -87,105 +99,8 @@ async function fetchGA4Data() {
   }
 }
 
-// ── Google Sheets (Search Console データ) ──
-async function fetchGSCData() {
-  const spreadsheetId = process.env.GSC_SPREADSHEET_ID;
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n");
-
-  if (!spreadsheetId || !email || !privateKey) {
-    return { configured: false, error: "スプレッドシート環境変数が未設定です" };
-  }
-
-  try {
-    const { google } = await import("googleapis");
-    const auth = new google.auth.JWT({
-      email,
-      key: privateKey,
-      scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
-    });
-    const sheets = google.sheets({ version: "v4", auth });
-
-    // シートの全データを取得（ヘッダー行 + データ行）
-    const res = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: "A:G", // Date, Query, Page, Clicks, Impressions, CTR, Position
-    });
-
-    const rows = res.data.values;
-    if (!rows || rows.length < 1) {
-      return { configured: true, error: "シートにデータがありません" };
-    }
-
-    // ヘッダーなしのシート: 列順は Date, Query, Page, Clicks, Impressions, CTR, Position
-    const dateIdx = 0;
-    const queryIdx = 1;
-    const clickIdx = 3;
-    const impIdx = 4;
-    const ctrIdx = 5;
-    const posIdx = 6;
-
-    const now = new Date();
-    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    let latestDate = "";
-
-    let totalClicks = 0;
-    let totalImpressions = 0;
-    let totalPosition = 0;
-    let count = 0;
-    const queryMap = new Map<string, number>();
-
-    for (let i = 0; i < rows.length; i++) {
-      const row = rows[i];
-      const dateStr = row[dateIdx] || "";
-      if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) continue;
-
-      if (dateStr > latestDate) latestDate = dateStr;
-
-      const rowDate = new Date(dateStr);
-      if (rowDate < sevenDaysAgo) continue;
-
-      const clicks = Number(row[clickIdx] || 0);
-      const impressions = Number(row[impIdx] || 0);
-      const position = Number(String(row[posIdx] || 0).replace(/[^0-9.]/g, ""));
-
-      totalClicks += clicks;
-      totalImpressions += impressions;
-      totalPosition += position;
-      count++;
-
-      const query = row[queryIdx] || "";
-      if (query) {
-        queryMap.set(query, (queryMap.get(query) || 0) + clicks);
-      }
-    }
-
-    // データ鮮度チェック（最新日が2日以上前なら警告）
-    const latestDateObj = new Date(latestDate);
-    const daysSinceLatest = Math.floor((now.getTime() - latestDateObj.getTime()) / (24 * 60 * 60 * 1000));
-    const stale = daysSinceLatest >= 2;
-
-    // 上位クエリ
-    const topQueries = [...queryMap.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10)
-      .map(([query, clicks]) => ({ query, clicks }));
-
-    return {
-      configured: true,
-      stale,
-      latestDate,
-      daysSinceLatest,
-      totalClicks,
-      totalImpressions,
-      avgCtr: totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(1) : "0",
-      avgPosition: count > 0 ? (totalPosition / count).toFixed(1) : "0",
-      topQueries,
-    };
-  } catch (e) {
-    return { configured: true, error: String(e) };
-  }
-}
+// ── GSC: Search Console API直接取得（lib層に分離）──
+import { fetchSearchConsoleData } from "@/lib/search-console";
 
 export async function GET() {
   const dataDir = path.join(process.cwd(), "data");
@@ -194,8 +109,23 @@ export async function GET() {
   const aspStatus = readJson(path.join(dataDir, "asp-status.json"));
   const articlesStatus = readJson(path.join(dataDir, "articles-status.json"));
   const ctaRegistry = readJson(path.join(dataDir, "cta-registry.json"));
-  const keywords = readCsv(path.join(dataDir, "keywords.csv"));
-  const pendingKeywords = keywords.filter((k) => k.status !== "published");
+
+  // キーワード一覧: articles-status.json から統合取得（keywords.csv廃止）
+  const allArticles = (articlesStatus?.articles || []) as {
+    slug: string; keyword?: string; priority?: string; status: string; cluster?: string;
+  }[];
+  const pendingFromArticles = allArticles
+    .filter((a) => a.keyword && a.status !== "factchecked" && a.status !== "published")
+    .map((a) => ({
+      keyword: a.keyword,
+      priority: a.priority || "medium",
+      status: a.status,
+      cluster: a.cluster || "",
+    }));
+  const pendingOrphan = (articlesStatus?.pending_keywords || []) as {
+    keyword: string; category?: string; priority: string; status: string;
+  }[];
+  const pendingKeywords = [...pendingFromArticles, ...pendingOrphan];
 
   const articleFiles = fs.existsSync(articlesDir)
     ? fs.readdirSync(articlesDir).filter((f) => f.endsWith(".md") && !f.endsWith("-note.md"))
@@ -234,8 +164,57 @@ export async function GET() {
   const aspApproved = aspStatus?.asps?.filter((a: { status: string }) => a.status === "approved").length || 0;
   const aspPending = aspStatus?.asps?.filter((a: { status: string }) => a.status === "pending").length || 0;
 
+  // AIOチェックリスト
+  const aioChecklist = articleFiles.map((f) => {
+    const slug = f.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(articlesDir, f), "utf-8");
+    const { data, content } = matter(raw);
+    const hasPerson = true; // Person構造化データは全記事共通テンプレートで出力
+    const hasFaq = (data.faq?.length || 0) > 0;
+    const hasExperience = /experience-notes|実体験|僕[はがの]|前職/i.test(content);
+    const hasComparisonTable = /comparison-table|ComparisonTable|COMPARISON_TABLE/i.test(content) || (data.widgets?.some((w: { type: string }) => w.type === "comparison-table") ?? false);
+    const hasAuthoritativeSource = /厚生労働省|経済産業省|出典|参考：|参照：|調査[）)]/i.test(content);
+    const hasImage = fs.existsSync(path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`));
+    const hasUpdateHistory = (data.updateHistory?.length || 0) > 0;
+    return {
+      slug,
+      title: data.title || slug,
+      checks: {
+        person: hasPerson,
+        faq: hasFaq,
+        experience: hasExperience,
+        comparisonTable: hasComparisonTable,
+        authoritativeSource: hasAuthoritativeSource,
+        image: hasImage,
+        updateHistory: hasUpdateHistory,
+      },
+    };
+  });
+
+  // 内部リンク分析
+  const internalLinks: { slug: string; outgoing: number; incoming: number }[] = [];
+  const linkMap: Record<string, string[]> = {};
+  for (const f of articleFiles) {
+    const slug = f.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(articlesDir, f), "utf-8");
+    const { content: body } = matter(raw);
+    const outLinks: string[] = [];
+    const linkRegex = /\[.*?\]\(\/articles\/([\w-]+)\)/g;
+    let m;
+    while ((m = linkRegex.exec(body)) !== null) {
+      if (m[1] !== slug) outLinks.push(m[1]);
+    }
+    linkMap[slug] = [...new Set(outLinks)];
+  }
+  for (const f of articleFiles) {
+    const slug = f.replace(/\.md$/, "");
+    const outgoing = linkMap[slug]?.length || 0;
+    const incoming = Object.values(linkMap).filter((links) => links.includes(slug)).length;
+    internalLinks.push({ slug, outgoing, incoming });
+  }
+
   // GA4 & GSC（並列取得）
-  const [ga4, gsc] = await Promise.all([fetchGA4Data(), fetchGSCData()]);
+  const [ga4, gsc] = await Promise.all([fetchGA4Data(), fetchSearchConsoleData()]);
 
   return NextResponse.json({
     summary: {
@@ -253,5 +232,7 @@ export async function GET() {
     keywords: pendingKeywords,
     ga4,
     gsc,
+    aioChecklist,
+    internalLinks,
   });
 }

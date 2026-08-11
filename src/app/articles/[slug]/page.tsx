@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { getArticle, getArticleSlugs, getAllArticleMetas, getCTARegistry } from "@/lib/articles";
+import { notFound } from "next/navigation";
+import { getArticle, getArticleSlugs, getAllArticleMetas, getAllSlugs, getCTARegistry } from "@/lib/articles";
 import { FAQSection } from "@/components/FAQSection";
 import { ShareButtons } from "@/components/ShareButtons";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -13,6 +14,7 @@ import {
 import { DiagnosisBanner } from "@/components/DiagnosisBanner";
 import { TemplateDownload } from "@/components/TemplateDownload";
 import { MiniAlto } from "@/components/MiniAlto";
+import { SurveyLink } from "@/components/SurveyLink";
 import { getNoteLinkMap } from "@/lib/note-feed";
 import { ArticleBody } from "@/components/ArticleBody";
 import { ARTICLE_WIDGETS } from "@/lib/article-widgets";
@@ -27,6 +29,8 @@ export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await props.params;
+  const publishedSlugs = getArticleSlugs();
+  if (!publishedSlugs.includes(slug)) return {};
   const article = await getArticle(slug);
   return {
     title: article.title,
@@ -72,6 +76,17 @@ export default async function ArticlePage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
+
+  // 未来日の記事は404を返す
+  const publishedSlugs = getArticleSlugs();
+  if (!publishedSlugs.includes(slug)) {
+    // slugがそもそも存在しないファイルかどうかも確認
+    const allExisting = getAllSlugs();
+    if (!allExisting.includes(slug)) notFound();
+    // ファイルは存在するが未来日 → 404
+    notFound();
+  }
+
   const article = await getArticle(slug);
   const allArticles = getAllArticleMetas();
   const relatedArticles = allArticles
@@ -94,9 +109,16 @@ export default async function ArticlePage(props: {
   );
   const isMixed = hasAffiliate && hasNonAffiliate;
 
+  const categorySlugMap: Record<string, string> = {
+    "体験談": "taiken",
+    "エージェント比較": "agent-comparison",
+    "業界解説": "industry-guide",
+  };
+  const categoryHref = `/category/${categorySlugMap[article.category] || "taiken"}`;
+
   const breadcrumbs = [
     { name: "ホーム", href: "/" },
-    { name: article.category, href: `/#articles` },
+    { name: article.category, href: categoryHref },
     { name: article.title, href: `/articles/${slug}` },
   ];
 
@@ -109,7 +131,10 @@ export default async function ArticlePage(props: {
   return (
     <>
       <ArticleJsonLd article={article} />
-      <FAQJsonLd faqs={article.faq} />
+      <FAQJsonLd faqs={[
+        ...article.faq,
+        ...article.inlineFaq.map((ifaq) => ({ question: ifaq.question, answer: ifaq.answer })),
+      ]} />
       <BreadcrumbJsonLd items={breadcrumbs} />
 
       <div className="max-w-5xl mx-auto px-4 py-8">
@@ -119,20 +144,22 @@ export default async function ArticlePage(props: {
             ホーム
           </Link>
           <span>/</span>
-          <span>{article.category}</span>
+          <Link href={categoryHref} className="hover:text-primary transition-colors">
+            {article.category}
+          </Link>
           <span>/</span>
           <span className="text-ink">{article.title}</span>
         </nav>
 
         <div className="flex gap-10">
           {/* 本文エリア */}
-          <article className="flex-1 max-w-[680px]">
+          <article className="flex-1 max-w-[700px]">
             <span
               className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${accent.tag}`}
             >
               {article.category}
             </span>
-            <h1 className="text-2xl md:text-3xl font-semibold leading-tight mt-3 mb-4">
+            <h1 className="text-2xl md:text-[32px] font-semibold leading-tight mt-3 mb-5">
               {article.title}
             </h1>
             <div className="flex items-center justify-between mb-6">
@@ -159,21 +186,28 @@ export default async function ArticlePage(props: {
               </div>
             )}
 
-            {/* PR表記（affiliate案件がある記事のみ） */}
+            {/* PR表記（affiliate案件がある記事のみ・折りたたみ式） */}
             {hasAffiliate && (
-              <div className="bg-bg-soft border border-line rounded-lg px-4 py-3 mb-6">
-                <p className="text-[12px] text-ink-soft leading-relaxed">
-                  {isMixed
-                    ? "本記事の一部リンクはプロモーションを含みます。広告を含まないリンクと区別せず掲載していますが、紹介内容・評価はいずれも公平に記載しています。"
-                    : "本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。"}
-                  <Link
-                    href="/privacy#ads"
-                    className="text-primary hover:underline ml-1"
-                  >
-                    詳しくはプライバシーポリシーをご覧ください
-                  </Link>
-                </p>
-              </div>
+              <details className="mb-4">
+                <summary className="inline-flex items-center gap-1.5 text-[11px] text-ink-soft cursor-pointer hover:text-ink transition-colors">
+                  <span className="border border-ink-soft/30 rounded px-1.5 py-0.5 font-mono font-medium">PR</span>
+                  プロモーションを含みます
+                  <span className="text-[10px]">▼</span>
+                </summary>
+                <div className="mt-2 bg-bg-soft border border-line rounded-lg px-4 py-3">
+                  <p className="text-[12px] text-ink-soft leading-relaxed">
+                    {isMixed
+                      ? "本記事の一部リンクはプロモーションを含みます。広告を含まないリンクと区別せず掲載していますが、紹介内容・評価はいずれも公平に記載しています。"
+                      : "本記事はプロモーションを含みます。当サイトのリンクから商品・サービスにお申し込みいただいた場合、当サイト運営者に成果報酬が支払われることがあります。ただし、これは記事の内容・評価に一切影響を与えません。"}
+                    <Link
+                      href="/privacy#ads"
+                      className="text-primary hover:underline ml-1"
+                    >
+                      詳しくはプライバシーポリシーをご覧ください
+                    </Link>
+                  </p>
+                </div>
+              </details>
             )}
 
             {/* リード文 */}
@@ -181,25 +215,24 @@ export default async function ArticlePage(props: {
               {article.excerpt}
             </p>
 
-            {/* NARU Point */}
-            <div className="relative bg-primary/[0.04] border border-primary/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
-              {/* 右上の折れ紙モチーフ */}
-              <div className="absolute top-0 right-0 w-10 h-10">
-                <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-accent/10 border-l-[40px] border-l-transparent" />
-                <div className="absolute top-[3px] right-[3px] w-0 h-0 border-t-[12px] border-t-white border-l-[12px] border-l-transparent" />
+            {/* NARU Point（naruPointフィールドが設定されている記事のみ表示） */}
+            {article.naruPoint && (
+              <div className="relative bg-primary/[0.04] border border-primary/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
+                <div className="absolute top-0 right-0 w-10 h-10">
+                  <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-accent/10 border-l-[40px] border-l-transparent" />
+                  <div className="absolute top-[3px] right-[3px] w-0 h-0 border-t-[12px] border-t-white border-l-[12px] border-l-transparent" />
+                </div>
+                <div className="flex items-center gap-2 mb-2.5">
+                  <span className="inline-flex items-center gap-1.5 bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z" /></svg>
+                    NARU Point
+                  </span>
+                </div>
+                <p className="text-[14px] text-ink leading-relaxed font-medium">
+                  {article.naruPoint}
+                </p>
               </div>
-              {/* ラベル */}
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="inline-flex items-center gap-1.5 bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z" /></svg>
-                  NARU Point
-                </span>
-              </div>
-              {/* excerpt を再利用 */}
-              <p className="text-[14px] text-ink leading-relaxed font-medium">
-                {article.excerpt}
-              </p>
-            </div>
+            )}
 
             {/* この記事で分かること（AIフレンドリーな要約） */}
             {article.summary.length > 0 && (
@@ -264,13 +297,13 @@ export default async function ArticlePage(props: {
                   第二新卒の転職は、プロのサポートを受けることで成功率が大きく上がります。
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="#" className="cta-button justify-center">
-                    エージェントに無料相談する
+                  <Link href="/articles/agent-comparison-2026" className="cta-button justify-center">
+                    エージェント比較を見る
+                  </Link>
+                  <Link href="/shindan" className="cta-button justify-center" style={{ background: "var(--ink)" }}>
+                    適職診断を受けてみる
                   </Link>
                 </div>
-                <p className="text-[10px] text-ink-soft mt-3">
-                  ※提携先のサービスです
-                </p>
               </section>
             )}
 
@@ -331,6 +364,44 @@ export default async function ArticlePage(props: {
                   })}
                 </div>
               </section>
+            )}
+
+            {/* 適職診断への導線(テンプレートレベル) */}
+            <div className="mt-10 pt-6 border-t border-line">
+              <a
+                href="/shindan"
+                className="group flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors"
+              >
+                <MiniAlto pose="idea" size={36} />
+                <span>
+                  自分がどんな仕事に向いているか、3分の適職診断で見てみませんか？
+                </span>
+              </a>
+            </div>
+
+            {/* 独自調査への導線(テンプレートレベル) */}
+            <div className="mt-4">
+              <SurveyLink className="flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors">
+                <MiniAlto pose="bow" size={36} />
+                <span>
+                  第二新卒の転職に関する調査にご協力ください（3分）
+                </span>
+              </SurveyLink>
+            </div>
+
+            {/* 更新履歴（updateHistoryがある記事のみ） */}
+            {article.updateHistory.length > 0 && (
+              <div className="mt-10 pt-6 border-t border-line">
+                <p className="font-bold text-sm mb-3 text-ink-soft">更新履歴</p>
+                <ul className="text-xs text-ink-soft space-y-1.5">
+                  {article.updateHistory.map((entry, i) => (
+                    <li key={i} className="flex gap-2">
+                      <time className="font-mono shrink-0">{entry.date}</time>
+                      <span>{entry.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </article>
 
@@ -398,7 +469,7 @@ export default async function ArticlePage(props: {
         href={
           article.category === "エージェント比較" || article.cta_agents.length > 0
             ? "/agent-diagnosis"
-            : "/diagnosis"
+            : "/shindan"
         }
         ctaFocus={article.ctaFocus || undefined}
       />

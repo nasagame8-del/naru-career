@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/diagnosis`,
+      url: `${baseUrl}/shindan`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.7,
@@ -55,10 +55,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/contact`,
+      lastModified: today,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/ai-interview-check`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/guides/second-new-grad-complete-guide`,
+      lastModified: today,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     ...categoryEntries,
     ...articleEntries,

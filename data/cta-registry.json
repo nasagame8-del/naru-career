@@ -1,18 +1,4 @@
 {
-  "doda": {
-    "name": "doda",
-    "url": "",
-    "cta_text": "dodaで求人を探してみる",
-    "asp": "",
-    "affiliate": true
-  },
-  "workport": {
-    "name": "ワークポート",
-    "url": "",
-    "cta_text": "ワークポートに無料相談する",
-    "asp": "",
-    "affiliate": true
-  },
   "agent_neo": {
     "name": "第二新卒エージェントneo",
     "url": "",
@@ -88,5 +74,45 @@
     "cta_text": "公式サイトを見る",
     "asp": "none",
     "affiliate": false
+  },
+  "yumecareer": {
+    "name": "ユメキャリ",
+    "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892664088",
+    "cta_text": "詳細を見る",
+    "asp": "バリューコマース",
+    "affiliate": true,
+    "note": "適職診断の結果ページ(営業系タイプ: ナイト/デーモンロード/アドベンチャラー/バード)でのみ表示"
+  },
+  "mynavi_job20s": {
+    "name": "マイナビジョブ20's",
+    "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892666480",
+    "cta_text": "詳細を見る",
+    "asp": "バリューコマース",
+    "affiliate": true,
+    "note": "20代・第二新卒・既卒向け。全タイプ・全職種対象"
+  },
+  "uzuz_28": {
+    "name": "UZUZ 28新卒",
+    "url": "https://h.accesstrade.net/sp/cc?rk=0100plgp00ovm3",
+    "cta_text": "詳細を見る",
+    "asp": "アクセストレード",
+    "affiliate": true,
+    "note": "新卒(28卒)・第二新卒向けの就職・転職支援サービス"
+  },
+  "techclips": {
+    "name": "TechClipsエージェント",
+    "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3775939&pid=892669579",
+    "cta_text": "詳細を見る",
+    "asp": "バリューコマース",
+    "affiliate": true,
+    "note": "ITエンジニア専門の転職エージェント。著者の利用経験なし、事実ベースの紹介に留める"
+  },
+  "uzuz_general": {
+    "name": "UZUZ",
+    "url": "https://h.accesstrade.net/sp/cc?rk=0100pw7f00ovm3",
+    "cta_text": "詳細を見る",
+    "asp": "アクセストレード",
+    "affiliate": true,
+    "note": "第二新卒・既卒・フリーター・ニート向けの一般就職支援サービス。著者の利用経験なし、事実ベースの紹介に留める"
   }
 }

@@ -118,7 +118,6 @@ note_published: false
 - 実態と異なる福利厚生表記の求人が一部ある
 - おとり求人と思われる案件に遭遇することがある
 
-[CTA_BUTTON:doda]
 
 ### ワークポート
 
@@ -136,13 +135,13 @@ IT・Web業界に強みを持つ転職エージェントで、==面接対策の�
 - 紹介してもらえる案件数がやや少なめ
 - IT・Web系以外の業種を幅広く探したい場合はカバー範囲が限られる
 
-[CTA_BUTTON:workport]
 
 ## あわせて読みたい記事
 
 - [職務経歴書、第二新卒はここで差がつく](/articles/resume-writing-second-new-grad)
 - [第二新卒が陥りやすい転職の罠と回避策](/articles/second-new-grad-job-change-traps)
 - [カジュアル面談とは？本選考との違いと活用法](/articles/casual-interview)
+- [リファレンスチェックとは？増えている理由と採用担当者の本音](/articles/reference-check-explained)
 
 ## よくある質問
 

@@ -1,17 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { SCData } from "@/types/search-console";
+import { WeeklyActions } from "./gsc/WeeklyActions";
+import { QueryTable } from "./gsc/QueryTable";
+import { PagePerformanceTable } from "./gsc/PagePerformanceTable";
+import { ThemeSummary } from "./gsc/ThemeSummary";
+import { RewriteCandidates, LowCtrPages, SurgingPagesTable, NewlyVisibleList } from "./gsc/InsightCards";
 
-// ── Types ──
+// ── Dashboard-only Types ──
 
 type AspProgram = { name: string; key: string; status: string };
 type Asp = { name: string; status: string; updatedAt: string; programs: AspProgram[] };
 type CtaEntry = { name: string; url: string; cta_text: string; asp: string; affiliate?: boolean };
-type Keyword = { keyword: string; category: string; priority: string; status: string };
+type Keyword = { keyword: string; category?: string; priority: string; status: string; cluster?: string };
 type ScheduledArticle = { slug: string; scheduled_publish: string; status: string };
 type ReviewArticle = { slug: string; lastReviewDate: string };
 type TopPage = { path: string; views: number };
-type TopQuery = { query: string; clicks: number };
 
 type GA4Data = {
   configured: boolean;
@@ -20,18 +25,8 @@ type GA4Data = {
   topPages?: TopPage[];
 };
 
-type GSCData = {
-  configured: boolean;
-  error?: string;
-  stale?: boolean;
-  latestDate?: string;
-  daysSinceLatest?: number;
-  totalClicks?: number;
-  totalImpressions?: number;
-  avgCtr?: string;
-  avgPosition?: string;
-  topQueries?: TopQuery[];
-};
+// GSCData は共通型の SCData をそのまま使用
+type GSCData = SCData;
 
 type DashboardData = {
   summary: {
@@ -44,16 +39,65 @@ type DashboardData = {
   keywords: Keyword[];
   ga4: GA4Data;
   gsc: GSCData;
+  aioChecklist: AIOCheckItem[];
+  internalLinks: { slug: string; outgoing: number; incoming: number }[];
 };
 
-type TabId = "performance" | "site" | "asp" | "cta";
+type AIOCheckItem = {
+  slug: string;
+  title: string;
+  checks: {
+    person: boolean;
+    faq: boolean;
+    experience: boolean;
+    comparisonTable: boolean;
+    authoritativeSource: boolean;
+    image: boolean;
+    updateHistory: boolean;
+  };
+};
+
+type TabId = "performance" | "site" | "asp" | "cta" | "aio";
 
 const TABS: { id: TabId; label: string }[] = [
   { id: "performance", label: "パフォーマンス" },
   { id: "site", label: "サイト管理" },
+  { id: "aio", label: "AIOチェック" },
   { id: "asp", label: "ASP管理" },
   { id: "cta", label: "CTA Registry" },
 ];
+
+// ── 優先度バッジ ──
+const PRIORITY_STYLES: Record<string, string> = {
+  high: "bg-red-50 text-red-700 border-red-200",
+  medium: "bg-amber-50 text-amber-700 border-amber-200",
+  low: "bg-gray-100 text-gray-500 border-gray-200",
+};
+const PRIORITY_LABELS: Record<string, string> = { high: "高", medium: "中", low: "低" };
+
+function PriorityLabel({ priority }: { priority: "high" | "medium" | "low" }) {
+  return (
+    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${PRIORITY_STYLES[priority]}`}>
+      {PRIORITY_LABELS[priority]}
+    </span>
+  );
+}
+
+function PageLink({ url }: { url: string }) {
+  let path = url;
+  let slug = "";
+  try {
+    path = new URL(url).pathname;
+    const m = path.match(/\/articles\/(.+)/);
+    if (m) slug = m[1];
+  } catch { /* keep as-is */ }
+  return (
+    <div>
+      <a href={url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{path}</a>
+      {slug && <div className="text-[10px] text-gray-400 mt-0.5 select-all">content/articles/{slug}.md</div>}
+    </div>
+  );
+}
 
 const STATUS_COLORS: Record<string, string> = {
   approved: "bg-green-100 text-green-800",
@@ -123,6 +167,12 @@ export function DashboardClient() {
         {tab === "site" && <SiteTab site={data.site} keywords={data.keywords} />}
         {tab === "asp" && <AspTab asps={data.asp?.asps || []} />}
         {tab === "cta" && <CtaTab cta={data.cta} />}
+        {tab === "aio" && (
+          <>
+            <AIOCheckTab items={data.aioChecklist || []} />
+            <InternalLinksSection links={data.internalLinks || []} />
+          </>
+        )}
       </main>
 
       <footer className="border-t border-gray-200 py-3 text-center text-[10px] text-gray-400">
@@ -146,6 +196,21 @@ function KPI({ label, value, color }: { label: string; value: number; color?: "r
     <div className={`rounded-lg border p-3 text-center ${cls}`}>
       <p className="text-xl font-bold">{value}</p>
       <p className="text-[10px] mt-0.5 opacity-70">{label}</p>
+    </div>
+  );
+}
+
+// ── Collapsible Section ──
+
+function Collapsible({ title, defaultOpen, children }: { title: string; defaultOpen?: boolean; children: React.ReactNode }) {
+  const [open, setOpen] = useState(defaultOpen ?? false);
+  return (
+    <div className="mb-4">
+      <button onClick={() => setOpen(!open)} className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 hover:text-gray-700">
+        <span className="text-[10px]">{open ? "▼" : "▶"}</span>
+        {title}
+      </button>
+      {open && children}
     </div>
   );
 }
@@ -191,47 +256,80 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
         )}
       </Card>
 
-      {/* GSC */}
-      <Card title="Search Console（スプレッドシート経由）">
+      {/* GSC — Search Console API直接取得 */}
+      <Card title="Search Console">
         {!gsc.configured ? (
-          <Unconfigured message={gsc.error || "スプレッドシート環境変数を設定してください"} vars={["GSC_SPREADSHEET_ID"]} />
+          <Unconfigured message={gsc.error || "Search Console環境変数を設定してください"} vars={["SEARCH_CONSOLE_SITE_URL", "GOOGLE_SERVICE_ACCOUNT_EMAIL"]} />
         ) : gsc.error ? (
           <ErrorMsg message={gsc.error} />
         ) : (
           <>
-            {gsc.stale && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg px-4 py-2.5 mb-4">
-                <p className="text-xs text-yellow-800 font-bold">
-                  データ更新が停止している可能性があります
-                </p>
-                <p className="text-[10px] text-yellow-700 mt-0.5">
-                  最新データ: {gsc.latestDate}（{gsc.daysSinceLatest}日前）— Search Analytics for Sheets の Recurrent Requests を確認してください
-                </p>
+            {/* Disclaimer */}
+            <p className="text-[10px] text-gray-400 mb-4">
+              Search Console APIの数値はGoogle Search Consoleの仕様上、すべての検索クエリ・行を完全に取得できない場合があります。改善判断の参考値として利用してください。
+            </p>
+
+            {/* サマリー（7日間） */}
+            {gsc.current7d && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                <Metric label="クリック (7日)" value={gsc.current7d.clicks.toLocaleString()} />
+                <Metric label="表示回数 (7日)" value={gsc.current7d.impressions.toLocaleString()} />
+                <Metric label="平均CTR" value={`${(gsc.current7d.ctr * 100).toFixed(1)}%`} />
+                <Metric label="平均順位" value={gsc.current7d.position.toFixed(1)} />
               </div>
             )}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-              <Metric label="クリック (7日)" value={gsc.totalClicks?.toLocaleString() || "0"} />
-              <Metric label="表示回数 (7日)" value={gsc.totalImpressions?.toLocaleString() || "0"} />
-              <Metric label="平均CTR" value={`${gsc.avgCtr || 0}%`} />
-              <Metric label="平均順位" value={gsc.avgPosition || "-"} />
-            </div>
-            {gsc.topQueries && gsc.topQueries.length > 0 && (
-              <>
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">上位クエリ（7日間）</h4>
-                <table className="w-full text-sm">
-                  <thead><tr className="border-b border-gray-100"><th className="text-left py-1.5 text-gray-500 font-medium text-xs">クエリ</th><th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th></tr></thead>
-                  <tbody>
-                    {gsc.topQueries.map((q, i) => (
-                      <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
-                        <td className="py-1.5 text-xs">
-                          <a href={`https://www.google.com/search?q=${encodeURIComponent(q.query)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{q.query}</a>
-                        </td>
-                        <td className="py-1.5 text-right text-xs font-bold">{q.clicks}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </>
+
+            {/* 前週比 */}
+            {gsc.current7d && gsc.previous7d && gsc.previous7d.impressions > 0 && (
+              <div className="text-[10px] text-gray-500 mb-4">
+                前週比: クリック {gsc.previous7d.clicks > 0 ? `${(((gsc.current7d.clicks - gsc.previous7d.clicks) / gsc.previous7d.clicks) * 100).toFixed(0)}%` : "N/A"} / 表示 {`${(((gsc.current7d.impressions - gsc.previous7d.impressions) / gsc.previous7d.impressions) * 100).toFixed(0)}%`}
+              </div>
+            )}
+
+            {/* 今週やること */}
+            <WeeklyActions items={gsc.enhancedActionItems || []} />
+
+            {/* 検索クエリ */}
+            {(gsc.queryInsights?.length ?? 0) > 0 && (
+              <Collapsible title={`検索クエリ（${gsc.queryInsights!.length}件）`} defaultOpen={true}>
+                <QueryTable insights={gsc.queryInsights!} />
+              </Collapsible>
+            )}
+
+            {/* 上位ページ */}
+            {gsc.current7d?.topPages && gsc.current7d.topPages.length > 0 && (
+              <Collapsible title={`上位ページ（${gsc.current7d.topPages.length}件）`} defaultOpen={true}>
+                <PagePerformanceTable pages={gsc.current7d.topPages} pageQueries={gsc.current7d.pageQueries || []} />
+              </Collapsible>
+            )}
+
+            {/* テーマ別 */}
+            {(gsc.themeStats?.length ?? 0) > 0 && (
+              <Collapsible title="テーマ別">
+                <ThemeSummary stats={gsc.themeStats!} />
+              </Collapsible>
+            )}
+
+            {/* 改善候補 */}
+            {((gsc.rewriteCandidates?.length ?? 0) > 0 || (gsc.lowCtrPages?.length ?? 0) > 0) && (
+              <Collapsible title="改善候補">
+                <RewriteCandidates items={gsc.rewriteCandidates || []} />
+                <LowCtrPages items={gsc.lowCtrPages || []} />
+              </Collapsible>
+            )}
+
+            {/* 表示急増 */}
+            {(gsc.surgingPages?.length ?? 0) > 0 && (
+              <Collapsible title={`表示急増（${gsc.surgingPages!.length}件）`} defaultOpen={true}>
+                <SurgingPagesTable items={gsc.surgingPages!} />
+              </Collapsible>
+            )}
+
+            {/* 新規表示 */}
+            {(gsc.newlyVisible?.length ?? 0) > 0 && (
+              <Collapsible title={`新規表示（${gsc.newlyVisible!.length}件）`} defaultOpen={true}>
+                <NewlyVisibleList items={gsc.newlyVisible!} />
+              </Collapsible>
             )}
           </>
         )}
@@ -274,14 +372,17 @@ function SiteTab({ site, keywords }: { site: DashboardData["site"]; keywords: Ke
           <table className="w-full text-sm">
             <thead><tr className="border-b border-gray-100">
               <th className="text-left py-1.5 text-gray-500 font-medium text-xs">キーワード</th>
-              <th className="text-left py-1.5 text-gray-500 font-medium text-xs">カテゴリ</th>
+              <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ステータス</th>
               <th className="text-left py-1.5 text-gray-500 font-medium text-xs">優先度</th>
             </tr></thead>
             <tbody>
               {keywords.map((k) => (
                 <tr key={k.keyword} className="border-b border-gray-50">
-                  <td className="py-1.5 text-xs">{k.keyword}</td>
-                  <td className="py-1.5 text-xs text-gray-500">{k.category}</td>
+                  <td className="py-1.5 text-xs">
+                    {k.keyword}
+                    {k.cluster && <span className="ml-1.5 text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded">{k.cluster}</span>}
+                  </td>
+                  <td className="py-1.5 text-xs text-gray-500">{k.status}</td>
                   <td className="py-1.5"><PriorityBadge priority={k.priority} /></td>
                 </tr>
               ))}
@@ -412,6 +513,117 @@ function Unconfigured({ message, vars }: { message: string; vars: string[] }) {
   );
 }
 
+// ── Internal Links Section ──
+function InternalLinksSection({ links }: { links: { slug: string; outgoing: number; incoming: number }[] }) {
+  const candidates = links.filter((l) => l.outgoing < 2 || l.incoming < 2);
+  const sorted = [...candidates].sort((a, b) => (a.outgoing + a.incoming) - (b.outgoing + b.incoming));
+
+  return (
+    <div className="space-y-4 mt-8">
+      <h2 className="text-sm font-bold">内部リンク状況（リンク不足候補: {candidates.length}件）</h2>
+      <div className="overflow-x-auto">
+        <table className="w-full text-[11px] border-collapse">
+          <thead>
+            <tr className="bg-gray-50 border-b">
+              <th className="text-left px-2 py-1.5 font-medium">記事</th>
+              <th className="px-2 py-1.5 font-medium text-center">出リンク</th>
+              <th className="px-2 py-1.5 font-medium text-center">入リンク</th>
+              <th className="px-2 py-1.5 font-medium text-center">状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((l) => (
+              <tr key={l.slug} className="border-b">
+                <td className="px-2 py-1.5 font-mono text-[10px]">{l.slug}</td>
+                <td className="text-center px-2 py-1.5">
+                  <span className={l.outgoing < 2 ? "text-red-500 font-bold" : ""}>{l.outgoing}</span>
+                </td>
+                <td className="text-center px-2 py-1.5">
+                  <span className={l.incoming < 2 ? "text-red-500 font-bold" : ""}>{l.incoming}</span>
+                </td>
+                <td className="text-center px-2 py-1.5">
+                  {l.outgoing < 2 && l.incoming < 2
+                    ? <span className="text-[10px] bg-red-50 text-red-600 px-1.5 py-0.5 rounded">要改善</span>
+                    : <span className="text-[10px] bg-amber-50 text-amber-600 px-1.5 py-0.5 rounded">一部不足</span>
+                  }
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 function ErrorMsg({ message }: { message: string }) {
   return <div className="bg-red-50 border border-red-200 rounded-lg p-3"><p className="text-xs text-red-700 break-all">{message}</p></div>;
+}
+
+// ── AIO Check Tab ──
+const AIO_LABELS: { key: keyof AIOCheckItem["checks"]; label: string }[] = [
+  { key: "person", label: "著者情報" },
+  { key: "faq", label: "FAQ" },
+  { key: "experience", label: "体験談" },
+  { key: "comparisonTable", label: "比較表" },
+  { key: "authoritativeSource", label: "権威ソース" },
+  { key: "image", label: "画像" },
+  { key: "updateHistory", label: "更新履歴" },
+];
+
+function AIOCheckTab({ items }: { items: AIOCheckItem[] }) {
+  const [sortByMissing, setSortByMissing] = useState(false);
+
+  const sorted = [...items].sort((a, b) => {
+    if (!sortByMissing) return a.slug.localeCompare(b.slug);
+    const countMissing = (c: AIOCheckItem["checks"]) =>
+      AIO_LABELS.filter((l) => !c[l.key]).length;
+    return countMissing(b.checks) - countMissing(a.checks);
+  });
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-sm font-bold">AIO観点チェックリスト（{items.length}記事）</h2>
+        <button
+          onClick={() => setSortByMissing(!sortByMissing)}
+          className="text-[11px] px-2 py-1 border rounded hover:bg-gray-50"
+        >
+          {sortByMissing ? "slug順に戻す" : "×が多い順に並べる"}
+        </button>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-[11px] border-collapse">
+          <thead>
+            <tr className="bg-gray-50 border-b">
+              <th className="text-left px-2 py-1.5 font-medium">記事</th>
+              {AIO_LABELS.map((l) => (
+                <th key={l.key} className="px-1.5 py-1.5 font-medium text-center whitespace-nowrap">{l.label}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((item) => {
+              const missingCount = AIO_LABELS.filter((l) => !item.checks[l.key]).length;
+              return (
+                <tr key={item.slug} className={`border-b ${missingCount >= 3 ? "bg-red-50/50" : ""}`}>
+                  <td className="px-2 py-1.5 max-w-[200px] truncate" title={item.title}>
+                    <span className="font-mono text-[10px] text-gray-400">{item.slug}</span>
+                  </td>
+                  {AIO_LABELS.map((l) => (
+                    <td key={l.key} className="text-center px-1.5 py-1.5">
+                      {item.checks[l.key]
+                        ? <span className="text-green-600">○</span>
+                        : <span className="text-red-400">×</span>
+                      }
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }

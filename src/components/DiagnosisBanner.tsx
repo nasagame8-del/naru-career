@@ -67,7 +67,7 @@ export function DiagnosisBanner({ href, ctaFocus }: Props) {
           ? "自分に合うエージェントが分からない方へ"
           : "自分に向いている職種を知りたい方へ",
         description: "5つの質問に答えるだけ。完全無料・登録不要です。",
-        btnText: href === "/agent-diagnosis" ? "エージェント相性診断" : "適職診断を受けてみる",
+        btnText: href === "/agent-diagnosis" ? "エージェント相性診断" : "RPG適職診断を受けてみる",
       };
 
   return (

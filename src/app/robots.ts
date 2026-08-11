@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
 
   return {
     rules: [
-      // 内部ページをすべてのクローラーからブロック
-      { userAgent: "*", disallow: "/internal/" },
+      // 内部ページ・会員ページをすべてのクローラーからブロック
+      { userAgent: "*", disallow: ["/internal/", "/members/"] },
       // 検索・リアルタイム引用系は許可
       { userAgent: "Googlebot", allow: "/" },
       { userAgent: "Bingbot", allow: "/" },

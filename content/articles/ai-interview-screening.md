@@ -5,6 +5,7 @@ keyword: "AI面接 適性検査とは"
 datePublished: "2026-07-18"
 dateModified: "2026-07-18"
 ctaFocus: "ai-interview"
+naruPoint: "AI面接を「対策すべき壁」と捉えがちですが、AIO対策企業で働く僕の感覚では、AIは面接官の代替ではなく「人間が判断するための下準備ツール」です。つまり、AI面接で見られているのは正解を言えるかではなく、あなたの話し方の構造と一貫性です。"
 excerpt: "AI面接・AI適性検査とは何か、採用側がなぜAIを導入するのかを、AIO対策企業で営業をしている著者が「AIを仕事にしている側」の視点で解説します。"
 summary:
   - "AI面接・AI適性検査の仕組みと種類"
@@ -108,3 +109,4 @@ AI面接の導入は今後さらに加速するでしょう。第二新卒がこ
 - [面接で「なぜこの職種を志望するのか」と聞かれて詰まった話](/articles/interview-failure-why-this-job)
 - [カジュアル面談とは？本選考との違いと活用法](/articles/casual-interview)
 - [スキルベース採用とは？学歴より実力で評価される時代](/articles/skill-based-hiring)
+- [リファレンスチェックとは？増えている理由と採用担当者の本音](/articles/reference-check-explained)
