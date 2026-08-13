@@ -33,6 +33,7 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "job-change-timing-3months",
       "resume-writing-second-new-grad",
       "interview-failure-why-this-job",
+      "interview-reverse-questions",
       "agent-referral-vs-self-apply",
       "bizreach-second-new-grad",
       "how-to-resign-experience",

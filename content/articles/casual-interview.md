@@ -105,5 +105,6 @@ note_published: false
 ## あわせて読みたい記事
 
 - [面接で「なぜこの職種を志望するのか」と聞かれて詰まった話](/articles/interview-failure-why-this-job)
+- [面接の逆質問、第二新卒は何を聞けばいい？](/articles/interview-reverse-questions)
 - [ダイレクトリクルーティングとは？スカウト型転職の仕組み](/articles/direct-recruiting)
 - [職務経歴書、第二新卒はここで差がつく](/articles/resume-writing-second-new-grad)
