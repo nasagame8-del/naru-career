@@ -1,0 +1,98 @@
+name: NARU Agent Autopilot
+
+on:
+  push:
+    branches:
+      - agent/autopilot
+    paths:
+      - docs/agent-handoff/NEXT_INSTRUCTION.md
+      - docs/agent-handoff/STATE.json
+  workflow_dispatch:
+
+concurrency:
+  group: naru-agent-autopilot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout autopilot branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/autopilot
+          fetch-depth: 0
+
+      - name: Verify handoff files
+        shell: bash
+        run: |
+          test -f docs/agent-handoff/NEXT_INSTRUCTION.md
+          test -f docs/agent-handoff/STATE.json
+          test -f docs/agent-handoff/REPORT.md
+          test -f AGENTS.md
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            You are the autonomous NARU implementation agent.
+
+            First read:
+            - AGENTS.md
+            - docs/agent-handoff/README.md
+            - docs/agent-handoff/STATE.json
+            - docs/agent-handoff/NEXT_INSTRUCTION.md
+            - docs/agent-handoff/REPORT.md
+
+            Execute only the ACTIVE instruction in NEXT_INSTRUCTION.md.
+
+            Hard rules:
+            - Never edit NEXT_INSTRUCTION.md or STATE.json. ChatGPT owns those files.
+            - You own REPORT.md and may edit implementation/test files required by the instruction.
+            - If completedInstructionId in REPORT.md already equals the active instructionId, do not repeat the work.
+            - Do not expose secrets or tokens.
+            - Do not push to master/main.
+            - Do not create or merge PRs or deploy production unless NEXT_INSTRUCTION.md explicitly authorizes it.
+            - If a decision is unsafe or ambiguous, stop and set REPORT status to NEEDS_DECISION.
+            - Preserve existing SEO Editor safety gates.
+            - Run the tests/checks explicitly requested by NEXT_INSTRUCTION.md.
+            - Before finishing, replace docs/agent-handoff/REPORT.md with a complete machine-readable human-readable report.
+
+            REPORT.md must include:
+            - reportId
+            - completedInstructionId
+            - status: DONE | NEEDS_DECISION | BLOCKED | FAILED | PR_READY
+            - branch
+            - summary
+            - tests and timings
+            - changed files
+            - git diff summary
+            - existing issues found
+            - remaining risks
+            - decisions needed
+            - recommended next step
+
+            Finish by leaving all intended changes in the working tree. The workflow will commit and push them.
+          claude_args: |
+            --max-turns 40
+            --allowedTools "Read,Write,Edit,Glob,Grep,Bash"
+
+      - name: Commit and push Claude changes
+        shell: bash
+        run: |
+          git config user.name "naru-agent-bot"
+          git config user.email "naru-agent-bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "agent: execute handoff instruction"
+          git push origin HEAD:agent/autopilot
