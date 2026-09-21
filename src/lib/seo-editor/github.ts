@@ -245,11 +245,31 @@ function buildPrBody(opts: PublishOptions): string {
   }
 
   if (qa && qa.issues.length > 0) {
-    lines.push("", "### QA所見", "");
-    for (const issue of qa.issues.slice(0, 30)) {
-      lines.push(`- **${issue.verdict}** [${issue.category}] \`${issue.target}\` — ${issue.message}`);
+    const blocking = qa.issues.filter((i) => i.verdict === "FAIL" || i.verdict === "NEEDS_REVIEW");
+    const preExisting = qa.issues.filter((i) => i.verdict === "WARNING");
+
+    if (blocking.length > 0) {
+      lines.push("", "### QA所見（今回の変更に起因するもの）", "");
+      for (const issue of blocking.slice(0, 30)) {
+        lines.push(
+          `- **${issue.verdict}** [${issue.origin}] [${issue.category}] \`${issue.target}\` — ${issue.message}`
+        );
+      }
+      if (blocking.length > 30) lines.push(`- …ほか${blocking.length - 30}件`);
     }
-    if (qa.issues.length > 30) lines.push(`- …ほか${qa.issues.length - 30}件`);
+
+    if (preExisting.length > 0) {
+      lines.push(
+        "",
+        `<details><summary>既存の問題 ${preExisting.length}件（今回の変更が原因ではないため、反映のブロック理由にしていません）</summary>`,
+        ""
+      );
+      for (const issue of preExisting.slice(0, 30)) {
+        lines.push(`- [${issue.category}] \`${issue.target}\` — ${issue.message}`);
+      }
+      if (preExisting.length > 30) lines.push(`- …ほか${preExisting.length - 30}件`);
+      lines.push("", "</details>");
+    }
   }
 
   if (run.warnings.length > 0) {

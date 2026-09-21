@@ -13,7 +13,6 @@ import { getCorpusEolSample, getExperienceNotes, getPersona, getRawArticle } fro
 import { LIMITS } from "../config";
 import { asJsonBlock, truncate, wrapUntrusted } from "../sanitize";
 import {
-  buildArticle,
   detectEol,
   findInventedPlaceholders,
   findDroppedPlaceholders,
@@ -22,6 +21,8 @@ import {
   listH2,
   mergeFrontmatter,
   parseArticle,
+  rebuildArticle,
+  todayJst,
   type EditableFrontmatter,
 } from "../markdown";
 import { topicBlock } from "./shared";
@@ -46,6 +47,22 @@ interface WriteOutput {
 
 function articlePath(slug: string): string {
   return `content/articles/${slug}.md`;
+}
+
+/**
+ * 既存記事の更新で書き換えを許すキーだけを抜き出す。
+ * ここに載らないキー（inlineFaq / widgets / cta_agents / naruPoint 等）は
+ * 原文テキストのまま保持される。
+ */
+function editableUpdates(fm: EditableFrontmatter): Record<string, unknown> {
+  const updates: Record<string, unknown> = { dateModified: todayJst() };
+  if (fm.title) updates.title = fm.title;
+  if (fm.category) updates.category = fm.category;
+  if (fm.keyword) updates.keyword = fm.keyword;
+  if (fm.excerpt) updates.excerpt = fm.excerpt;
+  if (fm.summary.length > 0) updates.summary = fm.summary;
+  if (fm.faq.length > 0) updates.faq = fm.faq;
+  return updates;
 }
 
 export async function runWritePhase(run: SeoRun, brief: SeoBrief): Promise<WritePhaseResult> {
@@ -158,12 +175,21 @@ export async function runWritePhase(run: SeoRun, brief: SeoBrief): Promise<Write
     newBody = out.markdownBody;
   }
 
-  const frontmatter = mergeFrontmatter(existing?.data ?? null, out.frontmatter, {
-    isNew: action === "CREATE",
-  });
   // 既存記事はCRLF。改行コードを変えると全行が変更扱いになりPRが読めなくなる
   const eol = detectEol(existingRaw ?? getCorpusEolSample());
-  const after = buildArticle(frontmatter, newBody, eol);
+
+  // 既存記事では frontmatter を再serializeせず、値が実際に変わるキーだけを置換する
+  const frontmatterUpdates =
+    action === "CREATE"
+      ? mergeFrontmatter(null, out.frontmatter, { isNew: true })
+      : editableUpdates(out.frontmatter);
+
+  const { text: after, frontmatterChangedKeys } = rebuildArticle({
+    originalRaw: existingRaw,
+    frontmatterUpdates,
+    body: newBody,
+    fallbackEol: eol,
+  });
 
   // ── 機械的な安全検証 ──
   const beforeBody = existing?.content ?? null;
@@ -204,7 +230,14 @@ export async function runWritePhase(run: SeoRun, brief: SeoBrief): Promise<Write
       preservedSegments: out.preservedSegments,
       lostSegments,
       needsHumanDecision: lostSegments.length > 0 || invented.length > 0 || dropped.length > 0,
-      note: out.changeNotes.join(" / "),
+      note: [
+        out.changeNotes.join(" / "),
+        frontmatterChangedKeys.length > 0
+          ? `frontmatter変更: ${frontmatterChangedKeys.join(", ")}`
+          : "frontmatter変更なし",
+      ]
+        .filter(Boolean)
+        .join(" / "),
     },
   ];
 

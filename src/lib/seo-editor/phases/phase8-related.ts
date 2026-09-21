@@ -13,13 +13,11 @@ import { getRawArticle } from "../corpus";
 import { LIMITS } from "../config";
 import { asJsonBlock, truncate, wrapUntrusted } from "../sanitize";
 import {
-  buildArticle,
-  detectEol,
   findDroppedPlaceholders,
   findInventedPlaceholders,
   listH2,
   parseArticle,
-  todayJst,
+  rebuildArticle,
 } from "../markdown";
 import type { ArticleChange, InternalLink, SeoRun, SeoUsage } from "@/types/seo-editor";
 
@@ -175,8 +173,17 @@ export async function runRelatedPhase(
     warnings.push(`${target.slug}: 挿入を見送ったリンク — ${out.skippedLinks.join(" / ")}`);
   }
 
-  const frontmatter = { ...existing.data, dateModified: todayJst() };
-  const after = buildArticle(frontmatter, newBody, detectEol(raw));
+  // このPhaseは本文へのリンク挿入だけなので、frontmatterは1バイトも触らない
+  const { text: after, frontmatterChangedKeys } = rebuildArticle({
+    originalRaw: raw,
+    frontmatterUpdates: {},
+    body: newBody,
+  });
+  if (frontmatterChangedKeys.length > 0) {
+    warnings.push(
+      `${target.slug}: 想定外にfrontmatterが変更されました（${frontmatterChangedKeys.join(", ")}）`
+    );
+  }
 
   const change: ArticleChange = {
     path: `content/articles/${target.slug}.md`,

@@ -35,7 +35,7 @@ import { runQaPhase } from "@/lib/seo-editor/phases/phase9-qa";
 import { SEO_PHASE_ORDER, type SeoPhaseId, type SeoRun } from "@/types/seo-editor";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
+export const maxDuration = 180;
 
 function unauthorized() {
   return new NextResponse("Unauthorized", {

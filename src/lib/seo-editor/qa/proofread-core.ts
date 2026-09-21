@@ -10,6 +10,8 @@
  *   （scripts/proofread.js 側にも同じ注記あり）
  */
 
+import type { QaOrigin, QaVerdict } from "@/types/seo-editor";
+
 /** 実話データとの整合性検査の分類定義 */
 export const FACT_CATEGORY_RULES = `## 実話データとの整合性検査
 
@@ -90,10 +92,27 @@ PREP法の適合については、各h2セクションに明確な結論、理�
 機械的に問題扱いしないでください。`;
 
 /** QaVerdict の優先度（厳しい方を採用する） */
-export function worstVerdict(
-  verdicts: ("PASS" | "NEEDS_REVIEW" | "FAIL")[]
-): "PASS" | "NEEDS_REVIEW" | "FAIL" {
+export function worstVerdict(verdicts: QaVerdict[]): QaVerdict {
   if (verdicts.includes("FAIL")) return "FAIL";
   if (verdicts.includes("NEEDS_REVIEW")) return "NEEDS_REVIEW";
+  if (verdicts.includes("WARNING")) return "WARNING";
   return "PASS";
+}
+
+/**
+ * 「今回の変更が問題を新規発生・悪化させたか」でゲートの判定を決める。
+ * 問題が存在するかどうかではない。
+ */
+export function verdictForOrigin(origin: QaOrigin, severity: QaVerdict): QaVerdict {
+  switch (origin) {
+    case "INTRODUCED":
+    case "REGRESSED":
+      return severity;
+    case "PRE_EXISTING":
+      // 変更前から存在し今回触っていない問題は、報告のみでブロックしない
+      return severity === "PASS" ? "PASS" : "WARNING";
+    case "UNKNOWN":
+      // 帰属不明はFAILにもWARNINGにもせず、人間の確認に回す
+      return severity === "FAIL" ? "NEEDS_REVIEW" : severity;
+  }
 }

@@ -85,6 +85,113 @@ export function buildArticle(
   return eol === "\r\n" ? out.replace(/\r?\n/g, "\r\n") : out;
 }
 
+// ──────────────────────────────────────────
+// frontmatter を「文字列として」保持する組み立て
+//
+// YAMLをparseして再serializeすると、キー順・クォート・空行・配列表現・
+// 日付表記が変わり、本文1行の変更でもfrontmatter全体が差分になる。
+// 変更が必要なキーだけを原文テキスト上で置換し、それ以外は1バイトも触らない。
+// ──────────────────────────────────────────
+
+const FRONTMATTER_RE = /^(---[ \t]*\r?\n)([\s\S]*?)(\r?\n---[ \t]*\r?\n?)/;
+
+function normalizeValue(v: unknown): string {
+  return JSON.stringify(v, (_k, x) =>
+    x instanceof Date ? x.toISOString().slice(0, 10) : x
+  ) ?? "null";
+}
+
+/** 単一キーのYAML断片を得る（gray-matterのserializerをそのまま使う） */
+function yamlForKey(key: string, value: unknown): string {
+  const doc = matter.stringify("", { [key]: value });
+  const m = doc.match(FRONTMATTER_RE);
+  if (!m) return `${key}: ${JSON.stringify(value)}`;
+  return m[2].replace(/\r?\n$/, "");
+}
+
+/** frontmatter本体テキストから、あるトップレベルキーが占める行範囲を求める */
+function keyRange(lines: string[], key: string): { start: number; end: number } | null {
+  const head = new RegExp(`^${key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*:`);
+  const start = lines.findIndex((l) => head.test(l));
+  if (start === -1) return null;
+  let end = lines.length;
+  for (let i = start + 1; i < lines.length; i++) {
+    // 次のトップレベルキー（インデントなし）で終わり
+    if (/^[^\s#-]/.test(lines[i])) {
+      end = i;
+      break;
+    }
+  }
+  return { start, end };
+}
+
+export interface RebuiltArticle {
+  text: string;
+  /** 実際に書き換えたfrontmatterのキー。空なら差分0 */
+  frontmatterChangedKeys: string[];
+}
+
+/**
+ * 記事ファイルを組み立てる。
+ *
+ * - originalRaw があれば、frontmatterは原文テキストを保持し、
+ *   値が実際に変わるキーだけを行単位で置換する。
+ * - originalRaw が null（新規作成）のときだけ、全体をserializeする。
+ *
+ * @param frontmatterUpdates 変更したいキーのみ。本文だけ変えるRunでは空オブジェクト
+ */
+export function rebuildArticle(opts: {
+  originalRaw: string | null;
+  frontmatterUpdates: Record<string, unknown>;
+  body: string;
+  /** originalRaw が null のときに使う改行コード */
+  fallbackEol?: Eol;
+}): RebuiltArticle {
+  const { originalRaw, frontmatterUpdates, body } = opts;
+
+  if (originalRaw === null) {
+    const eol = opts.fallbackEol ?? "\n";
+    return {
+      text: buildArticle(frontmatterUpdates, body, eol),
+      frontmatterChangedKeys: Object.keys(frontmatterUpdates),
+    };
+  }
+
+  const eol = detectEol(originalRaw);
+  const match = originalRaw.match(FRONTMATTER_RE);
+  if (!match) {
+    // frontmatterが無い・壊れている場合は従来どおり組み立て直す
+    return {
+      text: buildArticle(frontmatterUpdates, body, eol),
+      frontmatterChangedKeys: Object.keys(frontmatterUpdates),
+    };
+  }
+
+  const [, open, fmText, close] = match;
+  const current = matter(originalRaw).data as Record<string, unknown>;
+
+  let lines = fmText.split(/\r?\n/);
+  const changedKeys: string[] = [];
+
+  for (const [key, value] of Object.entries(frontmatterUpdates)) {
+    if (normalizeValue(current[key]) === normalizeValue(value)) continue;
+    changedKeys.push(key);
+    const fragment = yamlForKey(key, value).split("\n");
+    const range = keyRange(lines, key);
+    if (range) {
+      lines = [...lines.slice(0, range.start), ...fragment, ...lines.slice(range.end)];
+    } else {
+      lines = [...lines, ...fragment];
+    }
+  }
+
+  const newFm = lines.join(eol);
+  const normalizedBody = body.replace(/\r\n/g, "\n").trim().replace(/\n/g, eol);
+  const text = `${open}${newFm}${close}${eol}${normalizedBody}${eol}`;
+
+  return { text, frontmatterChangedKeys: changedKeys };
+}
+
 /** H2見出しの一覧（テキストのみ） */
 export function listH2(body: string): string[] {
   const out: string[] = [];

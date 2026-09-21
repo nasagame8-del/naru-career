@@ -21,7 +21,7 @@ import { githubReadiness, publishAsPullRequest, GithubError } from "@/lib/seo-ed
 import { LIMITS } from "@/lib/seo-editor/config";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
+export const maxDuration = 180;
 
 const PREVIEW_NOTE =
   "このVercelプロジェクトはGitHub連携が未接続のため、このPRではVercel Previewが自動生成されません。既知の制約です。";

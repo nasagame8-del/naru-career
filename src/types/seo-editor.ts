@@ -321,11 +321,23 @@ export type QaCategory =
   | "FRONTMATTER"
   | "DUPLICATION";
 
-export type QaVerdict = "PASS" | "NEEDS_REVIEW" | "FAIL";
+/** WARNING は報告するが publish をブロックしない */
+export type QaVerdict = "PASS" | "WARNING" | "NEEDS_REVIEW" | "FAIL";
+
+/**
+ * その問題を「今回のChange Setが発生・悪化させたか」。
+ * QAゲートの基準は問題の存在ではなく、この分類である。
+ */
+export type QaOrigin =
+  | "INTRODUCED" // 今回の変更で新規発生 → FAIL
+  | "REGRESSED" // 今回の変更で既存状態を悪化 → FAIL
+  | "PRE_EXISTING" // 変更前から存在し、今回触っていない → WARNING
+  | "UNKNOWN"; // 帰属を判定できない → NEEDS_REVIEW
 
 export interface QaIssue {
   category: QaCategory;
   verdict: QaVerdict;
+  origin: QaOrigin;
   target: string;
   location: string;
   message: string;

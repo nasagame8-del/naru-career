@@ -16,6 +16,15 @@ const PUBLISH_API = "/internal/api/seo-editor/publish";
 /** UI状態の復元にのみ使う。正本はサーバーが署名したRun */
 const STORAGE_KEY = "naru.seo-editor.signed-run";
 
+/** QA所見の表示順と、origin の表示ラベル */
+const VERDICT_RANK: Record<string, number> = { FAIL: 0, NEEDS_REVIEW: 1, WARNING: 2, PASS: 3 };
+const ORIGIN_LABELS: Record<string, string> = {
+  INTRODUCED: "今回発生",
+  REGRESSED: "今回悪化",
+  PRE_EXISTING: "既存",
+  UNKNOWN: "帰属不明",
+};
+
 /** Phase 2以降の実行順。Phase 1（テーマ候補）は人間の選択を挟むため別扱い */
 const PIPELINE: SeoPhaseId[] = [
   "cannibalization",
@@ -429,7 +438,7 @@ export function SeoEditorTab() {
               {qa && (
                 <div
                   className={`rounded border p-3 mb-4 ${
-                    qa.overall === "PASS"
+                    qa.overall === "PASS" || qa.overall === "WARNING"
                       ? "border-green-200 bg-green-50"
                       : qa.overall === "FAIL"
                         ? "border-red-200 bg-red-50"
@@ -440,13 +449,22 @@ export function SeoEditorTab() {
                   <p className="text-xs mt-1">{qa.summary}</p>
                   {qa.issues.length > 0 && (
                     <ul className="mt-2 space-y-1 text-[11px]">
-                      {qa.issues.map((it, i) => (
-                        <li key={i}>
-                          <span className="font-bold">{it.verdict}</span>{" "}
-                          <span className="text-gray-600">[{it.category}]</span>{" "}
-                          <code className="text-gray-700">{it.target}</code> — {it.message}
-                        </li>
-                      ))}
+                      {[...qa.issues]
+                        .sort((a, b) => VERDICT_RANK[a.verdict] - VERDICT_RANK[b.verdict])
+                        .map((it, i) => (
+                          <li key={i}>
+                            <span className="font-bold">{it.verdict}</span>{" "}
+                            <span
+                              className={
+                                it.origin === "PRE_EXISTING" ? "text-gray-500" : "text-gray-700"
+                              }
+                            >
+                              [{ORIGIN_LABELS[it.origin]}]
+                            </span>{" "}
+                            <span className="text-gray-600">[{it.category}]</span>{" "}
+                            <code className="text-gray-700">{it.target}</code> — {it.message}
+                          </li>
+                        ))}
                     </ul>
                   )}
                 </div>
@@ -495,7 +513,8 @@ export function SeoEditorTab() {
                     </button>
                     {qaFailed && (
                       <p className="text-[11px] text-red-700 mt-1.5">
-                        QAがFAILのため反映できません。指摘を解消してから再実行してください。
+                        今回の変更が新規発生・悪化させた問題があるため反映できません。
+                        「既存」と表示されている指摘はブロック理由ではありません。
                       </p>
                     )}
                     {publishReady && !publishReady.ready && (

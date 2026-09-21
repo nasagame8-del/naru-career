@@ -311,7 +311,8 @@ export function validateChange(v: unknown, path: string) {
 
 export function validateQaResult(v: unknown, path = "qa"): QaResult {
   const o = req(v, path);
-  const VERDICTS = ["PASS", "NEEDS_REVIEW", "FAIL"] as const;
+  const VERDICTS = ["PASS", "WARNING", "NEEDS_REVIEW", "FAIL"] as const;
+  const ORIGINS = ["INTRODUCED", "REGRESSED", "PRE_EXISTING", "UNKNOWN"] as const;
   const CATEGORIES = [
     "FACT",
     "EXPERIENCE",
@@ -338,6 +339,7 @@ export function validateQaResult(v: unknown, path = "qa"): QaResult {
       return {
         category: oneOf(io.category, CATEGORIES, `${p}.category`),
         verdict: oneOf(io.verdict, VERDICTS, `${p}.verdict`),
+        origin: oneOf(io.origin, ORIGINS, `${p}.origin`),
         target: str(io.target, `${p}.target`),
         location: str(io.location, `${p}.location`),
         message: str(io.message, `${p}.message`),
