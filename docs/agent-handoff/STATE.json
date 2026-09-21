@@ -2,16 +2,20 @@
   "version": 2,
   "repo": "nasagame8-del/naru-career",
   "coordinationBranch": "agent/autopilot",
-  "status": "WAITING_FOR_SEED",
-  "instructionId": "INST-001",
+  "status": "RUN_CLAUDE",
+  "instructionId": "INST-002",
   "lastCompletedInstructionId": "INST-001",
   "lastReportId": "REPORT-001",
-  "iteration": 1,
+  "iteration": 2,
   "maxIterations": 8,
   "sameBlockerCount": 0,
   "lastBlockerKey": null,
-  "nextWriter": "human-seed",
-  "seedRequirement": "Push the current local feat/seo-editor implementation and E2E fixes to a remote branch, then fast-forward or merge that branch into agent/autopilot before autonomous execution starts.",
+  "nextWriter": "claude-code",
+  "targetBaseBranch": "master",
+  "masterNormalized": true,
+  "masterNormalizedFromWorkSha": "8bf379b0dabc23be669f3c8205b9ec17e5be827a",
+  "seedMerged": true,
+  "seedMergeCommit": "5f7cbff427f528c082158af3285b9eaab7980645",
   "stopConditions": [
     "PR_READY",
     "maxIterations reached",
@@ -21,8 +25,5 @@
     "secret or credential input required",
     "irreversible content decision with insufficient evidence"
   ],
-  "notes": "master was safely fast-forwarded to the remote work head. E2E is complete. Remaining cloud-autopilot blockers: push the local feat/seo-editor branch once and configure CLAUDE_CODE_OAUTH_TOKEN. SEO Editor's own Vercel RUN_SECRET remains required only for the in-app signed-run flow.",
-  "masterNormalized": true,
-  "targetBaseBranch": "master",
-  "masterNormalizedFromWorkSha": "8bf379b0dabc23be669f3c8205b9ec17e5be827a"
+  "notes": "feat/seo-editor was merged into agent/autopilot via PR #8. CLAUDE_CODE_OAUTH_TOKEN and Vercel SEO_EDITOR_RUN_SECRET/SEO_EDITOR_BASE_BRANCH are configured. Claude should now validate the integrated branch and advance toward PR_READY without touching master or production."
 }
