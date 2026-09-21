@@ -6,7 +6,6 @@ on:
       - agent/autopilot
     paths:
       - docs/agent-handoff/NEXT_INSTRUCTION.md
-      - docs/agent-handoff/STATE.json
   workflow_dispatch:
 
 concurrency:
@@ -29,15 +28,24 @@ jobs:
           ref: agent/autopilot
           fetch-depth: 0
 
-      - name: Verify handoff files
+      - name: Read autopilot state
+        id: gate
         shell: bash
         run: |
           test -f docs/agent-handoff/NEXT_INSTRUCTION.md
           test -f docs/agent-handoff/STATE.json
           test -f docs/agent-handoff/REPORT.md
           test -f AGENTS.md
+          STATUS="$(jq -r '.status // empty' docs/agent-handoff/STATE.json)"
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          if [ "$STATUS" = "RUN_CLAUDE" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Run Claude Code
+        if: steps.gate.outputs.run == 'true'
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -63,7 +71,7 @@ jobs:
             - If a decision is unsafe or ambiguous, stop and set REPORT status to NEEDS_DECISION.
             - Preserve existing SEO Editor safety gates.
             - Run the tests/checks explicitly requested by NEXT_INSTRUCTION.md.
-            - Before finishing, replace docs/agent-handoff/REPORT.md with a complete machine-readable human-readable report.
+            - Before finishing, replace docs/agent-handoff/REPORT.md with a complete report.
 
             REPORT.md must include:
             - reportId
@@ -85,6 +93,7 @@ jobs:
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash"
 
       - name: Commit and push Claude changes
+        if: steps.gate.outputs.run == 'true'
         shell: bash
         run: |
           git config user.name "naru-agent-bot"
