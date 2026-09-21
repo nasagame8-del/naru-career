@@ -14,6 +14,7 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: write
   actions: read
 
 jobs:
@@ -116,3 +117,29 @@ jobs:
           fi
           git commit -m "agent: execute handoff instruction"
           git push origin HEAD:agent/autopilot
+
+
+      - name: Open draft PR when Claude reports PR_READY
+        if: steps.gate.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          STATUS="$(sed -n 's/^- status: `\([^\`]*\)\`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
+          if [ "$STATUS" != "PR_READY" ]; then
+            echo "REPORT status is $STATUS; no PR will be opened."
+            exit 0
+          fi
+
+          EXISTING="$(gh pr list --head agent/autopilot --base master --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$EXISTING" ]; then
+            echo "Draft/open PR #$EXISTING already exists."
+            exit 0
+          fi
+
+          gh pr create \
+            --draft \
+            --base master \
+            --head agent/autopilot \
+            --title "NARU SEO Editor: autonomous change set" \
+            --body-file docs/agent-handoff/REPORT.md
