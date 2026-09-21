@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "repo": "nasagame8-del/naru-career",
+  "coordinationBranch": "work",
+  "instructionId": "INST-001",
+  "status": "WAITING_FOR_CLAUDE_REPORT",
+  "lastCompletedInstructionId": null,
+  "lastReportId": null,
+  "nextWriter": "claude-code",
+  "notes": "Initial handoff setup. Claude Code should finish the currently running E2E, write REPORT.md, and stop for review."
+}
