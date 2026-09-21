@@ -1,6 +1,12 @@
 /**
  * 校正・ファクトチェックスクリプト(Structured Outputs版)
  *
+ * ※ このファイルのSYSTEM_PROMPT(CONTRADICTION/UNSUPPORTED/AMBIGUOUSの分類・厳守事項・
+ *    判定基準・文体ルール)は、SEO Editorの PHASE 9 でも同じ基準で使っている。
+ *    正本相当のコピーが src/lib/seo-editor/qa/proofread-core.ts にあるため、
+ *    どちらかを変更したら必ずもう一方も同期させること。
+ *    (このスクリプトはNodeから直接実行するCommonJSのため、TSモジュールをrequireできない)
+ *
  * 使い方:
  *   node scripts/proofread.js <article-slug>
  *   node scripts/proofread.js --test        # テストケース10件を実行
