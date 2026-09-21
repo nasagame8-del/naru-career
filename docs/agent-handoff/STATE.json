@@ -21,5 +21,8 @@
     "secret or credential input required",
     "irreversible content decision with insufficient evidence"
   ],
-  "notes": "E2E complete. Cloud autopilot is ready but cannot access the unpushed local feat/seo-editor commits. One-time remote push plus required secrets remain."
+  "notes": "master was safely fast-forwarded to the remote work head. E2E is complete. Remaining cloud-autopilot blockers: push the local feat/seo-editor branch once and configure CLAUDE_CODE_OAUTH_TOKEN. SEO Editor's own Vercel RUN_SECRET remains required only for the in-app signed-run flow.",
+  "masterNormalized": true,
+  "targetBaseBranch": "master",
+  "masterNormalizedFromWorkSha": "8bf379b0dabc23be669f3c8205b9ec17e5be827a"
 }
