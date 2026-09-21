@@ -44,6 +44,17 @@ jobs:
             echo "run=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Verify Claude authentication
+        if: steps.gate.outputs.run == 'true'
+        shell: bash
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::error::Missing repository secret CLAUDE_CODE_OAUTH_TOKEN. Generate it with 'claude setup-token' and add it to GitHub Actions secrets."
+            exit 1
+          fi
+
       - name: Run Claude Code
         if: steps.gate.outputs.run == 'true'
         uses: anthropics/claude-code-action@v1
