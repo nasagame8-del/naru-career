@@ -59,10 +59,30 @@ export function mergeFrontmatter(
   return base;
 }
 
-/** frontmatter + 本文を1つのMarkdownファイル文字列にする */
-export function buildArticle(frontmatter: Record<string, unknown>, body: string): string {
+export type Eol = "\r\n" | "\n";
+
+/**
+ * 元ファイルの改行コードを判定する。
+ * content/articles は CRLF のため、LFへ正規化して書き戻すと
+ * 全行が変更扱いになりPRの差分が読めなくなる。
+ */
+export function detectEol(raw: string | null | undefined): Eol {
+  return raw && raw.includes("\r\n") ? "\r\n" : "\n";
+}
+
+/**
+ * frontmatter + 本文を1つのMarkdownファイル文字列にする。
+ * @param eol 元ファイルの改行コード。既存記事の更新では必ず元の値を渡すこと
+ */
+export function buildArticle(
+  frontmatter: Record<string, unknown>,
+  body: string,
+  eol: Eol = "\n"
+): string {
   const normalized = body.replace(/\r\n/g, "\n").trim();
-  return matter.stringify(`\n${normalized}\n`, frontmatter);
+  const out = matter.stringify(`\n${normalized}\n`, frontmatter);
+  // matter.stringify はLFで出力するため、元がCRLFなら復元する
+  return eol === "\r\n" ? out.replace(/\r?\n/g, "\r\n") : out;
 }
 
 /** H2見出しの一覧（テキストのみ） */
@@ -178,8 +198,8 @@ export function checkFrontmatter(raw: string): string[] {
 
   const body = matter(raw).content;
   if (/^#\s+/m.test(body)) issues.push("本文にH1(#)が含まれています（H2以下を使ってください）");
-  if (/^##\s*よくある質問/m.test(body))
-    issues.push("本文に「## よくある質問」があります（FAQはfrontmatterに入れてください）");
+  // 本文末尾の「## よくある質問」は既存記事の慣習。
+  // src/lib/articles.ts のレンダリング時に除去されるため、問題として扱わない。
 
   return issues;
 }

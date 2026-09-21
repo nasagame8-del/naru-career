@@ -139,6 +139,15 @@ export function getIndexEntry(slug: string): ArticleIndexEntry | null {
 }
 
 /**
+ * 新規作成時に合わせるべき改行コードの判定材料。
+ * content/articles の既存ファイルを1本返す（無ければ null）。
+ */
+export function getCorpusEolSample(): string | null {
+  const first = getArticleIndex()[0];
+  return first ? getRawArticle(first.slug) : null;
+}
+
+/**
  * ピラーとして扱うガイドページ。
  * content/guides は存在せず、TSXでハードコードされているため
  * 変更対象ではなく「内部リンク先・Pillar参照」としてのみ扱う。

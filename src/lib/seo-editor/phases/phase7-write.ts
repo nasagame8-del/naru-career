@@ -9,11 +9,12 @@ import { runStructured } from "../openai";
 import { WRITE_SCHEMA } from "../schemas/write";
 import { WRITE_PROMPT } from "../prompts/write";
 import { ValidationError } from "../validate";
-import { getExperienceNotes, getPersona, getRawArticle } from "../corpus";
+import { getCorpusEolSample, getExperienceNotes, getPersona, getRawArticle } from "../corpus";
 import { LIMITS } from "../config";
 import { asJsonBlock, truncate, wrapUntrusted } from "../sanitize";
 import {
   buildArticle,
+  detectEol,
   findInventedPlaceholders,
   findDroppedPlaceholders,
   findLostSegments,
@@ -160,7 +161,9 @@ export async function runWritePhase(run: SeoRun, brief: SeoBrief): Promise<Write
   const frontmatter = mergeFrontmatter(existing?.data ?? null, out.frontmatter, {
     isNew: action === "CREATE",
   });
-  const after = buildArticle(frontmatter, newBody);
+  // 既存記事はCRLF。改行コードを変えると全行が変更扱いになりPRが読めなくなる
+  const eol = detectEol(existingRaw ?? getCorpusEolSample());
+  const after = buildArticle(frontmatter, newBody, eol);
 
   // ── 機械的な安全検証 ──
   const beforeBody = existing?.content ?? null;

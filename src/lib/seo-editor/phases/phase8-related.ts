@@ -14,6 +14,7 @@ import { LIMITS } from "../config";
 import { asJsonBlock, truncate, wrapUntrusted } from "../sanitize";
 import {
   buildArticle,
+  detectEol,
   findDroppedPlaceholders,
   findInventedPlaceholders,
   listH2,
@@ -175,7 +176,7 @@ export async function runRelatedPhase(
   }
 
   const frontmatter = { ...existing.data, dateModified: todayJst() };
-  const after = buildArticle(frontmatter, newBody);
+  const after = buildArticle(frontmatter, newBody, detectEol(raw));
 
   const change: ArticleChange = {
     path: `content/articles/${target.slug}.md`,
