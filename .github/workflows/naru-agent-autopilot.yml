@@ -1,12 +1,8 @@
 name: NARU Agent Autopilot
 
 on:
-  push:
-    branches:
-      - agent/autopilot
-    paths:
-      - docs/agent-handoff/NEXT_INSTRUCTION.md
-  workflow_dispatch:
+  issue_comment:
+    types: [created]
 
 concurrency:
   group: naru-agent-autopilot
@@ -14,10 +10,15 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: write
+  issues: write
   actions: read
 
 jobs:
   execute:
+    if: >
+      github.event.issue.pull_request != null &&
+      startsWith(github.event.comment.body, '@naru-autopilot ')
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -31,17 +32,38 @@ jobs:
       - name: Read autopilot state
         id: gate
         shell: bash
+        env:
+          TRIGGER_COMMENT: ${{ github.event.comment.body }}
         run: |
           test -f docs/agent-handoff/NEXT_INSTRUCTION.md
           test -f docs/agent-handoff/STATE.json
           test -f docs/agent-handoff/REPORT.md
           test -f AGENTS.md
+
           STATUS="$(jq -r '.status // empty' docs/agent-handoff/STATE.json)"
+          ACTIVE="$(jq -r '.instructionId // empty' docs/agent-handoff/STATE.json)"
+          COMPLETED="$(sed -n 's/^- completedInstructionId: `\([^\`]*\)\`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
+          COMMENT_ID="$(printf '%s' "$TRIGGER_COMMENT" | awk '{print $2}')"
+
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
-          if [ "$STATUS" = "RUN_CLAUDE" ]; then
+          echo "active=$ACTIVE" >> "$GITHUB_OUTPUT"
+          echo "completed=$COMPLETED" >> "$GITHUB_OUTPUT"
+
+          if [ "$STATUS" = "RUN_CLAUDE" ] && [ "$ACTIVE" != "$COMPLETED" ] && [ "$COMMENT_ID" = "$ACTIVE" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify Claude authentication
+        if: steps.gate.outputs.run == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        shell: bash
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::error::Missing repository secret CLAUDE_CODE_OAUTH_TOKEN"
+            exit 1
           fi
 
       - name: Run Claude Code
