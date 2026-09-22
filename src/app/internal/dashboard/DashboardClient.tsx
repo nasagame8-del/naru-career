@@ -8,6 +8,7 @@ import { PagePerformanceTable } from "./gsc/PagePerformanceTable";
 import { ThemeSummary } from "./gsc/ThemeSummary";
 import { RewriteCandidates, LowCtrPages, SurgingPagesTable, NewlyVisibleList } from "./gsc/InsightCards";
 import { SeoEditorTab } from "./seo/SeoEditorTab";
+import { NewArticleTab } from "./article-factory/NewArticleTab";
 
 // ── Dashboard-only Types ──
 
@@ -58,10 +59,11 @@ type AIOCheckItem = {
   };
 };
 
-type TabId = "performance" | "seo" | "site" | "asp" | "cta" | "aio";
+type TabId = "performance" | "new-article" | "seo" | "site" | "asp" | "cta" | "aio";
 
 const TABS: { id: TabId; label: string }[] = [
   { id: "performance", label: "パフォーマンス" },
+  { id: "new-article", label: "新規記事" },
   { id: "seo", label: "SEO Editor" },
   { id: "site", label: "サイト管理" },
   { id: "aio", label: "AIOチェック" },
@@ -166,6 +168,7 @@ export function DashboardClient() {
 
         {/* ── Tab Content ── */}
         {tab === "performance" && <PerformanceTab ga4={data.ga4} gsc={data.gsc} />}
+        {tab === "new-article" && <NewArticleTab />}
         {tab === "seo" && <SeoEditorTab />}
         {tab === "site" && <SiteTab site={data.site} keywords={data.keywords} />}
         {tab === "asp" && <AspTab asps={data.asp?.asps || []} />}

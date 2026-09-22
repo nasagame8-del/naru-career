@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@google-analytics/data": "^6.1.0",
@@ -22,7 +24,8 @@
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
     "resend": "^6.18.0",
-    "satori": "^0.26.0"
+    "satori": "^0.26.0",
+    "workflow": "^4.8.9"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -33,6 +36,7 @@
     "eslint-config-next": "16.2.10",
     "sharp": "^0.35.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.7"
   }
 }
