@@ -18,7 +18,10 @@ import {
   getWorkflowMetadata,
   sleep,
 } from "workflow";
-import { ARTICLE_RUN_DIR, isAutoPublishAuthorized, SITE_URL, WAIT } from "./config";
+// workflow 本体が直接使う値は、process.env を含まない純粋な定数モジュールから取る。
+// 環境変数（自動公開フラグなど）は stepIsAutoPublishAuthorized() 経由でのみ受け取る。
+import { ARTICLE_RUN_DIR, SITE_URL, WAIT } from "./constants";
+import { isAutoPublishAuthorized } from "./config";
 import { readInventory } from "./inventory";
 import { runOutline, runWrite, runInternalLinks } from "./generation";
 import { runResearch } from "./research";
@@ -334,6 +337,17 @@ async function stepEvaluateDeployment(
   }
 }
 
+/**
+ * 自動公開フラグ（ARTICLE_FACTORY_AUTO_PUBLISH）を確認する。
+ *
+ * process.env はここ（step）でのみ読む。workflow 本体は返された boolean だけを使う。
+ * 未設定・"true" 以外はすべて false（fail closed）。
+ */
+async function stepIsAutoPublishAuthorized(): Promise<boolean> {
+  "use step";
+  return isAutoPublishAuthorized();
+}
+
 /** LLM由来のエラーを恒久・一時に分類する */
 function classifyLlmError(e: unknown, phase: string): Error {
   const message = e instanceof Error ? e.message : String(e);
@@ -526,7 +540,8 @@ export async function newArticleWorkflow(topic: SelectedTopic): Promise<ArticleR
     changes.map((c) => c.path),
     true
   );
-  const gate = canAutoPublish(verifiedQa, isAutoPublishAuthorized());
+  const autoPublishAuthorized = await stepIsAutoPublishAuthorized();
+  const gate = canAutoPublish(verifiedQa, autoPublishAuthorized);
 
   // 11. publish（マージ）
   await emit(phaseEvent("publish", "running", "公開判定を行っています"));

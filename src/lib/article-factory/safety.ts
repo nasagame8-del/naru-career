@@ -18,7 +18,7 @@ import {
   ARTICLES_DIR,
   ARTICLE_RUN_DIR,
   CANDIDATE_BATCH_DIR,
-} from "./config";
+} from "./constants";
 import type {
   ArticleCandidate,
   ArticleDraft,

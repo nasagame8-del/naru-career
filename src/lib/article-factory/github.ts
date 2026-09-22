@@ -14,7 +14,7 @@
 
 import { BRANCH_PREFIX, GITHUB_BASE_BRANCH, GITHUB_REPO, LIMITS } from "./config";
 import { isAllowedPath } from "./safety";
-import type { CheckSummary, DeploymentStatusSummary } from "./checks";
+import type { CheckSummary, DeploymentRecord, DeploymentStatusRecord } from "./checks";
 import type { ArticleChange, PublishResult, QaResult, SelectedTopic } from "./types";
 
 const API = "https://api.github.com";
@@ -376,32 +376,59 @@ export async function getPullRequestState(prNumber: number): Promise<PullRequest
  *
  * GitHub Actions は check-runs、Vercel などの連携は commit status として
  * 報告されることがあるため、**両方**を取得して同じ形へ正規化する。
+ *
+ * 再実行で同名の試行が複数あり得るため、ここでは絞り込まずに全件返し、
+ * 最新の選択は checks.latestPerCheck が ID・日時で明示的に行う。
+ *   - check-runs: filter=all（API既定の latest 絞り込みに依存しない）
+ *   - statuses:   /statuses（全履歴。combined status と違い creator を含む）
  */
 export async function getChecksForSha(sha: string): Promise<CheckSummary[]> {
   const repo = GITHUB_REPO;
   const out: CheckSummary[] = [];
 
   const runs = await gh<{
-    check_runs: { name: string; status: string; conclusion: string | null }[];
-  }>(`/repos/${repo}/commits/${encodeURIComponent(sha)}/check-runs?per_page=100`);
+    check_runs: {
+      id: number;
+      name: string;
+      status: string;
+      conclusion: string | null;
+      started_at: string | null;
+      completed_at: string | null;
+      app: { slug?: string | null } | null;
+    }[];
+  }>(`/repos/${repo}/commits/${encodeURIComponent(sha)}/check-runs?filter=all&per_page=100`);
 
   for (const r of runs.check_runs ?? []) {
     out.push({
+      source: "check_run",
+      id: r.id,
       name: r.name,
+      origin: r.app?.slug ?? null,
+      observedAt: r.started_at ?? r.completed_at ?? null,
       status: r.status as CheckSummary["status"],
       conclusion: r.conclusion as CheckSummary["conclusion"],
     });
   }
 
-  const statuses = await gh<{
-    statuses: { context: string; state: string }[];
-  }>(`/repos/${repo}/commits/${encodeURIComponent(sha)}/status?per_page=100`);
+  const statuses = await gh<
+    {
+      id: number;
+      context: string;
+      state: string;
+      created_at: string | null;
+      creator: { login?: string | null } | null;
+    }[]
+  >(`/repos/${repo}/commits/${encodeURIComponent(sha)}/statuses?per_page=100`);
 
-  for (const s of statuses.statuses ?? []) {
+  for (const s of statuses ?? []) {
     // commit status の state を check-run の形へ正規化する
     const state = s.state;
     out.push({
+      source: "commit_status",
+      id: s.id,
       name: s.context,
+      origin: s.creator?.login ?? null,
+      observedAt: s.created_at ?? null,
       status: state === "pending" ? "pending" : "completed",
       conclusion:
         state === "success"
@@ -445,34 +472,47 @@ export async function mergeArticlePullRequest(prNumber: number): Promise<string>
 }
 
 /**
- * マージコミットに紐づくデプロイの状態を取得する。
+ * マージコミットに紐づくデプロイとその status 履歴を取得する。
  *
  * Vercel の Git 連携が有効な場合、GitHub の Deployments API に
  * production 環境のデプロイとステータスが登録される。
+ *
+ * 履歴は平坦化せず deployment ごとに返す。最新 deployment・最新 status の
+ * 選択は checks.evaluateDeployment が ID・日時で明示的に行う。
  */
-export async function getDeploymentStatusesForSha(
-  sha: string
-): Promise<DeploymentStatusSummary[]> {
+export async function getDeploymentStatusesForSha(sha: string): Promise<DeploymentRecord[]> {
   const repo = GITHUB_REPO;
 
   const deployments = await gh<
-    { id: number; environment: string }[]
-  >(`/repos/${repo}/deployments?sha=${encodeURIComponent(sha)}&per_page=50`);
+    { id: number; environment: string; created_at: string | null }[]
+  >(`/repos/${repo}/deployments?sha=${encodeURIComponent(sha)}&per_page=100`);
 
-  const out: DeploymentStatusSummary[] = [];
+  const out: DeploymentRecord[] = [];
 
   for (const d of deployments ?? []) {
     const statuses = await gh<
-      { state: string; environment_url?: string | null; target_url?: string | null }[]
-    >(`/repos/${repo}/deployments/${d.id}/statuses?per_page=50`);
+      {
+        id: number;
+        state: string;
+        created_at: string | null;
+        environment_url?: string | null;
+        target_url?: string | null;
+      }[]
+    >(`/repos/${repo}/deployments/${d.id}/statuses?per_page=100`);
 
-    for (const s of statuses ?? []) {
-      out.push({
-        state: s.state as DeploymentStatusSummary["state"],
-        environmentUrl: s.environment_url || s.target_url || null,
-        environment: d.environment,
-      });
-    }
+    out.push({
+      id: d.id,
+      environment: d.environment ?? "",
+      createdAt: d.created_at ?? null,
+      statuses: (statuses ?? []).map(
+        (s): DeploymentStatusRecord => ({
+          id: s.id,
+          state: s.state as DeploymentStatusRecord["state"],
+          createdAt: s.created_at ?? null,
+          environmentUrl: s.environment_url || s.target_url || null,
+        })
+      ),
+    });
   }
 
   return out;
