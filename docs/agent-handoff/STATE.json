@@ -1,13 +1,13 @@
 {
-  "version": 3,
+  "version": 4,
   "repo": "nasagame8-del/naru-career",
   "coordinationBranch": "agent/new-article-autopilot",
   "mode": "NEW_ARTICLE_AUTOPILOT",
   "status": "RUN_CLAUDE",
-  "instructionId": "INST-003",
-  "lastCompletedInstructionId": "INST-002",
-  "lastReportId": "REPORT-002",
-  "iteration": 3,
+  "instructionId": "INST-004",
+  "lastCompletedInstructionId": "INST-003",
+  "lastReportId": "REPORT-003",
+  "iteration": 4,
   "maxIterations": 8,
   "sameBlockerCount": 0,
   "lastBlockerKey": null,
@@ -22,5 +22,5 @@
     "unsafe direct write to master",
     "irreversible content decision with insufficient evidence"
   ],
-  "notes": "Implement the reusable new-article autopilot. This instruction builds infrastructure only; do not publish a real article or merge this PR automatically."
+  "notes": "Close the verified production gaps: real web research, durable candidate persistence by default in production, and CI-gated automatic publication. Do not create a real article or merge PR #15 in this instruction."
 }
