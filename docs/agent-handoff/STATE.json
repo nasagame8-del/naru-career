@@ -1,11 +1,29 @@
 {
-  "version": 1,
+  "version": 2,
   "repo": "nasagame8-del/naru-career",
-  "coordinationBranch": "work",
-  "instructionId": "INST-001",
-  "status": "WAITING_FOR_CLAUDE_REPORT",
-  "lastCompletedInstructionId": null,
-  "lastReportId": null,
-  "nextWriter": "claude-code",
-  "notes": "Initial handoff setup. Claude Code should finish the currently running E2E, write REPORT.md, and stop for review."
+  "coordinationBranch": "agent/autopilot",
+  "status": "PR_READY",
+  "instructionId": "INST-002",
+  "lastCompletedInstructionId": "INST-002",
+  "lastReportId": "REPORT-002",
+  "iteration": 2,
+  "maxIterations": 8,
+  "sameBlockerCount": 0,
+  "lastBlockerKey": null,
+  "nextWriter": "chatgpt",
+  "targetBaseBranch": "master",
+  "masterNormalized": true,
+  "masterNormalizedFromWorkSha": "8bf379b0dabc23be669f3c8205b9ec17e5be827a",
+  "seedMerged": true,
+  "seedMergeCommit": "5f7cbff427f528c082158af3285b9eaab7980645",
+  "stopConditions": [
+    "PR_READY",
+    "maxIterations reached",
+    "same blocker repeated twice",
+    "destructive migration or deletion requiring business approval",
+    "production deploy or merge requested",
+    "secret or credential input required",
+    "irreversible content decision with insufficient evidence"
+  ],
+  "notes": "INST-002 completed and validated in REPORT-002; PR #10 is ready for human review. No production merge or deployment authorized."
 }
