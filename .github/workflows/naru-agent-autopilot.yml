@@ -112,7 +112,7 @@ jobs:
 
             Finish by leaving all intended changes in the working tree. The workflow will commit and push them.
           claude_args: |
-            --max-turns 40
+            --max-turns 100
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash"
 
       - name: Commit and push Claude changes
