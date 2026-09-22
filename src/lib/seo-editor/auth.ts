@@ -9,8 +9,10 @@
 import type { NextRequest } from "next/server";
 
 export function isAuthorized(request: NextRequest): boolean {
-  const user = process.env.DASHBOARD_USER || "admin";
-  const pass = process.env.DASHBOARD_PASSWORD || "naru2026";
+  const user = process.env.DASHBOARD_USER;
+  const pass = process.env.DASHBOARD_PASSWORD;
+  // Never expose SEO Editor using predictable default credentials.
+  if (!user || !pass) return false;
 
   const header = request.headers.get("authorization");
   if (!header) return false;
