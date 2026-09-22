@@ -1,5 +1,5 @@
 /**
- * 業界解説・認知系の記事に /diagnosis への静的バナーを追加するスクリプト
+ * 業界解説・認知系の記事に /shindan への静的バナーを追加するスクリプト
  */
 const fs = require("fs");
 const path = require("path");
@@ -9,7 +9,7 @@ const articlesDir = path.join(__dirname, "..", "content", "articles");
 const BANNER = `
 > **自分に向いている職種が分からない方へ**
 > 10問の質問に答えるだけで、あなたに合うIT/Web業界の職種タイプが分かります。
-> [適職診断を受けてみる →](/diagnosis)
+> [適職診断を受けてみる →](/shindan)
 `;
 
 // 記事ごとの挿入先（このh2の直前に挿入）
