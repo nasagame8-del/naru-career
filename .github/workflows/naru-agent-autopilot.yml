@@ -24,10 +24,21 @@ jobs:
     timeout-minutes: 45
 
     steps:
-      - name: Checkout autopilot branch
+      - name: Resolve control PR branch
+        id: control
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          BRANCH="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq '.head.ref')"
+          test -n "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout control PR branch
         uses: actions/checkout@v6
         with:
-          ref: agent/autopilot
+          ref: ${{ steps.control.outputs.branch }}
           fetch-depth: 0
 
       - name: Read autopilot state
@@ -128,4 +139,4 @@ jobs:
             exit 0
           fi
           git commit -m "agent: execute handoff instruction"
-          git push origin HEAD:agent/autopilot
+          git push origin "HEAD:${{ steps.control.outputs.branch }}"
