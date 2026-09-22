@@ -6,13 +6,19 @@
  *
  * ガード:
  *   - /internal/* の Basic 認証（src/middleware.ts）に加え、ルート側でも再検証する
+ *   - 本番で永続保存を用意できない場合は 503 で明示的に失敗する（メモリへ落ちない）
  *   - secret は一切レスポンスに含めない
  */
 
 import { NextResponse, type NextRequest } from "next/server";
 import { isAuthorized } from "@/lib/seo-editor/auth";
 import { generateCandidateBatch, batchMeetsQuota } from "@/lib/article-factory/candidates";
-import { describeStore, getCandidateBatchStore } from "@/lib/article-factory/storage";
+import {
+  describeStore,
+  getCandidateBatchStore,
+  StorageUnavailableError,
+  type CandidateBatchStore,
+} from "@/lib/article-factory/storage";
 import { SeoEditorError } from "@/lib/seo-editor/openai";
 
 export const dynamic = "force-dynamic";
@@ -25,10 +31,35 @@ function unauthorized() {
   });
 }
 
+/** 保存先の解決。失敗時は 503 レスポンスを返す */
+function resolveStore(): { store: CandidateBatchStore } | { response: NextResponse } {
+  try {
+    return { store: getCandidateBatchStore() };
+  } catch (e) {
+    if (e instanceof StorageUnavailableError) {
+      return {
+        response: NextResponse.json(
+          {
+            ok: false,
+            error: `候補バッチの保存先を用意できません — ${e.message}`,
+            reasons: e.reasons,
+            storage: { kind: "unavailable", durable: false, warning: e.message },
+          },
+          { status: 503 }
+        ),
+      };
+    }
+    throw e;
+  }
+}
+
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) return unauthorized();
 
-  const store = getCandidateBatchStore();
+  const resolved = resolveStore();
+  if ("response" in resolved) return resolved.response;
+  const { store } = resolved;
+
   try {
     const batch = await store.getLatest();
     return NextResponse.json({
@@ -52,7 +83,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   if (!isAuthorized(request)) return unauthorized();
 
-  const store = getCandidateBatchStore();
+  const resolved = resolveStore();
+  if ("response" in resolved) return resolved.response;
+  const { store } = resolved;
+
   try {
     const batch = await generateCandidateBatch({ trigger: "manual" });
     await store.save(batch);

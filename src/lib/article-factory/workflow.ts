@@ -11,10 +11,17 @@
  * これによりブラウザを閉じても実行が継続し、runId で再接続できる。
  */
 
-import { FatalError, RetryableError, getWritable, getWorkflowMetadata } from "workflow";
-import { ARTICLE_RUN_DIR, isAutoPublishAuthorized, SITE_URL } from "./config";
+import {
+  FatalError,
+  RetryableError,
+  getWritable,
+  getWorkflowMetadata,
+  sleep,
+} from "workflow";
+import { ARTICLE_RUN_DIR, isAutoPublishAuthorized, SITE_URL, WAIT } from "./config";
 import { readInventory } from "./inventory";
-import { runResearch, runOutline, runWrite, runInternalLinks } from "./generation";
+import { runOutline, runWrite, runInternalLinks } from "./generation";
+import { runResearch } from "./research";
 import { buildArticleMarkdown, buildImagePlan } from "./markdown";
 import {
   canAutoPublish,
@@ -23,7 +30,19 @@ import {
   type ExistingArticleRef,
 } from "./safety";
 import {
+  evaluateDeployment,
+  evaluateMergeGate,
+  evaluateRequiredChecks,
+  REQUIRED_CHECKS,
+  type DeploymentDecision,
+  type MergeGateDecision,
+  type RequiredChecksDecision,
+} from "./checks";
+import {
   createArticlePullRequest,
+  getChecksForSha,
+  getDeploymentStatusesForSha,
+  getPullRequestState,
   mergeArticlePullRequest,
   ArticleGithubError,
 } from "./github";
@@ -207,13 +226,109 @@ async function stepCreatePr(
   }
 }
 
-async function stepMerge(prNumber: number): Promise<void> {
+/**
+ * CIが通ったあと、buildPassed を確定させてQAを再評価する。
+ *
+ * buildPassed に渡すのは**外部CIが成功したという事実**であり、
+ * ローカルで勝手に true にした値ではない。
+ */
+async function stepQaWithBuild(
+  draft: ArticleDraft,
+  research: ResearchResult,
+  inventory: InventorySnapshot,
+  changePaths: string[],
+  buildPassed: boolean
+): Promise<QaResult> {
+  "use step";
+  return runQa({
+    draft,
+    research,
+    existing: inventory.existing,
+    existingSlugs: inventory.existingSlugs,
+    knownPaths: new Set(inventory.knownPaths),
+    changePaths,
+    buildPassed,
+  });
+}
+
+/**
+ * PRのhead SHAに対する必須チェックを取得して判定する。
+ *
+ * GitHub API呼び出しはここ（step）で行い、
+ * 待つかどうかの判断はワークフロー側が行う。
+ */
+async function stepEvaluateChecks(
+  prNumber: number,
+  startedAtMs: number
+): Promise<{ decision: RequiredChecksDecision; headSha: string }> {
   "use step";
   try {
-    await mergeArticlePullRequest(prNumber);
+    const pr = await getPullRequestState(prNumber);
+    const checks = await getChecksForSha(pr.headSha);
+    const decision = evaluateRequiredChecks(checks, REQUIRED_CHECKS, {
+      elapsedMs: Date.now() - startedAtMs,
+      timeoutMs: WAIT.checkTimeoutMs,
+      appearanceGraceMs: WAIT.checkAppearanceGraceMs,
+    });
+    return { decision, headSha: pr.headSha };
+  } catch (e) {
+    if (e instanceof ArticleGithubError) {
+      if (e.status >= 400 && e.status < 500) throw new FatalError(e.message);
+      throw new RetryableError(e.message, { retryAfter: "1m" });
+    }
+    throw e;
+  }
+}
+
+/** マージ可否の最終判定。既にマージ済みかを含めて確認する（冪等） */
+async function stepEvaluateMergeGate(
+  prNumber: number,
+  qaAllowed: boolean,
+  qaReason: string,
+  checks: RequiredChecksDecision
+): Promise<MergeGateDecision> {
+  "use step";
+  const pr = await getPullRequestState(prNumber);
+  return evaluateMergeGate({
+    qaAllowed,
+    qaReason,
+    checks,
+    alreadyMerged: pr.merged,
+  });
+}
+
+/**
+ * マージを実行し、マージコミットSHAを返す。
+ * 既にマージ済みなら既存のマージコミットSHAを返す（冪等）。
+ */
+async function stepMerge(prNumber: number): Promise<string> {
+  "use step";
+  try {
+    return await mergeArticlePullRequest(prNumber);
   } catch (e) {
     if (e instanceof ArticleGithubError && e.status >= 400 && e.status < 500) {
       throw new FatalError(e.message);
+    }
+    throw e;
+  }
+}
+
+/** マージコミットに紐づく本番デプロイの状態を判定する */
+async function stepEvaluateDeployment(
+  mergeCommitSha: string,
+  startedAtMs: number
+): Promise<DeploymentDecision> {
+  "use step";
+  try {
+    const statuses = await getDeploymentStatusesForSha(mergeCommitSha);
+    return evaluateDeployment(statuses, {
+      elapsedMs: Date.now() - startedAtMs,
+      timeoutMs: WAIT.deployTimeoutMs,
+    });
+  } catch (e) {
+    if (e instanceof ArticleGithubError) {
+      if (e.status >= 400 && e.status < 500) throw new FatalError(e.message);
+      throw new RetryableError(e.message, { retryAfter: "1m" });
     }
     throw e;
   }
@@ -344,26 +459,91 @@ export async function newArticleWorkflow(topic: SelectedTopic): Promise<ArticleR
     return { runId, slug: draft.slug, status: "blocked", reason, qa, publish: null };
   }
 
+
   // 9. create-pr
+  // この時点ではQAのbuild判定が未確定なので、公開は保留のままPRを作る。
   await emit(phaseEvent("create-pr", "running", "Pull Requestを作成しています"));
-  const gate = canAutoPublish(qa, isAutoPublishAuthorized());
-  const publish = await stepCreatePr(
+  const created = await stepCreatePr(
     runId,
     topic,
     changes,
     qa,
-    gate.allowed ? null : gate.reason
+    "PR検証（CI）の結果を待っています"
   );
-  await emit(phaseEvent("create-pr", "done", `PR #${publish.prNumber} を作成しました`));
+  await emit(phaseEvent("create-pr", "done", `PR #${created.prNumber} を作成しました`));
 
-  // 10. publish
-  await emit(phaseEvent("publish", "running", "公開判定を行っています"));
-  if (!gate.allowed) {
-    await emit(phaseEvent("publish", "skipped", gate.reason));
+  // 10. pr-validation — 外部CIとVercel Previewの結果を耐久的に待つ
+  await emit(
+    phaseEvent("pr-validation", "running", "CIとVercel Previewの結果を待っています")
+  );
+
+  const startedAt = Date.now();
+  let checkDecision = await stepEvaluateChecks(created.prNumber, startedAt);
+
+  // pending の間は sleep して再ポーリングする。sleep はワークフロー側で行う。
+  while (checkDecision.decision.state === "pending") {
+    await emit(phaseEvent("pr-validation", "running", checkDecision.decision.detail));
+    await sleep(WAIT.checkPollInterval);
+    checkDecision = await stepEvaluateChecks(created.prNumber, startedAt);
+  }
+
+  if (checkDecision.decision.state !== "passed") {
+    const reason = checkDecision.decision.detail;
+    await emit(phaseEvent("pr-validation", "failed", reason));
+    await emit({
+      type: "blocked",
+      phase: "pr-validation",
+      reason,
+      code: `CHECKS_${checkDecision.decision.state.toUpperCase()}`,
+      at: new Date().toISOString(),
+    });
     await emit({
       type: "completed",
-      prUrl: publish.prUrl,
-      prNumber: publish.prNumber,
+      prUrl: created.prUrl,
+      prNumber: created.prNumber,
+      productionUrl: null,
+      published: false,
+      at: new Date().toISOString(),
+    });
+    return {
+      runId,
+      slug: draft.slug,
+      status: "blocked",
+      reason,
+      qa,
+      publish: { ...created, headSha: checkDecision.headSha, publishBlockedReason: reason },
+    };
+  }
+
+  await emit(phaseEvent("pr-validation", "done", "CIとVercel Previewが成功しました"));
+
+  // CIが通ったので、はじめて buildPassed: true でQAを再評価する。
+  // ローカルのbooleanではなく、外部CIの結果が根拠になっている。
+  const verifiedQa = await stepQaWithBuild(
+    draft,
+    research,
+    inventory,
+    changes.map((c) => c.path),
+    true
+  );
+  const gate = canAutoPublish(verifiedQa, isAutoPublishAuthorized());
+
+  // 11. publish（マージ）
+  await emit(phaseEvent("publish", "running", "公開判定を行っています"));
+
+  const mergeGate = await stepEvaluateMergeGate(
+    created.prNumber,
+    gate.allowed,
+    gate.reason,
+    checkDecision.decision
+  );
+
+  if (!mergeGate.allowed) {
+    await emit(phaseEvent("publish", "skipped", mergeGate.reason));
+    await emit({
+      type: "completed",
+      prUrl: created.prUrl,
+      prNumber: created.prNumber,
       productionUrl: null,
       published: false,
       at: new Date().toISOString(),
@@ -372,19 +552,73 @@ export async function newArticleWorkflow(topic: SelectedTopic): Promise<ArticleR
       runId,
       slug: draft.slug,
       status: "completed",
-      reason: gate.reason,
-      qa,
-      publish,
+      reason: mergeGate.reason,
+      qa: verifiedQa,
+      publish: {
+        ...created,
+        headSha: checkDecision.headSha,
+        publishBlockedReason: mergeGate.reason,
+      },
     };
   }
 
-  await stepMerge(publish.prNumber);
-  const productionUrl = `${SITE_URL}/articles/${draft.slug}`;
-  await emit(phaseEvent("publish", "done", "公開しました"));
+  const mergeCommitSha = await stepMerge(created.prNumber);
+  await emit(phaseEvent("publish", "done", `マージしました（${mergeCommitSha.slice(0, 7)}）`));
+
+  // 12. production-deploy — マージコミットの本番デプロイ成功を待つ
+  await emit(phaseEvent("production-deploy", "running", "本番デプロイの完了を待っています"));
+
+  const deployStartedAt = Date.now();
+  let deploy = await stepEvaluateDeployment(mergeCommitSha, deployStartedAt);
+
+  while (deploy.state === "pending") {
+    await emit(phaseEvent("production-deploy", "running", deploy.detail));
+    await sleep(WAIT.deployPollInterval);
+    deploy = await stepEvaluateDeployment(mergeCommitSha, deployStartedAt);
+  }
+
+  if (deploy.state !== "succeeded") {
+    // マージはされたが公開の確認は取れていない。published: true にはしない。
+    const reason = `${deploy.detail}（PRはマージ済みです）`;
+    await emit(phaseEvent("production-deploy", "failed", reason));
+    await emit({
+      type: "blocked",
+      phase: "production-deploy",
+      reason,
+      code: `DEPLOY_${deploy.state.toUpperCase()}`,
+      at: new Date().toISOString(),
+    });
+    await emit({
+      type: "completed",
+      prUrl: created.prUrl,
+      prNumber: created.prNumber,
+      productionUrl: null,
+      published: false,
+      at: new Date().toISOString(),
+    });
+    return {
+      runId,
+      slug: draft.slug,
+      status: "blocked",
+      reason,
+      qa: verifiedQa,
+      publish: {
+        ...created,
+        headSha: checkDecision.headSha,
+        mergeCommitSha,
+        published: false,
+        publishBlockedReason: reason,
+      },
+    };
+  }
+
+  // 本番デプロイの成功を確認できて、はじめて「公開した」と報告する。
+  const productionUrl = deploy.url ?? `${SITE_URL}/articles/${draft.slug}`;
+  await emit(phaseEvent("production-deploy", "done", "本番デプロイが成功しました"));
   await emit({
     type: "completed",
-    prUrl: publish.prUrl,
-    prNumber: publish.prNumber,
+    prUrl: created.prUrl,
+    prNumber: created.prNumber,
     productionUrl,
     published: true,
     at: new Date().toISOString(),
@@ -395,7 +629,14 @@ export async function newArticleWorkflow(topic: SelectedTopic): Promise<ArticleR
     slug: draft.slug,
     status: "completed",
     reason: null,
-    qa,
-    publish: { ...publish, published: true, productionUrl },
+    qa: verifiedQa,
+    publish: {
+      ...created,
+      headSha: checkDecision.headSha,
+      mergeCommitSha,
+      published: true,
+      publishBlockedReason: null,
+      productionUrl,
+    },
   };
 }

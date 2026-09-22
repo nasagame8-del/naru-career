@@ -14,6 +14,7 @@
 
 import { BRANCH_PREFIX, GITHUB_BASE_BRANCH, GITHUB_REPO, LIMITS } from "./config";
 import { isAllowedPath } from "./safety";
+import type { CheckSummary, DeploymentStatusSummary } from "./checks";
 import type { ArticleChange, PublishResult, QaResult, SelectedTopic } from "./types";
 
 const API = "https://api.github.com";
@@ -259,6 +260,8 @@ export async function createArticlePullRequest(
       branch,
       prNumber: existingPr.number,
       prUrl: existingPr.html_url,
+      headSha: null,
+      mergeCommitSha: null,
       published: false,
       publishBlockedReason:
         opts.publishBlockedReason ?? "このrunIdのPRは既に作成済みです（冪等実行）",
@@ -328,24 +331,151 @@ export async function createArticlePullRequest(
     branch,
     prNumber: pr.number,
     prUrl: pr.html_url,
+    headSha: commit.sha,
+    mergeCommitSha: null,
     published: false,
     publishBlockedReason: opts.publishBlockedReason,
     productionUrl: null,
   };
 }
 
+// ── PRの状態取得（CIゲート用） ──
+
+export interface PullRequestState {
+  number: number;
+  /** PR head のコミットSHA。チェックはこのSHAに対して登録される */
+  headSha: string;
+  merged: boolean;
+  /** マージ済みの場合のマージコミットSHA */
+  mergeCommitSha: string | null;
+  state: "open" | "closed";
+}
+
+/** PRの現在の状態を取得する（head SHA・マージ済みか） */
+export async function getPullRequestState(prNumber: number): Promise<PullRequestState> {
+  const repo = GITHUB_REPO;
+  const pr = await gh<{
+    number: number;
+    head: { sha: string };
+    merged: boolean;
+    merge_commit_sha: string | null;
+    state: "open" | "closed";
+  }>(`/repos/${repo}/pulls/${prNumber}`);
+
+  return {
+    number: pr.number,
+    headSha: pr.head.sha,
+    merged: pr.merged,
+    mergeCommitSha: pr.merge_commit_sha,
+    state: pr.state,
+  };
+}
+
+/**
+ * 指定SHAに紐づくチェックを取得する。
+ *
+ * GitHub Actions は check-runs、Vercel などの連携は commit status として
+ * 報告されることがあるため、**両方**を取得して同じ形へ正規化する。
+ */
+export async function getChecksForSha(sha: string): Promise<CheckSummary[]> {
+  const repo = GITHUB_REPO;
+  const out: CheckSummary[] = [];
+
+  const runs = await gh<{
+    check_runs: { name: string; status: string; conclusion: string | null }[];
+  }>(`/repos/${repo}/commits/${encodeURIComponent(sha)}/check-runs?per_page=100`);
+
+  for (const r of runs.check_runs ?? []) {
+    out.push({
+      name: r.name,
+      status: r.status as CheckSummary["status"],
+      conclusion: r.conclusion as CheckSummary["conclusion"],
+    });
+  }
+
+  const statuses = await gh<{
+    statuses: { context: string; state: string }[];
+  }>(`/repos/${repo}/commits/${encodeURIComponent(sha)}/status?per_page=100`);
+
+  for (const s of statuses.statuses ?? []) {
+    // commit status の state を check-run の形へ正規化する
+    const state = s.state;
+    out.push({
+      name: s.context,
+      status: state === "pending" ? "pending" : "completed",
+      conclusion:
+        state === "success"
+          ? "success"
+          : state === "failure" || state === "error"
+            ? "failure"
+            : null,
+    });
+  }
+
+  return out;
+}
+
 /**
  * 自動公開（PRマージ）。
  *
- * 呼び出し側で canAutoPublish が allowed を返した場合にのみ実行すること。
+ * 呼び出し側で QA と必須チェックの**両方**が通った場合にのみ実行すること。
  * この関数自体は判断せず、与えられた指示を実行する。
+ *
+ * @returns マージコミットのSHA（本番デプロイの確認に使う）
  */
-export async function mergeArticlePullRequest(prNumber: number): Promise<void> {
+export async function mergeArticlePullRequest(prNumber: number): Promise<string> {
   const repo = GITHUB_REPO;
-  await gh(`/repos/${repo}/pulls/${prNumber}/merge`, {
-    method: "PUT",
-    body: JSON.stringify({ merge_method: "squash" }),
-  });
+
+  // 冪等性: 既にマージ済みならそのマージコミットSHAを返す
+  const current = await getPullRequestState(prNumber);
+  if (current.merged && current.mergeCommitSha) return current.mergeCommitSha;
+
+  const res = await gh<{ merged: boolean; sha: string }>(
+    `/repos/${repo}/pulls/${prNumber}/merge`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ merge_method: "squash" }),
+    }
+  );
+
+  if (!res.merged || !res.sha) {
+    throw new ArticleGithubError(500, "マージは実行されましたがマージコミットSHAを取得できませんでした");
+  }
+  return res.sha;
+}
+
+/**
+ * マージコミットに紐づくデプロイの状態を取得する。
+ *
+ * Vercel の Git 連携が有効な場合、GitHub の Deployments API に
+ * production 環境のデプロイとステータスが登録される。
+ */
+export async function getDeploymentStatusesForSha(
+  sha: string
+): Promise<DeploymentStatusSummary[]> {
+  const repo = GITHUB_REPO;
+
+  const deployments = await gh<
+    { id: number; environment: string }[]
+  >(`/repos/${repo}/deployments?sha=${encodeURIComponent(sha)}&per_page=50`);
+
+  const out: DeploymentStatusSummary[] = [];
+
+  for (const d of deployments ?? []) {
+    const statuses = await gh<
+      { state: string; environment_url?: string | null; target_url?: string | null }[]
+    >(`/repos/${repo}/deployments/${d.id}/statuses?per_page=50`);
+
+    for (const s of statuses ?? []) {
+      out.push({
+        state: s.state as DeploymentStatusSummary["state"],
+        environmentUrl: s.environment_url || s.target_url || null,
+        environment: d.environment,
+      });
+    }
+  }
+
+  return out;
 }
 
 function buildPrBody(opts: CreateArticlePrOptions): string {

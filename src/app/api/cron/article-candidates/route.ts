@@ -14,7 +14,11 @@
 
 import { NextResponse, type NextRequest } from "next/server";
 import { generateCandidateBatch } from "@/lib/article-factory/candidates";
-import { describeStore, getCandidateBatchStore } from "@/lib/article-factory/storage";
+import {
+  describeStore,
+  getCandidateBatchStore,
+  StorageUnavailableError,
+} from "@/lib/article-factory/storage";
 import { isValidCronAuth } from "@/lib/article-factory/safety";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +30,19 @@ export async function GET(request: NextRequest) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
-  const store = getCandidateBatchStore();
+  let store;
+  try {
+    store = getCandidateBatchStore();
+  } catch (e) {
+    if (e instanceof StorageUnavailableError) {
+      // 本番で永続保存が用意できないならメモリへ落とさず失敗させる
+      return NextResponse.json(
+        { ok: false, error: `候補バッチの保存先を用意できません — ${e.message}`, reasons: e.reasons },
+        { status: 503 }
+      );
+    }
+    throw e;
+  }
 
   try {
     const batch = await generateCandidateBatch({ trigger: "cron" });

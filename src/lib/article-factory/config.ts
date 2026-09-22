@@ -51,6 +51,28 @@ export function isAutoPublishAuthorized(): boolean {
 /** Vercel Cron 認証用のシークレット名（値は読まない・返さない） */
 export const CRON_SECRET_ENV = "CRON_SECRET";
 
+/**
+ * 外部CI・本番デプロイの待ち時間。
+ *
+ * Workflow の sleep() は実行リソースを消費せずに待てるため、
+ * 分単位で待っても問題ない。
+ */
+export const WAIT = {
+  /** 必須チェックのポーリング間隔 */
+  checkPollInterval: "30s",
+  /** 必須チェックの完了を待つ上限（ミリ秒） */
+  checkTimeoutMs: 20 * 60 * 1000,
+  /**
+   * 必須チェックが登録されるまでの猶予（ミリ秒）。
+   * この間にチェックが現れなければ missing とみなす。
+   */
+  checkAppearanceGraceMs: 3 * 60 * 1000,
+  /** 本番デプロイのポーリング間隔 */
+  deployPollInterval: "30s",
+  /** 本番デプロイの完了を待つ上限（ミリ秒） */
+  deployTimeoutMs: 20 * 60 * 1000,
+} as const;
+
 /** サイトのテーマ境界。これを外れる候補は機械的に落とす */
 export const TOPIC_SCOPE = {
   label: "第二新卒 × IT/Web転職",

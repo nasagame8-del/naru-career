@@ -1,262 +1,261 @@
 # Claude Code Report
 
-- reportId: `REPORT-003`
-- completedInstructionId: `INST-003`
+- reportId: `REPORT-004`
+- completedInstructionId: `INST-004`
 - status: `PR_READY`
 - branch: `agent/new-article-autopilot`
 - baseBranch: `master`
+- pr: `#15`
 - verifiedAt: `2026-09-23`
 - environment: Node v20.20.2 / npm 10.8.2
 
 ## Summary
 
-新規記事オートパイロット（Article Factory）のインフラを実装し、検証を完了した。
+独立レビューで指摘された本番クリティカルな4つのギャップをすべて実装した。
+いずれも REPORT-003 で自分が「残るリスク」として挙げたものであり、指摘は妥当。
 
-- SEO Editor とは完全に独立した別ドメイン（`src/lib/article-factory/**`）として実装。
-  SEO Editor のファイルは**1つも変更していない**。
-- 耐久実行は Vercel Workflow DevKit（`workflow@4.8.9`）。
-  ビルド時に **1 workflow / 15 steps** として認識されていることを確認済み。
-- 安全判定は純粋関数に切り出し、**69件のユニットテスト**で固定した。
-- 指示どおり、実記事の生成・公開は行っていない。
-
-lint / build / typecheck / test すべて通過。新規lintエラー0件。
-人間のレビューに進める状態と判断し `PR_READY` とする。
-
-## 実施した検証
-
-### 1. ハンドオフ状態の確認
-
-- `STATE.json`: `status: RUN_CLAUDE` / `instructionId: INST-003` / `mode: NEW_ARTICLE_AUTOPILOT` を確認。
-- `REPORT.md` は `REPORT-002` / `INST-002` のままだった（= INST-003 は未実行）。二重実行なし。
-- `AGENTS.md` の Ownership に従い、`STATE.json` と `NEXT_INSTRUCTION.md` は変更していない。
-- `.github/workflows/**` も今回の指示どおり一切触っていない。
-
-### 2. 既存実装の調査（実装前）
-
-実装方針を決めるため、先に以下を読んだ。
-
-- 既存記事37本のfrontmatter形式（実際に使われているキーを全件集計）
-  → 必須キー: `title` `category` `keyword` `datePublished` `dateModified`
-    `excerpt` `summary` `faq` `cta_agents` `note_published`（37本すべてが保持）
-  → 任意キー: `naruPoint`(10) `inlineFaq`(7) `widgets`(3) ほか
-  → カテゴリは3種のみ: 業界解説(17) / 体験談(17) / エージェント比較(3)
-- `src/lib/seo-editor/` の再利用可能な部分（`corpus` / `openai` / `auth` / `config` / `github`）
-- `src/middleware.ts` の Basic 認証の適用範囲
-- `node_modules/workflow/docs/**`（Next.js統合・`getRun`・`getWorkflowMetadata`）
-
-**記事IDについて**: NARUの記事Markdownには数値IDのfrontmatterが存在しない
-（`grep -l "^id:" content/articles/*.md` → 0件）。
-`data/articles-status.json` にもID体系は無い。
-そのため `computeNextArticleId()` は**リポジトリ在庫の本数+1**を提案値として返す実装にした。
-Drive側に別のID体系がある場合はそちらが正本であり、この値は突き合わせ用。
-この前提はコード内コメントとPR本文にも明記している。
-
-## 実装内容
-
-### 1. 独立ドメイン（`src/lib/article-factory/`）
-
-| ファイル | 行数 | 役割 |
+| # | ギャップ | 対応 |
 |---|---|---|
-| `types.ts` | 289 | 全型定義（候補バッチ/候補/選択トピック/フェーズ/出典/ドラフト/QA/公開結果） |
-| `config.ts` | 140 | 設定・上限・許可ペルソナ事実・スコープ境界・自動公開フラグ |
-| `safety.ts` | 618 | **純粋関数のみの安全判定**（後述） |
-| `inventory.ts` | 66 | 記事在庫の読み出し・次の記事ID |
-| `candidates.ts` | 200 | 候補生成（LLM）＋機械判定 |
-| `generation.ts` | 387 | 調査 → 構成 → 執筆 → 内部リンク |
-| `markdown.ts` | 124 | frontmatterシリアライズ・image-plan生成 |
-| `github.ts` | 401 | branch → commit → PR。冪等・上書き拒否・パス許可リスト |
-| `storage.ts` | 162 | 候補バッチ保存アダプタ（memory / github） |
-| `workflow.ts` | 401 | `"use workflow"` オーケストレーション + `"use step"` × 15 |
+| A | 調査が実検索でなく、URL構文しか検証していなかった | `web_search` ツールによる実検索 + 引用アノテーション限定の出典採用 |
+| B | 候補保存が既定で非永続だった | 本番はGitHub保存が既定。設定不足は503でfail closed |
+| C | `buildPassed: null` 固定で必ず NEEDS_REVIEW になっていた | 外部CI + Vercel Previewのcheck-runを耐久ポーリングして根拠にする |
+| D | 自動公開が構造的に起こり得なかった / 公開確認が無かった | CIゲート通過後にマージ、**本番デプロイ成功を確認してから**公開と報告 |
 
-`phase4-action.ts` は経由していない。SEO Editor のコードは読み取り専用で再利用のみ。
+既存の安全ゲートは1つも弱めていない。むしろ公開条件は厳しくなった
+（QA単独 → QA + 外部CI + Vercel Preview + 本番デプロイ確認）。
 
-### 2. 候補生成
+`npm ci` / `npm test`（141件）/ `tsc --noEmit` / `npm run build` すべて通過。
+lint は REPORT-002 のベースラインと完全一致（新規0件）。
 
-- 在庫（既存記事37本）を必ず読んでから候補を出す。
-- 3〜5件（`LIMITS.minCandidates` / `maxCandidates`）。
-- 各候補に title / primaryKeyword / searchIntent / differenceFromExisting /
-  reasonToWriteNow / riskFlags を持たせる。
-- **LLMの自己申告は信用しない**。返ってきた候補は必ず `validateCandidate()` を通し、
-  重複・スコープ外・slug不正を機械的に判定して `blocked` を確定させる。
-- **Search Console のデータは使っていない**。`searchEvidence` は常に `null` で、
-  検索ボリュームや順位を推測で埋めていない。その旨を `batch.notes` に明記して返す。
+## A. 実Web検索による調査
 
-### 3. 耐久実行（Vercel Workflow）
+新規 `src/lib/article-factory/research.ts`（484行）。
+旧実装（`generation.ts` 内の102行）は削除した。
 
-- `next.config.ts` を `withWorkflow()` でラップ。
-- `"use workflow"` はオーケストレーションのみ。Node/OpenAI/GitHub は全て `"use step"` 側。
-- `start()` は runId を即座に返す → **ブラウザを閉じても実行継続**。
-- runId は `getWorkflowMetadata().workflowRunId` から取得し、PRのbranch名に使う
-  （同一runIdなら同一branch = 冪等）。
-- 境界を越えるのはプレーンJSONのみ。
-- エラー分類:
-  - `FatalError` … 設定不備・スキーマ不一致・GitHub 4xx（リトライ無意味）
-  - `RetryableError` … rate limit / timeout / 5xx（`retryAfter` 付き）
-- フェーズ順序は指示どおり10段階:
-  `inventory → cannibalization → research → outline → write →
-   internal-links → image-plan → qa → create-pr → publish`
+### SDK APIの確認（推測で書いていない）
 
-ビルド時に `workflows build complete (15 steps, 1 workflow)` と表示され、
-`/.well-known/workflow/v1/{flow,step,webhook/[token]}` が登録されることを確認。
+インストール済みの型定義を直接読んで確認した。
 
-**middlewareとの干渉なし**: `src/middleware.ts` の matcher は
-`["/internal/:path*", "/members/:path*"]` のみで、`.well-known/workflow/*` を
-インターセプトしない。Workflow SDKのドキュメントが警告している問題は発生しない。
+- `node_modules/openai/package.json` → `openai@6.46.0`
+- `responses.d.ts:6884` → `WebSearchTool.type: 'web_search' | 'web_search_2025_08_26'`
+- `responses.d.ts:5113` → `ResponseOutputText.URLCitation { title, url, start_index, end_index }`
+- `responses.d.ts:5077` → `ResponseOutputText.annotations[]`
+- `responses.d.ts:3068` → `include: 'web_search_call.action.sources'`
 
-### 4. API ルート
+### 捏造を構造的に排除する設計
 
-| ルート | 認証 | 役割 |
+1. Responses API を `tools: [{ type: "web_search" }]` で呼び、実際に検索する。
+2. **出典として採用するのは `url_citation` アノテーションのURLだけ。**
+   モデルが本文中に書いたURLは一切採用しない。
+3. 検証済みURL一覧だけをモデルに提示し、主張→出典を対応付けさせる。
+4. 最終判断は純粋関数 `buildResearchResult()`。
+   検証済み集合に無いURLで支えられた時事的主張は `unsupportedClaims` へ落ちる。
+
+つまり **モデルがURLを思い出して書いても根拠にならない**。
+「構文として正しいURL」は証拠として扱わない、という指摘に直接対応している。
+
+### URL正規化
+
+`normalizeSourceUrl()` が以下を吸収して比較可能な正規形にする。
+
+- http/https 以外を拒否（`ftp:` / `javascript:` / `data:` も）
+- ホスト小文字化・先頭 `www.` 除去
+- 追跡パラメータ除去（utm_* / gclid / fbclid / yclid / msclkid / ref / spm ほか）
+- クエリのキー順ソート・空になった `?` の除去
+- フラグメント除去・末尾スラッシュ除去（ルートは保持）
+- 既定ポート（80/443）の除去
+
+一次情報判定 `isAuthoritativeUrl()` は go.jp / lg.jp / ac.jp / gov / edu /
+e-stat / mhlw / iso.org / w3.org などを対象にし、
+`go.jp.evil.com` のようなサフィックス偽装を弾くことをテストで確認している。
+
+### 検索が使えない場合（fail closed）
+
+- `OPENAI_API_KEY` 未設定・API失敗 → 例外にせず `unsupportedClaims` に理由を残す
+- 引用が0件 → 「出典を創作しないため根拠なしとして扱う」と明記して返す
+- 主張の対応付けに失敗 → 同様に unsupported
+
+いずれもQAが `sources` カテゴリで FAIL を出して公開を止める。
+一人称実体験の制限は一切変更していない。
+
+## B. 本番での永続保存（fail closed）
+
+`getCandidateBatchStore()` を書き換えた。
+
+| 環境 | 既定 | 設定不足時 |
 |---|---|---|
-| `GET /internal/api/article-factory/candidates` | Basic + ルート側再検証 | 最新バッチ取得 |
-| `POST /internal/api/article-factory/candidates` | 同上 | 手動生成 |
-| `POST /internal/api/article-factory/start` | 同上 | 実行開始 → runId即返し |
-| `GET /internal/api/article-factory/status` | 同上 | 進捗NDJSONストリーム / `mode=meta` |
-| `GET /api/cron/article-candidates` | `Bearer CRON_SECRET` | 日次候補生成 |
+| 本番（`VERCEL_ENV=production`、無ければ `NODE_ENV`） | **GitHub** | `StorageUnavailableError` |
+| preview / development | memory | — |
 
-**cronを `/internal` 配下に置かなかった理由**: `/internal/*` は Basic 認証で保護されており、
-Vercel Cron は Basic 認証情報を送れない。そのため独立した Bearer 認証で保護している。
+- **本番でメモリへ暗黙にフォールバックしない。**
+- 本番で `ARTICLE_FACTORY_BATCH_STORE=memory` を明示しても**拒否**する。
+- 3つのAPIルート（candidates / start / cron）はこの例外を捕まえて
+  **503 + 不足している設定名**を返す。UIはその理由を改行付きで表示する。
+- `durable` の申告と `describeStore()` は維持。
+- 新しい有料DB・追加インテグレーションは導入していない。
 
-`status` は `workflow/api` の `getRun()` / `getReadable({startIndex})` を使用。
-`startIndex=0` で読み直せるため、**ページをリロードしても現在のフェーズを復元できる**。
+秘密の値は返さない。返すのは env の**名前**だけ。
 
-### 5. 安全ゲート（すべて `safety.ts` の純粋関数）
+## C. 記事PRの実検証ゲート
 
-公開をブロックする条件（`runQa`）:
+### GitHub Actions ワークフロー（新規）
 
-| カテゴリ | 判定 |
-|---|---|
-| slug形式不正 / 既存slug衝突 | FAIL |
-| スコープ外（第二新卒×IT/Web転職から外れる） | FAIL |
-| カニバリゼーション（Jaccard類似度 ≥ 0.7 または slug一致） | FAIL |
-| frontmatter欠落・形式不正 | FAIL |
-| 実在しない内部リンク | FAIL |
-| 許可外の一人称実体験 | FAIL |
-| 時事的主張の出典欠落 | FAIL |
-| 許可外の書き込みパス | FAIL |
-| build/typecheck失敗 | FAIL |
-| 本文が短すぎる / build未実行 | NEEDS_REVIEW |
+`.github/workflows/article-factory-validation.yml`
 
-GitHub書き込み側の独立したガード:
+- トリガー: `content/articles/**` / `data/article-runs/**` を変更するPR
+- ジョブ名: `article-factory-validation`（安定・明示）
+- 実行: `npm ci` → `npm test` → `npx tsc --noEmit` → `npm run build`
+- 権限: `contents: read` のみ。シークレット不使用。`persist-credentials: false`
 
-- 新規branchを毎回作成（`article-factory/<runId>`）
-- 許可パス以外は `ArticleGithubError` で拒否（QA通過後にも**再検証**）
-- **既存記事slugの上書きを拒否**（ベースブランチにファイルが存在したら409）
-- master への直接pushは実装していない（PR作成のみ）
-- 同runIdで既にPRがあればそれを返す（冪等）
-- Token はエラーメッセージにもレスポンスにも出さない
+INST-004 がこのファイルの追加を明示的に許可していたため追加した。
+`naru-agent-autopilot.yml` には触っていない。
 
-### 6. 自動公開の境界（既定OFF）
+### 耐久ポーリング
 
-`canAutoPublish()` は以下**すべて**を満たす時だけ `allowed: true` を返す。
+`checks.ts`（純粋関数）+ `workflow.ts` のステップで実装。
 
-1. QA に FAIL が0件
-2. QA に NEEDS_REVIEW が0件
-3. QA総合判定が PASS
-4. `ARTICLE_FACTORY_AUTO_PUBLISH=true` がサーバー側に設定されている
+ワークフローはPR作成後に:
 
-**重要**: 現状QAは build/typecheck を実行しないため必ず NEEDS_REVIEW を1件出す。
-つまり**現時点で自動公開は構造的に発生しない**。これは意図した保守的な既定。
-条件を満たさない場合はPRを開いたまま残し、理由を返す。
+1. `getPullRequestState()` で **PR head SHA** を取得
+2. `getChecksForSha()` で check-runs と commit statuses の**両方**を取得・正規化
+   （Vercelはcommit statusで報告される場合があるため）
+3. `evaluateRequiredChecks()` で判定
+4. `pending` の間は `sleep("30s")` して再ポーリング（**ワークフロー側でsleep**）
+5. `passed` になって初めて `buildPassed: true` でQAを再評価
 
-### 7. 一人称実体験の禁止
+判定の性質（すべてテストで固定）:
 
-許可された一次情報（磯貝アルト/24歳/飲食1年/第二新卒でIT・Web/応募約30社/内定2社/
-年収350→400万円/AIO対策企業の法人営業）**以外**の一人称記述は、
-`findUnsupportedPersonalClaims()` が文単位で機械検出し、QAをFAILにする。
+- `queued` / `in_progress` は **pending**（passにしない）
+- `failure` / `cancelled` / `timed_out` / `action_required` / `stale` は **failed**
+- `neutral` / `skipped` も **成功として扱わない**
+- 猶予3分を過ぎても現れない必須チェックは **missing → ブロック**
+- 20分で **timeout → ブロック**
+- 失敗は pending より優先
 
-プロンプト側でも明示的に禁止しているが、**判断はプロンプトではなくQAが行う**。
+必須チェックは2つ:
+`article-factory-validation`（完全一致）と Vercel（`/vercel/i` で表記揺れを吸収）。
 
-### 8. 画像
+**ジョブ名と定数の結合はテストで固定**している
+（ずれると「チェックが永遠に現れない」= 自動公開が静かに止まるため）。
 
-画像は生成しない。`data/article-runs/<runId>-image-plan.md` に
-Drive互換の計画（位置・用途・推奨サイズ・状態）だけを書き出す。
-「承認済みの既存画像のみ実装可」「既存画像を上書きしない」を本文に明記。
+Workflow DevKit の使い方も指示どおり:
+オーケストレーションと `sleep()` は `"use workflow"`、
+GitHub APIポーリングは `"use step"`、境界はプレーンJSONのみ。
 
-### 9. Cron設定
+## D. 安全な自動公開と本番確認
 
-`vercel.json` — `"fluid": true` を維持したうえで cron を1件だけ追加。
+### マージ
 
-```json
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "fluid": true,
-  "crons": [{ "path": "/api/cron/article-candidates", "schedule": "0 23 * * *" }]
-}
+`evaluateMergeGate()` が QA と CI の**両方**を要求する。
+
+- QAがNG → マージしない
+- チェックが pending → マージしない（retryable）
+- failed / missing / timeout → マージしない（retryable でない）
+- **既にマージ済み → 再マージしない（冪等）**
+
+`ARTICLE_FACTORY_AUTO_PUBLISH` は明示的な許可フラグとして維持。
+OFF のときは検証済みPRを**開いたまま残す**。
+
+`mergeArticlePullRequest()` は **マージコミットSHAを返す**ように変更した。
+既にマージ済みなら既存のマージコミットSHAを返す（冪等）。
+
+### 本番デプロイ確認
+
+マージ後、`getDeploymentStatusesForSha(mergeCommitSha)` を
+`sleep("30s")` 間隔でポーリングし、`evaluateDeployment()` で判定する。
+
+- `production` 環境を優先。無ければ全体で判定
+- 失敗は成功より優先
+- デプロイ未登録・進行中は **pending**（成功にしない）
+- 20分で **timeout**
+
+**`published: true` と本番URLを返すのは、デプロイ success を確認できた場合のみ。**
+失敗・タイムアウト時は `published: false` のまま blocked を報告し、
+「PRはマージ済み」という事実だけを添える。**公開完了とは決して言わない。**
+
+`PublishResult` に `headSha` / `mergeCommitSha` を追加した。
+
+## E. UI・状態
+
+フェーズを10→12に拡張した。
+
+```
+inventory → cannibalization → research → outline → write
+→ internal-links → image-plan → qa → create-pr
+→ pr-validation → publish → production-deploy
 ```
 
-`0 23 * * *` UTC = 08:00 JST。エントリは1件のみ。
+ラベル: 在庫確認 / 重複チェック / 調査中 / 構成作成 / 執筆 / 内部リンク /
+画像プラン / QA / PR作成 / **PR検証（CI）** / **公開（マージ）** / **本番デプロイ**
 
-### 10. ダッシュボードUI
-
-`/internal/dashboard` に **「新規記事」タブ**を追加（`performance` の次、`SEO Editor` の前）。
-既存の「SEO Editor」タブはラベル・機能とも変更していない。
-
-表示内容:
-
-- 候補カード（title / keyword / 検索意図 / 既存との差分 / いま書く理由 / riskFlags / slug）
-- `この記事を作る` ボタン（blocked な候補は無効化し理由を表示）
-- 10フェーズの進捗（待機/実行中/完了/失敗/スキップ）＋日本語ラベル
-- runId の表示
-- **リロード後の再接続**（runIdをlocalStorageに保持し、`startIndex=0` で読み直す）
-- 停止理由（コード付き）
-- PR URL / 本番URL
+- CI待ち・デプロイ待ちの間も `running` として理由付きメッセージを流す
+- ブロック時は `CHECKS_MISSING` / `CHECKS_TIMEOUT` / `DEPLOY_FAILED` などの
+  コード付きで正確な理由を表示
+- 保存先503の理由（不足env名）を改行付きで表示
+- リロード後の再接続は従来どおり `startIndex=0` でストリームを読み直す
 
 ## テスト結果
 
-### ユニットテスト（新規導入）
-
 ```
-npm test  →  3 files / 69 tests passed (exit 0)
+npm ci            → exit 0
+npm test          → 5 files / 141 tests passed (exit 0)
+npx tsc --noEmit  → exit 0
+npm run build     → exit 0
 ```
 
-テストランナーは `vitest@3.2.7` を devDependency として追加。
-`package.json` に `test` / `test:watch` を追加した。
-
-| ファイル | 件数 | 対象 |
+| ファイル | 件数 | 増減 |
 |---|---|---|
-| `safety.test.ts` | 51 | 安全判定の純粋関数 |
-| `markdown.test.ts` | 10 | frontmatter往復・image-plan |
-| `storage.test.ts` | 8 | 保存アダプタ・記事ID・branch名 |
+| `safety.test.ts` | 51 | ±0 |
+| `checks.test.ts` | 36 | **+36（新規）** |
+| `research.test.ts` | 28 | **+28（新規）** |
+| `storage.test.ts` | 16 | +8 |
+| `markdown.test.ts` | 10 | ±0 |
+| **合計** | **141** | **+72** |
 
-INST-003 が最低限要求した項目の対応:
+INST-004 が要求した項目の対応:
 
-| 要求項目 | テスト |
+| 要求 | テスト |
 |---|---|
-| duplicate/cannibalization blocks | `checkCannibalization` 4件 + `runQa` 1件 + `validateCandidate` 1件 |
-| unsupported personal-experience blocks | `findUnsupportedPersonalClaims` 3件 + `runQa` 1件 |
-| QA FAIL / NEEDS_REVIEW block publication | `canAutoPublish` 5件 |
-| path allowlist | `isAllowedPath` 6件 + `runQa` 1件 |
-| slug overwrite refusal | `refusesSlugOverwrite` 1件 + `runQa` 1件 |
-| cron auth | `isValidCronAuth` 5件（未設定時のfail closedを含む） |
-| idempotent publish decision | `branchNameForRun` 3件 + `canAutoPublish` の境界 |
+| research normalization | `normalizeSourceUrl` 9件 + `isAuthoritativeUrl` 4件 |
+| source/claim mapping | `buildResearchResult` 10件 |
+| duplicate URLs | `dedupeSources` 4件 |
+| invalid URLs | 正規化3件 + 重複排除1件 |
+| no-result behavior | 検索不可・引用0件・検証済み空 の3件 |
+| production storage cannot silently use memory | `getCandidateBatchStore` 8件 |
+| required check pending/success/failure/missing/timeout | `evaluateRequiredChecks` 15件 |
+| merge impossible before checks pass | `evaluateMergeGate` 7件 |
+| production URL not before deployment success | `evaluateDeployment` 11件 |
+| idempotent replay (PR exists / already merged) | マージゲート冪等1件 + `branchNameForRun` 3件 |
 
-追加で、**生成した記事Markdownがサイト本体と同じパーサ（gray-matter）で
-既存記事と同じ形として読めること**を往復テストで固定した。
+追加で、CIワークフローのジョブ名・トリガーパス・権限が
+コード側の定数と一致することを3件のテストで固定した。
 
-### テストで発見・修正した実装バグ（1件）
-
-`branchNameForRun()` のサニタイザが `.` を許可しており、
-runIdに `..` が含まれると branch 名に `..` が残っていた。
-git の ref 名は `..` を含められないため、PR作成が失敗する経路だった。
-英数字・アンダースコア・ハイフン以外をすべてハイフンに畳むよう修正し、テストで固定。
-
-### typecheck
+### lint
 
 ```
-npx tsc --noEmit  →  exit 0（エラー0件）
+npx eslint  →  66 errors, 14 warnings（計80件 / 29ファイル）
 ```
 
-### build
+**REPORT-002 のベースラインと完全一致。新規0件。**
+新規・変更ファイルのみを対象にした lint は `exit 0`（指摘0件）。
+
+### ワークフローYAML検証
+
+`js-yaml` でパースして構造を確認した。
 
 ```
-npm run build  →  exit 0
-workflows build complete (15 steps, 1 workflow, time 68ms)
-108ページ生成成功
+article-factory-validation.yml => VALID YAML
+  name: Article Factory Validation
+  job: article-factory-validation -> name: article-factory-validation (6 steps)
+  permissions: {"contents":"read"}
+  on: {"pull_request":{"paths":["content/articles/**","data/article-runs/**"]}}
+naru-agent-autopilot.yml => VALID YAML（変更なし）
 ```
 
-ビルド後のルートテーブルで新規ルートの登録を確認:
+### ビルド後のルート確認
 
 ```
+workflows build complete (19 steps, 1 workflow, time 72ms)   ← 15→19（新規4step）
 ƒ /.well-known/workflow/v1/flow
 ƒ /.well-known/workflow/v1/step
 ƒ /.well-known/workflow/v1/webhook/[token]
@@ -266,163 +265,121 @@ workflows build complete (15 steps, 1 workflow, time 68ms)
 ƒ /internal/api/article-factory/status
 ```
 
-### lint
+## 実装中に見つけて対処した問題
 
-```
-npx eslint  →  66 errors, 14 warnings（計80件 / 29ファイル）
-```
+1. **js-yaml のバージョン差異**
+   テストで使うため devDependency に追加したところ v5.4.2 が入り、
+   v5 は**デフォルトエクスポートを持たない**ため `yaml.load` が失敗した。
+   名前付き `load` に変更して解決。
+   また v5 は自前の型定義を同梱するため、誤って入れた `@types/js-yaml@4` は削除した。
 
-**REPORT-002 時点のベースラインと完全一致。新規0件。**
-新規ファイルのみを対象にした lint も `exit 0`（指摘0件）。
+2. **`NODE_ENV` が型上 readonly**
+   本番判定のテストで代入できず `tsc` が失敗した。
+   テスト内で可変ビュー経由に変更して解決。
 
-補足: Workflow SDK がビルド時に生成する `src/app/.well-known/**` に
-`no-unused-vars` 警告が1件出たため、`eslint.config.mjs` の `globalIgnores` に
-同ディレクトリを追加した。生成物でありSDKが自前の `.gitignore` で
-git管理からも除外しているため、lint対象から外すのが妥当と判断した。
-
-### 依存関係
-
-```
-npm ci  →  exit 0（lockfileどおり）
-```
-
-- 追加: `workflow@^4.8.9`（dependencies）、`vitest@^3.2.7`（devDependencies）
-- `npm audit` の既存警告あり（`workflow` の依存ツリーを含む）。今回は未対応。
+3. **`PublishResult` の必須フィールド追加漏れ**
+   `headSha` / `mergeCommitSha` を追加した際、`github.ts` の
+   冪等パスと新規作成パスの返り値が追随しておらず `tsc` が検出。修正済み。
 
 ## 変更ファイル
 
 新規:
 
 ```
-src/lib/article-factory/{types,config,safety,inventory,candidates,
-                         generation,markdown,github,storage,workflow}.ts
-src/lib/article-factory/{safety,markdown,storage}.test.ts
-src/app/internal/api/article-factory/{candidates,start,status}/route.ts
-src/app/api/cron/article-candidates/route.ts
-src/app/internal/dashboard/article-factory/NewArticleTab.tsx
-vitest.config.ts
-docs/article-factory.md
+.github/workflows/article-factory-validation.yml
+src/lib/article-factory/research.ts        (484行)
+src/lib/article-factory/research.test.ts   (289行)
+src/lib/article-factory/checks.ts          (新規・純粋判定)
+src/lib/article-factory/checks.test.ts     (新規)
 ```
 
 変更:
 
 ```
-next.config.ts                                  withWorkflow() でラップ
-vercel.json                                     cron追加（fluid: true は維持）
-package.json / package-lock.json                workflow / vitest / testスクリプト
-eslint.config.mjs                               生成物ディレクトリを ignore
-.gitignore                                       /.swc（Workflow SDKが追記）
-src/app/internal/dashboard/DashboardClient.tsx  新規記事タブの追加（3行）
-docs/agent-handoff/REPORT.md                    本レポート
+src/lib/article-factory/workflow.ts        401→642行（CIゲート・デプロイ確認）
+src/lib/article-factory/github.ts          401→531行（PR状態・チェック・デプロイ・マージSHA）
+src/lib/article-factory/storage.ts         本番fail closed
+src/lib/article-factory/storage.test.ts    +8件
+src/lib/article-factory/types.ts           フェーズ12化・PublishResult拡張
+src/lib/article-factory/config.ts          WAIT（ポーリング間隔・タイムアウト）
+src/lib/article-factory/generation.ts      旧research削除（387→285行）
+src/app/internal/api/article-factory/{candidates,start}/route.ts   503対応
+src/app/api/cron/article-candidates/route.ts                      503対応
+src/app/internal/dashboard/article-factory/NewArticleTab.tsx      理由表示
+package.json / package-lock.json           js-yaml (devDep)
+docs/article-factory.md                    全面更新
+docs/agent-handoff/REPORT.md               本レポート
 ```
 
-新規コード合計 約4,360行（うちテスト722行）。
+変更していないもの:
 
-意図的に変更していないもの:
-
-- `src/lib/seo-editor/**`、`src/app/internal/api/seo-editor/**`、
-  `src/app/internal/dashboard/seo/**` — `git status` で無変更を確認
+- `src/lib/seo-editor/**` — `git status` で無変更を確認
 - `content/**` の記事 — 1文字も変更していない
-- `docs/agent-handoff/STATE.json` / `NEXT_INSTRUCTION.md` — ChatGPT管理
-- `.github/workflows/**` — 今回の指示で対象外
-- 作業ツリーに元からあった未コミットの下書き
-  （`content/note-drafts/**`、`note-drafts/**`、`public/images/articles/*.png`）
-  — コンテンツエージェント管轄のため保護。ステージングしていない。
-
-## 必要な環境変数（名前のみ）
-
-必須: `OPENAI_API_KEY` / `DASHBOARD_USER` / `DASHBOARD_PASSWORD` /
-`SEO_EDITOR_BASE_BRANCH` / `SEO_EDITOR_GITHUB_TOKEN`（または `GITHUB_TOKEN`）/ `CRON_SECRET`
-
-任意: `SEO_EDITOR_GITHUB_REPO` / `ARTICLE_FACTORY_MODEL` /
-`ARTICLE_FACTORY_MODEL_LIGHT` / `ARTICLE_FACTORY_BATCH_STORE` /
-`ARTICLE_FACTORY_AUTO_PUBLISH`
-
-値は一切このレポートにもコードにも含めていない。
-ソース内のハードコード鍵パターン走査: 0件。
+- `docs/agent-handoff/STATE.json` / `NEXT_INSTRUCTION.md`
+- `.github/workflows/naru-agent-autopilot.yml`
+- 未コミットの下書き（`content/note-drafts/**`、`note-drafts/**`、
+  `public/images/articles/*.png`）— ステージングしていない
 
 ## 既知の問題・残るリスク
 
-### 1. 候補バッチの既定保存先は永続化されない
+### 1. 実APIに対する検証は未実施（最大の残リスク）
 
-Vercelのサーバーレス実行はインスタンスが使い捨てのため、
-既定の `MemoryCandidateBatchStore` は**インスタンス入れ替えで失われる**。
+以下は**実際のAPIに対して実行していない**。
+INST-004 が「実記事を作らない / PR #15 をマージしない」を境界としており、
+実行にはトークンと実際の書き込みが伴うため。
 
-指示に従い、これを「永続化されているふり」にはしていない。
+- OpenAI `web_search` ツールの実呼び出し
+- GitHub: PR作成・check-runs取得・マージ・Deployments取得
 
-- `describeStore()` が `durable: false` と警告文を返す
-- APIレスポンスに `storage` として含まれる
-- ダッシュボードに警告バナーとして表示される
-- テストでも「永続化されないことを申告する」ことを固定している
+型・正規化・判定ロジックは141件のテストで固定しているが、
+**APIレスポンスの実形状との突き合わせは初回実行時に必要**。
+特に Vercel の check 名・commit status の出方は実地確認が要る。
 
-**新しい有料サービスを追加せずに済む durable な経路も実装済み**:
-`ARTICLE_FACTORY_BATCH_STORE=github` を設定すると、既に連携済みのGitHubへ保存する
-（専用branch `article-factory/candidates`、master には書かない）。
+### 2. 自動公開には Vercel Git連携の接続が必須
 
-このため `NEEDS_DECISION` には**していない**。ただし次項の通り未検証。
+必須チェックに Vercel Preview を含めたため、
+**Git連携が未接続だと必ず `missing` でブロックされる**。
+これは安全側の意図した挙動だが、自動公開を使うには接続が前提になる。
+接続しない運用を選ぶ場合は `REQUIRED_CHECKS` の見直しが必要（product判断）。
 
-### 2. GitHub経路が実APIに対して未検証
+### 3. `web_search` ツールの利用可否
 
-`GithubCandidateBatchStore` と `createArticlePullRequest()` は、
-実際のGitHub APIに対して実行していない。
-今回の指示が「実記事を作らない」インフラPRであり、
-実行にはトークンとリポジトリへの書き込みが伴うため。
+モデル・アカウントが `web_search` を使えない場合、
+出典が0件になり全件 unsupported となって公開されない。
+安全側だが、その場合は記事が一切公開されないことになる。
+初回実行で「引用が実際に返ってくるか」の確認が必要。
 
-型・パス検証・冪等性のロジックは単体で確認済みだが、
-**実APIとの往復は初回実行時に検証が必要**。
+### 4. 記事IDはリポジトリ在庫からの提案値
 
-### 3. QAはbuild/typecheckを実行しない
+NARUの記事Markdownに数値IDが無いため `在庫数+1` を提案値として返す。
+Drive側に別のID体系がある場合はそちらが正本（REPORT-003から継続）。
 
-生成記事を追加した状態でのbuildを実行できないため、
-`stepQa` は `buildPassed: null` を渡し、QAは必ず NEEDS_REVIEW を1件出す。
+### 5. 既存lint 80件
 
-結果として自動公開は構造的に発生しない（安全側）。
-自動公開を実際に機能させるには、QA内でbuild/typecheckを回す仕組みが別途必要。
-
-### 4. 調査フェーズに外部検索がない
-
-モデルに検索ツールを与えていないため、`runResearch` は
-「出典を示せる主張」と「示せない主張」を分離するだけで、Web検索は行わない。
-示せない主張は `unsupportedClaims` に入り、QAが公開を止める。
-URLとして壊れた出典も機械的に降格させる。
-
-時事性の高い記事を実用するには、検索ツール連携の追加が望ましい。
-
-### 5. Vercel GitHub連携が未接続（既存の制約）
-
-作成されたPRにVercel Previewが自動生成されない。REPORT-002 から継続。
-
-### 6. `agent/autopilot` 側のワークフロー問題は未解決（参考）
-
-REPORT-002 で報告した `.github/workflows/naru-agent-autopilot.yml` の
-`git add -A` + `workflows` 権限欠如によるpush失敗は、今回の指示範囲外のため未着手。
-なお `origin/master` には `fix/autopilot-safe-staging`（#13）が入っており、
-既に対処済みの可能性がある（本ブランチでは未確認）。
+内訳は REPORT-002 と同じ（61件は `scripts/*.js` のCommonJS）。今回も新規0件。
 
 ## 判断が必要な項目
 
 **ブロッカーとしての判断事項はない。**
 
-将来的に判断が必要になりうるもの（いますぐではない）:
+将来的な判断事項:
 
-1. 候補バッチの永続化方式
-   - a) `ARTICLE_FACTORY_BATCH_STORE=github`（追加コストなし・実装済み・未検証）
-   - b) Vercel Blob / Edge Config の導入（新規インテグレーションの判断が必要）
-2. 自動公開を実際に有効化するか
-   （有効化にはQA内build/typecheckの実装 + `ARTICLE_FACTORY_AUTO_PUBLISH=true` の両方が必要）
-3. 調査フェーズへの検索ツール導入
+1. Vercel Git連携を接続するか（接続しないなら自動公開は使えない）
+2. `ARTICLE_FACTORY_AUTO_PUBLISH=true` をいつ有効化するか
+3. `web_search` が使えない場合の代替（別の検索経路を足すか、手動調査に倒すか）
 
 ## 推奨する次の作業
 
-1. **PR をレビューする**（このブランチはまだPR未作成。作成は指示に従い行っていない）。
-2. Vercel に `CRON_SECRET` を設定する（未設定ならcronは常に401で安全側に倒れる）。
-3. `ARTICLE_FACTORY_BATCH_STORE=github` を設定し、
-   まず**手動生成**（ダッシュボードの「候補を生成」）で
-   GitHub保存経路を1回だけ実地検証する。
-4. 候補を1件選んで実行し、PRが作られるところまでを実地確認する
-   （自動公開は既定OFFなのでマージはされない）。
-5. 問題がなければ日次cronの初回発火（08:00 JST）を確認する。
-6. 必要に応じてQA内のbuild/typecheck実装を次の指示として起票する。
+1. PR #15 をレビューする（マージは指示どおり行っていない）。
+2. Vercel に `CRON_SECRET` を設定する。
+3. Vercel の GitHub 連携を接続する（自動公開を使う場合は必須）。
+4. **手動で候補生成を1回**実行し、次を実地確認する:
+   - 本番でGitHub保存が選ばれること（設定不足なら503が出ること）
+   - `web_search` が実際に `url_citation` を返すこと
+5. 候補を1件選んで実行し、PR作成 → `article-factory-validation` の発火 →
+   チェック待ちの挙動を確認する
+   （`ARTICLE_FACTORY_AUTO_PUBLISH` は未設定のままなのでマージはされない）。
+6. 実地確認で判明したAPIレスポンスの差異があれば次の指示として起票する。
 
 master への push・マージ・本番デプロイは**実施していない**。
-実記事の生成・公開も**実施していない**。
+PR #15 のマージも**実施していない**。実記事の生成・公開も**実施していない**。

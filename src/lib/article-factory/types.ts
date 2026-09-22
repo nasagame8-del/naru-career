@@ -107,7 +107,9 @@ export const ARTICLE_PHASES = [
   "image-plan",
   "qa",
   "create-pr",
+  "pr-validation",
   "publish",
+  "production-deploy",
 ] as const;
 
 export type ArticlePhase = (typeof ARTICLE_PHASES)[number];
@@ -123,7 +125,9 @@ export const PHASE_LABELS: Record<ArticlePhase, string> = {
   "image-plan": "画像プラン",
   qa: "QA",
   "create-pr": "PR作成",
-  publish: "公開",
+  "pr-validation": "PR検証（CI）",
+  publish: "公開（マージ）",
+  "production-deploy": "本番デプロイ",
 };
 
 export type PhaseState = "pending" | "running" | "done" | "failed" | "skipped";
@@ -269,10 +273,18 @@ export interface PublishResult {
   branch: string;
   prNumber: number;
   prUrl: string;
-  /** 自動公開（マージ）まで行われたか */
+  /** PR head のコミットSHA。CIチェックはこのSHAに紐づく */
+  headSha: string | null;
+  /** マージコミットSHA。マージ後にのみ入る */
+  mergeCommitSha: string | null;
+  /**
+   * **本番デプロイの成功を確認できた場合にのみ true**。
+   * マージしただけでは true にしない。
+   */
   published: boolean;
-  /** 自動公開しなかった理由 */
+  /** 自動公開しなかった・できなかった理由 */
   publishBlockedReason: string | null;
+  /** 本番デプロイ成功後にのみ入る */
   productionUrl: string | null;
 }
 

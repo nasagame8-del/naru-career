@@ -37,6 +37,8 @@ interface CandidatesResponse {
   storage: StorageInfo;
   meetsQuota: boolean;
   error?: string;
+  /** 保存先を用意できない場合の理由（本番でGitHub設定が欠けているなど） */
+  reasons?: string[];
 }
 
 type PhaseMap = Record<ArticlePhase, { state: PhaseState; message: string }>;
@@ -79,7 +81,9 @@ export function NewArticleTab() {
       const data = (await res.json()) as CandidatesResponse;
       setStorage(data.storage ?? null);
       if (!data.ok) {
-        setError(data.error ?? "候補を取得できませんでした");
+        setError(
+          [data.error ?? "候補を取得できませんでした", ...(data.reasons ?? [])].join("\n")
+        );
         return;
       }
       setBatch(data.batch);
@@ -100,7 +104,9 @@ export function NewArticleTab() {
       const data = (await res.json()) as CandidatesResponse;
       setStorage(data.storage ?? null);
       if (!data.ok) {
-        setError(data.error ?? "候補生成に失敗しました");
+        setError(
+          [data.error ?? "候補生成に失敗しました", ...(data.reasons ?? [])].join("\n")
+        );
         return;
       }
       setBatch(data.batch);
@@ -228,9 +234,16 @@ export function NewArticleTab() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ batchId: batch.batchId, candidateId: candidate.id }),
         });
-        const data = (await res.json()) as { ok: boolean; runId?: string; error?: string };
+        const data = (await res.json()) as {
+          ok: boolean;
+          runId?: string;
+          error?: string;
+          reasons?: string[];
+        };
         if (!data.ok || !data.runId) {
-          setError(data.error ?? "実行を開始できませんでした");
+          setError(
+            [data.error ?? "実行を開始できませんでした", ...(data.reasons ?? [])].join("\n")
+          );
           return;
         }
         setRunId(data.runId);
@@ -289,7 +302,7 @@ export function NewArticleTab() {
       )}
 
       {error && (
-        <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="whitespace-pre-line rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {error}
         </div>
       )}

@@ -1,5 +1,7 @@
 /**
- * 調査 → 構成 → 執筆 → 内部リンク の生成ロジック。
+ * 構成 → 執筆 → 内部リンク の生成ロジック。
+ *
+ * 調査フェーズは実Web検索を伴うため research.ts に分離している。
  *
  * すべてLLM呼び出しを伴うが、**出力は必ず安全判定（safety.ts）を通す**。
  * ここでの責務は「生成すること」だけで、「公開してよいか」は判断しない。
@@ -14,7 +16,6 @@ import {
   arr,
   str,
   num,
-  bool,
   strArr,
   enumStr,
 } from "@/lib/seo-editor/openai";
@@ -25,7 +26,6 @@ import type {
   ArticleFrontmatter,
   ArticleOutline,
   ResearchResult,
-  ResearchSource,
   SelectedTopic,
 } from "./types";
 
@@ -49,108 +49,6 @@ ${allowedPersonaFacts()
 - 時事性のある主張（制度・統計・年度に依存する数値）には必ず出典が必要です。
 - 出典を思い出せない場合、**URLを創作してはいけません**。
   その主張は unsupportedClaims に入れてください。`;
-
-// ── Phase: research ──
-
-const RESEARCH_SCHEMA = obj({
-  sources: arr(
-    obj({
-      title: str,
-      url: str,
-      retrievedAt: str,
-      supportsClaims: strArr,
-      authoritative: bool,
-    })
-  ),
-  timeSensitiveClaims: strArr,
-  unsupportedClaims: strArr,
-});
-
-function isResearch(v: unknown): v is ResearchResult {
-  if (!v || typeof v !== "object") return false;
-  const r = v as ResearchResult;
-  return (
-    Array.isArray(r.sources) &&
-    Array.isArray(r.timeSensitiveClaims) &&
-    Array.isArray(r.unsupportedClaims)
-  );
-}
-
-/** URLとして成立していて、かつ http(s) のものだけ残す */
-function keepValidSources(sources: ResearchSource[]): {
-  kept: ResearchSource[];
-  rejected: string[];
-} {
-  const kept: ResearchSource[] = [];
-  const rejected: string[] = [];
-  for (const s of sources.slice(0, LIMITS.maxSources)) {
-    try {
-      const u = new URL(s.url);
-      if (u.protocol !== "http:" && u.protocol !== "https:") {
-        rejected.push(s.url);
-        continue;
-      }
-      kept.push(s);
-    } catch {
-      rejected.push(s.url || "(空のURL)");
-    }
-  }
-  return { kept, rejected };
-}
-
-/**
- * 調査フェーズ。
- *
- * このモデルには外部検索ツールが無いため、
- * 「確実に出典を示せる主張」と「示せない主張」を分離させることが目的。
- * 示せない主張は unsupportedClaims に入り、QAが公開を止める。
- */
-export async function runResearch(topic: SelectedTopic): Promise<ResearchResult> {
-  const { data } = await runStructured<ResearchResult>({
-    name: "article_research",
-    instructions: `${COMMON_RULES}
-
-## このフェーズの仕事
-
-与えられたトピックについて、記事に必要な事実を整理してください。
-
-- sources: 確実に実在すると言い切れる出典のみ。公的機関・一次情報を優先。
-  retrievedAt は YYYY-MM-DD 形式。authoritative は公的機関・一次情報なら true。
-- timeSensitiveClaims: 年度・制度・統計に依存し、出典が必要な主張。
-- unsupportedClaims: 記事に書きたいが出典を確実に示せない主張。
-  **ここを空にするために出典を創作しないでください。**正直に列挙してください。`,
-    input: [
-      "<topic>",
-      JSON.stringify(
-        {
-          title: topic.title,
-          primaryKeyword: topic.primaryKeyword,
-          secondaryKeywords: topic.secondaryKeywords,
-          searchIntent: topic.searchIntent,
-          category: topic.category,
-        },
-        null,
-        1
-      ),
-      "</topic>",
-    ].join("\n"),
-    schema: RESEARCH_SCHEMA,
-    model: ARTICLE_FACTORY_MODEL,
-    validate: isResearch,
-  });
-
-  const { kept, rejected } = keepValidSources(data.sources ?? []);
-
-  return {
-    sources: kept,
-    timeSensitiveClaims: data.timeSensitiveClaims ?? [],
-    // URLとして壊れていた出典が支えていた主張は、出典なし扱いへ降格する
-    unsupportedClaims: [
-      ...(data.unsupportedClaims ?? []),
-      ...rejected.map((u) => `出典URLが不正なため根拠として採用できません: ${u}`),
-    ],
-  };
-}
 
 // ── Phase: outline ──
 

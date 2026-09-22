@@ -15,7 +15,10 @@ import { NextResponse, type NextRequest } from "next/server";
 import { start } from "workflow/api";
 import { isAuthorized } from "@/lib/seo-editor/auth";
 import { newArticleWorkflow } from "@/lib/article-factory/workflow";
-import { getCandidateBatchStore } from "@/lib/article-factory/storage";
+import {
+  getCandidateBatchStore,
+  StorageUnavailableError,
+} from "@/lib/article-factory/storage";
 import { readInventory } from "@/lib/article-factory/inventory";
 import { validateCandidate } from "@/lib/article-factory/safety";
 import type { SelectedTopic } from "@/lib/article-factory/types";
@@ -49,7 +52,18 @@ export async function POST(request: NextRequest) {
   }
 
   // クライアントから送られた候補内容は使わない。保存済みバッチを正本とする。
-  const store = getCandidateBatchStore();
+  let store;
+  try {
+    store = getCandidateBatchStore();
+  } catch (e) {
+    if (e instanceof StorageUnavailableError) {
+      return NextResponse.json(
+        { ok: false, error: `候補バッチの保存先を用意できません — ${e.message}`, reasons: e.reasons },
+        { status: 503 }
+      );
+    }
+    throw e;
+  }
   const batch = await store.getById(batchId);
   if (!batch) {
     return NextResponse.json(

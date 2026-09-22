@@ -7,13 +7,12 @@
  *   したがって **MemoryCandidateBatchStore は永続化ではない**。
  *   これを本番の唯一の保存先として扱ってはいけない。
  *
- * 現時点で新しい有料サービスを増やさずに使える耐久面は、
- * 既に連携済みの GitHub リポジトリのみ。
- * そのため GithubCandidateBatchStore を用意し、
- * 明示的に ARTICLE_FACTORY_BATCH_STORE=github を設定した場合にだけ有効にする。
+ * 新しい有料サービスを増やさずに使える耐久面は、既に連携済みの GitHub リポジトリのみ。
+ * そのため **本番では GithubCandidateBatchStore を既定**とし、
+ * 設定が欠けている場合はメモリへ暗黙に落ちず、明示的なエラーで止める。
  */
 
-import { CANDIDATE_BATCH_DIR } from "./config";
+import { CANDIDATE_BATCH_DIR, GITHUB_BASE_BRANCH, GITHUB_REPO } from "./config";
 import { readFileFromBranch, writeFileToBranch } from "./github";
 import type { CandidateBatch } from "./types";
 
@@ -132,15 +131,79 @@ export class GithubCandidateBatchStore implements CandidateBatchStore {
 
 const memorySingleton = new MemoryCandidateBatchStore();
 
+/** 保存先を選べなかったときに投げる。API/UIはこれを明示的なエラーとして見せる */
+export class StorageUnavailableError extends Error {
+  readonly reasons: string[];
+  constructor(reasons: string[]) {
+    super(reasons.join(" / "));
+    this.name = "StorageUnavailableError";
+    this.reasons = reasons;
+  }
+}
+
+/** 本番環境かどうか */
+function isProduction(): boolean {
+  // Vercel は VERCEL_ENV に production / preview / development を入れる。
+  // Vercel以外で動く場合は NODE_ENV にフォールバックする。
+  const vercelEnv = process.env.VERCEL_ENV;
+  if (vercelEnv) return vercelEnv === "production";
+  return process.env.NODE_ENV === "production";
+}
+
+/** GitHub保存に必要な設定が揃っているか（値は読まない・返さない） */
+export function githubStoreReadiness(): { ready: boolean; reasons: string[] } {
+  const reasons: string[] = [];
+  if (!process.env.SEO_EDITOR_GITHUB_TOKEN && !process.env.GITHUB_TOKEN) {
+    reasons.push("GitHub Tokenが未設定です（SEO_EDITOR_GITHUB_TOKEN / GITHUB_TOKEN）");
+  }
+  if (!GITHUB_BASE_BRANCH) {
+    reasons.push(
+      "SEO_EDITOR_BASE_BRANCH が未設定です（候補バッチ用branchの作成元として必要）"
+    );
+  }
+  if (!GITHUB_REPO.includes("/")) {
+    reasons.push("SEO_EDITOR_GITHUB_REPO の形式が owner/repo ではありません");
+  }
+  return { ready: reasons.length === 0, reasons };
+}
+
 /**
  * 有効な保存先を返す。
  *
- * 既定はメモリ実装（= 永続化されない）。
- * 本番で候補バッチを翌日まで保持するには
- * ARTICLE_FACTORY_BATCH_STORE=github を設定すること。
+ * 方針（INST-004）:
+ *   - **本番では GitHub 保存が既定**。メモリへ暗黙にフォールバックしない。
+ *   - 本番で GitHub の設定が欠けていれば `StorageUnavailableError` を投げ、
+ *     API/UI にはっきりしたエラーとして出す（fail closed）。
+ *   - メモリ実装はテスト・開発でのみ使える。
+ *     本番で明示的に memory を選ぼうとしても拒否する。
+ *
+ * @throws StorageUnavailableError 本番で永続保存を用意できない場合
  */
 export function getCandidateBatchStore(): CandidateBatchStore {
-  if (process.env.ARTICLE_FACTORY_BATCH_STORE === "github") {
+  const selected = process.env.ARTICLE_FACTORY_BATCH_STORE;
+  const production = isProduction();
+
+  if (production) {
+    // 本番でメモリを選ぼうとするのは設定ミス。黙って通さない。
+    if (selected === "memory") {
+      throw new StorageUnavailableError([
+        "本番環境では ARTICLE_FACTORY_BATCH_STORE=memory を使用できません。候補バッチが失われるため拒否しました",
+      ]);
+    }
+    const readiness = githubStoreReadiness();
+    if (!readiness.ready) {
+      throw new StorageUnavailableError([
+        "本番環境では候補バッチをGitHubへ永続化する必要があります",
+        ...readiness.reasons,
+      ]);
+    }
+    return new GithubCandidateBatchStore();
+  }
+
+  // 本番以外: 明示的に github を選べる。既定はメモリ。
+  if (selected === "github") {
+    const readiness = githubStoreReadiness();
+    if (!readiness.ready) throw new StorageUnavailableError(readiness.reasons);
     return new GithubCandidateBatchStore();
   }
   return memorySingleton;

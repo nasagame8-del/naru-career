@@ -6,6 +6,7 @@ SEO Editor の署名・QA・publish block・GitHub安全策には一切手を入
 - 実装: `src/lib/article-factory/**`
 - API: `src/app/internal/api/article-factory/**`, `src/app/api/cron/article-candidates`
 - UI: `/internal/dashboard` の「新規記事」タブ
+- CI: `.github/workflows/article-factory-validation.yml`
 
 ## 全体の流れ
 
@@ -19,7 +20,8 @@ SEO Editor の署名・QA・publish block・GitHub安全策には一切手を入
 /internal/api/article-factory/start  … runId を即座に返す
   └─ Vercel Workflow で耐久実行（ブラウザを閉じても継続）
         inventory → cannibalization → research → outline → write
-        → internal-links → image-plan → qa → create-pr → publish
+        → internal-links → image-plan → qa → create-pr
+        → pr-validation（CI待ち） → publish（マージ） → production-deploy
         ↓
 /internal/api/article-factory/status?runId=…  … 進捗を再接続して表示
 ```
@@ -30,10 +32,10 @@ SEO Editor の署名・QA・publish block・GitHub安全策には一切手を入
 
 | 変数名 | 用途 |
 |---|---|
-| `OPENAI_API_KEY` | 候補生成・調査・執筆 |
+| `OPENAI_API_KEY` | 候補生成・**実Web検索**・執筆 |
 | `DASHBOARD_USER` / `DASHBOARD_PASSWORD` | `/internal/*` の Basic 認証。未設定ならダッシュボードは 503 |
-| `SEO_EDITOR_BASE_BRANCH` | PRのベースブランチ。**未設定ならPR作成を拒否**する |
-| `SEO_EDITOR_GITHUB_TOKEN` または `GITHUB_TOKEN` | PR作成 |
+| `SEO_EDITOR_BASE_BRANCH` | PRのベースブランチ。**未設定ならPR作成も候補保存も拒否**する |
+| `SEO_EDITOR_GITHUB_TOKEN` または `GITHUB_TOKEN` | PR作成・チェック取得・マージ・候補保存 |
 | `CRON_SECRET` | 日次cronの認証。**未設定ならcronは常に401**（fail closed） |
 
 ### 任意
@@ -41,43 +43,86 @@ SEO Editor の署名・QA・publish block・GitHub安全策には一切手を入
 | 変数名 | 既定 | 用途 |
 |---|---|---|
 | `SEO_EDITOR_GITHUB_REPO` | `nasagame8-del/naru-career` | 対象リポジトリ |
-| `ARTICLE_FACTORY_MODEL` | `SEO_EDITOR_MODEL` → `gpt-5.5` | 生成モデル |
+| `ARTICLE_FACTORY_MODEL` | `SEO_EDITOR_MODEL` → `gpt-5.5` | 生成・検索モデル |
 | `ARTICLE_FACTORY_MODEL_LIGHT` | 上と同じ | 軽量用途（内部リンク） |
-| `ARTICLE_FACTORY_BATCH_STORE` | （未設定 = memory） | `github` にすると候補バッチを永続化する |
+| `ARTICLE_FACTORY_BATCH_STORE` | 本番=`github` / 他=`memory` | 保存先の明示指定 |
 | `ARTICLE_FACTORY_AUTO_PUBLISH` | （未設定 = 無効） | `true` のときだけ自動公開を許可 |
 
-## 候補バッチの保存先（重要）
+## 調査フェーズ（実Web検索）
 
-既定は**インメモリ**です。Vercelのサーバーレス実行はインスタンスが使い捨てのため、
-**インスタンスが入れ替わると候補バッチは失われます**。
+`src/lib/article-factory/research.ts`
 
-これは仕様であり、UI とAPIレスポンスの `storage.durable: false` と警告文で
-そのことを明示しています。永続化しているふりはしません。
+1. OpenAI Responses API の **`web_search` ツール**で実際に検索する。
+2. 出典として採用できるのは、レスポンスの **`url_citation` アノテーション**で
+   返ってきたURLだけ。モデルが本文に書いたURLは採用しない。
+   → URLの捏造を構造的に排除している。
+3. 検証済みURL一覧だけをモデルに提示し、主張 → 出典 の対応付けを行う。
+4. 最終判断は純粋関数 `buildResearchResult()` が行う。
+   検証済み集合に無いURLで支えられた時事的主張は `unsupportedClaims` に落ちる。
 
-本番で翌日まで候補を保持するには、次のどちらかが必要です。
+URLは正規化して比較する（追跡パラメータ・`www.`・末尾スラッシュ・
+既定ポート・フラグメント・クエリ順の揺れを吸収）。
 
-1. `ARTICLE_FACTORY_BATCH_STORE=github` を設定する
-   → 新しい外部サービスを増やさず、既に連携済みのGitHubへ保存する。
-     専用branch `article-factory/candidates` の
-     `data/article-candidates/*.json` に書き込む（master には書かない）。
-2. Vercel Blob / Edge Config など新しいストレージを導入する
-   → 新規インテグレーションの追加判断が必要。
+**検索が使えない／失敗した／結果ゼロの場合**は、
+時事的主張をすべて根拠なしとして残し、QAが公開を止めます（fail closed）。
+「構文として正しいURL」は根拠として扱いません。
+
+## 候補バッチの保存先
+
+**本番では GitHub 保存が既定**です。メモリへ暗黙にフォールバックしません。
+
+| 環境 | 既定 | 設定が欠けている場合 |
+|---|---|---|
+| 本番（`VERCEL_ENV=production`） | GitHub | **503でエラー**（メモリに落ちない） |
+| preview / development | メモリ | — |
+
+- 本番で `ARTICLE_FACTORY_BATCH_STORE=memory` を指定しても**拒否**します。
+- 本番でトークンやベースブランチが欠けている場合、API は 503 と
+  不足している設定名を返し、UI にもそのまま表示されます。
+- GitHub 保存先は専用branch `article-factory/candidates` の
+  `data/article-candidates/*.json`（master には書きません）。
+- 新しい有料DBや追加インテグレーションは導入していません。
 
 ## 自動公開の境界
 
-自動公開は**このインフラでは既定で無効**です。
-以下が**すべて**満たされた場合にのみ公開されます。
+自動公開は**既定で無効**です。以下が**すべて**満たされた場合にのみ公開されます。
 
 1. QAに `FAIL` が1件も無い
 2. QAに `NEEDS_REVIEW` が1件も無い
 3. QA総合判定が `PASS`
 4. 変更パスがすべて許可リスト内
-5. サーバー側で `ARTICLE_FACTORY_AUTO_PUBLISH=true` が設定されている
+5. **外部CI（`article-factory-validation`）が success**
+6. **Vercel Preview チェックが success**
+7. サーバー側で `ARTICLE_FACTORY_AUTO_PUBLISH=true`
+8. マージ後、**マージコミットの本番デプロイが success**
 
-1つでも欠ければ **PRを開いたまま残し、理由を返します**。
+### 重要な性質
 
-現状、QAは build/typecheck を実行できないため必ず `NEEDS_REVIEW` を1件出します。
-つまり **現時点では自動公開は構造的に発生しません**。これは意図した保守的な既定です。
+- `buildPassed` はローカルで立てた boolean ではなく、
+  **GitHub のcheck-runが success になった事実**を根拠にします。
+- `pending` は `pass` ではありません。`sleep()` して再ポーリングします。
+- 必須チェックが猶予（3分）を過ぎても現れない場合は `missing` として
+  **ブロック**します（合格にしません）。
+- チェック待ちは20分でタイムアウトし、タイムアウトも**ブロック**です。
+- **マージしただけでは `published: true` にしません。**
+  本番デプロイの success を確認して初めて公開完了と報告し、本番URLを返します。
+- デプロイが失敗・タイムアウトした場合は blocked を報告し、
+  「公開した」とは決して言いません。
+
+### Vercel Git連携について
+
+必須チェックに Vercel Preview を含めているため、
+**Vercel の GitHub 連携が未接続だと自動公開は必ず `missing` でブロック**されます。
+これは意図した安全側の挙動です。自動公開を使うには Git 連携の接続が必要です。
+
+## 外部CI
+
+`.github/workflows/article-factory-validation.yml`
+
+- トリガー: `content/articles/**` または `data/article-runs/**` を変更するPR
+- ジョブ名: `article-factory-validation`（ポーリング側の定数と一致。**テストで固定**）
+- 実行: `npm ci` → `npm test` → `npx tsc --noEmit` → `npm run build`
+- 権限: `contents: read` のみ。シークレットは使いません。
 
 ## 書き込みが許可されるパス
 
@@ -111,27 +156,23 @@ SEO Editor の署名・QA・publish block・GitHub安全策には一切手を入
 ## テスト
 
 ```bash
-npm test          # 安全判定の純粋関数（69件）
+npm test          # 純粋な安全判定（141件）
 npx tsc --noEmit  # 型チェック
 npm run build     # ビルド + 生成ルートの確認
 ```
 
-テスト対象は「公開を止められるか」に直結する純粋関数に限定しています。
-
-- 重複/カニバリのブロック
-- 許可外の一人称実体験のブロック
-- QA FAIL / NEEDS_REVIEW が公開を止めること
-- パス許可リスト
-- slug上書きの拒否
-- cron認証（fail closed を含む）
-- 自動公開判定の冪等な境界
-- frontmatter形式の往復（gray-matterで既存記事と同じ形になること）
+| ファイル | 件数 | 対象 |
+|---|---|---|
+| `safety.test.ts` | 51 | QA・パス許可・カニバリ・一人称・cron認証 |
+| `checks.test.ts` | 36 | 必須チェック判定・マージゲート・デプロイ判定・CI定義との整合 |
+| `research.test.ts` | 28 | URL正規化・重複排除・主張と出典の突き合わせ |
+| `storage.test.ts` | 16 | 保存アダプタ・本番での fail closed・冪等なbranch名 |
+| `markdown.test.ts` | 10 | frontmatter往復・image-plan |
 
 ## 既知の制約
 
-- 候補バッチの既定保存先は永続化されない（上記参照）。
-- 調査フェーズに外部検索ツールが無いため、モデルは「出典を示せる主張」と
-  「示せない主張」を分離するだけで、Web検索は行わない。
-  示せない主張は `unsupportedClaims` に入り、QAが公開を止める。
-- QAは build/typecheck を実行しないため、常に `NEEDS_REVIEW` が1件出る。
-- Vercel の GitHub 連携が未接続のため、作成されたPRにPreviewは付かない。
+- **GitHub API経路（PR作成・チェック取得・マージ・デプロイ確認）と
+  実Web検索は、実APIに対して未検証**。型・判定ロジックは単体で固定済み。
+- 自動公開には Vercel の GitHub 連携が必要（未接続なら `missing` でブロック）。
+- 調査は `web_search` ツールに依存するため、モデル/アカウントが
+  このツールを使えない場合は全件 unsupported となり公開されない。

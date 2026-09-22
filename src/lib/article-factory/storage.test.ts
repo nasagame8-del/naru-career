@@ -5,7 +5,7 @@
  * メモリ実装は durable=false を必ず申告しなければならない。
  */
 
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { MemoryCandidateBatchStore, describeStore } from "./storage";
 import { computeNextArticleId } from "./inventory";
 import { branchNameForRun } from "./github";
@@ -76,5 +76,121 @@ describe("branchNameForRun", () => {
     expect(name).not.toContain("..");
     expect(name).not.toContain(" ");
     expect(name.startsWith("article-factory/")).toBe(true);
+  });
+});
+
+// ── 本番での保存先選択（INST-004） ──
+
+describe("getCandidateBatchStore（本番の既定）", () => {
+  const ENV_KEYS = [
+    "VERCEL_ENV",
+    "NODE_ENV",
+    "ARTICLE_FACTORY_BATCH_STORE",
+    "SEO_EDITOR_GITHUB_TOKEN",
+    "GITHUB_TOKEN",
+    "SEO_EDITOR_BASE_BRANCH",
+  ] as const;
+
+  const saved: Record<string, string | undefined> = {};
+
+  /** NODE_ENV は型上 readonly のため、テストでは可変ビュー経由で操作する */
+  const env = process.env as Record<string, string | undefined>;
+
+  beforeEach(() => {
+    for (const k of ENV_KEYS) {
+      saved[k] = process.env[k];
+      delete process.env[k];
+    }
+    vi.resetModules();
+  });
+
+  afterEach(() => {
+    for (const k of ENV_KEYS) {
+      if (saved[k] === undefined) delete process.env[k];
+      else env[k] = saved[k];
+    }
+    vi.resetModules();
+  });
+
+  /** config.ts は env をモジュール読み込み時に固定するため、毎回読み直す */
+  async function freshStorage() {
+    return await import("./storage");
+  }
+
+  it("本番でGitHub設定が揃っていればGitHub保存を選ぶ", async () => {
+    process.env.VERCEL_ENV = "production";
+    process.env.GITHUB_TOKEN = "dummy";
+    process.env.SEO_EDITOR_BASE_BRANCH = "master";
+
+    const m = await freshStorage();
+    const store = m.getCandidateBatchStore();
+    expect(store.kind).toBe("github");
+    expect(store.durable).toBe(true);
+  });
+
+  it("本番でGitHub設定が欠けていればエラーで止まる（メモリへ落ちない）", async () => {
+    process.env.VERCEL_ENV = "production";
+    // token も base branch も無い
+
+    const m = await freshStorage();
+    expect(() => m.getCandidateBatchStore()).toThrow(m.StorageUnavailableError);
+  });
+
+  it("本番でトークンだけ欠けていてもエラーになる", async () => {
+    process.env.VERCEL_ENV = "production";
+    process.env.SEO_EDITOR_BASE_BRANCH = "master";
+
+    const m = await freshStorage();
+    expect(() => m.getCandidateBatchStore()).toThrow(m.StorageUnavailableError);
+  });
+
+  it("本番で memory を明示指定しても拒否する", async () => {
+    process.env.VERCEL_ENV = "production";
+    process.env.GITHUB_TOKEN = "dummy";
+    process.env.SEO_EDITOR_BASE_BRANCH = "master";
+    process.env.ARTICLE_FACTORY_BATCH_STORE = "memory";
+
+    const m = await freshStorage();
+    expect(() => m.getCandidateBatchStore()).toThrow(/memory/);
+  });
+
+  it("エラーには欠けている設定名が含まれる（値は含まない）", async () => {
+    process.env.VERCEL_ENV = "production";
+
+    const m = await freshStorage();
+    try {
+      m.getCandidateBatchStore();
+      throw new Error("should have thrown");
+    } catch (e) {
+      const err = e as InstanceType<typeof m.StorageUnavailableError>;
+      expect(err.reasons.join(" ")).toContain("SEO_EDITOR_GITHUB_TOKEN");
+      expect(err.reasons.join(" ")).toContain("SEO_EDITOR_BASE_BRANCH");
+    }
+  });
+
+  it("本番以外の既定はメモリ（開発・テスト用）", async () => {
+    process.env.VERCEL_ENV = "preview";
+
+    const m = await freshStorage();
+    const store = m.getCandidateBatchStore();
+    expect(store.kind).toBe("memory");
+    expect(store.durable).toBe(false);
+  });
+
+  it("本番以外でもgithubを明示選択できる", async () => {
+    process.env.VERCEL_ENV = "development";
+    process.env.ARTICLE_FACTORY_BATCH_STORE = "github";
+    process.env.GITHUB_TOKEN = "dummy";
+    process.env.SEO_EDITOR_BASE_BRANCH = "master";
+
+    const m = await freshStorage();
+    expect(m.getCandidateBatchStore().kind).toBe("github");
+  });
+
+  it("VERCEL_ENV が無い場合は NODE_ENV=production を本番とみなす", async () => {
+    env.NODE_ENV = "production";
+
+    const m = await freshStorage();
+    expect(() => m.getCandidateBatchStore()).toThrow(m.StorageUnavailableError);
   });
 });
