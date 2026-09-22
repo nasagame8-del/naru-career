@@ -1,58 +1,139 @@
 # Next Instruction
 
-- instructionId: `INST-002`
-- issuedBy: `ChatGPT`
+- instructionId: `INST-004`
+- issuedBy: `ChatGPT Work`
 - target: `Claude Code`
 - status: `ACTIVE`
+- mode: `NEW_ARTICLE_AUTOPILOT_PRODUCTION_GAPS`
 
 ## Goal
 
-Validate the fully integrated `agent/autopilot` branch now that the E2E-validated `feat/seo-editor` seed has been merged. Fix only concrete regressions or integration issues. If the branch is safe for human review, finish with `status: PR_READY` in `REPORT.md`.
+Finish the remaining production-critical gaps found during independent review of commit `874bab1`.
 
-## Facts already established
+INST-003 built a sound and tested foundation, but the original success condition is still not met because:
 
-- `feat/seo-editor` was pushed and merged into `agent/autopilot` as PR #8.
-- `master` was normalized to the former `work` head and is the intended final base branch.
-- `CLAUDE_CODE_OAUTH_TOKEN` is configured as a GitHub Actions repository secret.
-- Vercel Production has `SEO_EDITOR_RUN_SECRET` and `SEO_EDITOR_BASE_BRANCH=master`.
-- Previous E2E completed Phase 1–9 with no timeout and no QA FAIL.
-- `/diagnosis` → `/shindan` was fixed in 15 article Markdown files.
-- Do not assume the local developer machine is available. Work only from the repository checkout and CI-accessible resources.
+1. `runResearch()` does not perform live web research; it asks an LLM without search and only validates URL syntax.
+2. `stepQa()` always passes `buildPassed: null`, so every run gets NEEDS_REVIEW.
+3. Therefore automatic publication can never occur.
+4. Candidate storage defaults to non-durable memory unless an env var is set.
 
-## Do
+Close these gaps without weakening any existing safety gate.
 
-1. Read `AGENTS.md`, handoff files, and the current git diff against `master`.
-2. Confirm the seeded SEO Editor files are present, including `src/lib/seo-editor/run.ts`, Phase 1–9, publish route, UI, and `vercel.json`.
-3. Run the relevant non-destructive validation available in CI:
-   - install dependencies using the repository's lockfile
-   - lint
-   - build
-   - focused unit/fixture checks for QA-origin gating, frontmatter preservation, publish blocking, and broken-link behavior if those test entry points exist
-4. Check that no credentials or tokens were committed.
-5. Check that `agent/autopilot` is based on the expected normalized `master` history plus the seed/autopilot changes only.
-6. Fix only issues proven by the above checks. Do not perform broad refactors.
-7. Verify `/diagnosis` is absent from article Markdown links and `/agent-diagnosis` remains untouched.
-8. Verify `maxDuration=180` and `vercel.json` explicitly enables Fluid Compute.
-9. Verify the autonomous workflow itself is syntactically valid and does not write to `master`.
-10. Update `REPORT.md` with exact results.
+## Required changes
 
-## Do not
+### A. Real, attributable research
 
-- push directly to `master`
-- merge into `master`
-- deploy production
-- create or rotate secrets
-- change business/content decisions without evidence
-- remove or bypass SEO Editor signature/QA/publish gates
-- rewrite validated article content except for a concrete defect discovered by validation
+Implement actual live web research for article claims.
 
-## Completion rule
+- Prefer the installed OpenAI SDK's current Responses API web search tool.
+- Verify the exact SDK API from installed typings/docs before coding; do not rely on stale memory.
+- Search for current/authoritative sources relevant to the selected topic.
+- Prefer Japanese government, official product/company documentation, standards bodies, and primary sources.
+- Persist for every source: title, canonical URL, retrieved date, and supported claims.
+- A syntactically valid URL is not sufficient evidence.
+- Never invent URLs or citations.
+- If web search is unavailable, errors, or yields no support for a time-sensitive claim, preserve it as unsupported and block publication.
+- Add tests around normalization, source/claim mapping, duplicate URLs, invalid URLs, and no-result behavior.
+- Keep user-authored/personal experience restrictions unchanged.
 
-If all blocking checks pass and only known non-blocking warnings remain, set:
+### B. Durable candidate storage must be safe by default
 
-- `status: PR_READY`
+- In production, use the existing GitHub candidate store by default.
+- Memory storage may be used only for test/development or when explicitly selected outside production.
+- If production lacks the required GitHub configuration/token, fail closed with a clear API/UI error; do not silently fall back to memory.
+- Keep `durable` reporting and tests.
+- Do not add a paid database or new integration.
 
-The GitHub workflow will then open a draft PR from `agent/autopilot` to `master` automatically.
+### C. Real validation gate for generated article PRs
 
-If a real blocker remains that can be fixed safely, fix it and report the result.
-If a blocker requires a secret, destructive operation, production action, or product/business decision, set `NEEDS_DECISION` and stop.
+Add a dedicated GitHub Actions validation workflow for Article Factory PRs.
+
+- Trigger on pull requests that change:
+  - `content/articles/**`
+  - `data/article-runs/**`
+- Run:
+  - `npm ci`
+  - `npm test`
+  - `npx tsc --noEmit`
+  - `npm run build`
+- Give the job a stable, explicit name such as `article-factory-validation`.
+- Read-only permissions are sufficient.
+- Do not expose secrets.
+- Allow this instruction to add `.github/workflows/article-factory-validation.yml`.
+
+Update the durable Article Factory workflow so that after creating the article PR it:
+
+1. obtains the PR head SHA,
+2. waits durably and polls GitHub check-runs/statuses,
+3. requires the Article Factory validation check and Vercel Preview check to succeed,
+4. treats pending as pending (sleep/retry, not pass),
+5. blocks on failure/cancel/timeout/missing required checks,
+6. only then produces a QA result with `buildPassed: true` and reevaluates `canAutoPublish()`.
+
+Do not merge based only on a locally supplied boolean.
+
+Use Workflow DevKit correctly:
+- orchestration and `sleep()` in the `"use workflow"` function,
+- GitHub API polling in `"use step"`,
+- serializable values only.
+
+### D. Safe automatic publication and production confirmation
+
+- Keep `ARTICLE_FACTORY_AUTO_PUBLISH` as the explicit server-side authorization flag.
+- With the flag off, leave the validated PR open.
+- With the flag on, merge only after all QA and required checks pass.
+- Make the merge function return the merge commit SHA.
+- After merge, wait for the production deployment status associated with that merge commit.
+- Report `published: true` and a production URL only after production deployment success.
+- On deployment failure/timeout, report a blocked/error state; never claim publication completed.
+- Preserve idempotency for workflow replay and repeated polling.
+
+### E. UI/status
+
+Expose these states clearly:
+- web research
+- PR validation pending/passed/failed
+- merge pending/completed
+- production deployment pending/succeeded/failed
+- exact blocking reason
+
+A browser reload must continue to reconstruct progress from the Workflow stream.
+
+## Tests
+
+Add focused tests for:
+
+- research normalization and unsupported-claim fallback
+- production storage cannot silently use memory
+- required check pending/success/failure/missing/timeout decisions
+- merge is impossible before checks pass
+- production URL is not returned before deployment success
+- idempotent replay after PR already exists or is already merged
+
+Run and report:
+
+- `npm ci`
+- `npm test`
+- `npx tsc --noEmit`
+- `npm run build`
+- lint for all new/changed files
+- workflow YAML syntax validation if available
+- verify built Workflow endpoints and Article Factory routes
+
+## Boundaries
+
+- Work on `agent/new-article-autopilot`.
+- Do not edit existing article content.
+- Do not generate a real article.
+- Do not merge PR #15 or push to master.
+- Do not deploy production.
+- Do not weaken SEO Editor or Article Factory safety checks.
+- Do not commit credentials.
+- Do not edit `STATE.json` or `NEXT_INSTRUCTION.md`.
+- Update `REPORT.md` to REPORT-004.
+
+## Completion
+
+Use `PR_READY` only if real research, durable production storage behavior, external CI/build gating, and post-merge production confirmation are implemented and all requested tests pass.
+
+Otherwise use `NEEDS_DECISION`, `BLOCKED`, or `FAILED` with the exact blocker.

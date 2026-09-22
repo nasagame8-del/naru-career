@@ -1,347 +1,178 @@
 # Claude Code Report
 
-- reportId: `REPORT-002`
-- completedInstructionId: `INST-002`
+- reportId: `REPORT-005`
+- completedInstructionId: `INST-004-REVIEW-FIX`（REPORT-004後の独立レビュー指摘3点。ユーザーからの直接指示。NEXT_INSTRUCTION.md の INST-004 は REPORT-004 で完了済みのため二重実行ではない）
 - status: `PR_READY`
-- branch: `agent/autopilot`
+- branch: `agent/new-article-autopilot`
 - baseBranch: `master`
-- pr: `#10`
+- pr: `#15`
+- reviewedHead: `76a1892`
+- fixCommit: `c626919e04c42512c9349ccb4ac96e7b77af01f7`（このREPORTはその直後のコミットで追加）
 - verifiedAt: `2026-09-22`
-- environment: Node v20.20.2 / npm 10.8.2
+- environment: Node v20 / npm 10 / workflow@4.8.9 / next 16.2.10
 
 ## Summary
 
-統合済み `agent/autopilot` ブランチの検証を完了。lint / build / typecheck はすべて通過し、
-新規エラーは0件。SEO Editorの安全ゲート（署名・QA・publish block・パスホワイトリスト）は
-すべて維持されていることをコード上で確認した。
+| # | 指摘 | 対応 | 結果 |
+|---|---|---|---|
+| 1 | `"use workflow"` 内で `isAutoPublishAuthorized()` が `process.env` を読む | `stepIsAutoPublishAuthorized()`（`"use step"`）へ移動。純粋定数を `constants.ts` に分離 | 生成 flow バンドルの `process` 参照 **6件 → 0件** |
+| 2 | 再実行前の古い failure/pending が最新 success より優先される | 同一チェックごとに日時→IDで最新を明示選択。Vercel の match を発行元+正確な context に限定 | 回帰テスト追加 |
+| 3 | デプロイ履歴を平坦化し古い failure で失敗扱い / Preview success を本番成功扱い | 最新 production deployment の最新 status のみで判定。Preview フォールバック削除 | 回帰テスト追加 |
 
-検証で実証できた不具合は1件のみで、それを修正した（`scripts/add-diagnosis-static-banner.js`）。
-それ以外の実装は書き換えていない。
+安全ゲートは弱めていない。変更はいずれも「誤ブロックを解消」または「誤合格を防止」の方向で、後者（Vercel matchの厳格化・Previewフォールバック削除・検証ジョブの発行元限定）はゲートを**強化**している。
 
-ブランチは人間のレビューに進める状態と判断し `PR_READY` とする。
+## 1. Workflow 本体から環境変数を排除
 
-ただし **autopilotワークフロー自体にpush失敗の原因が残っている**（後述「既知の問題」1）。
-これはワークフローファイルの修正が必要で、今回の作業指示で変更を禁止されているため未修正。
+### インストール済みドキュメントの確認
 
-## 実施した検証
+- `node_modules/workflow/docs/api-reference/workflow-globals.mdx`:
+  workflow 関数は Node.js VM 内で動く。`process.env` は「開始時点の凍結スナップショット」としては読めるが、
+  Node.js コアモジュール・グローバル `fetch`・タイマー・`Buffer` は使用不可。`Date.now()` / `new Date()` は論理時計で決定的。
+- `docs/how-it-works/code-transform.mdx`: workflow コードは flow バンドルに文字列として埋め込まれ VM で実行、
+  step 本体は step バンドル側に置かれ workflow 側ではスタブ化される。
 
-### 1. ハンドオフ状態の確認
+`process.env` はドキュメント上は読めるが、指示どおり workflow 本体は step から受け取った値だけを使う構造にした。
 
-- `STATE.json`: `status: RUN_CLAUDE` / `instructionId: INST-002` を確認。指示と一致。
-- `REPORT.md` は `REPORT-001` / `INST-001` のままだった
-  → 前回CI実行のpushがリモートに反映されていなかったことを裏付け。
-- 二重実行なし（INST-002は今回が初回の完了）。
+### 変更
 
-### 2. ブランチ構成の確認
+- `src/lib/article-factory/constants.ts`（新規）: `SITE_URL` / `ARTICLE_RUN_DIR` / `WAIT` / `TOPIC_SCOPE` / `LIMITS` など
+  **リテラルのみ・import なし・process なし**の定数。
+- `config.ts`: 上記を再exportして既存の import 経路を維持。env 依存の値（モデル名・GitHub repo/base branch・自動公開フラグ）だけが残る。
+- `safety.ts`: `./config` → `./constants`（`canAutoPublish` が workflow 本体から直接呼ばれるため）。
+- `workflow.ts`: `stepIsAutoPublishAuthorized()` を追加し、workflow 本体は返された boolean だけを `canAutoPublish()` に渡す。
 
-- `origin/master` は `agent/autopilot` の祖先では**ない**（分岐あり）。
-- merge-base: `0899285`
-- `agent/autopilot` にあって master にない: 17コミット（seed + autopilot関連）
-- master にあって `agent/autopilot` にない: 5コミット
-- **master側の差分は `.github/workflows/naru-agent-autopilot.yml` のみ**
-  （`git diff HEAD...origin/master` = 1 file changed, 42 insertions, 10 deletions）
-- つまり実装内容としては「正規化済みmaster + seed/autopilot変更」のみで、
-  想定どおりの構成。ワークフローファイルだけmasterが新しい。
-- `8bf379b`（masterNormalizedFromWorkSha）は master の祖先であることを確認。
-  `agent/autopilot` 側は同等の変更が別SHA（`3523f88`）で入っている。
+### 生成結果での監査（`npm run build` 後の `src/app/.well-known/workflow/v1/flow/route.js`）
 
-### 3. seedファイルの存在確認
+| 項目 | 修正前 | 修正後 |
+|---|---|---|
+| `process.env.*` 参照 | 6（ARTICLE_FACTORY_AUTO_PUBLISH / _MODEL / _MODEL_LIGHT / SEO_EDITOR_MODEL / _GITHUB_REPO / _BASE_BRANCH） | **0** |
+| `process` トークン（ファイル全体） | — | **0** |
+| 同梱される article-factory モジュール | config / markdown / safety / workflow | **constants** / markdown / safety / workflow |
+| `require(` / `Buffer` / `fetch(` / `node:` / `setTimeout` / openai / api.github.com | — | すべて 0 |
 
-すべて存在を確認。
+- `SITE_URL`・`WAIT`・`ARTICLE_RUN_DIR` は `constants.ts` のリテラルで、実行環境で値が変わらないため workflow 本体で使用して安全と判断（バンドル内でもリテラルとして埋め込まれていることを確認）。
+- workflow 本体から直接呼ぶ通常関数 `phaseEvent` / `buildArticleMarkdown`（markdown.ts）/ `canAutoPublish`（safety.ts）も process・Node API・外部API参照なし。`new Date()` はドキュメント上決定的。
+- step バンドルに **16 step**（新規 `stepIsAutoPublishAuthorized` を含む）、flow バンドルに `newArticleWorkflow` が登録されていることを確認。
 
-- `src/lib/seo-editor/run.ts` ✓
-- Phase 1〜9: `phase1-topics` / `phase2-cannibalization` / `phase3-cluster` /
-  `phase4-action` / `phase5-links` / `phase6-brief` / `phase7-write` /
-  `phase8-related` / `phase9-qa` + `shared.ts` — 全9 Phase揃っている ✓
-- schemas 9本 / prompts 9本 + common ✓
-- `signature.ts` / `validate.ts` / `sanitize.ts` / `github.ts` / `auth.ts` ✓
-- 公開API: `src/app/internal/api/seo-editor/route.ts` ✓
-- publish API: `src/app/internal/api/seo-editor/publish/route.ts` ✓
-- 管理UI: `src/app/internal/dashboard/seo/` （`SeoEditorTab` / `RunProgress` /
-  `ChangeDiff` / `TopicCards`）✓
-- `vercel.json` ✓
+## 2. CIチェック再実行時の古い結果を無視
 
-### 4. ランタイム設定
+### 実APIで利用できるフィールド（実装で使用）
 
-- `vercel.json`:
-  ```json
-  { "$schema": "https://openapi.vercel.sh/vercel.json", "fluid": true }
-  ```
-  → Fluid Compute が明示的に有効 ✓
-- `maxDuration = 180` を2箇所で確認 ✓
-  - `src/app/internal/api/seo-editor/route.ts:38`
-  - `src/app/internal/api/seo-editor/publish/route.ts:24`
-- 両ルートとも `export const dynamic = "force-dynamic"`
-- build結果でも両ルートが `ƒ (Dynamic)` として登録されていることを確認
+- Check Runs（`GET /commits/{sha}/check-runs?filter=all`）: `id`, `name`, `status`, `conclusion`, `started_at`, `completed_at`, `app.slug`
+  - API既定の `filter=latest` に依存せず全試行を取得し、自前で最新を選ぶ。
+- Commit Statuses（`GET /commits/{sha}/statuses`）: `id`, `context`, `state`, `created_at`, `creator.login`
+  - combined status（`/status`）は `creator` を含まないため、全履歴の `/statuses` に変更。
 
-### 5. 安全ゲートの確認（すべて維持）
+### PR #15 の実データで確認した Vercel の形
 
-- **署名**: `signature.ts` はHMAC-SHA256 + `crypto.timingSafeEqual`。
-  `SEO_EDITOR_RUN_SECRET` 未設定時は固定既定値ではなくプロセス起動時ランダム値
-  （安全側にフォールバック）。検証失敗時は `RunSignatureError` で停止。
-- **publish経路のガード順序**（`publish/route.ts`）:
-  Basic認証 → 署名検証 → スキーマ検証 → QA完了チェック → `canPublish()` →
-  PR重複チェック → 変更件数上限 → `githubReadiness()`
-- **QAゲート**: `canPublish()` は `verdict === "FAIL"` が1件でもあれば
-  `allowed: false` を返す。FAILはpublishをブロックする実装のまま ✓
-- **パスホワイトリスト**: `assertSafePath()` は
-  `content/articles/[\w-]+\.md` と `SEO_RUN_DIR/[\w.-]+\.json` のみ許可、
-  `..` を含むパスを拒否 ✓
-- **ベースブランチ**: `SEO_EDITOR_BASE_BRANCH` 未設定なら拒否 ✓
-- **直接pushなし**: `github.ts` は新規 `refs/heads/<branch>` をPOSTで作成し
-  `/pulls` でPRを作るのみ。base branchへの直接pushは実装されていない ✓
-- 迂回・削除は一切行っていない。
+- commit status: `context: "Vercel"`, target_url が vercel.com のデプロイ（Preview の実結果）
+- check-run: `"Vercel Preview Comments"`（コメント機能。デプロイ結果ではない）
 
-### 6. シークレット混入チェック
+旧実装の `/vercel/i` では **"Vercel Preview Comments" の success だけで Vercel Preview 合格になり得た**（実在する誤合格経路）。
 
-- 追跡対象に `.env*` / 鍵ファイルは**なし** ✓
-- `.gitignore` に `.env*` あり ✓
-- ソース内のハードコード鍵パターン（`sk-` / `ghp_` / `github_pat_` / `AIza` /
-  PEM秘密鍵）: **0件** ✓
-- `process.env.*` は**変数名の参照のみ**で、値をレスポンスやログに出す箇所なし ✓
-- `github.ts` のエラー生成はtokenが混入しないよう path と status のみを出力 ✓
-- 本REPORTにもsecret値は記載していない。
+### 判定ルール（`checks.ts`）
 
-### 7. リンク検証
+- `latestPerCheck()`: (出どころ, 発行元, 名前) ごとに最新1件だけ残す。
+  `compareRecency()` は両方の日時が有効で異なれば日時、同時刻・日時不明なら ID（単調増加）で比較。配列順には依存しない。
+- Vercel Preview: `isVercelDeploymentCheckName()`（`Vercel` または `Vercel – <project>`）かつ
+  commit status の `creator.login === "vercel[bot]"` または check-run の `app.slug === "vercel"`。
+- article-factory-validation: **GitHub Actions（`app.slug === "github-actions"`）の check-run のみ**。同名の commit status では合格しない。
+- 同じ必須チェックに check-run と commit status の両方が該当する場合は、**両方の最新が success** の場合のみ合格（競合時は安全側）。
+- 両方の必須チェックが最新状態で success のときだけ `passed`。
 
-- 記事Markdown内の `/diagnosis`: **0件** ✓
-- `/agent-diagnosis`: 6件すべて維持、変更なし ✓
-  （`agent-comparison-2026` / `agent-referral-vs-self-apply` /
-  `agent-site-vs-agent-usage` / `bizreach-second-new-grad` /
-  `second-new-grad-it-career-change` / `second-new-grad-programming-career-change`）
-- リポジトリ全体のルートリンクとしての `/diagnosis`: 修正後**0件** ✓
-  （`/images/diagnosis/...` は画像パスであり別物。対象外）
-- 実在ルート確認: `/shindan` ✓ / `/agent-diagnosis` ✓ / `/diagnosis` は**存在しない** ✓
+## 3. 本番デプロイの古い失敗履歴を無視
 
-### 8. ワークフローの確認（変更はしていない）
-
-- `.github/workflows/naru-agent-autopilot.yml` は131行、構造上の破綻なし。
-- push先は `git push origin HEAD:agent/autopilot` の**1箇所のみ**。
-  `master` へ書き込む処理は存在しない ✓
-- checkout は `ref: agent/autopilot` 固定 ✓
-- 指示どおり本ファイルは変更もステージングもしていない。
+- `getDeploymentStatusesForSha()` は平坦化をやめ、deployment ごとに `{ id, environment, createdAt, statuses[{ id, state, createdAt, environmentUrl }] }` を返す。
+- `evaluateDeployment()`:
+  1. `isProductionEnvironment()`（trim + 大文字小文字無視、`Production – <project>` も可）で production のみ抽出
+  2. 最新 deployment を created_at → ID で選択
+  3. その最新 status を created_at → ID で選択
+  4. `success` → succeeded（URL返却）/ `failure`・`error` → failed / `inactive` → failed（置き換え済みで確認不可）/ status 未登録・pending・queued・in_progress → pending（期限超過で timeout）
+- **旧実装の「production が無ければ全環境で判定」フォールバックを削除**（Preview success が本番成功になっていた）。
+- `published: true` と本番URLは workflow 上 `deploy.state === "succeeded"` の分岐でのみ返る（既存構造のまま、判定元が上記に変わった）。
 
 ## テスト結果
 
-### lint
+| コマンド | 結果 |
+|---|---|
+| `npm ci` | 成功 |
+| `npm test` | **169 passed / 0 failed**（5 files）。REPORT-004 時点 141 → +28 |
+| `npx tsc --noEmit` | エラー 0 |
+| `npm run build` | 成功（exit 0）。workflow/step 正常認識 |
+| `npx eslint src/lib/article-factory/` | 0 problems |
+| `npm run lint`（全体） | 81 problems — `76a1892` と完全一致（既存分のみ、article-factory 内 0） |
+| YAML（js-yaml） | `article-factory-validation.yml` / `naru-agent-autopilot.yml` とも OK |
+| `content/articles/**` の差分 | 0 行 |
+| secrets/token パターン | 差分に該当なし |
 
-```
-npx eslint -f json
-→ 66 errors, 14 warnings（計80件 / 29ファイル）
-```
+### 追加した回帰テスト（checks.test.ts）
 
-- **REPORT-001記載のベースライン「既存80件」と完全一致。新規0件。** ✓
-- ルール内訳:
-  - `@typescript-eslint/no-require-imports` … 61 (error)
-  - `@typescript-eslint/no-unused-vars` … 14 (warning)
-  - `react-hooks/set-state-in-effect` … 2 (error)
-  - `react-hooks/refs` … 2 (error)
-  - `@next/next/no-html-link-for-pages` … 1 (error)
-- **`src/lib/seo-editor/**` の指摘は0件**（新規コードはクリーン）
-- errorの大半（61件）は `scripts/*.js` のCommonJS `require()` によるもので、
-  ESM前提のeslint設定と既存スクリプトの不整合。今回の変更とは無関係の既存事象。
-- 今回修正した `scripts/add-diagnosis-static-banner.js` の2件も
-  4〜5行目の `require()` に対する既存指摘で、今回の変更行とは別。
+CI:
+古いfailure→最新success / 古いcancelled→最新success / 古いpending→最新success / 古いsuccess→最新failure /
+古いsuccess→最新pending / rerun（開始時刻未設定の新試行をIDで最新判定）/ 同時刻はID優先 /
+配列順（正順・逆順・シャッフル）非依存 / check-run+status 重複（両方success→passed）/
+競合（片方failure→failed、片方pending→pending）/ 片方の必須チェックだけ最新failure /
+名前に vercel を含むだけ（"Vercel Preview Comments", "vercel[bot]", "my-vercel-lint", "not-vercel", "Vercel Preview"）/
+Vercel以外の発行元が立てた "Vercel" / 検証ジョブ名の commit status・他App check-run / `latestPerCheck` / `isVercelDeploymentCheckName`
 
-### build
+Deploy:
+古いfailure→最新production success / 古いsuccess→最新production failure / 古いsuccess→最新production pending /
+Preview success + Production pending / Preview success のみ（pending・timeoutとも成功にしない）/
+同一deployment内の古いfailure+最新success / 同一deployment内の古いsuccess+最新failure /
+deployment・status 順不同（3通りの並び）/ 同時刻deploymentはID優先 / status未登録 / inactive / environment 大文字小文字・`Production – <project>`
 
-```
-npm run build → exit 0（成功）
-```
+### 仕様変更に伴い期待値を更新した既存テスト（削除はしていない）
 
-- 106ページの静的生成に成功
-- SEO Editorの2ルートが `ƒ (Dynamic)` として正しく登録
-- ビルドエラー・型エラーなし
+旧テストのうち4件は、今回修正対象の**誤った挙動そのもの**を固定していたため期待値を更新した。
 
-### typecheck
-
-```
-npx tsc --noEmit → exit 0（エラー0件）
-```
-
-### 依存関係
-
-```
-npm ci → exit 0（lockfileどおりにインストール成功）
-```
-
-- `npm audit` の既存の脆弱性警告あり（今回の変更とは無関係、未対応）
-
-### ユニット/フィクステストテスト
-
-**実行できず（テスト基盤が存在しないため）。**
-
-- `package.json` の scripts は `dev` / `build` / `start` / `lint` のみ。
-  `test` スクリプトなし。
-- vitest / jest / playwright いずれも devDependencies に**存在しない**。
-- `*.test.*` / `*.spec.*` / `__tests__` / 各種 config ファイルも**0件**。
-
-したがって INST-002 の「QA origin gating / frontmatter保持 / publish blocking /
-broken-link behavior のフィクスチャ検査」は、**該当するテストエントリポイントが
-存在しないため実行していない**。INST-002の条件（"if those test entry points exist"）に
-該当しない。
-
-これらの挙動については REPORT-001 に実E2E（Phase 1〜9完走、FAIL 0、
-frontmatter diff 0、lostSegments 0）の記録があり、今回はその再実行ではなく
-**上記「5. 安全ゲートの確認」のコード静的検証**で置き換えている。
-実E2Eの再実行には `OPENAI_API_KEY` 等のsecretが必要であり、
-STATE.jsonのstopConditionsに該当するため実施していない。
-
-## 修正内容
-
-### `scripts/add-diagnosis-static-banner.js`（1ファイル / 2行）
-
-検証で実証できた唯一の具体的不具合。
-
-- **問題**: このスクリプトは記事に `[適職診断を受けてみる →](/diagnosis)` という
-  バナーを挿入するが、`/diagnosis` というルートは**存在しない**
-  （実在するのは `/shindan`）。
-- **影響**: これはコミット `05d0fe1` が修正した「記事15本の壊れた `/diagnosis` リンク」
-  の**発生源**そのもの。スクリプトが未修正のままなので、再実行すると
-  同じ壊れたリンクが15本の記事に再び混入する（regressionの再発）。
-- **修正**: バナー内のリンクとファイル冒頭コメントの `/diagnosis` を `/shindan` に変更。
-
-```diff
-- * 業界解説・認知系の記事に /diagnosis への静的バナーを追加するスクリプト
-+ * 業界解説・認知系の記事に /shindan への静的バナーを追加するスクリプト
-...
--> [適職診断を受けてみる →](/diagnosis)
-+> [適職診断を受けてみる →](/shindan)
-```
-
-- アンカーテキスト・周辺文面・挿入ロジック・`insertMap` は変更なし。
-- `scripts/add-diagnosis-banner.js`（別ファイル）は `/agent-diagnosis` を使う
-  正しい実装なので**変更していない**。
-- 記事本文（`content/`）は今回**一切変更していない**。
-
-これ以外の実装修正は行っていない（リファクタなし）。
+1. 「Vercelのcheck名の揺れを吸収する」— `"Vercel Preview Comments"` / `"vercel[bot]"` を合格としていた → 正しい context のみ合格、それ以外は不一致を検証する2件に分割
+2. 「同名チェックが複数あり片方が失敗」— 名前 `"Vercel Preview"` に依存 → 実在形式 `"Vercel – <project>"` 2件で再構成
+3. 「失敗は成功より優先される（同一コミットに両方）」— 順序非依存の新テスト群（同一deployment内の最新判定）に置換
+4. 「production が無ければ全体で判定する」（Preview success → succeeded）— **Preview success は本番成功にしない（pending）**へ反転
 
 ## 変更ファイル
 
-今回のコミット対象:
+- `src/lib/article-factory/constants.ts`（新規）
+- `src/lib/article-factory/config.ts`
+- `src/lib/article-factory/safety.ts`（import元のみ）
+- `src/lib/article-factory/workflow.ts`
+- `src/lib/article-factory/checks.ts`
+- `src/lib/article-factory/github.ts`
+- `src/lib/article-factory/checks.test.ts`
+- `docs/agent-handoff/REPORT.md`
 
-```
-docs/agent-handoff/REPORT.md              (更新)
-scripts/add-diagnosis-static-banner.js    (2行修正)
-```
+## git diff 概要
 
-意図的に除外したもの:
+`76a1892..c626919`: 7 files。`checks.ts` の型を `CheckSummary{source,id,name,origin,observedAt,...}` /
+`DeploymentRecord{id,environment,createdAt,statuses[]}` に拡張し、最新選択ロジックを追加。
+`github.ts` は取得エンドポイントとフィールドのみ変更（書き込み系・マージ系は無変更）。
+`NEXT_INSTRUCTION.md` / `STATE.json` / 既存記事は無変更。
 
-- `.github/workflows/naru-agent-autopilot.yml` — 変更・ステージングとも行わず
-- `docs/agent-handoff/STATE.json` — ChatGPT管理、変更なし
-- `docs/agent-handoff/NEXT_INSTRUCTION.md` — ChatGPT管理、変更なし
-- 作業ツリーに元からあった未コミットの下書き類
-  （`content/note-drafts/**`、`note-drafts/**`、
-  `public/images/articles/company-reputation-search-reality-card.png`）
-  — コンテンツエージェント管轄のため保護。破棄も混入もしていない。
+## 既知の問題・残るリスク
 
-## git diff概要
-
-`origin/master...agent/autopilot`:
-
-```
-73 files changed, 7251 insertions(+), 154 deletions(-)
-```
-
-領域別ファイル数:
-
-| 領域 | ファイル数 |
-|---|---|
-| `src/lib/seo-editor/**` | 43 |
-| `content/articles/**` | 15 |
-| `src/app/internal/**` | 7 |
-| `docs/**` | 4 |
-| `.github/**` | 1 |
-| `scripts/**` | 1 |
-| `src/types/**` | 1 |
-| `vercel.json` | 1 |
-
-## 既知の問題
-
-### 1.（重要 / 未修正）autopilotワークフローのpushが構造的に失敗する
-
-**これが今回「CI上でClaude処理は成功したがpushが失敗し、REPORT.mdがリモートに
-反映されなかった」原因。**
-
-`.github/workflows/naru-agent-autopilot.yml` の最終ステップ:
-
-```yaml
-git add -A
-...
-git push origin HEAD:agent/autopilot
-```
-
-- `permissions:` に `contents: write` はあるが **`workflows: write` がない**。
-- GitHubは、`workflows` 権限のないトークンからの
-  `.github/workflows/` 配下を含むpushを**push全体ごと拒否**する。
-- `agent/autopilot` のワークフローファイルは master 側より古い
-  （master に `#11` `#12` の修正2件が入っている）ため、
-  実行環境で当該ファイルに差分が生じると `git add -A` がそれを巻き込み、
-  **REPORT.mdを含むpush全体が失敗する**。
-
-**今回の指示で本ファイルの変更が明示的に禁止されているため、修正していない。**
-
-推奨される修正（いずれか）:
-
-- a) `git add -A` をやめ、対象を限定する
-  （例: `git add docs/agent-handoff/REPORT.md src/ scripts/ content/`）— 推奨
-- b) `permissions:` に `workflows: write` を追加する
-- c) push前に `git checkout origin/master -- .github/workflows/` 等で
-  ワークフロー差分を除外する
-
-加えて a) は、`git add -A` が意図しないファイル（ローカル生成物や
-下書き）を巻き込むリスクを下げる意味でも望ましい。
-
-### 2. `agent/autopilot` が master に対してワークフロー1ファイル分だけ古い
-
-- master 側の `#11`（OIDC権限付与）、`#12`（turn limit引き上げ）が未取り込み。
-- 実装コードへの影響は**なし**（差分はワークフローファイルのみ）。
-- PR #10 をマージする際、または autopilot を再実行する前に
-  master を取り込むか、上記1の修正と併せて解消するのが望ましい。
-
-### 3. 既存lint 80件（ブロッカーではない）
-
-- 内訳は上記「テスト結果 / lint」のとおり。
-- 今回の変更による新規0件。SEO Editor本体は0件。
-- `scripts/*.js` のCommonJS指摘61件が大半で、eslint設定側の整理で一括解消できる性質。
-- 今回の指示範囲（実証された不具合のみ修正）外のため未対応。
-
-### 4. 自動テストが存在しない
-
-- SEO Editorの安全ゲート（QA origin gating、frontmatter保持、publish blocking、
-  broken-link判定）は現在コードレビューと実E2Eでしか担保されていない。
-- 回帰検知のため、少なくとも `canPublish()` / `assertSafePath()` /
-  `verifySignedRun()` の純関数ユニットテスト導入を推奨。
-
-### 5. Vercel GitHub連携が未接続（既知の制約）
-
-- `publish/route.ts` の `PREVIEW_NOTE` に明記済み。
-- SEO Editorが作成するPRではVercel Previewが自動生成されない。
+1. **Vercel の発行元識別子は実APIレスポンスの完全な確認ができていない**。PR #15 の combined status では context `"Vercel"` を確認したが、
+   combined API は `creator` を返さないため `creator.login === "vercel[bot]"` は Vercel の既知の仕様に基づく。
+   もし実際の login が異なれば Vercel Preview が `missing` になり**自動公開がブロックされる（fail closed）**。誤合格の方向には倒れない。
+2. **本番 Deployment の environment 名**は `Production` / `Production – <project>` を想定。Vercel が別名を使う場合は
+   本番デプロイが見つからず `timeout`（公開と報告しない）になる。こちらも fail closed。
+3. `inactive` を最新 status とする production deployment は `failed` 扱い（従来は pending→timeout）。
+   別コミットの本番デプロイに置き換えられた場合、当該記事が本番に含まれていても「公開確認できず」と報告する（安全側）。
+4. check-run と commit status で Vercel が別結果を出す場合、両方 success まで合格しない（安全側。誤ブロックの可能性はある）。
+5. ページングは check-runs / statuses / deployments とも 100 件まで。同一SHAでこれを超える再実行は想定外（超えた場合は古い結果の欠落となり、最新は通常先頭ページに含まれる）。
+6. 実記事生成・本番デプロイ・`ARTICLE_FACTORY_AUTO_PUBLISH` の有効化は行っていないため、エンドツーエンドの実環境検証は未実施。
 
 ## 判断が必要な項目
 
-今回の検証で新たに発生したプロダクト/コンテンツ上の判断事項は**なし**。
-
-ChatGPT側または人間の対応が必要なのは次の1点のみ:
-
-- **既知の問題1（ワークフローのpush失敗）をどう修正するか。**
-  ワークフローファイルの変更は今回の指示で禁止されているため、
-  Claude Code側では着手していない。
-  次のautopilot実行も同じ原因で失敗する可能性が高いため、
-  自動ループを継続するなら先に解消が必要。
-
-secret入力・破壊的操作・本番デプロイを要する項目はない。
+- なし（上記リスク1・2は、自動公開を有効化する前に一度 `/commits/{sha}/statuses` と `/deployments` の実レスポンスで
+  `creator.login` と `environment` を確認することを推奨）。
 
 ## 推奨する次の作業
 
-1. **PR #10 を人間がレビューする。**
-   実装差分は73ファイル / +7251 / -154。安全ゲートは維持されており、
-   lint/build/typecheckはすべて通過している。
-2. 既知の問題1を解消する（`git add -A` の限定化を推奨）。
-   これを行わない限り、autopilotの自動pushは再び失敗する。
-3. master のワークフロー修正（`#11` / `#12`）を `agent/autopilot` に取り込む。
-4. マージ後、Vercel Production の `SEO_EDITOR_BASE_BRANCH=master` が
-   正しいことを再確認する。
-5. 余力があれば安全ゲートの純関数ユニットテストを追加する（既知の問題4）。
+1. PR #15 の人間レビュー（マージは行っていない）
+2. 自動公開を有効化する前に、実レスポンスで Vercel の `creator.login` / deployment `environment` を確認
+3. 1記事分の dry-run（AUTO_PUBLISH 無効のまま）で PR 作成 → CI 待機 → `publishBlockedReason` までの経路を確認
 
-masterへのpush・マージ・本番デプロイは今回**実施していない**。
+## 実施していないこと（禁止事項の遵守）
+
+PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 / `ARTICLE_FACTORY_AUTO_PUBLISH` の有効化 /
+既存記事の変更 / secret の表示・保存・コミット — いずれも行っていない。

@@ -1,0 +1,52 @@
+name: Article Factory Validation
+
+# 新規記事オートパイロットが作成したPRを外部CIで検証する。
+#
+# このジョブの成功が、記事PRの自動マージの必須条件になる。
+# ワークフロー内のローカル判定（boolean）だけでマージすることはしない。
+
+on:
+  pull_request:
+    paths:
+      - "content/articles/**"
+      - "data/article-runs/**"
+
+# 読み取り専用で十分。シークレットは使わない。
+permissions:
+  contents: read
+
+concurrency:
+  group: article-factory-validation-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  # ワークフロー側はこのジョブ名でcheck-runを待つ。名前を変えないこと。
+  article-factory-validation:
+    name: article-factory-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
