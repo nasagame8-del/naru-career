@@ -27,8 +27,12 @@ export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   if (path.startsWith("/internal")) {
-    const user = process.env.DASHBOARD_USER || "admin";
-    const pass = process.env.DASHBOARD_PASSWORD || "naru2026";
+    const user = process.env.DASHBOARD_USER;
+    const pass = process.env.DASHBOARD_PASSWORD;
+    // Fail closed instead of allowing published default dashboard credentials.
+    if (!user || !pass) {
+      return new NextResponse("Internal area not configured", { status: 503 });
+    }
     return checkBasicAuth(request, user, pass, "NARU Dashboard") ?? NextResponse.next();
   }
 
