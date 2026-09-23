@@ -1,0 +1,133 @@
+{
+  "batchId": "batch_2026-09-23_d150b383",
+  "generatedAt": "2026-09-23T12:18:43.784Z",
+  "trigger": "manual",
+  "candidates": [
+    {
+      "id": "cand_41ed3b88",
+      "title": "第二新卒でWebマーケターに転職するには？未経験から評価される準備・職種理解・注意点",
+      "primaryKeyword": "第二新卒 Webマーケティング 転職 未経験",
+      "secondaryKeywords": [
+        "Webマーケター 未経験 第二新卒",
+        "第二新卒 マーケティング 転職",
+        "Webマーケティング 仕事内容 未経験"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "既存の「what-is-web-industry」はWeb業界全体の職種解説、「web-industry-guide」「aio-seo-industry-inside」はAIO対策企業での仕事・実体験寄り。今回の記事は、第二新卒が未経験からWebマーケター職を目指す場合に絞り、SEO・広告運用・SNS・CRMなど職種別の違い、選考前に準備すべきこと、求人の見極め方まで整理する点が新しい。",
+      "reasonToWriteNow": "NARU内にIT/Web転職の総論やAIO企業の体験談はあるが、第二新卒向けに『Webマーケター』へ職種を絞った導線がまだないため。検索需要の根拠データはないが、既存記事群との内部リンク先として作りやすい。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-web-marketing-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-programming-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_60af5f6a",
+      "title": "第二新卒のIT/Web転職で面接官に聞かれやすい質問と答え方｜未経験でも詰まらない準備法",
+      "primaryKeyword": "第二新卒 IT転職 面接 質問",
+      "secondaryKeywords": [
+        "IT業界 未経験 面接 質問",
+        "第二新卒 面接 答え方",
+        "Web業界 面接 対策 未経験"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の「interview-failure-why-this-job」は『なぜこの職種か』に詰まった単一の失敗談。今回の記事は、退職理由、なぜIT/Webか、なぜ未経験職種か、前職経験をどう活かすか、キャリアプランなど、第二新卒×IT/Web転職で聞かれやすい質問を横断的に扱う面接対策記事にする点が新しい。",
+      "reasonToWriteNow": "既存記事に職務経歴書や転職タイミングの記事はあるが、面接対策の網羅記事が不足しているため。実体験記事への内部リンクも作れる。検索需要の裏付けはないため、記事化前にキーワード調査は必要。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-interview-questions",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_f6955bc3",
+      "title": "第二新卒のIT/Web求人票の見方｜固定残業・研修・SES・業務委託っぽい求人をどう見抜くか",
+      "primaryKeyword": "第二新卒 IT 求人票 見方",
+      "secondaryKeywords": [
+        "IT求人 固定残業 見方",
+        "第二新卒 求人票 注意点",
+        "未経験 IT転職 求人 見極め"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の「ses-explained」はSESの仕組み解説、「business-outsourcing-conversion-risk」は正社員から業務委託へ切り替えられるリスクの解説。今回の記事は、第二新卒がIT/Web求人を見る段階で確認すべき項目として、雇用形態、固定残業代、研修内容、配属先、客先常駐、試用期間、評価制度をチェックリスト化する点が新しい。",
+      "reasonToWriteNow": "第二新卒向けの転職ノウハウ記事は増えているが、応募前に求人票をどう読むかの記事がまだないため。既存のSES・業務委託リスク記事と相互補完できる。法制度や求人表記に関わるため、公開時には最新の一般ルール確認が必要。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-job-posting-checklist",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_9178339f",
+      "title": "未経験の第二新卒にポートフォリオは必要？IT/Web転職で職種別に準備すべき成果物",
+      "primaryKeyword": "第二新卒 IT転職 ポートフォリオ 未経験",
+      "secondaryKeywords": [
+        "Web業界 未経験 ポートフォリオ",
+        "第二新卒 成果物 転職",
+        "未経験 エンジニア ポートフォリオ 必要"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "既存の「resume-writing-second-new-grad」は職務経歴書の書き方、「second-new-grad-programming-career-change」はプログラミング未経験からのIT転職可否が中心。今回の記事は、エンジニア、Webマーケター、Webデザイナー、IT営業など職種別に『ポートフォリオが必要か／不要か／代わりに何を見せるか』を整理する点が新しい。",
+      "reasonToWriteNow": "未経験からIT/Webへ転職したい第二新卒は、資格・職務経歴書・成果物のどれを優先すべきか迷いやすい。既存記事の次に読む実践記事として設計できる。ただし検索データによる根拠はない。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-portfolio-guide",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_916e7a2f",
+      "title": "第二新卒でSaaS営業・IT営業に転職するには？未経験から狙える理由と向いている人",
+      "primaryKeyword": "第二新卒 SaaS営業 転職",
+      "secondaryKeywords": [
+        "IT営業 未経験 第二新卒",
+        "SaaS営業 未経験 転職",
+        "第二新卒 法人営業 IT"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "既存の「aio-seo-industry-inside」はAIO対策企業に営業職で入社した体験談だが、SaaS営業・IT営業という職種の全体像は扱っていない。今回の記事は、IT/Web業界における営業職の種類、無形商材営業で見られる経験、第二新卒がアピールしやすい前職経験、避けたい求人の見方を解説する点が新しい。",
+      "reasonToWriteNow": "NARUではエンジニア・Web業界・AIO寄りの記事はあるが、非エンジニア職としてIT/Web業界に入る導線が薄い。営業経験者や未経験職種へ挑戦する第二新卒向けの入口記事として必要性がある。検索需要の実データは未確認。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-saas-sales-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "inventorySize": 37,
+  "nextArticleId": 38,
+  "notes": [
+    "Search Console のデータは候補生成に使用していません。searchEvidence は null のままです（推測で埋めていません）。"
+  ]
+}
