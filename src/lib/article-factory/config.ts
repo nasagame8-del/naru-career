@@ -23,13 +23,23 @@ export {
   KNOWN_CATEGORIES,
 } from "./constants";
 
-/** 候補生成・執筆など高精度が必要な用途 */
-export const ARTICLE_FACTORY_MODEL =
-  process.env.ARTICLE_FACTORY_MODEL || process.env.SEO_EDITOR_MODEL || "gpt-5.5";
+import { resolveArticleFactoryModels } from "./model-policy";
 
-/** 整形・抽出など軽量な用途 */
-export const ARTICLE_FACTORY_MODEL_LIGHT =
-  process.env.ARTICLE_FACTORY_MODEL_LIGHT || ARTICLE_FACTORY_MODEL;
+const ARTICLE_FACTORY_MODELS = resolveArticleFactoryModels({
+  ARTICLE_FACTORY_MODEL: process.env.ARTICLE_FACTORY_MODEL,
+  ARTICLE_FACTORY_MODEL_LIGHT: process.env.ARTICLE_FACTORY_MODEL_LIGHT,
+  ARTICLE_FACTORY_MODEL_RESEARCH: process.env.ARTICLE_FACTORY_MODEL_RESEARCH,
+  SEO_EDITOR_MODEL: process.env.SEO_EDITOR_MODEL,
+});
+
+/** 本文執筆など、品質を最優先する用途 */
+export const ARTICLE_FACTORY_MODEL = ARTICLE_FACTORY_MODELS.primary;
+
+/** 候補・構成・整形・抽出・修復案などの軽量な用途 */
+export const ARTICLE_FACTORY_MODEL_LIGHT = ARTICLE_FACTORY_MODELS.light;
+
+/** Web検索と主張マッピング。未指定なら軽量モデルを使う */
+export const ARTICLE_FACTORY_MODEL_RESEARCH = ARTICLE_FACTORY_MODELS.research;
 
 /** GitHub連携（SEO Editor と同じ env 名を再利用する） */
 export const GITHUB_REPO = process.env.SEO_EDITOR_GITHUB_REPO || "nasagame8-del/naru-career";

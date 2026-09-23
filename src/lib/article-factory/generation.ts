@@ -101,7 +101,7 @@ export async function runOutline(
       "</available_sources>",
     ].join("\n"),
     schema: OUTLINE_SCHEMA,
-    model: ARTICLE_FACTORY_MODEL,
+    model: ARTICLE_FACTORY_MODEL_LIGHT,
     validate: isRawOutline,
   });
 

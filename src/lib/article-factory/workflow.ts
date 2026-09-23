@@ -71,6 +71,7 @@ import type {
   SelectedTopic,
   WorkflowEvent,
 } from "./types";
+import { isPermanentLlmErrorMessage } from "./llm-policy";
 
 // ── 進捗ストリーム ──
 
@@ -419,6 +420,12 @@ async function stepIsAutoPublishAuthorized(): Promise<boolean> {
 /** LLM由来のエラーを恒久・一時に分類する */
 function classifyLlmError(e: unknown, phase: string): Error {
   const message = e instanceof Error ? e.message : String(e);
+  // クレジット枯渇・quota・認証エラーは待っても直らない。
+  // 429というHTTPコードだけを見て再試行すると、同じ有料リクエストを数分間繰り返すため、
+  // 一時的なrate limitとは明示的に分離する。
+  if (isPermanentLlmErrorMessage(message)) {
+    return new FatalError(`${phase}: ${message}`);
+  }
   // 設定不備・スキーマ不一致は何度やっても直らない
   if (/OPENAI_API_KEY|未設定|Structured Output|形が想定と異なります/.test(message)) {
     return new FatalError(`${phase}: ${message}`);

@@ -1,5 +1,42 @@
 # Claude Code Report
 
+## REPORT-006 — Article Factory API cost controls
+
+- reportId: `REPORT-006`
+- completedInstructionId: `USER-COST-CONTROL-2026-09-23`
+- status: `PR_READY`
+- baseBranch: `master`
+- baseCommit: `7dd6b545924f810f0b3704a426d5ab246f259ebd`
+- API generation calls during implementation: **0**
+
+### Summary
+
+- `gpt-5.5` は本文執筆だけに限定した。
+- 候補生成・Web調査・主張マッピング・構成・内部リンク・出典修復は、既定で `gpt-5-mini` を使う。
+- `ARTICLE_FACTORY_MODEL_LIGHT` と `ARTICLE_FACTORY_MODEL_RESEARCH` で個別に上書き可能。
+- `no credits remaining` / `insufficient_quota` / billing hard limit / API key不正は `FatalError` とし、Workflowの無駄な再試行を止めた。
+- Structured OutputsとWeb検索の各呼び出しについて、本文・prompt・secretを含めず、モデル名とtoken数だけを `[openai-usage]` としてVercel Logsへ出す。
+- QA、安全ゲート、自動公開フラグ、記事本文は変更していない。
+
+### Verification
+
+| 項目 | 結果 |
+|---|---|
+| 新規モデル/エラー方針テスト | 13 passed |
+| 全テスト | 218 passed / 0 failed |
+| `npx tsc --noEmit` | exit 0 |
+| article-factory + OpenAI wrapper lint | exit 0 |
+| `npm run build` | exit 0、22 steps / 1 workflow、108ページ |
+| flow bundle | `process.env` / `openai` / Node builtin すべて0 |
+| `content/articles/**` | 差分0 |
+
+### Remaining risk
+
+- 実APIを使う成功パスは、OpenAI APIクレジット追加後にのみ確認できる。
+- 料金のドル換算は価格改定があるためコードへ固定せず、token数を観測可能にした。次回1記事の実測後に上限値を決める。
+
+---
+
 - reportId: `REPORT-005`
 - completedInstructionId: `INST-004-REVIEW-FIX`（REPORT-004後の独立レビュー指摘3点。ユーザーからの直接指示。NEXT_INSTRUCTION.md の INST-004 は REPORT-004 で完了済みのため二重実行ではない）
 - status: `PR_READY`
