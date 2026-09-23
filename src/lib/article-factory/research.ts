@@ -16,8 +16,16 @@
  */
 
 import OpenAI from "openai";
-import { runStructured, obj, arr, str, bool, strArr } from "@/lib/seo-editor/openai";
-import { ARTICLE_FACTORY_MODEL, LIMITS } from "./config";
+import {
+  runStructured,
+  logOpenAiUsage,
+  obj,
+  arr,
+  str,
+  bool,
+  strArr,
+} from "@/lib/seo-editor/openai";
+import { ARTICLE_FACTORY_MODEL_RESEARCH, LIMITS } from "./config";
 import type { ResearchResult, ResearchSource, SelectedTopic } from "./types";
 
 /** 検索で実際に引用されたことが確認できた出典 */
@@ -206,7 +214,7 @@ export async function performWebSearch(topic: SelectedTopic): Promise<SearchOutc
   let response;
   try {
     response = await client.responses.create({
-      model: ARTICLE_FACTORY_MODEL,
+      model: ARTICLE_FACTORY_MODEL_RESEARCH,
       tools: [{ type: "web_search" }],
       // 引用を必ず取りこぼさないようソースも含めて返させる
       include: ["web_search_call.action.sources"],
@@ -247,6 +255,13 @@ export async function performWebSearch(topic: SelectedTopic): Promise<SearchOutc
   } catch (e) {
     throw new ResearchUnavailableError(`Web検索に失敗しました: ${safeMessage(e)}`);
   }
+
+  logOpenAiUsage("article_web_research", {
+    model: ARTICLE_FACTORY_MODEL_RESEARCH,
+    inputTokens: response.usage?.input_tokens ?? 0,
+    outputTokens: response.usage?.output_tokens ?? 0,
+    cachedInputTokens: response.usage?.input_tokens_details?.cached_tokens ?? 0,
+  });
 
   const verified: VerifiedSource[] = [];
   const seen = new Set<string>();
@@ -334,7 +349,7 @@ async function mapClaimsToSources(
       "</search_summary>",
     ].join("\n"),
     schema: CLAIM_SCHEMA,
-    model: ARTICLE_FACTORY_MODEL,
+    model: ARTICLE_FACTORY_MODEL_RESEARCH,
     validate: isRawClaims,
   });
 
@@ -416,7 +431,7 @@ export async function performClaimSearch(
   let response;
   try {
     response = await client.responses.create({
-      model: ARTICLE_FACTORY_MODEL,
+      model: ARTICLE_FACTORY_MODEL_RESEARCH,
       tools: [{ type: "web_search" }],
       include: ["web_search_call.action.sources"],
       instructions: [
@@ -452,6 +467,13 @@ export async function performClaimSearch(
   } catch (e) {
     throw new ResearchUnavailableError(`追加検索に失敗しました: ${safeMessage(e)}`);
   }
+
+  logOpenAiUsage("article_claim_research", {
+    model: ARTICLE_FACTORY_MODEL_RESEARCH,
+    inputTokens: response.usage?.input_tokens ?? 0,
+    outputTokens: response.usage?.output_tokens ?? 0,
+    cachedInputTokens: response.usage?.input_tokens_details?.cached_tokens ?? 0,
+  });
 
   const verified: VerifiedSource[] = [];
   const seen = new Set<string>();

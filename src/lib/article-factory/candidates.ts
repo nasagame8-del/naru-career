@@ -16,7 +16,7 @@ import {
   enumStr,
   strArr,
 } from "@/lib/seo-editor/openai";
-import { ARTICLE_FACTORY_MODEL, LIMITS, KNOWN_CATEGORIES, TOPIC_SCOPE } from "./config";
+import { ARTICLE_FACTORY_MODEL_LIGHT, LIMITS, KNOWN_CATEGORIES, TOPIC_SCOPE } from "./config";
 import { compactInventory, readInventory, type ArticleInventory } from "./inventory";
 import { validateCandidate } from "./safety";
 import type { ArticleCandidate, CandidateBatch, SearchIntent } from "./types";
@@ -126,7 +126,7 @@ export async function generateCandidateBatch(
     instructions: INSTRUCTIONS,
     input,
     schema: CANDIDATE_SCHEMA,
-    model: ARTICLE_FACTORY_MODEL,
+    model: ARTICLE_FACTORY_MODEL_LIGHT,
     validate: isRawBatch,
   });
 

@@ -10,7 +10,7 @@
 
 import { runStructured, obj, arr, str, strArr, enumStr } from "@/lib/seo-editor/openai";
 import { performClaimSearch, type SearchOutcome } from "./research";
-import { ARTICLE_FACTORY_MODEL } from "./config";
+import { ARTICLE_FACTORY_MODEL_LIGHT } from "./config";
 import type { RepairPlan } from "./source-repair";
 //
 // この関数は OpenAI / Web検索に触れるため、必ず "use step" 側から呼ぶこと。
@@ -129,7 +129,7 @@ export async function planSourceRepair(input: {
       "</body>",
     ].join("\n"),
     schema: REPAIR_SCHEMA,
-    model: ARTICLE_FACTORY_MODEL,
+    model: ARTICLE_FACTORY_MODEL_LIGHT,
     validate: isRawPlan,
   });
 
@@ -167,7 +167,7 @@ async function planWithoutNewSources(input: {
       "</body>",
     ].join("\n"),
     schema: REPAIR_SCHEMA,
-    model: ARTICLE_FACTORY_MODEL,
+    model: ARTICLE_FACTORY_MODEL_LIGHT,
     validate: isRawPlan,
   });
 

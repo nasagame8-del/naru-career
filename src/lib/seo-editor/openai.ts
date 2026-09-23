@@ -40,6 +40,20 @@ export interface StructuredResult<T> {
   usage: SeoUsage;
 }
 
+/** prompt・本文・secretを含めず、課金確認に必要なトークン数だけを記録する。 */
+export function logOpenAiUsage(name: string, usage: SeoUsage): void {
+  console.info(
+    "[openai-usage]",
+    JSON.stringify({
+      name,
+      model: usage.model,
+      inputTokens: usage.inputTokens,
+      cachedInputTokens: usage.cachedInputTokens,
+      outputTokens: usage.outputTokens,
+    })
+  );
+}
+
 function getClient(): OpenAI {
   if (!process.env.OPENAI_API_KEY) {
     throw new SeoEditorError("config", "OPENAI_API_KEY が未設定です");
@@ -101,6 +115,11 @@ export async function runStructured<T>(call: StructuredCall<T>): Promise<Structu
     outputTokens: response.usage?.output_tokens ?? 0,
     cachedInputTokens: response.usage?.input_tokens_details?.cached_tokens ?? 0,
   };
+
+  // トークン数だけを構造化ログへ残す。prompt/output/secrets は記録しない。
+  // Article Factory の各 step 名は call.name で識別でき、Vercel Logs から
+  // どのフェーズが消費したか追跡できる。
+  logOpenAiUsage(call.name, usage);
 
   return { data: parsed as T, usage };
 }
