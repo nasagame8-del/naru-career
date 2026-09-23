@@ -8,7 +8,7 @@
 - pr: `#15`
 - reviewedHead: `76a1892`
 - fixCommit: `c626919e04c42512c9349ccb4ac96e7b77af01f7`（このREPORTはその直後のコミットで追加）
-- verifiedAt: `2026-09-22`
+- verifiedAt: `2026-09-22`（実装）/ `2026-09-23`（独立再検証）
 - environment: Node v20 / npm 10 / workflow@4.8.9 / next 16.2.10
 
 ## Summary
@@ -52,7 +52,9 @@
 
 - `SITE_URL`・`WAIT`・`ARTICLE_RUN_DIR` は `constants.ts` のリテラルで、実行環境で値が変わらないため workflow 本体で使用して安全と判断（バンドル内でもリテラルとして埋め込まれていることを確認）。
 - workflow 本体から直接呼ぶ通常関数 `phaseEvent` / `buildArticleMarkdown`（markdown.ts）/ `canAutoPublish`（safety.ts）も process・Node API・外部API参照なし。`new Date()` はドキュメント上決定的。
-- step バンドルに **16 step**（新規 `stepIsAutoPublishAuthorized` を含む）、flow バンドルに `newArticleWorkflow` が登録されていることを確認。
+- step バンドルに workflow.ts 由来の **17 step**（`emit` + `step*` 16個。新規 `stepIsAutoPublishAuthorized` を含む）と
+  SDK内部の `step//workflow@4.8.9//fetch` が登録され、flow バンドルに `newArticleWorkflow` が登録されていることを確認。
+  （`npm run build` の表示は `20 steps, 1 workflow`。）
 
 ## 2. CIチェック再実行時の古い結果を無視
 
@@ -100,7 +102,7 @@
 | `npx tsc --noEmit` | エラー 0 |
 | `npm run build` | 成功（exit 0）。workflow/step 正常認識 |
 | `npx eslint src/lib/article-factory/` | 0 problems |
-| `npm run lint`（全体） | 81 problems — `76a1892` と完全一致（既存分のみ、article-factory 内 0） |
+| `npm run lint`（全体） | **80 problems**（66 errors / 14 warnings / 29 files）— REPORT-002 のベースラインと完全一致（既存分のみ、article-factory 内 0） |
 | YAML（js-yaml） | `article-factory-validation.yml` / `naru-agent-autopilot.yml` とも OK |
 | `content/articles/**` の差分 | 0 行 |
 | secrets/token パターン | 差分に該当なし |
@@ -176,3 +178,79 @@ deployment・status 順不同（3通りの並び）/ 同時刻deploymentはID優
 
 PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 / `ARTICLE_FACTORY_AUTO_PUBLISH` の有効化 /
 既存記事の変更 / secret の表示・保存・コミット — いずれも行っていない。
+
+---
+
+## 独立再検証（2026-09-23、HEAD `ccdd16e`）
+
+実装コミット `c626919` とは別セッションで、指摘3点が実際に解消されているかを
+クリーンインストールから再検証した。**結論: 3点とも解消を確認**。
+
+### 再実行した検証
+
+| コマンド | 結果 |
+|---|---|
+| `npm ci` | exit 0 |
+| `npm test` | **169 passed / 0 failed**（5 files） |
+| `npx tsc --noEmit` | exit 0（エラー0件） |
+| `npm run build` | exit 0 / `workflows build complete (20 steps, 1 workflow)` |
+| `npx eslint`（article-factory 配下） | exit 0（指摘0件） |
+| `npm run lint`（全体） | 80 problems（66E/14W/29 files）= REPORT-002 ベースラインと完全一致、新規0件 |
+| YAML（js-yaml でパース） | 2ファイルとも VALID。検証ジョブ名 `article-factory-validation` / `permissions: {contents: read}` を確認 |
+| `content/articles/**` の差分（vs master） | **0 ファイル** |
+| secrets/token パターン（tracked source 全体） | 0 件。追跡対象の `.env` / `.pem` / `.key` も0件 |
+
+### 指摘1: 生成バンドルでの実地監査
+
+`npm run build` 後の `src/app/.well-known/workflow/v1/flow/route.js`
+（= `"use workflow"` がVMで実行される実体）を直接grepした。
+
+| 探索対象 | 件数 |
+|---|---|
+| `process.env` | **0** |
+| `process.` | **0** |
+| `ARTICLE_FACTORY_MODEL` / `SEO_EDITOR_*` / `GITHUB_TOKEN` / `OPENAI_API_KEY` / `CRON_SECRET` / `DASHBOARD_PASSWORD` | すべて **0** |
+| `ARTICLE_FACTORY_AUTO_PUBLISH` | 1 — ただし `canAutoPublish()` が返す**日本語メッセージ文字列の一部**であり、env参照ではない（`process.env` が0件であることが裏付け） |
+| `"fs"` / `"path"` / `"crypto"` / `"child_process"` / `node:*` / `readFileSync` / `__dirname` | すべて **0** |
+| `openai` / `api.github.com` | **0** |
+| `require(` | 1 — esbuild の CommonJS 相互運用ヘルパ `var __commonJS = (cb, mod) => function __require()`。実際の `require()` 呼び出しではない |
+
+`route.js.debug.json` の `workflowFiles` は `workflow.ts` のみ。
+step 登録は workflow.ts 由来17件 + SDK内部 `fetch` の計18件を確認。
+
+### 指摘2・3: 実装とテストの確認
+
+- `latestPerCheck()` が (source, origin, name) でグルーピングし、
+  `compareRecency()`（日時→ID）で最新1件だけを残すことをコード上で確認。配列順に依存しない。
+- `isVercelDeploymentCheckName()` の正規表現 `/^vercel(?:\s+[–—-]\s+\S.*)?$/i` が
+  `Vercel` / `Vercel – <project>` のみ一致し、`Vercel Preview Comments` / `my-vercel-lint` を弾くことを確認。
+- `evaluateDeployment()` が production のみ抽出 → 最新deployment → 最新status の順で
+  明示的に選択し、Previewフォールバックが存在しないことを確認。
+- `github.ts` が実APIフィールド（check-runs: `id`/`app.slug`/`started_at`、
+  statuses: `id`/`creator.login`/`created_at`、deployments: `id`/`created_at`）を
+  取得していること、check-runs が `filter=all`、statuses が combined `/status` ではなく
+  全履歴 `/statuses` を使っていることを確認。
+- 指示が要求した回帰テストは**全12ケースとも存在**する
+  （CI: 古いfailure/pending→最新success、古いsuccess→最新failure/pending、rerun、
+  無関係な名前のvercel、check-run×commit status の重複・競合。
+  Deploy: 古いfailure→最新success、古いsuccess→最新failure/pending、
+  Preview success+Production pending、同一deployment内の新旧、順不同）。
+
+### 再検証で修正した点（本コミット）
+
+REPORT-005 本文の事実誤認を3点修正した。実装コードは変更していない。
+
+1. `npm run lint` の総数: **81 → 80**（実測 66 errors / 14 warnings / 29 files）
+2. step 数: 「16 step」→ workflow.ts 由来 **17 step**（`emit` + `step*` 16個）。
+   ビルド表示は `20 steps`
+3. `verifiedAt` に独立再検証日（2026-09-23）を追記
+
+### 残るリスク（REPORT-005 の記載を再確認。いずれも fail closed）
+
+上記「既知の問題・残るリスク」1〜6はすべて妥当で、方向性も正しい
+（Vercel の `creator.login` / deployment `environment` が想定と異なる場合は
+**誤合格ではなく誤ブロック**に倒れる）。自動公開を有効化する前に、
+実レスポンスで `creator.login` と `environment` を1度確認することを改めて推奨する。
+
+エンドツーエンドの実環境検証（実記事生成・実CI発火・実マージ・実デプロイ）は
+禁止事項のため今回も未実施。これが最大の残リスクである点は変わらない。
