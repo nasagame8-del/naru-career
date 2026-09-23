@@ -29,101 +29,10 @@ export interface VerifiedSource {
 }
 
 // ── URL正規化（純粋関数） ──
-
-/** 追跡パラメータ。根拠URLの同一性判定を邪魔するので落とす */
-const TRACKING_PARAMS = [
-  "utm_source",
-  "utm_medium",
-  "utm_campaign",
-  "utm_term",
-  "utm_content",
-  "utm_id",
-  "gclid",
-  "fbclid",
-  "yclid",
-  "msclkid",
-  "ref",
-  "ref_src",
-  "spm",
-];
-
-/**
- * 出典URLを比較可能な正規形にする。
- *
- * - http/https 以外は null
- * - ホスト名は小文字化し、先頭の www. を落とす
- * - 既定ポートを落とす
- * - 追跡パラメータを落とし、残りのクエリはキー順に並べ替える
- * - フラグメントを落とす
- * - 末尾スラッシュを落とす（ルートを除く）
- *
- * 正規化できない入力では null を返す。
- */
-export function normalizeSourceUrl(raw: string): string | null {
-  if (typeof raw !== "string") return null;
-  const trimmed = raw.trim();
-  if (trimmed === "") return null;
-
-  let u: URL;
-  try {
-    u = new URL(trimmed);
-  } catch {
-    return null;
-  }
-
-  if (u.protocol !== "http:" && u.protocol !== "https:") return null;
-  if (!u.hostname) return null;
-
-  u.hostname = u.hostname.toLowerCase();
-  if (u.hostname.startsWith("www.")) u.hostname = u.hostname.slice(4);
-
-  if ((u.protocol === "http:" && u.port === "80") || (u.protocol === "https:" && u.port === "443")) {
-    u.port = "";
-  }
-
-  for (const p of TRACKING_PARAMS) u.searchParams.delete(p);
-  u.searchParams.sort();
-  u.hash = "";
-
-  let out = u.toString();
-  // 末尾スラッシュはルート以外で落とす
-  if (u.pathname !== "/" && out.endsWith("/")) out = out.slice(0, -1);
-  // クエリが空になった場合の "?" を落とす
-  out = out.replace(/\?$/, "");
-  return out;
-}
-
-/** 一次情報・公的機関とみなすホスト */
-const AUTHORITATIVE_SUFFIXES = [
-  ".go.jp",
-  ".lg.jp",
-  ".ac.jp",
-  ".gov",
-  ".edu",
-  "jil.go.jp",
-  "e-stat.go.jp",
-  "stat.go.jp",
-  "mhlw.go.jp",
-  "meti.go.jp",
-  "soumu.go.jp",
-  "jpx.co.jp",
-  "iso.org",
-  "w3.org",
-  "ietf.org",
-];
-
-/** 公的機関・標準化団体・一次情報かどうか */
-export function isAuthoritativeUrl(url: string): boolean {
-  const normalized = normalizeSourceUrl(url);
-  if (!normalized) return false;
-  let host: string;
-  try {
-    host = new URL(normalized).hostname;
-  } catch {
-    return false;
-  }
-  return AUTHORITATIVE_SUFFIXES.some((s) => host === s.replace(/^\./, "") || host.endsWith(s));
-}
+// URL正規化は純粋モジュールへ分離した（workflowサンドボックスへ
+// OpenAI依存を持ち込まないため）。既存の import 経路は維持する。
+export { normalizeSourceUrl, isAuthoritativeUrl } from "./url";
+import { normalizeSourceUrl, isAuthoritativeUrl } from "./url";
 
 /**
  * 同一URLの出典をまとめる。
@@ -276,7 +185,7 @@ function safeMessage(e: unknown): string {
   return raw.replace(/sk-[A-Za-z0-9_-]{10,}/g, "sk-***").slice(0, 300);
 }
 
-interface SearchOutcome {
+export interface SearchOutcome {
   verified: VerifiedSource[];
   /** 検索結果の要約テキスト（次段の入力に使う） */
   summary: string;
@@ -481,4 +390,92 @@ export async function runResearch(topic: SelectedTopic): Promise<ResearchResult>
     claimMappings,
     searchAvailable: true,
   });
+}
+
+// ── 主張を名指しした追加検索（sources修復用） ──
+
+/**
+ * 特定の主張だけを対象に追加Web検索する。
+ *
+ * `performWebSearch()` と同じ原則で、採用するのは `url_citation`
+ * アノテーションのURLだけ。モデルが本文に書いたURLは無視する。
+ *
+ * QAが「出典がない」と判定した主張を名指しで調べ直すために使う。
+ */
+export async function performClaimSearch(
+  claims: string[],
+  context: { title: string; primaryKeyword: string }
+): Promise<SearchOutcome> {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new ResearchUnavailableError("OPENAI_API_KEY が未設定です");
+  }
+  if (claims.length === 0) return { verified: [], summary: "" };
+
+  const client = new OpenAI();
+
+  let response;
+  try {
+    response = await client.responses.create({
+      model: ARTICLE_FACTORY_MODEL,
+      tools: [{ type: "web_search" }],
+      include: ["web_search_call.action.sources"],
+      instructions: [
+        "あなたは日本語メディアNARU（第二新卒 × IT/Web転職）のファクトチェッカーです。",
+        "与えられた個々の主張について、それを**直接裏付ける**信頼できる出典をWeb検索で探してください。",
+        "",
+        "優先する情報源:",
+        "- 日本の公的機関（厚生労働省・総務省・経済産業省・e-Stat など go.jp / lg.jp）",
+        "- 企業・製品の公式ドキュメント",
+        "- 標準化団体の一次資料",
+        "",
+        "重要:",
+        "- 主張を直接裏付ける資料だけを引用してください。関連はするが裏付けにならない資料は引用しないこと。",
+        "- 裏付けが見つからない主張については、無理に近い資料を挙げず「見つからない」と述べてください。",
+        "- URLを推測で書かないでください。",
+      ].join("\n"),
+      input: [
+        {
+          role: "user",
+          content: [
+            "<article_context>",
+            JSON.stringify(context, null, 1),
+            "</article_context>",
+            "<claims_to_verify>",
+            ...claims.map((c, i) => `${i + 1}. ${c}`),
+            "</claims_to_verify>",
+            "",
+            "各主張について、直接裏付ける出典があるか調べてください。",
+          ].join("\n"),
+        },
+      ],
+    });
+  } catch (e) {
+    throw new ResearchUnavailableError(`追加検索に失敗しました: ${safeMessage(e)}`);
+  }
+
+  const verified: VerifiedSource[] = [];
+  const seen = new Set<string>();
+  const textParts: string[] = [];
+
+  for (const item of response.output ?? []) {
+    if (item.type !== "message") continue;
+    for (const content of item.content ?? []) {
+      if (content.type !== "output_text") continue;
+      textParts.push(content.text);
+
+      for (const annotation of content.annotations ?? []) {
+        if (annotation.type !== "url_citation") continue;
+        const normalized = normalizeSourceUrl(annotation.url);
+        if (!normalized || seen.has(normalized)) continue;
+        seen.add(normalized);
+        verified.push({
+          title: annotation.title || normalized,
+          url: normalized,
+          authoritative: isAuthoritativeUrl(normalized),
+        });
+      }
+    }
+  }
+
+  return { verified, summary: textParts.join("\n\n") };
 }
