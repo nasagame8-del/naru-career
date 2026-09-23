@@ -25,10 +25,20 @@ import { isAutoPublishAuthorized } from "./config";
 import { readInventory } from "./inventory";
 import { runOutline, runWrite, runInternalLinks } from "./generation";
 import { runResearch } from "./research";
+// 純粋な判定・適用ロジックのみ workflow 本体へ import する。
+// planSourceRepair（OpenAI依存）は step の内部でのみ使うため、
+// 別モジュール source-repair-planner から取り込む。
+import {
+  applyRepairPlan,
+  decideRepairAction,
+  MAX_SOURCE_REPAIR_ATTEMPTS,
+} from "./source-repair";
+import { planSourceRepair } from "./source-repair-planner";
 import { buildArticleMarkdown, buildImagePlan } from "./markdown";
 import {
   canAutoPublish,
   checkCannibalization,
+  extractInternalLinkPaths,
   runQa,
   type ExistingArticleRef,
 } from "./safety";
@@ -201,6 +211,64 @@ async function stepQa(
     // build未実行として扱う。QAはこれを NEEDS_REVIEW とし、自動公開を止める。
     buildPassed: null,
   });
+}
+
+/**
+ * sources 由来のQA FAILを修復する。
+ *
+ * 追加Web検索とLLM呼び出しを伴うため **必ず step 側**で実行する。
+ * 返すのはプレーンなJSONのみ。
+ */
+/**
+ * 修復後の内部リンクを機械的に再検証する。
+ *
+ * 実在しない内部リンクはリンク記法を外してテキストへ戻す。
+ * LLMは使わない（修復で本文が変わったことによるリンク破壊だけを見る）。
+ */
+async function stepRevalidateLinks(
+  draft: ArticleDraft,
+  knownPaths: string[]
+): Promise<ArticleDraft> {
+  "use step";
+  const allowed = new Set(knownPaths);
+  const body = draft.body.replace(
+    /\[([^\]]*?)\]\((\/[^)\s]*)\)/g,
+    (match, text: string, path: string) => (allowed.has(path.split(/[?#]/)[0]) ? match : text)
+  );
+  const internalLinks = extractInternalLinkPaths(body).filter((p) => allowed.has(p));
+  return { ...draft, body, internalLinks, charCount: body.length };
+}
+
+async function stepRepairSources(
+  claims: string[],
+  draft: ArticleDraft,
+  research: ResearchResult,
+  context: { title: string; primaryKeyword: string }
+): Promise<{
+  body: string;
+  research: ResearchResult;
+  citationsAdded: number;
+  editsApplied: number;
+  claimsDropped: number;
+  resolvedClaims: string[];
+  rejected: string[];
+  searchError: string | null;
+}> {
+  "use step";
+  try {
+    const planned = await planSourceRepair({ claims, body: draft.body, context });
+    const applied = applyRepairPlan({
+      body: draft.body,
+      research,
+      plan: planned.plan,
+      verifiedUrls: planned.verifiedUrls,
+      targetClaims: claims,
+      retrievedAt: new Date().toISOString().slice(0, 10),
+    });
+    return { ...applied, searchError: planned.searchError };
+  } catch (e) {
+    throw classifyLlmError(e, "出典修復フェーズ");
+  }
 }
 
 async function stepCreatePr(
@@ -409,69 +477,136 @@ export async function newArticleWorkflow(topic: SelectedTopic): Promise<ArticleR
 
   // 3. research
   await emit(phaseEvent("research", "running", "調査しています"));
-  const research = await stepResearch(topic);
+  const researchResult = await stepResearch(topic);
   await emit(
-    phaseEvent("research", "done", `出典 ${research.sources.length} 件を確保しました`)
+    phaseEvent("research", "done", `出典 ${researchResult.sources.length} 件を確保しました`)
   );
 
   // 4. outline
   await emit(phaseEvent("outline", "running", "構成を作成しています"));
-  const outline = await stepOutline(topic, research);
+  const outline = await stepOutline(topic, researchResult);
   await emit(phaseEvent("outline", "done", `${outline.sections.length} 節の構成ができました`));
 
   // 5. write
   await emit(phaseEvent("write", "running", "執筆しています"));
-  const written = await stepWrite(topic, outline, research);
+  const written = await stepWrite(topic, outline, researchResult);
   await emit(phaseEvent("write", "done", `${written.charCount} 字の下書きができました`));
 
   // 6. internal-links
   await emit(phaseEvent("internal-links", "running", "内部リンクを追加しています"));
-  const draft = await stepInternalLinks(written, inventory.knownPaths);
+  const linkedDraft = await stepInternalLinks(written, inventory.knownPaths);
   await emit(
-    phaseEvent("internal-links", "done", `内部リンク ${draft.internalLinks.length} 本を追加しました`)
+    phaseEvent("internal-links", "done", `内部リンク ${linkedDraft.internalLinks.length} 本を追加しました`)
   );
 
   // 7. image-plan
   await emit(phaseEvent("image-plan", "running", "画像プランを作成しています"));
-  const imagePlan = await stepImagePlan(topic, draft, research);
+  const imagePlan = await stepImagePlan(topic, linkedDraft, researchResult);
   await emit(phaseEvent("image-plan", "done", "画像プランを作成しました（画像生成は行いません）"));
 
   // 変更セットを組み立てる
-  const articlePath = `content/articles/${draft.slug}.md`;
+  const articlePath = `content/articles/${linkedDraft.slug}.md`;
   const imagePlanPath = `${ARTICLE_RUN_DIR}/${runId}-image-plan.md`;
   const changes: ArticleChange[] = [
-    { path: articlePath, operation: "CREATE", content: buildArticleMarkdown(draft) },
+    { path: articlePath, operation: "CREATE", content: buildArticleMarkdown(linkedDraft) },
     { path: imagePlanPath, operation: "CREATE", content: imagePlan },
   ];
 
   // 8. qa
   await emit(phaseEvent("qa", "running", "QAを実行しています"));
-  const qa = await stepQa(
-    draft,
-    research,
+  const initialQa = await stepQa(
+    linkedDraft,
+    researchResult,
     inventory,
     changes.map((c) => c.path)
   );
   await emit(
-    phaseEvent("qa", "done", `QA総合判定: ${qa.overall}（指摘 ${qa.issues.length} 件）`)
+    phaseEvent("qa", "running", `QA総合判定: ${initialQa.overall}（指摘 ${initialQa.issues.length} 件）`)
   );
 
-  // QAでFAILが出た場合はPRも作らずに停止する
-  const fails = qa.issues.filter((i) => i.verdict === "FAIL");
-  if (fails.length > 0) {
-    const reason = `QAでFAILが${fails.length}件あります — ${fails
-      .slice(0, 3)
-      .map((i) => `${i.category}: ${i.message}`)
-      .join(" / ")}`;
-    await emit({
-      type: "blocked",
-      phase: "qa",
-      reason,
-      code: "QA_FAIL",
-      at: new Date().toISOString(),
+  // ── QA判定と、sources限定の自動修復ループ ──
+  //
+  // sources 以外の FAIL があれば従来どおり即停止する。
+  // sources だけが FAIL の場合に限り、追加検索と本文修正で修復を試みる。
+  // 修復は最大 MAX_SOURCE_REPAIR_ATTEMPTS 回。上限に達したらPRを作らず停止する。
+  let qa = initialQa;
+  let draft = linkedDraft;
+  let research = researchResult;
+  let repairAttempts = 0;
+
+  for (;;) {
+    const decision = decideRepairAction(qa, research, repairAttempts);
+
+    if (decision.action === "proceed") break;
+
+    if (decision.action === "stop") {
+      await emit({
+        type: "blocked",
+        phase: "qa",
+        reason: decision.reason,
+        code: decision.code,
+        at: new Date().toISOString(),
+      });
+      return { runId, slug: draft.slug, status: "blocked", reason: decision.reason, qa, publish: null };
+    }
+
+    // decision.action === "repair"
+    repairAttempts = decision.attempt;
+    await emit(
+      phaseEvent(
+        "qa",
+        "running",
+        `出典の自動修復を試みています（${repairAttempts}/${MAX_SOURCE_REPAIR_ATTEMPTS}回目・対象 ${decision.claims.length} 件）`
+      )
+    );
+
+    const repaired = await stepRepairSources(decision.claims, draft, research, {
+      title: topic.title,
+      primaryKeyword: topic.primaryKeyword,
     });
-    return { runId, slug: draft.slug, status: "blocked", reason, qa, publish: null };
+
+    await emit(
+      phaseEvent(
+        "qa",
+        "running",
+        `修復${repairAttempts}回目: 引用追加 ${repaired.citationsAdded} 件 / 本文修正 ${repaired.editsApplied} 件 / 主張取り下げ ${repaired.claimsDropped} 件` +
+          (repaired.rejected.length > 0 ? ` / 却下 ${repaired.rejected.length} 件` : "") +
+          (repaired.searchError ? ` / 追加検索エラー: ${repaired.searchError}` : "")
+      )
+    );
+
+    draft = { ...draft, body: repaired.body, charCount: repaired.body.length };
+    research = repaired.research;
+
+    // 修復後は内部リンク・frontmatter・安全判定・出典判定をすべて再実行する
+    draft = await stepRevalidateLinks(draft, inventory.knownPaths);
+    qa = await stepQa(
+      draft,
+      research,
+      inventory,
+      changes.map((c) => c.path)
+    );
+    await emit(
+      phaseEvent("qa", "running", `再QA（修復${repairAttempts}回目）: ${qa.overall}（指摘 ${qa.issues.length} 件）`)
+    );
   }
+
+  // 修復後の本文を変更セットへ反映する
+  changes[0] = {
+    path: articlePath,
+    operation: "CREATE",
+    content: buildArticleMarkdown(draft),
+  };
+
+  await emit(
+    phaseEvent(
+      "qa",
+      "done",
+      repairAttempts > 0
+        ? `QA PASS（出典修復 ${repairAttempts} 回で解消）`
+        : "QA PASS"
+    )
+  );
 
 
   // 9. create-pr
