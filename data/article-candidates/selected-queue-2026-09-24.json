@@ -1,20 +1,22 @@
 {
   "selectedAt": "2026-09-24",
   "batchId": "batch_2026-09-23_d150b383",
-  "status": "WAITING_FOR_AUTHORIZED_START",
+  "status": "FIRST_START_REPORTED_BY_USER",
   "items": [
     {
       "order": 1,
       "candidateId": "cand_60af5f6a",
       "slug": "second-new-grad-it-interview-questions",
-      "runId": null
+      "runId": null,
+      "status": "START_REPORTED_RUN_ID_UNCONFIRMED"
     },
     {
       "order": 2,
       "candidateId": "cand_f6955bc3",
       "slug": "second-new-grad-it-job-posting-checklist",
-      "runId": null
+      "runId": null,
+      "status": "WAITING_FOR_FIRST_ARTICLE"
     }
   ],
-  "note": "User selected items 1 and 2 from the four remaining choices. Start sequentially: the start endpoint computes nextArticleId from current inventory; do not start both concurrently. No production API call succeeded at queue time."
+  "note": "User reported clicking start for first candidate. No runId or PR observed yet; do not start it again. Second remains unstarted; start sequentially after first article reaches a safe distinct inventory state."
 }
