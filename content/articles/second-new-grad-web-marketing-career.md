@@ -47,6 +47,8 @@ note_published: false
 
 <a href="/articles/what-is-web-industry">Webマーケター</a>は、Webを活用して認知、集客、問い合わせ、購入などの成果を増やす仕事です。厚生労働省の職業情報提供サイトでも、Webマーケティングはネット広告や販売促進に関わる職業として紹介されています（参考：[job tag Webマーケティング](https://shigoto.mhlw.go.jp/User/Occupation/Detail/240)）。
 
+![Webマーケターの主な業務領域（SEO・広告運用・SNS・CRM／MA・データ分析）](/images/articles/second-new-grad-web-marketing-career-01.webp)
+
 主な業務は次のように分かれます。
 
 - SEO：検索エンジン経由の流入を増やす
@@ -165,6 +167,8 @@ Webマーケター未経験の場合、特に評価されやすいのは次の4�
 
 未経験からWebマーケターを目指すなら、3〜6ヶ月で「基礎学習」と「提出できるアウトプット」を作るのがおすすめです。
 
+![未経験からWebマーケターへ応募するまでの3〜6ヶ月準備ロードマップ](/images/articles/second-new-grad-web-marketing-career-02.webp)
+
 1ヶ月目は、Webマーケティングの全体像を理解します。SEO、広告、SNS、CRM、GA4の違いをざっくり把握し、気になる求人を20〜30件見て、求められるスキルを書き出します。
 
 2ヶ月目は、GA4と表計算ツールに触れます。Google公式の使い方ガイドやアカデミーを見ながら、指標の意味を覚え、簡単なレポートを作ります。
@@ -192,6 +196,8 @@ Webマーケター未経験の場合、特に評価されやすいのは次の4�
 ## 求人の見極め方：『未経験歓迎』の裏読みとチェックリスト
 
 「未経験歓迎」は魅力的な言葉ですが、内容は求人によって大きく異なります。応募前には、仕事内容と条件を必ず確認しましょう。
+
+![未経験歓迎のWebマーケティング求人で確認する5項目](/images/articles/second-new-grad-web-marketing-career-03.webp)
 
 特に見るべきポイントは次の通りです。
 
