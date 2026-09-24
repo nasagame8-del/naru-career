@@ -1,0 +1,30 @@
+name: Article Factory No-API Validation
+
+on:
+  pull_request:
+    paths:
+      - "src/app/internal/api/article-factory/**"
+      - "src/app/api/cron/article-candidates/**"
+      - "src/app/internal/dashboard/article-factory/**"
+      - "src/lib/article-factory/**"
+      - "vercel.json"
+      - "docs/article-factory/**"
+      - ".github/workflows/article-factory-no-api-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  article-factory-no-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npx tsc --noEmit
+      - run: npm run build

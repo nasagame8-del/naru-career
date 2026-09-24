@@ -1,70 +1,23 @@
 /**
- * 毎日の新規記事候補生成（Vercel Cron）。
- *
- * スケジュール: vercel.json に `0 23 * * *`（UTC）= 08:00 JST
- *
- * 認証:
- *   Vercel Cron は `Authorization: Bearer ${CRON_SECRET}` を送る。
- *   CRON_SECRET が未設定なら**常に拒否**する（fail closed）。
- *
- * このルートを /internal 配下に置かない理由:
- *   /internal/* は Basic 認証で保護されており、Vercel Cron は
- *   Basic 認証情報を送れないため。代わりに Bearer で独立に保護する。
+ * API課金ゼロ運用: 旧Vercel CronのLLM候補生成を停止する。
+ * vercel.jsonから呼び出しスケジュールも削除するが、
+ * 旧スケジュールや手動HTTPアクセスが残った場合もOpenAI APIを呼ばない。
  */
-
 import { NextResponse, type NextRequest } from "next/server";
-import { generateCandidateBatch } from "@/lib/article-factory/candidates";
-import {
-  describeStore,
-  getCandidateBatchStore,
-  StorageUnavailableError,
-} from "@/lib/article-factory/storage";
 import { isValidCronAuth } from "@/lib/article-factory/safety";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 180;
 
 export async function GET(request: NextRequest) {
   if (!isValidCronAuth(request.headers.get("authorization"), process.env.CRON_SECRET)) {
-    // 認証失敗の理由は返さない（secretの有無を推測させない）
     return new NextResponse("Unauthorized", { status: 401 });
   }
-
-  let store;
-  try {
-    store = getCandidateBatchStore();
-  } catch (e) {
-    if (e instanceof StorageUnavailableError) {
-      // 本番で永続保存が用意できないならメモリへ落とさず失敗させる
-      return NextResponse.json(
-        { ok: false, error: `候補バッチの保存先を用意できません — ${e.message}`, reasons: e.reasons },
-        { status: 503 }
-      );
-    }
-    throw e;
-  }
-
-  try {
-    const batch = await generateCandidateBatch({ trigger: "cron" });
-    await store.save(batch);
-
-    const storage = describeStore(store);
-    return NextResponse.json({
-      ok: true,
-      batchId: batch.batchId,
-      generatedAt: batch.generatedAt,
-      candidateCount: batch.candidates.length,
-      usableCount: batch.candidates.filter((c) => !c.blocked).length,
-      storage,
-      notes: batch.notes,
-    });
-  } catch (e) {
-    return NextResponse.json(
-      {
-        ok: false,
-        error: e instanceof Error ? e.message.slice(0, 300) : "候補生成に失敗しました",
-      },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json(
+    {
+      ok: false,
+      code: "ARTICLE_FACTORY_CHATGPT_ONLY",
+      error: "有料APIによる候補生成は停止しました。候補はChatGPTの毎朝の定期タスクで作成します。",
+    },
+    { status: 410, headers: { "Cache-Control": "no-store" } }
+  );
 }

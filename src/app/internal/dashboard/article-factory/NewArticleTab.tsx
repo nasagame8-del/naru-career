@@ -56,6 +56,7 @@ export function NewArticleTab() {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [copyNotice, setCopyNotice] = useState<string | null>(null);
 
   const [runId, setRunId] = useState<string | null>(null);
   const [phases, setPhases] = useState<PhaseMap>(emptyPhases);
@@ -95,27 +96,11 @@ export function NewArticleTab() {
   }, []);
 
   const generateCandidates = useCallback(async () => {
+    // 候補はChatGPTの定期タスクがGitHubへ保存する。旧APIのPOSTは呼ばない。
     setGenerating(true);
-    setError(null);
-    try {
-      const res = await fetch("/internal/api/article-factory/candidates", {
-        method: "POST",
-      });
-      const data = (await res.json()) as CandidatesResponse;
-      setStorage(data.storage ?? null);
-      if (!data.ok) {
-        setError(
-          [data.error ?? "候補生成に失敗しました", ...(data.reasons ?? [])].join("\n")
-        );
-        return;
-      }
-      setBatch(data.batch);
-    } catch {
-      setError("候補生成に失敗しました");
-    } finally {
-      setGenerating(false);
-    }
-  }, []);
+    await loadCandidates();
+    setGenerating(false);
+  }, [loadCandidates]);
 
   // ── 進捗ストリームへの接続（再接続にも使う） ──
 
@@ -228,36 +213,15 @@ export function NewArticleTab() {
     async (candidate: ArticleCandidate) => {
       if (!batch) return;
       setError(null);
+      const selection = `NARU新規記事の候補を選択：batchId=${batch.batchId}、candidateId=${candidate.id}、タイトル「${candidate.title}」。OpenAI APIとGPT Workは使わず、通常のChatGPTで記事作成・GitHub PR・Drive画像プロンプトまで進めてください。`;
       try {
-        const res = await fetch("/internal/api/article-factory/start", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ batchId: batch.batchId, candidateId: candidate.id }),
-        });
-        const data = (await res.json()) as {
-          ok: boolean;
-          runId?: string;
-          error?: string;
-          reasons?: string[];
-        };
-        if (!data.ok || !data.runId) {
-          setError(
-            [data.error ?? "実行を開始できませんでした", ...(data.reasons ?? [])].join("\n")
-          );
-          return;
-        }
-        setRunId(data.runId);
-        try {
-          localStorage.setItem(RUN_STORAGE_KEY, data.runId);
-        } catch {
-          /* localStorage が使えなくても実行は継続する */
-        }
-        connect(data.runId);
+        await navigator.clipboard.writeText(selection);
+        setCopyNotice("候補をコピーしました。朝のChatGPT記事候補の会話に貼り付けて送信してください。");
       } catch {
-        setError("実行を開始できませんでした");
+        setCopyNotice(`コピーができませんでした。ChatGPTに次を送ってください：${selection}`);
       }
     },
-    [batch, connect]
+    [batch]
   );
 
   const clearRun = useCallback(() => {
@@ -281,8 +245,8 @@ export function NewArticleTab() {
         <div>
           <h2 className="text-lg font-semibold text-gray-900">新規記事オートパイロット</h2>
           <p className="mt-1 text-sm text-gray-500">
-            既存記事と重複しない新しい記事を提案し、選ぶだけで調査・執筆・QA・PR作成まで進みます。
-            ブラウザを閉じても実行は継続します。
+            候補作成・調査・執筆は通常のChatGPTで行います。OpenAI APIとGPT Workを使う旧自動生成は停止しました。
+            候補をコピーしてChatGPTの会話で選択してください。下の実行状況は旧ワークフローの履歴です。
           </p>
         </div>
         <button
@@ -290,7 +254,7 @@ export function NewArticleTab() {
           disabled={generating}
           className="shrink-0 rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
         >
-          {generating ? "生成中…" : "候補を生成"}
+          {generating ? "更新中…" : "保存済み候補を更新"}
         </button>
       </header>
 
@@ -298,6 +262,12 @@ export function NewArticleTab() {
         <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
           <span className="font-medium">保存先の注意: </span>
           {storage.warning}
+        </div>
+      )}
+
+      {copyNotice && (
+        <div className="whitespace-pre-line rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+          {copyNotice}
         </div>
       )}
 
@@ -389,7 +359,7 @@ export function NewArticleTab() {
       ) : !batch ? (
         <div className="rounded-lg border border-dashed border-gray-300 px-6 py-10 text-center">
           <p className="text-sm text-gray-500">
-            候補がまだありません。「候補を生成」を押すか、毎日 08:00（JST）の自動生成をお待ちください。
+            候補がまだありません。毎朝08:00のChatGPT通知から候補を選択してください。
           </p>
         </div>
       ) : (
@@ -415,7 +385,7 @@ export function NewArticleTab() {
               <CandidateCard
                 key={c.id}
                 candidate={c}
-                disabled={Boolean(runId)}
+                disabled={false}
                 onSelect={() => startRun(c)}
               />
             ))}
@@ -519,7 +489,7 @@ function CandidateCard({
           disabled={disabled || unusable}
           className="rounded-md bg-gray-900 px-3 py-1.5 text-xs font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
         >
-          この記事を作る
+          候補をコピー
         </button>
       </div>
     </article>
