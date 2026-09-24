@@ -1,0 +1,114 @@
+{
+  "batchId": "batch_2026-09-25_chatgpt",
+  "generatedAt": "2026-09-24T23:06:50.090Z",
+  "trigger": "manual",
+  "candidates": [
+    {
+      "id": "cand_250925a1",
+      "title": "第二新卒のIT/Web転職にポートフォリオは必要？職種別に準備すべき成果物と見せ方",
+      "primaryKeyword": "第二新卒 IT転職 ポートフォリオ",
+      "secondaryKeywords": [
+        "未経験 IT転職 ポートフォリオ",
+        "Webマーケター ポートフォリオ 未経験",
+        "第二新卒 IT転職 成果物"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "プログラミング転職記事は職種参入の道筋、職務経歴書記事は経歴の記述方法が中心。本記事はエンジニア・Webデザイナー・Webマーケター・IT営業ごとに制作物や成果の代替資料を整理する。",
+      "reasonToWriteNow": "既存の職種紹介から応募準備に進む実務記事が不足しているため。検索量データは未取得。",
+      "proposedSlug": "second-new-grad-it-portfolio-guide",
+      "nearestExistingSlugs": [
+        "second-new-grad-programming-career-change",
+        "resume-writing-second-new-grad"
+      ],
+      "category": "業界解説",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_250925a2",
+      "title": "第二新卒でIT企業のカスタマーサクセスに転職するには？仕事内容・営業との違い・求人の見方",
+      "primaryKeyword": "第二新卒 カスタマーサクセス 転職",
+      "secondaryKeywords": [
+        "カスタマーサクセス 未経験 第二新卒",
+        "IT カスタマーサクセス 仕事内容",
+        "SaaS カスタマーサクセス 転職"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "IT転職総論とAIO法人営業の体験記事に対し、導入支援・定着支援・継続利用などCS職の役割と営業職との違い、未経験求人の見方に絞る。以前のSaaS営業候補とは別職種に限定する。",
+      "reasonToWriteNow": "NARUの非エンジニア職紹介にCS職の独立した導線がないため。検索量データは未取得。",
+      "proposedSlug": "second-new-grad-it-customer-success-career",
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "aio-seo-industry-inside"
+      ],
+      "category": "業界解説",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_250925a3",
+      "title": "第二新卒で社内SE・情報システム担当を目指すには？ヘルプデスクとの違いと未経験求人の確認点",
+      "primaryKeyword": "第二新卒 社内SE 未経験 転職",
+      "secondaryKeywords": [
+        "社内SE 第二新卒",
+        "情シス 未経験 転職",
+        "ヘルプデスク 社内SE 違い"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "IT業界転職総論やSESの働き方紹介と異なり、事業会社の社内IT部門における職務範囲、ヘルプデスク・社内SE・情シスの違い、募集条件の読み方に特化する。",
+      "reasonToWriteNow": "既存の技術職案内では社内IT部門の選択肢を詳しく扱っていないため。検索量データは未取得。",
+      "proposedSlug": "second-new-grad-inhouse-se-career",
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "ses-explained"
+      ],
+      "category": "業界解説",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_250925a4",
+      "title": "第二新卒からWebディレクターを目指すには？未経験で確認したい仕事内容とキャリアの入口",
+      "primaryKeyword": "第二新卒 Webディレクター 未経験",
+      "secondaryKeywords": [
+        "Webディレクター 未経験 転職",
+        "第二新卒 Web業界 職種",
+        "Webディレクター 仕事内容"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "既存のWeb業界全体ガイドではなく、進行管理・要件整理・制作チームとの調整を担うWebディレクター職の仕事内容、入口となる職歴・求人表記の見極めを掘り下げる。",
+      "reasonToWriteNow": "Web業界の職種ごとの応募準備を深める独立記事が不足しているため。検索量データは未取得。",
+      "proposedSlug": "second-new-grad-web-director-career",
+      "nearestExistingSlugs": [
+        "what-is-web-industry",
+        "web-industry-guide"
+      ],
+      "category": "業界解説",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "inventorySize": 39,
+  "nextArticleId": 40,
+  "notes": [
+    "ChatGPT会話で手動リカバリー。OpenAI APIは未使用。Search Consoleの当日データは未取得のためsearchEvidenceはすべてnull。",
+    "前回選定済みの求人票チェックリストは未着手として重複候補から除外。2026-09-23の旧Webマーケティング候補は既に公開済みとして除外。",
+    "本バッチに基づく2本の制作開始前に旧選定キューとの記事ID衝突を確認する。"
+  ]
+}
