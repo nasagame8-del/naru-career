@@ -11,14 +11,26 @@ afterEach(async () => {
   await Promise.all(directories.splice(0).map((dir) => rm(dir, { recursive: true, force: true })));
 });
 
+/**
+ * sharp にファイルパスを渡すと、内部キャッシュがそのファイルを開いたまま保持し、
+ * Windowsでは後片付けの `rm` が EBUSY で失敗する。
+ * テスト側では常にバッファ経由で読み書きし、パスを sharp に渡さない。
+ */
+async function readMetadata(file) {
+  return await sharp(await readFile(file)).metadata();
+}
+
 async function fixture() {
   const dir = await mkdtemp(path.join(os.tmpdir(), "naru-image-test-"));
   directories.push(dir);
   const inputs = {};
   for (const [i, slot] of ["card", "01", "02", "03"].entries()) {
     const file = path.join(dir, `${slot}.png`);
-    await sharp({ create: { width: 80, height: 60, channels: 3,
-      background: { r: 20 + i, g: 60, b: 100 } } }).png().toFile(file);
+    // toFile() ではなく toBuffer() + writeFile() にして、
+    // 生成直後に sharp がファイルを掴んだままにならないようにする。
+    const png = await sharp({ create: { width: 80, height: 60, channels: 3,
+      background: { r: 20 + i, g: 60, b: 100 } } }).png().toBuffer();
+    await writeFile(file, png);
     inputs[slot] = file;
   }
   return { dir, inputs, outputDir: path.join(dir, "out") };
@@ -30,7 +42,7 @@ describe("four-image preparation", () => {
     const result = await prepareArticleImages({ ...opts, slug: "sample-article" });
     assert.deepEqual(result.map((entry) => entry.slot), ["card", "01", "02", "03"]);
     for (const entry of result) {
-      const metadata = await sharp(entry.file).metadata();
+      const metadata = await readMetadata(entry.file);
       assert.equal(metadata.format, "webp");
       assert.deepEqual([metadata.width, metadata.height], entry.slot === "card" ? [1200, 630] : [1200, 675]);
       for (const key of ["exif", "xmp", "iptc", "icc", "comments"]) assert.equal(metadata[key], undefined);
