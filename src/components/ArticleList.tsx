@@ -21,9 +21,9 @@ export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
             className="flex gap-4 py-5 group transition-colors hover:bg-bg-soft -mx-3 px-3 rounded"
           >
             <div className="w-[120px] sm:w-[200px] aspect-card shrink-0 rounded overflow-hidden relative bg-line">
-              {article.hasCardImage ? (
+              {article.cardImagePath ? (
                 <Image
-                  src={`/images/articles/${article.slug}-card.png`}
+                  src={article.cardImagePath}
                   alt={`${article.title}｜${article.category}記事のサムネイル画像`}
                   fill
                   className="object-cover"

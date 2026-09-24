@@ -174,7 +174,11 @@ export async function GET() {
     const hasExperience = /experience-notes|実体験|僕[はがの]|前職/i.test(content);
     const hasComparisonTable = /comparison-table|ComparisonTable|COMPARISON_TABLE/i.test(content) || (data.widgets?.some((w: { type: string }) => w.type === "comparison-table") ?? false);
     const hasAuthoritativeSource = /厚生労働省|経済産業省|出典|参考：|参照：|調査[）)]/i.test(content);
-    const hasImage = fs.existsSync(path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`));
+    const hasImage = ["webp", "png"].some((extension) =>
+      fs.existsSync(
+        path.join(process.cwd(), "public", "images", "articles", `${slug}-card.${extension}`)
+      )
+    );
     const hasUpdateHistory = (data.updateHistory?.length || 0) > 0;
     return {
       slug,

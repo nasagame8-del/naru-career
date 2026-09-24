@@ -36,9 +36,9 @@ export default function Home() {
                   className="group block bg-white rounded-lg overflow-hidden border border-line hover:shadow-lg transition-all duration-150 hover:-translate-y-0.5"
                 >
                   <div className="aspect-card relative bg-line overflow-hidden">
-                    {article.hasCardImage ? (
+                    {article.cardImagePath ? (
                       <Image
-                        src={`/images/articles/${article.slug}-card.png`}
+                        src={article.cardImagePath}
                         alt={`${article.title}｜${article.category}記事のサムネイル画像`}
                         fill
                         className="object-cover"
