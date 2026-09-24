@@ -122,7 +122,9 @@ describe("buildImagePlan", () => {
     expect(plan).toContain("test-slug");
     expect(plan).toContain("画像生成APIは呼ばない");
     expect(plan).toContain("計4枚");
-    expect(plan).toContain("人間がChatGPTへ");
+    expect(plan).toContain("ユーザーは上記4プロンプト");
+    expect(plan).toContain("image-prompts.md");
+    expect(plan).toContain("npm run image:prepare:all");
     expect(plan).toContain("上書きしない");
     expect(plan.match(/^## 画像\d/gm)).toHaveLength(4);
     expect(plan).toContain("test-slug-card.webp");
@@ -130,7 +132,7 @@ describe("buildImagePlan", () => {
     expect(plan).toContain("test-slug-02.webp");
     expect(plan).toContain("test-slug-03.webp");
     expect(plan).toContain("EXIF・XMP・ICC");
-    expect(plan).toContain("AIロゴや透かし");
+    expect(plan).toContain("ロゴ・透かし");
   });
 
   it("見出しを行として含める", () => {

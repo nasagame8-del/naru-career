@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run",
+    "test": "vitest run && node --test scripts/prepare-article-images.test.mjs",
     "test:watch": "vitest",
-    "image:prepare": "node scripts/prepare-article-image.mjs"
+    "image:prepare": "node scripts/prepare-article-image.mjs",
+    "image:prepare:all": "node scripts/prepare-article-images.mjs",
+    "test:images": "node --test scripts/prepare-article-images.test.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^6.1.0",

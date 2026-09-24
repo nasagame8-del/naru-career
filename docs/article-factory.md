@@ -1,5 +1,9 @@
 # 新規記事オートパイロット（Article Factory）
 
+候補選択と画像4枚の制作だけをユーザー操作とする記事運用は
+[`article-factory-two-touch.md`](./article-factory-two-touch.md) を参照してください。
+画像受領以降の会話エージェントの作業と、サーバー側で未実装の連結境界を明記しています。
+
 既存の SEO Editor（リライト用）とは**独立した別ドメイン**です。
 SEO Editor の署名・QA・publish block・GitHub安全策には一切手を入れていません。
 

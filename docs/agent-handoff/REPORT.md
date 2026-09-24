@@ -1,5 +1,22 @@
 # Claude Code Report
 
+## REPORT-007 — 記事画像4枚のDrive受け渡し
+
+- reportId: `REPORT-007`
+- completedInstructionId: `USER-TWO-TOUCH-2026-09-24`
+- status: `BLOCKED`（新規記事PRでの画像受領から公開まで未検証）
+- branch: `feature/article-factory-two-touch-flow`
+- pr: `#21`（Draft、master未マージ）
+- 実施内容: 記事ごとのDriveに `image-prompts.md` と `images/` を用意する手順、4枚のWebP変換・メタデータ除去・上書き防止、生成画像プランのDrive案内を追加。PR作成イベントによる受け渡し準備と、Openな記事PRのDrive画像を定期確認するタスクを設定した。記事38の既存Drive画像1枚について読み取り可能なファイル参照を確認。
+- テスト結果: `npm test` 232件pass、`npx tsc --noEmit` exit 0、変更したJS/TSファイルのESLint exit 0。PR #21のVercel commit statusはsuccess。
+- 変更ファイル: `docs/article-factory-two-touch.md`, `docs/article-factory.md`, `package.json`, `scripts/prepare-article-images.mjs`, `scripts/prepare-article-images.test.mjs`, `src/lib/article-factory/markdown.ts`, `src/lib/article-factory/markdown.test.ts`, 本レポート。
+- git diff概要: 画像準備スクリプトとテスト、画像プランとDrive手順の更新、運用結果の記録。記事本文と本番設定は無変更。
+- 既知の問題: 画像4枚のDriveダウンロード→バイナリPR書き込み→Preview実ブラウザ監査→Production確認は実記事で通し検証していない。定期確認は最大毎時であり、Drive webhookやVercel Workflowへの無人連結ではない。作業ブランチは本番へ未反映。
+- 判断が必要な項目: 次の記事PRでの実測前に安全ゲートを緩めないこと。Draft PRのレビューと統合は別途必要。
+- 推奨する次の作業: PR #21のレビュー、実際の次の記事でDrive画像4枚を使う経路を検証し、失敗箇所を修正する。全ゲートの成功が確認できるまで自動公開完了と報告しない。
+
+---
+
 ## REPORT-006 — Article Factory API cost controls
 
 - reportId: `REPORT-006`
