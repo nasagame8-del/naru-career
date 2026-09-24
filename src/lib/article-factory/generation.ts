@@ -20,6 +20,7 @@ import {
   enumStr,
 } from "@/lib/seo-editor/openai";
 import { ARTICLE_FACTORY_MODEL, ARTICLE_FACTORY_MODEL_LIGHT, LIMITS } from "./config";
+import { normalizeArticleBody } from "./markdown";
 import { allowedPersonaFacts, extractInternalLinkPaths } from "./safety";
 import type {
   ArticleDraft,
@@ -163,6 +164,7 @@ export async function runWrite(
 構成に沿って記事本文を書いてください。
 
 - body は frontmatter を**含めない** Markdown 本文のみ。
+- body を \`<body>\` / \`<html>\` / \`<head>\` などの文書タグやコードフェンスで囲まない。
 - 見出しは ## / ### を使う。# は使わない。
 - この段階では内部リンクを入れない（次のフェーズで追加する）。
 - 外部リンクは与えられた出典URLのみ。それ以外のURLを書かない。
@@ -202,12 +204,14 @@ export async function runWrite(
     ...(data.naruPoint && data.naruPoint.trim() !== "" ? { naruPoint: data.naruPoint } : {}),
   };
 
+  const body = normalizeArticleBody(data.body);
+
   return {
     slug: topic.slug,
     frontmatter,
-    body: data.body,
+    body,
     internalLinks: [],
-    charCount: data.body.length,
+    charCount: body.length,
   };
 }
 
@@ -252,11 +256,12 @@ export async function runInternalLinks(
 - 一覧に無いパスを書かない。外部URLを追加しない。
 - 最大 ${LIMITS.maxInternalLinks} 本まで。文脈に合う箇所にだけ入れる。
 - 本文の内容は変えない。リンクの挿入のみ行う。
+- 返却する body を \`<body>\` / \`<html>\` / \`<head>\` で囲まない。
 - addedLinks には追加したパスを列挙する。`,
     input: [
-      "<body>",
+      "<article_body>",
       draft.body,
-      "</body>",
+      "</article_body>",
       "<allowed_paths>",
       JSON.stringify(knownPaths, null, 1),
       "</allowed_paths>",
@@ -267,7 +272,7 @@ export async function runInternalLinks(
   });
 
   // 実在しない内部リンクはリンク記法を外してテキストに戻す
-  let body = data.body || draft.body;
+  let body = normalizeArticleBody(data.body || draft.body);
   const linkRe = /\[([^\]]*?)\]\((\/[^)\s]*)\)/g;
   body = body.replace(linkRe, (match, text: string, path: string) => {
     const clean = path.split(/[?#]/)[0];

@@ -250,6 +250,7 @@ export type QaCategory =
   | "sources"
   | "paths"
   | "build"
+  | "markdown"
   | "slug-collision"
   | "scope";
 

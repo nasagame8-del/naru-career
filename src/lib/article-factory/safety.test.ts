@@ -388,6 +388,15 @@ describe("runQa", () => {
     expect(qa.issues.some((i) => i.category === "frontmatter")).toBe(true);
   });
 
+  it.each(["body", "html", "head"])("文書レベルの<%s>タグでFAILする", (tag) => {
+    const qa = runQa(
+      qaInput({ draft: draft({ body: `<${tag}>\n## 見出し\n</${tag}>` }) })
+    );
+
+    expect(qa.overall).toBe("FAIL");
+    expect(qa.issues.some((i) => i.category === "markdown")).toBe(true);
+  });
+
   it("build失敗でFAILする", () => {
     const qa = runQa(qaInput({ buildPassed: false }));
     expect(qa.overall).toBe("FAIL");
