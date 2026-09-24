@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "image:prepare": "node scripts/prepare-article-image.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^6.1.0",

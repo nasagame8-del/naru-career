@@ -11,6 +11,7 @@ import {
   buildArticleMarkdown,
   buildImagePlan,
   normalizeArticleBody,
+  selectImageHeadings,
   serializeFrontmatter,
 } from "./markdown";
 import { checkFrontmatter } from "./safety";
@@ -119,9 +120,17 @@ describe("buildImagePlan", () => {
     });
     expect(plan).toContain("画像プラン");
     expect(plan).toContain("test-slug");
-    expect(plan).toContain("自動生成しない");
-    expect(plan).toContain("承認済みの既存画像のみ");
+    expect(plan).toContain("画像生成APIは呼ばない");
+    expect(plan).toContain("計4枚");
+    expect(plan).toContain("人間がChatGPTへ");
     expect(plan).toContain("上書きしない");
+    expect(plan.match(/^## 画像\d/gm)).toHaveLength(4);
+    expect(plan).toContain("test-slug-card.webp");
+    expect(plan).toContain("test-slug-01.webp");
+    expect(plan).toContain("test-slug-02.webp");
+    expect(plan).toContain("test-slug-03.webp");
+    expect(plan).toContain("EXIF・XMP・ICC");
+    expect(plan).toContain("AIロゴや透かし");
   });
 
   it("見出しを行として含める", () => {
@@ -133,6 +142,27 @@ describe("buildImagePlan", () => {
       sources: [],
     });
     expect(plan).toContain("第一章");
+  });
+
+  it("図解向きのH2を優先し、結論とまとめを除外する", () => {
+    const selected = selectImageHeadings([
+      "結論：転職できる",
+      "基礎知識",
+      "仕事の全体像",
+      "3か月ロードマップ",
+      "求人の見極めチェックリスト",
+      "まとめ",
+    ]);
+
+    expect(selected).toEqual([
+      "仕事の全体像",
+      "3か月ロードマップ",
+      "求人の見極めチェックリスト",
+    ]);
+  });
+
+  it("H2が少なくても本文画像3枚分のプロンプトを作る", () => {
+    expect(selectImageHeadings(["本題"])).toHaveLength(3);
   });
 
   it("出典があれば根拠として列挙する", () => {

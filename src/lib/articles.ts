@@ -85,6 +85,8 @@ export type ArticleMeta = {
   ctaFocus: string;
   hasCardImage: boolean;
   hasHeroImage: boolean;
+  cardImagePath: string | null;
+  heroImagePath: string | null;
 };
 
 export type Heading = {
@@ -125,10 +127,26 @@ export function getArticleSlugs(): string[] {
   });
 }
 
+/** 新規WebPを優先しつつ、既存PNGとの互換性を保つ。 */
+export function getArticleImagePath(
+  slug: string,
+  kind: "card" | "hero"
+): string | null {
+  for (const extension of ["webp", "png"]) {
+    const publicPath = `/images/articles/${slug}-${kind}.${extension}`;
+    if (fs.existsSync(path.join(process.cwd(), "public", publicPath))) {
+      return publicPath;
+    }
+  }
+  return null;
+}
+
 export function getArticleMeta(slug: string): ArticleMeta {
   const filePath = path.join(articlesDir, `${slug}.md`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data } = matter(fileContent);
+  const cardImagePath = getArticleImagePath(slug, "card");
+  const heroImagePath = getArticleImagePath(slug, "hero");
   return {
     slug,
     title: data.title ?? "",
@@ -146,12 +164,10 @@ export function getArticleMeta(slug: string): ArticleMeta {
     updateHistory: data.updateHistory ?? [],
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
-    hasCardImage: fs.existsSync(
-      path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
-    ),
-    hasHeroImage: fs.existsSync(
-      path.join(process.cwd(), "public", "images", "articles", `${slug}-hero.png`)
-    ),
+    hasCardImage: cardImagePath !== null,
+    hasHeroImage: heroImagePath !== null,
+    cardImagePath,
+    heroImagePath,
   };
 }
 
@@ -238,6 +254,8 @@ export async function getArticle(slug: string): Promise<Article> {
   // 専門用語の初出箇所に <dfn>（DefinedTermマイクロデータ付き）を付与
   htmlStr = annotateGlossaryTerms(htmlStr);
 
+  const cardImagePath = getArticleImagePath(slug, "card");
+  const heroImagePath = getArticleImagePath(slug, "hero");
   return {
     slug,
     title: data.title ?? "",
@@ -255,12 +273,10 @@ export async function getArticle(slug: string): Promise<Article> {
     updateHistory: data.updateHistory ?? [],
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
-    hasCardImage: fs.existsSync(
-      path.join(process.cwd(), "public", "images", "articles", `${slug}-card.png`)
-    ),
-    hasHeroImage: fs.existsSync(
-      path.join(process.cwd(), "public", "images", "articles", `${slug}-hero.png`)
-    ),
+    hasCardImage: cardImagePath !== null,
+    hasHeroImage: heroImagePath !== null,
+    cardImagePath,
+    heroImagePath,
     headings,
     contentHtml: htmlStr,
   };

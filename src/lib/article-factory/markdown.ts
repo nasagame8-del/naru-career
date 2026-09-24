@@ -76,6 +76,68 @@ export function buildArticleMarkdown(draft: ArticleDraft): string {
   return `${serializeFrontmatter(draft.frontmatter)}\n\n${body}\n`;
 }
 
+const IMAGE_FALLBACK_HEADINGS = [
+  "記事の要点を整理する",
+  "比較・判断ポイントを整理する",
+  "次に取る行動を整理する",
+];
+
+function imageHeadingScore(heading: string): number {
+  const rules: [RegExp, number][] = [
+    [/全体像|仕事内容|種類|仕組み|マップ/, 12],
+    [/ロードマップ|手順|ステップ|流れ|スケジュール/, 11],
+    [/チェック|見極め|選び方|注意|リスク|失敗/, 10],
+    [/比較|違い|メリット|デメリット/, 9],
+    [/準備|方法|対策|ポイント/, 7],
+  ];
+  return rules.reduce((score, [pattern, weight]) => score + (pattern.test(heading) ? weight : 0), 0);
+}
+
+/** 図解に向くH2を3件選び、足りない場合も記事全体用の題材で4枚構成を保つ。 */
+export function selectImageHeadings(headings: string[]): string[] {
+  const seen = new Set<string>();
+  const candidates = headings
+    .map((heading) => heading.trim())
+    .filter(Boolean)
+    .filter((heading) => !/^(結論|まとめ|よくある質問|FAQ|はじめに)/i.test(heading))
+    .filter((heading) => {
+      if (seen.has(heading)) return false;
+      seen.add(heading);
+      return true;
+    })
+    .map((heading, index) => ({ heading, index, score: imageHeadingScore(heading) }))
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, 3)
+    .sort((a, b) => a.index - b.index)
+    .map(({ heading }) => heading);
+
+  for (const fallback of IMAGE_FALLBACK_HEADINGS) {
+    if (candidates.length >= 3) break;
+    if (!candidates.includes(fallback)) candidates.push(fallback);
+  }
+  return candidates;
+}
+
+function imageComposition(heading: string): string {
+  if (/全体像|仕事内容|種類|仕組み|マップ/.test(heading)) {
+    return "中央の主題から関連項目へ広がる、シンプルな全体像マップ";
+  }
+  if (/ロードマップ|手順|ステップ|流れ|スケジュール/.test(heading)) {
+    return "左から右へ進む、3〜5段階のロードマップまたはタイムライン";
+  }
+  if (/チェック|見極め|選び方|注意|リスク|失敗/.test(heading)) {
+    return "確認項目を縦に整理したチェックリストまたは判断フロー";
+  }
+  if (/比較|違い|メリット|デメリット/.test(heading)) {
+    return "左右2列で違いが分かる比較図。優劣を断定せず特徴を整理する";
+  }
+  return "要点を3〜5項目に分けた、カード型の解説図";
+}
+
+function pushPrompt(lines: string[], promptLines: string[]): void {
+  lines.push("```text", ...promptLines, "```", "");
+}
+
 /**
  * Drive互換の image-plan.md を生成する。
  *
@@ -90,6 +152,7 @@ export function buildImagePlan(opts: {
   headings: string[];
   sources: ResearchSource[];
 }): string {
+  const selectedHeadings = selectImageHeadings(opts.headings);
   const lines: string[] = [
     `# 画像プラン — ${opts.title}`,
     "",
@@ -99,28 +162,78 @@ export function buildImagePlan(opts: {
     "",
     "## 運用ルール",
     "",
-    "- この計画では画像を自動生成しない。",
-    "- 実装してよいのは**承認済みの既存画像のみ**。",
-    "- 既存画像を上書きしない。新しい画像が必要な場合は人間が用意する。",
+    "- 1記事につき**アイキャッチ1枚 + 本文画像3枚 = 計4枚**。",
+    "- OpenAI Images APIなどの画像生成APIは呼ばない。",
+    "- 人間がChatGPTへ下記プロンプトを投入し、生成結果を目視確認する。",
+    "- 日本語の誤字、見切れ、崩れ、実在ロゴ、本文にない数値があれば採用しない。",
+    "- 承認前の画像は記事へ実装しない。既存画像も上書きしない。",
     "",
     "## 必要な画像",
     "",
     "| 位置 | 用途 | 推奨サイズ | 状態 |",
     "|---|---|---|---|",
-    `| アイキャッチ | 記事サムネイル | 1200x630 | 未割当 |`,
+    `| 記事一覧・記事上部 | \`${opts.slug}-card.webp\` | 1200x630 | 未生成 |`,
   ];
 
-  for (const h of opts.headings.slice(0, 6)) {
-    lines.push(`| ${h} | 節の補助図 | 1200x675 | 未割当 |`);
+  for (const [index, heading] of selectedHeadings.entries()) {
+    lines.push(
+      `| H2「${heading}」の直後 | \`${opts.slug}-0${index + 1}.webp\` | 1200x675 | 未生成 |`
+    );
   }
 
   lines.push(
     "",
-    "## 割り当て手順",
+    "## 画像1 — アイキャッチ",
     "",
-    "1. `public/images/articles/` に使える既存画像があるか確認する。",
-    "2. 使えるものがあれば、その相対パスを「状態」欄に記入する。",
-    "3. 無い場合は「要新規作成」と記入し、人間が作成・承認するまで実装しない。",
+    `- 保存名: \`${opts.slug}-card.webp\``,
+    "- 配置: 記事一覧・記事上部・OG画像",
+    ""
+  );
+  pushPrompt(lines, [
+    "1200×630pxの横長。日本のキャリア系オウンドメディア「NARU」の記事アイキャッチ。",
+    "",
+    `記事テーマ：「${opts.title}」`,
+    "",
+    "記事テーマを一目で理解できる短い日本語の主コピーと、補助的な短いサブコピーを作る。記事タイトル全文を小さく詰め込まない。",
+    "20代の第二新卒読者を想定した、編集記事らしいミニマルで上質なフラットイラスト。人物を描く場合は日本人男性1人、胸から上の自然なバストショット。",
+    "メインカラーはティーングリーン #1F6F66 とアンバー #B5691B。背景は明るいクリーム。補助色はネイビーと淡いベージュ。",
+    "人物は右、コピーは左を基本にする。重要要素は上下中央30%の帯へ集め、上端20%・下端20%と左右10%以上を安全マージンにする。",
+    "小さく表示しても読める文字量と太さにする。日本語は正確に表示する。",
+    "実在企業のロゴ、商標、社名、サービス名、細かいUI、透かし、本文にない数値は入れない。",
+  ]);
+
+  for (const [index, heading] of selectedHeadings.entries()) {
+    lines.push(
+      `## 画像${index + 2} — 本文図解${index + 1}`,
+      "",
+      `- 保存名: \`${opts.slug}-0${index + 1}.webp\``,
+      `- 配置: H2「${heading}」の説明直後`,
+      ""
+    );
+    pushPrompt(lines, [
+      "1200×675px、16:9横長。日本のキャリア系オウンドメディア「NARU」の記事内図解。",
+      "",
+      `記事全体のテーマ：「${opts.title}」`,
+      `今回図解するテーマ：「${heading}」`,
+      "",
+      `構成は「${imageComposition(heading)}」。`,
+      "図だけで概要を理解できるよう、表示する日本語は短い見出しと要点に限定する。最大5項目程度。長文を入れない。",
+      "編集記事向けのミニマルなフラット図解。背景は明るいクリーム。ティーングリーン #1F6F66を基本色、アンバー #B5691Bを強調色にする。",
+      "アイキャッチとは異なる構図にし、3枚の本文画像も互いに同じ構図を繰り返さない。余白を広く取り、スマートフォンでも読める文字サイズにする。",
+      "日本語は正確に表示する。実在企業のロゴ、商標、社名、サービス名、透かし、読めない文字は入れない。",
+      "本文にない統計、金額、順位、制度、体験談を追加しない。比較の場合も一方を根拠なく優位・危険と断定しない。",
+    ]);
+  }
+
+  lines.push(
+    "## 生成後の実装手順",
+    "",
+    "1. 上記4プロンプトをChatGPTへ1本ずつ投入し、画像を別ファイルで生成する。",
+    "2. 文字・見切れ・ロゴ・透かし・事実関係を目視確認する。画像内にAIロゴや透かしが見える場合は採用せず再生成する。",
+    `3. 承認した元画像をリポジトリ外の一時フォルダへ置き、\`npm run image:prepare -- ${opts.slug} <card|01|02|03> <元画像パス>\` でWebP化する。`,
+    "4. コマンドがEXIF・XMP・ICCなどの埋め込みメタデータを削除し、`public/images/articles/` へ指定名で保存したことを確認する。元画像はGitへ追加しない。",
+    "5. 本文画像3枚を指定H2の説明直後へ挿入し、内容を説明するaltを付ける。",
+    "6. build・表示・モバイル・OG画像を確認してからPRへ追加する。",
     ""
   );
 
