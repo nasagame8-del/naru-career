@@ -7,7 +7,12 @@
 
 import { describe, it, expect } from "vitest";
 import matter from "gray-matter";
-import { buildArticleMarkdown, buildImagePlan, serializeFrontmatter } from "./markdown";
+import {
+  buildArticleMarkdown,
+  buildImagePlan,
+  normalizeArticleBody,
+  serializeFrontmatter,
+} from "./markdown";
 import { checkFrontmatter } from "./safety";
 import type { ArticleDraft, ArticleFrontmatter } from "./types";
 
@@ -59,6 +64,19 @@ describe("serializeFrontmatter", () => {
   it("本文がfrontmatterの後ろに保たれる", () => {
     const parsed = matter(buildArticleMarkdown(DRAFT));
     expect(parsed.content.trim()).toBe(DRAFT.body.trim());
+  });
+
+  it("本文全体のbodyラッパーを除去し、Markdown見出しを露出させない", () => {
+    const wrapped = { ...DRAFT, body: `<body>\n${DRAFT.body}\n</body>` };
+    const parsed = matter(buildArticleMarkdown(wrapped));
+
+    expect(parsed.content.trim()).toBe(DRAFT.body);
+    expect(parsed.content).not.toContain("<body>");
+  });
+
+  it("記事内で意図的に使う通常のHTMLは維持する", () => {
+    const body = '## 見出し\n\n<a href="/shindan">診断</a>';
+    expect(normalizeArticleBody(body)).toBe(body);
   });
 
   it("引用符やコロンを含む値を壊さない", () => {

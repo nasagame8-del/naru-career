@@ -8,6 +8,18 @@
 
 import type { ArticleDraft, ArticleFrontmatter, ResearchSource } from "./types";
 
+/**
+ * LLM が返却用の区切りタグまで本文へ含めた場合に、文書レベルの body
+ * ラッパーだけを除去する。Markdown を <body> 内に置くと remark が全体を
+ * HTML ブロックとして扱い、`##` が画面へ露出するため、保存直前にも正規化する。
+ */
+export function normalizeArticleBody(value: string): string {
+  let body = value.replace(/\r\n/g, "\n").trim();
+  const wrapped = body.match(/^<body(?:\s[^>]*)?>\s*([\s\S]*?)\s*<\/body>$/i);
+  if (wrapped) body = wrapped[1].trim();
+  return body;
+}
+
 /** YAMLのダブルクォート文字列として安全にエスケープする */
 function yamlString(value: string): string {
   const escaped = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
@@ -60,7 +72,7 @@ export function serializeFrontmatter(fm: ArticleFrontmatter): string {
 
 /** frontmatter + 本文を1つのMarkdownにする */
 export function buildArticleMarkdown(draft: ArticleDraft): string {
-  const body = draft.body.replace(/\s+$/, "");
+  const body = normalizeArticleBody(draft.body);
   return `${serializeFrontmatter(draft.frontmatter)}\n\n${body}\n`;
 }
 

@@ -441,6 +441,18 @@ export function runQa(input: QaInput): QaResult {
     });
   }
 
+  // Markdown全体をHTML文書タグで囲むと、remarkが内側のMarkdownを解析せず
+  // `##` などがそのまま画面へ露出するため、公開前に必ず停止する。
+  const documentTag = draft.body.match(/<\/?(?:html|head|body)(?:\s[^>]*)?>/i)?.[0];
+  if (documentTag) {
+    issues.push({
+      category: "markdown",
+      verdict: "FAIL",
+      target: draft.slug,
+      message: `Markdown本文に文書レベルのHTMLタグが含まれています: ${documentTag}`,
+    });
+  }
+
   // 内部リンク
   const broken = findBrokenInternalLinks(draft.body, knownPaths);
   for (const b of broken) {
