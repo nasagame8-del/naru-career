@@ -122,7 +122,8 @@ describe("buildImagePlan", () => {
     expect(plan).toContain("test-slug");
     expect(plan).toContain("画像生成APIは呼ばない");
     expect(plan).toContain("計4枚");
-    expect(plan).toContain("ユーザーが上記4プロンプト");
+    expect(plan).toContain("ユーザーは上記4プロンプト");
+    expect(plan).toContain("image-prompts.md");
     expect(plan).toContain("npm run image:prepare:all");
     expect(plan).toContain("上書きしない");
     expect(plan.match(/^## 画像\d/gm)).toHaveLength(4);
