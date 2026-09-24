@@ -1,0 +1,33 @@
+{
+  "selectedAt": "2026-09-25",
+  "batchId": "batch_2026-09-25_chatgpt",
+  "status": "SELECTED_AWAITING_DRAFTS",
+  "notificationSent": false,
+  "items": [
+    {
+      "order": 1,
+      "candidateId": "cand_250925a1",
+      "slug": "second-new-grad-it-portfolio-guide",
+      "title": "第二新卒のIT/Web転職にポートフォリオは必要？職種別に準備すべき成果物と見せ方",
+      "status": "SELECTED",
+      "articleId": null,
+      "prNumber": null,
+      "driveFolderId": null
+    },
+    {
+      "order": 2,
+      "candidateId": "cand_250925a4",
+      "slug": "second-new-grad-web-director-career",
+      "title": "第二新卒からWebディレクターを目指すには？未経験で確認したい仕事内容とキャリアの入口",
+      "status": "SELECTED",
+      "articleId": null,
+      "prNumber": null,
+      "driveFolderId": null
+    }
+  ],
+  "notes": [
+    "User explicitly selected 1 then 4 for 2026-09-25. This queue requires drafting as two separate PRs plus image-prompts.md and images/ for each in Drive before notification.",
+    "No OpenAI API calls; use ChatGPT native work and GitHub/Drive connections. Do not publish or merge without image and QA gates.",
+    "Prior selected unstarted second-new-grad-it-job-posting-checklist from 2026-09-24 remains separate; do not discard; avoid articleId collisions."
+  ]
+}
