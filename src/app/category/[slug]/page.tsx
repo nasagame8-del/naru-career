@@ -144,9 +144,9 @@ export default async function CategoryPage(props: {
 
                       {/* サムネイル */}
                       <div className="shrink-0 w-[100px] md:w-[160px] aspect-card rounded overflow-hidden bg-bg-soft">
-                        {article.hasCardImage ? (
+                        {article.cardImagePath ? (
                           <Image
-                            src={`/images/articles/${article.slug}-card.png`}
+                            src={article.cardImagePath}
                             alt={`${article.title}｜${article.category}記事のサムネイル画像`}
                             width={320}
                             height={168}

@@ -44,8 +44,8 @@ export async function generateMetadata(props: {
       type: "article",
       publishedTime: article.datePublished,
       modifiedTime: article.dateModified,
-      ...(article.hasCardImage && {
-        images: [`/images/articles/${slug}-card.png`],
+      ...(article.cardImagePath && {
+        images: [article.cardImagePath],
       }),
     },
   };
@@ -173,10 +173,10 @@ export default async function ArticlePage(props: {
             </div>
 
             {/* アイキャッチ画像 */}
-            {article.hasHeroImage && (
+            {(article.heroImagePath || article.cardImagePath) && (
               <div className="mb-8 rounded-xl overflow-hidden">
                 <Image
-                  src={`/images/articles/${slug}-hero.png`}
+                  src={article.heroImagePath || article.cardImagePath!}
                   alt={`${article.title}｜${article.category}記事のアイキャッチ画像`}
                   width={1600}
                   height={600}
@@ -330,9 +330,9 @@ export default async function ArticlePage(props: {
                         className="group block bg-white rounded-lg overflow-hidden border border-line hover:shadow-md transition-shadow"
                       >
                         <div className="aspect-card relative bg-line">
-                          {a.hasCardImage ? (
+                          {a.cardImagePath ? (
                             <Image
-                              src={`/images/articles/${a.slug}-card.png`}
+                              src={a.cardImagePath}
                               alt={`${a.title}｜${a.category}記事のサムネイル画像`}
                               fill
                               className="object-cover"
