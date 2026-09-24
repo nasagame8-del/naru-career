@@ -1,28 +1,19 @@
 /**
- * 新規記事の候補 API（管理ダッシュボード用）。
- *
- * GET  — 保存済みの最新バッチを返す
- * POST — 候補を手動生成して保存する
- *
- * ガード:
- *   - /internal/* の Basic 認証（src/middleware.ts）に加え、ルート側でも再検証する
- *   - 本番で永続保存を用意できない場合は 503 で明示的に失敗する（メモリへ落ちない）
- *   - secret は一切レスポンスに含めない
+ * API課金ゼロ運用: 候補一覧のGETは継続し、有料LLMを呼ぶPOSTのみ停止。
+ * 新しい候補バッチは通常のChatGPTからGitHubの
+ * article-factory/candidates 専用ブランチへ保存する。
  */
-
 import { NextResponse, type NextRequest } from "next/server";
 import { isAuthorized } from "@/lib/seo-editor/auth";
-import { generateCandidateBatch, batchMeetsQuota } from "@/lib/article-factory/candidates";
+import { LIMITS } from "@/lib/article-factory/constants";
 import {
   describeStore,
   getCandidateBatchStore,
   StorageUnavailableError,
   type CandidateBatchStore,
 } from "@/lib/article-factory/storage";
-import { SeoEditorError } from "@/lib/seo-editor/openai";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 180;
 
 function unauthorized() {
   return new NextResponse("Unauthorized", {
@@ -31,7 +22,6 @@ function unauthorized() {
   });
 }
 
-/** 保存先の解決。失敗時は 503 レスポンスを返す */
 function resolveStore(): { store: CandidateBatchStore } | { response: NextResponse } {
   try {
     return { store: getCandidateBatchStore() };
@@ -62,17 +52,22 @@ export async function GET(request: NextRequest) {
 
   try {
     const batch = await store.getLatest();
-    return NextResponse.json({
-      ok: true,
-      batch,
-      storage: describeStore(store),
-      meetsQuota: batch ? batchMeetsQuota(batch) : false,
-    });
+    return NextResponse.json(
+      {
+        ok: true,
+        batch,
+        storage: describeStore(store),
+        meetsQuota: batch
+          ? batch.candidates.filter((candidate) => !candidate.blocked).length >= LIMITS.minCandidates
+          : false,
+      },
+      { headers: { "Cache-Control": "no-store" } }
+    );
   } catch (e) {
     return NextResponse.json(
       {
         ok: false,
-        error: e instanceof Error ? e.message.slice(0, 300) : "候補バッチを取得できませんでした",
+        error: e instanceof Error ? e.message.slice(0, 300) : "候補を取得できませんでした",
         storage: describeStore(store),
       },
       { status: 500 }
@@ -82,30 +77,13 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   if (!isAuthorized(request)) return unauthorized();
-
-  const resolved = resolveStore();
-  if ("response" in resolved) return resolved.response;
-  const { store } = resolved;
-
-  try {
-    const batch = await generateCandidateBatch({ trigger: "manual" });
-    await store.save(batch);
-    return NextResponse.json({
-      ok: true,
-      batch,
-      storage: describeStore(store),
-      meetsQuota: batchMeetsQuota(batch),
-    });
-  } catch (e) {
-    const message =
-      e instanceof SeoEditorError
-        ? e.message
-        : e instanceof Error
-          ? e.message.slice(0, 300)
-          : "候補生成に失敗しました";
-    return NextResponse.json(
-      { ok: false, error: message, storage: describeStore(store) },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json(
+    {
+      ok: false,
+      code: "ARTICLE_FACTORY_CHATGPT_ONLY",
+      error:
+        "OpenAI APIを使用する候補生成は停止中です。毎朝のChatGPT通知から候補を選択してください。候補一覧はこの画面で引き続き確認できます。",
+    },
+    { status: 410, headers: { "Cache-Control": "no-store" } }
+  );
 }
