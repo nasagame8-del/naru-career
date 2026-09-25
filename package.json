@@ -7,13 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run && node --test scripts/prepare-article-images.test.mjs scripts/article-local-qa.test.mjs scripts/prepare-article-images-from-folder.test.mjs",
+    "test": "vitest run && node --test scripts/prepare-article-images.test.mjs scripts/article-local-qa.test.mjs scripts/prepare-article-images-from-folder.test.mjs scripts/generate-popularity.test.mjs",
     "test:watch": "vitest",
     "image:prepare": "node scripts/prepare-article-image.mjs",
     "image:prepare:all": "node scripts/prepare-article-images.mjs",
     "test:images": "node --test scripts/prepare-article-images.test.mjs",
     "article:local-qa": "node scripts/article-local-qa.mjs",
-    "article:prepare-images": "node scripts/prepare-article-images-from-folder.mjs"
+    "article:prepare-images": "node scripts/prepare-article-images-from-folder.mjs",
+    "data:popularity": "node scripts/generate-popularity.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^6.1.0",
