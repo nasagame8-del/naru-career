@@ -46,7 +46,7 @@ export function HeroSection() {
             {/* ボタン — モバイル中央/PC左揃え */}
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               <Link
-                href="/#articles"
+                href="/articles"
                 className="inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors"
               >
                 最新記事を読む
