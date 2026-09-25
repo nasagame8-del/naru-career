@@ -1,0 +1,82 @@
+name: NARU Safe Scheduled Publish
+
+# Scheduled jobs are triggered before the target time, then wait for 12:00 / 18:00 JST.
+# A late or missed GitHub schedule must not cause automatic late publication.
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/naru-scheduled-publish.yml"
+      - "scripts/naru_scheduled_publish.py"
+      - "scripts/test_naru_scheduled_publish.py"
+  schedule:
+    - cron: "55 2 * * *"   # 11:55 JST
+    - cron: "55 8 * * *"   # 17:55 JST
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Slot for a read-only dry-run"
+        required: true
+        type: choice
+        options: [noon, evening]
+      target_date:
+        description: "Optional JST date YYYY-MM-DD (dry-run only)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: naru-scheduled-publish
+  cancel-in-progress: false
+
+jobs:
+  safety-tests:
+    name: Scheduled publish safety tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run isolated safety tests
+        run: python3 -m unittest discover -s scripts -p "test_naru_scheduled_publish.py" -v
+
+  publish:
+    name: Approval-gated scheduled release
+    if: github.event_name != 'pull_request' && github.repository == 'nasagame8-del/naru-career'
+    needs: safety-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          persist-credentials: false
+      - name: Safely publish after user approval (manual runs are dry-run only)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+          INPUT_SLOT: ${{ inputs.slot }}
+          TARGET_DATE: ${{ inputs.target_date }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            slot="$INPUT_SLOT"
+            args=(--slot "$slot" --dry-run)
+            if [ -n "$TARGET_DATE" ]; then args+=(--date "$TARGET_DATE"); fi
+          else
+            case "$CRON" in
+              "55 2 * * *") slot="noon" ;;
+              "55 8 * * *") slot="evening" ;;
+              *) echo "::error::Unexpected schedule"; exit 1 ;;
+            esac
+            args=(--slot "$slot")
+          fi
+          python3 scripts/naru_scheduled_publish.py "${args[@]}"
