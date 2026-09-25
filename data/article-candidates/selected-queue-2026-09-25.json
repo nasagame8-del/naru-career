@@ -1,17 +1,17 @@
 {
   "selectedAt": "2026-09-25",
   "batchId": "batch_2026-09-25_chatgpt",
-  "status": "IMAGES_UPLOADED_AWAITING_ARTICLE_DRAFTS",
-  "notificationSent": false,
+  "status": "DRAFT_PRS_QA_PENDING",
+  "notificationSent": true,
   "items": [
     {
       "order": 1,
       "candidateId": "cand_250925a1",
       "slug": "second-new-grad-it-portfolio-guide",
       "title": "第二新卒のIT/Web転職にポートフォリオは必要？職種別に準備すべき成果物と見せ方",
-      "status": "IMAGES_READY_ARTICLE_PENDING",
-      "articleId": null,
-      "prNumber": null,
+      "status": "DRAFT_PR_QA_PENDING",
+      "articleId": 40,
+      "prNumber": 26,
       "driveFolderId": "1A1nMYcyYf9fNx4nhZuXVTLPZn2r2yDm6",
       "imagesFolderId": "13Nz_kRXvR1-MSfO9wSqeETC-A9GRsfMh",
       "imageFiles": {
@@ -20,16 +20,21 @@
         "02": "1nV4ML-x2KEkCcN6mYPiprBh5eoinbESe",
         "03": "1vYg5Yo3hOSuSLi5xCt8oSsj5CpmyxiUk"
       },
-      "imageStatus": "4 WebP files verified in Drive; card 1200x630, 01/02/03 1200x675; source photographs remain user attachments; article embedding and production publishing are not yet done"
+      "imageStatus": "4 WebP verified in Drive and committed with article Markdown in PR; awaiting latest PR checks and Preview visual QA",
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/26",
+      "headSha": "ab90a17ac4ca64f484fdac35be7b8ba2d101ae50",
+      "driveFolderName": "NARU-040_第二新卒IT-Web転職のポートフォリオ",
+      "draftFileId": "1TM60isZhvVmqUAaKI0tSXrj_fXvSZqhm",
+      "imagePlanFileId": "1mGZCv2FF4GqwwVEqBWEo6YkiRoz3QkkB"
     },
     {
       "order": 2,
       "candidateId": "cand_250925a4",
       "slug": "second-new-grad-web-director-career",
       "title": "第二新卒からWebディレクターを目指すには？未経験で確認したい仕事内容とキャリアの入口",
-      "status": "IMAGES_READY_ARTICLE_PENDING",
-      "articleId": null,
-      "prNumber": null,
+      "status": "DRAFT_PR_QA_PENDING",
+      "articleId": 41,
+      "prNumber": 27,
       "driveFolderId": "1gPLKz8n3FlgpEilNF6sBGcC6RF98KVKj",
       "imagesFolderId": "1s_L2GIewnINoDQAbtb_2ItkHr0OJdfWR",
       "imageFiles": {
@@ -38,13 +43,20 @@
         "02": "1unKljEm5l2ZgQq8K1XHgCSjbuDI6ABA3",
         "03": "1mRDhsV7rIT7gwQisgVlIbLMQXMSM1gLL"
       },
-      "imageStatus": "4 WebP files verified in Drive; card 1200x630, 01/02/03 1200x675; source photographs remain user attachments; article embedding and production publishing are not yet done"
+      "imageStatus": "4 WebP verified in Drive and committed with article Markdown in PR; awaiting latest PR checks and Preview visual QA",
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/27",
+      "headSha": "221a80fa7a241c16d33c8d171c4177d072523c49",
+      "driveFolderName": "NARU-041_未経験からWebディレクターを目指すには",
+      "draftFileId": "1hq4eUc_ASZtBgwbP-hnNBXz2_q4YBuKN",
+      "imagePlanFileId": "1MD1wjFPIwfemLyacmsawvNKXdTtAQKTu"
     }
   ],
   "notes": [
     "User explicitly selected 1 then 4 for 2026-09-25. This queue requires drafting as two separate PRs plus image-prompts.md and images/ for each in Drive before notification.",
     "No OpenAI API calls; use ChatGPT native work and GitHub/Drive connections. Do not publish or merge without image and QA gates.",
     "Prior selected unstarted second-new-grad-it-job-posting-checklist from 2026-09-24 remains separate; do not discard; avoid articleId collisions.",
-    "2026-09-25: 8 original uploads converted to size-matched WebP, metadata stripped, card images padded to prevent title cropping, 4 files uploaded into each existing article images/ Drive folder and verified by folder listing. GitHub image embedding awaits article draft PRs."
+    "2026-09-25: 8 original uploads converted to size-matched WebP, metadata stripped, card images padded to prevent title cropping, 4 files uploaded into each existing article images/ Drive folder and verified by folder listing. GitHub image embedding awaits article draft PRs.",
+    "2026-09-25: GitHub draft PRs #26 and #27 contain article Markdown, image plan and the 4 WebP files each. Drive folders renamed to NARU-040 and NARU-041. Both PRs were in_progress for article-factory-validation and pending for Vercel at initial check; not published yet.",
+    "The previously selected job posting checklist remains unstarted and should use next free article ID (at least 42) if later produced."
   ]
 }
