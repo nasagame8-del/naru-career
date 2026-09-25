@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-25",
   "batchId": "batch_2026-09-25_chatgpt",
-  "status": "ARTICLE40_PUBLISHED_ARTICLE41_SCHEDULED",
+  "status": "ARTICLE40_PUBLISHED_ARTICLE41_MERGED_PRODUCTION_PENDING",
   "notificationSent": true,
   "items": [
     {
@@ -60,7 +60,7 @@
       "candidateId": "cand_250925a4",
       "slug": "second-new-grad-web-director-career",
       "title": "第二新卒からWebディレクターを目指すには？未経験で確認したい仕事内容とキャリアの入口",
-      "status": "USER_PREVIEW_APPROVED_AWAITING_SCHEDULED_PUBLICATION",
+      "status": "MERGED_PRODUCTION_PENDING",
       "articleId": 41,
       "prNumber": 27,
       "driveFolderId": "1gPLKz8n3FlgpEilNF6sBGcC6RF98KVKj",
@@ -89,8 +89,15 @@
         "previewApproved": true,
         "previewApprovedAt": "2026-09-25T11:03:27+09:00",
         "previewApprovedBy": "user",
-        "previewConfirmation": "両方OK（article-specific preview links shown to user）"
-      }
+        "previewConfirmation": "両方OK（article-specific preview links shown to user）",
+        "productionDeploymentStatus": "pending",
+        "productionDeployVerified": false,
+        "publicArticleUrlVerified": false
+      },
+      "mergeSha": "cd9b5da544c43d02abf9512f17f0ded7ba71a352",
+      "mergedAt": "2026-09-25T20:46:38+09:00",
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-web-director-career",
+      "actualPublishInstruction": "2026-09-25 after missed 18:00 task, user explicitly instructed immediate manual publishing; improve article after publication."
     }
   ],
   "notes": [
@@ -105,6 +112,7 @@
     "2026-09-25 11:03 JST: user confirmed both article-specific Vercel previews OK. This is user visual confirmation, not independent assistant browser verification. Keep scheduled 12:00/18:00 publish automation and recheck CI/SHA before merge.",
     "2026-09-25 13:22:31 JST: User instructed immediate manual publication. Article40 PR #26 changed to Ready and squash-merged at 84d1783b23616baad316a6095254ba205dad0f84 after rechecking approved head, CI, Vercel preview, article/images. Latest merge SHA Vercel Production status pending. Vercel project connection returns 403; real public article URL not yet independently verified. Article41 PR #27 and 18:00 task untouched.",
     "After article40 manual merge, GitHub status for the exact merge commit reported Vercel success. Direct Vercel deployment details remain inaccessible (403) and public article URL could not be fetched by ChatGPT; do not mark independently confirmed production page until verified.",
-    "2026-09-25 13:33 JST: User confirmed actual production article 40 URL displays. GitHub PR #26 merged at 84d1783b23616baad316a6095254ba205dad0f84, same-SHA Vercel commit status success. Marked article40 PUBLISHED using user production page check; independent Vercel direct deployment API still 403. Article41 18:00 schedule unchanged."
+    "2026-09-25 13:33 JST: User confirmed actual production article 40 URL displays. GitHub PR #26 merged at 84d1783b23616baad316a6095254ba205dad0f84, same-SHA Vercel commit status success. Marked article40 PUBLISHED using user production page check; independent Vercel direct deployment API still 403. Article41 18:00 schedule unchanged.",
+    "2026-09-25 20:46:38 JST: Article41 approved PR #27 head 221a80fa7a241c16d33c8d171c4177d072523c49 manual squash merged at cd9b5da544c43d02abf9512f17f0ded7ba71a352 by user instruction after missed 18:00 run. Latest PR-head GitHub Actions and Vercel Preview success, images and internal links verified before merge. Vercel Production merge commit pending; direct connector 403, public page not yet independently verified. Article40 remains PUBLISHED."
   ]
 }
