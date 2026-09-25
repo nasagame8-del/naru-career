@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-25",
   "batchId": "batch_2026-09-25_chatgpt",
-  "status": "DRAFT_PRS_QA_PENDING",
+  "status": "DRAFT_PRS_CHECKS_PASSED_SCHEDULED_PUBLICATION",
   "notificationSent": true,
   "items": [
     {
@@ -9,7 +9,7 @@
       "candidateId": "cand_250925a1",
       "slug": "second-new-grad-it-portfolio-guide",
       "title": "第二新卒のIT/Web転職にポートフォリオは必要？職種別に準備すべき成果物と見せ方",
-      "status": "DRAFT_PR_QA_PENDING",
+      "status": "DRAFT_PR_CI_AND_VERCEL_PASS_VISUAL_UNVERIFIED",
       "articleId": 40,
       "prNumber": 26,
       "driveFolderId": "1A1nMYcyYf9fNx4nhZuXVTLPZn2r2yDm6",
@@ -25,14 +25,24 @@
       "headSha": "ab90a17ac4ca64f484fdac35be7b8ba2d101ae50",
       "driveFolderName": "NARU-040_第二新卒IT-Web転職のポートフォリオ",
       "draftFileId": "1TM60isZhvVmqUAaKI0tSXrj_fXvSZqhm",
-      "imagePlanFileId": "1mGZCv2FF4GqwwVEqBWEo6YkiRoz3QkkB"
+      "imagePlanFileId": "1mGZCv2FF4GqwwVEqBWEo6YkiRoz3QkkB",
+      "originalsFolderId": "1NCSE6ALKQA3oFzfJkcdaVjCOwbk8G_1F",
+      "qa": {
+        "frontmatter": true,
+        "bodyImageRefs": true,
+        "githubBlobByteVerified": true,
+        "githubActions": "success",
+        "vercelPreviewStatus": "success",
+        "previewVisual": "not independently verified",
+        "scheduledPublishAt": "2026-09-25T12:00:00+09:00"
+      }
     },
     {
       "order": 2,
       "candidateId": "cand_250925a4",
       "slug": "second-new-grad-web-director-career",
       "title": "第二新卒からWebディレクターを目指すには？未経験で確認したい仕事内容とキャリアの入口",
-      "status": "DRAFT_PR_QA_PENDING",
+      "status": "DRAFT_PR_CI_AND_VERCEL_PASS_VISUAL_UNVERIFIED",
       "articleId": 41,
       "prNumber": 27,
       "driveFolderId": "1gPLKz8n3FlgpEilNF6sBGcC6RF98KVKj",
@@ -48,7 +58,17 @@
       "headSha": "221a80fa7a241c16d33c8d171c4177d072523c49",
       "driveFolderName": "NARU-041_未経験からWebディレクターを目指すには",
       "draftFileId": "1hq4eUc_ASZtBgwbP-hnNBXz2_q4YBuKN",
-      "imagePlanFileId": "1MD1wjFPIwfemLyacmsawvNKXdTtAQKTu"
+      "imagePlanFileId": "1MD1wjFPIwfemLyacmsawvNKXdTtAQKTu",
+      "originalsFolderId": "1q0FRzwSNhxhKQjkqQAoiPFCvAX9nSet6",
+      "qa": {
+        "frontmatter": true,
+        "bodyImageRefs": true,
+        "githubBlobByteVerified": true,
+        "githubActions": "success",
+        "vercelPreviewStatus": "success",
+        "previewVisual": "not independently verified",
+        "scheduledPublishAt": "2026-09-25T18:00:00+09:00"
+      }
     }
   ],
   "notes": [
@@ -57,6 +77,8 @@
     "Prior selected unstarted second-new-grad-it-job-posting-checklist from 2026-09-24 remains separate; do not discard; avoid articleId collisions.",
     "2026-09-25: 8 original uploads converted to size-matched WebP, metadata stripped, card images padded to prevent title cropping, 4 files uploaded into each existing article images/ Drive folder and verified by folder listing. GitHub image embedding awaits article draft PRs.",
     "2026-09-25: GitHub draft PRs #26 and #27 contain article Markdown, image plan and the 4 WebP files each. Drive folders renamed to NARU-040 and NARU-041. Both PRs were in_progress for article-factory-validation and pending for Vercel at initial check; not published yet.",
-    "The previously selected job posting checklist remains unstarted and should use next free article ID (at least 42) if later produced."
+    "The previously selected job posting checklist remains unstarted and should use next free article ID (at least 42) if later produced.",
+    "All 8 original JPEG source images archived to separate Drive originals/ subfolders; 8 finalized WebP files only in images/. Both draft PRs received GitHub Actions article-factory-validation success and Vercel preview commit status success. Live browser preview could not be accessed via this conversation; preview visual QA remains unverified.",
+    "One-time publish tasks configured for article40 12:00 JST and article41 18:00 JST, fail-closed for missing CI, head mismatch or material content defects; report production status precisely."
   ]
 }
