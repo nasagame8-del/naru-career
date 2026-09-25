@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-25",
   "batchId": "batch_2026-09-25_chatgpt",
-  "status": "USER_PREVIEW_APPROVED_SCHEDULED_PUBLICATION",
+  "status": "ARTICLE40_MERGED_PRODUCTION_PENDING_ARTICLE41_SCHEDULED",
   "notificationSent": true,
   "items": [
     {
@@ -9,7 +9,7 @@
       "candidateId": "cand_250925a1",
       "slug": "second-new-grad-it-portfolio-guide",
       "title": "第二新卒のIT/Web転職にポートフォリオは必要？職種別に準備すべき成果物と見せ方",
-      "status": "USER_PREVIEW_APPROVED_AWAITING_SCHEDULED_PUBLICATION",
+      "status": "MERGED_PRODUCTION_PENDING",
       "articleId": 40,
       "prNumber": 26,
       "driveFolderId": "1A1nMYcyYf9fNx4nhZuXVTLPZn2r2yDm6",
@@ -38,8 +38,14 @@
         "previewApproved": true,
         "previewApprovedAt": "2026-09-25T11:03:27+09:00",
         "previewApprovedBy": "user",
-        "previewConfirmation": "両方OK（article-specific preview links shown to user）"
-      }
+        "previewConfirmation": "両方OK（article-specific preview links shown to user）",
+        "productionDeploymentStatus": "pending",
+        "publicArticleUrlVerified": false
+      },
+      "mergeSha": "84d1783b23616baad316a6095254ba205dad0f84",
+      "mergedAt": "2026-09-25T13:22:31+09:00",
+      "actualPublishInstruction": "User explicitly requested immediate manual publication after the failed 12:00 and 13:00 scheduled attempts.",
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-it-portfolio-guide"
     },
     {
       "order": 2,
@@ -88,6 +94,7 @@
     "The previously selected job posting checklist remains unstarted and should use next free article ID (at least 42) if later produced.",
     "All 8 original JPEG source images archived to separate Drive originals/ subfolders; 8 finalized WebP files only in images/. Both draft PRs received GitHub Actions article-factory-validation success and Vercel preview commit status success. Live browser preview could not be accessed via this conversation; preview visual QA remains unverified.",
     "One-time publish tasks configured for article40 12:00 JST and article41 18:00 JST, fail-closed for missing CI, head mismatch or material content defects; report production status precisely.",
-    "2026-09-25 11:03 JST: user confirmed both article-specific Vercel previews OK. This is user visual confirmation, not independent assistant browser verification. Keep scheduled 12:00/18:00 publish automation and recheck CI/SHA before merge."
+    "2026-09-25 11:03 JST: user confirmed both article-specific Vercel previews OK. This is user visual confirmation, not independent assistant browser verification. Keep scheduled 12:00/18:00 publish automation and recheck CI/SHA before merge.",
+    "2026-09-25 13:22:31 JST: User instructed immediate manual publication. Article40 PR #26 changed to Ready and squash-merged at 84d1783b23616baad316a6095254ba205dad0f84 after rechecking approved head, CI, Vercel preview, article/images. Latest merge SHA Vercel Production status pending. Vercel project connection returns 403; real public article URL not yet independently verified. Article41 PR #27 and 18:00 task untouched."
   ]
 }
