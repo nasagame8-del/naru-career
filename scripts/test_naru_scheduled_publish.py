@@ -22,6 +22,7 @@ def fixture(order=1, slot="noon"):
                        "qa": {"previewApproved": True,
                               "previewVisual": "user_confirmed",
                               "previewApprovedBy": "user",
+                              "previewApprovedHeadSha": SHA,
                               "githubActions": "success",
                               "vercelPreviewStatus": "success",
                               "frontmatter": True,
@@ -57,6 +58,12 @@ class SelectionTests(unittest.TestCase):
     def test_no_approval_holds(self):
         data = fixture()
         data["items"][0]["qa"]["previewApproved"] = False
+        with self.assertRaises(Hold):
+            select_item(data, DAY, "noon")
+
+    def test_missing_approval_sha_holds(self):
+        data = fixture()
+        del data["items"][0]["qa"]["previewApprovedHeadSha"]
         with self.assertRaises(Hold):
             select_item(data, DAY, "noon")
 
