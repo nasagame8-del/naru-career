@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getAllArticleMetas } from "@/lib/articles";
 import { CATEGORIES } from "@/lib/categories";
 import { ArticleBrowser } from "@/components/ArticleBrowser";
+import { readPopularitySnapshot } from "@/lib/popularity";
+import { recommendedSlugOrder } from "@/lib/article-sort";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -17,6 +19,8 @@ export const metadata: Metadata = {
 export default function ArticlesIndexPage() {
   // getAllArticleMetas() は公開日の降順（最新順）で返る
   const articles = getAllArticleMetas();
+  // 人気順はビルド時スナップショットから読む（公開ページからAPIを呼ばない）
+  const popularity = readPopularitySnapshot();
 
   return (
     <>
@@ -42,7 +46,11 @@ export default function ArticlesIndexPage() {
           カテゴリタブで絞り込めます。
         </p>
 
-        <ArticleBrowser articles={articles} />
+        <ArticleBrowser
+          articles={articles}
+          popularityOrder={popularity?.order ?? []}
+          recommendedOrder={recommendedSlugOrder()}
+        />
 
         {/* カテゴリ解説ページへの導線（内部リンクを保つ） */}
         <section className="mt-12 pt-8 border-t border-line">

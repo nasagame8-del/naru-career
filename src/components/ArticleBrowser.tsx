@@ -5,6 +5,11 @@ import Link from "next/link";
 import { CATEGORIES } from "@/lib/categories";
 import type { ArticleMeta } from "@/lib/articles";
 import { ArticleList } from "./ArticleList";
+import {
+  SORT_OPTIONS,
+  sortArticles,
+  type SortId,
+} from "@/lib/article-sort";
 
 /** 最初に表示する件数。「さらに見る」で全件へ広げる */
 const INITIAL_COUNT = 12;
@@ -20,14 +25,32 @@ const CATEGORY_SLUG_BY_NAME = new Map<string, string>(
 );
 
 /**
- * 記事を最新順に並べたまま、カテゴリで絞り込んで閲覧する。
+ * 記事をカテゴリで絞り込み、並び順を選んで閲覧する。
  *
- * 並び順は親から渡された配列の順序（`getAllArticleMetas()` が
- * 公開日の降順で返す）をそのまま保つ。ここで並べ替えはしない。
+ * 並び順の判定は `@/lib/article-sort` の純粋関数に委ねる。
+ * 根拠データが無い並び順（スナップショット未生成時の人気順）は
+ * 選択肢に出さない。
  */
-export function ArticleBrowser({ articles }: { articles: ArticleMeta[] }) {
+export function ArticleBrowser({
+  articles,
+  popularityOrder = [],
+  recommendedOrder,
+}: {
+  articles: ArticleMeta[];
+  /** 人気順のslug列。空なら「人気順」は選択肢に出さない */
+  popularityOrder?: string[];
+  /** おすすめ順のslug列 */
+  recommendedOrder?: string[];
+}) {
   const [filter, setFilter] = useState<FilterId>(ALL);
+  const [sort, setSort] = useState<SortId>("newest");
   const [showAll, setShowAll] = useState(false);
+
+  // 根拠データが無い並び順は出さない（実態と違う順序を見せない）
+  const availableSorts = useMemo(
+    () => SORT_OPTIONS.filter((o) => o.id !== "popular" || popularityOrder.length > 0),
+    [popularityOrder]
+  );
 
   /** カテゴリごとの件数。タブに出して選ぶ前に規模が分かるようにする */
   const counts = useMemo(() => {
@@ -46,10 +69,11 @@ export function ArticleBrowser({ articles }: { articles: ArticleMeta[] }) {
     return [ALL, ...present] as FilterId[];
   }, [counts]);
 
-  const filtered = useMemo(
-    () => (filter === ALL ? articles : articles.filter((a) => a.category === filter)),
-    [articles, filter]
-  );
+  const filtered = useMemo(() => {
+    const scoped =
+      filter === ALL ? articles : articles.filter((a) => a.category === filter);
+    return sortArticles(scoped, sort, { popularityOrder, recommendedOrder });
+  }, [articles, filter, sort, popularityOrder, recommendedOrder]);
 
   const displayed = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
   const remaining = filtered.length - displayed.length;
@@ -59,6 +83,15 @@ export function ArticleBrowser({ articles }: { articles: ArticleMeta[] }) {
     // 絞り込みを変えたら表示件数も初期状態へ戻す
     setShowAll(false);
   }
+
+  function selectSort(next: SortId) {
+    setSort(next);
+    // 並び順を変えたら先頭から見せる
+    setShowAll(false);
+  }
+
+  const activeSortLabel =
+    availableSorts.find((o) => o.id === sort)?.label ?? "新しい順";
 
   const activeCategorySlug =
     filter === ALL ? null : (CATEGORY_SLUG_BY_NAME.get(filter) ?? null);
@@ -99,9 +132,34 @@ export function ArticleBrowser({ articles }: { articles: ArticleMeta[] }) {
         <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none sm:hidden" />
       </div>
 
-      {/* 件数と並び順を明示する */}
+      {/* 並び替え */}
+      <div className="flex flex-wrap items-center gap-2 mb-4">
+        <span className="text-xs text-ink-soft">並び替え</span>
+        <div role="group" aria-label="並び替え" className="flex flex-wrap gap-1.5">
+          {availableSorts.map((option) => {
+            const isActive = option.id === sort;
+            return (
+              <button
+                key={option.id}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => selectSort(option.id)}
+                className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                  isActive
+                    ? "border-primary bg-primary-soft text-primary"
+                    : "border-line text-ink-soft hover:text-ink hover:border-ink-soft"
+                }`}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 件数と現在の並び順を明示する */}
       <p className="text-xs text-ink-soft mb-4">
-        {filter === ALL ? "すべての記事" : filter}を新しい順に
+        {filter === ALL ? "すべての記事" : filter}を{activeSortLabel}に
         {filtered.length}件表示しています
         {remaining > 0 ? `（うち${displayed.length}件を表示中）` : ""}
       </p>
