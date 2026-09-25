@@ -103,7 +103,7 @@ def select_item(queue, date_string, slot):
             or approved.get("githubBlobByteVerified") is not True):
         raise Hold("Saved article QA or explicit user approval is missing")
     expected_sha = item.get("headSha", "")
-    approved_sha = approved.get("previewApprovedHeadSha", expected_sha)
+    approved_sha = approved.get("previewApprovedHeadSha")
     if not HEX_SHA.fullmatch(expected_sha) or approved_sha != expected_sha:
         raise Hold("Approved head SHA mismatch or malformed SHA")
     if not SLUG.fullmatch(item.get("slug", "")):
