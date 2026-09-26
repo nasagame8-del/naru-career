@@ -1,0 +1,140 @@
+{
+  "batchId": "batch_2026-09-26_chatgpt",
+  "generatedAt": "2026-09-25T23:07:00.000Z",
+  "trigger": "manual",
+  "candidates": [
+    {
+      "id": "cand_260926a1",
+      "title": "第二新卒でIT企業のカスタマーサクセスに転職するには？仕事内容・営業との違い・求人の見方",
+      "primaryKeyword": "第二新卒 カスタマーサクセス 転職",
+      "secondaryKeywords": [
+        "カスタマーサクセス 未経験 第二新卒",
+        "IT カスタマーサクセス 仕事内容",
+        "SaaS カスタマーサクセス 転職"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "IT転職総論や営業寄りの業界体験記事では扱い切れていない、導入支援・定着支援・継続利用を担うカスタマーサクセス職に限定し、営業との役割差と未経験求人の確認点を整理する。",
+      "reasonToWriteNow": "NARUの非エンジニア系IT職種の導線に、カスタマーサクセスを独立して解説する記事がないため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-customer-success-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "aio-seo-industry-inside"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260926a2",
+      "title": "第二新卒で社内SE・情シスを目指すには？ヘルプデスクとの違いと未経験求人の確認点",
+      "primaryKeyword": "第二新卒 社内SE 未経験 転職",
+      "secondaryKeywords": [
+        "社内SE 第二新卒",
+        "情シス 未経験 転職",
+        "ヘルプデスク 社内SE 違い"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "IT業界転職総論やSES解説とは別に、事業会社の社内IT部門へ焦点を絞り、社内SE・情シス・ヘルプデスクの職務範囲と求人票で見るべき条件を整理する。",
+      "reasonToWriteNow": "既存記事では受託・SES・Web系が中心で、事業会社内のIT職という選択肢を具体的に案内できていないため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-inhouse-se-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "ses-explained"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260926a3",
+      "title": "第二新卒からQAエンジニア・テスターを目指すには？仕事内容と未経験求人の見極め方",
+      "primaryKeyword": "第二新卒 QAエンジニア 未経験",
+      "secondaryKeywords": [
+        "QAエンジニア 未経験 転職",
+        "ソフトウェアテスター 第二新卒",
+        "テスターからエンジニア キャリア"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "プログラミング転職記事が開発職への入口を扱うのに対し、品質保証・テスト設計・不具合管理を担うQA職に限定し、単純作業型求人との違いとキャリアの広げ方を扱う。",
+      "reasonToWriteNow": "未経験からITへ入る選択肢として検索されやすいQA・テスター職を、開発職と混同せず判断できる記事がないため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-qa-engineer-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-programming-career-change",
+        "second-new-grad-it-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260926a4",
+      "title": "第二新卒でSaaS営業・IT法人営業に転職するには？仕事内容と未経験求人の選び方",
+      "primaryKeyword": "第二新卒 SaaS営業 転職",
+      "secondaryKeywords": [
+        "IT営業 未経験 第二新卒",
+        "SaaS営業 仕事内容",
+        "IT法人営業 求人 見方"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "IT/Web業界全体の記事やAIO企業の体験記事とは分け、SaaS・IT法人営業の新規営業、既存支援、インサイドセールスなどの役割差と求人の見方に焦点を当てる。",
+      "reasonToWriteNow": "エンジニア以外からIT業界へ入る現実的な選択肢として、営業職を職種単位で解説する記事が不足しているため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-saas-sales-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "aio-seo-industry-inside"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260926a5",
+      "title": "第二新卒からWebデザイナーを目指すには？未経験で必要なスキル・制作物・求人の見方",
+      "primaryKeyword": "第二新卒 Webデザイナー 未経験",
+      "secondaryKeywords": [
+        "Webデザイナー 未経験 転職",
+        "第二新卒 Webデザイン ポートフォリオ",
+        "Webデザイナー 求人 見方"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "Web業界ガイドは業界全体、ポートフォリオ記事は複数職種の成果物を扱う。本記事はWebデザイナー職に限定し、基礎スキル、制作物の示し方、デザイン以外の業務を含む求人の見極めまでつなげる。",
+      "reasonToWriteNow": "公開済みのWebマーケター・Webディレクター記事に続く職種別クラスターとして、Webデザイナーの独立記事がないため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-web-designer-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "web-industry-guide",
+        "second-new-grad-it-portfolio-guide"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "inventorySize": 41,
+  "nextArticleId": 42,
+  "notes": [
+    "ChatGPTの通常機能で候補を作成。OpenAI API、Article Factory生成POST、Vercel Cron、GPT Work、外部有料生成は未使用。",
+    "Search Consoleの当日データは取得していないため、searchEvidenceは全候補でnull。",
+    "2026-09-25の選定キューは記事40・41ともPUBLISHED。過去キューに記録された未着手の求人票チェックリストは削除せず、本バッチの候補から除外。",
+    "候補1・2は前日バッチで未選定だった有効候補を、公開済み記事41本との再照合後に再提示。候補3〜5は当日在庫との差分から追加。"
+  ]
+}
