@@ -1,0 +1,89 @@
+{
+  "batchId": "batch_2026-09-27_chatgpt",
+  "generatedAt": "2026-09-26T23:04:43.000Z",
+  "trigger": "manual",
+  "candidates": [
+    {
+      "id": "cand_260927a1",
+      "title": "第二新卒のIT転職で企業研究は何を見る？サービス・顧客・収益の調べ方",
+      "primaryKeyword": "第二新卒 IT企業 企業研究",
+      "secondaryKeywords": [
+        "IT企業 企業研究 やり方",
+        "第二新卒 IT転職 事業内容 調べ方"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の「会社の評判」記事は口コミの受け止め方を扱う。本候補は応募前に公式サイト・製品資料などから、誰に何を提供しどう収益を得るかを整理する作業に絞る。",
+      "reasonToWriteNow": "職種記事を読んだ後、応募先を具体的に比較するための企業研究手順が現行記事にない。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-company-research",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "company-reputation-search-reality",
+        "second-new-grad-it-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260927a2",
+      "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
+      "primaryKeyword": "第二新卒 Web制作会社 事業会社 違い",
+      "secondaryKeywords": [
+        "Web制作会社 事業会社 転職",
+        "Web業界 未経験 会社選び"
+      ],
+      "searchIntent": "compare",
+      "differenceFromExisting": "Webディレクター記事は職種の仕事理解が中心。本候補は勤め先の事業形態を軸に、受託制作と自社サービス運営で担当する工程や成果物を比較する。",
+      "reasonToWriteNow": "Web系職種を選ぶ前に、働く会社の種類を判断する独立した導線を作るため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-web-agency-vs-inhouse",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-web-director-career",
+        "what-is-web-industry"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260927a3",
+      "title": "第二新卒からITヘルプデスクへ転職するには？社内・社外サポートの違いと求人の確認点",
+      "primaryKeyword": "第二新卒 ITヘルプデスク 転職",
+      "secondaryKeywords": [
+        "ITヘルプデスク 未経験 第二新卒",
+        "社内ヘルプデスク 社外サポート 違い"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "前日の未選定候補「社内SE・情シス」は社内IT部門全体への転職を扱う。本候補は問い合わせ対応を担うヘルプデスク職に限り、社内向けと顧客向けの違いを説明する。制作時は旧候補との見出し重複を再確認する。",
+      "reasonToWriteNow": "プログラミング職以外のIT職への入口を、具体的な担当業務から検討できるようにするため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-helpdesk-career",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE",
+        "THIN_DIFFERENTIATION"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "ses-explained"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "inventorySize": 43,
+  "nextArticleId": 45,
+  "notes": [
+    "2026-09-27 JST。GitHub masterの43記事、Open記事PR、過去キュー、2026-09-26候補と比較した。",
+    "2026-09-24の未着手求人票チェックリストは削除せず、記事ID42の優先枠として扱う。43・44は公開済み。",
+    "Search Console実データ未取得のため、全候補のsearchEvidenceはnull。",
+    "職種・企業形態の参考一次資料：厚生労働省job tag https://shigoto.mhlw.go.jp/User/ITOccupations 、https://shigoto.mhlw.go.jp/User/Occupation/Detail/327 、https://shigoto.mhlw.go.jp/User/Occupation/Detail/320 （2026-09-27 JST確認）。",
+    "OpenAI API、Article Factory生成POST、Vercel Cron、GPT Work、外部有料生成は使用していない。"
+  ]
+}
