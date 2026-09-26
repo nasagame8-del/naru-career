@@ -9,7 +9,7 @@
       "candidateId": "cand_260926b1",
       "slug": "second-new-grad-it-offer-acceptance-checks",
       "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
-      "status": "PUBLISH_HELD_INTERNAL_LINK",
+      "status": "READY_FOR_SCHEDULED_PUBLISH_QA",
       "articleId": 43,
       "prNumber": 30,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/30",
@@ -34,7 +34,7 @@
         "previewDirectArticleUrlShared": true,
         "previewVisual": "user_confirmed",
         "userPreviewApprovedForHeadSha": "763cec2e8d430a8c6b4df73bbe2adb9695000de4",
-        "internalLinksVerified": false
+        "internalLinksVerified": true
       },
       "imageFiles": {
         "card": "1DGTUel_5gRqZtMPHmcf8YYgc8BRHvtgl",
@@ -69,11 +69,7 @@
         "source": "User message 2026-09-26 15:49:59 JST: 両方OK",
         "previewUrl": "https://career-media-git-article-factory-9310c1-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-offer-acceptance-checks"
       },
-      "scheduledPublishAtJst": "2026-09-26T16:00:00+09:00",
-      "publishHold": {
-        "atJst": "2026-09-26T16:00:00+09:00",
-        "reason": "Article body links to /articles/second-new-grad-it-career, but master/content/articles has second-new-grad-it-career-change.md and no second-new-grad-it-career.md. Correct and re-QA, then obtain user preview approval for new head SHA and new publish time."
-      }
+      "scheduledPublishAtJst": "2026-09-26T16:00:00+09:00"
     },
     {
       "order": 2,
