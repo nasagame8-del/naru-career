@@ -14,11 +14,11 @@
       "searchIntent": "do",
       "differenceFromExisting": "求人票を読む段階とは異なり、内定後に提示された労働条件・職務・配属・研修を照合して承諾を判断する時点に絞る。",
       "reasonToWriteNow": "ユーザーが既存の職種別記事とは別角度の意思決定記事を希望したため。",
-      "category": "転職ノウハウ",
+      "category": "業界解説",
       "proposedSlug": "second-new-grad-it-offer-acceptance-checks",
       "riskFlags": [
         "NO_SEARCH_EVIDENCE",
-        "LABOR_CONDITION_PRIMARY_SOURCE_REQUIRED"
+        "YMYL_SENSITIVE"
       ],
       "nearestExistingSlugs": [
         "second-new-grad-it-career-change",
@@ -39,11 +39,10 @@
       "searchIntent": "know",
       "differenceFromExisting": "転職準備や入社前ポートフォリオではなく、入社後の業務理解、学習、相談の進め方を職種別に整理する。",
       "reasonToWriteNow": "ユーザーが入社後支援という別角度を選定したため。",
-      "category": "転職ノウハウ",
+      "category": "業界解説",
       "proposedSlug": "second-new-grad-it-first-90-days",
       "riskFlags": [
-        "NO_SEARCH_EVIDENCE",
-        "GENERAL_GUIDANCE_NOT_FIXED_TIMELINE"
+        "NO_SEARCH_EVIDENCE"
       ],
       "nearestExistingSlugs": [
         "second-new-grad-it-career-change",
@@ -52,6 +51,33 @@
       "searchEvidence": null,
       "blocked": false,
       "blockedReasons": []
+    },
+    {
+      "id": "cand_260926b3",
+      "title": "第二新卒でIT企業へ転職する前に、研修・配属の説明をどう確認する？",
+      "primaryKeyword": "第二新卒 IT企業 研修 配属 確認",
+      "secondaryKeywords": [
+        "IT企業 入社前 研修 確認",
+        "未経験 IT 配属 仕事内容"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "内定後の条件全体や入社後90日の行動とは分け、研修・配属の具体的な説明と質問例を扱う。",
+      "reasonToWriteNow": "入社前後の理解のズレを減らす実務的な観点を補うため。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-training-assignment-questions",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE",
+        "THIN_DIFFERENTIATION"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-offer-acceptance-checks",
+        "second-new-grad-it-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": true,
+      "blockedReasons": [
+        "既に選定された候補1と検索意図が近いため独立記事化前に差別化が必要"
+      ]
     }
   ],
   "inventorySize": 41,
@@ -59,6 +85,7 @@
   "notes": [
     "2026-09-26の朝の5候補バッチは保持。ユーザーが別角度の1、2を明示選定したため、別の補足バッチとして記録。",
     "2026-09-24の未着手求人票チェックリストに記事ID42を優先確保する想定。実制作前に予約状態を再確認する。",
-    "Search Console未取得。生成APIは未使用。"
+    "Search Console未取得。生成APIは未使用。",
+    "候補バッチの最低3件に合わせ未選定・重複懸念の補助候補を追加し、公開対象にはしない。"
   ]
 }
