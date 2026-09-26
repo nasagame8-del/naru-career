@@ -1,0 +1,34 @@
+{
+  "selectedAt": "2026-09-27",
+  "batchId": "batch_2026-09-27_chatgpt",
+  "status": "SELECTED",
+  "items": [
+    {
+      "order": 1,
+      "candidateId": "cand_260927a1",
+      "articleId": 45,
+      "slug": "second-new-grad-it-company-research",
+      "title": "第二新卒のIT転職で企業研究は何を見る？サービス・顧客・収益の調べ方",
+      "status": "SELECTED",
+      "prNumber": null,
+      "driveFolderId": null,
+      "imageFiles": {}
+    },
+    {
+      "order": 2,
+      "candidateId": "cand_260927a2",
+      "articleId": 46,
+      "slug": "second-new-grad-web-agency-vs-inhouse",
+      "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
+      "status": "SELECTED",
+      "prNumber": null,
+      "driveFolderId": null,
+      "imageFiles": {}
+    }
+  ],
+  "notes": [
+    "User explicitly selected 1 then 2 on 2026-09-27 JST.",
+    "Article ID 42 remains provisionally reserved for the unfinished 2026-09-24 job-posting checklist; 43 and 44 are published. IDs 45 and 46 assigned to today's selection after checking master and open PRs.",
+    "Do not create duplicate article PRs. Images and preview approval are pending; do not merge or publish."
+  ]
+}
