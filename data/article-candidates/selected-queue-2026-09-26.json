@@ -1,29 +1,64 @@
 {
   "selectedAt": "2026-09-26",
   "batchId": "batch_2026-09-26_chatgpt_alternative",
-  "status": "SELECTED",
-  "notificationSent": false,
+  "status": "BOTH_DRAFTS_WAITING_IMAGES",
+  "notificationSent": true,
   "items": [
     {
       "order": 1,
       "candidateId": "cand_260926b1",
       "slug": "second-new-grad-it-offer-acceptance-checks",
       "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
-      "status": "SELECTED",
-      "articleId": 43
+      "status": "WAITING_IMAGES",
+      "articleId": 43,
+      "prNumber": 30,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/30",
+      "branch": "article-factory/2026-09-26-043-offer-acceptance",
+      "headSha": "9fc5595ca1a82e577bee569a692e9ed3f5e3112f",
+      "driveFolderId": "13kawah0LF6Irib6l7XLcltC0qKGRCB8A",
+      "imagesFolderId": "1ngwaemfHUrUNIw8j0-VMLK3sWdR6tGMo",
+      "originalsFolderId": "1-EMywoMrwjGgcgvAiqEbUyPwZEQV9NQr",
+      "draftFileId": "1VMm22YFd25zlACA-OvcV7YM-csSxLunq",
+      "imagePlanFileId": "1EkHOT2ZZj9E5R-420WoNkohdX_ZsAhPj",
+      "promptFileId": "16TIN7rIPQDgpevjfFVuMeW99OdRZy_kj",
+      "designPromptFileId": "1pKe4zpyZCp9MAPPVx7f_FpRvgLXWkJrj",
+      "imageStatus": "card・01・02・03 未提出。原稿と画像計画のDraft PRを保存済み。",
+      "qa": {
+        "previewApproved": false,
+        "githubActionsLatestHeadSuccess": false,
+        "vercelCommitLatestHeadSuccess": false
+      }
     },
     {
       "order": 2,
       "candidateId": "cand_260926b2",
       "slug": "second-new-grad-it-first-90-days",
       "title": "未経験でIT企業に入った最初の90日、何を覚える？職種別の学び方と相談の進め方",
-      "status": "SELECTED",
-      "articleId": 44
+      "status": "WAITING_IMAGES",
+      "articleId": 44,
+      "prNumber": 31,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/31",
+      "branch": "article-factory/2026-09-26-044-first-90-days",
+      "headSha": "7a4a7b9218f28cbce85cd320f436314749cc4e5c",
+      "driveFolderId": "1em7ky4JpIq4Lkfk_-Gn7aaz9E2eo6VGy",
+      "imagesFolderId": "1o1QcyeN_6ezvip4GCG-H_hKFFSVgmtcv",
+      "originalsFolderId": "1g1eBXTyKdG8yxrlRRe8Js75VwBmRB1Al",
+      "draftFileId": "1nLpvmc0jrOnr47FnLMyLekanD7LnsxQI",
+      "imagePlanFileId": "1xozveUxR1UVyS9HOqoNWSdMlcU4DLJCS",
+      "promptFileId": "1d9h7g1PM0NpfJOg-7Mq-twksosEqjK0F",
+      "designPromptFileId": "1qFVzwvvfLNg4PZPrB0aQ1y7voXsGC1q5",
+      "imageStatus": "card・01・02・03 未提出。原稿と画像計画のDraft PRを保存済み。",
+      "qa": {
+        "previewApproved": false,
+        "githubActionsLatestHeadSuccess": false,
+        "vercelCommitLatestHeadSuccess": false
+      }
     }
   ],
   "notes": [
     "ユーザーの「もっと別角度での記事案ない？」に提示した案1と案2をこの順で選定。朝8時の職種別候補1・2ではない。",
     "2026-09-24選定の未着手求人票チェックリストを保持し、記事ID42を先行候補として尊重。記事作成時にID再検証。",
-    "画像4枚と記事プレビュー承認のゲートを満たすまで公開しない。"
+    "画像4枚と記事プレビュー承認のゲートを満たすまで公開しない。",
+    "2026-09-26: 2本のDraft PR #30/#31、各Drive記事フォルダ、images/originals、原稿、画像計画、04_Designと記事別の同内容画像プロンプトを保存し読み戻し確認。画像生成・公開は未実施。"
   ]
 }
