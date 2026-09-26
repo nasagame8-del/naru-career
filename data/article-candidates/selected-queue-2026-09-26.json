@@ -9,7 +9,7 @@
       "candidateId": "cand_260926b1",
       "slug": "second-new-grad-it-offer-acceptance-checks",
       "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
-      "status": "MERGED_PRODUCTION_PENDING",
+      "status": "PUBLISHED_VERIFIED",
       "articleId": 43,
       "prNumber": 30,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/30",
@@ -35,7 +35,8 @@
         "previewVisual": "user_confirmed",
         "userPreviewApprovedForHeadSha": "763cec2e8d430a8c6b4df73bbe2adb9695000de4",
         "internalLinksVerified": true,
-        "productionVerified": false
+        "productionVerified": true,
+        "productionArticleImagesVerified": true
       },
       "imageFiles": {
         "card": "1DGTUel_5gRqZtMPHmcf8YYgc8BRHvtgl",
@@ -72,7 +73,14 @@
       },
       "scheduledPublishAtJst": "2026-09-26T16:00:00+09:00",
       "mergeSha": "d95dd2a2a665a861d1309867599c8e4be8bc44f4",
-      "mergedAt": "2026-09-26T07:03:15Z"
+      "mergedAt": "2026-09-26T07:03:15Z",
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-it-offer-acceptance-checks",
+      "productionDeployment": {
+        "mergeSha": "d95dd2a2a665a861d1309867599c8e4be8bc44f4",
+        "vercelCommitStatus": "success",
+        "statusUpdatedAt": "2026-09-26T07:05:59Z",
+        "articleBrowserVerified": true
+      }
     },
     {
       "order": 2,
