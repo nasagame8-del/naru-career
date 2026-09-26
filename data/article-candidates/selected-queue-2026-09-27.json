@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-27",
   "batchId": "batch_2026-09-27_chatgpt",
-  "status": "SELECTED",
+  "status": "DRAFT_PRS_AWAITING_IMAGES",
   "items": [
     {
       "order": 1,
@@ -9,10 +9,25 @@
       "articleId": 45,
       "slug": "second-new-grad-it-company-research",
       "title": "第二新卒のIT転職で企業研究は何を見る？サービス・顧客・収益の調べ方",
-      "status": "SELECTED",
-      "prNumber": null,
-      "driveFolderId": null,
-      "imageFiles": {}
+      "status": "DRAFT_PR_AWAITING_4_IMAGES",
+      "prNumber": 32,
+      "driveFolderId": "1hVcY_gTtyyaz3NUuhA2xk9BxSNHOr6uD",
+      "imageFiles": {},
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/32",
+      "branch": "article-factory/2026-09-27-045-company-research",
+      "headSha": "73c34643d6198bd215ab671e31529d844a3a69ce",
+      "imagesFolderId": "1EQ1Px2YJsh8xRx7NYpkkBY5iI5UmOmjJ",
+      "originalsFolderId": "1tlaXbgHpFFJ_comSbBPMX2-DpSuOACtd",
+      "draftFileId": "1q_pLzS43MD__HP39CP39LHUQMGj77ceX",
+      "imagePlanFileId": "14lEWfAeFEhhavNXNy6z6JogeoZE0zZp8",
+      "promptFileId": "16S0PQaH9syHq4y7fgrrQtd7GiS6rmKfk",
+      "designPromptFileId": "16ksV0DYc1XgCDftOzwqLo4exolQ6YNdn",
+      "imageStatus": "awaiting_user_4_images",
+      "qa": {
+        "previewVisual": "pending",
+        "githubActions": "pending_or_unverified",
+        "vercelPreviewStatus": "pending_or_unverified"
+      }
     },
     {
       "order": 2,
@@ -20,10 +35,25 @@
       "articleId": 46,
       "slug": "second-new-grad-web-agency-vs-inhouse",
       "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
-      "status": "SELECTED",
-      "prNumber": null,
-      "driveFolderId": null,
-      "imageFiles": {}
+      "status": "DRAFT_PR_AWAITING_4_IMAGES",
+      "prNumber": 33,
+      "driveFolderId": "1O1yI4bPrewLXQT9LECbxJ7URyODZoacg",
+      "imageFiles": {},
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/33",
+      "branch": "article-factory/2026-09-27-046-web-company-types",
+      "headSha": "88ae7af1f424edafebf035e1f5136df52f48c1b9",
+      "imagesFolderId": "1BT7Yc-JmGpUBmq0AvCPJXe7yJBwHFmkE",
+      "originalsFolderId": "1yFp7-1ypFivdjLdLwH5r3rHfmv9SYsQp",
+      "draftFileId": "1-00wwNtzZ5YvtOevloTkpjy8Uijq9Akz",
+      "imagePlanFileId": "1DeaNRpIlLTmiIhZdt8W_5x05AyvqXhBP",
+      "promptFileId": "1R7Lje67i8clZelTOsMkzBpOW0zzzm6Js",
+      "designPromptFileId": "1rIuxmOSmgvp_cPPkyQo3AosEoP2Z9Xsn",
+      "imageStatus": "awaiting_user_4_images",
+      "qa": {
+        "previewVisual": "pending",
+        "githubActions": "pending_or_unverified",
+        "vercelPreviewStatus": "pending_or_unverified"
+      }
     }
   ],
   "notes": [
