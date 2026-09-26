@@ -1,0 +1,64 @@
+{
+  "batchId": "batch_2026-09-26_chatgpt_alternative",
+  "generatedAt": "2026-09-26T05:48:32.081Z",
+  "trigger": "manual",
+  "candidates": [
+    {
+      "id": "cand_260926b1",
+      "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
+      "primaryKeyword": "第二新卒 IT企業 内定承諾 確認",
+      "secondaryKeywords": [
+        "IT企業 内定承諾 労働条件",
+        "第二新卒 内定承諾前 チェックリスト"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "求人票を読む段階とは異なり、内定後に提示された労働条件・職務・配属・研修を照合して承諾を判断する時点に絞る。",
+      "reasonToWriteNow": "ユーザーが既存の職種別記事とは別角度の意思決定記事を希望したため。",
+      "category": "転職ノウハウ",
+      "proposedSlug": "second-new-grad-it-offer-acceptance-checks",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE",
+        "LABOR_CONDITION_PRIMARY_SOURCE_REQUIRED"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "second-new-grad-job-change-traps"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260926b2",
+      "title": "未経験でIT企業に入った最初の90日、何を覚える？職種別の学び方と相談の進め方",
+      "primaryKeyword": "未経験 IT企業 入社後 90日",
+      "secondaryKeywords": [
+        "第二新卒 IT 入社後 何を覚える",
+        "未経験 IT 仕事 慣れる"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "転職準備や入社前ポートフォリオではなく、入社後の業務理解、学習、相談の進め方を職種別に整理する。",
+      "reasonToWriteNow": "ユーザーが入社後支援という別角度を選定したため。",
+      "category": "転職ノウハウ",
+      "proposedSlug": "second-new-grad-it-first-90-days",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE",
+        "GENERAL_GUIDANCE_NOT_FIXED_TIMELINE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "second-new-grad-it-portfolio-guide"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "inventorySize": 41,
+  "nextArticleId": 43,
+  "notes": [
+    "2026-09-26の朝の5候補バッチは保持。ユーザーが別角度の1、2を明示選定したため、別の補足バッチとして記録。",
+    "2026-09-24の未着手求人票チェックリストに記事ID42を優先確保する想定。実制作前に予約状態を再確認する。",
+    "Search Console未取得。生成APIは未使用。"
+  ]
+}
