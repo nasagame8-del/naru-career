@@ -9,7 +9,7 @@
       "candidateId": "cand_260926b1",
       "slug": "second-new-grad-it-offer-acceptance-checks",
       "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
-      "status": "READY_FOR_SCHEDULED_PUBLISH_QA",
+      "status": "MERGED_PRODUCTION_PENDING",
       "articleId": 43,
       "prNumber": 30,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/30",
@@ -26,7 +26,7 @@
       "qa": {
         "previewApproved": true,
         "githubActionsLatestHeadSuccess": true,
-        "vercelCommitLatestHeadSuccess": false,
+        "vercelCommitLatestHeadSuccess": true,
         "visualImagesInspected": true,
         "imageDimensionsAndMetadata": true,
         "sourceImagesArchived": true,
@@ -34,7 +34,8 @@
         "previewDirectArticleUrlShared": true,
         "previewVisual": "user_confirmed",
         "userPreviewApprovedForHeadSha": "763cec2e8d430a8c6b4df73bbe2adb9695000de4",
-        "internalLinksVerified": true
+        "internalLinksVerified": true,
+        "productionVerified": false
       },
       "imageFiles": {
         "card": "1DGTUel_5gRqZtMPHmcf8YYgc8BRHvtgl",
@@ -69,7 +70,9 @@
         "source": "User message 2026-09-26 15:49:59 JST: 両方OK",
         "previewUrl": "https://career-media-git-article-factory-9310c1-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-offer-acceptance-checks"
       },
-      "scheduledPublishAtJst": "2026-09-26T16:00:00+09:00"
+      "scheduledPublishAtJst": "2026-09-26T16:00:00+09:00",
+      "mergeSha": "d95dd2a2a665a861d1309867599c8e4be8bc44f4",
+      "mergedAt": "2026-09-26T07:03:15Z"
     },
     {
       "order": 2,
