@@ -1,0 +1,29 @@
+{
+  "selectedAt": "2026-09-26",
+  "batchId": "batch_2026-09-26_chatgpt_alternative",
+  "status": "SELECTED",
+  "notificationSent": false,
+  "items": [
+    {
+      "order": 1,
+      "candidateId": "cand_260926b1",
+      "slug": "second-new-grad-it-offer-acceptance-checks",
+      "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
+      "status": "SELECTED",
+      "articleId": 43
+    },
+    {
+      "order": 2,
+      "candidateId": "cand_260926b2",
+      "slug": "second-new-grad-it-first-90-days",
+      "title": "未経験でIT企業に入った最初の90日、何を覚える？職種別の学び方と相談の進め方",
+      "status": "SELECTED",
+      "articleId": 44
+    }
+  ],
+  "notes": [
+    "ユーザーの「もっと別角度での記事案ない？」に提示した案1と案2をこの順で選定。朝8時の職種別候補1・2ではない。",
+    "2026-09-24選定の未着手求人票チェックリストを保持し、記事ID42を先行候補として尊重。記事作成時にID再検証。",
+    "画像4枚と記事プレビュー承認のゲートを満たすまで公開しない。"
+  ]
+}
