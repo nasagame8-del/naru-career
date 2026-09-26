@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-26",
   "batchId": "batch_2026-09-26_chatgpt_alternative",
-  "status": "BOTH_IMAGE_READY_QA_PENDING",
+  "status": "IMAGES_AND_ACTIONS_VERIFIED_PREVIEW_PENDING",
   "notificationSent": true,
   "items": [
     {
@@ -9,7 +9,7 @@
       "candidateId": "cand_260926b1",
       "slug": "second-new-grad-it-offer-acceptance-checks",
       "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
-      "status": "QA_PENDING",
+      "status": "WAITING_VERCEL_AND_PREVIEW_APPROVAL",
       "articleId": 43,
       "prNumber": 30,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/30",
@@ -25,12 +25,15 @@
       "imageStatus": "4 WebP verified in Drive folder and GitHub PR branch; metadata stripped, dimensions checked, source PNGs in originals/",
       "qa": {
         "previewApproved": false,
-        "githubActionsLatestHeadSuccess": false,
+        "githubActionsLatestHeadSuccess": true,
         "vercelCommitLatestHeadSuccess": false,
         "visualImagesInspected": true,
         "imageDimensionsAndMetadata": true,
         "sourceImagesArchived": true,
-        "bodyImageRefsAndAltVerified": true
+        "bodyImageRefsAndAltVerified": true,
+        "previewDirectArticleUrlShared": false,
+        "previewVisual": "not_verified_browser_auto_review_denied",
+        "userPreviewApprovedForHeadSha": null
       },
       "imageFiles": {
         "card": "1DGTUel_5gRqZtMPHmcf8YYgc8BRHvtgl",
@@ -57,14 +60,15 @@
           "webp": "740914634662c57e5973249359f0111ed6aebfebf3db42b177c09aec22b3dfb8"
         }
       },
-      "startedAtHeadSha": "9fc5595ca1a82e577bee569a692e9ed3f5e3112f"
+      "startedAtHeadSha": "9fc5595ca1a82e577bee569a692e9ed3f5e3112f",
+      "previewArticleUrl": "https://career-media-git-article-factory-9310c1-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-offer-acceptance-checks"
     },
     {
       "order": 2,
       "candidateId": "cand_260926b2",
       "slug": "second-new-grad-it-first-90-days",
       "title": "未経験でIT企業に入った最初の90日、何を覚える？職種別の学び方と相談の進め方",
-      "status": "QA_PENDING",
+      "status": "WAITING_PREVIEW_APPROVAL",
       "articleId": 44,
       "prNumber": 31,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/31",
@@ -80,12 +84,15 @@
       "imageStatus": "4 WebP verified in Drive folder and GitHub PR branch; metadata stripped, dimensions checked, source PNGs in originals/",
       "qa": {
         "previewApproved": false,
-        "githubActionsLatestHeadSuccess": false,
-        "vercelCommitLatestHeadSuccess": false,
+        "githubActionsLatestHeadSuccess": true,
+        "vercelCommitLatestHeadSuccess": true,
         "visualImagesInspected": true,
         "imageDimensionsAndMetadata": true,
         "sourceImagesArchived": true,
-        "bodyImageRefsAndAltVerified": true
+        "bodyImageRefsAndAltVerified": true,
+        "previewDirectArticleUrlShared": false,
+        "previewVisual": "not_verified_browser_auto_review_denied",
+        "userPreviewApprovedForHeadSha": null
       },
       "imageFiles": {
         "card": "156qlbhSeP2ADgejUqmU14Qm7HwEMs6I_",
@@ -112,7 +119,8 @@
           "webp": "b67ca1dc97df89a548e66b05328c55deca9a258650aaf035d0f2dca94f3247b5"
         }
       },
-      "startedAtHeadSha": "7a4a7b9218f28cbce85cd320f436314749cc4e5c"
+      "startedAtHeadSha": "7a4a7b9218f28cbce85cd320f436314749cc4e5c",
+      "previewArticleUrl": "https://career-media-git-article-factory-d60f76-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-first-90-days"
     }
   ],
   "notes": [
@@ -120,6 +128,7 @@
     "2026-09-24選定の未着手求人票チェックリストを保持し、記事ID42を先行候補として尊重。記事作成時にID再検証。",
     "画像4枚と記事プレビュー承認のゲートを満たすまで公開しない。",
     "2026-09-26: 2本のDraft PR #30/#31、各Drive記事フォルダ、images/originals、原稿、画像計画、04_Designと記事別の同内容画像プロンプトを保存し読み戻し確認。画像生成・公開は未実施。",
-    "2026-09-26: 8 original PNGs inspected, SHA-256 recorded; size-matched 8 metadata-free WebP files uploaded to Drive images/ and corresponding PR branches. Originals moved to originals/. Both PRs remain Draft pending latest-head CI, Vercel, preview QA and user approval."
+    "2026-09-26: 8 original PNGs inspected, SHA-256 recorded; size-matched 8 metadata-free WebP files uploaded to Drive images/ and corresponding PR branches. Originals moved to originals/. Both PRs remain Draft pending latest-head CI, Vercel, preview QA and user approval.",
+    "Cloud browser preview audit was rejected by automatic approval review: Vercel origin judged outside authorized preview-page audit; no alternate browser route attempted. User preview approval for exact head SHA remains required; no merge."
   ]
 }
