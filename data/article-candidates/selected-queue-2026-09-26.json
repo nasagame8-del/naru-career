@@ -24,16 +24,16 @@
       "designPromptFileId": "1pKe4zpyZCp9MAPPVx7f_FpRvgLXWkJrj",
       "imageStatus": "4 WebP verified in Drive folder and GitHub PR branch; metadata stripped, dimensions checked, source PNGs in originals/",
       "qa": {
-        "previewApproved": false,
+        "previewApproved": true,
         "githubActionsLatestHeadSuccess": true,
         "vercelCommitLatestHeadSuccess": false,
         "visualImagesInspected": true,
         "imageDimensionsAndMetadata": true,
         "sourceImagesArchived": true,
         "bodyImageRefsAndAltVerified": true,
-        "previewDirectArticleUrlShared": false,
-        "previewVisual": "not_verified_browser_auto_review_denied",
-        "userPreviewApprovedForHeadSha": null
+        "previewDirectArticleUrlShared": true,
+        "previewVisual": "user_confirmed",
+        "userPreviewApprovedForHeadSha": "763cec2e8d430a8c6b4df73bbe2adb9695000de4"
       },
       "imageFiles": {
         "card": "1DGTUel_5gRqZtMPHmcf8YYgc8BRHvtgl",
@@ -61,7 +61,14 @@
         }
       },
       "startedAtHeadSha": "9fc5595ca1a82e577bee569a692e9ed3f5e3112f",
-      "previewArticleUrl": "https://career-media-git-article-factory-9310c1-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-offer-acceptance-checks"
+      "previewArticleUrl": "https://career-media-git-article-factory-9310c1-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-offer-acceptance-checks",
+      "userPreviewApproval": {
+        "approved": true,
+        "headSha": "763cec2e8d430a8c6b4df73bbe2adb9695000de4",
+        "source": "User message 2026-09-26 15:49:59 JST: 両方OK",
+        "previewUrl": "https://career-media-git-article-factory-9310c1-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-offer-acceptance-checks"
+      },
+      "scheduledPublishAtJst": "2026-09-26T16:00:00+09:00"
     },
     {
       "order": 2,
@@ -83,16 +90,16 @@
       "designPromptFileId": "1qFVzwvvfLNg4PZPrB0aQ1y7voXsGC1q5",
       "imageStatus": "4 WebP verified in Drive folder and GitHub PR branch; metadata stripped, dimensions checked, source PNGs in originals/",
       "qa": {
-        "previewApproved": false,
+        "previewApproved": true,
         "githubActionsLatestHeadSuccess": true,
         "vercelCommitLatestHeadSuccess": true,
         "visualImagesInspected": true,
         "imageDimensionsAndMetadata": true,
         "sourceImagesArchived": true,
         "bodyImageRefsAndAltVerified": true,
-        "previewDirectArticleUrlShared": false,
-        "previewVisual": "not_verified_browser_auto_review_denied",
-        "userPreviewApprovedForHeadSha": null
+        "previewDirectArticleUrlShared": true,
+        "previewVisual": "user_confirmed",
+        "userPreviewApprovedForHeadSha": "e2064c55093a0ca4958f263caeee11a612834a87"
       },
       "imageFiles": {
         "card": "156qlbhSeP2ADgejUqmU14Qm7HwEMs6I_",
@@ -120,7 +127,14 @@
         }
       },
       "startedAtHeadSha": "7a4a7b9218f28cbce85cd320f436314749cc4e5c",
-      "previewArticleUrl": "https://career-media-git-article-factory-d60f76-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-first-90-days"
+      "previewArticleUrl": "https://career-media-git-article-factory-d60f76-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-first-90-days",
+      "userPreviewApproval": {
+        "approved": true,
+        "headSha": "e2064c55093a0ca4958f263caeee11a612834a87",
+        "source": "User message 2026-09-26 15:49:59 JST: 両方OK",
+        "previewUrl": "https://career-media-git-article-factory-d60f76-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-first-90-days"
+      },
+      "scheduledPublishAtJst": "2026-09-26T18:00:00+09:00"
     }
   ],
   "notes": [
