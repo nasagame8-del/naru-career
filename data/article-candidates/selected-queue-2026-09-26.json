@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-26",
   "batchId": "batch_2026-09-26_chatgpt_alternative",
-  "status": "BOTH_DRAFTS_WAITING_IMAGES",
+  "status": "BOTH_IMAGE_READY_QA_PENDING",
   "notificationSent": true,
   "items": [
     {
@@ -9,12 +9,12 @@
       "candidateId": "cand_260926b1",
       "slug": "second-new-grad-it-offer-acceptance-checks",
       "title": "第二新卒がIT企業の内定を承諾する前に確認したいこと｜労働条件・仕事内容・入社後の支援",
-      "status": "WAITING_IMAGES",
+      "status": "QA_PENDING",
       "articleId": 43,
       "prNumber": 30,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/30",
       "branch": "article-factory/2026-09-26-043-offer-acceptance",
-      "headSha": "9fc5595ca1a82e577bee569a692e9ed3f5e3112f",
+      "headSha": "763cec2e8d430a8c6b4df73bbe2adb9695000de4",
       "driveFolderId": "13kawah0LF6Irib6l7XLcltC0qKGRCB8A",
       "imagesFolderId": "1ngwaemfHUrUNIw8j0-VMLK3sWdR6tGMo",
       "originalsFolderId": "1-EMywoMrwjGgcgvAiqEbUyPwZEQV9NQr",
@@ -22,24 +22,54 @@
       "imagePlanFileId": "1EkHOT2ZZj9E5R-420WoNkohdX_ZsAhPj",
       "promptFileId": "16TIN7rIPQDgpevjfFVuMeW99OdRZy_kj",
       "designPromptFileId": "1pKe4zpyZCp9MAPPVx7f_FpRvgLXWkJrj",
-      "imageStatus": "card・01・02・03 未提出。原稿と画像計画のDraft PRを保存済み。",
+      "imageStatus": "4 WebP verified in Drive folder and GitHub PR branch; metadata stripped, dimensions checked, source PNGs in originals/",
       "qa": {
         "previewApproved": false,
         "githubActionsLatestHeadSuccess": false,
-        "vercelCommitLatestHeadSuccess": false
-      }
+        "vercelCommitLatestHeadSuccess": false,
+        "visualImagesInspected": true,
+        "imageDimensionsAndMetadata": true,
+        "sourceImagesArchived": true,
+        "bodyImageRefsAndAltVerified": true
+      },
+      "imageFiles": {
+        "card": "1DGTUel_5gRqZtMPHmcf8YYgc8BRHvtgl",
+        "01": "1bMTfXusNQBx-naKfBg51HeC5ynwviFCZ",
+        "02": "1rbEuGo--2XH0Ci98xfv2zO69VUxhB5Tu",
+        "03": "1T9TFwp1EtM2-d6nbWgi5ipdu0ODmZo8u"
+      },
+      "sourceImagesArchived": true,
+      "imageSha256": {
+        "card": {
+          "input": "03d48cb83c416de6930bff966ba66b3a090130e5b35ec83295ea63c905d554ef",
+          "webp": "335497f1a496443e94d6d6c48092a796fa6d5cf6d3182a72a33f106b79c05963"
+        },
+        "01": {
+          "input": "f306221275196ed85fc52b183a1d79668358532058648abb105f060224fd241d",
+          "webp": "6441604fd699b836245a4e8aa457aef4ca8b370104cd7153b1fdbbe383458e9c"
+        },
+        "02": {
+          "input": "f3c985958da12fc3a448d2a85db7675fd2e056646c84352d64825e74403fac2a",
+          "webp": "ede239e84913a8077320a205af3c38d08610009e7089103da6a0385d53561324"
+        },
+        "03": {
+          "input": "698ca60a82e4126db8e5bdf5ec2e44cd05453dec258337636be80e03ec7646dc",
+          "webp": "740914634662c57e5973249359f0111ed6aebfebf3db42b177c09aec22b3dfb8"
+        }
+      },
+      "startedAtHeadSha": "9fc5595ca1a82e577bee569a692e9ed3f5e3112f"
     },
     {
       "order": 2,
       "candidateId": "cand_260926b2",
       "slug": "second-new-grad-it-first-90-days",
       "title": "未経験でIT企業に入った最初の90日、何を覚える？職種別の学び方と相談の進め方",
-      "status": "WAITING_IMAGES",
+      "status": "QA_PENDING",
       "articleId": 44,
       "prNumber": 31,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/31",
       "branch": "article-factory/2026-09-26-044-first-90-days",
-      "headSha": "7a4a7b9218f28cbce85cd320f436314749cc4e5c",
+      "headSha": "e2064c55093a0ca4958f263caeee11a612834a87",
       "driveFolderId": "1em7ky4JpIq4Lkfk_-Gn7aaz9E2eo6VGy",
       "imagesFolderId": "1o1QcyeN_6ezvip4GCG-H_hKFFSVgmtcv",
       "originalsFolderId": "1g1eBXTyKdG8yxrlRRe8Js75VwBmRB1Al",
@@ -47,18 +77,49 @@
       "imagePlanFileId": "1xozveUxR1UVyS9HOqoNWSdMlcU4DLJCS",
       "promptFileId": "1d9h7g1PM0NpfJOg-7Mq-twksosEqjK0F",
       "designPromptFileId": "1qFVzwvvfLNg4PZPrB0aQ1y7voXsGC1q5",
-      "imageStatus": "card・01・02・03 未提出。原稿と画像計画のDraft PRを保存済み。",
+      "imageStatus": "4 WebP verified in Drive folder and GitHub PR branch; metadata stripped, dimensions checked, source PNGs in originals/",
       "qa": {
         "previewApproved": false,
         "githubActionsLatestHeadSuccess": false,
-        "vercelCommitLatestHeadSuccess": false
-      }
+        "vercelCommitLatestHeadSuccess": false,
+        "visualImagesInspected": true,
+        "imageDimensionsAndMetadata": true,
+        "sourceImagesArchived": true,
+        "bodyImageRefsAndAltVerified": true
+      },
+      "imageFiles": {
+        "card": "156qlbhSeP2ADgejUqmU14Qm7HwEMs6I_",
+        "01": "1sB758fLqgxkVfCTtoVUJFst3TLz-hnaG",
+        "02": "1wM_iVf71SQulGk-ep9COHwAX0BtjWvhs",
+        "03": "1BzHgnx_GwbQKW_bb-KVfFLXKK9jwsYgE"
+      },
+      "sourceImagesArchived": true,
+      "imageSha256": {
+        "card": {
+          "input": "6da929a93d286474dbacc4837aec9bbdb769dd8582a3719fe4dd5067ec612859",
+          "webp": "a2ed4aaea1f9ccda5dda1ee3fcaa8352bb6c5ae788746c79df5aa1a9de05b247"
+        },
+        "01": {
+          "input": "f61e9e96fee9d15fd8a93f1ce277abc35980409d618c0600a467b65185ecba17",
+          "webp": "660421725be2db80f0368430c69d1891f2632ec2862da9822e148fecd0047c11"
+        },
+        "02": {
+          "input": "046164a0d24d14855a648c1830ac46521383f5fa1f4783ceb2e85681a958a92c",
+          "webp": "f5a5ad20cbc9ef7dee571d08118224e5ecf32ed6f2005672312d36693607cfab"
+        },
+        "03": {
+          "input": "3f49a267327df2d6c34151b82d8d596cbc03f24abb5424d45f82242c0d85a342",
+          "webp": "b67ca1dc97df89a548e66b05328c55deca9a258650aaf035d0f2dca94f3247b5"
+        }
+      },
+      "startedAtHeadSha": "7a4a7b9218f28cbce85cd320f436314749cc4e5c"
     }
   ],
   "notes": [
     "ユーザーの「もっと別角度での記事案ない？」に提示した案1と案2をこの順で選定。朝8時の職種別候補1・2ではない。",
     "2026-09-24選定の未着手求人票チェックリストを保持し、記事ID42を先行候補として尊重。記事作成時にID再検証。",
     "画像4枚と記事プレビュー承認のゲートを満たすまで公開しない。",
-    "2026-09-26: 2本のDraft PR #30/#31、各Drive記事フォルダ、images/originals、原稿、画像計画、04_Designと記事別の同内容画像プロンプトを保存し読み戻し確認。画像生成・公開は未実施。"
+    "2026-09-26: 2本のDraft PR #30/#31、各Drive記事フォルダ、images/originals、原稿、画像計画、04_Designと記事別の同内容画像プロンプトを保存し読み戻し確認。画像生成・公開は未実施。",
+    "2026-09-26: 8 original PNGs inspected, SHA-256 recorded; size-matched 8 metadata-free WebP files uploaded to Drive images/ and corresponding PR branches. Originals moved to originals/. Both PRs remain Draft pending latest-head CI, Vercel, preview QA and user approval."
   ]
 }
