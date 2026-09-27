@@ -1,6 +1,6 @@
 {
   "dateJST": "2026-09-28",
-  "status": "DRAFT_WAITING_IMAGES_ORDER_UNASSIGNED",
+  "status": "PREVIEW_READY_WAITING_USER_APPROVAL",
   "selectedAtJST": "2026-09-27T22:55:00+09:00",
   "selectionSource": "The user chose topic ② for tomorrow and explicitly asked to prepare it now. This is separate from the ordinary 08:00 3–5-item daily batch.",
   "candidateId": "preselected_260928_pc8001",
@@ -19,7 +19,7 @@
   "prNumber": 35,
   "prUrl": "https://github.com/nasagame8-del/naru-career/pull/35",
   "branch": "article-factory/2026-09-28-047-pc8001-career",
-  "imageStatus": "PENDING_4_USER_IMAGES",
+  "imageStatus": "4_WEBP_DRIVE_AND_PR_VERIFIED",
   "userHasApprovedTopic": true,
   "userHasApprovedPreview": false,
   "publicationOrder": null,
@@ -29,9 +29,10 @@
     "08:00 batch should include other current news and evergreen options, while treating article #47 as already selected/prepared.",
     "The user chose topic ② from a separate four-idea brainstorm, not from an existing official 2026-09-28 candidate batch.",
     "Exact Sep 28 manufacturer release date is not corroborated by NEC; NEC confirms September 1979. Distinguish the customary anniversary from primary-source launch month.",
-    "All publishing gates remain blocked until four images, verified latest-head QA, and explicit head-bound preview approval; user has not chosen 12:00 or 18:00 slot."
+    "All publishing gates remain blocked until four images, verified latest-head QA, and explicit head-bound preview approval; user has not chosen 12:00 or 18:00 slot.",
+    "Image files card/01/02/03 uploaded to Drive images and original JPEGs to originals, GitHub PR #35 updated at dd295712e914c7f483e9667a9e75f9972f4b6c95 and GitHub validation/Vercel checks succeeded. Direct Vercel article preview ready for user visual approval. Wikimedia photo license still needs review before embedding; not part of four custom images."
   ],
-  "headSha": "5014f719e2d170e6dde3780547a003e776c24685",
+  "headSha": "dd295712e914c7f483e9667a9e75f9972f4b6c95",
   "qaBeforeImages": {
     "frontmatterYamlValid": true,
     "requiredFieldsPresent": true,
@@ -42,5 +43,35 @@
     "fullLocalQa": false
   },
   "imagePlanGithubPath": "data/article-runs/2026-09-28-047-image-plan.md",
-  "lastVerifiedAtJST": "2026-09-27T23:15:00+09:00"
+  "lastVerifiedAtJST": "2026-09-28",
+  "imageFiles": {
+    "card": {
+      "driveId": "1Lk629C0HvOMFcIelmoinMYj2Fvcvab-A",
+      "blobSha": "c7a8dae74d36b13f5cffc80c5f9ff6e7e5b6e9b2"
+    },
+    "image01": {
+      "driveId": "1Iw4KptCZG3R3iPX9eZZyFBModLA-xYeq",
+      "blobSha": "eb913febab514aa3e84803688929aefc2e668245"
+    },
+    "image02": {
+      "driveId": "1VcvWSInwO2q6qRAhIhakDJ8TbOc_RX__",
+      "blobSha": "7202bb6b0f38f7f5a080b43de28c3fd5a4a66bd2"
+    },
+    "image03": {
+      "driveId": "15QiFuzKuQTq0IbEJhRor1lTe27qvnd0E",
+      "blobSha": "e0e72cb339519850187af32e9df755e4a33e20e8"
+    }
+  },
+  "qaAfterImages": {
+    "githubPrFilesAllFourVerified": true,
+    "driveImagesFourVerified": true,
+    "driveOriginalsFourVerified": true,
+    "articleBodyReferencesThreeVerified": true,
+    "githubActionsLatestHead": "completed_success",
+    "vercelLatestHead": "success",
+    "previewUrl": "https://career-media-git-article-factory-cbf909-nasagame8-dels-projects.vercel.app/articles/pc8001-modern-it-job-application",
+    "previewVisual": "waiting_user",
+    "production": "not_started",
+    "officialHistoricalPhoto": "not_embedded_pending_source_license_review"
+  }
 }
