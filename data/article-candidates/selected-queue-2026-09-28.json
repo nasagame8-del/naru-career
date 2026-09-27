@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-28",
   "batchId": "batch_2026-09-28_chatgpt",
-  "status": "DRAFT_PR_IMAGES_REFLECTED_QA_PENDING",
+  "status": "DRAFT_PR_PREVIEW_APPROVAL_PENDING",
   "items": [
     {
       "order": 2,
@@ -9,14 +9,24 @@
       "articleId": 48,
       "slug": "second-new-grad-sns-background-check",
       "title": "「裏アカを見られたら不採用？」第二新卒のIT転職でSNS調査にどう向き合うか",
-      "status": "DRAFT_PR_IMAGES_REFLECTED_QA_PENDING",
+      "status": "DRAFT_PR_PREVIEW_APPROVAL_PENDING",
       "prNumber": 36,
       "driveFolderId": "1RGG3gz-wJO5FNHP48V3X6doVrDy_EVgV",
       "imageStatus": "four_webp_reflected",
       "qa": {
         "previewVisual": "not_started",
         "imageVisual": "passed_after_01_headline_corrected",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "articleFactoryValidation": {
+          "headSha": "985a2665e9a3c956175e2b98477b52c01767247f",
+          "status": "completed",
+          "conclusion": "success",
+          "runId": 36359440877
+        },
+        "vercelStatus": {
+          "headSha": "985a2665e9a3c956175e2b98477b52c01767247f",
+          "state": "success"
+        }
       },
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/36",
       "branch": "article-factory/2026-09-28-048-sns-background-check",
@@ -38,7 +48,8 @@
         "01": "1B5Y4vNu0k1kGM0MKJVDTIHte3B3SNk2f",
         "02": "1-tOeL5euylXSAg9AdpnlEKs7l4PGytJH",
         "03": "12uy5bMjrRHkXcwzuYF3L4i3bpnfEyQVF"
-      }
+      },
+      "previewUrl": "https://career-media-git-article-factory-c6a1ff-nasagame8-dels-projects.vercel.app/articles/second-new-grad-sns-background-check"
     }
   ],
   "notes": [
