@@ -1,6 +1,6 @@
 {
   "dateJST": "2026-09-28",
-  "status": "MERGED_PRODUCTION_PENDING",
+  "status": "MERGED_DEPLOYED_PRODUCTION_VISUAL_UNVERIFIED",
   "selectedAtJST": "2026-09-27T22:55:00+09:00",
   "selectionSource": "The user chose topic ② for tomorrow and explicitly asked to prepare it now. This is separate from the ordinary 08:00 3–5-item daily batch.",
   "candidateId": "preselected_260928_pc8001",
@@ -32,7 +32,8 @@
     "All publishing gates remain blocked until four images, verified latest-head QA, and explicit head-bound preview approval; user has not chosen 12:00 or 18:00 slot.",
     "Image files card/01/02/03 uploaded to Drive images and original JPEGs to originals, GitHub PR #35 updated at dd295712e914c7f483e9667a9e75f9972f4b6c95 and GitHub validation/Vercel checks succeeded. Direct Vercel article preview ready for user visual approval. Wikimedia photo license still needs review before embedding; not part of four custom images.",
     "2026-09-28 user confirmed latest-head preview with おｋ, after explicit earlier publication instruction. Article 047 is approved for immediate release subject to rechecking GitHub/Vercel and images; do not affect second article.",
-    "PR #35 squash merged after user approval at head dd295712e914c7f483e9667a9e75f9972f4b6c95. Production is PENDING at time of write. Vercel connector returned 403; GitHub Vercel commit status and live page still to verify."
+    "PR #35 squash merged after user approval at head dd295712e914c7f483e9667a9e75f9972f4b6c95. Production is PENDING at time of write. Vercel connector returned 403; GitHub Vercel commit status and live page still to verify.",
+    "Production deployment for merged commit succeeded; all four WebPs and article on master, but remote environment could not inspect real production article URL. Do not mark PUBLISHED_VERIFIED until real-page visual check."
   ],
   "headSha": "dd295712e914c7f483e9667a9e75f9972f4b6c95",
   "qaBeforeImages": {
@@ -81,7 +82,16 @@
   },
   "mergedAtJST": "2026-09-28T00:31:46+09:00",
   "mergeSha": "79405643429104dde4fbd7f0b23e69b6fdf68091",
-  "productionDeploymentStatus": "pending",
+  "productionDeploymentStatus": "success_github_vercel_commit_status",
   "productionUrl": "https://naru-career.com/articles/pc8001-modern-it-job-application",
-  "productionPageVerified": false
+  "productionPageVerified": false,
+  "productionVerifiedAtJST": null,
+  "productionDeploymentEvidence": {
+    "mergeSha": "79405643429104dde4fbd7f0b23e69b6fdf68091",
+    "commitStatus": "Vercel/success",
+    "githubStatusUpdatedAtUTC": "2026-09-27T15:34:36Z",
+    "masterHasArticle": true,
+    "masterHasFourWebP": true
+  },
+  "productionVisualUnverifiedReason": "Direct production page inaccessible via Web, Vercel connector 403 for team scope, container DNS unavailable. User has confirmed preview only; production real-screen display awaits direct check."
 }
