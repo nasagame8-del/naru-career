@@ -30,5 +30,17 @@
     "The user chose topic ② from a separate four-idea brainstorm, not from an existing official 2026-09-28 candidate batch.",
     "Exact Sep 28 manufacturer release date is not corroborated by NEC; NEC confirms September 1979. Distinguish the customary anniversary from primary-source launch month.",
     "All publishing gates remain blocked until four images, verified latest-head QA, and explicit head-bound preview approval; user has not chosen 12:00 or 18:00 slot."
-  ]
+  ],
+  "headSha": "5014f719e2d170e6dde3780547a003e776c24685",
+  "qaBeforeImages": {
+    "frontmatterYamlValid": true,
+    "requiredFieldsPresent": true,
+    "bodyImageReferencesPlanned": 3,
+    "articleFactoryValidation": "success_preimages_latest_head",
+    "vercelPreview": "pending_at_last_check",
+    "finalImageQA": false,
+    "fullLocalQa": false
+  },
+  "imagePlanGithubPath": "data/article-runs/2026-09-28-047-image-plan.md",
+  "lastVerifiedAtJST": "2026-09-27T23:12:00+09:00"
 }
