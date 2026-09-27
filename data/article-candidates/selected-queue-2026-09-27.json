@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-27",
   "batchId": "batch_2026-09-27_chatgpt",
-  "status": "QA_PARTIAL_PREVIEW_READY",
+  "status": "PREVIEW_APPROVED_AWAITING_PUBLICATION",
   "items": [
     {
       "order": 1,
@@ -9,7 +9,7 @@
       "articleId": 45,
       "slug": "second-new-grad-it-company-research",
       "title": "第二新卒のIT転職で企業研究は何を見る？サービス・顧客・収益の調べ方",
-      "status": "DRAFT_PR_PREVIEW_READY_AWAITING_USER_REVIEW",
+      "status": "DRAFT_PR_PREVIEW_APPROVED_AWAITING_PUBLICATION",
       "prNumber": 32,
       "driveFolderId": "1hVcY_gTtyyaz3NUuhA2xk9BxSNHOr6uD",
       "imageFiles": {
@@ -41,14 +41,17 @@
       "designPromptFileId": "16ksV0DYc1XgCDftOzwqLo4exolQ6YNdn",
       "imageStatus": "4_images_verified_and_reflected",
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "githubActions": "success_run_17",
         "vercelPreviewStatus": "success",
         "imageVisual": "passed_2026-09-27",
         "dimensions": "passed",
         "metadata": "passed_no_exif_xmp_detected",
         "githubReadback": "passed",
-        "previewUrl": "https://career-media-git-article-factory-876e13-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-company-research"
+        "previewUrl": "https://career-media-git-article-factory-876e13-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-company-research",
+        "previewApprovedHeadSha": "5545f33f9e577029f10bff63ebab6b71b4938fab",
+        "previewApprovedAt": "2026-09-27T11:35:38+09:00",
+        "previewApprovalEvidence": "User said プレビューOK for today's two article previews in this conversation."
       }
     },
     {
@@ -57,7 +60,7 @@
       "articleId": 46,
       "slug": "second-new-grad-web-agency-vs-inhouse",
       "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
-      "status": "DRAFT_PR_AWAITING_VERCEL",
+      "status": "DRAFT_PR_PREVIEW_APPROVED_AWAITING_PUBLICATION",
       "prNumber": 33,
       "driveFolderId": "1O1yI4bPrewLXQT9LECbxJ7URyODZoacg",
       "imageFiles": {
@@ -89,14 +92,17 @@
       "designPromptFileId": "1rIuxmOSmgvp_cPPkyQo3AosEoP2Z9Xsn",
       "imageStatus": "4_images_verified_and_reflected",
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "githubActions": "success_run_18",
-        "vercelPreviewStatus": "pending",
+        "vercelPreviewStatus": "success",
         "imageVisual": "passed_2026-09-27",
         "dimensions": "passed",
         "metadata": "passed_no_exif_xmp_detected",
         "githubReadback": "passed",
-        "previewUrl": "https://career-media-git-article-factory-1e2606-nasagame8-dels-projects.vercel.app/articles/second-new-grad-web-agency-vs-inhouse"
+        "previewUrl": "https://career-media-git-article-factory-1e2606-nasagame8-dels-projects.vercel.app/articles/second-new-grad-web-agency-vs-inhouse",
+        "previewApprovedHeadSha": "d3a503e62b197ea4d0ff4bdd665202537b46ca66",
+        "previewApprovedAt": "2026-09-27T11:35:38+09:00",
+        "previewApprovalEvidence": "User said プレビューOK for today's two article previews in this conversation."
       }
     }
   ],
@@ -104,6 +110,7 @@
     "User explicitly selected 1 then 2 on 2026-09-27 JST.",
     "Article ID 42 remains provisionally reserved for the unfinished 2026-09-24 job-posting checklist; 43 and 44 are published. IDs 45 and 46 assigned to today's selection after checking master and open PRs.",
     "Do not create duplicate article PRs. Images and preview approval are pending; do not merge or publish.",
-    "2026-09-27: User added four final WebP images for each article to Drive images/. Visual inspection, dimensions, filenames, and GitHub readback passed; CI and Vercel are running. Draft PRs remain unmerged."
+    "2026-09-27: User added four final WebP images for each article to Drive images/. Visual inspection, dimensions, filenames, and GitHub readback passed; CI and Vercel are running. Draft PRs remain unmerged.",
+    "2026-09-27 11:35 JST: User approved both article previews. Approval is bound separately to PR #32 and #33 head SHAs. Publication remains gated and unmerged."
   ]
 }
