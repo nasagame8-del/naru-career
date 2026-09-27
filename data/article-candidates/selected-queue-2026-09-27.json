@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-27",
   "batchId": "batch_2026-09-27_chatgpt",
-  "status": "ARTICLE_45_PUBLISHED_VERIFIED_ARTICLE_46_DEPLOYED_URL_UNVERIFIED",
+  "status": "PUBLISHED_VERIFIED_BOTH_45_AND_46",
   "items": [
     {
       "order": 1,
@@ -75,7 +75,7 @@
       "articleId": 46,
       "slug": "second-new-grad-web-agency-vs-inhouse",
       "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
-      "status": "MERGED_PRODUCTION_DEPLOYED_VISUAL_UNVERIFIED",
+      "status": "PUBLISHED_VERIFIED",
       "prNumber": 33,
       "driveFolderId": "1O1yI4bPrewLXQT9LECbxJ7URyODZoacg",
       "imageFiles": {
@@ -120,7 +120,10 @@
         "previewApprovalEvidence": "User replied おk to the refreshed Article 46 direct Vercel preview link after the card image replacement in this conversation.",
         "previewApprovalRecordedAt": "2026-09-27T14:21:18+09:00",
         "productionDeployment": "github_vercel_commit_status_success",
-        "productionVisual": "unverified_public_url_inaccessible"
+        "productionVisual": "user_confirmed_no_issues",
+        "productionVisualEvidence": "User confirmed live NARU article 46 production display without issues in the current conversation",
+        "productionVisualConfirmedAt": "2026-09-27T22:02:53+09:00",
+        "productionVisualMergeSha": "2619c4c47f3422ca4adeaa32991b3227e299aab8"
       },
       "publicationScheduledAt": "2026-09-27T18:00:00+09:00",
       "publicationAutomationId": "6ab8815f0a9c8191b80b46cfbd8ab550",
@@ -129,7 +132,10 @@
       "productionUrl": "https://naru-career.com/articles/second-new-grad-web-agency-vs-inhouse",
       "productionDeploymentStatus": "success",
       "productionDeploymentCompletedAt": "2026-09-27T18:23:52+09:00",
-      "productionDeploymentEvidence": "GitHub Vercel commit status success for master merge 2619c4c47f3422ca4adeaa32991b3227e299aab8"
+      "productionDeploymentEvidence": "GitHub Vercel commit status success for master merge 2619c4c47f3422ca4adeaa32991b3227e299aab8",
+      "productionVerifiedAt": "2026-09-27T22:02:53+09:00",
+      "productionVerificationMethod": "user_live_page_visual_confirmation",
+      "productionVerificationEvidence": "User explicitly stated: 記事46の本番表示を確認した。問題なし。"
     }
   ],
   "notes": [
@@ -141,6 +147,7 @@
     "2026-09-27 11:38 JST: Conditional same-day publication task is enabled for article 45 at 12:00 JST and article 46 at 18:00 JST. This is a schedule, not publication completion.",
     "2026-09-27 12:05 JST: Article 45 PR #32 squash-merged at expected head SHA. Production deployment success and live article title, body, OG, and four images verified. Article 46 remains untouched for 18:00 JST.",
     "2026-09-27: Article 46 cover was regenerated and card only updated on PR #33; previous preview approval for old head d3a503e... is superseded. User replied おk to the refreshed preview. New approval bound to head d3ad4ea73d08dc022c5af3c9e6baee73b37d4ca0. Existing 18:00 JST conditional publication automation must use new expected head SHA; do not merge before the designated time.",
-    "2026-09-27 21:43 JST retrospective: Article 46 merged at 18:21:42 JST; same merge SHA has GitHub Vercel production status success at 18:23:52 JST. Public article HTML and new card image cannot be fetched from the assistant environment (web unavailable, container DNS failure, Vercel connected token scope 403). Do not label direct production URL verified until explicit user live-site confirmation. Publication was 21m42s later than designated 18:00 merge slot; precise delay cause not yet evidenced."
+    "2026-09-27 21:43 JST retrospective: Article 46 merged at 18:21:42 JST; same merge SHA has GitHub Vercel production status success at 18:23:52 JST. Public article HTML and new card image cannot be fetched from the assistant environment (web unavailable, container DNS failure, Vercel connected token scope 403). Do not label direct production URL verified until explicit user live-site confirmation. Publication was 21m42s later than designated 18:00 merge slot; precise delay cause not yet evidenced.",
+    "2026-09-27 22:02 JST: User independently opened article 46 production article URL and explicitly confirmed '記事46の本番表示を確認した。問題なし。' This satisfies the outstanding production visual confirmation for merge SHA 2619c4c47f3422ca4adeaa32991b3227e299aab8. GitHub PR #33 merged; Vercel commit status success at 18:23:52 JST. Article 45 and article 46 now both PUBLISHED_VERIFIED. No further publish/merge action required."
   ]
 }
