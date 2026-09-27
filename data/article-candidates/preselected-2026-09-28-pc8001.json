@@ -37,10 +37,10 @@
     "requiredFieldsPresent": true,
     "bodyImageReferencesPlanned": 3,
     "articleFactoryValidation": "success_preimages_latest_head",
-    "vercelPreview": "pending_at_last_check",
+    "vercelPreview": "success_latest_head",
     "finalImageQA": false,
     "fullLocalQa": false
   },
   "imagePlanGithubPath": "data/article-runs/2026-09-28-047-image-plan.md",
-  "lastVerifiedAtJST": "2026-09-27T23:12:00+09:00"
+  "lastVerifiedAtJST": "2026-09-27T23:15:00+09:00"
 }
