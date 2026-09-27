@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-27",
   "batchId": "batch_2026-09-27_chatgpt",
-  "status": "ARTICLE_45_PUBLISHED_ARTICLE_46_MERGED_PRODUCTION_UNVERIFIED",
+  "status": "ARTICLE_45_PUBLISHED_VERIFIED_ARTICLE_46_DEPLOYED_URL_UNVERIFIED",
   "items": [
     {
       "order": 1,
@@ -75,7 +75,7 @@
       "articleId": 46,
       "slug": "second-new-grad-web-agency-vs-inhouse",
       "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
-      "status": "MERGED_PRODUCTION_UNVERIFIED",
+      "status": "MERGED_PRODUCTION_DEPLOYED_VISUAL_UNVERIFIED",
       "prNumber": 33,
       "driveFolderId": "1O1yI4bPrewLXQT9LECbxJ7URyODZoacg",
       "imageFiles": {
@@ -119,14 +119,17 @@
         "previewApprovedAt": "2026-09-27T11:35:38+09:00",
         "previewApprovalEvidence": "User replied おk to the refreshed Article 46 direct Vercel preview link after the card image replacement in this conversation.",
         "previewApprovalRecordedAt": "2026-09-27T14:21:18+09:00",
-        "productionDeployment": "unverified_vercel_connector_invalid_argument",
-        "productionVisual": "unverified_url_inaccessible"
+        "productionDeployment": "github_vercel_commit_status_success",
+        "productionVisual": "unverified_public_url_inaccessible"
       },
       "publicationScheduledAt": "2026-09-27T18:00:00+09:00",
       "publicationAutomationId": "6ab8815f0a9c8191b80b46cfbd8ab550",
       "mergeSha": "2619c4c47f3422ca4adeaa32991b3227e299aab8",
       "mergedAt": "2026-09-27T18:21:42+09:00",
-      "productionUrl": "https://naru-career.com/articles/second-new-grad-web-agency-vs-inhouse"
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-web-agency-vs-inhouse",
+      "productionDeploymentStatus": "success",
+      "productionDeploymentCompletedAt": "2026-09-27T18:23:52+09:00",
+      "productionDeploymentEvidence": "GitHub Vercel commit status success for master merge 2619c4c47f3422ca4adeaa32991b3227e299aab8"
     }
   ],
   "notes": [
@@ -137,6 +140,7 @@
     "2026-09-27 11:35 JST: User approved both article previews. Approval is bound separately to PR #32 and #33 head SHAs. Publication remains gated and unmerged.",
     "2026-09-27 11:38 JST: Conditional same-day publication task is enabled for article 45 at 12:00 JST and article 46 at 18:00 JST. This is a schedule, not publication completion.",
     "2026-09-27 12:05 JST: Article 45 PR #32 squash-merged at expected head SHA. Production deployment success and live article title, body, OG, and four images verified. Article 46 remains untouched for 18:00 JST.",
-    "2026-09-27: Article 46 cover was regenerated and card only updated on PR #33; previous preview approval for old head d3a503e... is superseded. User replied おk to the refreshed preview. New approval bound to head d3ad4ea73d08dc022c5af3c9e6baee73b37d4ca0. Existing 18:00 JST conditional publication automation must use new expected head SHA; do not merge before the designated time."
+    "2026-09-27: Article 46 cover was regenerated and card only updated on PR #33; previous preview approval for old head d3a503e... is superseded. User replied おk to the refreshed preview. New approval bound to head d3ad4ea73d08dc022c5af3c9e6baee73b37d4ca0. Existing 18:00 JST conditional publication automation must use new expected head SHA; do not merge before the designated time.",
+    "2026-09-27 21:43 JST retrospective: Article 46 merged at 18:21:42 JST; same merge SHA has GitHub Vercel production status success at 18:23:52 JST. Public article HTML and new card image cannot be fetched from the assistant environment (web unavailable, container DNS failure, Vercel connected token scope 403). Do not label direct production URL verified until explicit user live-site confirmation. Publication was 21m42s later than designated 18:00 merge slot; precise delay cause not yet evidenced."
   ]
 }
