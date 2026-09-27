@@ -1,6 +1,6 @@
 {
   "dateJST": "2026-09-28",
-  "status": "PREVIEW_READY_WAITING_USER_APPROVAL",
+  "status": "USER_APPROVED_READY_TO_PUBLISH",
   "selectedAtJST": "2026-09-27T22:55:00+09:00",
   "selectionSource": "The user chose topic ② for tomorrow and explicitly asked to prepare it now. This is separate from the ordinary 08:00 3–5-item daily batch.",
   "candidateId": "preselected_260928_pc8001",
@@ -21,16 +21,17 @@
   "branch": "article-factory/2026-09-28-047-pc8001-career",
   "imageStatus": "4_WEBP_DRIVE_AND_PR_VERIFIED",
   "userHasApprovedTopic": true,
-  "userHasApprovedPreview": false,
+  "userHasApprovedPreview": true,
   "publicationOrder": null,
-  "publicationSlotJST": null,
+  "publicationSlotJST": "2026-09-28T00:30+09:00 (immediate user-requested publish, replaces undecided 12/18 slot for this article)",
   "notes": [
     "Do not regenerate the already prepared article or create a second PR for the PC-8001 topic in the morning.",
     "08:00 batch should include other current news and evergreen options, while treating article #47 as already selected/prepared.",
     "The user chose topic ② from a separate four-idea brainstorm, not from an existing official 2026-09-28 candidate batch.",
     "Exact Sep 28 manufacturer release date is not corroborated by NEC; NEC confirms September 1979. Distinguish the customary anniversary from primary-source launch month.",
     "All publishing gates remain blocked until four images, verified latest-head QA, and explicit head-bound preview approval; user has not chosen 12:00 or 18:00 slot.",
-    "Image files card/01/02/03 uploaded to Drive images and original JPEGs to originals, GitHub PR #35 updated at dd295712e914c7f483e9667a9e75f9972f4b6c95 and GitHub validation/Vercel checks succeeded. Direct Vercel article preview ready for user visual approval. Wikimedia photo license still needs review before embedding; not part of four custom images."
+    "Image files card/01/02/03 uploaded to Drive images and original JPEGs to originals, GitHub PR #35 updated at dd295712e914c7f483e9667a9e75f9972f4b6c95 and GitHub validation/Vercel checks succeeded. Direct Vercel article preview ready for user visual approval. Wikimedia photo license still needs review before embedding; not part of four custom images.",
+    "2026-09-28 user confirmed latest-head preview with おｋ, after explicit earlier publication instruction. Article 047 is approved for immediate release subject to rechecking GitHub/Vercel and images; do not affect second article."
   ],
   "headSha": "dd295712e914c7f483e9667a9e75f9972f4b6c95",
   "qaBeforeImages": {
@@ -70,8 +71,11 @@
     "githubActionsLatestHead": "completed_success",
     "vercelLatestHead": "success",
     "previewUrl": "https://career-media-git-article-factory-cbf909-nasagame8-dels-projects.vercel.app/articles/pc8001-modern-it-job-application",
-    "previewVisual": "waiting_user",
+    "previewVisual": "user_confirmed",
     "production": "not_started",
-    "officialHistoricalPhoto": "not_embedded_pending_source_license_review"
+    "officialHistoricalPhoto": "not_embedded_pending_source_license_review",
+    "previewApprovedHeadSha": "dd295712e914c7f483e9667a9e75f9972f4b6c95",
+    "previewApprovedAtJST": "2026-09-28T00:30:30+09:00",
+    "previewApprovalEvidence": "After receiving the direct PR #35 Vercel article preview link and being asked to reply if it looked good, user said おｋ. Earlier user explicitly instructed もうええわ公開して. This authorizes publishing this article at current time, provided head and all technical gates still pass."
   }
 }
