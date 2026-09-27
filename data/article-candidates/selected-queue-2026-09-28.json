@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-28",
   "batchId": "batch_2026-09-28_chatgpt",
-  "status": "ARTICLE_048_SELECTED",
+  "status": "ARTICLE_048_DRAFT_PR_IMAGES_PENDING",
   "items": [
     {
       "order": 2,
@@ -9,13 +9,22 @@
       "articleId": 48,
       "slug": "second-new-grad-sns-background-check",
       "title": "「裏アカを見られたら不採用？」第二新卒のIT転職でSNS調査にどう向き合うか",
-      "status": "SELECTED",
-      "prNumber": null,
-      "driveFolderId": null,
+      "status": "DRAFT_PR_IMAGES_PENDING",
+      "prNumber": 36,
+      "driveFolderId": "1RGG3gz-wJO5FNHP48V3X6doVrDy_EVgV",
       "imageStatus": "awaiting_user_four_images",
       "qa": {
         "previewVisual": "not_started"
-      }
+      },
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/36",
+      "branch": "article-factory/2026-09-28-048-sns-background-check",
+      "headSha": "90723c37df70a0079bc42b0a2959e1bcced38c0b",
+      "imagesFolderId": "1YD4psYaOkjbUcPCU83tbHkGYmQNb22cQ",
+      "originalsFolderId": "1AOR8NgFpCg1btr4ge6sisIHK8bgcp5or",
+      "draftFileId": "18jCMVPGgMY0V2josId200Ci6u0xWUfaB",
+      "imagePlanFileId": "19me5qLObVNxml79IiLbjvVltV34IyF9s",
+      "promptFileId": "1nDlcEe4IVvjfOa5UpHqlxpj2s4MNwbfJ",
+      "designPromptFileId": "187H05mkzk2a0KNisIO0fgNNsBuqQqpK2"
     }
   ],
   "notes": [
