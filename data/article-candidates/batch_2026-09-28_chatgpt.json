@@ -1,0 +1,95 @@
+{
+  "batchId": "batch_2026-09-28_chatgpt",
+  "generatedAt": "2026-09-27T23:01:40.000Z",
+  "trigger": "cron",
+  "inventorySize": 46,
+  "nextArticleId": 48,
+  "notes": [
+    "2026-09-28 08:01 JST. Article 47 (PC-8001) was preselected and is already merged; production deployment success is recorded, but live-page visual verification remains unconfirmed in preselected-2026-09-28-pc8001.json. Excluded from this batch.",
+    "Search Console was not accessed; all searchEvidence fields are null. X Japan trends and search volume were not independently verified; no popularity claims are made.",
+    "Primary source: UNESCO International Day for Universal Access to Information, https://www.unesco.org/en/days/universal-access-information (Sep 28 annually).",
+    "Primary sources: MHLW fair recruitment https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/newpage_56780.html and job-ad disclosure https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/r0604anteisokukaisei1.html .",
+    "Primary source: Japan Personal Information Protection Commission guidelines https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/ .",
+    "Primary source: Agency for Cultural Affairs AI and copyright https://www.bunka.go.jp/seisaku/chosakuken/aiandcopyright.html ."
+  ],
+  "candidates": [
+    {
+      "id": "cand_260928a1",
+      "title": "「裏アカを見られたら不採用？」第二新卒のIT転職でSNS調査にどう向き合うか",
+      "primaryKeyword": "転職 SNS 調査",
+      "secondaryKeywords": [
+        "第二新卒 SNS 採用",
+        "裏アカ調査 転職",
+        "採用 個人情報"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "reference-check-explained.mdは元同僚への照会。応募者SNSの閲覧・本人の公開設定・職務適性との関係に限定して検証する。",
+      "reasonToWriteNow": "9月28日のプライバシーデーを入口に、厚生労働省の公正採用選考と個人情報保護委員会の一次資料で整理する。記念日の由来は二次資料扱いとし、法的断定を避ける。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-sns-background-check",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "reference-check-explained",
+        "ai-interview-screening"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260928a2",
+      "title": "「求人票が秘密だらけなら応募できる？」IT転職で面接前に確認すべき労働条件",
+      "primaryKeyword": "求人票 労働条件 確認",
+      "secondaryKeywords": [
+        "第二新卒 IT 求人票",
+        "求人票 業務変更 範囲",
+        "面接 前 質問"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "second-new-grad-it-company-research.mdは企業の事業・顧客調査、second-new-grad-it-offer-acceptance-checks.mdは内定承諾前の判断。本案は応募前の求人票で確認できる条件と未記載事項の質問に絞る。",
+      "reasonToWriteNow": "9月28日はUNESCOの『情報への普遍的アクセスのための国際デー』。求人情報が足りないときに何を聞くか、厚労省の募集時明示事項を根拠に検証する。",
+      "category": "業界解説",
+      "proposedSlug": "it-job-posting-missing-conditions",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-company-research",
+        "second-new-grad-it-offer-acceptance-checks"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260928a3",
+      "title": "「前職の画面を作品集に載せたらアウト？」第二新卒Web転職のポートフォリオ公開範囲",
+      "primaryKeyword": "ポートフォリオ 守秘義務 転職",
+      "secondaryKeywords": [
+        "Web転職 社内制作物",
+        "ポートフォリオ 会社の仕事",
+        "実績 公開 許可"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "second-new-grad-it-portfolio-guide.mdは作品集全体の作り方。本案は前職・受託案件の素材を公開する前の権利者・契約・個人情報確認だけに絞った実務チェックリスト。",
+      "reasonToWriteNow": "情報アクセスとプライバシーを巡る9月28日の話題から『実績を見せたいが情報を出せない』という転職者の葛藤を切り出す。文化庁と個人情報保護委員会の一次資料で一般論を確認する。",
+      "category": "業界解説",
+      "proposedSlug": "web-portfolio-confidential-work",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-portfolio-guide",
+        "resume-writing-second-new-grad"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ]
+}
