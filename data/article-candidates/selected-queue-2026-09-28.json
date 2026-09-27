@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-28",
   "batchId": "batch_2026-09-28_chatgpt",
-  "status": "ARTICLE_048_DRAFT_PR_IMAGES_PENDING",
+  "status": "DRAFT_PR_IMAGES_REFLECTED_QA_PENDING",
   "items": [
     {
       "order": 2,
@@ -9,27 +9,42 @@
       "articleId": 48,
       "slug": "second-new-grad-sns-background-check",
       "title": "「裏アカを見られたら不採用？」第二新卒のIT転職でSNS調査にどう向き合うか",
-      "status": "DRAFT_PR_IMAGES_PENDING",
+      "status": "DRAFT_PR_IMAGES_REFLECTED_QA_PENDING",
       "prNumber": 36,
       "driveFolderId": "1RGG3gz-wJO5FNHP48V3X6doVrDy_EVgV",
-      "imageStatus": "awaiting_user_four_images",
+      "imageStatus": "four_webp_reflected",
       "qa": {
-        "previewVisual": "not_started"
+        "previewVisual": "not_started",
+        "imageVisual": "passed_after_01_headline_corrected",
+        "previewApprovedHeadSha": null
       },
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/36",
       "branch": "article-factory/2026-09-28-048-sns-background-check",
-      "headSha": "90723c37df70a0079bc42b0a2959e1bcced38c0b",
+      "headSha": "985a2665e9a3c956175e2b98477b52c01767247f",
       "imagesFolderId": "1YD4psYaOkjbUcPCU83tbHkGYmQNb22cQ",
       "originalsFolderId": "1AOR8NgFpCg1btr4ge6sisIHK8bgcp5or",
       "draftFileId": "18jCMVPGgMY0V2josId200Ci6u0xWUfaB",
       "imagePlanFileId": "19me5qLObVNxml79IiLbjvVltV34IyF9s",
       "promptFileId": "1nDlcEe4IVvjfOa5UpHqlxpj2s4MNwbfJ",
-      "designPromptFileId": "187H05mkzk2a0KNisIO0fgNNsBuqQqpK2"
+      "designPromptFileId": "187H05mkzk2a0KNisIO0fgNNsBuqQqpK2",
+      "imageFileIds": {
+        "card": "1VgqgrxrvgB-9euOhA8Qjh3P2XWIHDyEN",
+        "01": "1d7QqHaL_xdhcq1FDir1mFUXy0aP9E8G2",
+        "02": "17oEchg2lIFZo6OQtjRgqBfOmEMog52tn",
+        "03": "1H5pPITbAror9GwLjrnSefWQbB1eaRZOW"
+      },
+      "originalFileIds": {
+        "card": "18gI4VVb009YfRViFsM5yJQ1KgfjEbDcw",
+        "01": "1B5Y4vNu0k1kGM0MKJVDTIHte3B3SNk2f",
+        "02": "1-tOeL5euylXSAg9AdpnlEKs7l4PGytJH",
+        "03": "12uy5bMjrRHkXcwzuYF3L4i3bpnfEyQVF"
+      }
     }
   ],
   "notes": [
     "Article 47 was preselected separately in preselected-2026-09-28-pc8001.json; merged and production deployed before this selection. Do not recreate. Its production page visual confirmation remains unrecorded.",
     "User selected candidate #1 as today's remaining article on 2026-09-28 JST. This article is order 2 because article 47 was previously selected.",
-    "No publication time is assigned to article 48. Publication requires 4 images, QA, and user preview approval."
+    "No publication time is assigned to article 48. Publication requires 4 images, QA, and user preview approval.",
+    "Article 48 image 01 supplied JPEG had malformed heading; corrected to SNSを見る2種類 in final WebP. Original JPEG retained in originals folder. Four WebPs reflected to PR #36 head 985a2665e9a3c956175e2b98477b52c01767247f; CI and preview approval pending."
   ]
 }
