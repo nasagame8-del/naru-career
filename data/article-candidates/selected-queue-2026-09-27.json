@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-27",
   "batchId": "batch_2026-09-27_chatgpt",
-  "status": "IMAGES_REFLECTED_QA_RUNNING",
+  "status": "QA_PARTIAL_PREVIEW_READY",
   "items": [
     {
       "order": 1,
@@ -9,7 +9,7 @@
       "articleId": 45,
       "slug": "second-new-grad-it-company-research",
       "title": "第二新卒のIT転職で企業研究は何を見る？サービス・顧客・収益の調べ方",
-      "status": "DRAFT_PR_IMAGES_REFLECTED_QA_RUNNING",
+      "status": "DRAFT_PR_PREVIEW_READY_AWAITING_USER_REVIEW",
       "prNumber": 32,
       "driveFolderId": "1hVcY_gTtyyaz3NUuhA2xk9BxSNHOr6uD",
       "imageFiles": {
@@ -42,12 +42,13 @@
       "imageStatus": "4_images_verified_and_reflected",
       "qa": {
         "previewVisual": "pending",
-        "githubActions": "in_progress",
-        "vercelPreviewStatus": "pending",
+        "githubActions": "success_run_17",
+        "vercelPreviewStatus": "success",
         "imageVisual": "passed_2026-09-27",
         "dimensions": "passed",
         "metadata": "passed_no_exif_xmp_detected",
-        "githubReadback": "passed"
+        "githubReadback": "passed",
+        "previewUrl": "https://career-media-git-article-factory-876e13-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-company-research"
       }
     },
     {
@@ -56,7 +57,7 @@
       "articleId": 46,
       "slug": "second-new-grad-web-agency-vs-inhouse",
       "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
-      "status": "DRAFT_PR_IMAGES_REFLECTED_QA_RUNNING",
+      "status": "DRAFT_PR_AWAITING_VERCEL",
       "prNumber": 33,
       "driveFolderId": "1O1yI4bPrewLXQT9LECbxJ7URyODZoacg",
       "imageFiles": {
@@ -89,12 +90,13 @@
       "imageStatus": "4_images_verified_and_reflected",
       "qa": {
         "previewVisual": "pending",
-        "githubActions": "in_progress",
+        "githubActions": "success_run_18",
         "vercelPreviewStatus": "pending",
         "imageVisual": "passed_2026-09-27",
         "dimensions": "passed",
         "metadata": "passed_no_exif_xmp_detected",
-        "githubReadback": "passed"
+        "githubReadback": "passed",
+        "previewUrl": "https://career-media-git-article-factory-1e2606-nasagame8-dels-projects.vercel.app/articles/second-new-grad-web-agency-vs-inhouse"
       }
     }
   ],
