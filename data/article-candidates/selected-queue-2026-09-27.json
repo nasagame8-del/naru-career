@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-27",
   "batchId": "batch_2026-09-27_chatgpt",
-  "status": "PUBLICATION_SCHEDULED_CONDITIONAL",
+  "status": "PARTIALLY_PUBLISHED_ARTICLE_45",
   "items": [
     {
       "order": 1,
@@ -9,7 +9,7 @@
       "articleId": 45,
       "slug": "second-new-grad-it-company-research",
       "title": "第二新卒のIT転職で企業研究は何を見る？サービス・顧客・収益の調べ方",
-      "status": "DRAFT_PR_CONDITIONAL_PUBLICATION_SCHEDULED",
+      "status": "PUBLISHED_VERIFIED",
       "prNumber": 32,
       "driveFolderId": "1hVcY_gTtyyaz3NUuhA2xk9BxSNHOr6uD",
       "imageFiles": {
@@ -51,10 +51,23 @@
         "previewUrl": "https://career-media-git-article-factory-876e13-nasagame8-dels-projects.vercel.app/articles/second-new-grad-it-company-research",
         "previewApprovedHeadSha": "5545f33f9e577029f10bff63ebab6b71b4938fab",
         "previewApprovedAt": "2026-09-27T11:35:38+09:00",
-        "previewApprovalEvidence": "User said プレビューOK for today's two article previews in this conversation."
+        "previewApprovalEvidence": "User said プレビューOK for today's two article previews in this conversation.",
+        "productionBrowserAudit": {
+          "status": "passed",
+          "title": true,
+          "body": true,
+          "images": 4,
+          "og": true,
+          "consoleSiteErrors": 0
+        }
       },
       "publicationScheduledAt": "2026-09-27T12:00:00+09:00",
-      "publicationAutomationId": "6ab8815f0a9c8191b80b46cfbd8ab550"
+      "publicationAutomationId": "6ab8815f0a9c8191b80b46cfbd8ab550",
+      "mergeSha": "c27aa372c21f38a9afab44a73f8848aa830f11ea",
+      "mergedAt": "2026-09-27T12:02:25+09:00",
+      "productionDeploymentStatus": "success",
+      "productionVerifiedAt": "2026-09-27T12:05:54+09:00",
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-it-company-research"
     },
     {
       "order": 2,
@@ -116,6 +129,7 @@
     "Do not create duplicate article PRs. Images and preview approval are pending; do not merge or publish.",
     "2026-09-27: User added four final WebP images for each article to Drive images/. Visual inspection, dimensions, filenames, and GitHub readback passed; CI and Vercel are running. Draft PRs remain unmerged.",
     "2026-09-27 11:35 JST: User approved both article previews. Approval is bound separately to PR #32 and #33 head SHAs. Publication remains gated and unmerged.",
-    "2026-09-27 11:38 JST: Conditional same-day publication task is enabled for article 45 at 12:00 JST and article 46 at 18:00 JST. This is a schedule, not publication completion."
+    "2026-09-27 11:38 JST: Conditional same-day publication task is enabled for article 45 at 12:00 JST and article 46 at 18:00 JST. This is a schedule, not publication completion.",
+    "2026-09-27 12:05 JST: Article 45 PR #32 squash-merged at expected head SHA. Production deployment success and live article title, body, OG, and four images verified. Article 46 remains untouched for 18:00 JST."
   ]
 }
