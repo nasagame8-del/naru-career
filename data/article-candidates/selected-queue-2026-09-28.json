@@ -1,0 +1,26 @@
+{
+  "selectedAt": "2026-09-28",
+  "batchId": "batch_2026-09-28_chatgpt",
+  "status": "ARTICLE_048_SELECTED",
+  "items": [
+    {
+      "order": 2,
+      "candidateId": "cand_260928a1",
+      "articleId": 48,
+      "slug": "second-new-grad-sns-background-check",
+      "title": "「裏アカを見られたら不採用？」第二新卒のIT転職でSNS調査にどう向き合うか",
+      "status": "SELECTED",
+      "prNumber": null,
+      "driveFolderId": null,
+      "imageStatus": "awaiting_user_four_images",
+      "qa": {
+        "previewVisual": "not_started"
+      }
+    }
+  ],
+  "notes": [
+    "Article 47 was preselected separately in preselected-2026-09-28-pc8001.json; merged and production deployed before this selection. Do not recreate. Its production page visual confirmation remains unrecorded.",
+    "User selected candidate #1 as today's remaining article on 2026-09-28 JST. This article is order 2 because article 47 was previously selected.",
+    "No publication time is assigned to article 48. Publication requires 4 images, QA, and user preview approval."
+  ]
+}
