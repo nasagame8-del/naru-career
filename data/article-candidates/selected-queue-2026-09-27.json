@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-27",
   "batchId": "batch_2026-09-27_chatgpt",
-  "status": "ARTICLE_45_PUBLISHED_ARTICLE_46_APPROVED_SCHEDULED",
+  "status": "ARTICLE_45_PUBLISHED_ARTICLE_46_MERGED_PRODUCTION_UNVERIFIED",
   "items": [
     {
       "order": 1,
@@ -75,7 +75,7 @@
       "articleId": 46,
       "slug": "second-new-grad-web-agency-vs-inhouse",
       "title": "Web制作会社と事業会社、第二新卒はどう選ぶ？担当範囲・成果物・育成環境の比較",
-      "status": "PREVIEW_APPROVED_SCHEDULED_18",
+      "status": "MERGED_PRODUCTION_UNVERIFIED",
       "prNumber": 33,
       "driveFolderId": "1O1yI4bPrewLXQT9LECbxJ7URyODZoacg",
       "imageFiles": {
@@ -118,10 +118,15 @@
         "previewApprovedHeadSha": "d3ad4ea73d08dc022c5af3c9e6baee73b37d4ca0",
         "previewApprovedAt": "2026-09-27T11:35:38+09:00",
         "previewApprovalEvidence": "User replied おk to the refreshed Article 46 direct Vercel preview link after the card image replacement in this conversation.",
-        "previewApprovalRecordedAt": "2026-09-27T14:21:18+09:00"
+        "previewApprovalRecordedAt": "2026-09-27T14:21:18+09:00",
+        "productionDeployment": "unverified_vercel_connector_invalid_argument",
+        "productionVisual": "unverified_url_inaccessible"
       },
       "publicationScheduledAt": "2026-09-27T18:00:00+09:00",
-      "publicationAutomationId": "6ab8815f0a9c8191b80b46cfbd8ab550"
+      "publicationAutomationId": "6ab8815f0a9c8191b80b46cfbd8ab550",
+      "mergeSha": "2619c4c47f3422ca4adeaa32991b3227e299aab8",
+      "mergedAt": "2026-09-27T18:21:42+09:00",
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-web-agency-vs-inhouse"
     }
   ],
   "notes": [
