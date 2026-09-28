@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-28T23:05:32Z",
   "batchId": "batch_2026-09-29_chatgpt",
-  "status": "SELECTED_AWAITING_DRAFTS",
+  "status": "DRAFT_PRS_AWAITING_IMAGES",
   "items": [
     {
       "order": 1,
@@ -10,15 +10,28 @@
       "articleId": 49,
       "slug": "dx-award-company-entry-level-hiring",
       "title": "「DX銘柄なら未経験でも採用される？」第二新卒が表彰と求人を混同しない企業研究",
-      "status": "SELECTED",
-      "prNumber": null,
-      "driveFolderId": null,
-      "imageStatus": "not_requested",
+      "status": "DRAFT_AWAITING_IMAGES",
+      "prNumber": 41,
+      "driveFolderId": "1m0_Tutobe-pTIb5GPsOeRWj3yc-UGi0t",
+      "imageStatus": "four_user_images_pending",
       "qa": {
         "previewVisual": "not_requested",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "draftStructure": "checked",
+        "imageVisual": "pending",
+        "articleFactoryValidation": "pending_after_images",
+        "vercelStatus": "pending_after_images"
       },
-      "requestedPublish": null
+      "requestedPublish": null,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/41",
+      "branch": "article-factory/2026-09-29-049-dx-award-hiring",
+      "headSha": "bffa18686e44f2af3beb82adc99297d83a8ef373",
+      "imagesFolderId": "1-lPGnjbuytT3jC7Y92ixsUn4MFbazJd6",
+      "originalsFolderId": "1mZLcixl8iPshG1jNBiDVnRLvpJQsD4UC",
+      "draftFileId": "1AzqzL4EiYOATrP9xxunPetledGpMd-pn",
+      "imagePlanFileId": "19dMf8uTk_Oj2_987Pz_o475k1pgNmHEB",
+      "promptFileId": "1QdBuLhDSiVeel_1WRND82Tvlx7sLtBqv",
+      "designPromptFileId": "1fJBv8J6-VO5B-CrE47v8T4qIC7COGOld"
     },
     {
       "order": 2,
@@ -27,20 +40,34 @@
       "articleId": 50,
       "slug": "it-training-program-job-checklist",
       "title": "未経験IT求人の研修制度はどう見抜く？期間・配属後支援・学習時間の確認法",
-      "status": "SELECTED",
-      "prNumber": null,
-      "driveFolderId": null,
-      "imageStatus": "not_requested",
+      "status": "DRAFT_AWAITING_IMAGES",
+      "prNumber": 42,
+      "driveFolderId": "1Ortr5vjpcH-z1qYNGEHkROYDQ9XnvC2A",
+      "imageStatus": "four_user_images_pending",
       "qa": {
         "previewVisual": "not_requested",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "draftStructure": "checked",
+        "imageVisual": "pending",
+        "articleFactoryValidation": "pending_after_images",
+        "vercelStatus": "pending_after_images"
       },
-      "requestedPublish": null
+      "requestedPublish": null,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/42",
+      "branch": "article-factory/2026-09-29-050-it-training-checklist",
+      "headSha": "34f1ebbd9e71881b8baa22f95a09cc021da8313c",
+      "imagesFolderId": "1D_hyu_dU_-4KuZ_aZUihU8SAE9LZVeqM",
+      "originalsFolderId": "1rF7JIFho4lY4lKSjqj6lQnB1q7LfLNId",
+      "draftFileId": "1Eue0mBkSRdQWa4jrkclBJojkNAat8cQ9",
+      "imagePlanFileId": "1nQa_3ntGNELmqU5RRV2hnIAS066YWIsw",
+      "promptFileId": "1XCFmvjeX-dp3dG-p3QZzBPk_wDLk2E4F",
+      "designPromptFileId": "1fhwVr1oPMr-BI8H2QcZWNpYYozcE8tVZ"
     }
   ],
   "notes": [
     "User selected 2.4 on 2026-09-29 JST; interpreted in supplied order as topical #2 then evergreen #4.",
     "Publication times not specified. Do not publish until image, current-head QA, and user preview approval gates pass and a time is specified.",
-    "Article IDs 49 and 50 reserved after checking master inventory, open PRs, and prior queues; do not overwrite prior work."
+    "Article IDs 49 and 50 reserved after checking master inventory, open PRs, and prior queues; do not overwrite prior work.",
+    "2026-09-29 JST: Draft PRs #41/#42 and corresponding Drive folders, article drafts, image plans, image prompts, images/originals folders created and read back. No images received, so publication QA is pending."
   ]
 }
