@@ -1,0 +1,139 @@
+{
+  "batchId": "batch_2026-09-29_chatgpt",
+  "generatedAt": "2026-09-28T23:02:54Z",
+  "trigger": "cron",
+  "inventorySize": 47,
+  "nextArticleId": 49,
+  "notes": [
+    "2026-09-29 08:02 JST時点。時事候補: cand_260929t1,t2。通常SEO候補: cand_260929e1,e2,e3。各ジャンル1本のみ選定する。",
+    "master/content/articles に47ファイル。Open PRは記事外の#6のみ。当日バッチ・選定キュー・事前選定ファイルなし。2026-09-28の47/48は既存記事として保持。",
+    "Search Console実測を取得していないため全件searchEvidence:null。検索数やSNS人気は未確認。",
+    "時事1の一次資料: https://www.zenkuren.or.jp/news/9392 (9月29日クリーニングの日)。",
+    "時事2の一次資料: https://dx.ipa.go.jp/dx-news (2026-09-28掲載)、https://www.ipa.go.jp/pressrelease/2026/press20260605.html (DX銘柄の選定趣旨)。個別事例本文は今回取得できなかったため採用状況の根拠にはしない。",
+    "通常案の一次資料: https://shigoto.mhlw.go.jp/User/Occupation/Detail/320 、https://shokuba.mhlw.go.jp/040/060/20180308163914.html 、https://shigoto.mhlw.go.jp/User/Occupation/Detail/452 。"
+  ],
+  "candidates": [
+    {
+      "id": "cand_260929t1",
+      "title": "「短期離職は職歴のシミ？」第二新卒のIT転職で失敗を隠さず説明する方法",
+      "primaryKeyword": "第二新卒 短期離職 IT転職",
+      "secondaryKeywords": [
+        "短期離職 理由 伝え方",
+        "転職 経歴 隠す"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "resume-writing-second-new-gradは職務経験の翻訳、job-change-timing-3monthsは活動時期。本案は短期離職の事実・理由・改善行動を面接と書類で一貫して説明する方法に限定。",
+      "reasonToWriteNow": "9月29日のクリーニングの日を入口に『職歴のシミは洗うべきか』を検証。日付は全ク連一次資料で確認。比喩による誤解を避け、経歴の隠蔽を勧めない。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-short-tenure-explanation",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "resume-writing-second-new-grad",
+        "job-change-timing-3months"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260929t2",
+      "title": "「DX銘柄なら未経験でも採用される？」第二新卒が表彰と求人を混同しない企業研究",
+      "primaryKeyword": "DX銘柄 未経験 IT転職",
+      "secondaryKeywords": [
+        "DX企業 求人 見方",
+        "第二新卒 DX転職"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "second-new-grad-it-company-researchは事業・顧客の調べ方。本案はDX表彰や事例から採用可能性を推測せず、個別求人の職務・要件・育成体制を照合する狭い問い。",
+      "reasonToWriteNow": "IPAが2026年9月28日にDX銘柄2026の新事例掲載を告知。新着ニュースを入口に『表彰企業なら入社しやすいか』という誤読を検証。採用情報は別途企業一次資料で確認する。",
+      "category": "業界解説",
+      "proposedSlug": "dx-award-company-entry-level-hiring",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-company-research",
+        "skill-based-hiring"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260929e1",
+      "title": "第二新卒のITヘルプデスク転職｜社内向け・社外向け求人の違いと次の職種への道筋",
+      "primaryKeyword": "ITヘルプデスク 第二新卒",
+      "secondaryKeywords": [
+        "社内ヘルプデスク 社外ヘルプデスク 違い",
+        "未経験 ITヘルプデスク 求人"
+      ],
+      "searchIntent": "compare",
+      "differenceFromExisting": "web-industry-guideとses-explainedは業界・雇用形態。本案はITヘルプデスクという職種の社内外の対象、実務タスク、求人票の見分け方に限定。",
+      "reasonToWriteNow": "時事に依存しない職種選択の検索意図。job tagのヘルプデスク職業情報を起点に求人ごとの業務を比較する。",
+      "category": "業界解説",
+      "proposedSlug": "it-helpdesk-internal-external-second-new-grad",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "web-industry-guide",
+        "ses-explained"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260929e2",
+      "title": "未経験IT求人の研修制度はどう見抜く？期間・配属後支援・学習時間の確認法",
+      "primaryKeyword": "未経験 IT 研修制度 見分け方",
+      "secondaryKeywords": [
+        "IT求人 研修 内容 確認",
+        "第二新卒 研修 企業選び"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "second-new-grad-it-first-90-daysは入社後の行動。本案は応募前に研修の実施内容と配属後の支援を確認する方法に限定。",
+      "reasonToWriteNow": "常時発生する未経験者の求人比較課題。厚労省しょくばらぼの研修制度情報と企業の募集要項を照合する。",
+      "category": "業界解説",
+      "proposedSlug": "it-training-program-job-checklist",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-first-90-days",
+        "second-new-grad-it-company-research"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260929e3",
+      "title": "第二新卒のIT営業転職｜コンサルティング営業の仕事内容と求人票の読み方",
+      "primaryKeyword": "IT営業 第二新卒 仕事内容",
+      "secondaryKeywords": [
+        "ITコンサルティング営業 未経験",
+        "IT営業 求人票"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "aio-seo-industry-insideは業界の体験、web-marketing-career等は別職種。本案はITコンサルティング営業の職務・必要知識・求人要件に限定。",
+      "reasonToWriteNow": "流行に左右されない職種理解の検索意図。厚労省job tagのITコンサルティング営業職業情報を土台にする。",
+      "category": "業界解説",
+      "proposedSlug": "it-consulting-sales-second-new-grad",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "aio-seo-industry-inside",
+        "job-type-employment"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ]
+}
