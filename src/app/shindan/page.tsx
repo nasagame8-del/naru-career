@@ -1,314 +1,126 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
-import {
-  QUESTIONS,
-  TYPE_MAP,
-  TYPES16,
-  BATTLES,
-  HITS_TO_DEFEAT,
-  BATTLE_MS,
-} from "./_lib/data";
-import ResultContent from "./_components/ResultContent";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { TYPES16 } from "./_lib/data";
+import { diagnose, MATCH_QUESTIONS } from "./_lib/matching";
 import { trackEvent } from "./_lib/analytics";
+import ResultContent from "./_components/ResultContent";
+import QuestCharacter from "./_components/QuestCharacter";
 
-type Screen = "title" | "quiz" | "result" | "types";
+type Screen = "title" | "quiz" | "matching" | "result" | "types";
+function QuestMap() {
+ return <div className="quest-map" aria-hidden="true"><div className="map-orbit"><span>N</span><i /><i /><i /></div><svg className="map-route" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><path d="M-40 700 Q240 780 260 470 T600 270 T960 450 T1500 140" /><circle cx="260" cy="470" r="9" /><circle cx="600" cy="270" r="9" /><circle cx="960" cy="450" r="9" /></svg><span className="map-label map-label-one">THE LAND OF POSSIBILITY</span><span className="map-label map-label-two">YOUR NEXT CHAPTER</span></div>;
+}
+function FrameCorners() {
+  return <span className="frame-corners" aria-hidden="true"><i /><i /><i /><i /></span>;
+}
 
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("title");
+  const [answers, setAnswers] = useState<boolean[]>([]);
   const [qIndex, setQIndex] = useState(0);
-  const [scores, setScores] = useState<Record<string, number>>({});
-  const [resultTypeId, setResultTypeId] = useState<number>(1);
-  const [answering, setAnswering] = useState(false);
+  const [previousQuestion, setPreviousQuestion] = useState<number | null>(null);
+  const [selected, setSelected] = useState<boolean | null>(null);
+  const [resultTypeId, setResultTypeId] = useState(1);
+  const [busy, setBusy] = useState(false);
+  const [starting, setStarting] = useState(false);
+  const [motionPaused, setMotionPaused] = useState(false);
+  const locked = useRef(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const heading = useRef<HTMLHeadingElement>(null);
 
-  const battleHeroRef = useRef<HTMLImageElement>(null);
-  const battleMonRef = useRef<HTMLImageElement>(null);
-  const battleKoRef = useRef<HTMLDivElement>(null);
-  const currentArcRef = useRef<string>("");
-  const hitsInArcRef = useRef<number>(0);
-
-  const retrigger = useCallback(
-    (el: HTMLElement | null, cls: string) => {
-      if (!el) return;
-      el.classList.remove(cls);
-      void el.offsetWidth;
-      el.classList.add(cls);
-    },
-    []
-  );
-
-  const getMonsterKind = (qNum: number) =>
-    qNum <= 3 ? "slime" : qNum <= 6 ? "mage" : "dragon";
-
-  const playBattle = useCallback(
-    (qNum: number): number => {
-      const kind = getMonsterKind(qNum);
-      const heroEl = battleHeroRef.current;
-      const monEl = battleMonRef.current;
-      const koEl = battleKoRef.current;
-
-      if (kind !== currentArcRef.current) {
-        currentArcRef.current = kind;
-        hitsInArcRef.current = 0;
-        if (monEl) {
-          monEl.classList.remove("shown", "enter-hit", "hurt", "defeat");
-        }
-      }
-      hitsInArcRef.current++;
-
-      if (heroEl) {
-        heroEl.classList.add("shown");
-        retrigger(heroEl, "attack");
-      }
-
-      if (hitsInArcRef.current === 1) {
-        const info = BATTLES[kind];
-        if (monEl) {
-          monEl.src = info.src;
-          monEl.style.setProperty("--mw", info.width);
-          monEl.classList.remove("hurt", "defeat");
-          monEl.classList.add("shown");
-          retrigger(monEl, "enter-hit");
-        }
-        return BATTLE_MS.enter;
-      }
-
-      if (hitsInArcRef.current >= HITS_TO_DEFEAT[kind]) {
-        if (monEl) {
-          monEl.classList.remove("enter-hit", "hurt");
-          retrigger(monEl, "defeat");
-        }
-        if (koEl) retrigger(koEl, "show");
-        return BATTLE_MS.defeat;
-      }
-
-      if (monEl) {
-        monEl.classList.remove("enter-hit", "defeat");
-        retrigger(monEl, "hurt");
-      }
-      return BATTLE_MS.hurt;
-    },
-    [retrigger]
-  );
-
-  const handleAnswer = useCallback(
-    (choiceIdx: number) => {
-      if (answering) return;
-      setAnswering(true);
-
-      if (qIndex === 0) trackEvent("quiz_start");
-
-      const newScores = { ...scores };
-      const ts = QUESTIONS[qIndex].types[choiceIdx] || [];
-      ts.forEach((t) => {
-        newScores[t] = (newScores[t] || 0) + 1;
-      });
-      setScores(newScores);
-
-      const qNum = qIndex + 1;
-      const delay = playBattle(qNum);
-
-      setTimeout(() => {
-        if (qNum >= QUESTIONS.length) {
-          let best: string | null = null;
-          let max = -1;
-          for (const t of Object.keys(newScores)) {
-            if (newScores[t] > max) {
-              max = newScores[t];
-              best = t;
-            }
-          }
-          const id = best ? TYPE_MAP[best] || 1 : 1;
-          trackEvent("quiz_complete", { type: TYPES16[id].name });
-          setResultTypeId(id);
-          setScreen("result");
-        } else {
-          setQIndex(qNum);
-          setAnswering(false);
-        }
-      }, delay);
-    },
-    [answering, scores, qIndex, playBattle]
-  );
-
-  const handleRetry = useCallback(() => {
-    setScores({});
-    setQIndex(0);
-    setResultTypeId(1);
-    currentArcRef.current = "";
-    hitsInArcRef.current = 0;
-    const heroEl = battleHeroRef.current;
-    const monEl = battleMonRef.current;
-    if (heroEl) heroEl.classList.remove("shown", "attack");
-    if (monEl) monEl.classList.remove("shown", "enter-hit", "hurt", "defeat");
-    setAnswering(false);
-    setScreen("title");
-  }, []);
-
-  const typeInfo = TYPES16[resultTypeId];
-
-  return (
-    <div className="stage">
-      {/* ── Title Screen ── */}
-      {screen === "title" && (
-        <section id="title-screen" className="screen">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="title-bg" src="/shindan/title-bg.png" alt="" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="title-logo"
-            src="/shindan/title-logo.png"
-            alt="RPG適職診断"
-          />
-          <Leaves />
-          <div className="board-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="title-board"
-              src="/shindan/title-board.png"
-              alt=""
-            />
-            <button
-              className="menu-btn start"
-              onClick={() => setScreen("quiz")}
-            >
-              診断を始める
-            </button>
-            <button
-              className="menu-btn types"
-              onClick={() => setScreen("types")}
-            >
-              16タイプを見る
-            </button>
-          </div>
-        </section>
-      )}
-
-      {/* ── Quiz Screen ── */}
-      {screen === "quiz" && (
-        <section id="quiz-screen" className="screen">
-          <div className="progress">
-            {qIndex + 1} / {QUESTIONS.length}
-          </div>
-          <div className="banner-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="banner-img" src="/shindan/banner.png" alt="" />
-            <div className="question">{QUESTIONS[qIndex].q}</div>
-            {QUESTIONS[qIndex].options.map((opt, i) => (
-              <button
-                key={`${qIndex}-${i}`}
-                className={`card c${i + 1}`}
-                onClick={() => handleAnswer(i)}
-                disabled={answering}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/shindan/card${i + 1}.png`} alt="" />
-                <div className="label">{opt}</div>
-              </button>
-            ))}
-          </div>
-          <div className="battle-fx">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="battle-hero"
-              ref={battleHeroRef}
-              src="/shindan/hero-attack.png"
-              alt=""
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="battle-monster"
-              ref={battleMonRef}
-              alt=""
-            />
-            <div className="battle-ko-label" ref={battleKoRef}>
-              撃破！
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── Result Screen ── */}
-      {screen === "result" && (
-        <section id="result-screen" className="screen">
-          <ResultContent
-            typeId={resultTypeId}
-            typeInfo={typeInfo}
-            onRetry={handleRetry}
-          />
-        </section>
-      )}
-
-      {/* ── Types Screen ── */}
-      {screen === "types" && (
-        <section id="types-screen" className="screen">
-          <div className="types-panel">
-            <h2 className="types-heading">16タイプ一覧</h2>
-            <div className="types-grid">
-              {Object.entries(TYPES16).map(([id, t]) => (
-                <div className="type-card" key={id}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/shindan/types/type${id}.png`}
-                    alt={t.name}
-                  />
-                  <h3>{t.name}</h3>
-                  <p>{t.desc}</p>
-                </div>
-              ))}
-            </div>
-            <button
-              className="types-back"
-              onClick={() => setScreen("title")}
-            >
-              戻る
-            </button>
-          </div>
-        </section>
-      )}
-    </div>
-  );
-}
-
-function Leaves() {
-  const [mounted, setMounted] = useState(false);
-  const leavesRef = useRef<
-    { y: string; sway: string; dur: string; delay: string }[]
-  >([]);
-
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
   useEffect(() => {
-    if (leavesRef.current.length === 0) {
-      leavesRef.current = Array.from({ length: 12 }, () => ({
-        y: `${Math.random() * 80}%`,
-        sway: `${(Math.random() - 0.5) * 20}cqh`,
-        dur: `${6 + Math.random() * 6}s`,
-        delay: `${Math.random() * 8}s`,
-      }));
-    }
-    setMounted(true);
-  }, []);
+    window.scrollTo({ top: 0, behavior: "instant" });
+    heading.current?.focus({ preventScroll: true });
+  }, [screen, qIndex]);
 
-  if (!mounted) return <div className="title-leaves" />;
+  function delay(callback: () => void, duration: number) {
+    if (timer.current) clearTimeout(timer.current);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    timer.current = setTimeout(callback, reducedMotion || motionPaused ? 0 : duration);
+  }
+  function unlock() {
+    setPreviousQuestion(null); setSelected(null); setBusy(false); locked.current = false;
+  }
+  function showTitle() {
+    if (timer.current) clearTimeout(timer.current);
+    unlock(); setStarting(false); setAnswers([]); setQIndex(0); setScreen("title");
+  }
+  function start() {
+    if (locked.current) return;
+    locked.current = true; setBusy(true); setStarting(true);
+    setAnswers([]); setQIndex(0); setSelected(null);
+    delay(() => {
+      setScreen("quiz"); setStarting(false);
+      delay(unlock, 560);
+    }, 320);
+  }
+  function answer(value: boolean) {
+    if (locked.current) return;
+    locked.current = true; setBusy(true); setSelected(value);
+    if (qIndex === 0) trackEvent("quiz_start");
+    const next = [...answers, value];
+    setAnswers(next);
+    delay(() => {
+      if (next.length === MATCH_QUESTIONS.length) {
+        const id = diagnose(next);
+        setResultTypeId(id);
+        trackEvent("quiz_complete", { type: TYPES16[id].name });
+        setScreen("matching");
+        delay(() => { setScreen("result"); unlock(); }, 2600);
+      } else {
+        setPreviousQuestion(qIndex); setQIndex(qIndex + 1); setSelected(null);
+        delay(unlock, 560);
+      }
+    }, 140);
+  }
 
+  const onGameScreen = screen === "title" || screen === "quiz" || screen === "matching";
   return (
-    <div className="title-leaves">
-      {leavesRef.current.map((l, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          key={i}
-          className="leaf"
-          src="/shindan/leaf.png"
-          alt=""
-          style={
-            {
-              "--y": l.y,
-              "--sway": l.sway,
-              "--dur": l.dur,
-              "--delay": l.delay,
-            } as React.CSSProperties
-          }
-        />
-      ))}
+    <div className={`stage match-stage ${motionPaused ? "motion-paused" : ""} screen-${screen}`}>
+      <header className="quest-header">
+        <Link href="/" className="quest-brand" aria-label="NARU トップへ">NARU<span>CAREER<br />QUEST</span></Link>
+        <span className="header-caption">自分を知る、小さな冒険。</span>
+        <div className="header-actions">
+          {screen !== "title" && <button onClick={showTitle} disabled={busy}>診断トップ</button>}
+          <button className="motion-toggle" onClick={() => setMotionPaused(!motionPaused)} aria-pressed={motionPaused} aria-label={motionPaused ? "アニメーションを再生" : "アニメーションを停止"}>{motionPaused ? "▶" : "Ⅱ"}</button>
+        </div>
+      </header>
+      {onGameScreen && <QuestMap />}
+
+      {screen === "title" && <section id="title-screen" className={`screen match-title-screen ${starting ? "title-leaving" : ""}`}>
+        <div className="title-lockup">
+          <div className="lockup-top"><div className="title-intro"><p className="speech-label">あなたの「らしさ」が、冒険の武器になる！</p><p className="english-title">CAREER QUEST</p></div>
+            <div className="title-party" aria-hidden="true">{[2, 1, 5, 4, 9].map((id, i) => <QuestCharacter key={id} id={id} className={`party-member party-${i}`} />)}</div>
+          </div>
+          <h1 className="match-logo illustrated-logo" ref={heading} tabIndex={-1}><Image src="/shindan/quest-logo-v5.webp" alt="適職診断 — NARU CAREER QUEST" width={2172} height={724} priority unoptimized /></h1>
+          <div className="title-caption"><p className="title-tagline">きみの才能は、まだ冒険の途中だ。</p><span className="guild-class-badge">16 CLASSES</span></div>
+        </div>
+        <div className="title-actions"><button className="diagnose-start" onClick={start} disabled={busy}>冒険をはじめる<span aria-hidden="true">→</span></button><p className="start-note">全20問・約2分 ／ 無料・登録不要</p><button className="archive-link" onClick={() => setScreen("types")} disabled={busy}>16タイプの冒険者を見る <span aria-hidden="true">↗</span></button></div>
+        <p className="title-disclaimer">自己理解のヒントを楽しむための診断です。</p>
+      </section>}
+
+      {screen === "quiz" && <section id="quiz-screen" className="screen match-quiz">
+        <p className="quest-chapter">NARU GUILD / QUEST LOG</p>
+        <div className="question-stack" aria-live="polite" aria-atomic="true">
+          {previousQuestion !== null && <div className="question-card previous-card" aria-hidden="true"><FrameCorners /><p className="question-count">Q{previousQuestion + 1}<small>/{MATCH_QUESTIONS.length}</small></p><p className="question-copy">{MATCH_QUESTIONS[previousQuestion].text}</p></div>}
+          <div className={`question-card card-in ${selected !== null ? "card-answered" : ""}`} key={qIndex}><FrameCorners /><p className="question-count">Q{qIndex + 1}<small>/{MATCH_QUESTIONS.length}</small></p><h1 className="question-copy" ref={heading} tabIndex={-1}>{MATCH_QUESTIONS[qIndex].text}</h1></div>
+        </div>
+        <div className="binary-answers" aria-label="質問への回答">
+          <button className={`binary-button yes-button ${selected === true ? "is-selected" : ""}`} onClick={() => answer(true)} disabled={busy}><span aria-hidden="true">✦</span>YES!<small>はい</small></button>
+          <button className={`binary-button no-button ${selected === false ? "is-selected" : ""}`} onClick={() => answer(false)} disabled={busy}><span aria-hidden="true">×</span>NO!<small>いいえ</small></button>
+        </div>
+        <p className="quiz-instruction">直感で選んでOK。正解も不正解もありません。</p>
+        <div className="quiz-progress" role="progressbar" aria-label="回答済みの質問" aria-valuemin={0} aria-valuemax={20} aria-valuenow={answers.length}><span style={{ width: `${answers.length * 5}%` }} /></div>
+      </section>}
+
+      {screen === "matching" && <section className="screen matching-screen" aria-label="診断結果を準備しています"><div className="question-card matching-card"><FrameCorners /><div className="match-status" role="status"><p className="matching-message">APPRAISING...</p><h1 className="matched-message" ref={heading} tabIndex={-1}>CLASS FOUND!</h1></div><div className="matching-meter"><span /></div><p className="matching-caption">あなたの冒険者タイプを見つけています</p></div></section>}
+
+      {screen === "result" && <section id="result-screen" className="screen"><ResultContent typeId={resultTypeId} typeInfo={TYPES16[resultTypeId]} onRetry={showTitle} /></section>}
+      {screen === "types" && <section id="types-screen" className="screen"><div className="types-panel"><p className="section-kicker">CHARACTER ARCHIVE</p><h1 className="types-heading" ref={heading} tabIndex={-1}>16人の冒険者たち。</h1><p>どんな個性にも、活躍できるフィールドがある。</p><button className="text-button" onClick={showTitle}>← 診断トップへ</button><div className="types-grid">{Object.entries(TYPES16).map(([id, type]) => <Link href={`/types/${type.slug}`} className="type-card" key={id}><span className="type-number">CLASS {id.padStart(2, "0")}</span><QuestCharacter id={Number(id)} /><h2>{type.name}</h2><p>{type.desc}</p><span className="type-detail">タイプを詳しく見る ↗</span></Link>)}</div><button className="diagnose-start" onClick={start} disabled={busy}>自分のタイプを診断する →</button></div></section>}
     </div>
   );
 }

@@ -1,6 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import MatchConfetti from "./MatchConfetti";
+import { RESULT_HEADLINES } from "../_lib/matching";
+import QuestCharacter from "./QuestCharacter";
 import { TypeInfo, TYPE_COLORS } from "../_lib/data";
 import { trackEvent } from "../_lib/analytics";
 import {
@@ -65,6 +68,8 @@ export default function ResultContent({
   typeInfo: TypeInfo;
   onRetry?: () => void;
 }) {
+  const resultHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => { resultHeading.current?.focus({ preventScroll: true }); }, []);
   const accentColor = TYPE_COLORS[typeId] || "#b06a1c";
   const shareText = `私の適職タイプは【${typeInfo.name}】でした！\nあなたも受けてみませんか？\n#適職診断 #転職`;
   const shareUrl = `${SITE_URL}/shindan?utm_source=x&utm_medium=share&utm_campaign=shindan_result`;
@@ -78,21 +83,18 @@ export default function ResultContent({
 
   return (
     <div className="result-inner">
+      <MatchConfetti />
       <div
         className="result-page"
         style={{ "--accent": accentColor } as React.CSSProperties}
       >
         {/* ── ヘッダー ── */}
         <div className="result-hero">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="result-char"
-            src={`/shindan/types/type${typeId}.png`}
-            alt={typeInfo.name}
-          />
+          <QuestCharacter className="result-char" id={typeId} name={typeInfo.name} />
           <div className="result-hero-text">
-            <span className="result-lead">あなたの適職タイプは…</span>
-            <h1 className="result-title">{typeInfo.name}</h1>
+            <span className="result-lead">あなたの冒険のスタイルは…</span>
+            <h1 className="result-title" ref={resultHeading} tabIndex={-1}>{RESULT_HEADLINES[typeId][0]}<br />{RESULT_HEADLINES[typeId][1]}</h1>
+<h2 className="result-class-name">{typeInfo.name}</h2>
             <p className="result-desc">{typeInfo.desc}</p>
           </div>
         </div>

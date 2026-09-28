@@ -230,3 +230,15 @@ deployment・status 順不同（3通りの並び）/ 同時刻deploymentはID優
 
 PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 / `ARTICLE_FACTORY_AUTO_PUBLISH` の有効化 /
 既存記事の変更 / secret の表示・保存・コミット — いずれも行っていない。
+
+## REPORT-SHINDAN-MERGE-20260928
+- completedInstructionId: user-request-shindan-redesign-and-merge
+- status: VERIFIED_READY_FOR_MERGE
+- branch: feat/naru-rpg-quiz-redesign
+- Changes: replace 10 four-choice questions with 20 YES/NO questions mapped to 16 classes; original generated character atlas and RPG title; NARU parchment/burgundy/gold theme; responsive title, quiz, archive and results; local Lato/Noto font subsets; reduced-motion support; retain result links, disclosures and analytics.
+- Files: src/app/shindan/**, src/app/page.tsx (quiz count only), public/shindan/quest-classes-v2.webp, public/shindan/quest-logo-v5.webp, public/shindan/fonts/*quest-v3.woff2 and licenses, scripts/sync-shindan-fonts.mjs, this report.
+- Diff: scoped quiz replacement plus font/asset additions. No article drafts, unrelated image modifications, or unused generated party artwork included.
+- Validation: applied cleanly to latest master b2ef394; full production build (webpack) passes, including TypeScript and 119 static pages. Diagnosis tests 4/4 pass via configLoader runner (default esbuild config loading hits Windows parent-directory ACL). Previously verified 20-question completion, retry, 16 reachable outcomes and 320/390/768/1440px layouts. Targeted ESLint passed.
+- Known issues: non-blocking existing Next middleware deprecation and webpack cache snapshot warnings. Original working checkout Git metadata remains unwritable; merge uses the GitHub connector and a separate clean validation checkout. Shared OG artwork retains its existing design.
+- Decisions: user explicitly requested merge; this supersedes earlier no-publish instructions for the merge operation.
+- Next: create scoped PR and merge after checking GitHub status. No separate deployment operation requested.

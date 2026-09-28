@@ -40,7 +40,7 @@ export default async function ResultPage({ params }: Props) {
   const typeInfo = TYPES16[id];
 
   return (
-    <section id="result-screen" className="screen" style={{ position: "fixed" }}>
+    <section id="result-screen" className="screen">
       <ResultContent typeId={id} typeInfo={typeInfo} />
     </section>
   );
