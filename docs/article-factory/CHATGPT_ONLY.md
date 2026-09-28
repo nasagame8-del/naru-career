@@ -11,7 +11,7 @@ GitHubとDriveは既存の接続済みアプリで操作する。GitHub Actions�
 - 旧 `research.ts` / `generation.ts` のOpenAI呼び出し実装は、履歴・過去ワークフローの参照のため残すが、上記のHTTP起動経路では呼ばれない。**既に開始済みの旧Workflowは別途状態確認すること。** 他のSEO Editor機能はこの変更の対象外。
 
 ## 日次の新フロー（JST、目標であり時刻保証ではない）
-1. **08:00** ChatGPTの定期タスクが既存の記事とOpen PRを確認して、Web調査で新規候補3〜5件を作る。保存済み候補が古くても有料APIを呼ばない。
+1. **08:00** ChatGPTの定期タスクが既存の記事とOpen PRを確認し、利用可能なら最新の `data/seo-opportunities.json` も読む。そのうえでWeb調査を行い、候補3〜5件を作る。候補は新規記事だけに固定せず、GSCで伸長余地が大きい既存記事の改善を含めてよい。保存済み候補が古くても有料APIを呼ばない。
 2. ChatGPTは `article-factory/candidates` ブランチに `data/article-candidates/batch_YYYY-MM-DD_<id>.json` と `latest.json` を保存し、保存内容を読み直した後、番号・candidateId付きでユーザーへ通知する。既存の同日選択キュー・PRと重複させない。
 3. **ユーザーは記事を2本選択するだけ。** 朝の通知に「1本目: 2、2本目: 4」のように返信する。候補IDやタイトルを保持してChatGPTが承認済み選択としてGitHubへ永続化する。
 4. ChatGPTの通常チャット/定期タスクが、1本ずつ、Web調査・一次資料の出典チェック・既存記事との差分検証・構成・本文執筆・内部リンクの実在確認を行う。公開済み記事の文章や著者の体験談を捏造しない。検索可能な情報が足りない場合は公開を止める。
@@ -23,7 +23,7 @@ GitHubとDriveは既存の接続済みアプリで操作する。GitHub Actions�
 候補バッチは `src/lib/article-factory/types.ts` の `CandidateBatch` と `ArticleCandidate` に準拠。
 `batchId`, `generatedAt`, `trigger: "manual"`, `candidates`, `inventorySize`, `nextArticleId`, `notes` が必須。
 候補ごとに `id`, `title`, `primaryKeyword`, `secondaryKeywords`, `searchIntent`, `differenceFromExisting`, `reasonToWriteNow`, `category`, `proposedSlug`, `riskFlags`, `nearestExistingSlugs`, `searchEvidence: null`, `blocked`, `blockedReasons` を満たす。
-Search Consoleデータを実際に読んでいない場合は `searchEvidence: null` とする。
+Search Consoleデータを実際に読んでいない場合は `searchEvidence: null` とする。\n\n### SEO Opportunity の扱い\n`npm run data:seo-opportunities` は既存のSearch Console認証を使い、page × query の過去28日データから次を抽出する。\n- `strikingDistance`: 平均掲載順位11〜30位かつ最低表示回数を満たす検索クエリ。既存記事リライト候補。\n- `lowCtr`: 10位以内だがCTRが閾値以下の検索クエリ。タイトル・description・検索意図整合の改善候補。\n- `cannibalization`: 同じ検索クエリで複数記事が表示される候補。統合・役割分担・内部リンク見直しの確認対象。\n- `prioritySlugs`: 上記から重複を除いた優先監査slug。\n\n公開GitにはGSCのclicks / impressions / CTR / positionの実数値を保存しない。query・slug・分類・順位だけを `data/seo-opportunities.json` に保存する。候補生成ではこのスナップショットをWeb調査・既存記事重複確認と併用し、**新規記事を増やすより既存記事改善の期待値が高い場合は、既存記事改善を候補として優先してよい**。また、同一クエリで複数記事が出ている場合は新規記事を追加する前にカニバリを確認する。
 `data/article-candidates/latest.json` は `{"batchId": "...", "savedAt": "ISO8601"}`。
 生成記事は `content/articles/<slug>.md` の既存frontmatter形式を維持し、既存slugを上書きしない。
 
