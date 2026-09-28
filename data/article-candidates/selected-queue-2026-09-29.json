@@ -1,0 +1,46 @@
+{
+  "selectedAt": "2026-09-28T23:05:32Z",
+  "batchId": "batch_2026-09-29_chatgpt",
+  "status": "SELECTED_AWAITING_DRAFTS",
+  "items": [
+    {
+      "order": 1,
+      "genre": "topical",
+      "candidateId": "cand_260929t2",
+      "articleId": 49,
+      "slug": "dx-award-company-entry-level-hiring",
+      "title": "「DX銘柄なら未経験でも採用される？」第二新卒が表彰と求人を混同しない企業研究",
+      "status": "SELECTED",
+      "prNumber": null,
+      "driveFolderId": null,
+      "imageStatus": "not_requested",
+      "qa": {
+        "previewVisual": "not_requested",
+        "previewApprovedHeadSha": null
+      },
+      "requestedPublish": null
+    },
+    {
+      "order": 2,
+      "genre": "evergreen",
+      "candidateId": "cand_260929e2",
+      "articleId": 50,
+      "slug": "it-training-program-job-checklist",
+      "title": "未経験IT求人の研修制度はどう見抜く？期間・配属後支援・学習時間の確認法",
+      "status": "SELECTED",
+      "prNumber": null,
+      "driveFolderId": null,
+      "imageStatus": "not_requested",
+      "qa": {
+        "previewVisual": "not_requested",
+        "previewApprovedHeadSha": null
+      },
+      "requestedPublish": null
+    }
+  ],
+  "notes": [
+    "User selected 2.4 on 2026-09-29 JST; interpreted in supplied order as topical #2 then evergreen #4.",
+    "Publication times not specified. Do not publish until image, current-head QA, and user preview approval gates pass and a time is specified.",
+    "Article IDs 49 and 50 reserved after checking master inventory, open PRs, and prior queues; do not overwrite prior work."
+  ]
+}
