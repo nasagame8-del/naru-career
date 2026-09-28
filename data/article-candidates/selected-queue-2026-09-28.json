@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-28",
   "batchId": "batch_2026-09-28_chatgpt",
-  "status": "ARTICLE_048_READY_TO_PUBLISH",
+  "status": "ARTICLE_048_MERGED_PRODUCTION_PENDING",
   "items": [
     {
       "order": 2,
@@ -9,7 +9,7 @@
       "articleId": 48,
       "slug": "second-new-grad-sns-background-check",
       "title": "「裏アカを見られたら不採用？」第二新卒のIT転職でSNS調査にどう向き合うか",
-      "status": "READY_TO_PUBLISH",
+      "status": "MERGED_PRODUCTION_PENDING",
       "prNumber": 36,
       "driveFolderId": "1RGG3gz-wJO5FNHP48V3X6doVrDy_EVgV",
       "imageStatus": "four_webp_reflected",
@@ -51,7 +51,11 @@
         "03": "12uy5bMjrRHkXcwzuYF3L4i3bpnfEyQVF"
       },
       "previewUrl": "https://career-media-git-article-factory-c6a1ff-nasagame8-dels-projects.vercel.app/articles/second-new-grad-sns-background-check",
-      "requestedPublish": "immediate"
+      "requestedPublish": "immediate",
+      "mergeSha": "1b80eb3629542fb876ba62d2af2ba84c0d43a3ad",
+      "mergedAt": "2026-09-28T01:37:34Z",
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-sns-background-check",
+      "productionStatus": "pending"
     }
   ],
   "notes": [
