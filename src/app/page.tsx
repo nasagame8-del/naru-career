@@ -140,7 +140,7 @@ export default function Home() {
                 自分がどんな仕事に向いているか、3分の適職診断で見てみませんか？
               </p>
               <p className="text-xs text-ink-soft mt-1">
-                10の質問に答えるだけ。RPGキャラクターで16タイプの適職を診断します
+                20のYES／NOに答えるだけ。RPGキャラクターで16タイプの適職を診断します
               </p>
             </div>
             <span className="ml-auto text-primary text-sm font-medium flex-shrink-0">

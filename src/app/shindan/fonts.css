@@ -1,0 +1,7 @@
+/* Local Google Fonts subsets. Refresh with node scripts/sync-shindan-fonts.mjs. OFL licenses accompany the fonts. */
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; font-display: swap; src: url('/shindan/fonts/lato-400-quest-v3.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; font-display: swap; src: url('/shindan/fonts/lato-700-quest-v3.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 900; font-display: swap; src: url('/shindan/fonts/lato-900-quest-v3.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Sans JP'; font-style: normal; font-weight: 400; font-display: swap; src: url('/shindan/fonts/noto-sans-jp-400-quest-v3.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Sans JP'; font-style: normal; font-weight: 700; font-display: swap; src: url('/shindan/fonts/noto-sans-jp-400-quest-v3.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Sans JP'; font-style: normal; font-weight: 900; font-display: swap; src: url('/shindan/fonts/noto-sans-jp-400-quest-v3.woff2') format('woff2'); }
