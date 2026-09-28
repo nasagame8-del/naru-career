@@ -80,6 +80,8 @@ BVEATSは2026年6月29日に東京地裁へ破産を申請し、東京商工リ�
 
 確認の流れはシンプルです。
 
+![被保険者数検索で確認する4つの流れ](/images/articles/business-outsourcing-conversion-risk-02.webp)
+
 1. 日本年金機構の「適用事業所情報の検索」を開く
 2. 会社名や法人番号、所在地などで対象事業所を探す
 3. 同名企業・別拠点を取り違えていないか確認する
@@ -99,6 +101,8 @@ BVEATSは2026年6月29日に東京地裁へ破産を申請し、東京商工リ�
 （出典：[日本年金機構「短時間労働者に対する健康保険・厚生年金保険の適用拡大」](https://www.nenkin.go.jp/tokusetsu/tekiyokakudai.html)）
 
 ## 「業務委託だから問題」ではない。問題は契約と実態のズレ
+
+![契約名ではなく働き方の実態で確認するポイント](/images/articles/business-outsourcing-conversion-risk-01.webp)
 
 業務委託という働き方自体は違法ではありません。
 
@@ -189,6 +193,8 @@ Web制作、デザイン、マーケティング、エンジニアリングな�
 （出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2024/)、[公正取引委員会「令和7年度におけるフリーランス法の運用状況」](https://www.jftc.go.jp/houdou/pressrelease/2026/jun/260610_FL.html)）
 
 ## 切り替えを打診されたら、契約前にこの5項目を確認する
+
+![業務委託契約前に確認する5項目](/images/articles/business-outsourcing-conversion-risk-03.webp)
 
 業務委託への切り替えを打診されたら、まず次を文書で確認してください。
 
