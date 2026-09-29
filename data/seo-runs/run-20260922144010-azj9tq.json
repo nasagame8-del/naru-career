@@ -1,0 +1,1813 @@
+{
+  "id": "run-20260922144010-azj9tq",
+  "createdAt": "2026-09-22T14:40:10.305Z",
+  "updatedAt": "2026-09-22T14:52:18.762Z",
+  "status": "completed",
+  "currentPhase": "qa",
+  "phases": [
+    {
+      "phase": "topics",
+      "state": "done",
+      "startedAt": "2026-09-22T14:40:10.308Z",
+      "finishedAt": "2026-09-22T14:40:37.987Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 17655,
+          "outputTokens": 2273,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "cannibalization",
+      "state": "done",
+      "startedAt": "2026-09-22T14:40:51.701Z",
+      "finishedAt": "2026-09-22T14:41:46.518Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 26645,
+          "outputTokens": 3263,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "cluster",
+      "state": "done",
+      "startedAt": "2026-09-22T14:41:47.363Z",
+      "finishedAt": "2026-09-22T14:42:12.562Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 25259,
+          "outputTokens": 2528,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "action",
+      "state": "done",
+      "startedAt": "2026-09-22T14:42:13.420Z",
+      "finishedAt": "2026-09-22T14:43:41.846Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 13123,
+          "outputTokens": 2609,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "links",
+      "state": "done",
+      "startedAt": "2026-09-22T14:43:42.852Z",
+      "finishedAt": "2026-09-22T14:44:10.972Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 13956,
+          "outputTokens": 2609,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "brief",
+      "state": "done",
+      "startedAt": "2026-09-22T14:45:24.207Z",
+      "finishedAt": "2026-09-22T14:45:51.556Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 11845,
+          "outputTokens": 2333,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "write",
+      "state": "done",
+      "startedAt": "2026-09-22T14:48:24.232Z",
+      "finishedAt": "2026-09-22T14:48:48.504Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 13217,
+          "outputTokens": 2568,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "related",
+      "state": "done",
+      "startedAt": "2026-09-22T14:51:07.615Z",
+      "finishedAt": "2026-09-22T14:51:37.426Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 4515,
+          "outputTokens": 3263,
+          "cachedInputTokens": 0
+        }
+      ]
+    },
+    {
+      "phase": "qa",
+      "state": "done",
+      "startedAt": "2026-09-22T14:51:39.924Z",
+      "finishedAt": "2026-09-22T14:52:18.762Z",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 18768,
+          "outputTokens": 3786,
+          "cachedInputTokens": 0
+        },
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 14906,
+          "outputTokens": 2762,
+          "cachedInputTokens": 1792
+        },
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 14912,
+          "outputTokens": 3326,
+          "cachedInputTokens": 0
+        },
+        {
+          "model": "gpt-5.5",
+          "inputTokens": 15114,
+          "outputTokens": 2641,
+          "cachedInputTokens": 0
+        }
+      ]
+    }
+  ],
+  "selection": {
+    "candidates": [
+      {
+        "id": "agent-dissatisfaction-cluster",
+        "topic": "転職エージェントへの不満・本音・合わない場合の判断",
+        "type": "cluster_opportunity",
+        "reason": "既存の体験記事に表示が集まっており、NARUの主要テーマと近い。順位は弱いが「微妙」系は11〜30位圏にあり、既存のエージェント関連記事を活用して改善余地がある。",
+        "queries": [
+          {
+            "query": "転職エージェント 本音",
+            "clicks": 0,
+            "impressions": 13,
+            "ctr": 0,
+            "position": 70.84615384615384,
+            "positionChange": 14.84615384615384,
+            "impressionChange": -23.52941176470588
+          },
+          {
+            "query": "転職エージェント 微妙",
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 18,
+            "positionChange": -0.25,
+            "impressionChange": 25
+          },
+          {
+            "query": "転職エージェント 求人 微妙",
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 20.5,
+            "positionChange": 0.5,
+            "impressionChange": 100
+          }
+        ],
+        "relatedPages": [
+          "https://naru-career.com/articles/agent-not-recommended",
+          "https://naru-career.com/articles/agent-comparison-2026",
+          "https://naru-career.com/articles/agent-free-and-cancel",
+          "https://naru-career.com/articles/agent-referral-vs-self-apply"
+        ],
+        "possibleActions": [
+          "rewrite",
+          "expand",
+          "internal_links",
+          "title_meta"
+        ],
+        "evidence": [
+          "https://naru-career.com/articles/agent-not-recommended は current28d で impressions 150、clicks 0、position 56.446666666666665。",
+          "同ページの query「転職エージェント 微妙」は impressions 15、position 19。",
+          "同ページの query「転職エージェント 本音」は impressions 64、position 58.640625。"
+        ],
+        "dataConfidence": "medium",
+        "caveats": [
+          "「本音」系は表示はあるが順位が50〜70位台で、短期改善だけで流入化する確度は高くない。",
+          "「微妙」「求人 微妙」は11〜30位圏だが表示回数は少ないため、過大評価は避けるべき。",
+          "新規記事より、既存記事内で不満パターン・求人の質・合わない時の対処を厚くし、関連記事から内部リンクする方が妥当。"
+        ]
+      },
+      {
+        "id": "employee-to-contractor-risk",
+        "topic": "正社員から業務委託への切り替えリスク",
+        "type": "ctr_opportunity",
+        "reason": "既存記事がページ単位では比較的多く表示され、平均順位も高い。一方CTRは低めで、タイトル・導入・検索意図への寄せ方を見直す価値がある。ただしクエリ単位の根拠は薄い。",
+        "queries": [
+          {
+            "query": "正社員 から業務委託 クビ",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 8,
+            "positionChange": null,
+            "impressionChange": null
+          },
+          {
+            "query": "正社員 から業務委託 違法",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3,
+            "positionChange": null,
+            "impressionChange": null
+          },
+          {
+            "query": "正社員から業務委託",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3,
+            "positionChange": null,
+            "impressionChange": null
+          },
+          {
+            "query": "正社員から業務委託に変更",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4,
+            "positionChange": null,
+            "impressionChange": null
+          }
+        ],
+        "relatedPages": [
+          "https://naru-career.com/articles/business-outsourcing-conversion-risk",
+          "https://naru-career.com/articles/unfair-evaluation-not-spoiled",
+          "https://naru-career.com/articles/vaguely-want-to-quit"
+        ],
+        "possibleActions": [
+          "title_meta",
+          "rewrite",
+          "internal_links"
+        ],
+        "evidence": [
+          "https://naru-career.com/articles/business-outsourcing-conversion-risk は current28d で impressions 123、clicks 3、ctr 0.024390243902439025、position 7.7317073170731705。",
+          "同ページの query「正社員 から業務委託 違法」は impressions 1、position 3。",
+          "同ページの query「正社員から業務委託に変更」は impressions 1、position 4。"
+        ],
+        "dataConfidence": "low",
+        "caveats": [
+          "ページ単位の表示はあるが、提示されたクエリ別データは各1 impressionのみで検索意図の断定はできない。",
+          "NARUの中心テーマからはやや外れるため、第二新卒の働き方・雇用条件の不安に接続できる範囲で扱うのが安全。",
+          "順位はすでに高めなので、大幅リライトよりCTR改善と関連記事からの内部リンク確認が優先。"
+        ]
+      }
+    ],
+    "dataAssessment": "全体の current28d は impressions 341、clicks 10 と小規模。ページ単位では agent-not-recommended と business-outsourcing-conversion-risk に表示が寄っているが、クエリ単位の詳細は少なく、特に後者は各クエリ1 impressionで判断材料が弱い。改善候補は既存記事の補強・内部リンク・タイトル調整に限定して見るのが妥当。",
+    "lowDataWarning": false
+  },
+  "selectedTopic": {
+    "id": "agent-dissatisfaction-cluster",
+    "topic": "転職エージェントへの不満・本音・合わない場合の判断",
+    "type": "cluster_opportunity",
+    "reason": "既存の体験記事に表示が集まっており、NARUの主要テーマと近い。順位は弱いが「微妙」系は11〜30位圏にあり、既存のエージェント関連記事を活用して改善余地がある。",
+    "queries": [
+      {
+        "query": "転職エージェント 本音",
+        "clicks": 0,
+        "impressions": 13,
+        "ctr": 0,
+        "position": 70.84615384615384,
+        "positionChange": 14.84615384615384,
+        "impressionChange": -23.52941176470588
+      },
+      {
+        "query": "転職エージェント 微妙",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 18,
+        "positionChange": -0.25,
+        "impressionChange": 25
+      },
+      {
+        "query": "転職エージェント 求人 微妙",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 20.5,
+        "positionChange": 0.5,
+        "impressionChange": 100
+      }
+    ],
+    "relatedPages": [
+      "https://naru-career.com/articles/agent-not-recommended",
+      "https://naru-career.com/articles/agent-comparison-2026",
+      "https://naru-career.com/articles/agent-free-and-cancel",
+      "https://naru-career.com/articles/agent-referral-vs-self-apply"
+    ],
+    "possibleActions": [
+      "rewrite",
+      "expand",
+      "internal_links",
+      "title_meta"
+    ],
+    "evidence": [
+      "https://naru-career.com/articles/agent-not-recommended は current28d で impressions 150、clicks 0、position 56.446666666666665。",
+      "同ページの query「転職エージェント 微妙」は impressions 15、position 19。",
+      "同ページの query「転職エージェント 本音」は impressions 64、position 58.640625。"
+    ],
+    "dataConfidence": "medium",
+    "caveats": [
+      "「本音」系は表示はあるが順位が50〜70位台で、短期改善だけで流入化する確度は高くない。",
+      "「微妙」「求人 微妙」は11〜30位圏だが表示回数は少ないため、過大評価は避けるべき。",
+      "新規記事より、既存記事内で不満パターン・求人の質・合わない時の対処を厚くし、関連記事から内部リンクする方が妥当。"
+    ]
+  },
+  "cannibalization": {
+    "status": "ROLE_CLARIFICATION_NEEDED",
+    "pages": [
+      {
+        "slug": "agent-not-recommended",
+        "url": "https://naru-career.com/articles/agent-not-recommended",
+        "title": "転職エージェントはやめたほうがいい？僕が使って感じた本音と、合わなかったときの話",
+        "searchIntent": "転職エージェントに不満・不信感があり、「やめたほうがいいのか」「微妙なのか」「合わない場合どう判断すべきか」を知りたい",
+        "targetReader": "転職エージェント利用中または登録前で、紹介求人の質・案件数・担当者との相性に不安や不満を感じている第二新卒・20代",
+        "role": "不満・本音・合わない場合の判断を扱う中心ページ／体験談ベースの入口記事",
+        "sharedQueries": []
+      },
+      {
+        "slug": "agent-comparison-2026",
+        "url": "https://naru-career.com/articles/agent-comparison-2026",
+        "title": "【実体験】第二新卒の転職で使ったエージェント比較——doda・ワークポートのリアルな感想",
+        "searchIntent": "第二新卒がdodaとワークポートのどちらを使うべきか、実体験ベースで比較したい",
+        "targetReader": "第二新卒で転職エージェント選びをしており、doda・ワークポートの違いや向き不向きを知りたい人",
+        "role": "サービス比較記事／doda・ワークポートの選び方と併用方針を示すページ",
+        "sharedQueries": []
+      },
+      {
+        "slug": "agent-free-and-cancel",
+        "url": "https://naru-career.com/articles/agent-free-and-cancel",
+        "title": "転職エージェントは本当に無料？途中で断ってもいい？——実体験と業界知識から解説",
+        "searchIntent": "転職エージェントが無料で使える理由、途中で断ってよいか、断り方を知りたい",
+        "targetReader": "エージェント利用に費用面・断ることへの心理的ハードルがある人",
+        "role": "無料の仕組みと断り方を解説する業界解説・不安解消ページ",
+        "sharedQueries": []
+      },
+      {
+        "slug": "agent-referral-vs-self-apply",
+        "url": "https://naru-career.com/articles/agent-referral-vs-self-apply",
+        "title": "エージェント紹介 vs 自己応募、実際に内定に近かったのはどっちだった？",
+        "searchIntent": "エージェント紹介と自己応募のどちらが内定に近いのか、実体験から判断したい",
+        "targetReader": "エージェント経由の紹介求人と自分で探す求人のどちらを重視すべきか迷っている人",
+        "role": "応募経路の比較記事／エージェント紹介と自己応募の使い分けを深掘りする体験談",
+        "sharedQueries": []
+      },
+      {
+        "slug": "agent-site-vs-agent-usage",
+        "url": "https://naru-career.com/articles/agent-site-vs-agent-usage",
+        "title": "転職サイトと転職エージェント、両方使って分かった使い分け方【doda・ワークポート実体験】",
+        "searchIntent": "転職サイトと転職エージェントをどう使い分けるべきか、併用のコツを知りたい",
+        "targetReader": "転職サイトとエージェントの違いが分からず、どちらを使うべきか迷っている人",
+        "role": "使い分け・併用ノウハウ記事／サイトとエージェントの役割整理ページ",
+        "sharedQueries": []
+      }
+    ],
+    "reason": "同一クエリで複数URLが表示されているデータは提示されておらず、Search Console上の明確なカニバリ証拠は弱いです。実測として確認できるのは、agent-not-recommended が「転職エージェント 微妙」「転職エージェント 本音」で表示されていることです。一方、本文確認済みの記事間では、dodaの求人品質への不満、ワークポートの紹介案件数の少なさ、合わない場合は併用・変更・自己応募に切り替えるという回答が複数記事に出ています。ただし各記事の主目的は、agent-not-recommended＝不満・本音・合わない判断、agent-comparison-2026＝サービス比較、agent-free-and-cancel＝無料の仕組みと断り方、agent-referral-vs-self-apply＝応募経路比較、agent-site-vs-agent-usage＝転職サイトとエージェントの使い分けで分かれています。したがって強いカニバリや統合候補ではなく、agent-not-recommendedを不満・本音系の主ページとして明確化するのが妥当です。",
+    "intentDifferences": [
+      "agent-not-recommended は「エージェントはやめたほうがいいのか」「微妙・合わないと感じたらどうするか」に直接答えるページで、選択テーマの中心意図に最も近いです。",
+      "agent-comparison-2026 は「dodaとワークポートのどちらを選ぶか」が主意図であり、不満点は比較材料の一部です。検索意図は『本音・不満』より『第二新卒向けエージェント比較』です。",
+      "agent-free-and-cancel は「無料の理由」「途中で断ってよいか」「断り方」が主意図で、不満の原因分析ではなく、利用前後の不安解消が役割です。",
+      "agent-referral-vs-self-apply は「エージェント紹介と自己応募のどちらが内定に近かったか」が主意図で、紹介求人が合わない場合の代替経路を扱う深掘り記事です。",
+      "agent-site-vs-agent-usage は「転職サイトとエージェントの役割の違い・併用方法」が主意図で、『どっちも合わない場合』は補足セクションです。",
+      "複数記事で同じ一次体験が再利用されていますが、読者の意思決定フェーズが異なります。不満を感じている読者には agent-not-recommended、サービス選定中の読者には agent-comparison-2026、断り方に悩む読者には agent-free-and-cancel が対応しています。"
+    ],
+    "recommendedAction": "記事統合は不要です。agent-not-recommended を「転職エージェント 本音／微妙／求人 微妙／合わない」の受け皿として明確化し、タイトル・導入・H2に『微妙と感じた理由』『求人が微妙なときの見分け方』『合わない担当者・求人への対処』を追加するのが適切です。他記事では同じ不満体験を長く展開しすぎず、『不満・本音の詳しい判断基準はこちら』として agent-not-recommended へ内部リンクしてください。agent-comparison-2026 は比較、agent-free-and-cancel は断り方、agent-referral-vs-self-apply は応募経路、agent-site-vs-agent-usage は使い分けに役割を絞ると、意図の衝突を避けられます。",
+    "confidence": "medium",
+    "inspectedSlugs": [
+      "agent-not-recommended",
+      "agent-free-and-cancel",
+      "agent-referral-vs-self-apply",
+      "agent-comparison-2026",
+      "recruitment-agency-business-model",
+      "agent-site-vs-agent-usage"
+    ]
+  },
+  "clusterAudit": {
+    "pillar": {
+      "status": "existing",
+      "url": "https://naru-career.com/articles/agent-not-recommended",
+      "title": "転職エージェントはやめたほうがいい？僕が使って感じた本音と、合わなかったときの話",
+      "reason": "選択テーマである「転職エージェントへの不満・本音・合わない場合の判断」に最も直接対応している既存記事。Search Console上でも「転職エージェント 微妙」「転職エージェント 本音」の表示が確認されており、このテーマの受け皿として明確化するのが妥当。"
+    },
+    "nodes": [
+      {
+        "slug": "agent-not-recommended",
+        "url": "https://naru-career.com/articles/agent-not-recommended",
+        "title": "転職エージェントはやめたほうがいい？僕が使って感じた本音と、合わなかったときの話",
+        "role": "pillar",
+        "coverage": "partial",
+        "note": "不満・本音・合わなかった体験、使うべき人／使わなくていい人の判断を扱っており中心ページに適している。ただし見出し上は「微妙」「求人が微妙」「担当者が合わない時の対処」がまだ明示されていないため、選択クエリへの対応は部分的。"
+      },
+      {
+        "slug": "agent-comparison-2026",
+        "url": "https://naru-career.com/articles/agent-comparison-2026",
+        "title": "【実体験】第二新卒の転職で使ったエージェント比較——doda・ワークポートのリアルな感想",
+        "role": "cluster",
+        "coverage": "partial",
+        "note": "doda・ワークポートの比較記事。不満点や注意点は比較材料として扱えるが、主意図はサービス選定であり、不満・本音系の中心にはしない方がよい。agent-not-recommended への内部リンク元として有効。"
+      },
+      {
+        "slug": "agent-free-and-cancel",
+        "url": "https://naru-career.com/articles/agent-free-and-cancel",
+        "title": "転職エージェントは本当に無料？途中で断ってもいい？——実体験と業界知識から解説",
+        "role": "cluster",
+        "coverage": "partial",
+        "note": "無料の仕組み、途中で断ってよい理由、断り方、変更・併用を扱う。不満がある読者の次アクションには近いが、主意図は費用不安と断り方の解消。"
+      },
+      {
+        "slug": "agent-referral-vs-self-apply",
+        "url": "https://naru-career.com/articles/agent-referral-vs-self-apply",
+        "title": "エージェント紹介 vs 自己応募、実際に内定に近かったのはどっちだった？",
+        "role": "cluster",
+        "coverage": "partial",
+        "note": "エージェント紹介が合わない場合の代替手段として、自己応募との比較を深掘りできる記事。主意図は応募経路の比較であり、不満系クエリの直接受け皿ではない。"
+      },
+      {
+        "slug": "agent-site-vs-agent-usage",
+        "url": "https://naru-career.com/articles/agent-site-vs-agent-usage",
+        "title": "転職サイトと転職エージェント、両方使って分かった使い分け方【doda・ワークポート実体験】",
+        "role": "cluster",
+        "coverage": "partial",
+        "note": "転職サイトとエージェントの使い分け、併用のコツ、「どっちも合わなかった」場合の選択肢を扱う。不満後の使い分け導線として有効。"
+      },
+      {
+        "slug": "recruitment-agency-business-model",
+        "url": "https://naru-career.com/articles/recruitment-agency-business-model",
+        "title": "人材紹介の仕組みを『中の人』が解説する——転職エージェントはなぜ無料なのか",
+        "role": "supporting",
+        "coverage": "partial",
+        "note": "成功報酬モデル、人材紹介の構造、無料の理由を解説しており、エージェントに不満が生まれやすい背景説明の補強に使える。テーマ中心ではなく構造理解の支援記事。"
+      }
+    ],
+    "missingTopics": [
+      {
+        "topic": "転職エージェントを「微妙」と感じる具体的なパターン",
+        "searchIntent": "利用中または登録前に、紹介求人・担当者対応・サポート品質に違和感があり、自分の感覚が妥当か確認したい",
+        "canBeCoveredBy": "agent-not-recommended",
+        "independentPageJustified": false,
+        "reason": "既存の中心記事が「やめたほうがいい」「本音」「不満を感じた瞬間」を扱っているため、独立ページではなく H2/H3 として具体例を増やすのが妥当。表示回数も多くはなく、新規ページ化する根拠は弱い。"
+      },
+      {
+        "topic": "紹介求人が微妙なときの見分け方と対処",
+        "searchIntent": "エージェントから紹介された求人の質や条件が合わず、応募すべきか断るべきか判断したい",
+        "canBeCoveredBy": "agent-not-recommended",
+        "independentPageJustified": false,
+        "reason": "選択クエリに「転職エージェント 求人 微妙」があるが表示回数は少ない。既存記事の不満パターン内で、求人の質・案件数・希望条件とのズレとして補強できる。断り方の詳細は agent-free-and-cancel へ内部リンクすればよい。"
+      },
+      {
+        "topic": "担当者と合わない場合に変更・併用・自己応募へ切り替える判断基準",
+        "searchIntent": "担当者との相性が悪い、提案が合わない、連絡が負担なときに、我慢すべきか変更すべきか知りたい",
+        "canBeCoveredBy": "agent-not-recommended",
+        "independentPageJustified": false,
+        "reason": "中心記事の「合わなかったときの話」と相性がよい内容。変更・併用は agent-free-and-cancel、自己応募への切り替えは agent-referral-vs-self-apply と agent-site-vs-agent-usage で補完できるため、新規ページ化より既存記事間の役割整理が適切。"
+      },
+      {
+        "topic": "転職エージェントを使わなくていい人／使った方がいい人の判断表",
+        "searchIntent": "不満がある一方で、完全に使わない判断をしてよいのか、自分の状況に合わせて判断したい",
+        "canBeCoveredBy": "agent-not-recommended",
+        "independentPageJustified": false,
+        "reason": "既存記事に「それでもエージェントを使うべき人、使わなくていい人」の見出しがすでにある。比較表やチェックリストを追加する改善余地はあるが、検索意図は既存記事と同一。"
+      },
+      {
+        "topic": "エージェントへの不満が仕組み由来なのか担当者個人の問題なのかの切り分け",
+        "searchIntent": "不満の原因がサービス全体の問題なのか、担当者変更で解決する問題なのかを知りたい",
+        "canBeCoveredBy": "agent-not-recommended",
+        "independentPageJustified": false,
+        "reason": "既存記事に「なぜエージェントに不満を感じやすいのか——構造の話」があり、recruitment-agency-business-model でも仕組みを補足できる。独立ページにするほど既存意図と分離していない。"
+      }
+    ],
+    "notes": [
+      "Search Console上の実測として確認できるのは、主に agent-not-recommended が「転職エージェント 微妙」「転職エージェント 本音」で表示されていること。複数URLが同一クエリで競合している明確な証拠は提示されていない。",
+      "「微妙」「求人 微妙」は順位が11〜30位圏に近いが、表示回数は少ないため過大評価は避けるべき。新規記事追加より、agent-not-recommended の見出し・本文拡充と関連記事からの内部リンクが優先。",
+      "agent-comparison-2026 は比較、agent-free-and-cancel は無料の仕組みと断り方、agent-referral-vs-self-apply は応募経路比較、agent-site-vs-agent-usage は使い分けに役割を絞ると、テーマの重複を避けやすい。",
+      "/guides/ 配下の完全ガイドは編集対象外のため、今回の nodes には含めていない。必要であれば pillar への参照リンク先としてのみ扱う。"
+    ],
+    "confidence": "medium"
+  },
+  "actionDecision": {
+    "decisions": [
+      {
+        "target": "agent-not-recommended",
+        "targetType": "article",
+        "action": "EXPAND",
+        "reason": "既存記事がこのテーマの中心意図に最も近く、Search Consoleでも該当クエリの表示が確認されているため、新規作成ではなく既存記事に不足見出しを足すのが最小変更です。記事の主意図は変えず、「微妙」「求人が微妙」「担当者が合わない」読者の判断材料をH2/H3で補強します。",
+        "evidence": [
+          "Phase 3で既存pillarは agent-not-recommended と判定されている。",
+          "Search Console実測で agent-not-recommended は current28d impressions 150、clicks 0、position 56.45。",
+          "同ページで「転職エージェント 微妙」は impressions 15、position 19、「転職エージェント 本音」は impressions 64、position 58.64。",
+          "Phase 3のmissingTopicsはいずれも canBeCoveredBy が agent-not-recommended、independentPageJustified が false。",
+          "既存見出しには「微妙」「求人が微妙」「担当者が合わない時の対処」が明示されていない。"
+        ],
+        "risk": "既存の一次体験ベースの本音記事としての強みが、一般論の追記で薄まるリスクがあります。正本にない応募社数・内定数・面談経験などは追加せず、既存体験と一般論を分けて書く必要があります。",
+        "mergeInto": null,
+        "expandTopics": [
+          "転職エージェントを「微妙」と感じる具体的なパターン",
+          "紹介求人が微妙なときの見分け方と対処",
+          "担当者と合わない場合に変更・併用・自己応募へ切り替える判断基準",
+          "使わなくていい人／使った方がいい人の判断表",
+          "不満が仕組み由来なのか担当者個人の問題なのかの切り分け"
+        ]
+      },
+      {
+        "target": "agent-comparison-2026",
+        "targetType": "article",
+        "action": "EXPAND",
+        "reason": "比較記事としての役割は維持しつつ、doda・ワークポートの注意点や不満点に触れる箇所から agent-not-recommended へ内部リンクを追加するだけで、テーマの中心ページへ評価を集約できます。本文の大幅変更は不要です。",
+        "evidence": [
+          "Phase 2で agent-comparison-2026 はサービス比較記事であり、不満・本音系の中心にはしない方がよいと整理されている。",
+          "Phase 3で同記事は cluster、coverage partial と判定されている。",
+          "記事索引上、agent-comparison-2026 の linksOut に agent-not-recommended は含まれていない。",
+          "Phase 2のrecommendedActionで、他記事から『不満・本音の詳しい判断基準はこちら』として agent-not-recommended へ内部リンクする方針が示されている。"
+        ],
+        "risk": "比較記事内で不満・本音を長く展開すると、agent-not-recommended と意図が重なりカニバリ化する恐れがあります。追加は短い導線に留めるべきです。",
+        "mergeInto": null,
+        "expandTopics": [
+          "doda・ワークポート比較の注意点から、不満・本音の詳細記事へ送る内部リンク",
+          "紹介求人や担当者との相性に違和感がある場合の参照先提示"
+        ]
+      },
+      {
+        "target": "agent-free-and-cancel",
+        "targetType": "article",
+        "action": "EXPAND",
+        "reason": "この記事は断り方・変更・併用が主意図で、エージェントに不満を持った読者の次アクションと近いです。主内容は変えず、『そもそも合わない／微妙と感じる原因を整理したい人』向けに agent-not-recommended への内部リンクを追加するのが最小変更です。",
+        "evidence": [
+          "Phase 2で agent-free-and-cancel は無料の仕組みと断り方が主意図で、不満の原因分析ではないと整理されている。",
+          "Phase 3で同記事は cluster、coverage partial と判定されている。",
+          "既存見出しに『エージェントを変更・併用するという選択肢』があり、合わない場合の判断と接続しやすい。",
+          "記事索引上、agent-free-and-cancel の linksOut に agent-not-recommended は含まれていない。"
+        ],
+        "risk": "断り方の記事に不満原因の説明を増やしすぎると、無料・断る意図から外れるリスクがあります。内部リンクと短い補足に限定する必要があります。",
+        "mergeInto": null,
+        "expandTopics": [
+          "変更・併用の前に、不満が仕組み由来か相性問題かを確認する導線",
+          "エージェントが合わないと感じた人向けの内部リンク"
+        ]
+      },
+      {
+        "target": "agent-site-vs-agent-usage",
+        "targetType": "article",
+        "action": "EXPAND",
+        "reason": "『どっちも合わなかった場合』の既存見出しがあり、エージェント不満後の代替行動に近い記事です。使い分け記事としての役割は維持し、該当箇所から agent-not-recommended へ内部リンクを足すだけでクラスタ導線を補強できます。",
+        "evidence": [
+          "Phase 3で agent-site-vs-agent-usage は cluster、coverage partial と判定されている。",
+          "既存見出しに『「どっちも合わなかった」場合の選択肢』がある。",
+          "Phase 3 notesで、不満後の使い分け導線として有効とされている。",
+          "記事索引上、agent-site-vs-agent-usage の linksOut に agent-not-recommended は含まれていない。"
+        ],
+        "risk": "転職サイトとエージェントの使い分け記事が、不満・本音記事に寄りすぎると主意図がぶれます。リンク追加と短い補足に抑えるべきです。",
+        "mergeInto": null,
+        "expandTopics": [
+          "エージェントが合わない場合に中心記事へ戻す内部リンク",
+          "転職サイト・自己応募へ切り替える前の判断基準への導線"
+        ]
+      }
+    ],
+    "summary": "新規記事作成や統合は不要です。Phase 2・3ともに agent-not-recommended を中心ページとして明確化する方針で一致しており、missingTopics もすべて既存記事で対応可能です。最小変更は、agent-not-recommended に『微妙』『求人が微妙』『担当者が合わない』系の見出しを追加し、比較・断り方・使い分け記事から短い内部リンクを戻すことです。",
+    "warnings": []
+  },
+  "internalLinks": {
+    "links": [
+      {
+        "source": "/articles/agent-comparison-2026",
+        "target": "/articles/agent-not-recommended",
+        "placement": "H2「dodaとワークポートを徹底比較」の比較表または注意点を述べた段落の後",
+        "anchor": "エージェントに違和感があるときの判断基準",
+        "reason": "比較記事を読んでいる読者は、サービスごとの強みだけでなく「自分には合わないかも」という不安も持ちやすい。中心記事が不満・本音・合わなかった場合の判断を扱っているため、詳細はpillarへ送るのが自然。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/agent-free-and-cancel",
+        "target": "/articles/agent-not-recommended",
+        "placement": "H2「エージェントを変更・併用するという選択肢」の第1段落の後",
+        "anchor": "そもそもエージェントが合わない原因を整理したい人",
+        "reason": "この記事は断り方・変更・併用が主意図。不満の原因分析まで本文で広げるより、合わない理由や本音を扱う中心記事へ案内した方が読者の次の疑問に合う。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/agent-site-vs-agent-usage",
+        "target": "/articles/agent-not-recommended",
+        "placement": "H2「「どっちも合わなかった」場合の選択肢」の第1段落の後",
+        "anchor": "転職エージェント自体が合わないと感じたときの考え方",
+        "reason": "転職サイト・エージェントの使い分けを読んだ後に、エージェントへの不満が残る読者が想定される。合わない場合の判断は中心記事が直接回答している。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/agent-referral-vs-self-apply",
+        "target": "/articles/agent-not-recommended",
+        "placement": "H2「エージェント紹介（ワークポート）のリアルな体験」の体験談を述べた段落の後",
+        "anchor": "紹介求人や担当者に違和感があるときの判断軸",
+        "reason": "エージェント紹介と自己応募を比較する読者は、紹介求人が合わない場合の判断も知りたい可能性が高い。中心記事では不満を感じた瞬間や使うべき人・使わなくていい人を扱っているため接続しやすい。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/recruitment-agency-business-model",
+        "target": "/articles/agent-not-recommended",
+        "placement": "H2「僕自身のエージェント利用体験——dodaとワークポートの違い」の末尾",
+        "anchor": "仕組みを知ったうえで感じたエージェントへの本音",
+        "reason": "人材紹介の仕組みを理解した読者が、実際に使ってどう感じたのかを知りたい場合に自然な導線。中心記事の一次体験と不満の整理へ送れる。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/agent-not-recommended",
+        "target": "/articles/recruitment-agency-business-model",
+        "placement": "H2「なぜエージェントに不満を感じやすいのか——構造の話」の第2段落の後",
+        "anchor": "転職エージェントが無料で使える仕組み",
+        "reason": "中心記事内の『構造の話』を読んだ読者に、成功報酬モデルや無料の理由を詳しく解説する支援記事を案内できる。既存の外向きリンクにはこの導線がないため補完価値がある。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/second-new-grad-job-change-traps",
+        "target": "/articles/agent-not-recommended",
+        "placement": "H2「よくある質問」内のH3「Q: 第二新卒で転職エージェントは使うべきですか？」の回答末尾",
+        "anchor": "転職エージェントを使うべき人・使わなくていい人の判断",
+        "reason": "第二新卒が転職の失敗を避ける文脈で、エージェントを使うべきか迷う読者に合う。既存の比較記事へのリンクだけでは、不満・合わない場合の判断までは補えない。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/second-new-grad-programming-career-change",
+        "target": "/articles/agent-comparison-2026",
+        "placement": "H2「未経験からIT転職を成功させた具体的なステップ」内のH3「ステップ2：転職エージェントを複数登録する」の末尾",
+        "anchor": "第二新卒で実際に使ったエージェント比較",
+        "reason": "本文で複数登録をすすめるなら、次に読者が知りたいのは具体的にどのサービスをどう使い分けるか。doda・ワークポートの実体験比較記事が回答している。",
+        "operation": "ADD"
+      },
+      {
+        "source": "/articles/bizreach-second-new-grad",
+        "target": "/articles/agent-not-recommended",
+        "placement": "H2「ワークポートとの出会い：ビズリーチが「橋渡し」になった」の末尾",
+        "anchor": "エージェント経由で進める前に知っておきたい本音",
+        "reason": "ビズリーチ経由でエージェントと接点を持つ読者にとって、エージェントが合うか・合わないかの判断材料は次に知りたい情報になりやすい。中心記事がその不安に直接対応している。",
+        "operation": "ADD"
+      }
+    ],
+    "notes": [
+      "Search Consoleの実測として確認できるのは、主に /articles/agent-not-recommended が「転職エージェント 微妙」「転職エージェント 本音」で表示されている点。流入化の確度は中程度で、特に『微妙』『求人 微妙』は表示回数が少ないため過大評価は避ける。",
+      "既存リンクでは /articles/agent-not-recommended から各関連記事へのリンクはあるが、関連記事側から中心記事へのリンクが不足している。今回の設計は、比較・断り方・使い分け・自己応募比較の記事からpillarへ戻す導線を優先した。",
+      "/articles/agent-not-recommended から /articles/recruitment-agency-business-model へのリンクは、既存H2『なぜエージェントに不満を感じやすいのか——構造の話』の補足として自然。SEO目的だけでなく、読者が仕組みを深掘りできる導線として提案している。",
+      "既に存在する内部リンクと同一の source=>target は ADD していない。"
+    ],
+    "rejected": []
+  },
+  "briefs": [
+    {
+      "target": "agent-not-recommended",
+      "action": "EXPAND",
+      "primaryIntent": "転職エージェントを使って「微妙」「合わない」「やめたほうがいいかも」と感じている第二新卒が、不満の原因と次に取るべき行動を判断できるようにする",
+      "targetReader": "転職エージェントに登録済み、または登録前の20代・第二新卒。紹介求人の質、担当者との相性、連絡頻度、求人の少なさに違和感があり、このまま使い続けるべきか、担当変更・併用・自己応募に切り替えるべきか迷っている人",
+      "roleInCluster": "Pillar",
+      "mustAnswer": [
+        "転職エージェントは本当にやめたほうがいいのか",
+        "転職エージェントを微妙だと感じるのはどんな場面か",
+        "紹介求人が微妙なとき、応募すべきか断るべきかどう見分けるか",
+        "担当者が合わないときは我慢すべきか、変更・併用・自己応募に切り替えるべきか",
+        "不満の原因がエージェントの仕組み由来なのか、担当者個人の問題なのかをどう切り分けるか",
+        "転職エージェントを使った方がいい人／使わなくていい人はどんな人か",
+        "第二新卒・未経験転職では、エージェントをどう使うのが現実的か"
+      ],
+      "recommendedHeadings": [
+        "「やめたほうがいい」と感じた瞬間は、正直あった",
+        "転職エージェントを「微妙」と感じる具体的なパターン",
+        "紹介求人が微妙なときの見分け方と対処",
+        "なぜエージェントに不満を感じやすいのか——構造の話",
+        "担当者と合わないときは、変更・併用・自己応募を検討する",
+        "それでもエージェントを使うべき人、使わなくていい人",
+        "「相談だけ」でも登録していい理由",
+        "まとめ：「やめたほうがいい」のはエージェント全体ではなく、使い方"
+      ],
+      "firstPartyEvidence": [
+        "dodaは担当者とのメッセージでのやり取りがスムーズで、自分に合った求人が見つけやすかった",
+        "dodaでは、ビズリーチと比較して求人の質はやや低く感じた",
+        "dodaでは、実態と異なる福利厚生表記や、おとり求人と思われる案件が一部あった",
+        "最終的にはdoda経由で自己応募し、内定・入社に至った",
+        "ワークポートはエージェントが親身な対応で、面談日程をこちらの都合に合わせて柔軟に組んでくれた",
+        "ワークポートのエージェントから、面接での話し方や逆質問の内容を親身にアドバイスしてもらっていた",
+        "営業職の選考で「なぜ営業職を志望するのか」を業界理解不足でうまく言語化できず、お見送りになった経験がある"
+      ],
+      "internalLinksIn": [
+        {
+          "source": "/articles/agent-comparison-2026",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「dodaとワークポートを徹底比較」の比較表または注意点を述べた段落の後",
+          "anchor": "エージェントに違和感があるときの判断基準",
+          "reason": "比較記事を読んでいる読者は、サービスごとの強みだけでなく「自分には合わないかも」という不安も持ちやすい。中心記事が不満・本音・合わなかった場合の判断を扱っているため、詳細はpillarへ送るのが自然。",
+          "operation": "ADD"
+        },
+        {
+          "source": "/articles/agent-free-and-cancel",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「エージェントを変更・併用するという選択肢」の第1段落の後",
+          "anchor": "そもそもエージェントが合わない原因を整理したい人",
+          "reason": "この記事は断り方・変更・併用が主意図。不満の原因分析まで本文で広げるより、合わない理由や本音を扱う中心記事へ案内した方が読者の次の疑問に合う。",
+          "operation": "ADD"
+        },
+        {
+          "source": "/articles/agent-site-vs-agent-usage",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「「どっちも合わなかった」場合の選択肢」の第1段落の後",
+          "anchor": "転職エージェント自体が合わないと感じたときの考え方",
+          "reason": "転職サイト・エージェントの使い分けを読んだ後に、エージェントへの不満が残る読者が想定される。合わない場合の判断は中心記事が直接回答している。",
+          "operation": "ADD"
+        },
+        {
+          "source": "/articles/agent-referral-vs-self-apply",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「エージェント紹介（ワークポート）のリアルな体験」の体験談を述べた段落の後",
+          "anchor": "紹介求人や担当者に違和感があるときの判断軸",
+          "reason": "エージェント紹介と自己応募を比較する読者は、紹介求人が合わない場合の判断も知りたい可能性が高い。中心記事では不満を感じた瞬間や使うべき人・使わなくていい人を扱っているため接続しやすい。",
+          "operation": "ADD"
+        },
+        {
+          "source": "/articles/recruitment-agency-business-model",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「僕自身のエージェント利用体験——dodaとワークポートの違い」の末尾",
+          "anchor": "仕組みを知ったうえで感じたエージェントへの本音",
+          "reason": "人材紹介の仕組みを理解した読者が、実際に使ってどう感じたのかを知りたい場合に自然な導線。中心記事の一次体験と不満の整理へ送れる。",
+          "operation": "ADD"
+        },
+        {
+          "source": "/articles/second-new-grad-job-change-traps",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「よくある質問」内のH3「Q: 第二新卒で転職エージェントは使うべきですか？」の回答末尾",
+          "anchor": "転職エージェントを使うべき人・使わなくていい人の判断",
+          "reason": "第二新卒が転職の失敗を避ける文脈で、エージェントを使うべきか迷う読者に合う。既存の比較記事へのリンクだけでは、不満・合わない場合の判断までは補えない。",
+          "operation": "ADD"
+        },
+        {
+          "source": "/articles/bizreach-second-new-grad",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「ワークポートとの出会い：ビズリーチが「橋渡し」になった」の末尾",
+          "anchor": "エージェント経由で進める前に知っておきたい本音",
+          "reason": "ビズリーチ経由でエージェントと接点を持つ読者にとって、エージェントが合うか・合わないかの判断材料は次に知りたい情報になりやすい。中心記事がその不安に直接対応している。",
+          "operation": "ADD"
+        }
+      ],
+      "internalLinksOut": [
+        {
+          "source": "/articles/agent-not-recommended",
+          "target": "/articles/recruitment-agency-business-model",
+          "placement": "H2「なぜエージェントに不満を感じやすいのか——構造の話」の第2段落の後",
+          "anchor": "転職エージェントが無料で使える仕組み",
+          "reason": "中心記事内の『構造の話』を読んだ読者に、成功報酬モデルや無料の理由を詳しく解説する支援記事を案内できる。既存の外向きリンクにはこの導線がないため補完価値がある。",
+          "operation": "ADD"
+        }
+      ],
+      "preserve": [
+        "記事タイトルの主軸である「転職エージェントはやめたほうがいい？」「僕が使って感じた本音」「合わなかったときの話」は維持する",
+        "冒頭の結論「やめたほうがいいかどうかは使い方の問題で、仕組み自体が悪いわけではない」は維持する",
+        "dodaで感じた不満として、実態と異なる福利厚生表記、おとり求人と思われる案件、求人数が多い分精査する手間があった点を残す",
+        "ワークポートで感じた不満として、紹介案件数がやや少なめだった点を残す",
+        "ワークポートの良かった点として、面接対策や逆質問の内容を親身にアドバイスしてもらった点を残す",
+        "最終的にdoda経由で自己応募し、内定・入社に至った事実を残す",
+        "不満はビジネスモデルの構造上生まれやすいという説明を残す",
+        "1社だけに頼らず、複数サービスや自己応募を使い分けるという結論を残す",
+        "第二新卒・未経験転職では、書類添削・面接対策のメリットが大きいという立場を残す",
+        "『相談だけ』『登録だけ』でも問題ないという読者の不安を下げる構成を残す",
+        "まとめ内の『合わなければ途中で断ればいい。我慢して使い続ける必要はない』というメッセージを残す"
+      ],
+      "doNotInvent": [
+        "正本に無い応募社数・内定数・年収",
+        "利用していない転職サービスの利用経験",
+        "存在しない面談・企業・人物",
+        "出典を確認していない統計・制度・料金・法律",
+        "doda経由の自己応募・内定・入社を、エージェント紹介で内定した話に変えない",
+        "ワークポート経由で内定した、または入社したという事実を作らない",
+        "第二新卒エージェントneo、ハタラクティブ、マイナビジョブ20's、UZUZなどを著者が利用した体験として書かない",
+        "担当者変更を実際に依頼した体験が正本にないため、体験談として書かない",
+        "架空の担当者との会話、断り文句、トラブル、成功談、失敗談を作らない",
+        "採用担当者・人事経験者としての見解に見せない",
+        "Search Consoleの表示回数が少ない『微妙』『求人 微妙』系クエリを、確実に流入が取れる有望テーマとして過大評価しない"
+      ],
+      "sources": []
+    },
+    {
+      "target": "agent-comparison-2026",
+      "action": "EXPAND",
+      "primaryIntent": "第二新卒の読者が、dodaとワークポートの実体験比較をもとに、自分に合う転職エージェントの選び方・使い分け方を判断できるようにする",
+      "targetReader": "初めての転職活動でdodaとワークポートのどちらを使うべきか迷っている第二新卒。求人を自分で探したい気持ちもあるが、エージェントのサポートや紹介求人の質に不安もあり、実際に使った人の感想を知りたい読者",
+      "roleInCluster": "Cluster",
+      "mustAnswer": [
+        "dodaとワークポートはそれぞれどんな人に向いているか",
+        "dodaを実際に使って良かった点と注意点は何か",
+        "ワークポートを実際に使って良かった点と注意点は何か",
+        "第二新卒はエージェントを1社に絞るべきか、併用すべきか",
+        "紹介求人や担当者との相性に違和感がある場合、この記事内で深掘りしすぎず、どの記事を参照すべきか"
+      ],
+      "recommendedHeadings": [
+        "僕が使ったエージェント——dodaとワークポートを選んだ理由",
+        "dodaとワークポートを徹底比較",
+        "dodaの良かった点・注意点",
+        "ワークポートの良かった点・注意点",
+        "紹介求人や担当者に違和感があるときの考え方",
+        "タイプ別おすすめの選び方",
+        "その他調べた第二新卒特化エージェント",
+        "あわせて読みたい記事"
+      ],
+      "firstPartyEvidence": [
+        "24歳、第二新卒で転職経験1回",
+        "ビズリーチに登録したところ、ワークポートのエージェントから連絡があり利用開始。相性は良かったが、紹介案件数はやや少なめだった",
+        "並行してdodaにも登録",
+        "最終的にはdoda経由で自己応募し、内定・入社に至った。エージェントの紹介ではなく自己応募",
+        "dodaは担当者とのメッセージでのやり取りがスムーズで、自分に合った求人が見つけやすかった",
+        "dodaはビズリーチと比較して求人の質はやや低く感じた。実態と異なる福利厚生表記や、おとり求人と思われる案件が一部あった",
+        "ワークポートはエージェントが親身な対応で、面談日程をこちらの都合に合わせて柔軟に組んでくれた"
+      ],
+      "internalLinksIn": [
+        {
+          "source": "/articles/second-new-grad-programming-career-change",
+          "target": "/articles/agent-comparison-2026",
+          "placement": "H2「未経験からIT転職を成功させた具体的なステップ」内のH3「ステップ2：転職エージェントを複数登録する」の末尾",
+          "anchor": "第二新卒で実際に使ったエージェント比較",
+          "reason": "本文で複数登録をすすめるなら、次に読者が知りたいのは具体的にどのサービスをどう使い分けるか。doda・ワークポートの実体験比較記事が回答している。",
+          "operation": "ADD"
+        }
+      ],
+      "internalLinksOut": [
+        {
+          "source": "/articles/agent-comparison-2026",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「dodaとワークポートを徹底比較」の比較表または注意点を述べた段落の後",
+          "anchor": "エージェントに違和感があるときの判断基準",
+          "reason": "比較記事を読んでいる読者は、サービスごとの強みだけでなく「自分には合わないかも」という不安も持ちやすい。中心記事が不満・本音・合わなかった場合の判断を扱っているため、詳細はpillarへ送るのが自然。",
+          "operation": "ADD"
+        }
+      ],
+      "preserve": [
+        "記事の主役はdoda・ワークポートの実体験比較のまま維持する",
+        "naruPointの『dodaとワークポートの両方を使い、dodaの自己応募で内定を得た』『良し悪しは自分の性格に合うかで決まる』という主張を残す",
+        "dodaは求人検索・自己応募・メッセージのスムーズさを評価しつつ、求人の質や福利厚生表記への注意点も残す",
+        "ワークポートは親身な対応・柔軟な面談日程・適度な連絡フォロー・書類作成ツールの使いやすさを評価しつつ、紹介案件数がやや少なめだった注意点も残す",
+        "doda経由の自己応募で内定・入社した事実を変更しない",
+        "第二新卒エージェントneo、ハタラクティブ、UZUZ、マイナビジョブ20's、TechClipsエージェントは、本人利用ではなく公開情報に基づく紹介として体験談パートと明確に分ける",
+        "『タイプ別おすすめの選び方』の、自分のペース重視ならdoda、伴走重視ならワークポートという整理を残す",
+        "比較記事内で不満・本音を長く展開せず、違和感がある場合の詳細判断はagent-not-recommendedへ送る構造にする"
+      ],
+      "doNotInvent": [
+        "正本に無い応募社数・内定数・年収",
+        "利用していない転職サービスの利用経験",
+        "存在しない面談・企業・人物",
+        "出典を確認していない統計・制度・料金・法律",
+        "doda以外の経路で内定・入社したような記述",
+        "ワークポート経由で内定した、またはワークポートで大量の求人紹介を受けたという記述",
+        "第二新卒エージェントneo、ハタラクティブ、UZUZ、マイナビジョブ20's、TechClipsエージェントを本人が利用したかのような体験談",
+        "採用担当者・人事担当者として転職エージェントを評価したかのような権威づけ",
+        "dodaやワークポートの公式では確認していない求人数、内定率、サポート時間、料金、キャンペーン情報"
+      ],
+      "sources": []
+    },
+    {
+      "target": "agent-free-and-cancel",
+      "action": "EXPAND",
+      "primaryIntent": "転職エージェントは本当に無料で使えるのか、途中で断っても問題ないのか、どう伝えればよいのかを知りたい読者の不安を解消する。",
+      "targetReader": "第二新卒で初めて転職エージェントを使う予定、または利用中で、費用が発生しないか・途中で断ってよいか・担当者や紹介求人が合わない場合にどうすればよいか不安な20代求職者。",
+      "roleInCluster": "Cluster",
+      "mustAnswer": [
+        "転職エージェントはなぜ求職者が無料で使えるのか",
+        "無料でもサービス品質に問題はないのか",
+        "転職エージェントを途中で断っても問題ないのか",
+        "断るときはどのように伝えれば角が立ちにくいのか",
+        "担当者や紹介求人が合わない場合、変更・併用してよいのか",
+        "不満の原因まで整理したい読者を、中心記事 agent-not-recommended に案内すること"
+      ],
+      "recommendedHeadings": [
+        "転職エージェントが無料で使える理由",
+        "「無料だから質が低い」は誤解",
+        "エージェントを途中で断っても問題ない",
+        "断るときの具体的な伝え方",
+        "エージェントを変更・併用するという選択肢",
+        "おすすめエージェント",
+        "あわせて読みたい記事",
+        "まとめ——無料の仕組みを理解すれば、遠慮なく使える"
+      ],
+      "firstPartyEvidence": [
+        "ビズリーチに登録したところ、ワークポートのエージェントから連絡があり利用開始した。",
+        "ワークポートは相性が良かったが、紹介案件数はやや少なめだった。",
+        "ワークポートのエージェントは親身な対応で、面談日程をこちらの都合に合わせて柔軟に組んでくれた。",
+        "ワークポートは適度な頻度での連絡フォローが助かり、履歴書・職務経歴書の作成ツールが使いやすかった。",
+        "dodaは担当者とのメッセージでのやり取りがスムーズで、自分に合った求人が見つけやすかった。",
+        "dodaはビズリーチと比較して求人の質はやや低く感じ、実態と異なる福利厚生表記や、おとり求人と思われる案件が一部あった。",
+        "最終的にはdoda経由で自己応募し、内定・入社に至った。エージェントの紹介ではなく自己応募だった。"
+      ],
+      "internalLinksIn": [],
+      "internalLinksOut": [
+        {
+          "source": "/articles/agent-free-and-cancel",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「エージェントを変更・併用するという選択肢」の第1段落の後",
+          "anchor": "そもそもエージェントが合わない原因を整理したい人",
+          "reason": "この記事は断り方・変更・併用が主意図。不満の原因分析まで本文で広げるより、合わない理由や本音を扱う中心記事へ案内した方が読者の次の疑問に合う。",
+          "operation": "ADD"
+        }
+      ],
+      "preserve": [
+        "記事の主意図は「転職エージェントが無料で使える理由」と「途中で断ってもよい理由・断り方」のまま維持する。",
+        "既存のH2構成は大きく変えず、追加は H2「エージェントを変更・併用するという選択肢」内の短い補足と内部リンクに限定する。",
+        "ワークポートは親身な対応・柔軟な日程調整・適度な連絡フォロー・履歴書/職務経歴書作成ツールが使いやすかった一方、紹介案件数はやや少なめだった、という両論併記を残す。",
+        "dodaはメッセージのやり取りがスムーズで自分に合った求人が見つけやすかった一方、実態と異なる福利厚生表記やおとり求人と思われる案件が一部あった、という両論併記を残す。",
+        "最終的にdoda経由の自己応募で内定・入社した事実を残し、エージェント紹介で内定したように書き換えない。",
+        "『無料だから悪い』『断ったら申し訳ない』という思い込みを捨て、自分の転職成功のために合理的に判断する、という記事の結論を維持する。"
+      ],
+      "doNotInvent": [
+        "正本に無い応募社数・内定数・年収",
+        "利用していない転職サービスの利用経験",
+        "存在しない面談・企業・人物",
+        "出典を確認していない統計・制度・料金・法律",
+        "ワークポート経由で内定した、またはワークポートを悪いサービスとして断定する表現",
+        "dodaのエージェント紹介で内定したという事実と異なる表現",
+        "エージェントに断りの連絡を入れた具体的な文面・日時・やり取りの詳細",
+        "第二新卒エージェントneo、ハタラクティブ等を著者が実際に利用したかのような記述",
+        "採用担当者・人事担当者としての実務経験があるかのような誇張",
+        "不満原因の分析を本文内で大きく展開し、agent-not-recommended と役割重複させること"
+      ],
+      "sources": []
+    },
+    {
+      "target": "agent-site-vs-agent-usage",
+      "action": "EXPAND",
+      "primaryIntent": "転職サイトと転職エージェントはどう使い分ければよいか、併用すべきかを実体験ベースで判断したい",
+      "targetReader": "第二新卒としてIT/Web業界への転職を考えており、dodaのような転職サイトとワークポートのような転職エージェントのどちらを使うべきか迷っている20代。エージェントが合わない場合に自己応募へ切り替えてよいかも知りたい人。",
+      "roleInCluster": "Cluster",
+      "mustAnswer": [
+        "転職サイトと転職エージェントはどちらが上ではなく、役割が違うこと",
+        "転職サイトは自分で求人を探し、市場感を把握し、自己応募するために使うこと",
+        "転職エージェントは相談、書類準備、面接対策、日程調整などの伴走に使うこと",
+        "dodaとワークポートを併用した実体験では、最終的にdoda経由の自己応募で内定・入社したこと",
+        "ワークポートでは親身な対応、面談日程の柔軟さ、適度な連絡フォロー、書類作成ツールの使いやすさが役立ったこと",
+        "dodaではメッセージのやり取りがスムーズで、自分に合った求人を見つけやすかった一方、求人の質にはバラつきを感じたこと",
+        "どちらも合わない場合は、別サービスへ移る前に『求人がズレる』『連絡頻度が合わない』『紹介型が合わない』のどれなのかを言語化すること",
+        "エージェント自体が合わないと感じた読者には、中心記事 agent-not-recommended へ移動できる導線を置くこと"
+      ],
+      "recommendedHeadings": [
+        "結論：転職サイトとエージェントは「役割が違う」から両方使うのが正解",
+        "dodaとワークポートの使い分け",
+        "両方使って分かった「併用のコツ」3つ",
+        "「どっちも合わなかった」場合の選択肢",
+        "あわせて読みたい記事",
+        "よくある質問"
+      ],
+      "firstPartyEvidence": [
+        "ビズリーチに登録したところ、ワークポートのエージェントから連絡があり利用開始した。",
+        "ワークポートは相性は良かったが、紹介案件数はやや少なめだった。",
+        "最終的にはdoda経由で自己応募し、内定・入社に至った。エージェントの紹介ではなく自己応募だった。",
+        "dodaは担当者とのメッセージでのやり取りがスムーズで、自分に合った求人が見つけやすかった。",
+        "dodaはビズリーチと比較して求人の質はやや低く感じ、実態と異なる福利厚生表記や、おとり求人と思われる案件が一部あった。",
+        "ワークポートはエージェントが親身に対応し、面談日程をこちらの都合に合わせて柔軟に組んでくれた。",
+        "ワークポートのエージェントからは面接での話し方や逆質問の内容を親身にアドバイスしてもらっていた。"
+      ],
+      "internalLinksIn": [],
+      "internalLinksOut": [
+        {
+          "source": "/articles/agent-site-vs-agent-usage",
+          "target": "/articles/agent-not-recommended",
+          "placement": "H2「「どっちも合わなかった」場合の選択肢」の第1段落の後",
+          "anchor": "転職エージェント自体が合わないと感じたときの考え方",
+          "reason": "転職サイト・エージェントの使い分けを読んだ後に、エージェントへの不満が残る読者が想定される。合わない場合の判断は中心記事が直接回答している。",
+          "operation": "ADD"
+        }
+      ],
+      "preserve": [
+        "記事の主意図は『転職サイトと転職エージェントの使い分け』のまま維持する。エージェント不満・本音の記事に寄せすぎない。",
+        "冒頭の結論『どちらが優れているではなく役割が違う』『両方使って、それぞれの強みを活かす』は残す。",
+        "転職サイトを『自分のペースで能動的に探す道具』、エージェントを『プロに受動的に提案してもらう仕組み』として説明する構造は残す。",
+        "doda経由の自己応募で内定・入社した一次体験は残す。",
+        "ワークポートは親身な対応、面談日程の柔軟さ、適度なフォロー、履歴書・職務経歴書作成ツールの使いやすさを評価する記述は残す。",
+        "ワークポートの注意点として、紹介案件数がやや少なめだった点は残す。",
+        "dodaの良い点として、メッセージのやり取りがスムーズ、自分に合った求人が見つけやすかった点は残す。",
+        "dodaの注意点として、求人の質にバラつきがあり、実態と異なる福利厚生表記やおとり求人と思われる案件が一部あった点は残す。",
+        "『両方使って分かった「併用のコツ」3つ』の構造は残す。",
+        "H2『「どっちも合わなかった」場合の選択肢』は残し、ここに短い補足と agent-not-recommended への内部リンクを追加する。",
+        "第二新卒エージェントneo、ハタラクティブは本人の利用経験がないため、体験ベースでは評価できないという注記は残す。"
+      ],
+      "doNotInvent": [
+        "正本に無い応募社数・内定数・年収",
+        "利用していない転職サービスの利用経験",
+        "存在しない面談・企業・人物",
+        "出典を確認していない統計・制度・料金・法律",
+        "第二新卒エージェントneo、ハタラクティブ、マイナビジョブ20's、UZUZ 28新卒を著者が実際に使ったかのように書かない",
+        "doda以外の経路で内定した、またはワークポート経由で内定したように書かない",
+        "ワークポートの紹介案件数が多かった、または不満しかなかったように事実と逆の表現をしない",
+        "dodaの求人すべてが低品質、またはおとり求人だったように誇張しない",
+        "エージェントの担当者変更、退会、クレーム連絡など、正本にない具体的な行動経験を体験談として書かない",
+        "採用担当者・人事経験者としての知見があるように書かない"
+      ],
+      "sources": []
+    }
+  ],
+  "changes": [
+    {
+      "path": "content/articles/agent-not-recommended.md",
+      "operation": "UPDATE",
+      "reason": "既存記事がこのテーマの中心意図に最も近く、Search Consoleでも該当クエリの表示が確認されているため、新規作成ではなく既存記事に不足見出しを足すのが最小変更です。記事の主意図は変えず、「微妙」「求人が微妙」「担当者が合わない」読者の判断材料をH2/H3で補強します。",
+      "phase": "write",
+      "preservedSegments": [
+        "結論、転職エージェントを使う中で「これは微妙だな」と感じた瞬間は実際にありました。",
+        "僕は転職活動でdodaとワークポートの2社を使いました。どちらも良い面はありましたが、不満がゼロだったかと言えば嘘になります。",
+        "==求人の中に、実態と異なる福利厚生を表記しているものがあった==",
+        "おとり求人と思われる案件が混じっていた",
+        "求人数が多い分、自分で精査する手間がかかった",
+        "==紹介してくれる案件数がやや少なめだった==",
+        "結論、エージェントに不満を感じるのは、サービスが悪いというよりも==ビジネスモデルの構造上、不満が生まれやすい仕組みになっている==からです。",
+        "僕の場合、ワークポートのエージェントは面接対策や職務経歴書の添削を親身にサポートしてくれた一方で、紹介案件数は物足りなかった。だからdodaの自己応募を併用して、最終的にはdoda経由で内定を得ました。",
+        "==1社だけに頼るのではなく、2〜3社を併用して「紹介」と「自己応募」を使い分けるのが、不満を減らす最も現実的な方法==です。",
+        "僕自身は「使うべき人」の典型でした。飲食業界からIT業界への未経験転職で、業界の常識も分からない状態。ワークポートのエージェントに面接での話し方や逆質問の内容をアドバイスしてもらえたのは、独学では絶対に得られない価値でした。",
+        "結論、相談だけで終わっても全く問題ありません。",
+        "合わなければ途中で断ればいい。我慢して使い続ける必要はない"
+      ],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "EXPAND指定のため、既存本文は書き換えず、新規セクションのみ追加しました。 / 検索意図に合わせて、転職エージェントを微妙と感じる具体的なパターン、紹介求人が微妙なときの判断基準、仕組み由来と担当者由来の不満の切り分けを追加しました。 / 担当者変更については、本人の実体験としては書かず、一般論として明示しました。 / doda経由の自己応募・内定・入社、ワークポートの面接対策、求人の質への不満など、正本にある一次情報の範囲で追記しました。 / 内部リンク指定に合わせて、エージェントの無料・成功報酬モデルを補足する記事へのリンクを追加しました。 / frontmatter変更: dateModified, keyword, excerpt, summary, faq",
+      "beforeChars": 4747,
+      "afterChars": 9152
+    },
+    {
+      "path": "content/articles/agent-comparison-2026.md",
+      "operation": "UPDATE",
+      "reason": "比較記事としての役割は維持しつつ、doda・ワークポートの注意点や不満点に触れる箇所から agent-not-recommended へ内部リンクを追加するだけで、テーマの中心ページへ評価を集約できます。本文の大幅変更は不要です。",
+      "phase": "write",
+      "preservedSegments": [
+        "[第二新卒](/glossary)の転職では、**自分の転職スタイルに合ったエージェントを選ぶ**ことが成功の鍵です。",
+        "僕の場合、ビズリーチ経由でワークポートのエージェントとコンタクトを取ったのが最初のきっかけでした。並行して**doda**にも登録し、自分でも求人を探せる環境を整えました。結果的に**doda経由の自己応募で内定を獲得**しましたが、ワークポートのサポートがあったからこそ転職活動全体をスムーズに進められたと感じています。",
+        "==自分に合うエージェントを見つけるには、サービスの特徴を理解して「使い分ける」のが最も効率的です。==",
+        "僕自身、最終的にdoda経由の自己応募で内定を獲得しました。",
+        "**こんな人におすすめ**: エージェント任せにせず、自分でも求人を探して比較検討したい「自走型」の第二新卒",
+        "**こんな人におすすめ**: 初めての転職で不安が大きく、エージェントに伴走してもらいながら進めたい第二新卒",
+        "僕自身は両方に登録して使い分けた結果、doda経由の自己応募で内定を獲得しました。ただし、ワークポートのサポートがあったからこそ書類準備や面接対策がスムーズに進んだと感じています。==「併用して、相性の良い方をメインに絞る」==のが最も効率的な使い方です。",
+        "以下は僕自身が利用したわけではありませんが、第二新卒向けの転職情報を調べる中で評判が良かったエージェントです。**実体験ではなく、公開情報に基づく紹介です。**"
+      ],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "dodaの良かった点・注意点を、自己応募で内定・入社した実体験と求人品質への注意点に分けて追記しました。 / ワークポートの良かった点・注意点を、親身な対応、柔軟な日程調整、書類作成ツール、紹介案件数の少なさに分けて追記しました。 / 紹介求人や担当者に違和感がある場合の詳細判断は、内部リンクでagent-not-recommendedへ送る構成にしました。 / 第二新卒は最初から1社に絞らず、dodaとワークポートを併用して相性を見極める方針を補強しました。 / frontmatter変更: dateModified, summary, faq",
+      "beforeChars": 4145,
+      "afterChars": 6008
+    },
+    {
+      "path": "content/articles/agent-free-and-cancel.md",
+      "operation": "UPDATE",
+      "reason": "この記事は断り方・変更・併用が主意図で、エージェントに不満を持った読者の次アクションと近いです。主内容は変えず、『そもそも合わない／微妙と感じる原因を整理したい人』向けに agent-not-recommended への内部リンクを追加するのが最小変更です。",
+      "phase": "write",
+      "preservedSegments": [
+        "僕が実際に利用したワークポートでは、面談日程をこちらの都合に合わせて柔軟に組んでくれましたし、適度な頻度でフォローの連絡がありました。dodaでも担当者とのメッセージのやり取りがスムーズで、サポートに不満を感じた場面はありませんでした。無料だからこそ気軽に登録して、サービスの質を自分の目で確かめるのが最善です。",
+        "僕自身、ワークポートを利用して最終的に内定には至りませんでしたが、その過程で関係が悪化することは一切ありませんでした。紹介案件数がやや少なめだったこともあり、doda経由の自己応募に軸足を移す判断をしましたが、ワークポートのエージェントは最後まで親身に対応してくれました。断ること自体を恐れず、自分の転職活動にとって最適な選択をすることが大切です。",
+        "僕は最初に**ビズリーチ**経由で**ワークポート**のエージェントと繋がり、並行して**doda**にも登録しました。**2つ**を併用したことで「ワークポートのサポートの手厚さ」と「dodaの求人検索の自由度」を比較でき、自分の転職スタイルに合った使い方が明確になりました。結果的にdoda経由の自己応募で内定を得ましたが、ワークポートの履歴書・職務経歴書作成ツールには書類準備の段階で大いに助けられました。==まず2社に登録してみて、合うほうをメインに据えるのが現実的な戦略==です。"
+      ],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "H2「エージェントを変更・併用するという選択肢」内に、担当者・紹介求人が合わない場合の短い補足を追加しました。 / 不満の原因を整理したい読者向けに、中心記事「agent-not-recommended」への内部リンクを追加しました。 / 既存の一次体験、doda経由の自己応募で内定・入社した事実、ワークポートとdodaの両論併記は変更していません。 / frontmatter変更: dateModified",
+      "beforeChars": 5135,
+      "afterChars": 5401
+    },
+    {
+      "path": "content/articles/agent-site-vs-agent-usage.md",
+      "operation": "UPDATE",
+      "reason": "『どっちも合わなかった場合』の既存見出しがあり、エージェント不満後の代替行動に近い記事です。使い分け記事としての役割は維持し、該当箇所から agent-not-recommended へ内部リンクを足すだけでクラスタ導線を補強できます。",
+      "phase": "write",
+      "preservedSegments": [
+        "転職サイトと転職エージェントはどちらが優れているという話ではなく、役割がまったく違います。",
+        "理由はシンプルで、転職サイトは「自分のペースで能動的に探す道具」、転職エージェントは「プロに受動的に提案してもらう仕組み」だからです。",
+        "僕自身、実際にdodaとワークポートを併用して転職活動をした経験から言うと、最終的にdoda経由の自己応募で内定を得ました。",
+        "つまり==「どっちか一方」ではなく「両方使って、それぞれの強みを活かす」が最適解==です。",
+        "僕自身、doda経由の自己応募でIT企業に内定・入社。",
+        "担当者とのメッセージのやり取りがスムーズで、「IT業界」「未経験可」「[第二新卒](/glossary)歓迎」などの条件指定で自分の市場価値に合った案件を一覧で確認可能。",
+        "ビズリーチと比較して求人の質にバラつきがあり、==実態と異なる福利厚生表記やおとり求人と思われる案件==が一部混在",
+        "面談日程をこちらの都合に合わせて柔軟に設定でき、適度な頻度でのフォロー連絡が転職活動のペースを保つのに役立つ。",
+        "僕自身、ビズリーチ経由でワークポートのエージェントから連絡をもらい利用を開始。",
+        "紹介してくれる案件数がやや少なめ",
+        "僕の場合、結果的にdodaの自己応募で内定しました。",
+        "大事なのは、dodaもワークポートも合わない場合、==別のエージェントを試す前に「なぜ合わなかったか」を言語化すべき==だということです。",
+        "第二新卒特化のエージェントとしては第二新卒エージェントneoやハタラクティブもありますが、僕自身はこれらを利用した経験がないため体験ベースでの評価はできません。"
+      ],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "H2「「どっちも合わなかった」場合の選択肢」内に、エージェント自体が合わない読者向けの補足と内部リンクを追加しました。 / 追加内容は、doda経由の自己応募で内定・入社した実体験の範囲に限定しました。 / 転職サイトと転職エージェントの使い分けという記事の主意図は変更していません。 / frontmatter変更: dateModified",
+      "beforeChars": 4956,
+      "afterChars": 5240
+    },
+    {
+      "path": "content/articles/agent-referral-vs-self-apply.md",
+      "operation": "UPDATE",
+      "reason": "内部リンク計画に基づく関連記事の更新（1件）",
+      "phase": "related",
+      "preservedSegments": [],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "H2「エージェント紹介（ワークポート）のリアルな体験」内の体験談段落の後に、指定リンクを1文で追加しました。",
+      "beforeChars": 4964,
+      "afterChars": 5052
+    },
+    {
+      "path": "content/articles/recruitment-agency-business-model.md",
+      "operation": "UPDATE",
+      "reason": "内部リンク計画に基づく関連記事の更新（1件）",
+      "phase": "related",
+      "preservedSegments": [],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "指定されたH2セクション末尾に、/articles/agent-not-recommended への内部リンクを1文追加しました。",
+      "beforeChars": 5488,
+      "afterChars": 5577
+    },
+    {
+      "path": "content/articles/second-new-grad-job-change-traps.md",
+      "operation": "UPDATE",
+      "reason": "内部リンク計画に基づく関連記事の更新（1件）",
+      "phase": "related",
+      "preservedSegments": [],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "指定されたFAQ回答の末尾に、内部リンクを1文追加しました。",
+      "beforeChars": 5011,
+      "afterChars": 5096
+    },
+    {
+      "path": "content/articles/second-new-grad-programming-career-change.md",
+      "operation": "UPDATE",
+      "reason": "内部リンク計画に基づく関連記事の更新（1件）",
+      "phase": "related",
+      "preservedSegments": [],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "指定されたH3末尾に、エージェント比較記事への内部リンクを1文追加しました。",
+      "beforeChars": 5343,
+      "afterChars": 5422
+    },
+    {
+      "path": "content/articles/bizreach-second-new-grad.md",
+      "operation": "UPDATE",
+      "reason": "内部リンク計画に基づく関連記事の更新（1件）",
+      "phase": "related",
+      "preservedSegments": [],
+      "lostSegments": [],
+      "needsHumanDecision": false,
+      "note": "H2「ワークポートとの出会い：ビズリーチが「橋渡し」になった」の末尾に、指定リンクを含む1文を追加しました。",
+      "beforeChars": 5051,
+      "afterChars": 5139
+    }
+  ],
+  "qa": {
+    "overall": "NEEDS_REVIEW",
+    "issues": [
+      {
+        "category": "EXPERIENCE",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "H2「「やめたほうがいい」と感じた瞬間は、正直あった」内、ワークポートで感じた不満の箇条書き",
+        "message": "ワークポートについて「dodaと比べると自分で求人を探す自由度は低かった」とする体験談は、実話データでは確認できません。実話データで確認できるワークポートの注意点は「紹介してくれる案件数がやや少なめだった」ことです。変更前にも同じ記述があるため、今回新たに発生した問題ではありません。",
+        "evidence": "変更後記事:「dodaと比べると自分で求人を探す自由度は低かった」／実話データ:「注意点:紹介してくれる案件数がやや少なめだった」",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "EXPERIENCE",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "H2「なぜエージェントに不満を感じやすいのか——構造の話」内",
+        "message": "ワークポートから「職務経歴書の添削」を受けたという体験は、実話データでは確認できません。実話データには、面接での話し方や逆質問のアドバイス、履歴書・職務経歴書の作成ツールが使いやすかったことはありますが、担当者による職務経歴書の添削までは記載されていません。変更前にも同様の記述があるため、今回新たに発生した問題ではありません。",
+        "evidence": "変更後記事:「ワークポートのエージェントは面接対策や職務経歴書の添削を親身にサポートしてくれた」／実話データ:「面接での話し方や逆質問の内容を親身にアドバイス」「履歴書・職務経歴書の作成ツールが使いやすかった」",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "EXPERIENCE",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "H2「「相談だけ」でも登録していい理由」内",
+        "message": "最初にエージェントへ登録した動機を「自分の市場価値を確認したい」とする一次体験は、実話データでは確認できません。実話データには転職を意識した理由や登録経緯はありますが、この登録動機までは明記されていません。変更前にも同じ記述があるため、今回新たに発生した問題ではありません。",
+        "evidence": "変更後記事:「僕自身、最初にエージェントに登録したときの動機は『自分の市場価値を確認したい』でした。」／実話データ: 転職理由、京都から帰ってきてからdoda・ワークポートに登録したことは記載されていますが、この動機は確認できません。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "H2「なぜエージェントに不満を感じやすいのか——構造の話」およびH2「不満の原因が『仕組み』なのか『担当者』なのかを切り分ける」",
+        "message": "転職エージェントの成功報酬モデルや、求職者側から無料で使える仕組みに関する説明は、外部事実にあたります。記事の主張の前提になっているため、公開前に外部情報で確認する必要があります。成功報酬モデル自体の説明は変更前にも存在しており、今回の改稿で構造説明が増えていますが、主張の方向性は大きく変わっていません。",
+        "evidence": "変更後記事:「転職エージェントは、求職者が入社して初めて企業から成功報酬を受け取るモデルです」「転職エージェントは求職者側から見ると無料ですが、企業側から成功報酬を受け取る仕組みで成り立っています」",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 転職エージェントが求職者の入社後に企業から成功報酬を受け取るというビジネスモデルの説明",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 転職エージェントを求職者が無料で使える仕組みの説明",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 担当変更、途中辞退、相談だけの利用が各転職エージェントの規約・運用上問題ないか",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: マイナビジョブ20'sが20代・第二新卒向けサービスとして紹介できるか",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: UZUZ 28新卒が新卒・第二新卒向け就職支援サービスとして紹介できるか",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-not-recommended.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 人気企業や非公開求人に必ず応募できるわけではない、というエージェントサービス仕様に関する一般説明",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "H2「dodaとワークポートを徹底比較」内のH3「doda」",
+        "message": "dodaのサービス仕様・求人数規模に関する記述は、実話データだけでは確認できません。公開情報や公式情報による確認が必要です。",
+        "evidence": "「『転職サイト』と『エージェントサービス』の両機能を1つのアカウントで使い分けられる」「求人数は業界最大級」「求人数が圧倒的に多く」などの記述があります。実話データには、dodaのメッセージのやり取り、自分に合った求人の見つけやすさ、求人品質への注意点、doda経由の自己応募で内定・入社した事実はありますが、求人数規模や公式仕様までは記載されていません。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "H2「dodaとワークポートを徹底比較」内のH3「ワークポート」",
+        "message": "ワークポートの業界特化性やサービス仕様に関する記述は、実話データだけでは確認できません。公式情報による確認が必要です。",
+        "evidence": "「IT・Web・ゲーム業界に強みを持つ転職エージェント」「専用ツール『eコンシェル』」などの記述があります。実話データでは、ワークポート担当者の親身な対応、柔軟な面談日程、適度な連絡フォロー、書類作成ツールの使いやすさ、紹介案件数がやや少なめだったことは確認できますが、業界特化性やツール名称の公式仕様までは確認できません。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "H2「その他調べた第二新卒特化エージェント」内の比較表",
+        "message": "本人が利用していないエージェントの特徴・数値・サービス仕様が複数含まれており、外部情報による確認が必要です。体験談とは区別されていますが、公開情報ベースの主張として検証が必要です。",
+        "evidence": "「第二新卒エージェントneo：一人あたり平均10時間」「ハタラクティブ：最短2週間で内定実績あり」「UZUZ：ブラック企業を独自基準で排除」「マイナビジョブ20's：大手求人に強い」「TechClipsエージェント：エンジニア経験者向けの高年収求人が中心」などの記述があります。実話データでは、これらは本人利用ではなく紹介情報として扱うべきとされていますが、各サービスの特徴・数値の正誤は確認できません。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: dodaが「転職サイト」と「エージェントサービス」の両機能を1つのアカウントで使い分けられるというサービス仕様",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: dodaの求人数が「業界最大級」「圧倒的に多い」といえるか",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: dodaが第二新卒向け求人を幅広くカバーしているか",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: ワークポートがIT・Web・ゲーム業界に強みを持つ転職エージェントといえるか",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: ワークポートの書類作成ツール名称が「eコンシェル」であること、および履歴書・職務経歴書作成機能の仕様",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: ワークポートがIT・Web系以外の業種を幅広く探す場合にカバー範囲が限られるという記述の妥当性",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 第二新卒エージェントneoの『一人あたり平均10時間』サポートという数値",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: ハタラクティブの『最短2週間で内定実績あり』という記述",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: UZUZの『ブラック企業を独自基準で排除』という記述",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: マイナビジョブ20'sの対象者・サービス特徴および『大手求人に強い』という記述",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: TechClipsエージェントの対象者・高年収求人中心という記述",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-comparison-2026.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: UZUZ 28新卒のサービス内容",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "EXPERIENCE",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "H2「断るときの具体的な伝え方」末尾",
+        "message": "ワークポート側に断り・状況共有をした具体的な実体験として断定されていますが、実話データでは確認できません。記事の主題である「断り方」に直結する一次体験のため、公開前に正本への追記確認または表現調整が必要です。",
+        "evidence": "記事本文：「僕の場合もdoda経由で選考が進んだ段階でワークポート側にその旨を正直に伝えました。」／実話データには、doda経由で自己応募し内定・入社したこと、ワークポートの紹介案件数がやや少なめだったことはありますが、ワークポートへその旨を伝えた事実は記載されていません。SEO BriefのdoNotInventにも「エージェントに断りの連絡を入れた具体的な文面・日時・やり取りの詳細」を作らない旨があります。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "SEARCH_INTENT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "H2「断るときの具体的な伝え方」末尾",
+        "message": "断り方を知りたい読者に対する重要セクションに、編集用プレースホルダーが残っています。検索意図には概ね答えていますが、完成記事としては未処理箇所があり、具体的な伝え方の完成度を下げています。",
+        "evidence": "記事本文：「[EXPERIENCE: 断る際の具体的なやり取りの詳細があれば追記]」が残っています。"
+      },
+      {
+        "category": "EXPERIENCE",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "H2「エージェントを途中で断っても問題ない」第3段落、FAQ「エージェント断ったら気まずくならない？」",
+        "message": "ワークポートから途中で離れたことや、関係悪化が一切なかったことが実体験として書かれていますが、実話データ上は「最終的にdoda経由で自己応募した」「ワークポートは親身だった」までしか確認できません。実際に利用停止・断り連絡をしたか、またその後の関係がどうだったかは未確認です。",
+        "evidence": "記事本文：「ワークポートを利用して最終的に内定には至りませんでしたが、その過程で関係が悪化することは一切ありませんでした。」「僕自身ワークポートを途中で離れましたが、最後まで親身に対応してもらえました。」／実話データにはワークポートの利用開始、親身な対応、紹介案件数がやや少なめ、最終的にdoda経由の自己応募で内定・入社した事実はありますが、ワークポートを正式に途中で断った事実や関係悪化の有無は記載されていません。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "H2「転職エージェントが無料で使える理由」第2〜3段落",
+        "message": "成功報酬の相場、年収400万円の場合の手数料例、職業安定法上の説明は外部事実です。記事内に参考リンクはありますが、提示されている数値や法的説明の正確性は実話データだけでは確認できません。",
+        "evidence": "記事本文：「相場は年収の30〜35%」「年収400万円の人材なら120〜140万円」「職業安定法では有料職業紹介事業者が求職者から手数料を徴収することを原則として禁止」",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "H2「転職エージェントが無料で使える理由」第2段落",
+        "message": "著者がエージェント企業をクライアントとして持ち、収益構造を業務で日常的に見ているという記述は、実話データだけでは十分に確認できません。著者がAIO対策企業の営業として幅広いクライアントに提案していることは確認できますが、この具体的な顧客属性と頻度は追加確認が必要です。",
+        "evidence": "記事本文：「僕はエージェント企業をクライアントとして持つ営業職として働いているため、この収益構造を業務の中で日常的に見ています。」／実話データには「さまざまな業界のクライアントにSEO/AIO戦略を提案・提供」とありますが、エージェント企業をクライアントとして持つこと、収益構造を日常的に見ていることの明示は限定的です。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "H2「おすすめエージェント」内「doda」",
+        "message": "dodaの「業界最大級の求人数」という記述は外部事実であり、実話データだけでは確認できません。",
+        "evidence": "記事本文：「業界最大級の求人数を誇る転職サービス」",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "H2「おすすめエージェント」内「ワークポート」",
+        "message": "ワークポートがIT・Web業界に強みを持つという記述は外部事実であり、実話データだけでは確認できません。",
+        "evidence": "記事本文：「IT・Web業界に強みを持つ転職エージェント」",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 成功報酬の相場が年収の30〜35%であること",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 年収400万円の場合に紹介手数料が120〜140万円程度になること",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 職業安定法第32条の3に関する求職者手数料の原則禁止の説明と例外範囲",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 有料職業紹介事業者・転職エージェントの料金体系に関する厚生労働省情報",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: dodaが「業界最大級の求人数」といえること",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: ワークポートがIT・Web業界に強みを持つ転職エージェントといえること",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 転職エージェントを途中で断っても今後の利用に影響しないという一般化の妥当性",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-free-and-cancel.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 複数エージェントの併用が一般的、または2〜3社併用が一般的といえる根拠",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "EXPERIENCE",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "H2「結論：転職サイトとエージェントは『役割が違う』から両方使うのが正解」第3段落",
+        "message": "ワークポートで受けたサポートとして「履歴書添削」と書かれていますが、実話データで確認できるのは、履歴書・職務経歴書作成ツールの使いやすさ、面談日程の柔軟さ、適度なフォロー、面接での話し方や逆質問のアドバイスです。実際に履歴書添削を受けたかは確認できません。",
+        "evidence": "記事:「ワークポートのエージェントから受けたサポート——履歴書添削や面接日程の調整——」。実話データ:「履歴書・職務経歴書の作成ツールが使いやすかった」「面談日程をこちらの都合に合わせて柔軟に組んでくれた」「面接での話し方や逆質問の内容を親身にアドバイス」。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "EXPERIENCE",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "H2「両方使って分かった『併用のコツ』3つ」コツ①",
+        "message": "ワークポートから「自分では検索しなかったであろう企業」を提案してもらえた、という具体的な体験は実話データでは確認できません。ワークポートの紹介案件数がやや少なめだったことやエージェント経由で応募していた時期は確認できますが、この評価表現は根拠が不足しています。",
+        "evidence": "記事:「ワークポートからの紹介は、自分では検索しなかったであろう企業を提案してもらえた点で価値がありました。」実話データ:「相性は良かったが、紹介案件数はやや少なめだった」「エージェント経由で月に10件ほど応募していた時期」。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "WARNING",
+        "origin": "PRE_EXISTING",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "frontmatter faq、および本文内のFAQ「転職サイトと転職エージェントはどちらを先に登録すべきですか？」",
+        "message": "「同時に登録するのがベスト」「併用が最も効率的」と断定していますが、実話データで確認できるのは著者がdodaとワークポートを併用し、最終的にdoda自己応募で内定した体験までです。一般論として最も効率的かどうかは、外部根拠または表現調整が必要です。",
+        "evidence": "記事:「同時に登録するのがベストです」「併用が最も効率的です」。実話データ:「並行してdodaにも登録」「最終的にはdoda経由で自己応募し、内定・入社に至った」。",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: dodaが転職サイト機能と転職エージェント機能の両方を提供していること",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: dodaの求人検索の絞り込み機能や条件指定の仕様",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: ワークポートがIT・Web業界に強みを持つ転職エージェントであること",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 転職エージェントが非公開求人を紹介するという一般的なサービス仕様",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 第二新卒エージェントneo、ハタラクティブ、マイナビジョブ20's、UZUZ 28新卒の対象者、対応エリア、得意業界、サービス内容",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      },
+      {
+        "category": "FACT",
+        "verdict": "NEEDS_REVIEW",
+        "origin": "UNKNOWN",
+        "target": "content/articles/agent-site-vs-agent-usage.md",
+        "location": "-",
+        "message": "外部情報による確認が必要: 転職サイトと転職エージェントの併用が一般的に『最も効率的』といえるかどうか",
+        "evidence": "",
+        "factCategory": "UNSUPPORTED"
+      }
+    ],
+    "summary": "要確認32件。今回の変更が新たに壊した箇所はありません。既存の問題（今回の変更が原因ではないもの）17件は警告として表示し、反映のブロック理由にはしていません。内容を確認したうえでPRを作成してください。",
+    "byCategory": {
+      "EXPERIENCE": "WARNING",
+      "FACT": "NEEDS_REVIEW",
+      "SEARCH_INTENT": "WARNING"
+    }
+  },
+  "research": [],
+  "publish": null,
+  "usage": [
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 17655,
+      "outputTokens": 2273,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 26645,
+      "outputTokens": 3263,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 25259,
+      "outputTokens": 2528,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 13123,
+      "outputTokens": 2609,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 13956,
+      "outputTokens": 2609,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 12964,
+      "outputTokens": 2795,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 11445,
+      "outputTokens": 1897,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 11941,
+      "outputTokens": 1872,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 11845,
+      "outputTokens": 2333,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 14111,
+      "outputTokens": 5887,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 12463,
+      "outputTokens": 4990,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 12968,
+      "outputTokens": 3451,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 13217,
+      "outputTokens": 2568,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 4318,
+      "outputTokens": 3249,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 4741,
+      "outputTokens": 3492,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 4693,
+      "outputTokens": 3394,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 4810,
+      "outputTokens": 3531,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 4515,
+      "outputTokens": 3263,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 18768,
+      "outputTokens": 3786,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 14906,
+      "outputTokens": 2762,
+      "cachedInputTokens": 1792
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 14912,
+      "outputTokens": 3326,
+      "cachedInputTokens": 0
+    },
+    {
+      "model": "gpt-5.5",
+      "inputTokens": 15114,
+      "outputTokens": 2641,
+      "cachedInputTokens": 0
+    }
+  ],
+  "warnings": [
+    "関連候補11件のうち、本文を確認したのは上位6件です",
+    "agent-not-recommended: 実話データで裏付けが取れない一次体験を6件、Briefから除外しました",
+    "agent-comparison-2026: 実話データで裏付けが取れない一次体験を3件、Briefから除外しました",
+    "agent-free-and-cancel: 実話データで裏付けが取れない一次体験を2件、Briefから除外しました",
+    "agent-site-vs-agent-usage: 実話データで裏付けが取れない一次体験を7件、Briefから除外しました"
+  ]
+}
