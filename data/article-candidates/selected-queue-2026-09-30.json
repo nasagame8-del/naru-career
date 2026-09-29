@@ -1,0 +1,32 @@
+{
+  "selectedAt": "2026-09-30T01:00:00+09:00",
+  "batchId": "batch_2026-09-30_chatgpt",
+  "status": "SELECTED_PENDING_DRAFTS",
+  "items": [
+    {
+      "order": 1,
+      "candidateId": "cand_260930a1",
+      "articleId": 51,
+      "slug": "agent-job-mismatch",
+      "title": "転職エージェントの求人が微妙・希望と違うときの対処法",
+      "status": "SELECTED",
+      "prNumber": null,
+      "branch": "article-factory/2026-09-30-051-agent-job-mismatch"
+    },
+    {
+      "order": 2,
+      "candidateId": "cand_260930a3",
+      "articleId": 52,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "title": "正社員から業務委託へ切り替えた後に契約終了されたら？偽装フリーランスが疑われるときの対応",
+      "status": "SELECTED",
+      "prNumber": null,
+      "branch": "article-factory/2026-09-30-052-outsourcing-termination"
+    }
+  ],
+  "notes": [
+    "User explicitly selected candidate 1 and candidate 3.",
+    "Article 52 must include practical response when disguised-freelance/worker-status concerns arise, grounded in official MHLW/JFTC sources.",
+    "Do not publish until images, current-head QA and user preview approval pass."
+  ]
+}
