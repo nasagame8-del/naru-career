@@ -125,3 +125,5 @@ ITエンジニア専門の転職エージェントとしては、TechClipsエー
 - [転職サイトとエージェント、両方使って分かった使い分け方](/articles/agent-site-vs-agent-usage)
 - [エージェント紹介 vs 自己応募、内定に近かったのは？](/articles/agent-referral-vs-self-apply)
 - [人材紹介の仕組みを解説——エージェントはなぜ無料なのか](/articles/recruitment-agency-business-model)
+
+エージェントを比較する前に「そもそも今のサービスが自分に合っていないのか」を整理したい場合は、[転職エージェントが合わないと感じる原因と対処法](/articles/agent-not-recommended)も参考にしてください。
