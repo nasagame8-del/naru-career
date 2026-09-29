@@ -22,7 +22,7 @@ export function FAQSection({
             <h3 className={`font-bold text-ink mb-2 pl-3 border-l-[3px] ${accentColor}`}>
               {faq.question}
             </h3>
-            <p className="text-ink-soft leading-relaxed pl-3">{faq.answer}</p>
+            <p className="text-ink-soft leading-relaxed pl-3">{faq.answer.replace(/\\*\\*/g, "")}</p>
           </div>
         ))}
       </div>
