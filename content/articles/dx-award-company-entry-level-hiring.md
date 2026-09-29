@@ -27,6 +27,10 @@ note_published: false
 
 IPAはDX銘柄を、優れたデジタル活用の実績や、それを進める企業の仕組みを評価する取り組みとして説明しています。企業の採用枠や第二新卒の合格率を認定する制度とは説明していません。表彰は企業研究の入口に使い、応募の判断は現在の求人票と職場情報で行いましょう。[IPAのDX銘柄の説明](https://www.ipa.go.jp/digital/dx/dx-meigara.html)と[9月28日の掲載案内](https://dx.ipa.go.jp/dx-news)を分けて読むのが出発点です。
 
+![DX銘柄2026の花王DX事例に掲載されたデジタル戦略全体像](/images/articles/dx-award-company-entry-level-hiring-official-kao.webp)
+
+*出典：[IPA「デジタル事例データベース：花王株式会社」](https://case-studies.ipa.go.jp/jirei-data/case_studies/224)（2026年9月28日公開）「花王デジタル戦略全体像」*
+
 ## DX銘柄は何を示し、何を示さないか
 
 ![DXの取り組み評価と採用条件を別々に確認する図](/images/articles/dx-award-company-entry-level-hiring-01.webp)
