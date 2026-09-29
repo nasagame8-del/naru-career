@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-09-30T01:00:00+09:00",
   "batchId": "batch_2026-09-30_chatgpt",
-  "status": "SELECTED_PENDING_DRAFTS",
+  "status": "DRAFT_PRS_AWAITING_IMAGES",
   "items": [
     {
       "order": 1,
@@ -9,9 +9,16 @@
       "articleId": 51,
       "slug": "agent-job-mismatch",
       "title": "転職エージェントの求人が微妙・希望と違うときの対処法",
-      "status": "SELECTED",
-      "prNumber": null,
-      "branch": "article-factory/2026-09-30-051-agent-job-mismatch"
+      "status": "DRAFT_AWAITING_IMAGES",
+      "prNumber": 47,
+      "branch": "article-factory/2026-09-30-051-agent-job-mismatch",
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/47",
+      "headSha": "4fd9bfbc7062a21520541916f8d78c88717cc927",
+      "driveFolderId": "1Wx8Q0tfm-hkeicI-i7da_ohhh06mNhaG",
+      "imagesFolderId": "1i7uPvvgXqqUi7PR5Q0ui4eJzp_hFXozf",
+      "originalsFolderId": "1Et902d4qCPvOPwQoAO1PTfsgr7tygBg7",
+      "designPromptFileId": "1ivGx3PXZiXX0cC_JPmRLkXdGXD-XSnNUrwZFh-Bujo8",
+      "articlePromptCopyId": "1Vwwkgts1Tzm-5c2DNXUenBcFj8SqdpWB4EYQ85OTkrA"
     },
     {
       "order": 2,
@@ -19,9 +26,16 @@
       "articleId": 52,
       "slug": "outsourcing-contract-termination-worker-status",
       "title": "正社員から業務委託へ切り替えた後に契約終了されたら？偽装フリーランスが疑われるときの対応",
-      "status": "SELECTED",
-      "prNumber": null,
-      "branch": "article-factory/2026-09-30-052-outsourcing-termination"
+      "status": "DRAFT_AWAITING_IMAGES",
+      "prNumber": 48,
+      "branch": "article-factory/2026-09-30-052-outsourcing-termination",
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/48",
+      "headSha": "c7cd9a1d9f101e01f289414cf84b19df9703efd7",
+      "driveFolderId": "1qKuaqhs3DJSfB3Xr7GqTMw7Nd8xgNqUg",
+      "imagesFolderId": "1Mkf0c2kjRYk9aBVKm3t_zyASYUWD96Jb",
+      "originalsFolderId": "1IP-CBUW7oJsF_S0AsiP1dLf1-Aln7Evy",
+      "designPromptFileId": "1k1L4i88KpLwQqlpTyoPoB6Nzy7cKDD-t15uJUXEQXhk",
+      "articlePromptCopyId": "1DhYhLXLLBE-1tuxMUZa1Ulh5qOMdaPcdYHPrkJneqvE"
     }
   ],
   "notes": [
