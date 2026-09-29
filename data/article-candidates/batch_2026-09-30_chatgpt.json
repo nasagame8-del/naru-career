@@ -1,0 +1,115 @@
+{
+  "batchId": "batch_2026-09-30_chatgpt",
+  "generatedAt": "2026-09-30T01:00:00+09:00",
+  "trigger": "user_early_selection",
+  "inventorySize": 49,
+  "nextArticleId": 51,
+  "notes": [
+    "User leaves around 04:30 JST and requested early preparation.",
+    "GSC settled through 2026-09-27. agent-job-mismatch has direct query evidence: 転職エージェント 求人 微妙 10 impressions / avg position 20.9; 転職エージェント 紹介 微妙 avg position 17.",
+    "business-outsourcing-conversion-risk has 153 impressions / 5 clicks / avg position 8.24; 正社員 から業務委託 クビ has 9 impressions / avg position 9.22. Candidate 3 is differentiated by post-switch contract termination and response when worker status may be disputed.",
+    "Master has 49 article Markdown files. Only unrelated open PR #6 was open at selection time."
+  ],
+  "candidates": [
+    {
+      "id": "cand_260930a1",
+      "title": "転職エージェントの求人が微妙・希望と違うときの対処法",
+      "primaryKeyword": "転職エージェント 求人 微妙",
+      "secondaryKeywords": [
+        "転職エージェント 紹介 微妙",
+        "転職エージェント 希望と違う"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "agent-not-recommended is the dissatisfaction hub. This child owns concrete correction steps when introduced jobs mismatch: diagnose mismatch, reset conditions, decline safely, change advisor/service, self-apply.",
+      "reasonToWriteNow": "Direct GSC query signal exists and the agent cluster is current S-priority.",
+      "category": "エージェント比較",
+      "proposedSlug": "agent-job-mismatch",
+      "riskFlags": [],
+      "nearestExistingSlugs": [
+        "agent-not-recommended",
+        "agent-referral-vs-self-apply",
+        "agent-comparison-2026"
+      ],
+      "searchEvidence": {
+        "source": "GSC",
+        "through": "2026-09-27",
+        "queries": [
+          {
+            "query": "転職エージェント 求人 微妙",
+            "impressions": 10,
+            "position": 20.9
+          },
+          {
+            "query": "転職エージェント 紹介 微妙",
+            "impressions": 1,
+            "position": 17
+          }
+        ]
+      },
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260930a2",
+      "title": "第二新卒が未経験から狙えるIT職種一覧",
+      "primaryKeyword": "第二新卒 IT 職種",
+      "secondaryKeywords": [
+        "未経験 IT 職種",
+        "第二新卒 IT転職"
+      ],
+      "searchIntent": "compare",
+      "differenceFromExisting": "Existing IT articles cover individual preparation, interviews, portfolio and company research. This would be a role-selection hub.",
+      "reasonToWriteNow": "IT is a core NARU market with several GA4-engaged articles but no clear job-family hub.",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-it-job-types",
+      "riskFlags": [],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "job-type-employment",
+        "web-industry-guide"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_260930a3",
+      "title": "正社員から業務委託へ切り替えた後に契約終了されたら？偽装フリーランスが疑われるときの対応",
+      "primaryKeyword": "正社員 から業務委託 クビ",
+      "secondaryKeywords": [
+        "業務委託 契約解除",
+        "偽装フリーランス 対応",
+        "フリーランス 労働者性"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "business-outsourcing-conversion-risk explains pre-switch risks and how to spot disguised arrangements. This article starts after the switch/termination and owns evidence preservation, contract/30-day notice checks, worker-status self-check and consultation routes.",
+      "reasonToWriteNow": "GSC already shows 正社員 から業務委託 クビ at 9 impressions / avg position 9.22. Official JFTC/MHLW guidance supports a distinct post-termination response intent.",
+      "category": "業界解説",
+      "proposedSlug": "outsourcing-contract-termination-worker-status",
+      "riskFlags": [
+        "YMYL_LEGAL"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk"
+      ],
+      "searchEvidence": {
+        "source": "GSC",
+        "through": "2026-09-27",
+        "queries": [
+          {
+            "query": "正社員 から業務委託 クビ",
+            "impressions": 9,
+            "position": 9.22
+          },
+          {
+            "query": "正社員 業務委託 切り替え",
+            "impressions": 2,
+            "position": 21.5
+          }
+        ]
+      },
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ]
+}
