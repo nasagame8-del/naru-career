@@ -73,6 +73,8 @@ note_published: false
 
 （参考：[doda「転職エージェントを使うメリットは？」](https://doda.jp/consultant/guide/007.html)）
 
+![紹介求人が希望と違う3つの原因](/images/articles/agent-job-mismatch-01.webp)
+
 ## まずやること：微妙だった理由を3件分メモする
 
 紹介求人を見たら、「応募する／しない」だけで終わらせず、合わない理由を残します。
@@ -105,6 +107,8 @@ note_published: false
 マイナビ転職も、給与・勤務地・職種などについて譲れない条件と妥協できる条件を整理し、優先順位をつけることを案内しています。
 
 （参考：[マイナビ転職「転職エージェントの登録から入社までの流れ」](https://tenshoku.mynavi.jp/knowhow/magfaq/22/)）
+
+![希望条件をMust Want NGに整理する図](/images/articles/agent-job-mismatch-02.webp)
 
 ## 対処法2：「この求人は嫌」ではなく差分を返す
 
@@ -159,6 +163,8 @@ note_published: false
 dodaも、求人情報と面接で聞いた業務内容にずれがある場合は、面接などで実際の担当業務を確認することが重要だと案内しています。
 
 （参考：[doda「求人情報に記載されている業務内容と面接で聞いた内容が違った場合」](https://doda.jp/guide/mensetsu/question/47.html)）
+
+![求人ミスマッチを修正する3ステップ](/images/articles/agent-job-mismatch-03.webp)
 
 ## まとめ：求人が微妙なら「断る→理由を返す→条件を修正する」
 
