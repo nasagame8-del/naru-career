@@ -49,6 +49,8 @@ note_published: false
 1. **事業者としての業務委託契約が、どの条件で終了したのか**
 2. **実態として労働者に近い働き方ではなかったか**
 
+![契約終了と労働者性を分けて確認する図](/images/articles/outsourcing-contract-termination-worker-status-01.webp)
+
 ## 6か月以上の継続的業務委託なら「30日前予告」を確認する
 
 フリーランス法では、対象となるフリーランスに対して6か月以上行う継続的業務委託について、発注事業者が契約を解除したり、契約満了後に更新しなかったりする場合、原則として少なくとも30日前までの予告が求められます。
@@ -98,6 +100,8 @@ note_published: false
 ここが、正社員からの切り替えでは特に重要です。
 
 **「契約書だけ変わって、仕事の実態は正社員時代とほぼ同じだった」**なら、労働者性について確認する余地があります。
+
+![業務委託の契約終了時に確認する項目](/images/articles/outsourcing-contract-termination-worker-status-02.webp)
 
 ## 「偽装フリーランスかも」と思ったら、契約名より働き方を見る
 
@@ -177,6 +181,8 @@ note_published: false
 （出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2025/)）
 
 どの制度の対象になるか分からない場合は、先に相談窓口で状況を整理してから進める方法もあります。
+
+![偽装フリーランスが疑われるときの対応3ステップ](/images/articles/outsourcing-contract-termination-worker-status-03.webp)
 
 ## 「正社員→業務委託→契約終了」で特に確認したい時系列
 
