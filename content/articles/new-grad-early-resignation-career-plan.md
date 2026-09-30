@@ -31,9 +31,11 @@ note_published: false
 
 ## 話題になった山田瑠々さんの退職報告
 
-> 〖X投稿〗山田瑠々さん「新卒で入社した会社を退職しました」
->
-> 元投稿：https://x.com/ruru_yamada1024/status/2104162898217988578?s=46
+<div class="x-post-card">
+  <div class="x-post-card__header"><strong>山田瑠々さん</strong><span>@ruru_yamada1024</span></div>
+  <p>〖ご報告〗<br>新卒で入社した会社を退職しました。</p>
+  <a href="https://x.com/ruru_yamada1024/status/2104162898217988578?s=46" target="_blank" rel="noopener noreferrer">Xで元投稿を見る ↗</a>
+</div>
 
 
 報道では、山田さんは全国大学生ミスコン「Campus Girls 2024」の初代グランプリで、大学卒業後は会社員として働きながらSNS活動も行っていたとされています。
