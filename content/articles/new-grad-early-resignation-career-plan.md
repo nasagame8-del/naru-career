@@ -31,8 +31,11 @@ note_published: false
 
 ## 話題になった山田瑠々さんの退職報告
 
-<div class="x-post-card">
-  <div class="x-post-card__header"><strong>山田瑠々さん</strong><span>@ruru_yamada1024</span></div>
+<a href="https://x.com/ruru_yamada1024/status/2104162898217988578?s=46" target="_blank" rel="noopener noreferrer">
+  <img src="/images/articles/new-grad-early-resignation-career-plan-x-post.webp" alt="山田瑠々さんが新卒で入社した会社を退職したことを報告したX投稿のスクリーンショット" />
+</a>
+
+<small>出典：山田瑠々さんのX投稿（2026年9月27日）。画像をタップすると元投稿を開きます。</small>
   <p>〖ご報告〗<br>新卒で入社した会社を退職しました。</p>
   <a href="https://x.com/ruru_yamada1024/status/2104162898217988578?s=46" target="_blank" rel="noopener noreferrer">Xで元投稿を見る ↗</a>
 </div>
