@@ -114,7 +114,7 @@ export default async function CategoryPage(props: {
                     >
                       <span
                         className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                          isInOrder ? cat.theme.badge : "bg-line text-ink-soft"
+                          isInOrder ? cat.theme.badge : "bg-surface border border-line text-ink-soft"
                         }`}
                       >
                         {i + 1}

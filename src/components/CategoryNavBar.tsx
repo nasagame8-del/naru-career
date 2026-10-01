@@ -28,7 +28,7 @@ export function CategoryNavBar({ categories }: { categories: NavItem[] }) {
                     aria-current={isActive ? "page" : undefined}
                     className={`inline-flex items-center h-11 px-3 sm:px-5 text-[12px] sm:text-[13px] tracking-tight sm:tracking-normal transition-colors ${
                       isActive
-                        ? "text-white font-bold underline decoration-amber decoration-2 underline-offset-[6px]"
+                        ? "text-white font-bold underline decoration-amber-soft decoration-2 underline-offset-[6px]"
                         : "text-white/90 hover:bg-white/10 font-medium"
                     }`}
                   >

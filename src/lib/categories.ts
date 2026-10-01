@@ -10,7 +10,7 @@ type CategoryCrossLink = {
 type CategoryTheme = {
   /** 記事カード等のカテゴリタグ */
   tag: string;
-  /** 番号バッジなど塗りつぶし要素 */
+  /** カテゴリページの「読む順番」番号バッジ */
   badge: string;
   /** 見出し・FAQの左罫線 */
   border: string;
@@ -39,7 +39,7 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "このカテゴリでは、24歳・第二新卒として飲食業界からIT/Web業界へ転職した筆者の実体験をすべて公開しています。「転職しようかな」と思い始めた段階から、エージェント登録・書類作成・面接対策・退職交渉・入社後のリアルまで、時系列に沿って追体験できる構成です。体験談だからこそ書ける「実際どうだったか」を軸に、第二新卒が転職活動で直面する場面をひとつずつカバーしています。同じ境遇の方が「次に何をすればいいか」を判断できるよう、読む順番も整理しました。",
     theme: {
       tag: "bg-amber-soft text-amber-ink",
-      badge: "bg-amber text-ink",
+      badge: "bg-surface border border-amber/60 text-amber-ink",
       border: "border-amber",
       cssColor: "var(--amber)",
     },
@@ -96,7 +96,7 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "転職エージェントは数が多く、「結局どれを使えばいいの？」と迷う方がほとんどです。このカテゴリでは、筆者が第二新卒として実際に登録・利用したエージェント（doda・ワークポートなど）の使用感を比較形式でまとめています。担当者の対応・求人の質・サポート内容の違いを、利用者目線で率直にレビュー。さらに「転職サイトとエージェントの使い分け」「自己応募との比較」など、サービス選びの判断軸になる記事も揃えています。",
     theme: {
       tag: "bg-primary-soft text-primary",
-      badge: "bg-primary text-white",
+      badge: "bg-surface border border-primary/50 text-primary",
       border: "border-primary",
       cssColor: "var(--primary)",
     },
@@ -145,7 +145,7 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "「IT業界に興味はあるけど、実際どんな仕事があるの？」という疑問に答えるカテゴリです。IT/Web業界の職種・働き方から、AIO対策という新しい領域の仕事内容、転職エージェントのビジネスモデル、第二新卒の制度的な位置づけまで、業界の「そもそも」を未経験者にもわかる言葉で解説しています。体験談やエージェント比較を読む前の予備知識として、あるいは転職活動中の疑問解消に活用してください。",
     theme: {
       tag: "bg-gray-soft text-ink-soft",
-      badge: "bg-ink-soft text-white",
+      badge: "bg-surface border border-gray text-ink-soft",
       border: "border-gray",
       cssColor: "#8B8D91",
     },
@@ -197,7 +197,7 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "このカテゴリでは、体験談・エージェント比較・業界解説のどれにも収まりきらない話題をまとめています。SNSで話題になった退職報告や転職ニュースをきっかけに、第二新卒として考えておきたいキャリアの論点を、筆者の視点で気軽に掘り下げます。気になったテーマから自由に読んでみてください。",
     theme: {
       tag: "bg-navy-soft text-navy",
-      badge: "bg-navy text-white",
+      badge: "bg-surface border border-navy/50 text-navy",
       border: "border-navy",
       cssColor: "#2F4A6B",
     },
