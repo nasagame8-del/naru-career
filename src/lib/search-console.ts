@@ -258,10 +258,10 @@ function deriveQueryInsights(data: {
     } else if (impressionChange !== null && impressionChange >= 50 && q.impressions >= 5) {
       suggestion = { type: "growing", label: "表示回数が急増しています。コンテンツ強化の好機です" };
     }
-    if (!suggestion && q.position >= 1 && q.position <= 20 && q.impressions >= 10 && q.ctr < 0.02) {
+    if (!suggestion && q.position >= 1 && q.position <= 20 && q.impressions >= 5 && q.ctr < 0.02) {
       suggestion = { type: "title_improve", label: "順位に対してCTRが低い可能性があります。タイトル改善の余地があるかもしれません" };
     }
-    if (!suggestion && q.position >= 11 && q.position <= 30 && q.impressions >= 10) {
+    if (!suggestion && q.position >= 11 && q.position <= 30 && q.impressions >= 5) {
       suggestion = { type: "content_strengthen", label: "もう少しで上位表示の可能性があります。コンテンツ充実が有効かもしれません" };
     }
     if (!suggestion && q.position >= 1 && q.position <= 5 && q.impressions < 5) {
@@ -343,8 +343,8 @@ function deriveQueryInsights(data: {
     // 次点: position 11-30, impressions >= 5
     const hasRewriteCandidate = insights.some((qi) => qi.position >= 11 && qi.position <= 30 && qi.impressions >= 5);
     if (hasRewriteCandidate) {
-      priority = "high";
-      reasons.push("順位11〜20位のクエリがあり、内容強化で上位表示の可能性があります");
+      if (priority === "low") priority = "medium";
+      reasons.push("順位11〜30位のクエリがあり、内容強化で上位表示の可能性があります");
       suggestions.push("記事内容の充実・最新情報の追加を検討してください");
     }
 
