@@ -1,7 +1,7 @@
 {
   "batchId": "batch_2026-10-02_chatgpt",
   "selectedAt": "2026-10-02T00:09:00+09:00",
-  "status": "images_reflected_qa_pending",
+  "status": "reserved_preview_approval_pending",
   "publishSlots": [
     {
       "order": 1,
@@ -22,9 +22,16 @@
       "articleRunDocId": "1UJuMR2TVPxYvgJ0VU8ynXtsNc8_jn3XMhiVAxAcSkBQ",
       "qa": {
         "articleFactoryValidation": "success",
-        "vercelPreview": "pending",
+        "vercelPreview": "success",
         "images": "complete",
-        "previewVisual": "pending"
+        "previewVisual": "pending",
+        "previewApprovedHeadSha": null
+      },
+      "previewUrl": "https://career-media-git-article-factory-7105f8-nasagame8-dels-projects.vercel.app/articles/job-seeker-harassment-new-rules-2026",
+      "reservation": {
+        "scheduled": true,
+        "scheduledAt": "2026-10-02T12:00:00+09:00",
+        "safetyGate": "merge only if previewVisual=user_confirmed for current head SHA"
       }
     },
     {
@@ -46,9 +53,16 @@
       "articleRunDocId": "1bhWxIfgEryg48SbtneZfWMaFEDqvWipFE0YgK7Sb2SU",
       "qa": {
         "articleFactoryValidation": "success",
-        "vercelPreview": "pending",
+        "vercelPreview": "success",
         "images": "complete",
-        "previewVisual": "pending"
+        "previewVisual": "pending",
+        "previewApprovedHeadSha": null
+      },
+      "previewUrl": "https://career-media-git-article-factory-a93609-nasagame8-dels-projects.vercel.app/articles/second-new-grad-desired-salary-2026",
+      "reservation": {
+        "scheduled": true,
+        "scheduledAt": "2026-10-02T18:00:00+09:00",
+        "safetyGate": "merge only if previewVisual=user_confirmed for current head SHA"
       }
     }
   ],
@@ -56,6 +70,7 @@
     "ユーザー選択: 1.2",
     "原稿・画像プラン・Drive保存・Draft PR作成済み。",
     "公開時刻は標準枠12:00/18:00。画像4枚/記事の反映、最新headでのCI/Vercel成功、ユーザープレビュー承認が不足する場合は公開しない。",
-    "2026-10-02 00:28頃: 8枚受領。originalsへPNG、imagesへWebP（card 1200x630 / body 1200x675）保存し、PR #56/#57へ反映。"
+    "2026-10-02 00:28頃: 8枚受領。originalsへPNG、imagesへWebP（card 1200x630 / body 1200x675）保存し、PR #56/#57へ反映。",
+    "2026-10-02 00:40頃: 最新headでArticle Factory Validation/Vercelともにsuccessを再確認。12:00/18:00の条件付き公開タスクを設定。プレビュー目視承認が同一head SHAに記録されない限りマージしない。"
   ]
 }
