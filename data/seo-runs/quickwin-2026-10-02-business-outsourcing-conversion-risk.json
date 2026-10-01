@@ -1,0 +1,52 @@
+{
+  "id": "quickwin-2026-10-02-business-outsourcing-conversion-risk",
+  "createdAt": "2026-10-02T07:42:00+09:00",
+  "source": "manual_quick_win_test",
+  "selectedTopic": {
+    "id": "business-outsourcing-quickwin",
+    "topic": "正社員から業務委託への切り替えはクビ？",
+    "type": "rewrite",
+    "dataConfidence": "medium",
+    "queries": [
+      {
+        "query": "正社員 から業務委託 クビ",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 9.3
+      }
+    ],
+    "relatedPages": [
+      "https://naru-career.com/articles/business-outsourcing-conversion-risk"
+    ],
+    "evidence": [
+      "GSC settled through 2026-09-28: exact query had 10 impressions, 0 clicks, average position 9.3 over 2026-09-01 to 2026-09-28."
+    ],
+    "caveats": [
+      "Search Console data is low-volume; judge directionally and re-measure at 7/14/28 days."
+    ]
+  },
+  "actionDecision": {
+    "summary": "Quick Win: already ranking on page 1 but not earning clicks; improve title, intro, FAQ and internal linking without replacing the existing article.",
+    "decisions": [
+      {
+        "targetType": "article",
+        "target": "business-outsourcing-conversion-risk",
+        "action": "REWRITE",
+        "reason": "Exact query is already averaging position 9.3 with 10 impressions and 0 clicks."
+      }
+    ]
+  },
+  "measurementPlan": {
+    "anchor": "article_dateModified",
+    "checkpointDays": [
+      7,
+      14,
+      28
+    ],
+    "query": "正社員 から業務委託 クビ",
+    "relatedPage": "https://naru-career.com/articles/business-outsourcing-conversion-risk",
+    "command": "npm run data:seo-experiments -- --run quickwin-2026-10-02-business-outsourcing-conversion-risk",
+    "gscSettledThroughAtBaselineCapture": "2026-09-28"
+  }
+}
