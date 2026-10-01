@@ -196,10 +196,10 @@ export const CATEGORIES: Record<string, CategoryDef> = {
     longDescription:
       "このカテゴリでは、体験談・エージェント比較・業界解説のどれにも収まりきらない話題をまとめています。SNSで話題になった退職報告や転職ニュースをきっかけに、第二新卒として考えておきたいキャリアの論点を、筆者の視点で気軽に掘り下げます。気になったテーマから自由に読んでみてください。",
     theme: {
-      tag: "bg-sage-soft text-sage-ink",
-      badge: "bg-sage-ink text-white",
-      border: "border-sage",
-      cssColor: "#5E7F68",
+      tag: "bg-navy-soft text-navy",
+      badge: "bg-navy text-white",
+      border: "border-navy",
+      cssColor: "#2F4A6B",
     },
     readingOrder: [],
     faq: [

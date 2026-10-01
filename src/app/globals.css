@@ -8,13 +8,14 @@
   --ink: #252525;
   --ink-soft: #666666;
   --line: #E6DED4;
-  --primary: #7A3E2E;
-  --primary-soft: #F0E4DE;
-  --primary-hover: #5C2E1F;
-  --accent: #D29A4A;
-  --accent-soft: #F5EAD6;
-  --amber: #D29A4A;
-  --amber-soft: #F5EAD6;
+  /* NARU brand: Cream #FBF8F3 / Tea Green #1F6F66 / Amber #B5691B */
+  --primary: #1F6F66;
+  --primary-soft: #E3EFED;
+  --primary-hover: #17564F;
+  --accent: #B5691B;
+  --accent-soft: #F6E9DA;
+  --amber: #B5691B;
+  --amber-soft: #F6E9DA;
 }
 
 @theme inline {
@@ -32,10 +33,14 @@
   --color-amber-soft: var(--amber-soft);
   --color-gray: #8B8D91;
   --color-gray-soft: #EDEDEC;
+  /* 補助色: 雑記カテゴリ */
+  --color-navy: #2F4A6B;
+  --color-navy-soft: #E4EAF1;
+  /* 成功・完了などの状態表示 */
   --color-sage: #5E7F68;
   --color-sage-soft: #E5EDE7;
   /* 淡色背景の上に置く小さい文字用（コントラスト4.5:1以上） */
-  --color-amber-ink: #8A5A1C;
+  --color-amber-ink: #8F5214;
   --color-sage-ink: #46624F;
   --font-sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   --font-heading: "Shippori Mincho", "Yu Mincho", serif;

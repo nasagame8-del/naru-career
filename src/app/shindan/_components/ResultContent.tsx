@@ -70,7 +70,7 @@ export default function ResultContent({
 }) {
   const resultHeading = useRef<HTMLHeadingElement>(null);
   useEffect(() => { resultHeading.current?.focus({ preventScroll: true }); }, []);
-  const accentColor = TYPE_COLORS[typeId] || "#b06a1c";
+  const accentColor = TYPE_COLORS[typeId] || "#B5691B";
   const shareText = `私の適職タイプは【${typeInfo.name}】でした！\nあなたも受けてみませんか？\n#適職診断 #転職`;
   const shareUrl = `${SITE_URL}/shindan?utm_source=x&utm_medium=share&utm_campaign=shindan_result`;
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;

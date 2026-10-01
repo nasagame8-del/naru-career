@@ -30,7 +30,7 @@ export default async function TypeHubPage({ params }: Props) {
   if (id === undefined) notFound();
 
   const t = TYPES16[id];
-  const color = TYPE_COLORS[id] || "#b06a1c";
+  const color = TYPE_COLORS[id] || "#B5691B";
   const articles = getHubArticles(id);
   const testimonials = getTestimonials(id);
   const bgExists = true; // all 16 backgrounds exist

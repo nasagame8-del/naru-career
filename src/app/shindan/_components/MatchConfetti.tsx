@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-const COLORS = ["#7a3e2e", "#d29a4a", "#e5c992", "#91764f", "#b97554"];
+const COLORS = ["#1f6f66", "#b5691b", "#e5c992", "#91764f", "#b97554"];
 export default function MatchConfetti() {
   return <div className="match-confetti" aria-hidden="true">{Array.from({ length: 65 }, (_, index) => <i key={index} style={{
     "--confetti-x": `${(index * 37) % 101}%`,
