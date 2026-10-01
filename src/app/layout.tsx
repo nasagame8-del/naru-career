@@ -8,6 +8,12 @@ import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/GoogleT
 import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CtaTracker } from "@/components/CtaTracker";
 import { WebSiteJsonLd } from "@/components/JsonLd";
+import { CATEGORIES } from "@/lib/categories";
+
+const categoryNavItems = Object.entries(CATEGORIES).map(([slug, cat]) => ({
+  label: cat.label,
+  href: `/category/${slug}`,
+}));
 
 export const metadata: Metadata = {
   title: {
@@ -17,9 +23,6 @@ export const metadata: Metadata = {
   description:
     "著者・磯貝アルトの実体験（24歳・転職1回）をベースに、第二新卒がIT/Web業界へキャリアチェンジするためのノウハウを発信。転職エージェント比較・業界解説・体験談を掲載。",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com"),
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48" },
@@ -30,6 +33,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     siteName: "NARU",
+    locale: "ja_JP",
+    type: "website",
     images: ["/logo-wordmark.png"],
   },
 };
@@ -63,9 +68,15 @@ export default function RootLayout({
         <GoogleTagManagerNoscript />
         <MicrosoftClarity />
         <CtaTracker />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-surface focus:text-ink focus:px-4 focus:py-2 focus:rounded focus:border focus:border-line"
+        >
+          本文へスキップ
+        </a>
         <Header />
-        <CategoryNavBar />
-        <main className="flex-1">{children}</main>
+        <CategoryNavBar categories={categoryNavItems} />
+        <main id="main" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

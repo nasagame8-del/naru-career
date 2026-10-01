@@ -98,7 +98,7 @@ export function AiInterviewCheck() {
       <div>
         <div className="text-center mb-6">
           <p className="text-xs text-ink-soft mb-2">あなたの結果</p>
-          <div className="bg-primary-soft rounded-2xl px-6 py-6">
+          <div className="bg-primary-soft rounded-lg px-6 py-6">
             <p className="text-3xl font-bold text-primary">{awareCount} / {QUESTIONS.length}</p>
             <p className="text-sm text-ink-soft mt-1">AI面接の評価ポイントを把握済み</p>
           </div>
@@ -107,10 +107,10 @@ export function AiInterviewCheck() {
         <div className="space-y-4 mb-6">
           <h3 className="font-bold text-sm text-ink">各ポイントの解説</h3>
           {QUESTIONS.map((q, i) => (
-            <div key={i} className={`rounded-lg border p-4 ${answers[i] ? "border-green-200 bg-green-50/50" : "border-amber-200 bg-amber-50/50"}`}>
+            <div key={i} className={`rounded-lg border p-4 ${answers[i] ? "border-sage/30 bg-sage-soft/50" : "border-amber/30 bg-amber-soft/50"}`}>
               <p className="text-xs font-bold mb-1 flex items-center gap-1.5">
-                <span className={answers[i] ? "text-green-600" : "text-amber"}>
-                  {answers[i] ? "&#10003; 把握済み" : "&#9888; 要確認"}
+                <span className={answers[i] ? "text-sage-ink" : "text-amber-ink"}>
+                  {answers[i] ? "✓ 把握済み" : "要確認"}
                 </span>
               </p>
               <p className="text-[13px] text-ink-soft leading-relaxed">{q.insight}</p>
@@ -149,8 +149,8 @@ export function AiInterviewCheck() {
           <span className="text-[13px] font-bold text-ink-soft">Q.{String(step + 1).padStart(2, "0")} / {QUESTIONS.length}</span>
           <span className="text-[12px] text-ink-soft">{Math.round(progress)}%</span>
         </div>
-        <div className="h-[5px] bg-bg-soft rounded-full overflow-hidden">
-          <div className="h-full bg-primary rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+        <div className="h-[5px] bg-bg-soft rounded-full overflow-hidden" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)} aria-label="回答の進み具合">
+          <div className="h-full bg-primary rounded-full transition-[width] duration-300" style={{ width: `${progress}%` }} />
         </div>
       </div>
 
@@ -158,14 +158,14 @@ export function AiInterviewCheck() {
 
       <div className="space-y-3 mb-8">
         {q.options.map((opt, i) => (
-          <button key={i} onClick={() => setSelected(opt.aware)}
-            className={`w-full text-left px-4 py-3.5 rounded-2xl border transition-all flex items-center gap-3 ${
-              selected === opt.aware ? "border-primary bg-primary-soft" : "border-line bg-white hover:border-primary/40"
+          <button key={i} onClick={() => setSelected(opt.aware)} aria-pressed={selected === opt.aware}
+            className={`w-full text-left px-4 py-3.5 rounded-lg border transition-colors flex items-center gap-3 ${
+              selected === opt.aware ? "border-primary bg-primary-soft" : "border-line bg-surface hover:border-primary/40"
             }`}>
             <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
               selected === opt.aware ? "border-primary bg-primary" : "border-line"
             }`}>
-              {selected === opt.aware && <span className="block w-2 h-2 rounded-full bg-white" />}
+              {selected === opt.aware && <span className="block w-2 h-2 rounded-full bg-surface" />}
             </span>
             <span className="text-[13px] text-ink leading-relaxed">{opt.label}</span>
           </button>

@@ -31,7 +31,7 @@ export function CategoryTabs({ articles }: { articles: ArticleMeta[] }) {
             </Link>
           ))}
         </div>
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none sm:hidden" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-bg to-transparent pointer-events-none sm:hidden" />
       </div>
 
       <ArticleList articles={displayed} />

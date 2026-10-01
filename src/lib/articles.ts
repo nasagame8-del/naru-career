@@ -55,6 +55,34 @@ function annotateGlossaryTerms(htmlStr: string): string {
   return tokens.join("");
 }
 
+/** HTML断片からタグを除き、主要な文字参照を戻す（目次などプレーンテキスト表示用） */
+export function htmlToPlainText(fragment: string): string {
+  return fragment
+    .replace(/<[^>]+>/g, "")
+    .replace(/&#x([0-9a-f]+);/gi, (_m, hex: string) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_m, dec: string) => String.fromCodePoint(Number(dec)))
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+}
+
+/**
+ * CommonMarkは「**」の直前・直後が日本語の括弧や句読点だと太字として扱わない。
+ * 1行内で対になっている ** は先に <strong> へ置き換えておく。
+ */
+export function convertBoldMarkers(markdown: string): string {
+  return markdown.replace(/\*\*([^*\n]+?)\*\*/g, "<strong>$1</strong>");
+}
+
+/**
+ * 本文の「## よくある質問」セクションだけを取り除く（FAQSectionで別途表示するため）。
+ * 次のH2以降の本文は残す。
+ */
+export function removeFaqSection(markdown: string): string {
+  return markdown.replace(/^##[ \t]*よくある質問[^\n]*\n[\s\S]*?(?=^##[ \t]|(?![\s\S]))/m, "");
+}
+
 export type FAQ = {
   question: string;
   answer: string;
@@ -66,10 +94,25 @@ export type InlineFAQ = {
   answer: string;
 };
 
+export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "雑記";
+
+/** 主カテゴリに、frontmatter.subCategories（追加で掲載するカテゴリ）を重複なしで足す */
+function resolveCategories(
+  category: ArticleCategory,
+  subCategories: unknown
+): ArticleCategory[] {
+  const extra = Array.isArray(subCategories)
+    ? subCategories.filter((c): c is ArticleCategory => typeof c === "string")
+    : [];
+  return [...new Set([category, ...extra])];
+}
+
 export type ArticleMeta = {
   slug: string;
   title: string;
-  category: "体験談" | "エージェント比較" | "業界解説";
+  category: ArticleCategory;
+  /** 主カテゴリ＋frontmatter.subCategories。カテゴリ一覧・絞り込みはこちらで判定する */
+  categories: ArticleCategory[];
   keyword: string;
   datePublished: string;
   dateModified: string;
@@ -151,6 +194,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     slug,
     title: data.title ?? "",
     category: data.category ?? "業界解説",
+    categories: resolveCategories(data.category ?? "業界解説", data.subCategories),
     keyword: data.keyword ?? "",
     datePublished: data.datePublished ?? "",
     dateModified: data.dateModified ?? "",
@@ -178,7 +222,7 @@ export async function getArticle(slug: string): Promise<Article> {
 
   // Process CTA placeholders before markdown rendering
   const ctaRegistry = getCTARegistry();
-  let processedContent = content.replace(
+  let processedContent = convertBoldMarkers(content).replace(
     /\[CTA_BUTTON:(\w+)\]/g,
     (_match, key: string) => {
       const cta = ctaRegistry[key];
@@ -208,15 +252,11 @@ export async function getArticle(slug: string): Promise<Article> {
     }
   );
 
-  // Markdown本文からFAQセクションを除外（FAQSectionコンポーネントで別途表示するため）
-  processedContent = processedContent.replace(
-    /##\s*よくある質問[\s\S]*$/,
-    ""
-  );
+  processedContent = removeFaqSection(processedContent);
 
   // ==テキスト== → <mark>テキスト</mark> (蛍光ペン風ハイライト)
   processedContent = processedContent.replace(
-    /==(.*?)==/g,
+    /==([^=\n]+?)==/g,
     (_match, text: string) => `<mark>${text}</mark>`
   );
 
@@ -230,30 +270,36 @@ export async function getArticle(slug: string): Promise<Article> {
   let htmlStr = result.toString();
   const headings: Heading[] = [];
   let headingIndex = 0;
-  htmlStr = htmlStr.replace(/<h2>(.*?)<\/h2>/g, (_match, text: string) => {
+  htmlStr = htmlStr.replace(/<h2>(.*?)<\/h2>/g, (_match, inner: string) => {
     const id = `section-${headingIndex++}`;
-    headings.push({ id, text });
-    return `<h2 id="${id}">${text}</h2>`;
+    headings.push({ id, text: htmlToPlainText(inner) });
+    return `<h2 id="${id}">${inner}</h2>`;
   });
 
-  // InlineFAQ: 各H2の直後に関連する一問一答を挿入
+  // InlineFAQ: 見出しテキストを含むH2の直後に一問一答を挿入する。
+  // 挿入できたものだけを返し、画面に無いFAQを構造化データへ出さない。
   const inlineFaqs: InlineFAQ[] = data.inlineFaq ?? [];
-  if (inlineFaqs.length > 0) {
-    for (const ifaq of inlineFaqs) {
-      // headingの部分一致でH2を特定（見出しテキストを含むh2タグを探す）
-      const escapedHeading = ifaq.heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      const h2Regex = new RegExp(
-        `(<h2[^>]*>(?:[^<]*${escapedHeading}[^<]*)</h2>)`,
-        "i"
-      );
-      const faqHtml = `<div class="inline-faq"><p class="inline-faq-q"><strong>Q. ${ifaq.question}</strong></p><p class="inline-faq-a">${ifaq.answer}</p></div>`;
-      htmlStr = htmlStr.replace(h2Regex, `$1${faqHtml}`);
-    }
+  const placedInlineFaqs: InlineFAQ[] = [];
+  for (const ifaq of inlineFaqs) {
+    let placed = false;
+    htmlStr = htmlStr.replace(/<h2 id="[^"]*">.*?<\/h2>/g, (h2) => {
+      if (placed || !htmlToPlainText(h2).includes(ifaq.heading)) return h2;
+      placed = true;
+      return `${h2}<div class="inline-faq"><p class="inline-faq-q"><strong>Q. ${ifaq.question}</strong></p><p class="inline-faq-a">${ifaq.answer}</p></div>`;
+    });
+    if (placed) placedInlineFaqs.push(ifaq);
   }
 
-  // Markdown変換後に万一残った ** を除去し、画面への生露出を防ぐ
-  // 通常の太字はこの時点で <strong>...</strong> に変換済みなので見た目は維持される
+  // 対になっていない ** が残っても画面に露出させない
   htmlStr = htmlStr.replace(/\*\*/g, "");
+
+  // 表はスマホで横スクロールできるようにラップする
+  htmlStr = htmlStr
+    .replace(/<table>/g, '<div class="table-scroll"><table>')
+    .replace(/<\/table>/g, "</table></div>");
+
+  // 本文画像は遅延読み込み
+  htmlStr = htmlStr.replace(/<img (?![^>]*\bloading=)/g, '<img loading="lazy" decoding="async" ');
 
   // 専門用語の初出箇所に <dfn>（DefinedTermマイクロデータ付き）を付与
   htmlStr = annotateGlossaryTerms(htmlStr);
@@ -264,6 +310,7 @@ export async function getArticle(slug: string): Promise<Article> {
     slug,
     title: data.title ?? "",
     category: data.category ?? "業界解説",
+    categories: resolveCategories(data.category ?? "業界解説", data.subCategories),
     keyword: data.keyword ?? "",
     datePublished: data.datePublished ?? "",
     dateModified: data.dateModified ?? "",
@@ -273,7 +320,7 @@ export async function getArticle(slug: string): Promise<Article> {
     note_published: data.note_published ?? false,
     summary: data.summary ?? [],
     naruPoint: data.naruPoint ?? "",
-    inlineFaq: data.inlineFaq ?? [],
+    inlineFaq: placedInlineFaqs,
     updateHistory: data.updateHistory ?? [],
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",

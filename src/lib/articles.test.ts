@@ -2,7 +2,15 @@ import fsp from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { getArticleImagePath } from "./articles";
+import {
+  convertBoldMarkers,
+  getAllSlugs,
+  getArticle,
+  getArticleImagePath,
+  getArticleMeta,
+  htmlToPlainText,
+  removeFaqSection,
+} from "./articles";
 
 /**
  * `getArticleImagePath` は `process.cwd()` を基点に実ファイルの有無を見る。
@@ -76,5 +84,51 @@ describe("getArticleImagePath", () => {
     expect(getArticleImagePath("other", "card")).toBe(
       "/images/articles/other-card.webp"
     );
+  });
+});
+
+describe("Markdown前処理", () => {
+  it("日本語の括弧に隣接した ** も太字にする", () => {
+    expect(convertBoldMarkers("これは**「重要」**です")).toBe(
+      "これは<strong>「重要」</strong>です"
+    );
+  });
+
+  it("行をまたぐ ** は変換しない", () => {
+    expect(convertBoldMarkers("**a\nb**")).toBe("**a\nb**");
+  });
+
+  it("よくある質問セクションだけを除き、後続のH2は残す", () => {
+    const md = "## 本文\nA\n\n## よくある質問\n\n### Q: x\ny\n\n## おすすめ\nB\n";
+    expect(removeFaqSection(md)).toBe("## 本文\nA\n\n## おすすめ\nB\n");
+  });
+
+  it("よくある質問が末尾なら最後まで除く", () => {
+    expect(removeFaqSection("## 本文\nA\n\n## よくある質問\n### Q\nz\n")).toBe(
+      "## 本文\nA\n\n"
+    );
+  });
+
+  it("見出しHTMLをプレーンテキストに戻す", () => {
+    expect(htmlToPlainText("面接対策（Q&#x26;A形式）<strong>必読</strong>")).toBe(
+      "面接対策（Q&A形式）必読"
+    );
+  });
+});
+
+describe("content/articles のインラインFAQ", () => {
+  it("frontmatterのinlineFaqはすべて対応するH2の直後に表示される", async () => {
+    const missing: string[] = [];
+    for (const slug of getAllSlugs()) {
+      const declared = getArticleMeta(slug).inlineFaq;
+      if (declared.length === 0) continue;
+      const placed = (await getArticle(slug)).inlineFaq;
+      for (const faq of declared) {
+        if (!placed.includes(faq) && !placed.some((p) => p.heading === faq.heading)) {
+          missing.push(`${slug}: ${faq.heading}`);
+        }
+      }
+    }
+    expect(missing).toEqual([]);
   });
 });

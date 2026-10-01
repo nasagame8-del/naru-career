@@ -15,9 +15,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = SLUG_TO_ID[slug];
   if (id === undefined) return {};
   const t = TYPES16[id];
+  const title = `${t.name}の特徴・向いている仕事・おすすめ記事 | RPG適職診断`;
+  const description = `${t.desc} 向いている環境や第二新卒×IT/Webの狙い目、おすすめ記事をまとめています。`;
+  // 16タイプの正規解説ページ（診断結果ページ /shindan/result/* は noindex）
   return {
-    title: `${t.name}の特徴・向いている仕事・おすすめ記事 | RPG適職診断`,
-    description: `${t.desc} 向いている環境や第二新卒×IT/Webの狙い目、おすすめ記事をまとめています。`,
+    title,
+    description,
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: `/types/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      siteName: "NARU",
+      locale: "ja_JP",
+      url: `/types/${slug}`,
+      images: [`/shindan/result/${slug}/opengraph-image`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`/shindan/result/${slug}/opengraph-image`],
+    },
   };
 }
 
@@ -27,7 +49,7 @@ export default async function TypeHubPage({ params }: Props) {
   if (id === undefined) notFound();
 
   const t = TYPES16[id];
-  const color = TYPE_COLORS[id] || "#b06a1c";
+  const color = TYPE_COLORS[id] || "#B5691B";
   const articles = getHubArticles(id);
   const testimonials = getTestimonials(id);
   const bgExists = true; // all 16 backgrounds exist

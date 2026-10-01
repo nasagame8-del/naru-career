@@ -1,4 +1,4 @@
-import type { FAQ } from "@/lib/articles";
+import type { ArticleCategory, FAQ } from "@/lib/articles";
 
 type CategoryCrossLink = {
   slug: string;
@@ -6,12 +6,24 @@ type CategoryCrossLink = {
   message: string;
 };
 
+/** カテゴリごとの配色（Tailwindクラス）。各画面はここだけを参照する */
+type CategoryTheme = {
+  /** 記事カード等のカテゴリタグ */
+  tag: string;
+  /** カテゴリページの「読む順番」番号バッジ */
+  badge: string;
+  /** 見出し・FAQの左罫線 */
+  border: string;
+  /** 本文H2の左罫線（CSS変数 --category-color に渡す値） */
+  cssColor: string;
+};
+
 type CategoryDef = {
-  name: "体験談" | "エージェント比較" | "業界解説";
+  name: ArticleCategory;
   label: string;
   description: string;
   longDescription: string;
-  accentColor: string;
+  theme: CategoryTheme;
   readingOrder: string[];
   faq: FAQ[];
   crossLinks: CategoryCrossLink[];
@@ -25,7 +37,12 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "24歳・転職1回の実体験をベースにした、第二新卒のIT/Web転職の体験談記事一覧。転職を決意した理由から内定獲得までのリアルな記録を掲載。",
     longDescription:
       "このカテゴリでは、24歳・第二新卒として飲食業界からIT/Web業界へ転職した筆者の実体験をすべて公開しています。「転職しようかな」と思い始めた段階から、エージェント登録・書類作成・面接対策・退職交渉・入社後のリアルまで、時系列に沿って追体験できる構成です。体験談だからこそ書ける「実際どうだったか」を軸に、第二新卒が転職活動で直面する場面をひとつずつカバーしています。同じ境遇の方が「次に何をすればいいか」を判断できるよう、読む順番も整理しました。",
-    accentColor: "bg-amber",
+    theme: {
+      tag: "bg-amber-soft text-amber-ink",
+      badge: "bg-surface border border-amber/60 text-amber-ink",
+      border: "border-amber",
+      cssColor: "var(--amber)",
+    },
     readingOrder: [
       "second-new-grad-it-career-change",
       "web-industry-guide",
@@ -77,7 +94,12 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "doda・ワークポート等の転職エージェントを第二新卒が実際に利用した比較記事一覧。各サービスの良い点・注意点をリアルに解説。",
     longDescription:
       "転職エージェントは数が多く、「結局どれを使えばいいの？」と迷う方がほとんどです。このカテゴリでは、筆者が第二新卒として実際に登録・利用したエージェント（doda・ワークポートなど）の使用感を比較形式でまとめています。担当者の対応・求人の質・サポート内容の違いを、利用者目線で率直にレビュー。さらに「転職サイトとエージェントの使い分け」「自己応募との比較」など、サービス選びの判断軸になる記事も揃えています。",
-    accentColor: "bg-accent",
+    theme: {
+      tag: "bg-primary-soft text-primary",
+      badge: "bg-surface border border-primary/50 text-primary",
+      border: "border-primary",
+      cssColor: "var(--primary)",
+    },
     readingOrder: [
       "agent-comparison-2026",
       "agent-site-vs-agent-usage",
@@ -121,7 +143,12 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "IT/Web業界・AIO対策業界の仕組みや職種を、未経験者向けにわかりやすく解説する記事一覧。",
     longDescription:
       "「IT業界に興味はあるけど、実際どんな仕事があるの？」という疑問に答えるカテゴリです。IT/Web業界の職種・働き方から、AIO対策という新しい領域の仕事内容、転職エージェントのビジネスモデル、第二新卒の制度的な位置づけまで、業界の「そもそも」を未経験者にもわかる言葉で解説しています。体験談やエージェント比較を読む前の予備知識として、あるいは転職活動中の疑問解消に活用してください。",
-    accentColor: "bg-gray",
+    theme: {
+      tag: "bg-gray-soft text-ink-soft",
+      badge: "bg-surface border border-gray text-ink-soft",
+      border: "border-gray",
+      cssColor: "#8B8D91",
+    },
     readingOrder: [
       "what-is-second-new-grad",
       "recruitment-agency-business-model",
@@ -161,9 +188,60 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       },
     ],
   },
+  zakki: {
+    name: "雑記",
+    label: "雑記",
+    description:
+      "話題になった転職・退職のニュースや、第二新卒のキャリアにまつわる気づきを気軽にまとめた雑記記事一覧。",
+    longDescription:
+      "このカテゴリでは、体験談・エージェント比較・業界解説のどれにも収まりきらない話題をまとめています。SNSで話題になった退職報告や転職ニュースをきっかけに、第二新卒として考えておきたいキャリアの論点を、筆者の視点で気軽に掘り下げます。気になったテーマから自由に読んでみてください。",
+    theme: {
+      tag: "bg-navy-soft text-navy",
+      badge: "bg-surface border border-navy/50 text-navy",
+      border: "border-navy",
+      cssColor: "#2F4A6B",
+    },
+    readingOrder: [],
+    faq: [
+      {
+        question: "雑記カテゴリにはどんな記事がありますか？",
+        answer:
+          "話題になった退職報告や転職ニュースなど、時事的なテーマをきっかけに第二新卒のキャリアを考える記事をまとめています。業界解説など他のカテゴリにもあわせて掲載している記事があります。",
+      },
+    ],
+    crossLinks: [
+      {
+        slug: "taiken",
+        label: "体験談",
+        message:
+          "実際の転職活動の流れを知りたい方は、体験談カテゴリで筆者の転職プロセスを追体験してみてください。",
+      },
+      {
+        slug: "industry-guide",
+        label: "業界解説",
+        message:
+          "第二新卒の位置づけや業界の仕組みを体系的に知りたい方は、業界解説カテゴリもあわせてどうぞ。",
+      },
+    ],
+  },
 };
 
 export type CategorySlug = keyof typeof CATEGORIES;
+
+const SLUG_BY_NAME = new Map<string, string>(
+  Object.entries(CATEGORIES).map(([slug, cat]) => [cat.name, slug])
+);
+
+/** カテゴリ名 → カテゴリページのslug */
+export function getCategorySlug(name: string): string | undefined {
+  return SLUG_BY_NAME.get(name);
+}
+
+/** カテゴリ名から配色を引く。未知のカテゴリは業界解説の配色にフォールバック */
+export function getCategoryTheme(name: string): CategoryTheme {
+  const slug = SLUG_BY_NAME.get(name) ?? "industry-guide";
+  return CATEGORIES[slug].theme;
+}
 
 export function isValidCategorySlug(slug: string): slug is CategorySlug {
   return slug in CATEGORIES;

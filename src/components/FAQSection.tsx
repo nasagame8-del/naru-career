@@ -3,10 +3,11 @@ import { MiniAlto } from "./MiniAlto";
 
 export function FAQSection({
   faqs,
-  accentColor = "bg-primary",
+  borderClass = "border-primary",
 }: {
   faqs: FAQ[];
-  accentColor?: string;
+  /** 質問見出しの左罫線の色クラス */
+  borderClass?: string;
 }) {
   if (faqs.length === 0) return null;
 
@@ -19,7 +20,7 @@ export function FAQSection({
       <div className="space-y-6">
         {faqs.map((faq, i) => (
           <div key={i}>
-            <h3 className={`font-bold text-ink mb-2 pl-3 border-l-[3px] ${accentColor}`}>
+            <h3 className={`font-bold text-ink mb-2 pl-3 border-l-[3px] ${borderClass}`}>
               {faq.question}
             </h3>
             <p className="text-ink-soft leading-relaxed pl-3">{faq.answer.replace(/\*\*/g, "")}</p>

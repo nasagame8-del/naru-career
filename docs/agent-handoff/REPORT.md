@@ -1,5 +1,65 @@
 # Claude Code Report
 
+## REPORT-010 — ブランドカラー統一・診断SEO整理・既知不具合の修正
+
+- reportId: `REPORT-010`
+- completedInstructionId: `USER-SITE-AUDIT-FOLLOWUP-2026-10-01`（ユーザー直接依頼。INST-004は未着手のまま）
+- status: `DONE`（resume-template の配布ファイルのみ判断待ち）
+- branch: `claude/article-tag-fix-c7w0z4`（PR未作成）
+- 実施内容:
+  - `6c3fe1e` fix: align NARU brand colors — globals.css のトークンを Tea Green #1F6F66 / Amber #B5691B に変更（primary/-soft/-hover、accent、amber、amber-ink）。診断UI（shindan.css の --primary/--gold と直書きのブランド色、紙吹雪、TYPE_COLORSのフォールバック）も同様。雑記カテゴリは Tea Green と見分けがつかなくなるsageから補助色ネイビーへ。
+  - `84614e6` fix: separate diagnosis result and type SEO — /types/* は index,follow・self canonical・OG/Twitter・sitemap掲載。/shindan/result/* は noindex,follow・self canonical・sitemap非掲載、/types/{slug} への導線を2箇所（既存リンクをnext/link化＋解説の後に追加、イベント名は既存の to_type_hub）。
+  - `7720660` fix: broken resume template link and article FAQ — /members/resume-template のリンク先 docx が存在しないため「現在ダウンロードできません（準備中）」表示＋お問い合わせ導線に変更。agent-not-recommended の inlineFaq.heading を現行H2「実際に使って感じた、転職エージェントの本音」に修正し、全記事のinlineFaqが配置されることを確認するテストを追加。
+  - `09d914c` fix: refine navigation and category visual states — 上部ナビ選択中の下線をAmber（Tea Green上で約1.1:1）からクリーム（amber-soft、約5:1）へ。カテゴリページの番号バッジを塗りつぶしからカテゴリ色の枠線スタイルへ統一。
+- テスト結果: vitest 267件pass・node --test 43件pass、tsc exit 0、eslint src エラー0（警告6件はinternalの既存）、next build 成功。Chromiumで / /articles 記事2件 /category/taiken /category/zakki /shindan /shindan/result/wizard /types/wizard /members/resume-template /about を375/390/430/768/1024/1440pxで確認（66通り）し、横スクロール・文字切れ・console error・hydration error なし（外部のGoogle Fonts/GTMはサンドボックスのTLSで読めないため除外）。HTML上で /types/wizard は `index, follow`＋self canonical、/shindan/result/wizard は `noindex, follow`＋self canonical、sitemapは /types/* 16件・/shindan/result/* 0件。
+- GA4: template_download（word/pdf）・to_survey はクリック1回につき dataLayer に1件ずつ。cta_click の重複なし。
+- 変更ファイル: src/app/globals.css、src/app/shindan/{shindan.css,_components/MatchConfetti.tsx,_components/ResultContent.tsx,result/[slug]/page.tsx,result/[slug]/opengraph-image.tsx}、src/app/types/[slug]/page.tsx、src/lib/categories.ts、src/components/CategoryNavBar.tsx、src/app/category/[slug]/page.tsx、src/app/members/resume-template/page.tsx、content/articles/agent-not-recommended.md（frontmatterのinlineFaq.headingのみ）、src/lib/articles.test.ts、本レポート。
+- 旧カラーを残した箇所: 診断UIの羊皮紙・インク系の中間色（#35251f 等）、タイトルロゴ画像（赤・金の画像素材）、16タイプ固有の色（TYPE_COLORS）、/types の見出しバー（向いている／注意などの意味色）、OG画像のネイビー背景、状態表示のsage（AI面接チェックの「把握済み」）。いずれもブランドのprimary/accentではないため。
+- 判断が必要な項目（NEEDS_DECISION）: 会員ページで配布する docx。リポジトリ内の docx は記事で無料配布している `public/downloads/職務経歴書テンプレート_NARU.docx` のみで、ページの説明（実際に使った職務経歴書ベース）とは内容が近いが、note有料購入者向けの「NARU配布用」ファイルと同一かは確認できない。同じでよければリンク先をそのファイルに、別ファイルなら `public/members/files/resume-template-naru.docx` に配置すればリンクを戻せる。
+- 推奨する次の作業: 上記docxの決定、PR作成とPreviewでの目視確認。
+
+---
+
+## REPORT-009 — サイト全体監査・AIコーディング臭除去
+
+- reportId: `REPORT-009`
+- completedInstructionId: `USER-SITE-AUDIT-2026-10-01`（ユーザー直接依頼。INST-004は未着手のまま）
+- status: `DONE`（判断事項あり）
+- branch: `claude/article-tag-fix-c7w0z4`
+- 実施内容:
+  - P0: ルートlayoutの `canonical: "/"` が canonical未設定ページ（/shindan, /types/*, /shindan/result/*, 404）へ継承されていた問題を解消し、各ページに自己canonicalを設定。robots.txt で個別許可botに非公開パスのdisallowが効いていなかった問題を修正（/api/ も追加）。本文の箇条書きが無印になっていた問題（preflightのlist-style消去）を修正。日本語の括弧に隣接した `**` が太字にならず記号ごと消えていた11箇所を太字化。`## よくある質問` 以降を末尾まで削除していたため2記事で後続セクション（おすすめエージェント）が消えていた問題を修正。目次の `&#x26;` 表示、カテゴリページFAQの色崩れ、AI面接チェックの `&#10003;` 文字列露出、関連記事の "thumb" 表示、エージェント診断の「準備中」ボタンを修正。ガイド/会員ページのタイトル `| NARU | NARU` 重複を修正。
+  - P1: 表を横スクロール対応（1文字ずつ折り返す崩れを解消）、blockquote/h4スタイル追加、モバイルのH2サイズ調整、5ステップのフロー図がPCで本文幅をはみ出す問題を修正、記事メタ行の折り返し、ヒーロー画像のwidth/height/sizesを実ファイル比率に合わせる、診断バナーの初回判定・safe-area・設問数の誤表記（5問→/shindanは20問）を修正、カテゴリページの重複カテゴリナビを削除、目次の開閉表示。a11y: skip link、nav/パンくずのaria-label・aria-current、time dateTime、装飾SVGのaria-hidden、診断の選択肢aria-pressed・progressbar、ネストした<main>の解消、カテゴリタグ文字色のコントラスト改善（amber-ink/sage-ink追加）、全体のprefers-reduced-motion対応。
+  - P2: カテゴリ配色・slug対応表の6重複を `src/lib/categories.ts` の theme / getCategoryTheme / getCategorySlug に集約。CategoryNavBar（全ページのクライアントコンポーネント）にCATEGORIES全体（説明文・FAQ）を送らないようlayoutから必要分だけ渡す形に変更。SurveyLink/TemplateDownloadをServer Component化し計測をCtaTrackerの `data-track-event` に一本化（ダウンロード時のcta_click二重計上を解消）。
+  - P3: カード・バナーのhover浮き上がり/影/画像ズーム、glass(backdrop-blur)、glow影、NARU Pointの装飾三角と星アイコン、診断の装飾アイコン列、noteボックスの絵文字、診断画面の設計履歴コメント、ページ内の自明なJSXコメントを削除。角丸をrounded-lgに統一。ホームの重複した適職診断CTA（3つ目）を削除。診断の所要時間表記を「約2分」に統一。
+- テスト結果: `npm test` vitest 266件pass・node --test 43件pass、`npx tsc --noEmit` exit 0、`npx eslint src` エラー0（警告6件は internal ダッシュボードの既存未使用変数）、`npm run build` 成功。Chromiumで / /articles 記事3本 /category/zakki /category/industry-guide /about /agent-diagnosis /glossary を375/390/430/768/1024/1440pxで確認し横スクロール0。console errorはサンドボックスで外部（Google Fonts/GTM）の証明書が通らないものだけ。全52記事の本文HTMLを修正前後で比較し、差分は意図した太字11箇所・復活した2セクション・目次1件・非表示インラインFAQ1件のみ。
+- 変更ファイル: src/app/{layout,page,robots,sitemap,globals.css}、src/app/articles/{page,[slug]/page}.tsx、src/app/category/[slug]/page.tsx、src/app/guides/second-new-grad-complete-guide/page.tsx、src/app/members/resume-template/page.tsx、src/app/privacy/page.tsx、src/app/shindan/{layout.tsx,shindan.css,_lib/data.ts,result/[slug]/page.tsx,result/[slug]/opengraph-image.tsx}、src/app/types/[slug]/page.tsx、src/components/{AgentDiagnosis,AiInterviewCheck,ArticleBrowser,ArticleList,CategoryNavBar,CategoryTabs,CtaTracker,DiagnosisBanner,FAQSection,Footer,Header,HeroSection,LatestNotePosts,ShareButtons,SurveyLink,TableOfContents,TemplateDownload}.tsx、src/lib/{articles,articles.test,categories}.ts、package.json、package-lock.json、本レポート。削除: src/components/ArticleCard.tsx、src/components/MiniAltoBoxes.tsx、public/{file,globe,next,vercel,window}.svg、依存 satori。
+- SEOへの変更: URL・slug・記事タイトル・H1・記事本文は無変更。canonical は「誤って / を指していたページ」を自己参照に修正したのみ（既存の正しいcanonicalは無変更）。og:locale/siteName/url/authors/section、カテゴリページのOGを追加。sitemapに /privacy と /types/* を追加、カテゴリのlastModifiedを記事の最新更新日に。robotsのdisallow修正。/articles の description に「雑記」を追記。ホームのPICKUPラベルをh2化。ガイド・会員ページのtitle重複修正。記事のFAQPage構造化データから、画面に表示されていないインラインFAQ（agent-not-recommended の1件）を除外。
+- 既知の問題: agent-not-recommended.md の inlineFaq.heading「「やめたほうがいい」と感じた瞬間は、正直あった」に一致するH2が無く表示されない（記事側の修正が必要）。/members/resume-template のリンク先 `/members/files/resume-template-naru.docx` が存在しない。Google Fontsを afterInteractive のスクリプトで読み込んでおりFOUT/CLSが出る（next/font移行はビルド時の外部取得を伴うため未実施）。internal ダッシュボードのlint警告は対象外として未修正。
+- 判断が必要な項目（NEEDS_DECISION）:
+  1. ブランドカラー: 依頼文の Tea Green #1F6F66 / Amber #B5691B と、現行サイトCSSの primary #7A3E2E（ブラウン）/ amber #D29A4A が一致しない（画像生成プロンプトは前者）。「ブランドカラー変更禁止」と矛盾するため配色は変更していない。どちらを正とするか決定が必要。
+  2. /shindan/result/* と /types/* が同じ16タイプを扱い内容が重複。result を noindex か /types へのcanonicalにするか。
+  3. 未参照のpublic画像（logo-icon.png、logo-wordmark-original.png、images/backgrounds/*、shindan の未使用素材、monster-*.png など）。外部参照の可能性があるため削除していない。
+  4. 記事内の `cta-button` を内部リンク（エージェント比較を見る等）にも使っており cta_click 計測に混ざっている。計測仕様の変更になるため未変更。
+- 推奨する次の作業: 上記判断事項の決定、next/font への移行検討、agent-not-recommended の inlineFaq 見出し修正、resume-template の docx 配置、PR作成とPreviewでの目視確認。
+
+---
+
+## REPORT-008 — 未定義カテゴリ「転職ノウハウ」の修正と「雑記」カテゴリ追加
+
+- reportId: `REPORT-008`
+- completedInstructionId: `USER-ARTICLE-CATEGORY-FIX-2026-10-01`（ユーザー直接依頼。INST-004は未着手のまま）
+- status: `DONE`
+- branch: `claude/article-tag-fix-c7w0z4`
+- 実施内容: 記事 `new-grad-early-resignation-career-plan` に未定義カテゴリ「転職ノウハウ」が入っていたため、新カテゴリ「雑記」（`/category/zakki`）を追加して主カテゴリを雑記に変更。frontmatterに任意項目 `subCategories` を追加し、同記事を「業界解説」にも掲載。カテゴリページ・記事一覧の絞り込み・関連記事は `ArticleMeta.categories`（主カテゴリ＋subCategories）で判定する。ナビ・タグ色（新色 sage）・パンくずに雑記を追加。SEO Editor / Article Factory のカテゴリ許可リストにも雑記を追加。
+- テスト結果: `npm test` 261件pass、`npx tsc --noEmit` exit 0、変更ファイルのESLint エラー0（既存warning 1件）、`npm run build` 成功。ビルド出力で同記事が `/category/zakki` と `/category/industry-guide` の両方に出ることを確認。
+- 変更ファイル: `content/articles/new-grad-early-resignation-career-plan.md`, `src/lib/articles.ts`, `src/lib/categories.ts`, `src/app/category/[slug]/page.tsx`, `src/app/articles/[slug]/page.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `src/components/ArticleBrowser.tsx`, `src/components/ArticleCard.tsx`, `src/components/ArticleList.tsx`, `src/components/CategoryNavBar.tsx`, `src/lib/article-factory/constants.ts`, `src/lib/article-factory/safety.test.ts`, `src/lib/seo-editor/markdown.ts`, `src/lib/seo-editor/schemas/write.ts`, 本レポート。
+- git diff概要: カテゴリ定義・型の拡張、複数カテゴリ掲載（subCategories）対応、該当記事のfrontmatter修正。safety.testの「未知カテゴリ」例を「転職ノウハウ」に変更。
+- 既知の問題: Article Factory の候補生成でもAIが「雑記」を選べるようになった。SEO Editor / Article Factory はまだ `subCategories` を生成・編集しない（手動で設定）。
+- 判断が必要な項目: 雑記カテゴリの説明文・FAQ・色（#5E7F68）は仮置きのため必要に応じて調整。
+- 推奨する次の作業: masterへのPR作成・レビュー後にマージ。
+
+---
+
 ## REPORT-007 — 記事画像4枚のDrive受け渡し
 
 - reportId: `REPORT-007`

@@ -11,7 +11,7 @@ export async function LatestNotePosts() {
       <div className="max-w-5xl mx-auto px-4 py-10">
         <div className="flex items-center justify-between mb-5">
           <div>
-            <span className="inline-block font-mono text-[11px] font-medium tracking-[0.2em] text-primary uppercase mb-1">
+            <span className="inline-block font-mono text-[11px] font-medium tracking-widest text-primary uppercase mb-1">
               NOTE
             </span>
             <h2 className="text-lg font-bold text-ink">最新のnote投稿</h2>
@@ -33,22 +33,21 @@ export async function LatestNotePosts() {
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex sm:flex-col bg-surface rounded-lg border border-line overflow-hidden hover:shadow-sm hover:-translate-y-0.5 transition-all duration-150"
+              className="group flex sm:flex-col bg-surface rounded-lg border border-line overflow-hidden hover:border-primary/30 transition-colors"
             >
-              {/* サムネイル */}
-              <div className="w-[100px] sm:w-full aspect-square sm:aspect-[1.91/1] relative bg-line overflow-hidden shrink-0">
+              <div className="w-[100px] sm:w-full aspect-square sm:aspect-card relative bg-line overflow-hidden shrink-0">
                 {post.thumbnail ? (
                   <Image
                     src={post.thumbnail}
                     alt=""
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover"
                     sizes="(max-width: 640px) 100px, 33vw"
                     unoptimized={post.thumbnail.startsWith("http")}
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-soft/30">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-soft/30" aria-hidden="true">
                       <rect x="3" y="3" width="18" height="18" rx="2" />
                       <path d="M9 9h6M9 13h4" />
                     </svg>
@@ -56,7 +55,6 @@ export async function LatestNotePosts() {
                 )}
               </div>
 
-              {/* テキスト */}
               <div className="p-3 flex-1 min-w-0">
                 <h3 className="font-bold text-[13px] text-ink leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                   {post.title}

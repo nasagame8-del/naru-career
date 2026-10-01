@@ -20,6 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${t.name} | RPG適職診断`,
     description: t.desc,
+    // 診断直後に見せるUX専用ページ。検索向けの正規ページは /types/{slug}
+    robots: { index: false, follow: true },
+    alternates: {
+      canonical: `/shindan/result/${slug}`,
+    },
     openGraph: {
       title: `${t.name} | RPG適職診断`,
       description: t.desc,

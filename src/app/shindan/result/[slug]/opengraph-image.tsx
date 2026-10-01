@@ -18,7 +18,7 @@ export default async function OgImage({
   const { slug } = await params;
   const id = SLUG_TO_ID[slug] ?? 1;
   const t = TYPES16[id];
-  const color = TYPE_COLORS[id] || "#b06a1c";
+  const color = TYPE_COLORS[id] || "#B5691B";
 
   const imgPath = join(
     process.cwd(),
@@ -80,7 +80,6 @@ export default async function OgImage({
             overflow: "hidden",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imgSrc}
             width={300}

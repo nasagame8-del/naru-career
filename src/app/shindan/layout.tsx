@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "RPG適職診断 | あなたの冒険者タイプは？",
   description:
     "20のYES／NOの質問に答えて、あなたにぴったりの適職タイプを16種類のRPGキャラクターから診断します。",
+  alternates: {
+    canonical: "/shindan",
+  },
   openGraph: {
     title: "RPG適職診断 | あなたの冒険者タイプは？",
     description:

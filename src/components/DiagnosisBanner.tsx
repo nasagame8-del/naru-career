@@ -20,21 +20,19 @@ const CTA_FOCUS_MAP: Record<string, BannerConfig> = {
 };
 
 type Props = {
-  /** /agent-diagnosis or /diagnosis（ctaFocus未設定時のフォールバック） */
+  /** /agent-diagnosis or /shindan（ctaFocus未設定時のフォールバック） */
   href: string;
   /** frontmatterのctaFocus値 */
   ctaFocus?: string;
 };
 
+const DISMISS_KEY = "diagnosis-banner-dismissed";
+
 export function DiagnosisBanner({ href, ctaFocus }: Props) {
   const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("diagnosis-banner-dismissed")) {
-      setDismissed(true);
-      return;
-    }
+    if (sessionStorage.getItem(DISMISS_KEY)) return;
 
     const onScroll = () => {
       const scrollPct =
@@ -46,17 +44,18 @@ export function DiagnosisBanner({ href, ctaFocus }: Props) {
       }
     };
 
+    // 途中位置で復元された場合にも出せるよう、初回にも判定する
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const close = () => {
     setVisible(false);
-    setDismissed(true);
-    sessionStorage.setItem("diagnosis-banner-dismissed", "1");
+    sessionStorage.setItem(DISMISS_KEY, "1");
   };
 
-  if (dismissed || !visible) return null;
+  if (!visible) return null;
 
   // ctaFocusがマップにあればそれを使い、なければ既存の2択ロジック
   const config: BannerConfig = ctaFocus && CTA_FOCUS_MAP[ctaFocus]
@@ -66,19 +65,24 @@ export function DiagnosisBanner({ href, ctaFocus }: Props) {
         title: href === "/agent-diagnosis"
           ? "自分に合うエージェントが分からない方へ"
           : "自分に向いている職種を知りたい方へ",
-        description: "5つの質問に答えるだけ。完全無料・登録不要です。",
+        description: href === "/agent-diagnosis"
+          ? "5つの質問に答えるだけ。完全無料・登録不要です。"
+          : "20のYES／NOに答えるだけ（約2分）。完全無料・登録不要です。",
         btnText: href === "/agent-diagnosis" ? "エージェント相性診断" : "RPG適職診断を受けてみる",
       };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-auto md:right-6 md:w-[360px] z-40 animate-slide-up">
-      <div className="bg-white border border-line shadow-lg md:rounded-xl p-4 md:p-5 relative">
+    <aside
+      aria-label="診断のご案内"
+      className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-auto md:right-6 md:w-[360px] z-40 animate-slide-up"
+    >
+      <div className="bg-surface border border-line shadow-lg md:rounded-lg p-4 pb-[max(1rem,env(safe-area-inset-bottom))] md:p-5 relative">
         <button
           onClick={close}
           aria-label="閉じる"
-          className="absolute top-3 right-3 w-7 h-7 rounded-full bg-bg-soft flex items-center justify-center text-ink-soft hover:text-ink hover:bg-line transition-colors"
+          className="absolute top-2 right-2 w-9 h-9 rounded-full bg-bg-soft flex items-center justify-center text-ink-soft hover:text-ink hover:bg-line transition-colors"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </button>
@@ -92,6 +96,6 @@ export function DiagnosisBanner({ href, ctaFocus }: Props) {
           {config.btnText}
         </Link>
       </div>
-    </div>
+    </aside>
   );
 }

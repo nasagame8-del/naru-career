@@ -369,22 +369,3 @@ export const TYPE_COLORS: Record<number, string> = {
   15: "#9b4fc0",
   16: "#5a9e3f",
 };
-
-export interface BattleInfo {
-  src: string;
-  width: string;
-}
-
-export const BATTLES: Record<string, BattleInfo> = {
-  slime: { src: "/shindan/monster-slime.png", width: "10%" },
-  mage: { src: "/shindan/monster-mage.png", width: "12%" },
-  dragon: { src: "/shindan/monster-dragon.png", width: "16%" },
-};
-
-export const HITS_TO_DEFEAT: Record<string, number> = {
-  slime: 3,
-  mage: 3,
-  dragon: 4,
-};
-
-export const BATTLE_MS = { enter: 750, hurt: 550, defeat: 900 };

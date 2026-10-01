@@ -1,39 +1,39 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllArticleMetas } from "@/lib/articles";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { LatestNotePosts } from "@/components/LatestNotePosts";
 import { HeroSection } from "@/components/HeroSection";
+import { getCategoryTheme } from "@/lib/categories";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   const articles = getAllArticleMetas();
   const featured = articles.slice(0, 3);
 
-
   return (
     <>
-      {/* ヒーローセクション */}
       <HeroSection />
 
-      {/* 注目記事セクション */}
       <section className="bg-bg-soft border-b border-line">
         <div className="max-w-5xl mx-auto px-4 py-10">
-          <span className="inline-block font-mono text-[11px] font-medium tracking-[0.2em] text-primary uppercase mb-6">
+          <h2 className="font-mono text-[11px] font-medium tracking-widest text-primary uppercase mb-6">
             PICKUP
-          </span>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {featured.map((article, index) => {
-              const tagStyle =
-                article.category === "体験談"
-                  ? "bg-amber-soft text-amber"
-                  : article.category === "エージェント比較"
-                    ? "bg-primary-soft text-primary"
-                    : "bg-gray-soft text-gray";
+            {featured.map((article) => {
+              const tagStyle = getCategoryTheme(article.category).tag;
               return (
                 <Link
                   key={article.slug}
                   href={`/articles/${article.slug}`}
-                  className="group block bg-white rounded-lg overflow-hidden border border-line hover:shadow-lg transition-all duration-150 hover:-translate-y-0.5"
+                  className="group block bg-surface rounded-lg overflow-hidden border border-line hover:border-primary/30 transition-colors"
                 >
                   <div className="aspect-card relative bg-line overflow-hidden">
                     {article.cardImagePath ? (
@@ -57,11 +57,11 @@ export default function Home() {
                     </h3>
                     <div className="flex items-center gap-2 mt-2">
                       <span
-                        className={`text-[10px] font-mono font-medium px-1.5 py-0.5 rounded ${tagStyle}`}
+                        className={`text-[11px] font-mono font-medium px-1.5 py-0.5 rounded ${tagStyle}`}
                       >
                         {article.category}
                       </span>
-                      <time className="text-[10px] text-ink-soft font-mono">
+                      <time dateTime={article.datePublished} className="text-[11px] text-ink-soft font-mono">
                         {article.datePublished}
                       </time>
                     </div>
@@ -73,18 +73,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 診断への導線バナー（PICKUP直後） */}
       <section className="bg-bg border-b border-line">
         <div className="max-w-5xl mx-auto px-4 py-8">
           <Link
             href="/shindan"
-            className="group block bg-primary rounded-xl p-6 text-center hover:bg-primary/90 transition-colors"
+            className="group block bg-primary rounded-lg p-6 text-center hover:bg-primary/90 transition-colors"
           >
             <p className="text-white/80 text-xs mb-1">
               どの記事から読めばいいか迷った方へ
             </p>
             <p className="text-white font-bold text-base md:text-lg">
-              まずは2分の適職診断で、あなたに合う記事を見つけませんか？
+              まずは約2分の適職診断で、あなたに合う記事を見つけませんか？
             </p>
             <span className="inline-block mt-3 text-white text-sm font-medium border border-white/40 rounded-lg px-5 py-2 group-hover:bg-white/10 transition-colors">
               RPG適職診断を始める →
@@ -93,13 +92,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 記事一覧セクション */}
       <section id="articles" className="max-w-5xl mx-auto px-4 pt-12 pb-16">
         <h2 className="text-xl font-bold mb-6">記事一覧</h2>
         <CategoryTabs articles={articles} />
       </section>
 
-      {/* 著者実績帯（フッター手前） */}
       <section className="border-t border-line bg-bg-soft">
         <div className="max-w-5xl mx-auto px-4 py-8 flex flex-wrap items-center justify-center">
           <div className="flex flex-col items-center px-6 py-1">
@@ -121,36 +118,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 適職診断への導線 */}
-      <section className="border-t border-line">
-        <div className="max-w-5xl mx-auto px-4 py-10">
-          <a
-            href="/shindan"
-            className="group flex items-center gap-4 bg-white border border-line rounded-lg p-5 hover:shadow-lg transition-all duration-150 hover:-translate-y-0.5"
-          >
-            <Image
-              src="/images/mini/alto-mini-idea.png"
-              alt=""
-              width={48}
-              height={48}
-              className="flex-shrink-0"
-            />
-            <div>
-              <p className="font-bold text-sm text-ink group-hover:text-primary transition-colors">
-                自分がどんな仕事に向いているか、3分の適職診断で見てみませんか？
-              </p>
-              <p className="text-xs text-ink-soft mt-1">
-                20のYES／NOに答えるだけ。RPGキャラクターで16タイプの適職を診断します
-              </p>
-            </div>
-            <span className="ml-auto text-primary text-sm font-medium flex-shrink-0">
-              診断する →
-            </span>
-          </a>
-        </div>
-      </section>
-
-      {/* 最新のnote投稿 */}
       <LatestNotePosts />
     </>
   );

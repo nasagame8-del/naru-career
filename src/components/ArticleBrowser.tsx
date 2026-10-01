@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { CATEGORIES } from "@/lib/categories";
+import { CATEGORIES, getCategorySlug } from "@/lib/categories";
 import type { ArticleMeta } from "@/lib/articles";
 import { ArticleList } from "./ArticleList";
 import {
@@ -18,11 +18,6 @@ const INITIAL_COUNT = 12;
 const ALL = "all" as const;
 
 type FilterId = typeof ALL | ArticleMeta["category"];
-
-/** カテゴリ名 → SEO用カテゴリページのslug（存在するものだけ） */
-const CATEGORY_SLUG_BY_NAME = new Map<string, string>(
-  Object.entries(CATEGORIES).map(([slug, cat]) => [cat.name, slug])
-);
 
 /**
  * 記事をカテゴリで絞り込み、並び順を選んで閲覧する。
@@ -56,7 +51,9 @@ export function ArticleBrowser({
   const counts = useMemo(() => {
     const map = new Map<FilterId, number>([[ALL, articles.length]]);
     for (const article of articles) {
-      map.set(article.category, (map.get(article.category) ?? 0) + 1);
+      for (const category of article.categories) {
+        map.set(category, (map.get(category) ?? 0) + 1);
+      }
     }
     return map;
   }, [articles]);
@@ -71,7 +68,7 @@ export function ArticleBrowser({
 
   const filtered = useMemo(() => {
     const scoped =
-      filter === ALL ? articles : articles.filter((a) => a.category === filter);
+      filter === ALL ? articles : articles.filter((a) => a.categories.includes(filter));
     return sortArticles(scoped, sort, { popularityOrder, recommendedOrder });
   }, [articles, filter, sort, popularityOrder, recommendedOrder]);
 
@@ -94,7 +91,7 @@ export function ArticleBrowser({
     availableSorts.find((o) => o.id === sort)?.label ?? "新しい順";
 
   const activeCategorySlug =
-    filter === ALL ? null : (CATEGORY_SLUG_BY_NAME.get(filter) ?? null);
+    filter === ALL ? null : (getCategorySlug(filter) ?? null);
 
   return (
     <div>
@@ -129,7 +126,7 @@ export function ArticleBrowser({
             );
           })}
         </div>
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none sm:hidden" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-bg to-transparent pointer-events-none sm:hidden" />
       </div>
 
       {/* 並び替え */}

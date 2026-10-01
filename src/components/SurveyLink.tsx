@@ -1,6 +1,5 @@
-"use client";
-
-const SURVEY_URL =
+// クリック計測は CtaTracker が data-track-event を見て行う
+export const SURVEY_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScDn4OFzXXGVQ7kOwEN8B1ctymOTfEdV5ml_21noJ6f4whYNw/viewform";
 
 export function SurveyLink({
@@ -16,12 +15,7 @@ export function SurveyLink({
       target="_blank"
       rel="noopener noreferrer"
       className={className}
-      onClick={() => {
-        if (typeof window !== "undefined") {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: "to_survey" });
-        }
-      }}
+      data-track-event="to_survey"
     >
       {children}
     </a>

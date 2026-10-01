@@ -10,7 +10,7 @@ import { BreadcrumbJsonLd } from "@/components/JsonLd";
 export const metadata: Metadata = {
   title: "記事一覧",
   description:
-    "第二新卒のIT/Web転職に関する記事を新しい順に一覧できます。体験談・エージェント比較・業界解説のカテゴリで絞り込んで探せます。",
+    "第二新卒のIT/Web転職に関する記事を新しい順に一覧できます。体験談・エージェント比較・業界解説・雑記のカテゴリで絞り込んで探せます。",
   alternates: {
     canonical: "/articles",
   },
@@ -31,13 +31,13 @@ export default function ArticlesIndexPage() {
         ]}
       />
 
-      <main className="max-w-5xl mx-auto px-4 pt-10 pb-16">
-        <nav aria-label="パンくず" className="text-xs text-ink-soft mb-4">
+      <div className="max-w-5xl mx-auto px-4 pt-8 pb-16">
+        <nav aria-label="パンくずリスト" className="text-xs text-ink-soft mb-4">
           <Link href="/" className="hover:text-ink transition-colors">
             ホーム
           </Link>
-          <span className="mx-1.5">/</span>
-          <span className="text-ink">記事一覧</span>
+          <span className="mx-1.5" aria-hidden="true">/</span>
+          <span className="text-ink" aria-current="page">記事一覧</span>
         </nav>
 
         <h1 className="text-2xl font-bold mb-2">記事一覧</h1>
@@ -71,7 +71,7 @@ export default function ArticlesIndexPage() {
             ))}
           </ul>
         </section>
-      </main>
+      </div>
     </>
   );
 }

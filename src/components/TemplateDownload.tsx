@@ -1,22 +1,7 @@
-"use client";
-
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-  }
-}
-
 const DOCX_HREF = encodeURI("/downloads/職務経歴書テンプレート_NARU.docx");
 const PDF_HREF = encodeURI("/downloads/職務経歴書テンプレート_NARU.pdf");
 
-function trackDownload(format: "word" | "pdf") {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "template_download",
-    format,
-  });
-}
-
+// クリック計測（template_download）は CtaTracker が data-track-* を見て行う
 export function TemplateDownload() {
   return (
     <section className="mt-12 border border-primary rounded-lg bg-primary-soft p-6">
@@ -31,7 +16,8 @@ export function TemplateDownload() {
         <a
           href={DOCX_HREF}
           download="職務経歴書テンプレート_NARU.docx"
-          onClick={() => trackDownload("word")}
+          data-track-event="template_download"
+          data-track-format="word"
           className="cta-button justify-center"
         >
           Word版をダウンロード
@@ -39,14 +25,15 @@ export function TemplateDownload() {
         <a
           href={PDF_HREF}
           download="職務経歴書テンプレート_NARU.pdf"
-          onClick={() => trackDownload("pdf")}
+          data-track-event="template_download"
+          data-track-format="pdf"
           className="cta-button justify-center"
-          style={{ background: "var(--amber)" }}
+          style={{ background: "var(--ink)" }}
         >
           PDF版をダウンロード
         </a>
       </div>
-      <p className="text-[10px] text-ink-soft mt-3">
+      <p className="text-[11px] text-ink-soft mt-3">
         ※ Word版は編集用、PDF版は印刷・確認用としてご利用ください。
       </p>
     </section>

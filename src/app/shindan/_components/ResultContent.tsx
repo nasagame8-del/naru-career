@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import MatchConfetti from "./MatchConfetti";
 import { RESULT_HEADLINES } from "../_lib/matching";
 import QuestCharacter from "./QuestCharacter";
@@ -70,7 +71,7 @@ export default function ResultContent({
 }) {
   const resultHeading = useRef<HTMLHeadingElement>(null);
   useEffect(() => { resultHeading.current?.focus({ preventScroll: true }); }, []);
-  const accentColor = TYPE_COLORS[typeId] || "#b06a1c";
+  const accentColor = TYPE_COLORS[typeId] || "#B5691B";
   const shareText = `私の適職タイプは【${typeInfo.name}】でした！\nあなたも受けてみませんか？\n#適職診断 #転職`;
   const shareUrl = `${SITE_URL}/shindan?utm_source=x&utm_medium=share&utm_campaign=shindan_result`;
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
@@ -151,16 +152,16 @@ export default function ResultContent({
           </p>
         )}
 
-        {/* ── タイプ詳細への導線 ── */}
+        {/* 結果ページは診断直後のUX用（noindex）。正規の解説は /types/{slug} */}
         <div className="type-hub-link">
-          <a
+          <Link
             href={`/types/${typeInfo.slug}`}
             className="type-hub-btn"
             style={{ borderColor: accentColor, color: accentColor }}
             onClick={() => trackEvent("to_type_hub", { type: typeInfo.slug })}
           >
             {typeInfo.name.split("（")[0]}タイプの詳細を見る →
-          </a>
+          </Link>
         </div>
 
         {/* ── 向いている環境 ── */}
@@ -191,6 +192,17 @@ export default function ResultContent({
             <span className="v">{new Date().toLocaleDateString("ja-JP")}</span>
           </li>
         </ul>
+
+        <div className="type-hub-link">
+          <Link
+            href={`/types/${typeInfo.slug}`}
+            className="type-hub-btn"
+            style={{ borderColor: accentColor, color: accentColor }}
+            onClick={() => trackEvent("to_type_hub", { type: typeInfo.slug })}
+          >
+            このタイプの特徴・向いている仕事を詳しく見る →
+          </Link>
+        </div>
 
         {/* ══════ CTA ブロック ══════ */}
         <div className="cta-slot">

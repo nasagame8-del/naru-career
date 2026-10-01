@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "第二新卒×IT/Web転職 完全ガイド | NARU",
+  title: "第二新卒×IT/Web転職 完全ガイド",
   description:
     "第二新卒でIT/Web業界への転職を考えている方へ。基礎知識、転職活動の進め方、エージェント比較、職務経歴書の書き方、面接対策、採用トレンドまで、既存30本以上の記事を1ページにまとめた完全ガイドです。",
   alternates: {
@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     description:
       "基礎知識から実体験まで。第二新卒のIT/Web転職に必要な情報を30本以上の記事で網羅した完全ガイド。",
     type: "website",
+    siteName: "NARU",
+    locale: "ja_JP",
+    url: "/guides/second-new-grad-complete-guide",
+    images: ["/logo-wordmark.png"],
   },
 };
 
