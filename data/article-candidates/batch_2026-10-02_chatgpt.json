@@ -1,0 +1,124 @@
+{
+  "batchId": "batch_2026-10-02_chatgpt",
+  "generatedAt": "2026-10-02T00:05:00+09:00",
+  "trigger": "manual",
+  "inventorySize": 52,
+  "nextArticleId": 54,
+  "notes": [
+    "10/2公開分の先行候補。Drive 01_Content は NARU-053 まで存在し、NARU-042 欠番のため記事フォルダ数は52。次回採番は54。",
+    "Open PR #49 は転職エージェントへの不満・本音・合わない場合の判断。近接するエージェント系候補はカニバリ回避のため今回除外。",
+    "GSCは2026-09-28まで確定。今回4候補には直接一致するGSCクエリ証拠がないため searchEvidence は null。",
+    "10/1施行の求職者等セクハラ対策義務化、9月公開の20代年収調査・生成AI利用調査・選考プロセス調査を一次/原典寄りに確認済み。執筆時に再確認する。"
+  ],
+  "candidates": [
+    {
+      "id": "cand_261002a1",
+      "title": "面接でこんなこと聞かれたら？10月1日から求職者ハラスメント対策が企業の義務に",
+      "primaryKeyword": "求職者 ハラスメント 面接",
+      "secondaryKeywords": [
+        "就活 ハラスメント 面接 質問",
+        "面接 セクハラ 対策",
+        "求職者 セクハラ 相談"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の面接記事は志望理由・AI面接・一般的な選考対策が中心。本候補は2026年10月1日施行の新ルールを起点に、面接・OB/OG訪問・インターン等で不適切な言動を受けた求職者側の確認事項と相談先を扱う。",
+      "reasonToWriteNow": "2026年10月1日から求職者等に対するセクシュアルハラスメント防止措置が事業主の義務になった直後。9月30日公表の16,337件の面接録画分析でもリスク検知面接率10.66%と報告されており、時事性と一次情報性が高い。",
+      "category": "雑記",
+      "proposedSlug": "job-seeker-harassment-new-rules-2026",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-interview-questions",
+        "ai-interview-screening",
+        "interview-failure-why-this-job"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261002a2",
+      "title": "第二新卒の希望年収はいくら？2026年調査と年収350→400万円の実体験から考える",
+      "primaryKeyword": "第二新卒 希望年収",
+      "secondaryKeywords": [
+        "第二新卒 年収 相場",
+        "第二新卒 転職 年収",
+        "未経験 IT転職 年収"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "既存記事には退職金や内定承諾の確認記事はあるが、第二新卒の希望年収・提示年収の決め方を主題にした記事はない。最新調査に加え、著者の年収350万円→400万円という許可済み実体験を使える。",
+      "reasonToWriteNow": "2026年9月の20代転職意識調査で第二新卒の希望年収は301万〜400万円が44.3%で最多、401万円以上も40.2%。マイナビ調査でも年収低下を受け入れにくい傾向が示されており、第二新卒の意思決定テーマとして新鮮。",
+      "category": "体験談",
+      "proposedSlug": "second-new-grad-desired-salary-2026",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "second-new-grad-it-offer-acceptance-checks",
+        "second-new-grad-retirement-pay"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261002a3",
+      "title": "転職活動で生成AIはどこまで使っていい？求職者7割利用時代の企業研究・書類・面接の使い分け",
+      "primaryKeyword": "転職 生成AI 使い方",
+      "secondaryKeywords": [
+        "ChatGPT 転職活動",
+        "生成AI 職務経歴書",
+        "AI 企業研究 転職"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "company-reputation-search-reality は企業評判をGoogle/AIで調べる際の注意が中心。本候補は転職活動全体で生成AIをどこまで使い、どこを一次情報で裏取りするかという実務フローを扱う。",
+      "reasonToWriteNow": "2026年9月公開の求職者調査で約70%が生成AIを活用しつつ、約50%が裏付けを重視。AIO対策企業で働く著者の専門性とも接続しやすく、企業メディアとの差別化がしやすい。",
+      "category": "業界解説",
+      "proposedSlug": "job-change-generative-ai-usage-2026",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "company-reputation-search-reality",
+        "ai-interview-screening",
+        "resume-writing-second-new-grad"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261002a4",
+      "title": "選考が長い会社は辞退すべき？転職希望者の4割が「遅さ」で離脱した最新調査",
+      "primaryKeyword": "転職 選考 遅い 辞退",
+      "secondaryKeywords": [
+        "転職 面接 回数 多い",
+        "転職 選考期間 長い",
+        "選考 連絡 遅い 会社"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "既存の面接記事は質問・受け答え・AI面接が中心。本候補は応募者から見た『候補者体験』を主題に、選考速度・面接回数・連絡の透明性から企業を見極める判断軸を扱う。",
+      "reasonToWriteNow": "2026年9月29日公表の転職希望者520人調査で、理想の選考期間は1カ月未満が6割超、約4割が選考の遅さで離脱経験、面接2回以下を理想とする人が約9割。公開直後で鮮度が高い。",
+      "category": "雑記",
+      "proposedSlug": "job-selection-process-red-flags",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-interview-questions",
+        "casual-interview",
+        "second-new-grad-it-offer-acceptance-checks"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ]
+}
