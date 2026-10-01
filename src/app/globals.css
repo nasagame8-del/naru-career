@@ -443,3 +443,10 @@ h1 {
 /* Article-linked screenshots: keep inside mobile prose width */
 .prose a.x-post-screenshot { display:block; width:100%; max-width:100%; overflow:hidden; }
 .prose a.x-post-screenshot img { display:block; width:100%; max-width:100%; height:auto; box-sizing:border-box; }
+
+/* Mobile article overflow guard */
+@media (max-width: 639px) {
+  .prose { min-width: 0; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; }
+  .prose > *, .prose > div > * { max-width: 100%; }
+  .prose pre, .prose table { max-width: 100%; overflow-x: auto; }
+}
