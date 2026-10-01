@@ -1,7 +1,7 @@
 {
   "batchId": "batch_2026-10-02_chatgpt",
   "selectedAt": "2026-10-02T00:09:00+09:00",
-  "status": "draft_prs_created_images_pending",
+  "status": "images_reflected_qa_pending",
   "publishSlots": [
     {
       "order": 1,
@@ -13,7 +13,7 @@
       "branch": "article-factory/2026-10-02-054-job-seeker-harassment",
       "prNumber": 56,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/56",
-      "headSha": "bb7e1d9f2f8a47842522005aabd825f8cbeacdf1",
+      "headSha": "59e14f381cfb59a5a66a6a2c359f279d07acaec5",
       "driveFolderId": "1dsk5OmRFQVLVV6ISC6R6pKTRtKQML8pg",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1dsk5OmRFQVLVV6ISC6R6pKTRtKQML8pg",
       "designPromptId": "18rr4MBls2lqwPW3O23k2S6ZjKUSIrDVovVuAutNr91o",
@@ -22,8 +22,8 @@
       "articleRunDocId": "1UJuMR2TVPxYvgJ0VU8ynXtsNc8_jn3XMhiVAxAcSkBQ",
       "qa": {
         "articleFactoryValidation": "success",
-        "vercelPreview": "success",
-        "images": "pending",
+        "vercelPreview": "pending",
+        "images": "complete",
         "previewVisual": "pending"
       }
     },
@@ -37,7 +37,7 @@
       "branch": "article-factory/2026-10-02-055-desired-salary",
       "prNumber": 57,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/57",
-      "headSha": "2a576b4519bf10f831ffbb3272c43ded7a145737",
+      "headSha": "f49237305ed362b3fae6a8d23b496ffc8722a445",
       "driveFolderId": "19Zh3imU3TnA-ASyhUODiTKqAnfUq4KFx",
       "driveFolderUrl": "https://drive.google.com/drive/folders/19Zh3imU3TnA-ASyhUODiTKqAnfUq4KFx",
       "designPromptId": "1S9zKfOhsLfiVUvM6Oze0klAwFZzKAmvZZK_r1xohrHM",
@@ -47,7 +47,7 @@
       "qa": {
         "articleFactoryValidation": "success",
         "vercelPreview": "pending",
-        "images": "pending",
+        "images": "complete",
         "previewVisual": "pending"
       }
     }
@@ -55,6 +55,7 @@
   "notes": [
     "ユーザー選択: 1.2",
     "原稿・画像プラン・Drive保存・Draft PR作成済み。",
-    "公開時刻は標準枠12:00/18:00。画像4枚/記事の反映、最新headでのCI/Vercel成功、ユーザープレビュー承認が不足する場合は公開しない。"
+    "公開時刻は標準枠12:00/18:00。画像4枚/記事の反映、最新headでのCI/Vercel成功、ユーザープレビュー承認が不足する場合は公開しない。",
+    "2026-10-02 00:28頃: 8枚受領。originalsへPNG、imagesへWebP（card 1200x630 / body 1200x675）保存し、PR #56/#57へ反映。"
   ]
 }
