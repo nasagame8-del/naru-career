@@ -20,7 +20,7 @@ export function buildQuickWins(current28d: SCPeriodData): QuickWinPage[] {
         p.position <= 15 &&
         (p.clicks === 0 || p.ctr < 0.02)
     )
-    .map((p) => {
+    .map((p): QuickWinPage => {
       const priority: QuickWinPage["priority"] =
         p.position <= 10 && p.impressions >= 10
           ? "high"
