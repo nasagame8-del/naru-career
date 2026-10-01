@@ -93,6 +93,8 @@ export interface NewlyVisible {
 
 /** 既にGoogle評価が付いている既存ページの即効改善候補 */
 export interface QuickWinPage extends SCRow {
+  page: string;
+  query: string;
   priority: "high" | "medium" | "low";
   signal: "zero_clicks" | "low_ctr";
 }

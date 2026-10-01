@@ -114,7 +114,8 @@ export function QuickWinPages({ items }: { items: QuickWinPage[] }) {
               <tr key={i} className="border-b border-gray-50">
                 <td className="py-2"><PriorityLabel priority={p.priority} /></td>
                 <td className="py-2">
-                  <PageLink url={p.keys[0]} />
+                  <PageLink url={p.page} />
+                  <div className="text-[10px] text-gray-600 mt-1 select-all">検索: {p.query}</div>
                   <span className="text-[10px] text-gray-400">
                     {p.signal === "zero_clicks" ? "0クリック" : "低CTR"}
                   </span>

@@ -169,9 +169,9 @@ function deriveInsights(data: {
   // 今週やること（最大5件）
   const actionItems: string[] = [];
   for (const p of quickWins.slice(0, 2)) {
-    const pagePath = new URL(p.keys[0]).pathname;
+    const pagePath = new URL(p.page).pathname;
     actionItems.push(
-      `${pagePath}（順位${p.position.toFixed(1)}位・表示${p.impressions}・${p.clicks}クリック）→ Quick Winとしてタイトル/冒頭/内部リンクを優先改善`
+      `${pagePath}「${p.query}」（順位${p.position.toFixed(1)}位・表示${p.impressions}・${p.clicks}クリック）→ Quick Winとしてタイトル/冒頭/内部リンクを優先改善`
     );
   }
   for (const p of decayingPages.slice(0, 1)) {

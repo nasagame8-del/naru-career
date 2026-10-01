@@ -7,12 +7,13 @@ function row(
   clicks: number,
   impressions: number,
   ctr: number,
-  position: number
+  position: number,
+  query?: string
 ): SCRow {
-  return { keys: [page], clicks, impressions, ctr, position };
+  return { keys: query ? [page, query] : [page], clicks, impressions, ctr, position };
 }
 
-function period(topPages: SCRow[]): SCPeriodData {
+function period(topPages: SCRow[], pageQueries: SCRow[] = []): SCPeriodData {
   return {
     clicks: 0,
     impressions: 0,
@@ -20,24 +21,30 @@ function period(topPages: SCRow[]): SCPeriodData {
     position: 0,
     topQueries: [],
     topPages,
-    pageQueries: [],
+    pageQueries,
   };
 }
 
 describe("buildQuickWins", () => {
   it("picks low-volume NARU opportunities at positions 5-15", () => {
     const result = buildQuickWins(
-      period([
-        row("https://naru-career.com/articles/a", 0, 10, 0, 9.3),
-        row("https://naru-career.com/articles/b", 1, 8, 0.125, 8),
-        row("https://naru-career.com/articles/c", 0, 4, 0, 7),
-        row("https://naru-career.com/articles/d", 0, 20, 0, 18),
-      ])
+      period(
+        [
+          // ページ全体ではCTRが2%を超えていても、特定クエリだけ取りこぼすケースを再現
+          row("https://naru-career.com/articles/a", 5, 156, 0.032, 8.4),
+        ],
+        [
+          row("https://naru-career.com/articles/a", 0, 10, 0, 9.3, "正社員 から業務委託 クビ"),
+          row("https://naru-career.com/articles/b", 1, 8, 0.125, 8, "クリック済み"),
+          row("https://naru-career.com/articles/c", 0, 4, 0, 7, "表示不足"),
+          row("https://naru-career.com/articles/d", 0, 20, 0, 18, "順位圏外"),
+        ]
+      )
     );
 
-    expect(result.map((p) => p.keys[0])).toEqual([
-      "https://naru-career.com/articles/a",
-    ]);
+    expect(result).toHaveLength(1);
+    expect(result[0].page).toBe("https://naru-career.com/articles/a");
+    expect(result[0].query).toBe("正社員 から業務委託 クビ");
     expect(result[0].priority).toBe("high");
     expect(result[0].signal).toBe("zero_clicks");
   });
