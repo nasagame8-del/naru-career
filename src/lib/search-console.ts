@@ -12,6 +12,7 @@ import type {
   SCRow, SCPeriodData, SCData,
   QueryInsight, QuerySuggestion, EnhancedActionItem, ThemeStat,
 } from "@/types/search-console";
+import { buildDecayingPages, buildQuickWins } from "./seo-opportunities";
 
 // 型を re-export（既存の import 元を壊さない）
 export type { SCRow, SCPeriodData, SCData, QueryInsight, QuerySuggestion, EnhancedActionItem, ThemeStat };
@@ -98,9 +99,9 @@ async function fetchPeriod(
 ): Promise<SCPeriodData> {
   const [total, topQueries, topPages, pageQueries] = await Promise.all([
     querySiteTotal(auth, siteUrl, startDate, endDate),
-    querySearchConsole(auth, siteUrl, startDate, endDate, ["query"], 50),
-    querySearchConsole(auth, siteUrl, startDate, endDate, ["page"], 20),
-    querySearchConsole(auth, siteUrl, startDate, endDate, ["page", "query"], 100),
+    querySearchConsole(auth, siteUrl, startDate, endDate, ["query"], 100),
+    querySearchConsole(auth, siteUrl, startDate, endDate, ["page"], 100),
+    querySearchConsole(auth, siteUrl, startDate, endDate, ["page", "query"], 500),
   ]);
 
   return { ...total, topQueries, topPages, pageQueries };
@@ -113,25 +114,31 @@ function deriveInsights(data: {
   previous7d: SCPeriodData;
   current28d: SCPeriodData;
   previous28d: SCPeriodData;
-}): Pick<SCData, "rewriteCandidates" | "lowCtrPages" | "surgingPages" | "newlyVisible" | "actionItems"> {
+}): Pick<
+  SCData,
+  "rewriteCandidates" | "lowCtrPages" | "quickWins" | "decayingPages" | "surgingPages" | "newlyVisible" | "actionItems"
+> {
   const { current7d, previous7d, current28d } = data;
 
-  // リライト候補: 平均順位11〜20位、表示回数10回以上 + 優先度
+  const quickWins = buildQuickWins(current28d);
+  const decayingPages = buildDecayingPages(current28d, data.previous28d);
+
+  // リライト候補: 平均順位11〜30位、表示回数5回以上 + 優先度
   const priorityOrder = { high: 0, medium: 1, low: 2 };
   const rewriteCandidates = current28d.topPages
-    .filter((p) => p.position >= 11 && p.position <= 20 && p.impressions >= 10)
+    .filter((p) => p.position >= 11 && p.position <= 30 && p.impressions >= 5)
     .map((p) => {
       const priority: "high" | "medium" | "low" =
-        p.position <= 15 && p.impressions >= 20 ? "high"
-        : p.position <= 20 && p.impressions >= 10 ? "medium"
+        p.position <= 20 && p.impressions >= 10 ? "high"
+        : p.position <= 30 && p.impressions >= 5 ? "medium"
         : "low";
       return { ...p, priority };
     })
     .sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
-  // CTRが低い記事: 表示20回以上、順位1〜20位、CTR 2%未満 + 優先度
+  // CTRが低い記事: NARUの現状母数に合わせて表示5回以上、順位1〜20位、CTR 2%未満
   const lowCtrPages = current28d.topPages
-    .filter((p) => p.impressions >= 20 && p.position >= 1 && p.position <= 20 && p.ctr < 0.02)
+    .filter((p) => p.impressions >= 5 && p.position >= 1 && p.position <= 20 && p.ctr < 0.02)
     .map((p) => {
       const priority: "high" | "medium" | "low" =
         p.position <= 10 && p.ctr < 0.01 ? "high"
@@ -161,6 +168,20 @@ function deriveInsights(data: {
 
   // 今週やること（最大5件）
   const actionItems: string[] = [];
+  for (const p of quickWins.slice(0, 2)) {
+    const pagePath = new URL(p.keys[0]).pathname;
+    actionItems.push(
+      `${pagePath}（順位${p.position.toFixed(1)}位・表示${p.impressions}・${p.clicks}クリック）→ Quick Winとしてタイトル/冒頭/内部リンクを優先改善`
+    );
+  }
+  for (const p of decayingPages.slice(0, 1)) {
+    try {
+      const pagePath = new URL(p.page).pathname;
+      actionItems.push(
+        `${pagePath}（表示 前期${p.previousImpressions}→今期${p.currentImpressions}）→ Decay候補。更新・競合・検索意図を再確認`
+      );
+    } catch { /* invalid URL */ }
+  }
   for (const p of rewriteCandidates.slice(0, 2)) {
     const pagePath = new URL(p.keys[0]).pathname;
     actionItems.push(`${pagePath}（順位${p.position.toFixed(0)}位）→ 内容更新・内部リンク確認候補`);
@@ -185,6 +206,8 @@ function deriveInsights(data: {
   return {
     rewriteCandidates: rewriteCandidates.slice(0, 10),
     lowCtrPages: lowCtrPages.slice(0, 10),
+    quickWins: quickWins.slice(0, 10),
+    decayingPages: decayingPages.slice(0, 10),
     surgingPages: surgingPages.slice(0, 10),
     newlyVisible: newlyVisible.slice(0, 10),
     actionItems: actionItems.slice(0, 5),
@@ -303,16 +326,30 @@ function deriveQueryInsights(data: {
     const suggestions: string[] = [];
     let priority: "high" | "medium" | "low" = "low";
 
-    // Check for high: position 11-20, impressions >= 10
-    const hasRewriteCandidate = insights.some((qi) => qi.position >= 11 && qi.position <= 20 && qi.impressions >= 10);
+    // 最優先: すでに5〜15位まで来ているのにクリックを取り切れていないQuick Win
+    const hasQuickWin = insights.some(
+      (qi) =>
+        qi.position >= 5 &&
+        qi.position <= 15 &&
+        qi.impressions >= 5 &&
+        (qi.clicks === 0 || qi.ctr < 0.02)
+    );
+    if (hasQuickWin) {
+      priority = "high";
+      reasons.push("順位5〜15位で表示が発生している一方、クリックを取り切れていないQuick Winがあります");
+      suggestions.push("検索意図に対するタイトル・導入・見出し・内部リンクを優先して改善してください");
+    }
+
+    // 次点: position 11-30, impressions >= 5
+    const hasRewriteCandidate = insights.some((qi) => qi.position >= 11 && qi.position <= 30 && qi.impressions >= 5);
     if (hasRewriteCandidate) {
       priority = "high";
       reasons.push("順位11〜20位のクエリがあり、内容強化で上位表示の可能性があります");
       suggestions.push("記事内容の充実・最新情報の追加を検討してください");
     }
 
-    // Check for medium: CTR < 2%, position 1-20
-    const hasLowCtr = insights.some((qi) => qi.ctr < 0.02 && qi.position >= 1 && qi.position <= 20 && qi.impressions >= 10);
+    // CTR < 2%, position 1-20
+    const hasLowCtr = insights.some((qi) => qi.ctr < 0.02 && qi.position >= 1 && qi.position <= 20 && qi.impressions >= 5);
     if (hasLowCtr) {
       if (priority === "low") priority = "medium";
       reasons.push("CTRが低いクエリがあり、タイトル・ディスクリプション改善の余地がある可能性があります");
