@@ -1,6 +1,6 @@
 "use client";
 
-import type { SCRow, SurgingPage, NewlyVisible } from "@/types/search-console";
+import type { DecayingPage, QuickWinPage, SCRow, SurgingPage, NewlyVisible } from "@/types/search-console";
 
 function PageLink({ url }: { url: string }) {
   let path = url;
@@ -32,7 +32,7 @@ export function RewriteCandidates({ items }: { items: (SCRow & { priority: "high
   if (items.length === 0) return null;
   return (
     <>
-      <p className="text-[10px] text-gray-500 font-bold mb-1">リライト候補（順位11〜20位・表示10回以上）</p>
+      <p className="text-[10px] text-gray-500 font-bold mb-1">リライト候補（順位11〜30位・表示5回以上）</p>
       <div className="overflow-x-auto mb-3">
         <table className="w-full text-sm">
           <thead><tr className="border-b border-gray-100">
@@ -61,7 +61,7 @@ export function LowCtrPages({ items }: { items: (SCRow & { priority: "high" | "m
   if (items.length === 0) return null;
   return (
     <>
-      <p className="text-[10px] text-gray-500 font-bold mb-1">CTR改善候補（順位1〜20位・CTR 2%未満）</p>
+      <p className="text-[10px] text-gray-500 font-bold mb-1">CTR改善候補（順位1〜20位・表示5回以上・CTR 2%未満）</p>
       <p className="text-[10px] text-gray-400 mb-2">タイトルやディスクリプション改善の余地がある可能性があります</p>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
@@ -80,6 +80,91 @@ export function LowCtrPages({ items }: { items: (SCRow & { priority: "high" | "m
                 <td className="py-2 text-right text-xs">{(p.ctr * 100).toFixed(1)}%</td>
                 <td className="py-2 text-right text-xs">{p.impressions}</td>
                 <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
+export function QuickWinPages({ items }: { items: QuickWinPage[] }) {
+  if (items.length === 0) return null;
+  return (
+    <>
+      <p className="text-[10px] text-gray-500 font-bold mb-1">
+        Quick Win（順位5〜15位・表示5回以上・0クリック / CTR 2%未満）
+      </p>
+      <p className="text-[10px] text-gray-400 mb-2">
+        すでにGoogle評価が付いているため、新規記事より先に改善する候補です
+      </p>
+      <div className="overflow-x-auto mb-4">
+        <table className="w-full text-sm">
+          <thead><tr className="border-b border-gray-100">
+            <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
+            <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+            <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位</th>
+            <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示</th>
+            <th className="text-right py-1.5 text-gray-500 font-medium text-xs">クリック</th>
+            <th className="text-right py-1.5 text-gray-500 font-medium text-xs">CTR</th>
+          </tr></thead>
+          <tbody>
+            {items.map((p, i) => (
+              <tr key={i} className="border-b border-gray-50">
+                <td className="py-2"><PriorityLabel priority={p.priority} /></td>
+                <td className="py-2">
+                  <PageLink url={p.keys[0]} />
+                  <span className="text-[10px] text-gray-400">
+                    {p.signal === "zero_clicks" ? "0クリック" : "低CTR"}
+                  </span>
+                </td>
+                <td className="py-2 text-right text-xs">{p.position.toFixed(1)}</td>
+                <td className="py-2 text-right text-xs">{p.impressions}</td>
+                <td className="py-2 text-right text-xs">{p.clicks}</td>
+                <td className="py-2 text-right text-xs">{(p.ctr * 100).toFixed(1)}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
+export function DecayingPages({ items }: { items: DecayingPage[] }) {
+  if (items.length === 0) return null;
+  return (
+    <>
+      <p className="text-[10px] text-gray-500 font-bold mb-1">
+        Decay（前28日比で表示40%以上減 / 順位5以上悪化）
+      </p>
+      <p className="text-[10px] text-gray-400 mb-2">
+        伸びていたページの失速を早めに拾い、更新・競合・検索意図を再確認します
+      </p>
+      <div className="overflow-x-auto mb-4">
+        <table className="w-full text-sm">
+          <thead><tr className="border-b border-gray-100">
+            <th className="text-left py-1.5 text-gray-500 font-medium text-xs w-10">優先</th>
+            <th className="text-left py-1.5 text-gray-500 font-medium text-xs">ページ</th>
+            <th className="text-right py-1.5 text-gray-500 font-medium text-xs">表示 前→今</th>
+            <th className="text-right py-1.5 text-gray-500 font-medium text-xs">変化</th>
+            <th className="text-right py-1.5 text-gray-500 font-medium text-xs">順位 前→今</th>
+          </tr></thead>
+          <tbody>
+            {items.map((p, i) => (
+              <tr key={i} className="border-b border-gray-50">
+                <td className="py-2"><PriorityLabel priority={p.priority} /></td>
+                <td className="py-2"><PageLink url={p.page} /></td>
+                <td className="py-2 text-right text-xs">
+                  {p.previousImpressions} → {p.currentImpressions}
+                </td>
+                <td className="py-2 text-right text-xs text-red-600">
+                  {p.impressionChange.toFixed(0)}%
+                </td>
+                <td className="py-2 text-right text-xs">
+                  {p.previousPosition.toFixed(1)} → {p.currentPosition === null ? "圏外/未取得" : p.currentPosition.toFixed(1)}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -6,7 +6,7 @@ import { WeeklyActions } from "./gsc/WeeklyActions";
 import { QueryTable } from "./gsc/QueryTable";
 import { PagePerformanceTable } from "./gsc/PagePerformanceTable";
 import { ThemeSummary } from "./gsc/ThemeSummary";
-import { RewriteCandidates, LowCtrPages, SurgingPagesTable, NewlyVisibleList } from "./gsc/InsightCards";
+import { DecayingPages, QuickWinPages, RewriteCandidates, LowCtrPages, SurgingPagesTable, NewlyVisibleList } from "./gsc/InsightCards";
 import { SeoEditorTab } from "./seo/SeoEditorTab";
 import { NewArticleTab } from "./article-factory/NewArticleTab";
 
@@ -317,8 +317,15 @@ function PerformanceTab({ ga4, gsc }: { ga4: GA4Data; gsc: GSCData }) {
             )}
 
             {/* 改善候補 */}
-            {((gsc.rewriteCandidates?.length ?? 0) > 0 || (gsc.lowCtrPages?.length ?? 0) > 0) && (
-              <Collapsible title="改善候補">
+            {(
+              (gsc.quickWins?.length ?? 0) > 0 ||
+              (gsc.decayingPages?.length ?? 0) > 0 ||
+              (gsc.rewriteCandidates?.length ?? 0) > 0 ||
+              (gsc.lowCtrPages?.length ?? 0) > 0
+            ) && (
+              <Collapsible title="優先SEO改善候補" defaultOpen={true}>
+                <QuickWinPages items={gsc.quickWins || []} />
+                <DecayingPages items={gsc.decayingPages || []} />
                 <RewriteCandidates items={gsc.rewriteCandidates || []} />
                 <LowCtrPages items={gsc.lowCtrPages || []} />
               </Collapsible>

@@ -33,6 +33,11 @@ export interface GscPageRow {
   impressions: number;
   ctr: number;
   position: number;
+  previousClicks: number;
+  previousImpressions: number;
+  previousPosition: number | null;
+  impressionChange: number | null;
+  positionChange: number | null;
   queries: { query: string; impressions: number; position: number }[];
 }
 
@@ -155,23 +160,57 @@ export function buildGscSnapshot(input: unknown): GscSnapshot {
     pageQueryMap.set(page, list);
   }
 
-  const pageRows: SCRow[] = Array.isArray(data.current28d?.topPages) ? data.current28d!.topPages : [];
-  const pages: GscPageRow[] = pageRows
-    .map((r) => {
-      const page = s(r.keys?.[0]);
+  const currentPageRows: SCRow[] = Array.isArray(data.current28d?.topPages)
+    ? data.current28d!.topPages
+    : [];
+  const previousPageRows: SCRow[] = Array.isArray(data.previous28d?.topPages)
+    ? data.previous28d!.topPages
+    : [];
+  const currentPageMap = new Map(currentPageRows.map((r) => [s(r.keys?.[0]), r]));
+  const previousPageMap = new Map(previousPageRows.map((r) => [s(r.keys?.[0]), r]));
+  const pageUrls = new Set([...currentPageMap.keys(), ...previousPageMap.keys()]);
+
+  const pages: GscPageRow[] = [...pageUrls]
+    .filter(Boolean)
+    .map((page) => {
+      const current = currentPageMap.get(page);
+      const previous = previousPageMap.get(page);
+      const currentImpressions = n(current?.impressions);
+      const previousImpressions = n(previous?.impressions);
+      const currentPosition = n(current?.position);
+      const previousPosition =
+        previous && n(previous.position) > 0 ? n(previous.position) : null;
+      const impressionChange =
+        previousImpressions > 0
+          ? ((currentImpressions - previousImpressions) / previousImpressions) * 100
+          : null;
+      const positionChange =
+        currentPosition > 0 && previousPosition !== null
+          ? currentPosition - previousPosition
+          : null;
+
       return {
         page,
         slug: urlToSlug(page),
-        clicks: n(r.clicks),
-        impressions: n(r.impressions),
-        ctr: n(r.ctr),
-        position: n(r.position),
+        clicks: n(current?.clicks),
+        impressions: currentImpressions,
+        ctr: n(current?.ctr),
+        position: currentPosition,
+        previousClicks: n(previous?.clicks),
+        previousImpressions,
+        previousPosition,
+        impressionChange,
+        positionChange,
         queries: (pageQueryMap.get(page) ?? [])
           .sort((a, b) => b.impressions - a.impressions)
           .slice(0, 8),
       };
     })
-    .filter((p) => p.page.length > 0)
+    .sort((a, b) => {
+      const aSignal = Math.max(a.impressions, a.previousImpressions);
+      const bSignal = Math.max(b.impressions, b.previousImpressions);
+      return bSignal - aSignal;
+    })
     .slice(0, LIMITS.maxPageRows);
 
   // ── データの薄さ評価 ──

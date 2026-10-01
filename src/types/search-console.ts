@@ -91,6 +91,26 @@ export interface NewlyVisible {
   impressions: number;
 }
 
+/** 既にGoogle評価が付いている既存ページの即効改善候補 */
+export interface QuickWinPage extends SCRow {
+  priority: "high" | "medium" | "low";
+  signal: "zero_clicks" | "low_ctr";
+}
+
+/** 前28日比で表示・順位が明確に悪化したページ */
+export interface DecayingPage {
+  page: string;
+  currentClicks: number;
+  previousClicks: number;
+  currentImpressions: number;
+  previousImpressions: number;
+  impressionChange: number;
+  currentPosition: number | null;
+  previousPosition: number;
+  positionChange: number | null;
+  priority: "high" | "medium" | "low";
+}
+
 // ── トップレベルデータ ──
 
 export interface SCData {
@@ -102,6 +122,8 @@ export interface SCData {
   previous28d?: SCPeriodData;
   rewriteCandidates?: (SCRow & { priority: "high" | "medium" | "low" })[];
   lowCtrPages?: (SCRow & { priority: "high" | "medium" | "low" })[];
+  quickWins?: QuickWinPage[];
+  decayingPages?: DecayingPage[];
   surgingPages?: SurgingPage[];
   newlyVisible?: NewlyVisible[];
   actionItems?: string[];

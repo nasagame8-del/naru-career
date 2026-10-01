@@ -196,6 +196,13 @@ export async function publishAsPullRequest(opts: PublishOptions): Promise<SeoPub
 function serializeRun(run: SeoRun) {
   return {
     ...run,
+    measurementPlan: {
+      anchor: "production_publish_date",
+      checkpointDays: [7, 14, 28],
+      queries: run.selectedTopic?.queries.map((q) => q.query) ?? [],
+      relatedPages: run.selectedTopic?.relatedPages ?? [],
+      command: `npm run data:seo-experiments -- --run ${run.id}`,
+    },
     changes: run.changes.map((c) => ({
       path: c.path,
       operation: c.operation,
@@ -270,6 +277,22 @@ function buildPrBody(opts: PublishOptions): string {
       if (preExisting.length > 30) lines.push(`- …ほか${preExisting.length - 30}件`);
       lines.push("", "</details>");
     }
+  }
+
+  if (run.selectedTopic?.queries.length) {
+    lines.push(
+      "",
+      "### 効果測定（GSC）",
+      "",
+      "- 本番反映日を起点に **7日 / 14日 / 28日** で、変更前7日と各チェックポイント直前7日を比較します。",
+      "- 比較対象: 選択テーマの実測クエリ + relatedPages。GSC確定遅延を考慮し、終了日から3日経過後に測定します。",
+      `- 実行: \`npm run data:seo-experiments -- --run ${run.id}\``,
+      "",
+      ...run.selectedTopic.queries.slice(0, 5).map(
+        (q) =>
+          `- ベースライン参考: \`${q.query}\` — 表示 ${q.impressions} / クリック ${q.clicks} / CTR ${(q.ctr * 100).toFixed(1)}% / 平均順位 ${q.position.toFixed(1)}`
+      )
+    );
   }
 
   if (run.warnings.length > 0) {
