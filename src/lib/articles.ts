@@ -251,6 +251,10 @@ export async function getArticle(slug: string): Promise<Article> {
     }
   }
 
+  // Markdown変換後に万一残った ** を除去し、画面への生露出を防ぐ
+  // 通常の太字はこの時点で <strong>...</strong> に変換済みなので見た目は維持される
+  htmlStr = htmlStr.replace(/\*\*/g, "");
+
   // 専門用語の初出箇所に <dfn>（DefinedTermマイクロデータ付き）を付与
   htmlStr = annotateGlossaryTerms(htmlStr);
 
