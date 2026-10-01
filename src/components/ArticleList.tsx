@@ -6,6 +6,7 @@ const categoryStyles: Record<string, string> = {
   体験談: "bg-amber-soft text-amber",
   エージェント比較: "bg-primary-soft text-primary",
   業界解説: "bg-gray-soft text-gray",
+  雑記: "bg-sage-soft text-sage",
 };
 
 export function ArticleList({ articles }: { articles: ArticleMeta[] }) {

@@ -5,12 +5,14 @@ const categoryStyles: Record<string, string> = {
   体験談: "bg-amber-soft text-amber",
   エージェント比較: "bg-primary-soft text-primary",
   業界解説: "bg-gray-soft text-gray",
+  雑記: "bg-sage-soft text-sage",
 };
 
 const barColors: Record<string, string> = {
   体験談: "bg-amber",
   エージェント比較: "bg-primary",
   業界解説: "bg-gray",
+  雑記: "bg-sage",
 };
 
 export function ArticleCard({ article }: { article: ArticleMeta }) {

@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { label: "体験談", href: "/category/taiken" },
   { label: "エージェント比較", href: "/category/agent-comparison" },
   { label: "業界解説", href: "/category/industry-guide" },
+  { label: "雑記", href: "/category/zakki" },
 ] as const;
 
 export function CategoryNavBar() {

@@ -31,6 +31,8 @@
   --color-amber-soft: var(--amber-soft);
   --color-gray: #8B8D91;
   --color-gray-soft: #EDEDEC;
+  --color-sage: #5E7F68;
+  --color-sage-soft: #E5EDE7;
   --font-sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   --font-heading: "Shippori Mincho", "Yu Mincho", serif;
   --font-serif: var(--font-heading);

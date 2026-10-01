@@ -207,7 +207,7 @@ describe("checkFrontmatter", () => {
   });
 
   it("未知のカテゴリを検出する", () => {
-    const r = checkFrontmatter({ ...draft().frontmatter, category: "雑記" });
+    const r = checkFrontmatter({ ...draft().frontmatter, category: "転職ノウハウ" });
     expect(r.ok).toBe(false);
     expect(r.malformed.join(" ")).toContain("category");
   });

@@ -290,7 +290,7 @@ export function checkFrontmatter(raw: string): string[] {
     if (typeof v !== "string" || v.trim() === "") issues.push(`frontmatter.${key} が空です`);
   }
   const category = data.category;
-  if (typeof category === "string" && !["体験談", "エージェント比較", "業界解説"].includes(category)) {
+  if (typeof category === "string" && !["体験談", "エージェント比較", "業界解説", "雑記"].includes(category)) {
     issues.push(`frontmatter.category が不正です: ${category}`);
   }
   for (const key of ["datePublished", "dateModified"]) {

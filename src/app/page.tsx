@@ -28,7 +28,9 @@ export default function Home() {
                   ? "bg-amber-soft text-amber"
                   : article.category === "エージェント比較"
                     ? "bg-primary-soft text-primary"
-                    : "bg-gray-soft text-gray";
+                    : article.category === "雑記"
+                      ? "bg-sage-soft text-sage"
+                      : "bg-gray-soft text-gray";
               return (
                 <Link
                   key={article.slug}

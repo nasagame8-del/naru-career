@@ -66,10 +66,25 @@ export type InlineFAQ = {
   answer: string;
 };
 
+export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "雑記";
+
+/** 主カテゴリに、frontmatter.subCategories（追加で掲載するカテゴリ）を重複なしで足す */
+function resolveCategories(
+  category: ArticleCategory,
+  subCategories: unknown
+): ArticleCategory[] {
+  const extra = Array.isArray(subCategories)
+    ? subCategories.filter((c): c is ArticleCategory => typeof c === "string")
+    : [];
+  return [...new Set([category, ...extra])];
+}
+
 export type ArticleMeta = {
   slug: string;
   title: string;
-  category: "体験談" | "エージェント比較" | "業界解説";
+  category: ArticleCategory;
+  /** 主カテゴリ＋frontmatter.subCategories。カテゴリ一覧・絞り込みはこちらで判定する */
+  categories: ArticleCategory[];
   keyword: string;
   datePublished: string;
   dateModified: string;
@@ -151,6 +166,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     slug,
     title: data.title ?? "",
     category: data.category ?? "業界解説",
+    categories: resolveCategories(data.category ?? "業界解説", data.subCategories),
     keyword: data.keyword ?? "",
     datePublished: data.datePublished ?? "",
     dateModified: data.dateModified ?? "",
@@ -264,6 +280,7 @@ export async function getArticle(slug: string): Promise<Article> {
     slug,
     title: data.title ?? "",
     category: data.category ?? "業界解説",
+    categories: resolveCategories(data.category ?? "業界解説", data.subCategories),
     keyword: data.keyword ?? "",
     datePublished: data.datePublished ?? "",
     dateModified: data.dateModified ?? "",

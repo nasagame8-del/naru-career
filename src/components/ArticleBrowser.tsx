@@ -56,7 +56,9 @@ export function ArticleBrowser({
   const counts = useMemo(() => {
     const map = new Map<FilterId, number>([[ALL, articles.length]]);
     for (const article of articles) {
-      map.set(article.category, (map.get(article.category) ?? 0) + 1);
+      for (const category of article.categories) {
+        map.set(category, (map.get(category) ?? 0) + 1);
+      }
     }
     return map;
   }, [articles]);
@@ -71,7 +73,7 @@ export function ArticleBrowser({
 
   const filtered = useMemo(() => {
     const scoped =
-      filter === ALL ? articles : articles.filter((a) => a.category === filter);
+      filter === ALL ? articles : articles.filter((a) => a.categories.includes(filter));
     return sortArticles(scoped, sort, { popularityOrder, recommendedOrder });
   }, [articles, filter, sort, popularityOrder, recommendedOrder]);
 

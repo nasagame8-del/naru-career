@@ -1,4 +1,4 @@
-import type { FAQ } from "@/lib/articles";
+import type { ArticleCategory, FAQ } from "@/lib/articles";
 
 type CategoryCrossLink = {
   slug: string;
@@ -7,7 +7,7 @@ type CategoryCrossLink = {
 };
 
 type CategoryDef = {
-  name: "体験談" | "エージェント比較" | "業界解説";
+  name: ArticleCategory;
   label: string;
   description: string;
   longDescription: string;
@@ -158,6 +158,37 @@ export const CATEGORIES: Record<string, CategoryDef> = {
         label: "エージェント比較",
         message:
           "転職活動を始める準備ができたら、エージェント比較で自分に合うサービスを見つけましょう。",
+      },
+    ],
+  },
+  zakki: {
+    name: "雑記",
+    label: "雑記",
+    description:
+      "話題になった転職・退職のニュースや、第二新卒のキャリアにまつわる気づきを気軽にまとめた雑記記事一覧。",
+    longDescription:
+      "このカテゴリでは、体験談・エージェント比較・業界解説のどれにも収まりきらない話題をまとめています。SNSで話題になった退職報告や転職ニュースをきっかけに、第二新卒として考えておきたいキャリアの論点を、筆者の視点で気軽に掘り下げます。気になったテーマから自由に読んでみてください。",
+    accentColor: "bg-sage",
+    readingOrder: [],
+    faq: [
+      {
+        question: "雑記カテゴリにはどんな記事がありますか？",
+        answer:
+          "話題になった退職報告や転職ニュースなど、時事的なテーマをきっかけに第二新卒のキャリアを考える記事をまとめています。業界解説など他のカテゴリにもあわせて掲載している記事があります。",
+      },
+    ],
+    crossLinks: [
+      {
+        slug: "taiken",
+        label: "体験談",
+        message:
+          "実際の転職活動の流れを知りたい方は、体験談カテゴリで筆者の転職プロセスを追体験してみてください。",
+      },
+      {
+        slug: "industry-guide",
+        label: "業界解説",
+        message:
+          "第二新卒の位置づけや業界の仕組みを体系的に知りたい方は、業界解説カテゴリもあわせてどうぞ。",
       },
     ],
   },

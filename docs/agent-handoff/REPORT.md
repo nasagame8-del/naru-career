@@ -1,5 +1,21 @@
 # Claude Code Report
 
+## REPORT-008 — 未定義カテゴリ「転職ノウハウ」の修正と「雑記」カテゴリ追加
+
+- reportId: `REPORT-008`
+- completedInstructionId: `USER-ARTICLE-CATEGORY-FIX-2026-10-01`（ユーザー直接依頼。INST-004は未着手のまま）
+- status: `DONE`
+- branch: `claude/article-tag-fix-c7w0z4`
+- 実施内容: 記事 `new-grad-early-resignation-career-plan` に未定義カテゴリ「転職ノウハウ」が入っていたため、新カテゴリ「雑記」（`/category/zakki`）を追加して主カテゴリを雑記に変更。frontmatterに任意項目 `subCategories` を追加し、同記事を「業界解説」にも掲載。カテゴリページ・記事一覧の絞り込み・関連記事は `ArticleMeta.categories`（主カテゴリ＋subCategories）で判定する。ナビ・タグ色（新色 sage）・パンくずに雑記を追加。SEO Editor / Article Factory のカテゴリ許可リストにも雑記を追加。
+- テスト結果: `npm test` 261件pass、`npx tsc --noEmit` exit 0、変更ファイルのESLint エラー0（既存warning 1件）、`npm run build` 成功。ビルド出力で同記事が `/category/zakki` と `/category/industry-guide` の両方に出ることを確認。
+- 変更ファイル: `content/articles/new-grad-early-resignation-career-plan.md`, `src/lib/articles.ts`, `src/lib/categories.ts`, `src/app/category/[slug]/page.tsx`, `src/app/articles/[slug]/page.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `src/components/ArticleBrowser.tsx`, `src/components/ArticleCard.tsx`, `src/components/ArticleList.tsx`, `src/components/CategoryNavBar.tsx`, `src/lib/article-factory/constants.ts`, `src/lib/article-factory/safety.test.ts`, `src/lib/seo-editor/markdown.ts`, `src/lib/seo-editor/schemas/write.ts`, 本レポート。
+- git diff概要: カテゴリ定義・型の拡張、複数カテゴリ掲載（subCategories）対応、該当記事のfrontmatter修正。safety.testの「未知カテゴリ」例を「転職ノウハウ」に変更。
+- 既知の問題: Article Factory の候補生成でもAIが「雑記」を選べるようになった。SEO Editor / Article Factory はまだ `subCategories` を生成・編集しない（手動で設定）。
+- 判断が必要な項目: 雑記カテゴリの説明文・FAQ・色（#5E7F68）は仮置きのため必要に応じて調整。
+- 推奨する次の作業: masterへのPR作成・レビュー後にマージ。
+
+---
+
 ## REPORT-007 — 記事画像4枚のDrive受け渡し
 
 - reportId: `REPORT-007`

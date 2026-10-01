@@ -1,6 +1,8 @@
 ---
 title: "新卒半年で退職すると転職で不利？第二新卒の早期離職で考える5つのこと"
-category: "転職ノウハウ"
+category: "雑記"
+subCategories:
+  - "業界解説"
 keyword: "新卒 半年 退職 第二新卒 早期離職 転職 不利"
 datePublished: "2026-09-30"
 dateModified: "2026-09-30"

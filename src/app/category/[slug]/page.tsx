@@ -45,12 +45,14 @@ const categoryStyles: Record<string, string> = {
   体験談: "bg-amber-soft text-amber",
   エージェント比較: "bg-primary-soft text-primary",
   業界解説: "bg-gray-soft text-gray",
+  雑記: "bg-sage-soft text-sage",
 };
 
 const stepBadgeStyles: Record<string, string> = {
   体験談: "bg-amber text-white",
   エージェント比較: "bg-primary text-white",
   業界解説: "bg-gray text-white",
+  雑記: "bg-sage text-white",
 };
 
 export default async function CategoryPage(props: {
@@ -61,7 +63,7 @@ export default async function CategoryPage(props: {
 
   const cat = CATEGORIES[slug];
   const allArticles = getAllArticleMetas().filter(
-    (a) => a.category === cat.name
+    (a) => a.categories.includes(cat.name)
   );
   const articles = sortByReadingOrder(allArticles, cat.readingOrder);
   const badgeStyle = stepBadgeStyles[cat.name] ?? "bg-primary text-white";
@@ -164,7 +166,7 @@ export default async function CategoryPage(props: {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <span
-                            className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${tagStyle}`}
+                            className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${categoryStyles[article.category] ?? tagStyle}`}
                           >
                             {article.category}
                           </span>

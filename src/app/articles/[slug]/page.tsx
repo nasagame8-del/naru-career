@@ -70,6 +70,12 @@ const categoryAccent: Record<string, { tag: string; border: string; faq: string;
     faq: "border-gray",
     cssVar: "#8B8D91",
   },
+  雑記: {
+    tag: "bg-sage-soft text-sage",
+    border: "border-sage",
+    faq: "border-sage",
+    cssVar: "#5E7F68",
+  },
 };
 
 export default async function ArticlePage(props: {
@@ -90,7 +96,11 @@ export default async function ArticlePage(props: {
   const article = await getArticle(slug);
   const allArticles = getAllArticleMetas();
   const relatedArticles = allArticles
-    .filter((a) => a.slug !== slug && a.category === article.category)
+    .filter(
+      (a) =>
+        a.slug !== slug &&
+        a.categories.some((c) => article.categories.includes(c))
+    )
     .slice(0, 4);
 
   const accent = categoryAccent[article.category] || categoryAccent["業界解説"];
@@ -113,6 +123,7 @@ export default async function ArticlePage(props: {
     "体験談": "taiken",
     "エージェント比較": "agent-comparison",
     "業界解説": "industry-guide",
+    "雑記": "zakki",
   };
   const categoryHref = `/category/${categorySlugMap[article.category] || "taiken"}`;
 
@@ -126,6 +137,7 @@ export default async function ArticlePage(props: {
     体験談: "bg-amber-soft text-amber",
     エージェント比較: "bg-primary-soft text-primary",
     業界解説: "bg-gray-soft text-gray",
+    雑記: "bg-sage-soft text-sage",
   };
 
   return (
