@@ -151,9 +151,9 @@ export default async function ArticlePage(props: {
           <span className="text-ink">{article.title}</span>
         </nav>
 
-        <div className="flex gap-10">
+        <div className="flex gap-10 min-w-0">
           {/* 本文エリア */}
-          <article className="flex-1 max-w-[700px]">
+          <article className="flex-1 min-w-0 max-w-[700px]">
             <span
               className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${accent.tag}`}
             >
