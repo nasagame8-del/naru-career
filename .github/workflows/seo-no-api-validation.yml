@@ -1,0 +1,38 @@
+name: SEO No-API Validation
+
+on:
+  pull_request:
+    paths:
+      - "src/lib/search-console.ts"
+      - "src/lib/seo-opportunities.ts"
+      - "src/lib/seo-opportunities.test.ts"
+      - "src/lib/seo-editor/**"
+      - "src/app/internal/dashboard/gsc/**"
+      - "src/app/internal/dashboard/DashboardClient.tsx"
+      - "src/types/search-console.ts"
+      - "scripts/measure-seo-experiments.mjs"
+      - "scripts/measure-seo-experiments.test.mjs"
+      - "package.json"
+      - ".github/workflows/seo-no-api-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-no-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npx tsc --noEmit
+      - run: npm run build
+        env:
+          DASHBOARD_PASSWORD: validation-only
+          SEO_EDITOR_RUN_SIGNING_SECRET: validation-only
