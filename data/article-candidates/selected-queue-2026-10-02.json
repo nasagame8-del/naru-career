@@ -1,7 +1,7 @@
 {
   "batchId": "batch_2026-10-02_chatgpt",
   "selectedAt": "2026-10-02T00:09:00+09:00",
-  "status": "reserved_preview_approval_pending",
+  "status": "reserved_preview_approved",
   "publishSlots": [
     {
       "order": 1,
@@ -24,8 +24,9 @@
         "articleFactoryValidation": "success",
         "vercelPreview": "success",
         "images": "complete",
-        "previewVisual": "pending",
-        "previewApprovedHeadSha": null
+        "previewVisual": "user_confirmed",
+        "previewApprovedHeadSha": "59e14f381cfb59a5a66a6a2c359f279d07acaec5",
+        "previewApprovedDate": "2026-10-02"
       },
       "previewUrl": "https://career-media-git-article-factory-7105f8-nasagame8-dels-projects.vercel.app/articles/job-seeker-harassment-new-rules-2026",
       "reservation": {
@@ -55,8 +56,9 @@
         "articleFactoryValidation": "success",
         "vercelPreview": "success",
         "images": "complete",
-        "previewVisual": "pending",
-        "previewApprovedHeadSha": null
+        "previewVisual": "user_confirmed",
+        "previewApprovedHeadSha": "f49237305ed362b3fae6a8d23b496ffc8722a445",
+        "previewApprovedDate": "2026-10-02"
       },
       "previewUrl": "https://career-media-git-article-factory-a93609-nasagame8-dels-projects.vercel.app/articles/second-new-grad-desired-salary-2026",
       "reservation": {
@@ -71,6 +73,7 @@
     "原稿・画像プラン・Drive保存・Draft PR作成済み。",
     "公開時刻は標準枠12:00/18:00。画像4枚/記事の反映、最新headでのCI/Vercel成功、ユーザープレビュー承認が不足する場合は公開しない。",
     "2026-10-02 00:28頃: 8枚受領。originalsへPNG、imagesへWebP（card 1200x630 / body 1200x675）保存し、PR #56/#57へ反映。",
-    "2026-10-02 00:40頃: 最新headでArticle Factory Validation/Vercelともにsuccessを再確認。12:00/18:00の条件付き公開タスクを設定。プレビュー目視承認が同一head SHAに記録されない限りマージしない。"
+    "2026-10-02 00:40頃: 最新headでArticle Factory Validation/Vercelともにsuccessを再確認。12:00/18:00の条件付き公開タスクを設定。プレビュー目視承認が同一head SHAに記録されない限りマージしない。",
+    "2026-10-02: ユーザーが「両方OK」と明示。NARU-054はhead 59e14f381cfb59a5a66a6a2c359f279d07acaec5、NARU-055はhead f49237305ed362b3fae6a8d23b496ffc8722a445 に対するプレビュー目視承認として記録。"
   ]
 }
