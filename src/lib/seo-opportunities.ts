@@ -9,12 +9,14 @@ const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 } as const;
 /**
  * NARU向けQuick Win。
  * 大規模サイト向けの「500表示以上」ではなく、現状の母数に合わせて
- * 5表示以上・平均5〜15位・0クリックまたはCTR 2%未満を拾う。
+ * query×page 単位で、5表示以上・平均5〜15位・0クリックまたはCTR 2%未満を拾う。
  */
 export function buildQuickWins(current28d: SCPeriodData): QuickWinPage[] {
-  return current28d.topPages
+  return current28d.pageQueries
     .filter(
       (p) =>
+        Boolean(p.keys[0]) &&
+        Boolean(p.keys[1]) &&
         p.impressions >= 5 &&
         p.position >= 5 &&
         p.position <= 15 &&
@@ -29,6 +31,8 @@ export function buildQuickWins(current28d: SCPeriodData): QuickWinPage[] {
             : "low";
       return {
         ...p,
+        page: p.keys[0],
+        query: p.keys[1],
         priority,
         signal: p.clicks === 0 ? "zero_clicks" : "low_ctr",
       };
