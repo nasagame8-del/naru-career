@@ -1,5 +1,25 @@
 # Claude Code Report
 
+## REPORT-010 — ブランドカラー統一・診断SEO整理・既知不具合の修正
+
+- reportId: `REPORT-010`
+- completedInstructionId: `USER-SITE-AUDIT-FOLLOWUP-2026-10-01`（ユーザー直接依頼。INST-004は未着手のまま）
+- status: `DONE`（resume-template の配布ファイルのみ判断待ち）
+- branch: `claude/article-tag-fix-c7w0z4`（PR未作成）
+- 実施内容:
+  - `6c3fe1e` fix: align NARU brand colors — globals.css のトークンを Tea Green #1F6F66 / Amber #B5691B に変更（primary/-soft/-hover、accent、amber、amber-ink）。診断UI（shindan.css の --primary/--gold と直書きのブランド色、紙吹雪、TYPE_COLORSのフォールバック）も同様。雑記カテゴリは Tea Green と見分けがつかなくなるsageから補助色ネイビーへ。
+  - `84614e6` fix: separate diagnosis result and type SEO — /types/* は index,follow・self canonical・OG/Twitter・sitemap掲載。/shindan/result/* は noindex,follow・self canonical・sitemap非掲載、/types/{slug} への導線を2箇所（既存リンクをnext/link化＋解説の後に追加、イベント名は既存の to_type_hub）。
+  - `7720660` fix: broken resume template link and article FAQ — /members/resume-template のリンク先 docx が存在しないため「現在ダウンロードできません（準備中）」表示＋お問い合わせ導線に変更。agent-not-recommended の inlineFaq.heading を現行H2「実際に使って感じた、転職エージェントの本音」に修正し、全記事のinlineFaqが配置されることを確認するテストを追加。
+  - `09d914c` fix: refine navigation and category visual states — 上部ナビ選択中の下線をAmber（Tea Green上で約1.1:1）からクリーム（amber-soft、約5:1）へ。カテゴリページの番号バッジを塗りつぶしからカテゴリ色の枠線スタイルへ統一。
+- テスト結果: vitest 267件pass・node --test 43件pass、tsc exit 0、eslint src エラー0（警告6件はinternalの既存）、next build 成功。Chromiumで / /articles 記事2件 /category/taiken /category/zakki /shindan /shindan/result/wizard /types/wizard /members/resume-template /about を375/390/430/768/1024/1440pxで確認（66通り）し、横スクロール・文字切れ・console error・hydration error なし（外部のGoogle Fonts/GTMはサンドボックスのTLSで読めないため除外）。HTML上で /types/wizard は `index, follow`＋self canonical、/shindan/result/wizard は `noindex, follow`＋self canonical、sitemapは /types/* 16件・/shindan/result/* 0件。
+- GA4: template_download（word/pdf）・to_survey はクリック1回につき dataLayer に1件ずつ。cta_click の重複なし。
+- 変更ファイル: src/app/globals.css、src/app/shindan/{shindan.css,_components/MatchConfetti.tsx,_components/ResultContent.tsx,result/[slug]/page.tsx,result/[slug]/opengraph-image.tsx}、src/app/types/[slug]/page.tsx、src/lib/categories.ts、src/components/CategoryNavBar.tsx、src/app/category/[slug]/page.tsx、src/app/members/resume-template/page.tsx、content/articles/agent-not-recommended.md（frontmatterのinlineFaq.headingのみ）、src/lib/articles.test.ts、本レポート。
+- 旧カラーを残した箇所: 診断UIの羊皮紙・インク系の中間色（#35251f 等）、タイトルロゴ画像（赤・金の画像素材）、16タイプ固有の色（TYPE_COLORS）、/types の見出しバー（向いている／注意などの意味色）、OG画像のネイビー背景、状態表示のsage（AI面接チェックの「把握済み」）。いずれもブランドのprimary/accentではないため。
+- 判断が必要な項目（NEEDS_DECISION）: 会員ページで配布する docx。リポジトリ内の docx は記事で無料配布している `public/downloads/職務経歴書テンプレート_NARU.docx` のみで、ページの説明（実際に使った職務経歴書ベース）とは内容が近いが、note有料購入者向けの「NARU配布用」ファイルと同一かは確認できない。同じでよければリンク先をそのファイルに、別ファイルなら `public/members/files/resume-template-naru.docx` に配置すればリンクを戻せる。
+- 推奨する次の作業: 上記docxの決定、PR作成とPreviewでの目視確認。
+
+---
+
 ## REPORT-009 — サイト全体監査・AIコーディング臭除去
 
 - reportId: `REPORT-009`
