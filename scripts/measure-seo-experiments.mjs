@@ -68,9 +68,40 @@ function delta(current, baseline) {
   };
 }
 
-function selectedRunId() {
-  const i = process.argv.indexOf("--run");
+function argValue(name) {
+  const i = process.argv.indexOf(name);
   return i >= 0 ? process.argv[i + 1] : null;
+}
+
+function selectedRunId() {
+  return argValue("--run");
+}
+
+async function resolveAnchorDate(run) {
+  const explicit = argValue("--anchor");
+  if (explicit && /^\d{4}-\d{2}-\d{2}$/.test(explicit)) {
+    return { date: explicit, source: "cli_anchor" };
+  }
+
+  const targets = run.actionDecision?.decisions
+    ?.filter((d) => d.targetType === "article" && ["REWRITE", "EXPAND", "KEEP"].includes(d.action))
+    .map((d) => d.target) || [];
+
+  for (const slug of targets) {
+    try {
+      const raw = await fs.readFile(
+        path.join(process.cwd(), "content", "articles", `${slug}.md`),
+        "utf8"
+      );
+      const match = raw.match(/^dateModified:\s*["']?(\d{4}-\d{2}-\d{2})["']?\s*$/m);
+      if (match?.[1]) return { date: match[1], source: `article_dateModified:${slug}` };
+    } catch {
+      // The target may have been merged/deleted or may be a guide; fall through.
+    }
+  }
+
+  const fallback = String(run.createdAt || "").slice(0, 10);
+  return { date: fallback, source: "run_created_at_fallback" };
 }
 
 async function readRuns() {
@@ -121,7 +152,8 @@ async function queryWindow(searchconsole, siteUrl, query, relatedPages, window) 
 }
 
 async function measureRun(searchconsole, siteUrl, run) {
-  const runDate = String(run.createdAt || "").slice(0, 10);
+  const anchor = await resolveAnchorDate(run);
+  const runDate = anchor.date;
   const relatedPages = run.selectedTopic?.relatedPages || [];
   const queries = run.selectedTopic?.queries?.map((q) => q.query).filter(Boolean) || [];
   if (!runDate || queries.length === 0) return null;
@@ -163,6 +195,8 @@ async function measureRun(searchconsole, siteUrl, run) {
     runId: run.id,
     topic: run.selectedTopic?.topic || "",
     measuredAt: new Date().toISOString(),
+    anchorDate: runDate,
+    anchorSource: anchor.source,
     relatedPages,
     baseline: { window: baselineRange, byQuery: baselineByQuery },
     checkpoints,
