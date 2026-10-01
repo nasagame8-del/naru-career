@@ -4,7 +4,10 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   convertBoldMarkers,
+  getAllSlugs,
+  getArticle,
   getArticleImagePath,
+  getArticleMeta,
   htmlToPlainText,
   removeFaqSection,
 } from "./articles";
@@ -110,5 +113,22 @@ describe("Markdown前処理", () => {
     expect(htmlToPlainText("面接対策（Q&#x26;A形式）<strong>必読</strong>")).toBe(
       "面接対策（Q&A形式）必読"
     );
+  });
+});
+
+describe("content/articles のインラインFAQ", () => {
+  it("frontmatterのinlineFaqはすべて対応するH2の直後に表示される", async () => {
+    const missing: string[] = [];
+    for (const slug of getAllSlugs()) {
+      const declared = getArticleMeta(slug).inlineFaq;
+      if (declared.length === 0) continue;
+      const placed = (await getArticle(slug)).inlineFaq;
+      for (const faq of declared) {
+        if (!placed.includes(faq) && !placed.some((p) => p.heading === faq.heading)) {
+          missing.push(`${slug}: ${faq.heading}`);
+        }
+      }
+    }
+    expect(missing).toEqual([]);
   });
 });
