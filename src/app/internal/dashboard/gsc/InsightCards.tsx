@@ -32,7 +32,7 @@ export function RewriteCandidates({ items }: { items: (SCRow & { priority: "high
   if (items.length === 0) return null;
   return (
     <>
-      <p className="text-[10px] text-gray-500 font-bold mb-1">リライト候補（順位11〜20位・表示10回以上）</p>
+      <p className="text-[10px] text-gray-500 font-bold mb-1">リライト候補（順位11〜30位・表示5回以上）</p>
       <div className="overflow-x-auto mb-3">
         <table className="w-full text-sm">
           <thead><tr className="border-b border-gray-100">
@@ -61,7 +61,7 @@ export function LowCtrPages({ items }: { items: (SCRow & { priority: "high" | "m
   if (items.length === 0) return null;
   return (
     <>
-      <p className="text-[10px] text-gray-500 font-bold mb-1">CTR改善候補（順位1〜20位・CTR 2%未満）</p>
+      <p className="text-[10px] text-gray-500 font-bold mb-1">CTR改善候補（順位1〜20位・表示5回以上・CTR 2%未満）</p>
       <p className="text-[10px] text-gray-400 mb-2">タイトルやディスクリプション改善の余地がある可能性があります</p>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
