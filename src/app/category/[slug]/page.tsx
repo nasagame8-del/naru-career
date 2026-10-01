@@ -4,8 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllArticleMetas, type ArticleMeta } from "@/lib/articles";
 import { CATEGORIES, getCategoryTheme, isValidCategorySlug } from "@/lib/categories";
-import { BreadcrumbJsonLd, FAQJsonLd } from "@/components/JsonLd";
-import { FAQSection } from "@/components/FAQSection";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { MiniAlto } from "@/components/MiniAlto";
 
 export function generateStaticParams() {
@@ -70,7 +69,6 @@ export default async function CategoryPage(props: {
           { name: cat.label, href: `/category/${slug}` },
         ]}
       />
-      <FAQJsonLd faqs={cat.faq} />
 
       <div className="max-w-5xl mx-auto px-4 pt-8 pb-16">
         <nav aria-label="パンくずリスト" className="text-sm text-ink-soft mb-6 flex items-center gap-1.5">
@@ -171,10 +169,6 @@ export default async function CategoryPage(props: {
             <MiniAlto pose="think" size={120} className="mx-auto mb-4" />
             <p className="text-ink-soft">このカテゴリの記事はまだありません。</p>
           </div>
-        )}
-
-        {cat.faq.length > 0 && (
-          <FAQSection faqs={cat.faq} borderClass={cat.theme.border} />
         )}
 
         {cat.crossLinks.length > 0 && (

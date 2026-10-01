@@ -1,4 +1,4 @@
-import type { ArticleCategory, FAQ } from "@/lib/articles";
+import type { ArticleCategory } from "@/lib/articles";
 
 type CategoryCrossLink = {
   slug: string;
@@ -12,7 +12,7 @@ type CategoryTheme = {
   tag: string;
   /** カテゴリページの「読む順番」番号バッジ */
   badge: string;
-  /** 見出し・FAQの左罫線 */
+  /** 記事ページの見出し・FAQの左罫線 */
   border: string;
   /** 本文H2の左罫線（CSS変数 --category-color に渡す値） */
   cssColor: string;
@@ -25,7 +25,6 @@ type CategoryDef = {
   longDescription: string;
   theme: CategoryTheme;
   readingOrder: string[];
-  faq: FAQ[];
   crossLinks: CategoryCrossLink[];
 };
 
@@ -54,23 +53,6 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "bizreach-second-new-grad",
       "how-to-resign-experience",
       "it-industry-quit-myth",
-    ],
-    faq: [
-      {
-        question: "体験談の記事はどんな順番で読めばいいですか？",
-        answer:
-          "まず「第二新卒がIT業界に転職するための完全ガイド」で全体像を把握し、その後は転職活動の時系列（準備→書類→面接→退職）に沿って読むと理解しやすいです。ページ上部に推奨順を表示しています。",
-      },
-      {
-        question: "体験談の内容はすべて実体験ですか？",
-        answer:
-          "はい。筆者が24歳・第二新卒として飲食業界からIT/Web業界（AIO対策企業）へ転職した実体験がベースです。エージェントの対応や面接のやり取りなど、細部は記憶ベースで再構成していますが、経緯・結果はすべて事実です。",
-      },
-      {
-        question: "未経験からIT転職するのに資格は必要ですか？",
-        answer:
-          "筆者は資格なし・プログラミング未経験でIT業界へ転職しました。第二新卒枠はポテンシャル採用が中心のため、資格より「なぜこの業界か」を言語化できることの方が重要です。詳しくは体験談記事で解説しています。",
-      },
     ],
     crossLinks: [
       {
@@ -103,23 +85,6 @@ export const CATEGORIES: Record<string, CategoryDef> = {
     readingOrder: [
       "agent-comparison-2026",
       "agent-site-vs-agent-usage",
-    ],
-    faq: [
-      {
-        question: "転職エージェントは本当に無料で使えますか？",
-        answer:
-          "はい、求職者は完全無料で利用できます。エージェントは企業側から成功報酬を受け取るビジネスモデルのため、求職者に費用は発生しません。途中で利用を中止しても違約金などはありません。",
-      },
-      {
-        question: "エージェントは何社くらい登録すべきですか？",
-        answer:
-          "2〜3社の併用がおすすめです。1社だけだと求人の偏りや担当者との相性リスクがあり、多すぎると連絡対応が追いつかなくなります。筆者はdodaとワークポートの2社を中心に利用しました。",
-      },
-      {
-        question: "第二新卒におすすめのエージェントはどれですか？",
-        answer:
-          "筆者の実体験では、dodaは求人数の幅広さとアプリの使いやすさ、ワークポートはIT/Web系求人の豊富さとレスポンスの速さが強みでした。詳しい比較は「エージェント比較」記事をご覧ください。",
-      },
     ],
     crossLinks: [
       {
@@ -156,23 +121,6 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       "aio-seo-industry-inside",
       "second-new-grad-retirement-pay",
     ],
-    faq: [
-      {
-        question: "IT業界は未経験でも転職できますか？",
-        answer:
-          "第二新卒枠であれば未経験でも転職可能です。多くのIT企業がポテンシャル採用を行っており、プログラミングスキルや資格がなくても応募できる職種（営業・カスタマーサクセス・マーケティングなど）は多数あります。",
-      },
-      {
-        question: "AIO対策とはどんな仕事ですか？",
-        answer:
-          "AIO（AI Overview）対策とは、Google検索のAI概要欄に自社の情報が正確に表示されるよう最適化する業務です。SEOの進化系とも言える新しい領域で、コンテンツ制作・構造化データの設計・検索意図の分析などが主な業務内容です。",
-      },
-      {
-        question: "「第二新卒」に明確な定義はありますか？",
-        answer:
-          "法的な定義はありません。一般的には「新卒入社後おおむね3年以内に転職活動をする若手」を指し、22〜26歳が目安です。企業によって対象範囲は異なるため、求人票の応募条件を確認するのが確実です。",
-      },
-    ],
     crossLinks: [
       {
         slug: "taiken",
@@ -202,13 +150,6 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       cssColor: "#2F4A6B",
     },
     readingOrder: [],
-    faq: [
-      {
-        question: "雑記カテゴリにはどんな記事がありますか？",
-        answer:
-          "話題になった退職報告や転職ニュースなど、時事的なテーマをきっかけに第二新卒のキャリアを考える記事をまとめています。業界解説など他のカテゴリにもあわせて掲載している記事があります。",
-      },
-    ],
     crossLinks: [
       {
         slug: "taiken",
