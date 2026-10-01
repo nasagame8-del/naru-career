@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 // ────────────────────────────────────────
 // Data
@@ -165,26 +166,22 @@ function StartScreen({ onStart }: { onStart: () => void }) {
         {/* CTAボタン — 人物イラスト直下 */}
         <button
           onClick={onStart}
-          className="w-full bg-primary text-white font-bold py-3.5 rounded-full text-[15px] hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 mb-5"
+          className="w-full bg-primary text-white font-bold py-3.5 rounded-full text-[15px] hover:bg-primary/90 transition-colors mb-5"
         >
           診断をスタートする
         </button>
 
-        {/* 安心材料（HTML、全5問に修正） */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-4 mb-4">
+        <div className="bg-surface/90 rounded-lg px-5 py-4 mb-4">
           <div className="flex justify-between text-center">
             <div className="flex-1">
-              <svg className="mx-auto mb-1.5 text-primary" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/><path d="M8 7l1 1 2-2" stroke="currentColor" strokeWidth="1.5"/></svg>
               <p className="text-[12px] font-bold text-ink">質問は全5問</p>
               <p className="text-[10px] text-ink-soft">約2〜3分で完了</p>
             </div>
             <div className="flex-1 border-x border-line/50">
-              <svg className="mx-auto mb-1.5 text-primary" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
               <p className="text-[12px] font-bold text-ink">完全無料</p>
               <p className="text-[10px] text-ink-soft">登録不要</p>
             </div>
             <div className="flex-1">
-              <svg className="mx-auto mb-1.5 text-primary" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg>
               <p className="text-[12px] font-bold text-ink">個人情報の入力</p>
               <p className="text-[10px] text-ink-soft">は不要です</p>
             </div>
@@ -207,7 +204,7 @@ function RouteScreen({ onSelect }: { onSelect: (r: Route) => void }) {
       <ProgressHeader step={0} total={5} />
 
       {/* Q0イラスト */}
-      <div className="w-full h-[170px] overflow-hidden rounded-xl mb-4">
+      <div className="w-full h-[170px] overflow-hidden rounded-lg mb-4">
         <Image src="/images/diagnosis/q0-illust.png" alt="" width={400} height={260} className="w-full h-full object-cover object-[center_20%]" />
       </div>
 
@@ -216,16 +213,16 @@ function RouteScreen({ onSelect }: { onSelect: (r: Route) => void }) {
 
       <div className="space-y-3">
         <button onClick={() => onSelect("shinsotsu")}
-          className="w-full text-left px-5 py-4 rounded-2xl border border-line bg-white hover:border-primary transition-all flex items-center gap-4">
+          className="w-full text-left px-5 py-4 rounded-lg border border-line bg-surface hover:border-primary transition-colors flex items-center gap-4">
           <span className="w-10 h-10 rounded-full bg-primary-soft flex items-center justify-center shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
           </span>
           <div><p className="font-bold text-[14px] text-ink">新卒（就活中）</p><p className="text-[11px] text-ink-soft mt-0.5">これから初めての就職活動をする方</p></div>
         </button>
         <button onClick={() => onSelect("daini")}
-          className="w-full text-left px-5 py-4 rounded-2xl border border-line bg-white hover:border-primary transition-all flex items-center gap-4">
+          className="w-full text-left px-5 py-4 rounded-lg border border-line bg-surface hover:border-primary transition-colors flex items-center gap-4">
           <span className="w-10 h-10 rounded-full bg-amber-soft flex items-center justify-center shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-ink" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
           </span>
           <div><p className="font-bold text-[14px] text-ink">第二新卒（転職検討中）</p><p className="text-[11px] text-ink-soft mt-0.5">一度就職してから転職を考えている方</p></div>
         </button>
@@ -234,7 +231,7 @@ function RouteScreen({ onSelect }: { onSelect: (r: Route) => void }) {
   );
 }
 
-// ── Progress Header (デザイン案準拠: 左にQ番号、右に数字、プログレスバー) ──
+// ── Progress Header ──
 
 function ProgressHeader({ step, total }: { step: number; total: number }) {
   const pct = Math.max(4, (step / total) * 100);
@@ -248,14 +245,14 @@ function ProgressHeader({ step, total }: { step: number; total: number }) {
           <span className="font-bold text-primary">{String(step).padStart(2, "0")}</span> / {String(total).padStart(2, "0")}
         </span>
       </div>
-      <div className="h-[5px] bg-bg-soft rounded-full overflow-hidden">
-        <div className="h-full bg-primary rounded-full transition-all duration-500 ease-out" style={{ width: `${pct}%` }} />
+      <div className="h-[5px] bg-bg-soft rounded-full overflow-hidden" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(pct)} aria-label="回答の進み具合">
+        <div className="h-full bg-primary rounded-full transition-[width] duration-500 ease-out" style={{ width: `${pct}%` }} />
       </div>
     </div>
   );
 }
 
-// ── Quiz Screen (デザイン案準拠) ──
+// ── Quiz Screen ──
 
 function QuizScreen({ step, total, q, sel, onSel, onNext, onBack }: {
   step: number; total: number; q: Question; sel: string | null;
@@ -267,27 +264,25 @@ function QuizScreen({ step, total, q, sel, onSel, onNext, onBack }: {
 
       {/* イラスト（素材がある質問のみ） */}
       {q.illustration && (
-        <div className="w-full h-[180px] overflow-hidden rounded-xl mb-4">
+        <div className="w-full h-[180px] overflow-hidden rounded-lg mb-4">
           <Image src={q.illustration} alt="" width={400} height={260} className="w-full h-full object-cover object-[center_25%]" />
         </div>
       )}
 
       <h3 className="text-[17px] font-bold mb-6 leading-snug whitespace-pre-line">{q.text}</h3>
 
-      {/* 選択肢（デザイン案: 緑チェックマーク付きラジオ） */}
       <div className="space-y-3 mb-8">
         {q.options.map((opt) => {
           const active = sel === opt.value;
           return (
-            <button key={opt.value} onClick={() => onSel(opt.value)}
-              className={`w-full text-left px-4 py-3.5 rounded-2xl border transition-all flex items-center gap-3 ${
-                active ? "border-primary bg-primary-soft" : "border-line bg-white hover:border-primary/40"
+            <button key={opt.value} onClick={() => onSel(opt.value)} aria-pressed={active}
+              className={`w-full text-left px-4 py-3.5 rounded-lg border transition-colors flex items-center gap-3 ${
+                active ? "border-primary bg-primary-soft" : "border-line bg-surface hover:border-primary/40"
               }`}>
-              {/* ラジオドット */}
               <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
                 active ? "border-primary bg-primary" : "border-line"
               }`}>
-                {active && <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                {active && <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
               </span>
               <span className="text-[13px] text-ink leading-relaxed">{opt.label}</span>
             </button>
@@ -295,7 +290,6 @@ function QuizScreen({ step, total, q, sel, onSel, onNext, onBack }: {
         })}
       </div>
 
-      {/* ナビゲーション（デザイン案: 左グレー「戻る」、右緑「次の質問へ」） */}
       <div className="flex gap-3">
         <button onClick={onBack}
           className="flex-1 py-3 rounded-full border border-line text-ink-soft font-bold text-[13px] hover:bg-bg-soft transition-colors">
@@ -312,13 +306,13 @@ function QuizScreen({ step, total, q, sel, onSel, onNext, onBack }: {
   );
 }
 
-// ── Result Screen (デザイン案準拠) ──
+// ── Result Screen ──
 
 function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () => void }) {
   return (
     <div className="max-w-[400px] mx-auto px-5 pt-5 pb-6">
       {/* PR表記 */}
-      <div className="bg-bg-soft border border-line rounded-xl px-4 py-2.5 mb-6">
+      <div className="bg-bg-soft border border-line rounded-lg px-4 py-2.5 mb-6">
         <p className="text-[10px] text-ink-soft leading-relaxed">
           本ページの一部リンクはプロモーションを含みます。広告を含まないリンクと区別せず掲載していますが、紹介内容・評価はいずれも公平に記載しています。
         </p>
@@ -327,14 +321,14 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
       {/* 結果ヘッダー */}
       <div className="text-center mb-6">
         <p className="text-[12px] text-ink-soft mb-3">あなたに合うエージェントは...</p>
-        <div className="bg-primary-soft rounded-2xl px-6 py-7">
+        <div className="bg-primary-soft rounded-lg px-6 py-7">
           <p className="text-[11px] text-primary font-bold tracking-wider mb-1">あなたの診断結果</p>
           <h2 className="text-[24px] font-bold text-ink leading-tight">{agent.name}</h2>
         </div>
       </div>
 
       {/* おすすめの理由 */}
-      <div className="border border-primary/20 rounded-2xl p-5 mb-6">
+      <div className="border border-primary/20 rounded-lg p-5 mb-6">
         <h4 className="text-[13px] font-bold text-primary mb-2">あなたにおすすめの理由</h4>
         <p className="text-[12px] text-ink-soft leading-relaxed">
           あなたの回答傾向から、{agent.name}のサービス特性が最もマッチしていると判定されました。以下の特徴があなたの転職・就職活動スタイルに合っています。
@@ -360,17 +354,21 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
       <div className="mb-3">
         {agent.url ? (
           <a href={agent.url} target="_blank" rel={agent.affiliate ? "nofollow sponsored" : "nofollow"}
-            className="block w-full bg-primary text-white font-bold py-4 rounded-full text-center text-[14px] hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+            className="block w-full bg-primary text-white font-bold py-4 rounded-full text-center text-[14px] hover:bg-primary/90 transition-colors">
             {agent.ctaText}
           </a>
         ) : (
-          <span className="block w-full bg-bg-soft text-ink-soft font-bold py-4 rounded-full text-center text-[14px]">準備中</span>
+          // 提携リンク未設定のサービスは、比較記事で詳細を案内する
+          <Link href="/articles/agent-comparison-2026"
+            className="block w-full bg-primary text-white font-bold py-4 rounded-full text-center text-[14px] hover:bg-primary/90 transition-colors">
+            エージェント比較で詳しく見る
+          </Link>
         )}
-        {agent.affiliate && <p className="text-[10px] text-ink-soft text-center mt-2">※提携先のサービスです</p>}
+        {agent.affiliate && agent.url && <p className="text-[11px] text-ink-soft text-center mt-2">※提携先のサービスです</p>}
       </div>
 
       {/* 免責 */}
-      <div className="bg-bg-soft rounded-xl p-4 mb-6">
+      <div className="bg-bg-soft rounded-lg p-4 mb-6">
         <p className="text-[10px] text-ink-soft leading-relaxed">
           ※診断結果は一例です。複数のエージェントを比較検討することをおすすめします。
         </p>
@@ -381,7 +379,7 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
         <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`エージェント相性診断の結果は「${agent.name}」でした！`)}`}
           target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-ink text-white font-bold text-[13px] hover:bg-ink/80 transition-colors">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
           Xでシェア
         </a>
         <button onClick={onRestart}

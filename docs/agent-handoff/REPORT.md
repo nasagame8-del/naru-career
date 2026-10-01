@@ -1,5 +1,29 @@
 # Claude Code Report
 
+## REPORT-009 — サイト全体監査・AIコーディング臭除去
+
+- reportId: `REPORT-009`
+- completedInstructionId: `USER-SITE-AUDIT-2026-10-01`（ユーザー直接依頼。INST-004は未着手のまま）
+- status: `DONE`（判断事項あり）
+- branch: `claude/article-tag-fix-c7w0z4`
+- 実施内容:
+  - P0: ルートlayoutの `canonical: "/"` が canonical未設定ページ（/shindan, /types/*, /shindan/result/*, 404）へ継承されていた問題を解消し、各ページに自己canonicalを設定。robots.txt で個別許可botに非公開パスのdisallowが効いていなかった問題を修正（/api/ も追加）。本文の箇条書きが無印になっていた問題（preflightのlist-style消去）を修正。日本語の括弧に隣接した `**` が太字にならず記号ごと消えていた11箇所を太字化。`## よくある質問` 以降を末尾まで削除していたため2記事で後続セクション（おすすめエージェント）が消えていた問題を修正。目次の `&#x26;` 表示、カテゴリページFAQの色崩れ、AI面接チェックの `&#10003;` 文字列露出、関連記事の "thumb" 表示、エージェント診断の「準備中」ボタンを修正。ガイド/会員ページのタイトル `| NARU | NARU` 重複を修正。
+  - P1: 表を横スクロール対応（1文字ずつ折り返す崩れを解消）、blockquote/h4スタイル追加、モバイルのH2サイズ調整、5ステップのフロー図がPCで本文幅をはみ出す問題を修正、記事メタ行の折り返し、ヒーロー画像のwidth/height/sizesを実ファイル比率に合わせる、診断バナーの初回判定・safe-area・設問数の誤表記（5問→/shindanは20問）を修正、カテゴリページの重複カテゴリナビを削除、目次の開閉表示。a11y: skip link、nav/パンくずのaria-label・aria-current、time dateTime、装飾SVGのaria-hidden、診断の選択肢aria-pressed・progressbar、ネストした<main>の解消、カテゴリタグ文字色のコントラスト改善（amber-ink/sage-ink追加）、全体のprefers-reduced-motion対応。
+  - P2: カテゴリ配色・slug対応表の6重複を `src/lib/categories.ts` の theme / getCategoryTheme / getCategorySlug に集約。CategoryNavBar（全ページのクライアントコンポーネント）にCATEGORIES全体（説明文・FAQ）を送らないようlayoutから必要分だけ渡す形に変更。SurveyLink/TemplateDownloadをServer Component化し計測をCtaTrackerの `data-track-event` に一本化（ダウンロード時のcta_click二重計上を解消）。
+  - P3: カード・バナーのhover浮き上がり/影/画像ズーム、glass(backdrop-blur)、glow影、NARU Pointの装飾三角と星アイコン、診断の装飾アイコン列、noteボックスの絵文字、診断画面の設計履歴コメント、ページ内の自明なJSXコメントを削除。角丸をrounded-lgに統一。ホームの重複した適職診断CTA（3つ目）を削除。診断の所要時間表記を「約2分」に統一。
+- テスト結果: `npm test` vitest 266件pass・node --test 43件pass、`npx tsc --noEmit` exit 0、`npx eslint src` エラー0（警告6件は internal ダッシュボードの既存未使用変数）、`npm run build` 成功。Chromiumで / /articles 記事3本 /category/zakki /category/industry-guide /about /agent-diagnosis /glossary を375/390/430/768/1024/1440pxで確認し横スクロール0。console errorはサンドボックスで外部（Google Fonts/GTM）の証明書が通らないものだけ。全52記事の本文HTMLを修正前後で比較し、差分は意図した太字11箇所・復活した2セクション・目次1件・非表示インラインFAQ1件のみ。
+- 変更ファイル: src/app/{layout,page,robots,sitemap,globals.css}、src/app/articles/{page,[slug]/page}.tsx、src/app/category/[slug]/page.tsx、src/app/guides/second-new-grad-complete-guide/page.tsx、src/app/members/resume-template/page.tsx、src/app/privacy/page.tsx、src/app/shindan/{layout.tsx,shindan.css,_lib/data.ts,result/[slug]/page.tsx,result/[slug]/opengraph-image.tsx}、src/app/types/[slug]/page.tsx、src/components/{AgentDiagnosis,AiInterviewCheck,ArticleBrowser,ArticleList,CategoryNavBar,CategoryTabs,CtaTracker,DiagnosisBanner,FAQSection,Footer,Header,HeroSection,LatestNotePosts,ShareButtons,SurveyLink,TableOfContents,TemplateDownload}.tsx、src/lib/{articles,articles.test,categories}.ts、package.json、package-lock.json、本レポート。削除: src/components/ArticleCard.tsx、src/components/MiniAltoBoxes.tsx、public/{file,globe,next,vercel,window}.svg、依存 satori。
+- SEOへの変更: URL・slug・記事タイトル・H1・記事本文は無変更。canonical は「誤って / を指していたページ」を自己参照に修正したのみ（既存の正しいcanonicalは無変更）。og:locale/siteName/url/authors/section、カテゴリページのOGを追加。sitemapに /privacy と /types/* を追加、カテゴリのlastModifiedを記事の最新更新日に。robotsのdisallow修正。/articles の description に「雑記」を追記。ホームのPICKUPラベルをh2化。ガイド・会員ページのtitle重複修正。記事のFAQPage構造化データから、画面に表示されていないインラインFAQ（agent-not-recommended の1件）を除外。
+- 既知の問題: agent-not-recommended.md の inlineFaq.heading「「やめたほうがいい」と感じた瞬間は、正直あった」に一致するH2が無く表示されない（記事側の修正が必要）。/members/resume-template のリンク先 `/members/files/resume-template-naru.docx` が存在しない。Google Fontsを afterInteractive のスクリプトで読み込んでおりFOUT/CLSが出る（next/font移行はビルド時の外部取得を伴うため未実施）。internal ダッシュボードのlint警告は対象外として未修正。
+- 判断が必要な項目（NEEDS_DECISION）:
+  1. ブランドカラー: 依頼文の Tea Green #1F6F66 / Amber #B5691B と、現行サイトCSSの primary #7A3E2E（ブラウン）/ amber #D29A4A が一致しない（画像生成プロンプトは前者）。「ブランドカラー変更禁止」と矛盾するため配色は変更していない。どちらを正とするか決定が必要。
+  2. /shindan/result/* と /types/* が同じ16タイプを扱い内容が重複。result を noindex か /types へのcanonicalにするか。
+  3. 未参照のpublic画像（logo-icon.png、logo-wordmark-original.png、images/backgrounds/*、shindan の未使用素材、monster-*.png など）。外部参照の可能性があるため削除していない。
+  4. 記事内の `cta-button` を内部リンク（エージェント比較を見る等）にも使っており cta_click 計測に混ざっている。計測仕様の変更になるため未変更。
+- 推奨する次の作業: 上記判断事項の決定、next/font への移行検討、agent-not-recommended の inlineFaq 見出し修正、resume-template の docx 配置、PR作成とPreviewでの目視確認。
+
+---
+
 ## REPORT-008 — 未定義カテゴリ「転職ノウハウ」の修正と「雑記」カテゴリ追加
 
 - reportId: `REPORT-008`

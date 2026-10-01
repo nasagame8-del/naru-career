@@ -80,7 +80,6 @@ export default async function OgImage({
             overflow: "hidden",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imgSrc}
             width={300}

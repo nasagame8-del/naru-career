@@ -1,20 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { ArticleMeta } from "@/lib/articles";
-
-const categoryStyles: Record<string, string> = {
-  体験談: "bg-amber-soft text-amber",
-  エージェント比較: "bg-primary-soft text-primary",
-  業界解説: "bg-gray-soft text-gray",
-  雑記: "bg-sage-soft text-sage",
-};
+import { getCategoryTheme } from "@/lib/categories";
 
 export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
   return (
     <div className="divide-y divide-line">
       {articles.map((article) => {
-        const tagStyle =
-          categoryStyles[article.category] ?? categoryStyles["業界解説"];
+        const tagStyle = getCategoryTheme(article.category).tag;
         return (
           <Link
             key={article.slug}
@@ -46,7 +39,7 @@ export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
                 >
                   {article.category}
                 </span>
-                <time className="text-[11px] text-ink-soft font-mono">
+                <time dateTime={article.datePublished} className="text-[11px] text-ink-soft font-mono">
                   {article.datePublished}
                 </time>
               </div>

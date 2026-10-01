@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllArticleMetas, type ArticleMeta } from "@/lib/articles";
-import { CATEGORIES, isValidCategorySlug } from "@/lib/categories";
+import { CATEGORIES, getCategoryTheme, isValidCategorySlug } from "@/lib/categories";
 import { BreadcrumbJsonLd, FAQJsonLd } from "@/components/JsonLd";
 import { FAQSection } from "@/components/FAQSection";
 import { MiniAlto } from "@/components/MiniAlto";
@@ -24,10 +24,19 @@ export async function generateMetadata(props: {
     alternates: {
       canonical: `/category/${slug}`,
     },
+    openGraph: {
+      title: `${cat.label}｜第二新卒の転職ガイド`,
+      description: cat.description,
+      type: "website",
+      siteName: "NARU",
+      locale: "ja_JP",
+      url: `/category/${slug}`,
+      images: ["/logo-wordmark.png"],
+    },
   };
 }
 
-/* ── 記事をreadingOrder順に並べ、未登録の記事は末尾に追加 ── */
+/** 記事をreadingOrder順に並べ、未登録の記事は末尾に追加 */
 function sortByReadingOrder(
   articles: ArticleMeta[],
   readingOrder: string[]
@@ -40,21 +49,6 @@ function sortByReadingOrder(
   });
 }
 
-/* ── カテゴリごとのスタイルマップ ── */
-const categoryStyles: Record<string, string> = {
-  体験談: "bg-amber-soft text-amber",
-  エージェント比較: "bg-primary-soft text-primary",
-  業界解説: "bg-gray-soft text-gray",
-  雑記: "bg-sage-soft text-sage",
-};
-
-const stepBadgeStyles: Record<string, string> = {
-  体験談: "bg-amber text-white",
-  エージェント比較: "bg-primary text-white",
-  業界解説: "bg-gray text-white",
-  雑記: "bg-sage text-white",
-};
-
 export default async function CategoryPage(props: {
   params: Promise<{ slug: string }>;
 }) {
@@ -66,8 +60,7 @@ export default async function CategoryPage(props: {
     (a) => a.categories.includes(cat.name)
   );
   const articles = sortByReadingOrder(allArticles, cat.readingOrder);
-  const badgeStyle = stepBadgeStyles[cat.name] ?? "bg-primary text-white";
-  const tagStyle = categoryStyles[cat.name] ?? "bg-primary-soft text-primary";
+  const hasReadingOrder = cat.readingOrder.length > 0;
 
   return (
     <>
@@ -79,34 +72,15 @@ export default async function CategoryPage(props: {
       />
       <FAQJsonLd faqs={cat.faq} />
 
-      <div className="max-w-5xl mx-auto px-4 pt-12 pb-16">
-        {/* パンくず */}
-        <nav className="text-sm text-ink-soft mb-6 flex items-center gap-1.5">
+      <div className="max-w-5xl mx-auto px-4 pt-8 pb-16">
+        <nav aria-label="パンくずリスト" className="text-sm text-ink-soft mb-6 flex items-center gap-1.5">
           <Link href="/" className="hover:text-primary transition-colors">
             ホーム
           </Link>
-          <span>/</span>
-          <span className="text-ink">{cat.label}</span>
+          <span aria-hidden="true">/</span>
+          <span className="text-ink" aria-current="page">{cat.label}</span>
         </nav>
 
-        {/* カテゴリナビ */}
-        <div className="flex border-b border-line mb-8">
-          {Object.entries(CATEGORIES).map(([s, c]) => (
-            <Link
-              key={s}
-              href={`/category/${s}`}
-              className={`px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-colors relative ${
-                s === slug
-                  ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary"
-                  : "text-ink-soft hover:text-ink"
-              }`}
-            >
-              {c.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* ── ヒーローセクション ── */}
         <section className="mb-12">
           <h1 className="font-serif text-2xl md:text-3xl font-bold mb-4 leading-snug">
             {cat.label}
@@ -116,15 +90,18 @@ export default async function CategoryPage(props: {
           </p>
         </section>
 
-        {/* ── 読む順番つき記事一覧 ── */}
         {articles.length > 0 ? (
           <section className="mb-16">
-            <h2 className="text-lg font-bold mb-1">
-              おすすめの読む順番
-            </h2>
-            <p className="text-sm text-ink-soft mb-6">
-              上から順に読むと、テーマ全体を体系的に理解できます。
-            </p>
+            {hasReadingOrder ? (
+              <>
+                <h2 className="text-lg font-bold mb-1">おすすめの読む順番</h2>
+                <p className="text-sm text-ink-soft mb-6">
+                  上から順に読むと、テーマ全体を体系的に理解できます。
+                </p>
+              </>
+            ) : (
+              <h2 className="text-lg font-bold mb-6">記事一覧</h2>
+            )}
 
             <ol className="space-y-4">
               {articles.map((article, i) => {
@@ -133,18 +110,16 @@ export default async function CategoryPage(props: {
                   <li key={article.slug}>
                     <Link
                       href={`/articles/${article.slug}`}
-                      className="flex items-start gap-4 p-4 rounded-lg border border-line hover:border-primary/30 hover:bg-bg-soft transition-all group"
+                      className="flex items-start gap-4 p-4 rounded-lg border border-line hover:border-primary/30 hover:bg-bg-soft transition-colors group"
                     >
-                      {/* ステップバッジ */}
                       <span
                         className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                          isInOrder ? badgeStyle : "bg-line text-ink-soft"
+                          isInOrder ? cat.theme.badge : "bg-line text-ink-soft"
                         }`}
                       >
                         {i + 1}
                       </span>
 
-                      {/* サムネイル */}
                       <div className="shrink-0 w-[100px] md:w-[160px] aspect-card rounded overflow-hidden bg-bg-soft">
                         {article.cardImagePath ? (
                           <Image
@@ -162,11 +137,10 @@ export default async function CategoryPage(props: {
                         )}
                       </div>
 
-                      {/* テキスト */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
                           <span
-                            className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${categoryStyles[article.category] ?? tagStyle}`}
+                            className={`shrink-0 whitespace-nowrap text-[11px] font-medium px-2 py-0.5 rounded-full ${getCategoryTheme(article.category).tag}`}
                           >
                             {article.category}
                           </span>
@@ -182,7 +156,7 @@ export default async function CategoryPage(props: {
                         <p className="text-sm text-ink-soft mt-1 line-clamp-2 hidden md:block">
                           {article.excerpt}
                         </p>
-                        <time className="text-xs text-ink-soft font-mono mt-1.5 block">
+                        <time dateTime={article.datePublished} className="text-xs text-ink-soft font-mono mt-1.5 block">
                           {article.datePublished}
                         </time>
                       </div>
@@ -199,12 +173,10 @@ export default async function CategoryPage(props: {
           </div>
         )}
 
-        {/* ── FAQセクション ── */}
         {cat.faq.length > 0 && (
-          <FAQSection faqs={cat.faq} accentColor={cat.accentColor} />
+          <FAQSection faqs={cat.faq} borderClass={cat.theme.border} />
         )}
 
-        {/* ── 他カテゴリへの誘導 ── */}
         {cat.crossLinks.length > 0 && (
           <section className="mt-14 pt-8 border-t-2 border-line">
             <h2 className="text-lg font-bold mb-5">
@@ -215,7 +187,7 @@ export default async function CategoryPage(props: {
                 <Link
                   key={link.slug}
                   href={`/category/${link.slug}`}
-                  className="block p-5 rounded-lg border border-line hover:border-primary/30 hover:bg-bg-soft transition-all group"
+                  className="block p-5 rounded-lg border border-line hover:border-primary/30 hover:bg-bg-soft transition-colors group"
                 >
                   <span className="text-base font-bold text-ink group-hover:text-primary transition-colors">
                     {link.label} →

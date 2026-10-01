@@ -55,7 +55,7 @@ export function HeroSection() {
                 href="/shindan"
                 className="inline-flex items-center px-6 py-2.5 bg-ink text-white text-sm font-bold rounded-lg hover:bg-ink/85 transition-colors"
               >
-                2分で適職を診断する
+                約2分で適職を診断する
               </Link>
             </div>
           </div>

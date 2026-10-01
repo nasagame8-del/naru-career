@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "職務経歴書テンプレート ダウンロード | NARU",
+  title: "職務経歴書テンプレート ダウンロード",
   robots: { index: false, follow: false },
 };
 
@@ -52,9 +53,9 @@ export default function ResumeTemplatePage() {
         </div>
 
         <p className="text-xs text-ink-soft mt-8 text-center">
-          <a href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="hover:text-primary transition-colors">
             ← NARUトップへ戻る
-          </a>
+          </Link>
         </p>
       </div>
     </div>

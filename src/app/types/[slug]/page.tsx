@@ -18,6 +18,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${t.name}の特徴・向いている仕事・おすすめ記事 | RPG適職診断`,
     description: `${t.desc} 向いている環境や第二新卒×IT/Webの狙い目、おすすめ記事をまとめています。`,
+    alternates: {
+      canonical: `/types/${slug}`,
+    },
   };
 }
 

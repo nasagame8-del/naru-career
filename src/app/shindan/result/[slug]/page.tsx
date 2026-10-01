@@ -20,6 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${t.name} | RPG適職診断`,
     description: t.desc,
+    alternates: {
+      canonical: `/shindan/result/${slug}`,
+    },
     openGraph: {
       title: `${t.name} | RPG適職診断`,
       description: t.desc,

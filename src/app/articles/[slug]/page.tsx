@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getArticle, getArticleSlugs, getAllArticleMetas, getAllSlugs, getCTARegistry } from "@/lib/articles";
+import { getArticle, getArticleSlugs, getAllArticleMetas, getCTARegistry } from "@/lib/articles";
+import { getCategorySlug, getCategoryTheme } from "@/lib/categories";
 import { FAQSection } from "@/components/FAQSection";
 import { ShareButtons } from "@/components/ShareButtons";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -42,8 +43,13 @@ export async function generateMetadata(props: {
       title: article.title,
       description: article.excerpt,
       type: "article",
+      siteName: "NARU",
+      locale: "ja_JP",
+      url: `/articles/${slug}`,
       publishedTime: article.datePublished,
-      modifiedTime: article.dateModified,
+      modifiedTime: article.dateModified || article.datePublished,
+      authors: ["磯貝アルト"],
+      section: article.category,
       ...(article.cardImagePath && {
         images: [article.cardImagePath],
       }),
@@ -51,47 +57,13 @@ export async function generateMetadata(props: {
   };
 }
 
-const categoryAccent: Record<string, { tag: string; border: string; faq: string; cssVar: string }> = {
-  体験談: {
-    tag: "bg-amber-soft text-amber",
-    border: "border-amber",
-    faq: "border-amber",
-    cssVar: "#D29A4A",
-  },
-  エージェント比較: {
-    tag: "bg-primary-soft text-primary",
-    border: "border-primary",
-    faq: "border-primary",
-    cssVar: "#7A3E2E",
-  },
-  業界解説: {
-    tag: "bg-bg-soft text-ink-soft",
-    border: "border-gray",
-    faq: "border-gray",
-    cssVar: "#8B8D91",
-  },
-  雑記: {
-    tag: "bg-sage-soft text-sage",
-    border: "border-sage",
-    faq: "border-sage",
-    cssVar: "#5E7F68",
-  },
-};
-
 export default async function ArticlePage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
 
-  // 未来日の記事は404を返す
-  const publishedSlugs = getArticleSlugs();
-  if (!publishedSlugs.includes(slug)) {
-    // slugがそもそも存在しないファイルかどうかも確認
-    const allExisting = getAllSlugs();
-    if (!allExisting.includes(slug)) notFound();
-    // ファイルは存在するが未来日 → 404
-    notFound();
-  }
+  // 存在しない記事・公開日が未来の記事は404
+  if (!getArticleSlugs().includes(slug)) notFound();
 
   const article = await getArticle(slug);
   const allArticles = getAllArticleMetas();
@@ -103,7 +75,7 @@ export default async function ArticlePage(props: {
     )
     .slice(0, 4);
 
-  const accent = categoryAccent[article.category] || categoryAccent["業界解説"];
+  const theme = getCategoryTheme(article.category);
 
   // note連携: 対応するnote記事があればリンクを表示
   const noteLinkMap = await getNoteLinkMap();
@@ -119,26 +91,13 @@ export default async function ArticlePage(props: {
   );
   const isMixed = hasAffiliate && hasNonAffiliate;
 
-  const categorySlugMap: Record<string, string> = {
-    "体験談": "taiken",
-    "エージェント比較": "agent-comparison",
-    "業界解説": "industry-guide",
-    "雑記": "zakki",
-  };
-  const categoryHref = `/category/${categorySlugMap[article.category] || "taiken"}`;
+  const categoryHref = `/category/${getCategorySlug(article.category) ?? "industry-guide"}`;
 
   const breadcrumbs = [
     { name: "ホーム", href: "/" },
     { name: article.category, href: categoryHref },
     { name: article.title, href: `/articles/${slug}` },
   ];
-
-  const categoryTagStyle: Record<string, string> = {
-    体験談: "bg-amber-soft text-amber",
-    エージェント比較: "bg-primary-soft text-primary",
-    業界解説: "bg-gray-soft text-gray",
-    雑記: "bg-sage-soft text-sage",
-  };
 
   return (
     <>
@@ -150,61 +109,63 @@ export default async function ArticlePage(props: {
       <BreadcrumbJsonLd items={breadcrumbs} />
 
       <div className="max-w-5xl mx-auto px-4 py-8">
-        {/* パンくずリスト */}
-        <nav className="text-sm text-ink-soft mb-6 flex items-center gap-1.5 flex-wrap">
+        <nav aria-label="パンくずリスト" className="text-sm text-ink-soft mb-6 flex items-center gap-1.5 flex-wrap">
           <Link href="/" className="hover:text-primary transition-colors">
             ホーム
           </Link>
-          <span>/</span>
+          <span aria-hidden="true">/</span>
           <Link href={categoryHref} className="hover:text-primary transition-colors">
             {article.category}
           </Link>
-          <span>/</span>
-          <span className="text-ink">{article.title}</span>
+          <span aria-hidden="true">/</span>
+          <span className="text-ink" aria-current="page">{article.title}</span>
         </nav>
 
         <div className="flex gap-10 min-w-0">
-          {/* 本文エリア */}
           <article className="flex-1 min-w-0 max-w-[700px]">
             <span
-              className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${accent.tag}`}
+              className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${theme.tag}`}
             >
               {article.category}
             </span>
             <h1 className="text-2xl md:text-[32px] font-semibold leading-tight mt-3 mb-5">
               {article.title}
             </h1>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-4 text-sm text-ink-soft font-mono">
-                <time>公開: {article.datePublished}</time>
-                {article.dateModified !== article.datePublished && (
-                  <time>更新: {article.dateModified}</time>
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-6">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-ink-soft font-mono">
+                <span>
+                  公開: <time dateTime={article.datePublished}>{article.datePublished}</time>
+                </span>
+                {article.dateModified && article.dateModified !== article.datePublished && (
+                  <span>
+                    更新: <time dateTime={article.dateModified}>{article.dateModified}</time>
+                  </span>
                 )}
               </div>
               <ShareButtons slug={slug} title={article.title} />
             </div>
 
-            {/* アイキャッチ画像 */}
             {(article.heroImagePath || article.cardImagePath) && (
-              <div className="mb-8 rounded-xl overflow-hidden">
+              <div className="mb-8 rounded-lg overflow-hidden">
+                {/* hero は1600×600、card（heroが無い記事の代替）は1200×630 */}
                 <Image
                   src={article.heroImagePath || article.cardImagePath!}
                   alt={`${article.title}｜${article.category}記事のアイキャッチ画像`}
-                  width={1600}
-                  height={600}
+                  width={article.heroImagePath ? 1600 : 1200}
+                  height={article.heroImagePath ? 600 : 630}
+                  sizes="(min-width: 768px) 700px, 100vw"
                   className="w-full h-auto"
                   priority
                 />
               </div>
             )}
 
-            {/* PR表記（affiliate案件がある記事のみ・折りたたみ式） */}
             {hasAffiliate && (
               <details className="mb-4">
                 <summary className="inline-flex items-center gap-1.5 text-[11px] text-ink-soft cursor-pointer hover:text-ink transition-colors">
                   <span className="border border-ink-soft/30 rounded px-1.5 py-0.5 font-mono font-medium">PR</span>
                   プロモーションを含みます
-                  <span className="text-[10px]">▼</span>
+                  <span className="text-[10px]" aria-hidden="true">▼</span>
                 </summary>
                 <div className="mt-2 bg-bg-soft border border-line rounded-lg px-4 py-3">
                   <p className="text-[12px] text-ink-soft leading-relaxed">
@@ -222,33 +183,23 @@ export default async function ArticlePage(props: {
               </details>
             )}
 
-            {/* リード文 */}
             <p className="text-ink-soft leading-relaxed mb-8">
               {article.excerpt}
             </p>
 
-            {/* NARU Point（naruPointフィールドが設定されている記事のみ表示） */}
             {article.naruPoint && (
-              <div className="relative bg-primary/[0.04] border border-primary/20 rounded-xl px-5 py-5 mb-8 overflow-hidden">
-                <div className="absolute top-0 right-0 w-10 h-10">
-                  <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-accent/10 border-l-[40px] border-l-transparent" />
-                  <div className="absolute top-[3px] right-[3px] w-0 h-0 border-t-[12px] border-t-white border-l-[12px] border-l-transparent" />
-                </div>
-                <div className="flex items-center gap-2 mb-2.5">
-                  <span className="inline-flex items-center gap-1.5 bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z" /></svg>
-                    NARU Point
-                  </span>
-                </div>
+              <div className="bg-primary-soft/50 border border-primary/20 rounded-lg px-5 py-5 mb-8">
+                <span className="inline-block bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded mb-2.5">
+                  NARU Point
+                </span>
                 <p className="text-[14px] text-ink leading-relaxed font-medium">
                   {article.naruPoint}
                 </p>
               </div>
             )}
 
-            {/* この記事で分かること（AIフレンドリーな要約） */}
             {article.summary.length > 0 && (
-              <div className={`border-l-[3px] ${accent.border} bg-bg-soft rounded-r-lg px-5 py-4 mb-8`}>
+              <div className={`border-l-[3px] ${theme.border} bg-bg-soft rounded-r-lg px-5 py-4 mb-8`}>
                 <p className="font-bold text-sm mb-2">この記事で分かること</p>
                 <ul className="space-y-1.5">
                   {article.summary.map((point, i) => (
@@ -261,27 +212,21 @@ export default async function ArticlePage(props: {
               </div>
             )}
 
-            {/* インライン目次 */}
             <TableOfContents headings={article.headings} />
 
-            {/* 記事本文 */}
             <ArticleBody
               className="prose"
-              style={{ "--category-color": accent.cssVar } as React.CSSProperties}
+              style={{ "--category-color": theme.cssColor } as React.CSSProperties}
               contentHtml={article.contentHtml}
               widgets={ARTICLE_WIDGETS[slug] ?? []}
             />
 
-            {/* 職務経歴書テンプレートのダウンロード */}
             {article.resume_template && <TemplateDownload />}
 
-            {/* FAQセクション */}
-            <FAQSection faqs={article.faq} accentColor={accent.faq} />
+            <FAQSection faqs={article.faq} borderClass={theme.border} />
 
-            {/* note版リンク */}
             {noteLink && (
-              <div className="mt-10 p-5 bg-bg-soft border border-line rounded-lg flex items-start gap-3">
-                <span className="text-2xl shrink-0" aria-hidden="true">📝</span>
+              <div className="mt-10 p-5 bg-bg-soft border border-line rounded-lg">
                 <div>
                   <p className="font-bold text-sm mb-1">この記事のnote版はこちら</p>
                   <a
@@ -296,7 +241,6 @@ export default async function ArticlePage(props: {
               </div>
             )}
 
-            {/* まとめCTA */}
             {article.cta_agents.length > 0 && (
               <section className="mt-12 p-6 bg-primary-soft rounded-lg relative">
                 <div className="absolute -top-6 right-4 hidden sm:block">
@@ -319,12 +263,10 @@ export default async function ArticlePage(props: {
               </section>
             )}
 
-            {/* 記事末尾シェアボタン */}
             <div className="mt-10 pt-6 border-t border-line">
               <ShareButtons slug={slug} title={article.title} />
             </div>
 
-            {/* 関連記事セクション */}
             {relatedArticles.length > 0 && (
               <section className="mt-12">
                 <div className="flex items-center gap-2 mb-6">
@@ -333,13 +275,12 @@ export default async function ArticlePage(props: {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {relatedArticles.map((a) => {
-                    const relTagStyle =
-                      categoryTagStyle[a.category] ?? categoryTagStyle["業界解説"];
+                    const relTagStyle = getCategoryTheme(a.category).tag;
                     return (
                       <Link
                         key={a.slug}
                         href={`/articles/${a.slug}`}
-                        className="group block bg-white rounded-lg overflow-hidden border border-line hover:shadow-md transition-shadow"
+                        className="group block bg-surface rounded-lg overflow-hidden border border-line hover:border-primary/30 transition-colors"
                       >
                         <div className="aspect-card relative bg-line">
                           {a.cardImagePath ? (
@@ -348,11 +289,11 @@ export default async function ArticlePage(props: {
                               alt={`${a.title}｜${a.category}記事のサムネイル画像`}
                               fill
                               className="object-cover"
-                              sizes="300px"
+                              sizes="(min-width: 640px) 340px, 100vw"
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
-                              <span className="text-ink-soft text-xs">thumb</span>
+                              <span className="text-ink-soft text-xs">{a.category}</span>
                             </div>
                           )}
                         </div>
@@ -362,11 +303,11 @@ export default async function ArticlePage(props: {
                           </h3>
                           <div className="flex items-center gap-2 mt-1.5">
                             <span
-                              className={`text-[10px] font-mono font-medium px-1.5 py-0.5 rounded ${relTagStyle}`}
+                              className={`text-[11px] font-mono font-medium px-1.5 py-0.5 rounded ${relTagStyle}`}
                             >
                               {a.category}
                             </span>
-                            <time className="text-[10px] text-ink-soft font-mono">
+                            <time dateTime={a.datePublished} className="text-[11px] text-ink-soft font-mono">
                               {a.datePublished}
                             </time>
                           </div>
@@ -378,20 +319,18 @@ export default async function ArticlePage(props: {
               </section>
             )}
 
-            {/* 適職診断への導線(テンプレートレベル) */}
             <div className="mt-10 pt-6 border-t border-line">
-              <a
+              <Link
                 href="/shindan"
                 className="group flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors"
               >
                 <MiniAlto pose="idea" size={36} />
                 <span>
-                  自分がどんな仕事に向いているか、3分の適職診断で見てみませんか？
+                  自分がどんな仕事に向いているか、約2分の適職診断で見てみませんか？
                 </span>
-              </a>
+              </Link>
             </div>
 
-            {/* 独自調査への導線(テンプレートレベル) */}
             <div className="mt-4">
               <SurveyLink className="flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors">
                 <MiniAlto pose="bow" size={36} />
@@ -401,14 +340,13 @@ export default async function ArticlePage(props: {
               </SurveyLink>
             </div>
 
-            {/* 更新履歴（updateHistoryがある記事のみ） */}
             {article.updateHistory.length > 0 && (
               <div className="mt-10 pt-6 border-t border-line">
                 <p className="font-bold text-sm mb-3 text-ink-soft">更新履歴</p>
                 <ul className="text-xs text-ink-soft space-y-1.5">
                   {article.updateHistory.map((entry, i) => (
                     <li key={i} className="flex gap-2">
-                      <time className="font-mono shrink-0">{entry.date}</time>
+                      <time dateTime={entry.date} className="font-mono shrink-0">{entry.date}</time>
                       <span>{entry.description}</span>
                     </li>
                   ))}
@@ -417,10 +355,8 @@ export default async function ArticlePage(props: {
             )}
           </article>
 
-          {/* サイドバー */}
           <aside className="hidden lg:block w-64 shrink-0">
             <div className="sticky top-8 space-y-8">
-              {/* 著者情報 */}
               <div className="border border-line rounded-lg p-5">
                 <p className="font-bold text-sm mb-3">この記事を書いた人</p>
                 <div className="flex items-center gap-3 mb-2">
@@ -432,7 +368,7 @@ export default async function ArticlePage(props: {
                       height={48}
                       className="rounded-full"
                     />
-                    <span className="block text-[9px] text-ink-soft text-center mt-0.5">※アバター</span>
+                    <span className="block text-[10px] text-ink-soft text-center mt-0.5">※アバター</span>
                   </div>
                   <p className="font-semibold text-sm">磯貝アルト</p>
                 </div>
@@ -450,9 +386,8 @@ export default async function ArticlePage(props: {
                 </div>
               </div>
 
-              {/* サイドバー目次 */}
               {article.headings.length > 0 && (
-                <div className="border border-line rounded-lg p-5">
+                <nav aria-label="目次" className="border border-line rounded-lg p-5">
                   <p className="font-bold text-sm mb-3">目次</p>
                   <ol className="space-y-1.5">
                     {article.headings.map((h, i) => (
@@ -461,7 +396,7 @@ export default async function ArticlePage(props: {
                           href={`#${h.id}`}
                           className="text-xs text-ink-soft hover:text-primary transition-colors leading-relaxed flex gap-1.5"
                         >
-                          <span className="font-mono text-ink-soft/60 shrink-0">
+                          <span className="font-mono text-ink-soft shrink-0">
                             {i + 1}.
                           </span>
                           {h.text}
@@ -469,14 +404,13 @@ export default async function ArticlePage(props: {
                       </li>
                     ))}
                   </ol>
-                </div>
+                </nav>
               )}
             </div>
           </aside>
         </div>
       </div>
 
-      {/* スクロール連動型の診断バナー */}
       <DiagnosisBanner
         href={
           article.category === "エージェント比較" || article.cta_agents.length > 0
