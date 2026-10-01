@@ -1,0 +1,27 @@
+{
+  "batchId": "batch_2026-10-02_chatgpt",
+  "selectedAt": "2026-10-02T00:09:00+09:00",
+  "status": "selected",
+  "publishSlots": [
+    {
+      "order": 1,
+      "articleId": 54,
+      "candidateId": "cand_261002a1",
+      "slug": "job-seeker-harassment-new-rules-2026",
+      "title": "面接でこんなこと聞かれたら？10月1日から求職者ハラスメント対策が企業の義務に",
+      "plannedAt": "2026-10-02T12:00:00+09:00"
+    },
+    {
+      "order": 2,
+      "articleId": 55,
+      "candidateId": "cand_261002a2",
+      "slug": "second-new-grad-desired-salary-2026",
+      "title": "第二新卒の希望年収はいくら？2026年調査と年収350→400万円の実体験から考える",
+      "plannedAt": "2026-10-02T18:00:00+09:00"
+    }
+  ],
+  "notes": [
+    "ユーザー選択: 1.2",
+    "公開時刻は標準枠12:00/18:00。QA・画像・プレビュー承認が不足する場合は公開しない。"
+  ]
+}
