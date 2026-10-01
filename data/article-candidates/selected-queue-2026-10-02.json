@@ -1,15 +1,31 @@
 {
   "batchId": "batch_2026-10-02_chatgpt",
   "selectedAt": "2026-10-02T00:09:00+09:00",
-  "status": "selected",
+  "status": "draft_prs_created_images_pending",
   "publishSlots": [
     {
       "order": 1,
       "articleId": 54,
       "candidateId": "cand_261002a1",
       "slug": "job-seeker-harassment-new-rules-2026",
-      "title": "面接でこんなこと聞かれたら？10月1日から求職者ハラスメント対策が企業の義務に",
-      "plannedAt": "2026-10-02T12:00:00+09:00"
+      "title": "面接でこんなこと聞かれたら？10月1日から求職者セクハラ対策が企業の義務に",
+      "plannedAt": "2026-10-02T12:00:00+09:00",
+      "branch": "article-factory/2026-10-02-054-job-seeker-harassment",
+      "prNumber": 56,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/56",
+      "headSha": "bb7e1d9f2f8a47842522005aabd825f8cbeacdf1",
+      "driveFolderId": "1dsk5OmRFQVLVV6ISC6R6pKTRtKQML8pg",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1dsk5OmRFQVLVV6ISC6R6pKTRtKQML8pg",
+      "designPromptId": "18rr4MBls2lqwPW3O23k2S6ZjKUSIrDVovVuAutNr91o",
+      "designPromptUrl": "https://docs.google.com/document/d/18rr4MBls2lqwPW3O23k2S6ZjKUSIrDVovVuAutNr91o/edit",
+      "articlePromptCopyId": "1mX8ePRxyADUZw0vZeVG21R73SKweX39dSfkStMg3Kik",
+      "articleRunDocId": "1UJuMR2TVPxYvgJ0VU8ynXtsNc8_jn3XMhiVAxAcSkBQ",
+      "qa": {
+        "articleFactoryValidation": "success",
+        "vercelPreview": "success",
+        "images": "pending",
+        "previewVisual": "pending"
+      }
     },
     {
       "order": 2,
@@ -17,11 +33,28 @@
       "candidateId": "cand_261002a2",
       "slug": "second-new-grad-desired-salary-2026",
       "title": "第二新卒の希望年収はいくら？2026年調査と年収350→400万円の実体験から考える",
-      "plannedAt": "2026-10-02T18:00:00+09:00"
+      "plannedAt": "2026-10-02T18:00:00+09:00",
+      "branch": "article-factory/2026-10-02-055-desired-salary",
+      "prNumber": 57,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/57",
+      "headSha": "2a576b4519bf10f831ffbb3272c43ded7a145737",
+      "driveFolderId": "19Zh3imU3TnA-ASyhUODiTKqAnfUq4KFx",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/19Zh3imU3TnA-ASyhUODiTKqAnfUq4KFx",
+      "designPromptId": "1S9zKfOhsLfiVUvM6Oze0klAwFZzKAmvZZK_r1xohrHM",
+      "designPromptUrl": "https://docs.google.com/document/d/1S9zKfOhsLfiVUvM6Oze0klAwFZzKAmvZZK_r1xohrHM/edit",
+      "articlePromptCopyId": "1bpk6m3kuBgOrWYtVLNbLots1drb_DmKV-GjxK_wvjFs",
+      "articleRunDocId": "1bhWxIfgEryg48SbtneZfWMaFEDqvWipFE0YgK7Sb2SU",
+      "qa": {
+        "articleFactoryValidation": "success",
+        "vercelPreview": "pending",
+        "images": "pending",
+        "previewVisual": "pending"
+      }
     }
   ],
   "notes": [
     "ユーザー選択: 1.2",
-    "公開時刻は標準枠12:00/18:00。QA・画像・プレビュー承認が不足する場合は公開しない。"
+    "原稿・画像プラン・Drive保存・Draft PR作成済み。",
+    "公開時刻は標準枠12:00/18:00。画像4枚/記事の反映、最新headでのCI/Vercel成功、ユーザープレビュー承認が不足する場合は公開しない。"
   ]
 }
