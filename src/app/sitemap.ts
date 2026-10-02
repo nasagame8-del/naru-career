@@ -6,7 +6,10 @@ import { ALL_SLUGS as TYPE_SLUGS } from "@/app/shindan/_lib/data";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com";
   const articles = getAllArticleMetas();
-  const today = new Date().toISOString().split("T")[0];
+  const latestContentUpdate = articles
+    .map((article) => article.dateModified || article.datePublished)
+    .sort()
+    .at(-1);
 
   const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${baseUrl}/articles/${article.slug}`,
@@ -25,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         .at(-1);
       return {
         url: `${baseUrl}/category/${slug}`,
-        lastModified: latest ?? today,
+        ...(latest ? { lastModified: latest } : {}),
         changeFrequency: "weekly" as const,
         priority: 0.7,
       };
@@ -41,55 +44,48 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: today,
+      ...(latestContentUpdate ? { lastModified: latestContentUpdate } : {}),
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/articles`,
-      lastModified: today,
+      ...(latestContentUpdate ? { lastModified: latestContentUpdate } : {}),
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/glossary`,
-      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${baseUrl}/shindan`,
-      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/agent-diagnosis`,
-      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: today,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/ai-interview-check`,
-      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${baseUrl}/guides/second-new-grad-complete-guide`,
-      lastModified: today,
       changeFrequency: "weekly",
       priority: 0.9,
     },
