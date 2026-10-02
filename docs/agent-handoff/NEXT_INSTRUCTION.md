@@ -1,30 +1,34 @@
 # Next Instruction
 
-- instructionId: `NONE`
+- instructionId: `SMOKE-20261002-003`
 - issuedBy: `ChatGPT`
 - target: `Claude Code`
-- status: `IDLE`
-- mode: `CLOUD_CLAUDE_BRIDGE`
+- status: `ACTIVE`
+- mode: `CLOUD_CLAUDE_BRIDGE_SMOKE`
 
-## Current state
+## Goal
 
-No Claude task is active on master.
+Complete the smallest possible cloud-worker smoke test.
 
-To start a task, ChatGPT must first create or reuse a dedicated task branch and Draft PR, then update that branch's `STATE.json` to `status: RUN_CLAUDE` with a new unique `instructionId`.
+## Required action
 
-After writing a concrete instruction here, ChatGPT triggers the cloud worker by commenting on that PR:
+After the standard files from the workflow prompt are read, replace only `docs/agent-handoff/REPORT.md` with a concise report:
 
-```
-@naru-autopilot <instructionId>
-```
+- reportId: `REPORT-SMOKE-20261002-003`
+- completedInstructionId: `SMOKE-20261002-003`
+- status: `DONE`
+- branch: `test/claude-cloud-smoke-20261002-v3`
+- summary: cloud Claude worker reached the active instruction and updated the handoff report
+- tests: none; smoke test only
+- changed files: only `docs/agent-handoff/REPORT.md`
+- existing issues found: none
+- remaining risks: none for this smoke test
+- decisions needed: none
+- recommended next step: ChatGPT verifies the Actions run and closes this PR without merging
 
-Claude must execute only that instruction, update `REPORT.md`, and stop. ChatGPT reviews the resulting diff and tests before deciding whether a second instruction is needed.
+## Boundaries
 
-## Default limits
-
-- `maxClaudeTurns`: 8
-- workflow hard cap: 8
-- autonomous review/implementation rounds: 2
-- no recursive self-trigger
-- no direct push to master
-- no production merge/deploy without the normal NARU gates and required approval
+- Do not modify any other file.
+- Do not run tests, builds, web browsing, package installation, or external API calls.
+- Do not merge or deploy.
+- Finish immediately after writing REPORT.md.
