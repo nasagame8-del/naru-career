@@ -1,98 +1,97 @@
-# ChatGPT ↔ Claude Code Autopilot
+# ChatGPT ↔ Claude Code Cloud Bridge
 
-このディレクトリは、NARU開発で人間がChatGPTとClaude Codeの間をコピペしないための自動オーケストレーション用です。
+このディレクトリは、NARU開発でChatGPTを司令塔、Claude Codeを実装ワーカーとして使うクラウド連携用です。
+人間がChatGPTとClaudeの間で長文をコピペする運用は前提にしません。
+
+## 役割
+
+- ChatGPT: 要件整理、Drive/GitHub/Vercelの現状確認、指示作成、diffレビュー、次工程判断
+- Claude Code: コード調査、実装、必要なテスト、REPORT更新
+- GitHub: 共有状態、PR、実行ログ、Actionsの実行基盤
+- Vercel: Preview / Production確認
+- 人間: 仕様・公開・見た目など本当に判断が必要な箇所だけ確認
 
 ## Control plane
 
-- coordination branch: `agent/autopilot`
+タスクごとに専用ブランチとDraft PRを使います。
+
 - ChatGPT owns: `STATE.json`, `NEXT_INSTRUCTION.md`
-- Claude Code owns: `REPORT.md`
-- GitHub Actions executes Claude automatically when `NEXT_INSTRUCTION.md` changes and `STATE.json.status=RUN_CLAUDE`
-- ChatGPT automation periodically checks for a new Claude report and, when safe, writes the next instruction automatically
+- Claude Code owns: `REPORT.md` と、その指示で必要な実装ファイル
+- Workflow: `.github/workflows/naru-agent-autopilot.yml`
+- Authentication: GitHub repository secret `CLAUDE_CODE_OAUTH_TOKEN`
+- Trigger: 対象PRのコメント `@naru-autopilot <instructionId>`
+
+GitHub ActionsはPRのheadブランチをcheckoutし、STATEとコメントのinstructionIdが一致した場合だけClaudeを起動します。
+
+## Cost / usage guard
+
+Claude同士を無制限に会話させません。
+
+- 既定の `maxClaudeTurns`: 8
+- workflow側の絶対上限: 12
+- 1タスクの自律ラウンド: 原則2回まで
+- ChatGPTレビューで問題がなければ2回目は実行しない
+- 同じinstructionIdは二重実行しない
+- 通常のlint/build/grep/画像変換など、LLM不要な処理はスクリプトやCIを優先する
+- Claude実行が失敗した場合、部分変更は自動commitしない
+
+過去に100ターン設定で長時間実行したため、今後はSTATE側の値が異常でもworkflowが8へフォールバックし、12を超えて実行しません。
 
 ## State machine
 
 ```
-WAITING_FOR_SEED
-  ↓
+IDLE
+  ↓ ChatGPTが具体的なinstructionを作る
 RUN_CLAUDE
-  ↓
+  ↓ PRコメントで明示トリガー
 WAITING_FOR_CHATGPT
-  ↓
-RUN_CLAUDE
-  ↓
-...
-  ├─ PR_READY
-  ├─ HUMAN_REQUIRED
-  └─ FAILED
+  ↓ ChatGPTがREPORTとdiffを監査
+  ├─ 完了 → PR_READY / HUMAN_REQUIRED
+  └─ 修正必要 → 新しいinstructionIdでRUN_CLAUDE（原則1回だけ）
 ```
 
-## Single-writer rule
+自動でClaude→Claude→Claudeと再帰実行はしません。
 
-- `NEXT_INSTRUCTION.md`: ChatGPT only
-- `STATE.json`: ChatGPT only
-- `REPORT.md`: Claude Code only
-- implementation/test files: Claude Code while an instruction is active
+## Starting a task
 
-Do not violate these ownership rules. They prevent recursive commits and state corruption.
+1. ChatGPTが最新masterから専用ブランチを作る。
+2. 必要ならDraft PRを作る。
+3. `STATE.json` に一意な `instructionId`, `status: RUN_CLAUDE`, `maxClaudeTurns` を設定する。
+4. `NEXT_INSTRUCTION.md` に目的、変更範囲、完了条件、テスト、禁止事項を書く。
+5. 対象PRへ `@naru-autopilot <instructionId>` とコメントする。
+6. GitHub ActionsがClaude Codeをクラウド実行する。
+7. Claudeは `REPORT.md` と必要な実装を更新し、workflowが同じPR branchへcommit/pushする。
+8. ChatGPTがREPORT、diff、CIを確認し、終了または1回だけ追加修正を出す。
 
-## Claude execution
+## Remote visibility
 
-Workflow: `.github/workflows/naru-agent-autopilot.yml`
+PCを起動しておく必要はありません。スマホからGitHubの対象PRとActionsを見るだけで、
 
-Trigger:
-- push to `agent/autopilot`
-- only when `docs/agent-handoff/NEXT_INSTRUCTION.md` changes
-- workflow additionally checks that `STATE.json.status == RUN_CLAUDE`
+- 実行中 / 成功 / 失敗
+- Claudeが変更したcommit
+- REPORTの結論
+- CI結果
+- Vercel Preview
 
-Authentication:
-- GitHub repository secret `CLAUDE_CODE_OAUTH_TOKEN`
-- preferred because Claude Pro/Max users can generate it with `claude setup-token`
-- do not store the token in repository files
-
-Claude must:
-1. Read AGENTS.md, STATE.json, NEXT_INSTRUCTION.md, REPORT.md.
-2. Refuse duplicate instructionIds.
-3. Execute only the active instruction.
-4. Update REPORT.md before finishing.
-5. Leave changes in the working tree; the workflow commits/pushes them to `agent/autopilot`.
-
-## ChatGPT review loop
-
-When a new REPORT.md appears:
-1. Read REPORT.md + STATE.json + relevant git diff/code.
-2. If the result is safe and more work is needed, determine the next concrete instruction.
-3. Increment instructionId and iteration.
-4. Update STATE.json first with status `RUN_CLAUDE`.
-5. Update NEXT_INSTRUCTION.md last. That final write triggers Claude exactly once.
-6. Never ask the human to copy/paste the report.
-
-If no new report exists, do nothing.
+を追えます。workflow完了時には対象PRへ実行結果の短いサマリーコメントも残します。
 
 ## Automatic stop conditions
 
-Stop and surface to the human when any of these occurs:
-- status `PR_READY`
-- iteration reaches maxIterations
-- same blocker repeats twice
-- production deploy or merge would be required
-- secret/credential input is required
-- destructive migration/deletion needs business approval
-- irreversible content/business decision lacks evidence
+以下では自動継続せず、人間またはChatGPTの判断へ戻します。
 
-Normal test failures, lint failures, regressions, timeout fixes, QA fixes, and code-level decisions should be handled automatically when evidence is sufficient.
-
-## Current seed requirement
-
-The current local SEO Editor implementation and latest E2E fixes are not yet present on the remote `agent/autopilot` branch. Before the loop can safely start, that local branch must be pushed once and incorporated into `agent/autopilot`.
-
-After that one-time seed, the ChatGPT ↔ Claude loop is designed to run without manual copy/paste.
+- 最大ラウンド到達
+- 同じblockerが繰り返す
+- secret / credential入力が必要
+- masterへのmergeまたはproduction deployが必要
+- 破壊的なmigration / deletion
+- 根拠不足の不可逆なコンテンツ・事業判断
+- NARUの公開QA、安全ゲート、プレビュー承認を迂回する必要が生じた場合
 
 ## Safety
 
-- no direct push to master/main
-- no automatic merge to master
-- no automatic production deploy
-- no secrets in REPORT.md
-- no bypass of SEO Editor signature/QA/publish gates
-- maximum autonomous iterations: 8
+- masterへの直接push禁止
+- 記事PRはNARUの既存公開フローを優先
+- secrets/tokenをREPORTやcommitへ書かない
+- Claudeは `STATE.json` / `NEXT_INSTRUCTION.md` を変更しない
+- ChatGPTはClaudeのREPORTを盲目的に採用せず、実diffとテスト結果を確認する
+- ユーザー承認が必要な公開・画像・プレビュー判断は自動化しない
