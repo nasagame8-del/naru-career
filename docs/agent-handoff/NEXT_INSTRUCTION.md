@@ -22,7 +22,7 @@ Claude must execute only that instruction, update `REPORT.md`, and stop. ChatGPT
 
 ## Default limits
 
-- `maxClaudeTurns`: 4
+- `maxClaudeTurns`: 8
 - workflow hard cap: 8
 - autonomous review/implementation rounds: 2
 - no recursive self-trigger
