@@ -1,0 +1,139 @@
+{
+  "batchId": "batch_2026-10-03_chatgpt",
+  "generatedAt": "2026-10-03T08:01:28+09:00",
+  "trigger": "manual",
+  "inventorySize": 53,
+  "nextArticleId": 56,
+  "notes": [
+    "2026-10-03 08:01 JSTにmaster記事53件、Open PR #49/#6、候補ブランチの2026-10-03バッチ・選定キュー不存在を確認。",
+    "本日は時事候補2件と通常SEO候補3件。各ジャンル1件ずつユーザー選択後に着手する。",
+    "GSCの直接一致する実測クエリは今回取得していないため全候補searchEvidence:null。検索量や人気は断定しない。",
+    "時事候補1: アンパンマン公式による10月3日『アンパンマンの日』 https://www.anpanman.jp/about/history.html 。作品画像の転載権は未確認。執筆時は公式画像を探して利用条件と第三者権利を確認する。",
+    "時事候補2: 厚生労働省2026-10-02公表、2026年8月有効求人倍率1.18倍 https://www.mhlw.go.jp/stf/newpage_76397.html 。ハローワーク集計を個人の内定確率と混同しない。"
+  ],
+  "candidates": [
+    {
+      "id": "cand_261003t1",
+      "title": "顔を交換できるヒーローがIT転職したら？『代わりが利く』仕事と自分の強みを考える",
+      "primaryKeyword": "第二新卒 IT転職 強み 伝え方",
+      "secondaryKeywords": [
+        "未経験 IT 自己PR",
+        "転職 強み 代替可能"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の職務経歴書記事は書式中心。本案は『誰でもできる仕事しかしていない』という不安を、業務の再現可能性と自分の判断・改善に分解する。",
+      "reasonToWriteNow": "10月3日は公式に確認できるアンパンマンの日。顔の交換を架空の導入例とし、作品の設定を労働市場の事実と混同しない。",
+      "category": "業界解説",
+      "proposedSlug": "replaceable-job-transferable-skills",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "resume-writing-second-new-grad",
+        "skill-based-hiring"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261003t2",
+      "title": "求人倍率1.18倍なら内定率118％？第二新卒が景気の数字を求人選びに使う方法",
+      "primaryKeyword": "有効求人倍率 転職 見方",
+      "secondaryKeywords": [
+        "第二新卒 求人倍率",
+        "IT転職 求人数 見方"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "既存記事に職業紹介統計の読み方はない。倍率の分母・対象・職種差を説明し、応募者が個別求人をどう読むかに絞る。",
+      "reasonToWriteNow": "厚生労働省が10月2日に8月分を公表。有効求人倍率1.18倍という数字を内定率と取り違える奇妙な問いから実用的な判断へ進む。",
+      "category": "業界解説",
+      "proposedSlug": "job-offer-ratio-not-hiring-probability-2026",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "job-selection-process-red-flags"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261003e1",
+      "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
+      "primaryKeyword": "在職中 転職 面接 日程調整",
+      "secondaryKeywords": [
+        "転職 面接 仕事 休めない",
+        "面接 日程 メール 例文"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の面接質問記事は受け答え中心。こちらは有休・オンライン面接・複数社の日程管理と連絡文面に限定する。",
+      "reasonToWriteNow": "勤務を続けながら応募する人が繰り返し直面する日程調整の実務課題。",
+      "category": "業界解説",
+      "proposedSlug": "interview-scheduling-while-employed",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-interview-questions",
+        "casual-interview"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261003e2",
+      "title": "未経験IT求人の固定残業代、どこを見る？月給表示を手取りと労働条件に分解",
+      "primaryKeyword": "未経験 IT 固定残業代 求人",
+      "secondaryKeywords": [
+        "固定残業代 求人票 見方",
+        "第二新卒 IT 月給 比較"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "既存の希望年収・内定承諾記事は金額の意思決定が中心。固定残業代の表示、超過分、所定労働時間という求人票の読解を独立して扱う。",
+      "reasonToWriteNow": "求人の見かけの月給で誤判断しないための普遍的な確認需要。法令は執筆時に厚労省一次資料で再確認する。",
+      "category": "業界解説",
+      "proposedSlug": "it-job-listing-fixed-overtime-pay",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-desired-salary-2026",
+        "second-new-grad-it-offer-acceptance-checks"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261003e3",
+      "title": "転職の空白期間はどう説明する？第二新卒が学習・療養・求職期間を事実で伝える方法",
+      "primaryKeyword": "第二新卒 空白期間 面接",
+      "secondaryKeywords": [
+        "転職 ブランク 理由",
+        "職務経歴書 空白期間"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "退職体験記事や職務経歴書記事には空白期間の扱いを主題とした記事がない。理由別の事実整理と面接での短い説明に特化する。",
+      "reasonToWriteNow": "退職後の求職期間を持つ読者に継続的な検索意図があると考えられる。実測検索量は未確認。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-employment-gap-explanation",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "how-to-resign-experience",
+        "resume-writing-second-new-grad"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ]
+}
