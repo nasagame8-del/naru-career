@@ -161,3 +161,51 @@ ObserverはLLMではなく決定論的な安全ゲートとして動作する。
 - master直接push、Claudeからの自動merge、production deployは許可しない
 
 Observerは通常会話へ参加せず、異常時だけ発言する。
+
+
+## Live Slack meeting ingress
+
+Slackの `#naru-war-room` から `NARU ChatGPT` をメンションすると、`POST /api/slack/events` がSlack Events APIを受ける。
+
+### Runtime secrets
+
+Vercel:
+
+- `OPENAI_API_KEY`
+- `SLACK_SIGNING_SECRET`
+- `SLACK_CHATGPT_BOT_TOKEN`
+- GitHub delegate用: `WAR_ROOM_GITHUB_TOKEN` または既存の `SEO_EDITOR_GITHUB_TOKEN` / `GITHUB_TOKEN`
+
+GitHub Actions:
+
+- `OPENAI_API_KEY`
+- 既存の `CLAUDE_CODE_OAUTH_TOKEN`
+- 既存のSlack webhook secrets
+
+Optional:
+
+- `WAR_ROOM_OPENAI_MODEL`（default: `gpt-5.6-luna`）
+- `SLACK_WAR_ROOM_CHANNEL_ID`（default: `C0C71TPTSHW`）
+- `WAR_ROOM_GITHUB_REPO`（default: `nasagame8-del/naru-career`）
+
+### Slack App settings
+
+`NARU ChatGPT` App:
+
+- Bot Token Scope: `app_mentions:read`
+- Bot Token Scope: `chat:write`
+- Event Subscriptions Request URL: `https://naru-career.com/api/slack/events`
+- Subscribe to bot events: `app_mention`
+
+Slack署名はraw body + timestampで検証し、5分を超えたrequestとSlack retryは再処理しない。
+
+### Discussion flow
+
+1. 優貴がSlackでNARU ChatGPTをメンション。
+2. GPT-5.6 Lunaが current message のみを読み、`answer / delegate / human` を判定。
+3. `delegate` の場合、Slack event IDごとの専用branch + Draft PRを作る。
+4. ClaudeはChatGPT案を先に反論・検証してから実装し、REPORTを更新する。
+5. Claude完了後、GitHub Actions上の低コストChatGPT reviewがREPORTを読み、Slackへ最終レビューを返す。
+6. merge / production deployは自動実行しない。
+
+OpenAI側は `reasoning: none`, 小さいoutput上限, `store: false`, toolsなしで利用量を抑える。
