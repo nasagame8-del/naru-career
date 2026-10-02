@@ -419,7 +419,7 @@ export default function GuideCompletePage() {
             あなたに向いている仕事を知る
           </h2>
           <p className="text-sm text-ink-soft mb-4">
-            10問の質問に答えるだけで、あなたに合うIT/Web業界の職種タイプが分かります。
+            20問のYES／NOに答えるだけ（約2分）で、あなたに合うIT/Web業界の職種タイプが分かります。
           </p>
           <Link
             href="/shindan"

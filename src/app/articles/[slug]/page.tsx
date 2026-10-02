@@ -250,14 +250,11 @@ export default async function ArticlePage(props: {
                   まずは無料相談から始めてみませんか？
                 </h2>
                 <p className="text-sm text-ink-soft mb-4">
-                  第二新卒の転職は、プロのサポートを受けることで成功率が大きく上がります。
+                  書類添削や面接対策、求人紹介など、自分だけでは進めにくい部分を無料で相談できます。
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link href="/articles/agent-comparison-2026" className="cta-button justify-center">
                     エージェント比較を見る
-                  </Link>
-                  <Link href="/shindan" className="cta-button justify-center" style={{ background: "var(--ink)" }}>
-                    適職診断を受けてみる
                   </Link>
                 </div>
               </section>
