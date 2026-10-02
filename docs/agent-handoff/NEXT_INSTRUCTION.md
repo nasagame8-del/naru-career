@@ -1,30 +1,40 @@
 # Next Instruction
 
-- instructionId: `NONE`
+- instructionId: `SMOKE-20261002-001`
 - issuedBy: `ChatGPT`
 - target: `Claude Code`
-- status: `IDLE`
-- mode: `CLOUD_CLAUDE_BRIDGE`
+- status: `ACTIVE`
+- mode: `CLOUD_CLAUDE_BRIDGE_SMOKE`
 
-## Current state
+## Goal
 
-No Claude task is active on master.
+Verify that the cloud ChatGPT → GitHub Actions → Claude Code bridge works with the new low-usage guard.
 
-To start a task, ChatGPT must first create or reuse a dedicated task branch and Draft PR, then update that branch's `STATE.json` to `status: RUN_CLAUDE` with a new unique `instructionId`.
+## Required actions
 
-After writing a concrete instruction here, ChatGPT triggers the cloud worker by commenting on that PR:
+1. Read `AGENTS.md`, this instruction, `STATE.json`, and the current `REPORT.md`.
+2. Do not change application code, article content, workflow files, STATE.json, or this file.
+3. Do not call OpenAI APIs, Anthropic API-key billing, or any external paid API.
+4. Do not browse the web or perform package installation.
+5. Run only:
+   - `git status --short`
+   - `git rev-parse --abbrev-ref HEAD`
+6. Replace `docs/agent-handoff/REPORT.md` with a concise smoke-test report containing:
+   - reportId: `REPORT-SMOKE-20261002-001`
+   - completedInstructionId: `SMOKE-20261002-001`
+   - status: `DONE`
+   - branch
+   - summary stating that OAuth-authenticated Claude Code executed in GitHub Actions
+   - the two command results
+   - changed files: only `docs/agent-handoff/REPORT.md`
+   - decisions needed: none
+   - recommended next step: ChatGPT verifies the workflow run and commit, then closes this test PR without merging.
 
-```
-@naru-autopilot <instructionId>
-```
+## Boundaries
 
-Claude must execute only that instruction, update `REPORT.md`, and stop. ChatGPT reviews the resulting diff and tests before deciding whether a second instruction is needed.
-
-## Default limits
-
-- `maxClaudeTurns`: 4
-- workflow hard cap: 8
-- autonomous review/implementation rounds: 2
-- no recursive self-trigger
-- no direct push to master
-- no production merge/deploy without the normal NARU gates and required approval
+- This is a smoke test only.
+- No implementation changes.
+- No test suite or build.
+- No PR merge.
+- No production deploy.
+- Finish immediately after writing REPORT.md.
