@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-10-03T08:15:00+09:00",
   "batchId": "batch_2026-10-03_chatgpt",
-  "status": "ONE_SELECTED_TOPICAL_2026_10_04_PENDING",
+  "status": "DRAFT_PR_AWAITING_IMAGES",
   "items": [
     {
       "order": 1,
@@ -10,20 +10,34 @@
       "articleId": 56,
       "slug": "interview-scheduling-while-employed",
       "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
-      "status": "SELECTED",
-      "prNumber": null,
-      "driveFolderId": null,
+      "status": "DRAFT_AWAITING_IMAGES",
+      "prNumber": 73,
+      "driveFolderId": "1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
       "imageStatus": "four_user_images_pending",
       "qa": {
         "previewVisual": "not_requested",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "draftStructure": "checked",
+        "imageVisual": "pending",
+        "articleFactoryValidation": "pending_after_images",
+        "vercelStatus": "pending_after_images"
       },
-      "requestedPublish": null
+      "requestedPublish": null,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/73",
+      "branch": "article-factory/2026-10-03-056-interview-scheduling",
+      "headSha": "7907306b809ff7ba04829cd31b3ac12809639f5b",
+      "imagesFolderId": "13fCtr6dCHZNLqMsj2uwH2uCCYy_R5G2O",
+      "originalsFolderId": "10bkC53wmuTzh12P52OF1RzhzAWGAJO6j",
+      "draftFileId": "1_ShRugCMa3oI_XPfIX-3D9KzSL9IWr6_",
+      "imagePlanFileId": "1q7YcQ_-91M_NyL6nbs0TqdEy4e7NLbOB",
+      "promptFileId": "18JEfpgxOJRwtt_NNAFj7F5pYzl1HwKAc",
+      "designPromptFileId": "1HO-KJXsacyUMzPRv_RyziO4E6efs4U_s"
     }
   ],
   "notes": [
     "2026-10-03 user selected evergreen #1.",
     "User wants topical article based on 2026-10-04; specific topic is not yet selected. Do not create a topical article PR until selection.",
-    "Publication times not specified. Do not publish without four images, latest-head QA, and user preview approval."
+    "Publication times not specified. Do not publish without four images, latest-head QA, and user preview approval.",
+    "Article 56 Draft PR #73 and Drive article/prompt folders created; four user images pending."
   ]
 }
