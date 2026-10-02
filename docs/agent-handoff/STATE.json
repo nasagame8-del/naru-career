@@ -9,7 +9,7 @@
   "lastReportId": "REPORT-010",
   "iteration": 0,
   "maxIterations": 2,
-  "maxClaudeTurns": 8,
+  "maxClaudeTurns": 4,
   "sameBlockerCount": 0,
   "lastBlockerKey": null,
   "nextWriter": "chatgpt",
