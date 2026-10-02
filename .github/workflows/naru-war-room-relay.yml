@@ -1,0 +1,63 @@
+name: NARU War Room Relay
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  relay:
+    if: >
+      github.event.comment.user.login == github.repository_owner &&
+      startsWith(github.event.comment.body, '@naru-war-room ')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Relay approved message to Slack identity
+        env:
+          BODY: ${{ github.event.comment.body }}
+          CHATGPT_WEBHOOK: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
+          CLAUDE_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
+          OBSERVER_WEBHOOK: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
+        shell: bash
+        run: |
+          ROLE="$(printf '%s' "$BODY" | awk '{print $2}')"
+          MESSAGE="$(printf '%s' "$BODY" | cut -d' ' -f3-)"
+
+          case "$ROLE" in
+            chatgpt)
+              WEBHOOK="$CHATGPT_WEBHOOK"
+              PREFIX="🟢 *NARU ChatGPT*"
+              ;;
+            claude)
+              WEBHOOK="$CLAUDE_WEBHOOK"
+              PREFIX="🟣 *NARU Claude Code*"
+              ;;
+            observer)
+              WEBHOOK="$OBSERVER_WEBHOOK"
+              PREFIX="🛡️ *NARU Observer*"
+              ;;
+            *)
+              echo "::error::Unknown war-room role: $ROLE"
+              exit 1
+              ;;
+          esac
+
+          if [ -z "$WEBHOOK" ]; then
+            echo "::error::Slack webhook for $ROLE is missing"
+            exit 1
+          fi
+
+          if [ -z "$MESSAGE" ] || [ "$MESSAGE" = "$BODY" ]; then
+            echo "::error::War-room message is empty"
+            exit 1
+          fi
+
+          TEXT="$PREFIX\n$MESSAGE"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
+          curl --fail-with-body --silent --show-error -H 'Content-Type: application/json' --data @/tmp/slack.json "$WEBHOOK"
