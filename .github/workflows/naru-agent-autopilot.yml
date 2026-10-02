@@ -22,6 +22,9 @@ jobs:
       startsWith(github.event.comment.body, '@naru-autopilot ')
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      gate_run: ${{ steps.gate.outputs.run }}
+      active_instruction: ${{ steps.gate.outputs.active }}
 
     steps:
       - name: Resolve control PR branch
@@ -56,12 +59,24 @@ jobs:
           ACTIVE="$(jq -r '.instructionId // empty' docs/agent-handoff/STATE.json)"
           COMPLETED="$(sed -n 's/^- completedInstructionId: `\([^`]*\)`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
           COMMENT_ID="$(printf '%s' "$TRIGGER_COMMENT" | awk '{print $2}')"
+          ITERATION="$(jq -r '.iteration // 0' docs/agent-handoff/STATE.json)"
+          MAX_ITERATIONS="$(jq -r '.maxIterations // 2' docs/agent-handoff/STATE.json)"
+
+          if ! [[ "$ITERATION" =~ ^[0-9]+$ ]]; then ITERATION=0; fi
+          if ! [[ "$MAX_ITERATIONS" =~ ^[0-9]+$ ]]; then MAX_ITERATIONS=2; fi
+          if [ "$MAX_ITERATIONS" -gt 2 ]; then MAX_ITERATIONS=2; fi
 
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
           echo "active=$ACTIVE" >> "$GITHUB_OUTPUT"
           echo "completed=$COMPLETED" >> "$GITHUB_OUTPUT"
+          echo "iteration=$ITERATION" >> "$GITHUB_OUTPUT"
+          echo "max_iterations=$MAX_ITERATIONS" >> "$GITHUB_OUTPUT"
 
-          if [ "$STATUS" = "RUN_CLAUDE" ] && [ "$ACTIVE" != "$COMPLETED" ] && [ "$COMMENT_ID" = "$ACTIVE" ]; then
+          if [ "$STATUS" = "RUN_CLAUDE" ] &&
+             [ "$ACTIVE" != "$COMPLETED" ] &&
+             [ "$COMMENT_ID" = "$ACTIVE" ] &&
+             [ "$ITERATION" -ge 1 ] &&
+             [ "$ITERATION" -le "$MAX_ITERATIONS" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
@@ -78,7 +93,25 @@ jobs:
             exit 1
           fi
 
+      - name: Notify Claude start
+        if: steps.gate.outputs.run == 'true'
+        continue-on-error: true
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
+          INSTRUCTION_ID: ${{ steps.gate.outputs.active }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        shell: bash
+        run: |
+          if [ -z "$SLACK_WEBHOOK" ]; then
+            echo "::warning::SLACK_CLAUDE_WEBHOOK_URL is not configured"
+            exit 0
+          fi
+          TEXT="🟣 *NARU Claude Code*\n実装を開始しました。\nInstruction: \`$INSTRUCTION_ID\`\nPR: #$PR_NUMBER\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
+          curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack.json             "$SLACK_WEBHOOK"
+
       - name: Run Claude Code
+        id: claude
         if: steps.gate.outputs.run == 'true'
         uses: anthropics/claude-code-action@v1
         with:
@@ -129,17 +162,86 @@ jobs:
             --max-turns 8
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash"
 
+      - name: Observer guard on Claude changes
+        id: guard
+        if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success'
+        shell: bash
+        run: |
+          FILES="$(git diff --name-only)"
+          COUNT="$(printf '%s\n' "$FILES" | sed '/^$/d' | wc -l | tr -d ' ')"
+
+          if printf '%s\n' "$FILES" | grep -Eq '^docs/agent-handoff/(STATE\.json|NEXT_INSTRUCTION\.md)$|^\.github/workflows/'; then
+            echo "::error::Observer blocked a protected control-plane change"
+            exit 1
+          fi
+
+          if [ "$COUNT" -gt 25 ]; then
+            echo "::error::Observer blocked an unexpectedly large change set: $COUNT files"
+            exit 1
+          fi
+
+          ADDED_LINES="$(git diff --unified=0 | grep '^+' | grep -v '^+++' || true)"
+          if printf '%s\n' "$ADDED_LINES" | grep -Eiq 'api\.openai\.com|OPENAI_API_KEY|ANTHROPIC_API_KEY|sk-ant-|sk-proj-'; then
+            echo "::error::Observer blocked a metered-API credential or endpoint pattern"
+            exit 1
+          fi
+
+          echo "safe=true" >> "$GITHUB_OUTPUT"
+          echo "changed_files=$COUNT" >> "$GITHUB_OUTPUT"
+
       - name: Commit and push Claude changes
-        if: steps.gate.outputs.run == 'true'
+        id: commit
+        if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success' && steps.guard.outputs.safe == 'true'
         shell: bash
         run: |
           git config user.name "naru-agent-bot"
           git config user.email "naru-agent-bot@users.noreply.github.com"
-          # Never stage workflow files: the GitHub token cannot push workflow changes.
           git add -A -- . ':(exclude).github/workflows/**'
           if git diff --cached --quiet; then
             echo "No changes to commit."
+            echo "commit_sha=none" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "agent: execute handoff instruction"
           git push origin "HEAD:${{ steps.control.outputs.branch }}"
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Claude completion
+        if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success' && steps.guard.outcome == 'success' && steps.commit.outcome == 'success'
+        continue-on-error: true
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
+          INSTRUCTION_ID: ${{ steps.gate.outputs.active }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          COMMIT_SHA: ${{ steps.commit.outputs.commit_sha }}
+        shell: bash
+        run: |
+          if [ -z "$SLACK_WEBHOOK" ]; then exit 0; fi
+          REPORT_STATUS="$(sed -n 's/^- status: `\([^`]*\)`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
+          [ -n "$REPORT_STATUS" ] || REPORT_STATUS="DONE"
+          TEXT="✅ *NARU Claude Code*\n作業を終了しました。\nInstruction: \`$INSTRUCTION_ID\`\nReport: $REPORT_STATUS\nCommit: \`$COMMIT_SHA\`\nPR: #$PR_NUMBER\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
+          curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack.json             "$SLACK_WEBHOOK"
+
+  observer:
+    needs: execute
+    if: always() && needs.execute.outputs.gate_run == 'true' && needs.execute.result != 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Alert NARU Observer
+        continue-on-error: true
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
+          RESULT: ${{ needs.execute.result }}
+          INSTRUCTION_ID: ${{ needs.execute.outputs.active_instruction }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        shell: bash
+        run: |
+          if [ -z "$SLACK_WEBHOOK" ]; then
+            echo "::warning::SLACK_OBSERVER_WEBHOOK_URL is not configured"
+            exit 0
+          fi
+          TEXT="🚨 *NARU Observer*\n自動実行を停止しました。\nResult: \`$RESULT\`\nInstruction: \`$INSTRUCTION_ID\`\nPR: #$PR_NUMBER\n自動継続はしません。ChatGPT / 人間の確認が必要です。\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
+          curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack.json             "$SLACK_WEBHOOK"
