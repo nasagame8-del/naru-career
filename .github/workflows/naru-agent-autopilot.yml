@@ -21,7 +21,7 @@ jobs:
       github.event.issue.pull_request != null &&
       startsWith(github.event.comment.body, '@naru-autopilot ')
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 15
 
     steps:
       - name: Resolve control PR branch
@@ -56,10 +56,10 @@ jobs:
           ACTIVE="$(jq -r '.instructionId // empty' docs/agent-handoff/STATE.json)"
           COMPLETED="$(sed -n 's/^- completedInstructionId: `\([^`]*\)`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
           COMMENT_ID="$(printf '%s' "$TRIGGER_COMMENT" | awk '{print $2}')"
-          MAX_TURNS="$(jq -r '.maxClaudeTurns // 8' docs/agent-handoff/STATE.json)"
+          MAX_TURNS="$(jq -r '.maxClaudeTurns // 4' docs/agent-handoff/STATE.json)"
 
-          if ! [[ "$MAX_TURNS" =~ ^[0-9]+$ ]] || [ "$MAX_TURNS" -lt 1 ] || [ "$MAX_TURNS" -gt 12 ]; then
-            MAX_TURNS=8
+          if ! [[ "$MAX_TURNS" =~ ^[0-9]+$ ]] || [ "$MAX_TURNS" -lt 1 ] || [ "$MAX_TURNS" -gt 8 ]; then
+            MAX_TURNS=4
           fi
 
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
@@ -112,6 +112,7 @@ jobs:
             - If a decision is unsafe or ambiguous, stop and set REPORT status to NEEDS_DECISION.
             - Preserve existing SEO Editor and Article Factory safety gates.
             - Prefer reading existing code and running deterministic checks over extended discussion.
+            - Do not call OpenAI APIs, Anthropic API-key billing, external paid generation APIs, or any paid research API. Use only this OAuth-authenticated Claude Code session plus repository tools and normal network access already available to the runner.
             - Do not start a second independent design exploration unless the first approach is blocked by evidence.
             - Run only the tests/checks explicitly requested by NEXT_INSTRUCTION.md or directly needed to verify changed code.
             - Before finishing, replace docs/agent-handoff/REPORT.md with a concise complete report.
