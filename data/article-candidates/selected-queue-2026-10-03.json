@@ -1,0 +1,29 @@
+{
+  "selectedAt": "2026-10-03T08:15:00+09:00",
+  "batchId": "batch_2026-10-03_chatgpt",
+  "status": "ONE_SELECTED_TOPICAL_2026_10_04_PENDING",
+  "items": [
+    {
+      "order": 1,
+      "genre": "evergreen",
+      "candidateId": "cand_261003e1",
+      "articleId": 56,
+      "slug": "interview-scheduling-while-employed",
+      "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
+      "status": "SELECTED",
+      "prNumber": null,
+      "driveFolderId": null,
+      "imageStatus": "four_user_images_pending",
+      "qa": {
+        "previewVisual": "not_requested",
+        "previewApprovedHeadSha": null
+      },
+      "requestedPublish": null
+    }
+  ],
+  "notes": [
+    "2026-10-03 user selected evergreen #1.",
+    "User wants topical article based on 2026-10-04; specific topic is not yet selected. Do not create a topical article PR until selection.",
+    "Publication times not specified. Do not publish without four images, latest-head QA, and user preview approval."
+  ]
+}
