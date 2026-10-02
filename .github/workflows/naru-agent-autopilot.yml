@@ -21,7 +21,7 @@ jobs:
       github.event.issue.pull_request != null &&
       startsWith(github.event.comment.body, '@naru-autopilot ')
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 25
 
     steps:
       - name: Resolve control PR branch
@@ -54,12 +54,18 @@ jobs:
 
           STATUS="$(jq -r '.status // empty' docs/agent-handoff/STATE.json)"
           ACTIVE="$(jq -r '.instructionId // empty' docs/agent-handoff/STATE.json)"
-          COMPLETED="$(sed -n 's/^- completedInstructionId: `\([^\`]*\)\`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
+          COMPLETED="$(sed -n 's/^- completedInstructionId: `\([^`]*\)`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
           COMMENT_ID="$(printf '%s' "$TRIGGER_COMMENT" | awk '{print $2}')"
+          MAX_TURNS="$(jq -r '.maxClaudeTurns // 8' docs/agent-handoff/STATE.json)"
+
+          if ! [[ "$MAX_TURNS" =~ ^[0-9]+$ ]] || [ "$MAX_TURNS" -lt 1 ] || [ "$MAX_TURNS" -gt 12 ]; then
+            MAX_TURNS=8
+          fi
 
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
           echo "active=$ACTIVE" >> "$GITHUB_OUTPUT"
           echo "completed=$COMPLETED" >> "$GITHUB_OUTPUT"
+          echo "max_turns=$MAX_TURNS" >> "$GITHUB_OUTPUT"
 
           if [ "$STATUS" = "RUN_CLAUDE" ] && [ "$ACTIVE" != "$COMPLETED" ] && [ "$COMMENT_ID" = "$ACTIVE" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
@@ -79,12 +85,13 @@ jobs:
           fi
 
       - name: Run Claude Code
+        id: claude
         if: steps.gate.outputs.run == 'true'
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
-            You are the autonomous NARU implementation agent.
+            You are the NARU implementation worker. ChatGPT is the orchestrator and reviewer.
 
             First read:
             - AGENTS.md
@@ -103,9 +110,11 @@ jobs:
             - Do not push to master/main.
             - Do not create or merge PRs or deploy production unless NEXT_INSTRUCTION.md explicitly authorizes it.
             - If a decision is unsafe or ambiguous, stop and set REPORT status to NEEDS_DECISION.
-            - Preserve existing SEO Editor safety gates.
-            - Run the tests/checks explicitly requested by NEXT_INSTRUCTION.md.
-            - Before finishing, replace docs/agent-handoff/REPORT.md with a complete report.
+            - Preserve existing SEO Editor and Article Factory safety gates.
+            - Prefer reading existing code and running deterministic checks over extended discussion.
+            - Do not start a second independent design exploration unless the first approach is blocked by evidence.
+            - Run only the tests/checks explicitly requested by NEXT_INSTRUCTION.md or directly needed to verify changed code.
+            - Before finishing, replace docs/agent-handoff/REPORT.md with a concise complete report.
 
             REPORT.md must include:
             - reportId
@@ -123,11 +132,12 @@ jobs:
 
             Finish by leaving all intended changes in the working tree. The workflow will commit and push them.
           claude_args: |
-            --max-turns 100
+            --max-turns ${{ steps.gate.outputs.max_turns }}
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash"
 
       - name: Commit and push Claude changes
-        if: steps.gate.outputs.run == 'true'
+        id: commit
+        if: steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success'
         shell: bash
         run: |
           git config user.name "naru-agent-bot"
@@ -136,7 +146,34 @@ jobs:
           git add -A -- . ':(exclude).github/workflows/**'
           if git diff --cached --quiet; then
             echo "No changes to commit."
+            echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "agent: execute handoff instruction"
           git push origin "HEAD:${{ steps.control.outputs.branch }}"
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Post run summary to PR
+        if: always() && steps.gate.outputs.run == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          ACTIVE: ${{ steps.gate.outputs.active }}
+          MAX_TURNS: ${{ steps.gate.outputs.max_turns }}
+          CLAUDE_OUTCOME: ${{ steps.claude.outcome }}
+          COMMIT_SHA: ${{ steps.commit.outputs.commit_sha }}
+        run: |
+          REPORT_STATUS="$(sed -n 's/^- status: `\([^`]*\)`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
+          [ -n "$REPORT_STATUS" ] || REPORT_STATUS="not-updated"
+          [ -n "$COMMIT_SHA" ] || COMMIT_SHA="$(git rev-parse HEAD)"
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+          gh pr comment "$PR_NUMBER" --body "NARU Claude run finished.
+
+- instruction: `$ACTIVE`
+- action outcome: `$CLAUDE_OUTCOME`
+- report status: `$REPORT_STATUS`
+- turn cap: `$MAX_TURNS`
+- branch commit: `$COMMIT_SHA`
+- Actions: $RUN_URL" || true
