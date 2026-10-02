@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getAllArticleMetas, type ArticleMeta } from "@/lib/articles";
 import { CATEGORIES, getCategoryTheme, isValidCategorySlug } from "@/lib/categories";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { getAuthorProfileLabel } from "@/lib/author";
 import { MiniAlto } from "@/components/MiniAlto";
 
 export function generateStaticParams() {
@@ -25,7 +26,7 @@ export async function generateMetadata(props: {
     },
     openGraph: {
       title: `${cat.label}｜第二新卒の転職ガイド`,
-      description: cat.description,
+      description: cat.description.replace("{authorProfile}", getAuthorProfileLabel()),
       type: "website",
       siteName: "NARU",
       locale: "ja_JP",

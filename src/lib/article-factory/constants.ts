@@ -108,7 +108,7 @@ export const LIMITS = {
  */
 export const ALLOWED_PERSONA_FACTS = [
   "磯貝アルト",
-  "24歳",
+  "24歳のときに転職",
   "飲食業界で1年勤務",
   "第二新卒でIT/Web業界へ転職",
   "応募社数は約30社",

@@ -21,6 +21,7 @@ type CategoryTheme = {
 type CategoryDef = {
   name: ArticleCategory;
   label: string;
+  /** {authorProfile} は表示時に「N歳・転職1回」へ置き換える（src/lib/author.ts） */
   description: string;
   longDescription: string;
   theme: CategoryTheme;
@@ -33,7 +34,7 @@ export const CATEGORIES: Record<string, CategoryDef> = {
     name: "体験談",
     label: "体験談",
     description:
-      "24歳・転職1回の実体験をベースにした、第二新卒のIT/Web転職の体験談記事一覧。転職を決意した理由から内定獲得までのリアルな記録を掲載。",
+      "{authorProfile}の実体験をベースにした、第二新卒のIT/Web転職の体験談記事一覧。転職を決意した理由から内定獲得までのリアルな記録を掲載。",
     longDescription:
       "このカテゴリでは、24歳・第二新卒として飲食業界からIT/Web業界へ転職した筆者の実体験をすべて公開しています。「転職しようかな」と思い始めた段階から、エージェント登録・書類作成・面接対策・退職交渉・入社後のリアルまで、時系列に沿って追体験できる構成です。体験談だからこそ書ける「実際どうだったか」を軸に、第二新卒が転職活動で直面する場面をひとつずつカバーしています。同じ境遇の方が「次に何をすればいいか」を判断できるよう、読む順番も整理しました。",
     theme: {

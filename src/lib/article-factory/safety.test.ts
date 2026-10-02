@@ -5,7 +5,7 @@
  * LLM・ネットワーク・ファイルI/Oには依存しない。
  */
 
-import { describe, it, expect } from "vitest";
+import { afterEach, describe, it, expect, vi } from "vitest";
 import {
   canAutoPublish,
   checkCannibalization,
@@ -25,6 +25,7 @@ import {
   type ExistingArticleRef,
   type QaInput,
 } from "./safety";
+import { allowedPersonaFacts } from "./safety";
 import type { ArticleCandidate, ArticleDraft, QaResult, ResearchResult } from "./types";
 
 const EXISTING: ExistingArticleRef[] = [
@@ -180,6 +181,34 @@ describe("findUnsupportedPersonalClaims", () => {
   it("一人称でない一般論は検出しない", () => {
     const body = "第二新卒の多くは入社3年以内に転職を検討すると言われています。";
     expect(findUnsupportedPersonalClaims(body)).toHaveLength(0);
+  });
+});
+
+describe("著者の現在の年齢（AUTHOR_BIRTHDATE）", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.useRealTimers();
+  });
+
+  // テスト用の生年月日（実在の値ではない）
+  const stubAge26 = () => {
+    vi.stubEnv("AUTHOR_BIRTHDATE", "2000-01-01");
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date("2026-06-01T03:00:00Z"));
+  };
+
+  it("設定されていれば現在の年齢での一人称の記述を許可し、事実一覧にも含める", () => {
+    stubAge26();
+    const body = "僕は26歳になった今、現職で採用の裏側を見ています。";
+    expect(findUnsupportedPersonalClaims(body)).toHaveLength(0);
+    expect(allowedPersonaFacts()).toContain("現在26歳");
+  });
+
+  it("未設定なら現在の年齢は許可しない（24歳＝転職時の事実は引き続き許可）", () => {
+    vi.stubEnv("AUTHOR_BIRTHDATE", "");
+    expect(findUnsupportedPersonalClaims("僕は26歳になった今、現職で採用の裏側を見ています。").length).toBeGreaterThan(0);
+    expect(findUnsupportedPersonalClaims("僕は24歳のとき、第二新卒として転職しました。")).toHaveLength(0);
+    expect(allowedPersonaFacts().some((f) => f.startsWith("現在"))).toBe(false);
   });
 });
 

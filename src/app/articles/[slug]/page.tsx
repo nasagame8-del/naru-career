@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticle, getArticleSlugs, getAllArticleMetas, getCTARegistry } from "@/lib/articles";
 import { getCategorySlug, getCategoryTheme } from "@/lib/categories";
+import { getAuthorProfileLabel } from "@/lib/author";
 import { FAQSection } from "@/components/FAQSection";
 import { ShareButtons } from "@/components/ShareButtons";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -370,7 +371,7 @@ export default async function ArticlePage(props: {
                   <p className="font-semibold text-sm">磯貝アルト</p>
                 </div>
                 <p className="text-sm text-ink-soft leading-relaxed">
-                  24歳・転職1回。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。エージェントの裏側を知る立場から転職情報を発信。
+                  {getAuthorProfileLabel()}。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。エージェントの裏側を知る立場から転職情報を発信。
                 </p>
                 <div className="flex items-center justify-between mt-2">
                   <Link
