@@ -223,14 +223,17 @@ jobs:
           jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
           curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack.json             "$SLACK_WEBHOOK"
 
-      - name: ChatGPT review to Slack
+      - name: ChatGPT review and bounded second round
         if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success' && steps.guard.outcome == 'success' && steps.commit.outcome == 'success'
         continue-on-error: true
         env:
+          GH_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
           PR_NUMBER: ${{ github.event.issue.number }}
           INSTRUCTION_ID: ${{ steps.gate.outputs.active }}
+          ITERATION: ${{ steps.gate.outputs.iteration }}
+          MAX_ITERATIONS: ${{ steps.gate.outputs.max_iterations }}
         shell: bash
         run: |
           if [ -z "$OPENAI_API_KEY" ] || [ -z "$SLACK_WEBHOOK" ]; then
@@ -239,31 +242,94 @@ jobs:
           fi
 
           REPORT="$(head -c 12000 docs/agent-handoff/REPORT.md)"
-          DIFF_STAT="$(git show --stat --oneline --decorate=short HEAD | head -c 4000)"
-          PROMPT="$(jq -n --arg report "$REPORT" --arg diff "$DIFF_STAT" --arg instruction "$INSTRUCTION_ID" '
-            "あなたはNARU War RoomのChatGPTレビュー担当です。Claudeの実装結果を監査し、Slack向けに日本語で300文字以内にまとめてください。結論、Claudeの主張への評価、テスト状況、優貴に判断が必要かを明記。merge/deployを勝手に承認しない。Instruction: " + $instruction + "\n\nREPORT:\n" + $report + "\n\nDIFF STAT:\n" + $diff
-          ')"
+          DIFF="$(git diff master...HEAD -- . ':(exclude)docs/agent-handoff/STATE.json' ':(exclude)docs/agent-handoff/NEXT_INSTRUCTION.md' | head -c 16000)"
+          REPORT_STATUS="$(sed -n 's/^- status: `\([^`]*\)`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
+
+          PROMPT="$(printf '%s\n'             'あなたはNARU War RoomのChatGPTレビュー担当です。'             'Claudeの実装結果を批判的に監査し、done / revise / human の3択で判断してください。'             'done: 実装・テストが妥当で追加修正不要。'             'revise: 明確で安全な修正点が残り、Claudeへもう1回だけ具体的な修正指示を出せる。'             'human: 認証情報、破壊的操作、merge/deploy、不可逆判断、仕様の曖昧さ、人間判断が必要。'             "現在のiteration: $ITERATION / $MAX_ITERATIONS"             'reviseならnext_instructionをClaudeがそのまま実行できる具体的指示にする。'             'merge/deployは承認しない。NARUの既存安全ゲートを維持する。Slack replyは日本語300文字以内。'             "Instruction: $INSTRUCTION_ID"             'REPORT:'             "$REPORT"             'DIFF:'             "$DIFF")"
 
           jq -n --arg model "gpt-5.6-luna" --arg input "$PROMPT" '{
             model: $model,
             input: $input,
             reasoning: {effort: "none"},
-            max_output_tokens: 300,
+            max_output_tokens: 450,
             store: false,
-            text: {verbosity: "low"}
+            text: {
+              verbosity: "low",
+              format: {
+                type: "json_schema",
+                name: "naru_war_room_review",
+                strict: true,
+                schema: {
+                  type: "object",
+                  properties: {
+                    decision: {type: "string", enum: ["done", "revise", "human"]},
+                    slack_reply: {type: "string"},
+                    next_instruction: {type: "string"}
+                  },
+                  required: ["decision", "slack_reply", "next_instruction"],
+                  additionalProperties: false
+                }
+              }
+            }
           }' > /tmp/openai-review.json
 
-          curl --fail-with-body --silent --show-error             -H "Authorization: Bearer $OPENAI_API_KEY"             -H 'Content-Type: application/json'             --data @/tmp/openai-review.json             https://api.openai.com/v1/responses > /tmp/openai-response.json
+          curl --fail-with-body --silent --show-error -H "Authorization: Bearer $OPENAI_API_KEY" -H 'Content-Type: application/json' --data @/tmp/openai-review.json https://api.openai.com/v1/responses > /tmp/openai-response.json
 
-          REVIEW="$(jq -r '[.output[]? | select(.type=="message") | .content[]? | select(.type=="output_text") | .text] | join("\n")' /tmp/openai-response.json)"
-          if [ -z "$REVIEW" ]; then
+          REVIEW_JSON="$(jq -r '[.output[]? | select(.type=="message") | .content[]? | select(.type=="output_text") | .text] | join("\n")' /tmp/openai-response.json)"
+          if [ -z "$REVIEW_JSON" ]; then
             echo "::warning::ChatGPT review returned no text"
             exit 0
           fi
 
-          TEXT="🟢 *NARU ChatGPT*\nClaudeの実装をレビューしました。\n$REVIEW\nPR: #$PR_NUMBER"
+          DECISION="$(printf '%s' "$REVIEW_JSON" | jq -r '.decision // "human"')"
+          SLACK_REPLY="$(printf '%s' "$REVIEW_JSON" | jq -r '.slack_reply // "レビュー結果を取得できませんでした。"')"
+          NEXT_INSTRUCTION="$(printf '%s' "$REVIEW_JSON" | jq -r '.next_instruction // ""')"
+
+          case "$REPORT_STATUS" in
+            NEEDS_DECISION|BLOCKED|FAILED)
+              DECISION="human"
+              ;;
+          esac
+
+          if ! [[ "$ITERATION" =~ ^[0-9]+$ ]]; then ITERATION=1; fi
+          if ! [[ "$MAX_ITERATIONS" =~ ^[0-9]+$ ]]; then MAX_ITERATIONS=2; fi
+          if [ "$MAX_ITERATIONS" -gt 2 ]; then MAX_ITERATIONS=2; fi
+
+          FOLLOWUP=""
+          if [ "$DECISION" = "revise" ] && [ "$ITERATION" -lt "$MAX_ITERATIONS" ] && [ -n "$NEXT_INSTRUCTION" ]; then
+            NEXT_ITERATION=$((ITERATION + 1))
+            NEXT_ID="${INSTRUCTION_ID}-R${NEXT_ITERATION}"
+            PRIOR_CONTEXT="$(head -c 12000 docs/agent-handoff/NEXT_INSTRUCTION.md)"
+
+            jq --arg id "$NEXT_ID" --argjson iteration "$NEXT_ITERATION" '.status = "RUN_CLAUDE" | .instructionId = $id | .iteration = $iteration | .nextWriter = "claude" | .notes = "ChatGPT requested one bounded revision round after reviewing Claude output."' docs/agent-handoff/STATE.json > /tmp/state.json
+            mv /tmp/state.json docs/agent-handoff/STATE.json
+
+            printf '%s\n'               '# Next Instruction'               ''               "- instructionId: \`$NEXT_ID\`"               '- issuedBy: `NARU ChatGPT review`'               '- target: `Claude Code`'               '- status: `ACTIVE`'               '- mode: `SLACK_LIVE_WAR_ROOM`'               "- iteration: \`$NEXT_ITERATION/$MAX_ITERATIONS\`"               ''               '## ChatGPT review'               ''               "$SLACK_REPLY"               ''               '## Required revision'               ''               "$NEXT_INSTRUCTION"               ''               '## Prior task context'               ''               "$PRIOR_CONTEXT"               ''               '## Hard boundaries'               ''               '- Challenge this review if it is technically wrong, but explain why in REPORT.'               '- Change only what is necessary for the required revision.'               '- Run relevant deterministic tests.'               '- Update REPORT.md and stop.'               '- Never edit STATE.json or NEXT_INSTRUCTION.md.'               '- Never push to master/main.'               '- Never merge or deploy production.'               '- Never expose secrets or introduce paid external APIs.'               > docs/agent-handoff/NEXT_INSTRUCTION.md
+
+            git config user.name "naru-chatgpt-bot"
+            git config user.email "naru-chatgpt-bot@users.noreply.github.com"
+            git add docs/agent-handoff/STATE.json docs/agent-handoff/NEXT_INSTRUCTION.md
+            git commit -m "agent: request bounded revision round"
+            git push origin "HEAD:${{ steps.control.outputs.branch }}"
+
+            gh pr comment "$PR_NUMBER" --body "@naru-autopilot $NEXT_ID"
+            FOLLOWUP="\n🔁 Claudeへ自動で2回目の修正ラウンドを依頼しました。"
+          elif [ "$DECISION" = "revise" ]; then
+            DECISION="human"
+            FOLLOWUP="\n⛔ 自動ラウンド上限に達したため、これ以上Claudeは自動起動しません。"
+          fi
+
+          if [ "$DECISION" = "done" ]; then
+            ICON="✅"
+          elif [ "$DECISION" = "human" ]; then
+            ICON="👤"
+          else
+            ICON="🔁"
+          fi
+
+          TEXT="🟢 *NARU ChatGPT*\n$ICON Claudeの実装をレビューしました。\n$SLACK_REPLY$FOLLOWUP\nPR: #$PR_NUMBER"
           jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack-review.json
-          curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack-review.json             "$SLACK_WEBHOOK"
+          curl --fail-with-body --silent --show-error -H 'Content-Type: application/json' --data @/tmp/slack-review.json "$SLACK_WEBHOOK"
 
   observer:
     needs: execute
