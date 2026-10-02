@@ -9,35 +9,40 @@ import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CtaTracker } from "@/components/CtaTracker";
 import { WebSiteJsonLd } from "@/components/JsonLd";
 import { CATEGORIES } from "@/lib/categories";
+import { getAuthorProfileLabel } from "@/lib/author";
 
 const categoryNavItems = Object.entries(CATEGORIES).map(([slug, cat]) => ({
   label: cat.label,
   href: `/category/${slug}`,
 }));
 
-export const metadata: Metadata = {
-  title: {
-    default: "NARU | 第二新卒のIT転職ガイド",
-    template: "%s | NARU",
-  },
-  description:
-    "著者・磯貝アルトの実体験（24歳・転職1回）をベースに、第二新卒がIT/Web業界へキャリアチェンジするためのノウハウを発信。転職エージェント比較・業界解説・体験談を掲載。",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com"),
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
-  openGraph: {
-    siteName: "NARU",
-    locale: "ja_JP",
-    type: "website",
-    images: ["/logo-wordmark.png"],
-  },
-};
+// 著者の年齢（AUTHOR_BIRTHDATE から計算）を日付が変わったら反映するため、1日ごとに再生成する
+export const revalidate = 86400;
+
+export function generateMetadata(): Metadata {
+  return {
+    title: {
+      default: "NARU | 第二新卒のIT転職ガイド",
+      template: "%s | NARU",
+    },
+    description: `著者・磯貝アルトの実体験（${getAuthorProfileLabel()}）をベースに、第二新卒がIT/Web業界へキャリアチェンジするためのノウハウを発信。転職エージェント比較・業界解説・体験談を掲載。`,
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com"),
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      ],
+      apple: "/apple-touch-icon.png",
+    },
+    openGraph: {
+      siteName: "NARU",
+      locale: "ja_JP",
+      type: "website",
+      images: ["/logo-wordmark.png"],
+    },
+  };
+}
 
 export default function RootLayout({
   children,
