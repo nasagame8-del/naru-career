@@ -108,3 +108,56 @@ PCを起動しておく必要はありません。スマホからGitHubの対象
 - Claudeは `STATE.json` / `NEXT_INSTRUCTION.md` を変更しない
 - ChatGPTはClaudeのREPORTを盲目的に採用せず、実diffとテスト結果を確認する
 - ユーザー承認が必要な公開・画像・プレビュー判断は自動化しない
+
+
+## Slack War Room
+
+Slackの `#naru-war-room` は、優貴・ChatGPT・Claude Code・Observerの会議ログを集約する表示面です。
+
+Slack上の表示主体は3つの専用Appに分離します。
+
+- `NARU ChatGPT`: 要件整理、レビュー、次の判断を投稿
+- `NARU Claude Code`: 実装開始・完了・PR/Actions情報を投稿
+- `NARU Observer`: 異常時だけ停止理由を投稿
+
+Repository secrets:
+
+- `SLACK_CHATGPT_WEBHOOK_URL`
+- `SLACK_CLAUDE_WEBHOOK_URL`
+- `SLACK_OBSERVER_WEBHOOK_URL`
+
+Webhook URL自体はコード、REPORT、issue、Slack本文へ書かない。
+
+### ChatGPT relay
+
+`.github/workflows/naru-war-room-relay.yml` は、repository owner がGitHub issue/PRへ次の形式でコメントした場合だけ、対応するSlack App名義で投稿する。
+
+```
+@naru-war-room chatgpt <message>
+@naru-war-room claude <message>
+@naru-war-room observer <message>
+```
+
+これは表示用relayであり、Slackの投稿だけを契機にChatGPTモデルを自動起動するものではない。OpenAI APIを使わない方針を維持するため、ChatGPTの判断はChatGPTセッション側で行い、必要な会議発言だけrelayする。
+
+### Claude notifications
+
+`naru-agent-autopilot.yml` はClaude実行の開始・正常終了を `NARU Claude Code` 名義でSlackへ通知する。Slack通知失敗だけでClaudeの実装を止めない。
+
+### Observer
+
+ObserverはLLMではなく決定論的な安全ゲートとして動作する。Claude実行に失敗・timeout・guard違反があった場合、自動継続を行わず `NARU Observer` 名義で警告する。
+
+現行guard:
+
+- Claude最大8ターン
+- workflow timeout 15分
+- autonomous iterationは最大2
+- 同じinstructionIdの二重実行を拒否
+- Claudeによる `STATE.json` / `NEXT_INSTRUCTION.md` / workflow変更を拒否
+- Claudeの未commit差分が25ファイルを超えたら拒否
+- OpenAI/Anthropic API keyや代表的な従量API endpoint/secret patternの新規追加を拒否
+- guard失敗時はClaude差分をcommit/pushしない
+- master直接push、Claudeからの自動merge、production deployは許可しない
+
+Observerは通常会話へ参加せず、異常時だけ発言する。
