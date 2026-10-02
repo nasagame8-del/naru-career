@@ -1,0 +1,34 @@
+name: War Room Validation
+
+on:
+  pull_request:
+    paths:
+      - "src/app/api/slack/**"
+      - "src/lib/war-room/**"
+      - ".github/workflows/war-room-validation.yml"
+      - ".github/workflows/naru-agent-autopilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npx vitest run src/lib/war-room/slack.test.ts
+      - run: npx tsc --noEmit
+      - run: npx eslint src/lib/war-room src/app/api/slack
+      - run: npm run build
+        env:
+          OPENAI_API_KEY: validation-only
+          SLACK_SIGNING_SECRET: validation-only
+          SLACK_CHATGPT_BOT_TOKEN: validation-only
