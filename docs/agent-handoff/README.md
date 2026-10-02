@@ -23,19 +23,33 @@
 
 GitHub ActionsはPRのheadブランチをcheckoutし、STATEとコメントのinstructionIdが一致した場合だけClaudeを起動します。
 
+## API / cost policy
+
+従量API課金は原則0です。
+
+- OpenAI API: 使用しない
+- Anthropic API key: 使用しない
+- Claude Code: `CLAUDE_CODE_OAUTH_TOKEN` のサブスクリプション認証だけを使う
+- 外部の有料検索・生成API: 使用しない
+- GitHub Actions / Shell / Node / Python / 既存CIなど、LLM不要の処理を先に使う
+- ChatGPTだけで判断・GitHub操作できる作業ではClaudeを起動しない
+- Claudeが必要な場合も、明示トリガーされた1タスクだけ実行する
+
+GitHub ActionsのClaude Codeログにドル換算の利用量が表示される場合がありますが、この運用ではAPI keyを渡さずOAuthトークンのみを使用します。サブスクリプション利用枠そのものは消費し得るため、以下の上限も設けます。
+
 ## Cost / usage guard
 
 Claude同士を無制限に会話させません。
 
-- 既定の `maxClaudeTurns`: 8
-- workflow側の絶対上限: 12
+- 既定の `maxClaudeTurns`: 4
+- workflow側の絶対上限: 8
 - 1タスクの自律ラウンド: 原則2回まで
 - ChatGPTレビューで問題がなければ2回目は実行しない
 - 同じinstructionIdは二重実行しない
 - 通常のlint/build/grep/画像変換など、LLM不要な処理はスクリプトやCIを優先する
 - Claude実行が失敗した場合、部分変更は自動commitしない
 
-過去に100ターン設定で長時間実行したため、今後はSTATE側の値が異常でもworkflowが8へフォールバックし、12を超えて実行しません。
+過去に100ターン設定で長時間実行したため、今後はSTATE側の値が異常でもworkflowが4へフォールバックし、8を超えて実行しません。
 
 ## State machine
 
