@@ -223,6 +223,48 @@ jobs:
           jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
           curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack.json             "$SLACK_WEBHOOK"
 
+      - name: ChatGPT review to Slack
+        if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success' && steps.guard.outcome == 'success' && steps.commit.outcome == 'success'
+        continue-on-error: true
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          INSTRUCTION_ID: ${{ steps.gate.outputs.active }}
+        shell: bash
+        run: |
+          if [ -z "$OPENAI_API_KEY" ] || [ -z "$SLACK_WEBHOOK" ]; then
+            echo "::warning::ChatGPT review secrets are not fully configured"
+            exit 0
+          fi
+
+          REPORT="$(head -c 12000 docs/agent-handoff/REPORT.md)"
+          DIFF_STAT="$(git show --stat --oneline --decorate=short HEAD | head -c 4000)"
+          PROMPT="$(jq -n --arg report "$REPORT" --arg diff "$DIFF_STAT" --arg instruction "$INSTRUCTION_ID" '
+            "あなたはNARU War RoomのChatGPTレビュー担当です。Claudeの実装結果を監査し、Slack向けに日本語で300文字以内にまとめてください。結論、Claudeの主張への評価、テスト状況、優貴に判断が必要かを明記。merge/deployを勝手に承認しない。Instruction: " + $instruction + "\n\nREPORT:\n" + $report + "\n\nDIFF STAT:\n" + $diff
+          ')"
+
+          jq -n --arg model "gpt-5.6-luna" --arg input "$PROMPT" '{
+            model: $model,
+            input: $input,
+            reasoning: {effort: "none"},
+            max_output_tokens: 300,
+            store: false,
+            text: {verbosity: "low"}
+          }' > /tmp/openai-review.json
+
+          curl --fail-with-body --silent --show-error             -H "Authorization: Bearer $OPENAI_API_KEY"             -H 'Content-Type: application/json'             --data @/tmp/openai-review.json             https://api.openai.com/v1/responses > /tmp/openai-response.json
+
+          REVIEW="$(jq -r '[.output[]? | select(.type=="message") | .content[]? | select(.type=="output_text") | .text] | join("\n")' /tmp/openai-response.json)"
+          if [ -z "$REVIEW" ]; then
+            echo "::warning::ChatGPT review returned no text"
+            exit 0
+          fi
+
+          TEXT="🟢 *NARU ChatGPT*\nClaudeの実装をレビューしました。\n$REVIEW\nPR: #$PR_NUMBER"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack-review.json
+          curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack-review.json             "$SLACK_WEBHOOK"
+
   observer:
     needs: execute
     if: always() && needs.execute.outputs.gate_run == 'true' && needs.execute.result != 'success'
