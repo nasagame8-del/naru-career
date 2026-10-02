@@ -3,8 +3,6 @@ name: NARU War Room Relay
 on:
   issue_comment:
     types: [created]
-  pull_request:
-    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -14,7 +12,6 @@ permissions:
 jobs:
   relay:
     if: >
-      github.event_name == 'issue_comment' &&
       github.event.comment.user.login == github.repository_owner &&
       startsWith(github.event.comment.body, '@naru-war-room ')
     runs-on: ubuntu-latest
@@ -64,32 +61,3 @@ jobs:
           TEXT="$PREFIX\n$MESSAGE"
           jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
           curl --fail-with-body --silent --show-error -H 'Content-Type: application/json' --data @/tmp/slack.json "$WEBHOOK"
-
-  smoke:
-    if: >
-      github.event_name == 'pull_request' &&
-      github.head_ref == 'feat/slack-war-room-bridge-20261002'
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-      - name: Verify three Slack identities
-        env:
-          CHATGPT_WEBHOOK: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
-          CLAUDE_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
-          OBSERVER_WEBHOOK: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
-        shell: bash
-        run: |
-          test -n "$CHATGPT_WEBHOOK"
-          test -n "$CLAUDE_WEBHOOK"
-          test -n "$OBSERVER_WEBHOOK"
-
-          post() {
-            local webhook="$1"
-            local text="$2"
-            jq -n --arg text "$text" '{text:$text}' > /tmp/slack.json
-            curl --fail-with-body --silent --show-error -H 'Content-Type: application/json' --data @/tmp/slack.json "$webhook"
-          }
-
-          post "$CHATGPT_WEBHOOK" "🟢 *NARU ChatGPT*\n接続テスト成功。War Room relayを利用できます。"
-          post "$CLAUDE_WEBHOOK" "🟣 *NARU Claude Code*\n接続テスト成功。GitHub Actionsの実装通知を受信できます。"
-          post "$OBSERVER_WEBHOOK" "🛡️ *NARU Observer*\n接続テスト成功。異常時の停止通知を受信できます。"
