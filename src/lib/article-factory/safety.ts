@@ -19,6 +19,7 @@ import {
   ARTICLE_RUN_DIR,
   CANDIDATE_BATCH_DIR,
 } from "./constants";
+import { getAuthorAge } from "@/lib/author";
 import type {
   ArticleCandidate,
   ArticleDraft,
@@ -181,9 +182,11 @@ export function findUnsupportedPersonalClaims(body: string): string[] {
 /** 文が許可された一次情報の範囲で説明できるか */
 export function isSupportedByPersona(sentence: string): boolean {
   // 許可された事実に含まれる特徴語
+  const age = getAuthorAge();
   const supported = [
     "磯貝アルト",
     "24歳",
+    ...(age === null ? [] : [`${age}歳`]),
     "飲食",
     "第二新卒",
     "IT",
@@ -201,9 +204,10 @@ export function isSupportedByPersona(sentence: string): boolean {
   return supported.some((w) => sentence.includes(w));
 }
 
-/** 許可された一次情報の一覧（プロンプト・レポート用） */
+/** 許可された一次情報の一覧（プロンプト・レポート用）。現在の年齢は呼び出し時点で計算する */
 export function allowedPersonaFacts(): readonly string[] {
-  return ALLOWED_PERSONA_FACTS;
+  const age = getAuthorAge();
+  return age === null ? ALLOWED_PERSONA_FACTS : [...ALLOWED_PERSONA_FACTS, `現在${age}歳`];
 }
 
 // ── frontmatter 検証 ──

@@ -6,12 +6,22 @@
  */
 
 import { UNTRUSTED_CONTENT_GUARD } from "../sanitize";
+import { getAuthorAge } from "@/lib/author";
 
-export const NARU_CONTEXT = `# NARU について
+/** 著者紹介の年齢部分。年齢は呼び出し時点で AUTHOR_BIRTHDATE から計算する */
+function authorSummary(): string {
+  const age = getAuthorAge();
+  return age === null
+    ? "著者は転職1回。24歳のときに"
+    : `著者は現在${age}歳・転職1回。24歳のときに`;
+}
+
+export function naruContext(): string {
+  return `# NARU について
 
 NARU（naru-career.com）は「第二新卒 × IT/Web転職」を主題とする個人運営のキャリアメディアです。
 
-著者は24歳・転職1回。新卒で大手飲食企業に入社し、第二新卒としてAIO対策企業へ営業職で転職しました。
+${authorSummary()}、新卒で入社した大手飲食企業から第二新卒としてAIO対策企業へ営業職で転職しました。
 記事の価値の源泉は、検索上位記事の要約ではなく、この著者本人の一次体験です。
 
 主要テーマ:
@@ -20,6 +30,7 @@ NARU（naru-career.com）は「第二新卒 × IT/Web転職」を主題とする
 * 転職エージェント / 転職サイト / 自己応募
 * 書類・面接・退職交渉
 * 働き方・評価・キャリアの悩み`;
+}
 
 export const UNCERTAINTY_RULE = `# 不確実性の扱い
 
@@ -35,7 +46,7 @@ export const OUTPUT_RULE = `# 出力
 
 /** 各Phaseのsystem promptを組み立てる */
 export function buildSystemPrompt(role: string, extra: string[] = []): string {
-  return [role, UNTRUSTED_CONTENT_GUARD, NARU_CONTEXT, ...extra, UNCERTAINTY_RULE, OUTPUT_RULE].join(
+  return [role, UNTRUSTED_CONTENT_GUARD, naruContext(), ...extra, UNCERTAINTY_RULE, OUTPUT_RULE].join(
     "\n\n---\n\n"
   );
 }
