@@ -41,15 +41,14 @@ GitHub ActionsのClaude Codeログにドル換算の利用量が表示される�
 
 Claude同士を無制限に会話させません。
 
-- 既定の `maxClaudeTurns`: 4
-- workflow側の絶対上限: 8
+- workflowの `maxClaudeTurns`: 8（固定上限）
 - 1タスクの自律ラウンド: 原則2回まで
 - ChatGPTレビューで問題がなければ2回目は実行しない
 - 同じinstructionIdは二重実行しない
 - 通常のlint/build/grep/画像変換など、LLM不要な処理はスクリプトやCIを優先する
 - Claude実行が失敗した場合、部分変更は自動commitしない
 
-過去に100ターン設定で長時間実行したため、今後はSTATE側の値が異常でもworkflowが4へフォールバックし、8を超えて実行しません。
+過去に100ターン設定で長時間実行したため、workflowは8ターンで強制終了します。タスク自体を小さく分割し、同じinstructionIdの二重実行はgateで止めます。
 
 ## State machine
 
@@ -70,7 +69,7 @@ WAITING_FOR_CHATGPT
 
 1. ChatGPTが最新masterから専用ブランチを作る。
 2. 必要ならDraft PRを作る。
-3. `STATE.json` に一意な `instructionId`, `status: RUN_CLAUDE`, `maxClaudeTurns` を設定する。
+3. `STATE.json` に一意な `instructionId`, `status: RUN_CLAUDE` を設定する。`maxClaudeTurns` は記録用で、実行上限はworkflow側の8ターンを優先する。
 4. `NEXT_INSTRUCTION.md` に目的、変更範囲、完了条件、テスト、禁止事項を書く。
 5. 対象PRへ `@naru-autopilot <instructionId>` とコメントする。
 6. GitHub ActionsがClaude Codeをクラウド実行する。
