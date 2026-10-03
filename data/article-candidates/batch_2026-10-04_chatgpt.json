@@ -116,6 +116,7 @@
     "推奨順e1社会保険手続き→e2報酬比較→e3担当変更。e1とe2は代替案で同日に両方作らない。新しい関連記事で順位が上がることは保証しない。候補選定後に見出し単位のカニバリを再確認。画像・記事・公開工程は未着手。",
     "一次情報（2026-10-04確認）: 日本年金機構『会社を退職したときの国民年金の手続き』（更新2024-07-01）https://www.nenkin.go.jp/service/kokunen/kanyu/20140710-03.html ; 協会けんぽ『任意継続』https://www.kyoukaikenpo.or.jp/benefit/voluntary_continuation/index.html ; 国税庁No.1350 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1350.htm ; No.1400 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1400.htm ; No.2210 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2210.htm ; doda『担当のキャリアアドバイザーを変更できますか？』https://faq.doda.jp/faq/show/45?site_domain=default 。公式画像調査は新規時事制作がないため対象外。",
     "GA4補助集計は未実施。SEO主判断はGSC確定データ。Vercelはユーザーの利用停止指示を尊重し操作しない。",
-    "nextArticleId58は既存選定記事57までの採番に基づく提案値。制作開始直前に最新在庫/queueを再確認して採番。"
+    "nextArticleId58は既存選定記事57までの採番に基づく提案値。制作開始直前に最新在庫/queueを再確認して採番。",
+    "2026-10-04 user correction: 記事57は昨日10/3の公開分。本日10/4の時事枠は空き。先頭noteの時事予約解釈は撤回。通常①は記事58として選定済み。本日も時事1本＋通常1本。"
   ]
 }
