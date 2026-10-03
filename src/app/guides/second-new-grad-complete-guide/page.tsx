@@ -179,6 +179,23 @@ const steps = [
   },
 ];
 
+const itCareer = [
+  { slug: "second-new-grad-it-career-change", title: "第二新卒×IT転職の入口", desc: "未経験からIT/Webへ転職した3ヶ月の実体験と全体ロードマップ。" },
+  { slug: "second-new-grad-it-company-research", title: "IT企業の企業研究", desc: "サービス・顧客・収益・配属職種をつなげて確認。" },
+  { slug: "second-new-grad-it-interview-questions", title: "IT/Web転職の面接対策", desc: "退職理由・志望動機・学習実績・逆質問を整理。" },
+  { slug: "second-new-grad-it-offer-acceptance-checks", title: "IT企業の内定承諾前チェック", desc: "労働条件・仕事内容・研修・配属を確認。" },
+  { slug: "second-new-grad-it-portfolio-guide", title: "IT/Web転職のポートフォリオ", desc: "職種ごとに準備する成果物と見せ方。" },
+  { slug: "it-training-program-job-checklist", title: "未経験IT求人の研修制度", desc: "期間・学習時間・配属後支援の見抜き方。" },
+];
+
+const webCareer = [
+  { slug: "what-is-web-industry", title: "Web業界とは？", desc: "職種・会社タイプ・働き方を整理するWebクラスターの入口。" },
+  { slug: "second-new-grad-web-marketing-career", title: "第二新卒からWebマーケターへ", desc: "SEO・広告・SNSなどの職種理解と準備。" },
+  { slug: "second-new-grad-web-director-career", title: "第二新卒からWebディレクターへ", desc: "要件整理・制作進行・求人の見極め方。" },
+  { slug: "second-new-grad-web-agency-vs-inhouse", title: "Web制作会社と事業会社の違い", desc: "担当範囲・成果物・育成環境を比較。" },
+  { slug: "web-industry-guide", title: "AIO対策企業で働く実体験", desc: "未経験入社後の仕事内容・学び方・ギャップ。" },
+];
+
 const trends = [
   { slug: "ai-interview-screening", term: "AI面接・適性検査", desc: "採用側のAI活用と対策法" },
   { slug: "alumni-hiring", term: "アルムナイ採用", desc: "一度辞めた会社に戻れる仕組み" },
@@ -228,6 +245,8 @@ function buildStructuredData() {
     ...steps.flatMap((s) =>
       s.articles.map((a) => ({ name: a.title, url: `https://naru-career.com/articles/${a.slug}` }))
     ),
+    ...itCareer.map((a) => ({ name: a.title, url: `https://naru-career.com/articles/${a.slug}` })),
+    ...webCareer.map((a) => ({ name: a.title, url: `https://naru-career.com/articles/${a.slug}` })),
     ...trends.map((t) => ({ name: t.term, url: `https://naru-career.com/articles/${t.slug}` })),
     ...experiences.map((a) => ({ name: a.title, url: `https://naru-career.com/articles/${a.slug}` })),
   ];
@@ -372,6 +391,36 @@ export default function GuideCompletePage() {
               </div>
             </div>
           ))}
+        </section>
+
+        {/* ── 第二新卒×IT転職 ── */}
+        <section className="mb-10">
+          <h2 className="text-lg font-bold mb-3 border-b-2 border-primary pb-2">
+            第二新卒×IT転職
+          </h2>
+          <p className="text-sm text-ink-soft mb-4">
+            IT/Web業界への未経験転職は、企業研究・面接・内定承諾・入社後準備まで段階ごとに確認すると迷いにくくなります。
+          </p>
+          <div className="space-y-3">
+            {itCareer.map((a) => (
+              <ArticleLink key={a.slug} {...a} />
+            ))}
+          </div>
+        </section>
+
+        {/* ── 第二新卒×Web職種 ── */}
+        <section className="mb-10">
+          <h2 className="text-lg font-bold mb-3 border-b-2 border-primary pb-2">
+            第二新卒×Web職種
+          </h2>
+          <p className="text-sm text-ink-soft mb-4">
+            Web業界の全体像を入口に、マーケター・ディレクター・会社タイプ・実体験へ役割を分けています。
+          </p>
+          <div className="space-y-3">
+            {webCareer.map((a) => (
+              <ArticleLink key={a.slug} {...a} />
+            ))}
+          </div>
         </section>
 
         {/* ── 採用トレンド用語集 ── */}
