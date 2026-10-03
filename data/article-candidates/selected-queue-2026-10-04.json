@@ -10,7 +10,7 @@
       "articleId": 57,
       "slug": "space-industry-it-career-entry",
       "title": "10月4日は世界宇宙週間の始まり｜宇宙業界へIT転職できる？第二新卒が求人票で検証",
-      "status": "PREVIEW_APPROVED_AWAITING_18_JST",
+      "status": "MERGED_PRODUCTION_PENDING",
       "requestedPublishDate": "2026-10-03",
       "requestedPublish": "2026-10-03T18:00:00+09:00",
       "qa": {
@@ -67,7 +67,17 @@
       "officialImageDecision": "Official image searched; third-party rights or reuse conditions unverified. Use official links and NARU original diagrams.",
       "imageStatus": "four_images_verified",
       "previewUrl": "https://career-media-git-article-factory-4f0a9a-nasagame8-dels-projects.vercel.app/articles/space-industry-it-career-entry",
-      "publishAutomationId": "6ac06840e3e481918a953bd87ec794f3"
+      "publishAutomationId": "6ac06840e3e481918a953bd87ec794f3",
+      "mergeSha": "df8c82ff11d17061c8021c3b0c3b256223f6d373",
+      "productionUrl": "https://naru-career.com/articles/space-industry-it-career-entry",
+      "publicationGate": {
+        "checkedAt": "2026-10-03T18:05:21+09:00",
+        "result": "merged",
+        "mergeAttempted": true,
+        "productionStatus": "pending",
+        "productionVisual": "not_verified",
+        "blockers": []
+      }
     }
   ],
   "notes": [
@@ -80,6 +90,7 @@
     "2026-10-03: User explicitly corrected publication to today (2026-10-03). October 4 refers to World Space Week topic, not publication day. This supersedes earlier October 4 publication assumptions. Exact clock time remains unspecified.",
     "2026-10-03: 18:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge.",
     "2026-10-03 12:03 JST: user explicitly said both previews OK; article 57 approval recorded for exact head SHA. Publication remains scheduled for 18:00 JST subject to gates.",
-    "2026-10-03 12:05 JST: article 57 current-head Article Factory Validation completed/success and Vercel commit status success; retained for 18:00 JST conditional gate."
+    "2026-10-03 12:05 JST: article 57 current-head Article Factory Validation completed/success and Vercel commit status success; retained for 18:00 JST conditional gate.",
+    "2026-10-03 18:05 JST: approved exact-head PR #75 squash merged at designated window; Production deployment pending."
   ]
 }
