@@ -271,7 +271,7 @@ jobs:
           fi
 
           REPORT="$(head -c 12000 docs/agent-handoff/REPORT.md)"
-          DIFF="$(git diff master...HEAD -- . ':(exclude)docs/agent-handoff/STATE.json' ':(exclude)docs/agent-handoff/NEXT_INSTRUCTION.md' | head -c 16000)"
+          DIFF="$(git show --format= --no-ext-diff HEAD -- . ':(exclude)docs/agent-handoff/STATE.json' ':(exclude)docs/agent-handoff/NEXT_INSTRUCTION.md' | head -c 16000)"
           REPORT_STATUS="$(sed -n 's/^- status: `\([^`]*\)`.*/\1/p' docs/agent-handoff/REPORT.md | head -n1)"
 
           PROMPT="$(printf '%s\n'             'あなたはNARU War RoomのChatGPTレビュー担当です。'             'Claudeの実装結果を批判的に監査し、done / revise / human の3択で判断してください。'             'done: 実装・テストが妥当で追加修正不要。'             'revise: 明確で安全な修正点が残り、Claudeへもう1回だけ具体的な修正指示を出せる。'             'human: 認証情報、破壊的操作、merge/deploy、不可逆判断、仕様の曖昧さ、人間判断が必要。'             "現在のiteration: $ITERATION / $MAX_ITERATIONS"             'reviseならnext_instructionをClaudeがそのまま実行できる具体的指示にする。'             'merge/deployは承認しない。NARUの既存安全ゲートを維持する。Slack replyは日本語300文字以内。'             "Instruction: $INSTRUCTION_ID"             'REPORT:'             "$REPORT"             'DIFF:'             "$DIFF")"
