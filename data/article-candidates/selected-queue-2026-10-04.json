@@ -18,16 +18,16 @@
         "previewApprovedHeadSha": null,
         "imageVisual": "passed",
         "imageByteReadback": "matched",
-        "articleFactoryValidation": "completed_success",
+        "articleFactoryValidation": "pending",
         "vercelStatus": "pending",
-        "validatedHeadSha": "65bb31a9a9ccddc552efbfaebc45369fdc7d9574",
+        "validatedHeadSha": null,
         "assistantPreviewVisual": "not_performed",
         "localFullQa": "not_run"
       },
       "prNumber": 75,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/75",
       "branch": "article-factory/2026-10-04-057-space-it-career",
-      "headSha": "65bb31a9a9ccddc552efbfaebc45369fdc7d9574",
+      "headSha": "73e8ee7449a262f02a6ea8fe494ce0f4e922962f",
       "driveFolderUrl": "https://drive.google.com/drive/folders/15wRBRm_uBbbZbHef8ci7q75V-eRPNCQ4",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1Kc3C5-GGimk36YbX6SskUpAE0yphrZLK",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1s9OTr8A4cnESFuzCV544n4_jYdbQf7ue",
@@ -72,6 +72,7 @@
     "User confirmed the proposed World Space Week topic with おｋやって.",
     "This reserves only the Oct 4 topical slot. Do not create another Oct 4 topical article. Evergreen article 56 remains in its existing Oct 3 queue; publication day/time has not been inferred.",
     "Official source research checked Oct 3 JST; recheck recruitment status before publication.",
-    "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge."
+    "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge.",
+    "2026-10-03: fixed future-date 404 only for VERCEL_ENV=preview. Production publication-date guard retained. Latest head requires fresh CI and Preview checks."
   ]
 }
