@@ -64,3 +64,9 @@ jobs:
           test -f .open-next/worker.js
           test -d .open-next/assets
           du -sh .open-next
+
+      - name: Validate Cloudflare upload
+        run: npx wrangler deploy --dry-run
+
+      - name: Deploy temporary Cloudflare preview
+        run: npx wrangler deploy --temporary
