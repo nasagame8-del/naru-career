@@ -1,0 +1,70 @@
+name: One-shot GSC OAuth Diagnostic
+
+on:
+  push:
+    branches:
+      - diag/gsc-oauth
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      BASE_URL: https://naru-career.broad-fuchsia.workers.dev
+    steps:
+      - name: Checkout diagnostic branch
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create one-time diagnostic secret
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIAG_SECRET="$(openssl rand -hex 32)"
+          echo "::add-mask::$DIAG_SECRET"
+          echo "DIAG_SECRET=$DIAG_SECRET" >> "$GITHUB_ENV"
+          printf '%s' "$DIAG_SECRET" | npx wrangler secret put GSC_DIAGNOSTIC_SECRET --name naru-career
+
+      - name: Deploy diagnostic build
+        run: npm run deploy:cloudflare
+
+      - name: Test Search Console OAuth
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS             -H "x-gsc-diagnostic-secret: $DIAG_SECRET"             "$BASE_URL/api/_ops/gsc-diagnostic"             -o /tmp/gsc.json
+          jq . /tmp/gsc.json
+          test "$(jq -r '.configured' /tmp/gsc.json)" = "true"
+          test "$(jq -r '.error' /tmp/gsc.json)" = "null"
+
+      - name: Restore master source
+        if: always()
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Reinstall master dependencies
+        if: always()
+        run: npm ci
+
+      - name: Restore production worker from master
+        if: always()
+        run: npm run deploy:cloudflare
+
+      - name: Remove one-time diagnostic secret
+        if: always()
+        shell: bash
+        run: |
+          curl -fsS -X DELETE             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"             "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/naru-career/secrets/GSC_DIAGNOSTIC_SECRET"             | jq -e '.success == true' >/dev/null || true
