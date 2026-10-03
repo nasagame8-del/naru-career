@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsS             -H "x-gsc-diagnostic-secret: $DIAG_SECRET"             "$BASE_URL/api/_ops/gsc-diagnostic"             -o /tmp/gsc.json
+          curl -fsS             -H "x-gsc-diagnostic-secret: $DIAG_SECRET"             "$BASE_URL/api/ops/gsc-diagnostic"             -o /tmp/gsc.json
           jq . /tmp/gsc.json
           test "$(jq -r '.configured' /tmp/gsc.json)" = "true"
           test "$(jq -r '.error' /tmp/gsc.json)" = "null"
