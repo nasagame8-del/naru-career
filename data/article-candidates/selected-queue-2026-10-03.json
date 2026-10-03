@@ -19,14 +19,14 @@
         "previewApprovedHeadSha": null,
         "draftStructure": "checked",
         "imageVisual": "passed",
-        "articleFactoryValidation": "pending_after_revision",
+        "articleFactoryValidation": "completed_success",
         "vercelStatus": "pending_after_revision",
         "imageByteReadback": "matched",
         "validatedHeadSha": "15f55ad1bdab73370fa6846353127da93d580a2b",
         "assistantPreviewVisual": "not_performed_vercel_login_required",
         "localFullQa": "not_run"
       },
-      "requestedPublish": null,
+      "requestedPublish": "2026-10-03T12:00:00+09:00",
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/73",
       "branch": "article-factory/2026-10-03-056-interview-scheduling",
       "headSha": "94a091aa2260a81d7338900393cc2b805148acee",
@@ -66,7 +66,9 @@
         ],
         "metadata": "none"
       },
-      "previewUrl": "https://career-media-git-article-factory-dc9fa7-nasagame8-dels-projects.vercel.app/articles/interview-scheduling-while-employed"
+      "previewUrl": "https://career-media-git-article-factory-dc9fa7-nasagame8-dels-projects.vercel.app/articles/interview-scheduling-while-employed",
+      "requestedPublishDate": "2026-10-03",
+      "publishAutomationId": "6ac0683e2df08191bb6343c72a6618ff"
     }
   ],
   "notes": [
@@ -75,6 +77,7 @@
     "Publication times not specified. Do not publish without four images, latest-head QA, and user preview approval.",
     "Article 56 Draft PR #73 and Drive article/prompt folders created; four user images pending.",
     "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge.",
-    "User requested concerns about evening interviews; added empathetic opening, dedicated section, considerate scheduling example and workplace-hours questions. Reapproval required for revised head."
+    "User requested concerns about evening interviews; added empathetic opening, dedicated section, considerate scheduling example and workplace-hours questions. Reapproval required for revised head.",
+    "2026-10-03: 12:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge."
   ]
 }
