@@ -1,0 +1,84 @@
+name: Cloudflare Compatibility
+
+on:
+  push:
+    branches:
+      - infra/cloudflare-workers
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  opennext-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build for Cloudflare Workers
+        run: npm run build:cloudflare
+
+      - name: Verify Worker output
+        shell: bash
+        run: |
+          test -f .open-next/worker.js
+          test -d .open-next/assets
+          du -sh .open-next
+
+      - name: Validate Cloudflare upload
+        run: npx wrangler deploy --dry-run
+
+      - name: Deploy temporary preview and smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wrangler deploy --temporary 2>&1 | tee /tmp/deploy.log
+          PREVIEW_URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/deploy.log | tail -n 1)"
+          if [ -z "$PREVIEW_URL" ]; then
+            echo "Could not resolve temporary Workers URL"
+            exit 1
+          fi
+          echo "Preview: $PREVIEW_URL"
+
+          failed=0
+          for path in \
+            / \
+            /about \
+            /articles \
+            /articles/agent-comparison-2026 \
+            /articles/agent-job-mismatch \
+            /articles/business-outsourcing-conversion-risk \
+            /robots.txt \
+            /sitemap.xml \
+            /shindan
+          do
+            code="$(curl -L -sS -o /tmp/body -w '%{http_code}' "$PREVIEW_URL$path")"
+            echo "$path -> $code"
+            if [ "$code" -lt 200 ] || [ "$code" -ge 400 ]; then
+              failed=1
+            fi
+          done
+
+          curl -L -sS "$PREVIEW_URL/" -o /tmp/home.html
+          grep -qi '<title' /tmp/home.html
+          grep -qi 'canonical' /tmp/home.html
+          grep -qi 'naru-career.com' /tmp/home.html
+
+          curl -L -sS "$PREVIEW_URL/robots.txt" -o /tmp/robots.txt
+          curl -L -sS "$PREVIEW_URL/sitemap.xml" -o /tmp/sitemap.xml
+          grep -q 'https://naru-career.com/sitemap.xml' /tmp/robots.txt
+          grep -q 'https://naru-career.com/articles/' /tmp/sitemap.xml
+
+          exit "$failed"

@@ -1,0 +1,70 @@
+name: Deploy NARU to Cloudflare
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Verify Cloudflare credentials are configured
+        shell: bash
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy to Cloudflare Workers
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run deploy:cloudflare 2>&1 | tee /tmp/cloudflare-deploy.log
+
+          WORKER_URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/cloudflare-deploy.log | tail -n 1 || true)"
+          if [ -n "$WORKER_URL" ]; then
+            echo "WORKER_URL=$WORKER_URL" >> "$GITHUB_ENV"
+            echo "Cloudflare deployment: $WORKER_URL"
+          fi
+
+      - name: Smoke test deployment
+        if: env.WORKER_URL != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in \
+            / \
+            /about \
+            /articles \
+            /articles/agent-comparison-2026 \
+            /articles/agent-job-mismatch \
+            /robots.txt \
+            /sitemap.xml \
+            /shindan
+          do
+            code="$(curl -L -sS -o /tmp/body -w '%{http_code}' "$WORKER_URL$path")"
+            echo "$path -> $code"
+            test "$code" -ge 200
+            test "$code" -lt 400
+          done
