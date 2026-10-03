@@ -91,10 +91,13 @@ async function getOAuthRefreshAccessToken(): Promise<string | null> {
 }
 
 async function getWorkloadIdentityAccessToken(vercelOidcToken?: string): Promise<string | null> {
-  const projectNumber = process.env.WAR_ROOM_GCP_PROJECT_NUMBER;
-  const poolId = process.env.WAR_ROOM_GCP_POOL_ID;
-  const providerId = process.env.WAR_ROOM_GCP_PROVIDER_ID;
-  const serviceAccountEmail = process.env.WAR_ROOM_GCP_SERVICE_ACCOUNT_EMAIL;
+  const projectNumber =
+    process.env.WAR_ROOM_GCP_PROJECT_NUMBER || "104297631972";
+  const poolId = process.env.WAR_ROOM_GCP_POOL_ID || "vercel";
+  const providerId = process.env.WAR_ROOM_GCP_PROVIDER_ID || "vercel";
+  const serviceAccountEmail =
+    process.env.WAR_ROOM_GCP_SERVICE_ACCOUNT_EMAIL ||
+    "naru-war-room@project-bb3a6643-e6ec-4b14-979.iam.gserviceaccount.com";
 
   if (!vercelOidcToken || !projectNumber || !poolId || !providerId || !serviceAccountEmail) {
     return null;
@@ -330,12 +333,7 @@ export async function buildDriveContextFromText(
   const targets = extractDriveTargets(text);
   if (targets.length === 0) return { linksFound: 0, context: "" };
 
-  const hasWorkloadIdentity =
-    Boolean(options.vercelOidcToken) &&
-    Boolean(process.env.WAR_ROOM_GCP_PROJECT_NUMBER) &&
-    Boolean(process.env.WAR_ROOM_GCP_POOL_ID) &&
-    Boolean(process.env.WAR_ROOM_GCP_PROVIDER_ID) &&
-    Boolean(process.env.WAR_ROOM_GCP_SERVICE_ACCOUNT_EMAIL);
+  const hasWorkloadIdentity = Boolean(options.vercelOidcToken);
 
   const hasOAuth =
     Boolean(process.env.WAR_ROOM_GOOGLE_CLIENT_ID) &&
