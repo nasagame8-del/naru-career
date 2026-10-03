@@ -27,6 +27,9 @@ async function processMessage(
 
   const threadTs = event.thread_ts || event.ts;
   const userText = stripSlackMention(event.text);
+  const explicitlyAddressedClaude =
+    /(?:^|\s)(?:claude|クロード)(?:\s|$)/i.test(userText) ||
+    event.text.includes("<@U0C66M6ASLW>");
 
   if (!userText) {
     await postSlackMessage({
@@ -58,12 +61,20 @@ async function processMessage(
       { vercelOidcToken }
     );
 
-    const plan = await planWarRoomMessage({
+    let plan = await planWarRoomMessage({
       userText,
       threadContext,
       driveContext: drive.context,
       driveWarning: drive.warning,
     });
+
+    if (explicitlyAddressedClaude && plan.mode !== "delegate") {
+      plan = {
+        mode: "delegate" as const,
+        reply: "Claudeへの直接依頼として受け取りました。Claude本人に回答させます。",
+        claude_instruction: userText,
+      };
+    }
 
     if (plan.mode !== "delegate") {
       await postSlackMessage({
