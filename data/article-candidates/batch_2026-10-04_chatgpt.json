@@ -103,10 +103,37 @@
       },
       "blocked": false,
       "blockedReasons": []
+    },
+    {
+      "id": "cand_261004t1",
+      "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
+      "primaryKeyword": "未経験 エンジニア ポートフォリオ チュートリアル",
+      "secondaryKeywords": [
+        "ポートフォリオ チュートリアル そのまま",
+        "ポートフォリオ オリジナリティ",
+        "未経験 エンジニア 制作実績"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "職種別の必要性を扱うsecond-new-grad-it-portfolio-guideの子記事。教材由来作品の提出可否、公開条件、自作変更の記録、READMEと面接説明に限定。",
+      "reasonToWriteNow": "2026-10-03/04開催の全日本模型ホビーショーを入口に、説明書どおりの完成と独自の判断を区別する。主催者公式日程を確認。X反響はメディア集計の間接情報に留め記事でランキングや数値は断定しない。候補固有GSC実測はなし。",
+      "category": "業界解説",
+      "proposedSlug": "beginner-engineer-tutorial-portfolio",
+      "riskFlags": [
+        "CANNIBALIZATION",
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-portfolio-guide",
+        "second-new-grad-programming-career-change"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
     }
   ],
   "inventorySize": 56,
-  "nextArticleId": 58,
+  "nextArticleId": 60,
   "notes": [
     "2026-10-04朝の提案。全3候補はevergreen/通常SEO。時事枠はpreselected-2026-10-04-space.jsonおよびselected-queue-2026-10-04.jsonが記事57を明示予約しているため、新しい時事候補を生成しない。記事57は10/4の話題を10/3公開に訂正されPR #75マージ済み。公開日の訂正とテーマ予約の解除は同一と推測しない。通常枠は未選定。追加記事PRなし。",
     "現行Drive正本00_START_HERE(16AitLKGAL-uI_z9xnU_XYn_bSq0mZJsC)と01_MASTER_PROMPT(1ZQAO-m6VtR-tOps4NMmGrFGfWC_LyEZa)を取得。GitHub master記事56件、Open PR17件、候補バッチ・選定キューを再取得。既存/選定済みの『切替を断れる』『契約終了』『求人が微妙』は再候補化しない。元ファイル/古いqueueは変更しない。",
@@ -117,6 +144,7 @@
     "一次情報（2026-10-04確認）: 日本年金機構『会社を退職したときの国民年金の手続き』（更新2024-07-01）https://www.nenkin.go.jp/service/kokunen/kanyu/20140710-03.html ; 協会けんぽ『任意継続』https://www.kyoukaikenpo.or.jp/benefit/voluntary_continuation/index.html ; 国税庁No.1350 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1350.htm ; No.1400 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1400.htm ; No.2210 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2210.htm ; doda『担当のキャリアアドバイザーを変更できますか？』https://faq.doda.jp/faq/show/45?site_domain=default 。公式画像調査は新規時事制作がないため対象外。",
     "GA4補助集計は未実施。SEO主判断はGSC確定データ。Vercelはユーザーの利用停止指示を尊重し操作しない。",
     "nextArticleId58は既存選定記事57までの採番に基づく提案値。制作開始直前に最新在庫/queueを再確認して採番。",
-    "2026-10-04 user correction: 記事57は昨日10/3の公開分。本日10/4の時事枠は空き。先頭noteの時事予約解釈は撤回。通常①は記事58として選定済み。本日も時事1本＋通常1本。"
+    "2026-10-04 user correction: 記事57は昨日10/3の公開分。本日10/4の時事枠は空き。先頭noteの時事予約解釈は撤回。通常①は記事58として選定済み。本日も時事1本＋通常1本。",
+    "2026-10-04 08:56 JST: user approved topical tutorial-portfolio proposal. Genre mix is evergreen58 + topical59. Main intent is tutorial-derived submissions; general portfolio advice delegated to existing parent. No new topical slot after this selection."
   ]
 }
