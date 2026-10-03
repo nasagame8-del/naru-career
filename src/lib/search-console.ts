@@ -18,8 +18,8 @@ import { buildDecayingPages, buildQuickWins } from "./seo-opportunities";
 export type { SCRow, SCPeriodData, SCData, QueryInsight, QuerySuggestion, EnhancedActionItem, ThemeStat };
 
 type SearchConsoleAuth =
-  | InstanceType<typeof import("googleapis").google.auth.JWT>
-  | InstanceType<typeof import("googleapis").google.auth.OAuth2>;
+  | { kind: "oauth"; accessToken: string }
+  | { kind: "jwt"; client: InstanceType<typeof import("googleapis").google.auth.JWT> };
 
 // ── 日付ヘルパー（太平洋時間を考慮） ──
 
@@ -33,6 +33,94 @@ function getPacificDate(offsetDays: number): string {
 
 // ── API呼び出し ──
 
+type SearchAnalyticsResponse = {
+  rows?: Array<{
+    keys?: string[];
+    clicks?: number;
+    impressions?: number;
+    ctr?: number;
+    position?: number;
+  }>;
+};
+
+async function refreshOAuthAccessToken(
+  clientId: string,
+  clientSecret: string,
+  refreshToken: string
+): Promise<string> {
+  const response = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Accept-Encoding": "identity",
+    },
+    body: new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      refresh_token: refreshToken,
+      grant_type: "refresh_token",
+    }),
+    cache: "no-store",
+  });
+
+  const body = (await response.json()) as {
+    access_token?: string;
+    error?: string;
+    error_description?: string;
+  };
+
+  if (!response.ok || !body.access_token) {
+    throw new Error(
+      `Google OAuth refresh failed: ${body.error ?? response.status}${
+        body.error_description ? ` ${body.error_description}` : ""
+      }`
+    );
+  }
+  return body.access_token;
+}
+
+async function searchAnalyticsRequest(
+  auth: SearchConsoleAuth,
+  siteUrl: string,
+  requestBody: {
+    startDate: string;
+    endDate: string;
+    dimensions?: string[];
+    rowLimit?: number;
+    dataState?: "final";
+  }
+): Promise<SearchAnalyticsResponse> {
+  if (auth.kind === "oauth") {
+    const response = await fetch(
+      `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/searchAnalytics/query`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${auth.accessToken}`,
+          "Content-Type": "application/json",
+          "Accept-Encoding": "identity",
+        },
+        body: JSON.stringify(requestBody),
+        cache: "no-store",
+      }
+    );
+
+    const raw = await response.text();
+    if (!response.ok) {
+      throw new Error(`Search Console API ${response.status}: ${raw.slice(0, 180)}`);
+    }
+    return raw ? (JSON.parse(raw) as SearchAnalyticsResponse) : {};
+  }
+
+  const { google } = await import("googleapis");
+  const webmasters = google.searchconsole({ version: "v1", auth: auth.client });
+  const res = await webmasters.searchanalytics.query({
+    siteUrl,
+    requestBody,
+  });
+  return res.data as SearchAnalyticsResponse;
+}
+
 async function querySearchConsole(
   auth: SearchConsoleAuth,
   siteUrl: string,
@@ -41,21 +129,15 @@ async function querySearchConsole(
   dimensions: string[],
   rowLimit: number = 20
 ): Promise<SCRow[]> {
-  const { google } = await import("googleapis");
-  const webmasters = google.searchconsole({ version: "v1", auth });
-
-  const res = await webmasters.searchanalytics.query({
-    siteUrl,
-    requestBody: {
-      startDate,
-      endDate,
-      dimensions,
-      rowLimit,
-      dataState: "final",
-    },
+  const data = await searchAnalyticsRequest(auth, siteUrl, {
+    startDate,
+    endDate,
+    dimensions,
+    rowLimit,
+    dataState: "final",
   });
 
-  return (res.data.rows || []).map((r) => ({
+  return (data.rows || []).map((r) => ({
     keys: r.keys || [],
     clicks: r.clicks || 0,
     impressions: r.impressions || 0,
@@ -70,19 +152,13 @@ async function querySiteTotal(
   startDate: string,
   endDate: string
 ): Promise<{ clicks: number; impressions: number; ctr: number; position: number }> {
-  const { google } = await import("googleapis");
-  const webmasters = google.searchconsole({ version: "v1", auth });
-
-  const res = await webmasters.searchanalytics.query({
-    siteUrl,
-    requestBody: {
-      startDate,
-      endDate,
-      dataState: "final",
-    },
+  const data = await searchAnalyticsRequest(auth, siteUrl, {
+    startDate,
+    endDate,
+    dataState: "final",
   });
 
-  const rows = res.data.rows || [];
+  const rows = data.rows || [];
   if (rows.length === 0) {
     return { clicks: 0, impressions: 0, ctr: 0, position: 0 };
   }
@@ -417,18 +493,27 @@ export async function fetchSearchConsoleData(): Promise<SCData> {
   }
 
   try {
-    const { google } = await import("googleapis");
-    const auth = hasOAuth
-      ? (() => {
-          const client = new google.auth.OAuth2(oauthClientId, oauthClientSecret);
-          client.setCredentials({ refresh_token: oauthRefreshToken });
-          return client;
-        })()
-      : new google.auth.JWT({
+    let auth: SearchConsoleAuth;
+    if (hasOAuth) {
+      auth = {
+        kind: "oauth",
+        accessToken: await refreshOAuthAccessToken(
+          oauthClientId!,
+          oauthClientSecret!,
+          oauthRefreshToken!
+        ),
+      };
+    } else {
+      const { google } = await import("googleapis");
+      auth = {
+        kind: "jwt",
+        client: new google.auth.JWT({
           email,
           key: privateKey,
           scopes: ["https://www.googleapis.com/auth/webmasters.readonly"],
-        });
+        }),
+      };
+    }
 
     // 日付計算（3日前までを終了日とする）
     const endDate = getPacificDate(-3);
