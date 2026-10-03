@@ -1,5 +1,6 @@
 import { after, NextResponse } from "next/server";
 
+import { buildDriveContextFromText } from "@/lib/war-room/drive";
 import { delegateToClaude, githubDelegationReady } from "@/lib/war-room/github";
 import { planWarRoomMessage } from "@/lib/war-room/planner";
 import {
@@ -8,6 +9,7 @@ import {
   type SlackEventEnvelope,
   verifySlackSignature,
 } from "@/lib/war-room/slack";
+import { fetchThreadContext } from "@/lib/war-room/thread";
 
 export const runtime = "nodejs";
 
@@ -38,10 +40,25 @@ async function processMention(envelope: SlackEventEnvelope): Promise<void> {
       token: botToken,
       channel: event.channel,
       threadTs,
-      text: "受信しました。ChatGPTで整理し、必要ならClaudeへ自動で回します。",
+      text: "受信しました。スレッドと参照資料を確認し、必要ならClaudeへ自動で回します。",
     });
 
-    const plan = await planWarRoomMessage(userText);
+    const [threadContext, drive] = await Promise.all([
+      fetchThreadContext({
+        token: botToken,
+        channel: event.channel,
+        threadTs,
+        currentMessageTs: event.ts,
+      }).catch(() => ""),
+      buildDriveContextFromText(event.text),
+    ]);
+
+    const plan = await planWarRoomMessage({
+      userText,
+      threadContext,
+      driveContext: drive.context,
+      driveWarning: drive.warning,
+    });
 
     if (plan.mode !== "delegate") {
       await postSlackMessage({
@@ -61,7 +78,7 @@ async function processMention(envelope: SlackEventEnvelope): Promise<void> {
         text: [
           plan.reply,
           "",
-          "Claudeとの議論・実装を開始しようとしましたが、Vercel側のGitHub実行トークンが未設定です。ChatGPTとの会話はこのまま使えます。",
+          "Claudeとの議論・実装を開始しようとしましたが、GitHub委譲用の実行権限が未設定です。ChatGPTとの会話はこのまま使えます。",
         ].join("\n"),
       });
       return;
@@ -77,13 +94,28 @@ async function processMention(envelope: SlackEventEnvelope): Promise<void> {
       return;
     }
 
+    const sharedContext = [
+      threadContext ? `## Slack thread context\n${threadContext}` : "",
+      drive.context ? `## Google Drive context\n${drive.context}` : "",
+      drive.warning ? `## Drive access note\n${drive.warning}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n\n")
+      .slice(0, 18000);
+
     const delegation = await delegateToClaude({
       eventId: envelope.event_id,
       slackChannel: event.channel,
       slackTs: event.ts,
       userRequest: userText,
       chatgptPosition: plan.reply,
-      claudeInstruction: plan.claude_instruction,
+      claudeInstruction: [
+        plan.claude_instruction,
+        sharedContext
+          ? "\nShared context from the same Slack thread and referenced Drive material follows. Use it as evidence; do not claim it was unavailable.\n" + sharedContext
+          : "",
+        "\nFinish with a concise Japanese section headed exactly '## Slack reply' in REPORT.md so the War Room can display your actual response.",
+      ].join("\n"),
     });
 
     await postSlackMessage({
@@ -93,12 +125,17 @@ async function processMention(envelope: SlackEventEnvelope): Promise<void> {
       text: [
         plan.reply,
         "",
+        drive.linksFound > 0 && drive.context
+          ? "参照されたGoogle Drive資料も読み込んでClaudeへ共有しました。"
+          : "",
         delegation.reused
           ? "同じSlackイベントのClaudeタスクはすでに作成済みです。"
           : "Claudeにも反論・検証させたうえで実装を開始しました。",
         `Draft PR: ${delegation.prUrl}`,
         "本番マージ・公開は自動では行いません。",
-      ].join("\n"),
+      ]
+        .filter(Boolean)
+        .join("\n"),
     });
   } catch {
     await postSlackMessage({

@@ -24,7 +24,7 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
-      - run: npx vitest run src/lib/war-room/slack.test.ts
+      - run: npx vitest run src/lib/war-room/*.test.ts
       - run: npx tsc --noEmit
       - run: npx eslint src/lib/war-room src/app/api/slack
       - run: npm run build

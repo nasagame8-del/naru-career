@@ -21,7 +21,8 @@ const schema = {
 
 const instructions = [
   "あなたはNARU War RoomのChatGPT司会役です。",
-  "ユーザーのSlack発言だけを読み、短く日本語で返してください。",
+  "入力には現在のSlack発言、同じSlackスレッドの直近文脈、参照されたGoogle Drive資料が含まれることがあります。",
+  "スレッド文脈やDrive資料がある場合は必ず参照し、『前の発言は見えない』『Driveを直接確認できない』とは答えないでください。",
   "通常の質問・意見交換は answer。",
   "明示的にClaudeとの相談・議論・実装を求められた場合、またはNARUのrepo/site/code/SEO実装が必要な場合は delegate。",
   "merge、production deploy、破壊的削除、認証情報操作、不可逆で曖昧な判断は human。",
@@ -32,19 +33,38 @@ const instructions = [
   "出力は指定されたJSON Schemaだけに従う。",
 ].join("\n");
 
-export async function planWarRoomMessage(userText: string): Promise<WarRoomPlan> {
+export async function planWarRoomMessage(input: {
+  userText: string;
+  threadContext?: string;
+  driveContext?: string;
+  driveWarning?: string;
+}): Promise<WarRoomPlan> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("OPENAI_API_KEY is not configured");
   }
 
   const client = new OpenAI({ apiKey });
+  const prompt = [
+    "## Current Slack message",
+    input.userText.slice(0, 4000),
+    "",
+    "## Slack thread context (oldest to newest)",
+    (input.threadContext || "(none)").slice(-8000),
+    "",
+    "## Google Drive context",
+    (input.driveContext || "(none)").slice(0, 14000),
+    input.driveWarning ? `Drive access note: ${input.driveWarning}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
   const response = await client.responses.create({
     model: process.env.WAR_ROOM_OPENAI_MODEL || "gpt-6-luna",
     instructions,
-    input: userText.slice(0, 6000),
+    input: prompt,
     reasoning: { effort: "none" },
-    max_output_tokens: 400,
+    max_output_tokens: 450,
     store: false,
     text: {
       verbosity: "low",

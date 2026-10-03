@@ -27,7 +27,7 @@ GitHub ActionsはPRのheadブランチをcheckoutし、STATEとコメントのin
 
 従量API課金は原則0です。
 
-- OpenAI API: 使用しない
+- OpenAI API: Slack War Roomの司会・Claude後レビューに限り、低コストモデルを小さいtoken上限で使用する
 - Anthropic API key: 使用しない
 - Claude Code: `CLAUDE_CODE_OAUTH_TOKEN` のサブスクリプション認証だけを使う
 - 外部の有料検索・生成API: 使用しない
@@ -174,6 +174,7 @@ Vercel:
 - `OPENAI_API_KEY`
 - `SLACK_SIGNING_SECRET`
 - `SLACK_CHATGPT_BOT_TOKEN`
+- `WAR_ROOM_GOOGLE_CREDENTIALS`（任意。Google Driveを読む場合のread-only service account JSON。raw JSONまたはbase64）
 - GitHub delegate用: `WAR_ROOM_GITHUB_TOKEN` または既存の `SEO_EDITOR_GITHUB_TOKEN` / `GITHUB_TOKEN`
 
 GitHub Actions:
@@ -194,6 +195,7 @@ Optional:
 
 - Bot Token Scope: `app_mentions:read`
 - Bot Token Scope: `chat:write`
+- Bot Token Scope: `channels:history`
 - Event Subscriptions Request URL: `https://naru-career.com/api/slack/events`
 - Subscribe to bot events: `app_mention`
 
@@ -202,10 +204,28 @@ Slack署名はraw body + timestampで検証し、5分を超えたrequestとSlack
 ### Discussion flow
 
 1. 優貴がSlackでNARU ChatGPTをメンション。
-2. GPT-5.6 Lunaが current message のみを読み、`answer / delegate / human` を判定。
-3. `delegate` の場合、Slack event IDごとの専用branch + Draft PRを作る。
-4. ClaudeはChatGPT案を先に反論・検証してから実装し、REPORTを更新する。
-5. Claude完了後、GitHub Actions上の低コストChatGPT reviewがREPORTを読み、Slackへ最終レビューを返す。
-6. merge / production deployは自動実行しない。
+2. War Roomは同じSlackスレッドの直近20件（最大8,000文字）を読み、会話文脈を共有する。
+3. 発言内にGoogle Driveのfile/folder URLがあれば、read-only service accountで資料を取得し、最大14,000文字の共有文脈にする。
+4. GPT-6 Lunaが current message + thread context + Drive context を読み、`answer / delegate / human` を判定。
+5. `delegate` の場合、Slack event IDごとの専用branch + Draft PRを作り、同じ共有文脈をClaudeのinstructionへ渡す。
+6. ClaudeはChatGPT案を反論・検証し、REPORTに `## Slack reply` を書く。workflowがその本文をClaude名義で元スレッドへ返す。
+7. Claude完了後、低コストChatGPT reviewがREPORT/diffを読み、同じSlackスレッドへ返す。明確な修正だけ最大1回Claudeへ戻す。
+8. Observerは実装差分を監視するが、REPORT内の単なるAPI名・環境変数名では誤停止しない。
+9. merge / production deployは自動実行しない。
 
-OpenAI側は `reasoning: none`, 小さいoutput上限, `store: false`, toolsなしで利用量を抑える。
+OpenAI側は `reasoning: none`, 小さいoutput上限, `store: false`,外部ツールなしで利用量を抑える。
+
+
+## Google Drive read bridge
+
+War RoomからprivateなGoogle Drive資料を読む場合、ChatGPT製品側の接続権限はVercelへ自動継承されないため、専用のread-only service accountを使う。
+
+1. Google Cloudでservice accountを1つ作成し、Google Drive APIを有効化する。
+2. service account key JSONを作成する。
+3. 読ませたいNARUのDrive root（または必要なフォルダだけ）を、そのservice accountの `client_email` に「閲覧者」で共有する。
+4. Vercel Production/PreviewのSecret `WAR_ROOM_GOOGLE_CREDENTIALS` にJSON全体を保存する。raw JSONでもbase64でもよい。
+5. 再デプロイする。
+
+War RoomはDrive URLがSlack発言に含まれる時だけDriveへアクセスする。フォルダは直下の一覧と最近更新された子フォルダを限定サンプルし、Google Docs / Sheets / text / Markdown / JSON / CSVを読み取る。画像やPDFなど非テキスト型は現時点では本文抽出せず、ファイル名と型だけ共有する。
+
+取得したDrive本文はSlackの現在の依頼と同じ一時コンテキストにだけ入れ、repositoryへ恒久保存しない。
