@@ -549,7 +549,7 @@ export async function fetchSearchConsoleData(): Promise<SCData> {
     const safeMsg = msg.includes("private_key")
       ? "認証エラー（秘密鍵の形式を確認してください）"
       : msg.includes("403")
-        ? "権限エラー（Search Consoleプロパティにサービスアカウントを追加してください）"
+        ? `Search Console 403: ${msg.slice(0, 400)}`
         : msg.includes("404")
           ? "プロパティが見つかりません（SEARCH_CONSOLE_SITE_URLを確認してください）"
           : `Search Console APIエラー: ${msg.slice(0, 200)}`;
