@@ -78,10 +78,11 @@
         "productionVisual": "user_opened_url_content_unverified",
         "blockers": [],
         "deploymentId": "dpl_2qk2vQtDb1EmMZv5tbewAvw4cquT"
-      }
+      },
+      "countsTowardDate": "2026-10-03"
     },
     {
-      "order": 2,
+      "order": 1,
       "genre": "evergreen",
       "batchId": "batch_2026-10-04_chatgpt",
       "candidateId": "cand_261004e1",
@@ -113,6 +114,13 @@
     "2026-10-03 12:05 JST: article 57 current-head Article Factory Validation completed/success and Vercel commit status success; retained for 18:00 JST conditional gate.",
     "2026-10-03 18:05 JST: approved exact-head PR #75 squash merged at designated window; Production deployment pending.",
     "2026-10-03 18:06 JST: user reports production URL opens, but Vercel status for merge SHA df8c82f is failure. Displayed revision unverified; not reported as published.",
-    "2026-10-04: User selected evergreen candidate1. Allocated58 after master/Open PR/Drive/prior queue duplicate checks. Existing topical reservation retained. Publication clock time not inferred; no scheduling."
-  ]
+    "2026-10-04: User selected evergreen candidate1. Allocated58 after master/Open PR/Drive/prior queue duplicate checks. Existing topical reservation retained. Publication clock time not inferred; no scheduling.",
+    "2026-10-04: User explicitly corrected that article57 was yesterday's publication and requested today's topical article. Supersedes Oct4 topical reservation notes. Today's topical slot is empty; evergreen58 selected."
+  ],
+  "dailySlots": {
+    "2026-10-04": {
+      "topical": "awaiting_selection",
+      "evergreen": 58
+    }
+  }
 }
