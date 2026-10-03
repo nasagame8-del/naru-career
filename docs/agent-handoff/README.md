@@ -263,3 +263,15 @@ War RoomはVercel Functionの `x-vercel-oidc-token` をGoogle STSへ交換し、
 War RoomはDrive URLがSlack発言に含まれる時だけDriveへアクセスする。フォルダは直下の一覧と最近更新された子フォルダを限定サンプルし、Google Docs / Sheets / text / Markdown / JSON / CSVを読み取る。画像やPDFなど非テキスト型は現時点では本文抽出せず、ファイル名と型だけ共有する。
 
 取得したDrive本文はSlackの現在の依頼と同じ一時コンテキストにだけ入れ、repositoryへ恒久保存しない。
+
+
+### NARU fixed WIF identifiers
+
+NARU本番では以下の識別子を安全な非機密デフォルトとしてコード側に持つ。Vercel envで上書き可能。
+
+- GCP project number: `104297631972`
+- pool ID: `vercel`
+- provider ID: `vercel`
+- service account: `naru-war-room@project-bb3a6643-e6ec-4b14-979.iam.gserviceaccount.com`
+
+この4値は秘密情報ではない。長期credentialは保存しない。
