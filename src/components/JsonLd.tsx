@@ -25,10 +25,15 @@ export function ArticleJsonLd({ article }: { article: ArticleMeta }) {
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
     author: authorPerson,
+    image: `${baseUrl}${article.heroImagePath || article.cardImagePath || "/logo-wordmark.png"}`,
     publisher: {
       "@type": "Organization",
       name: "NARU",
       url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/logo-wordmark.png`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -120,6 +125,10 @@ export function WebSiteJsonLd() {
       "@type": "Organization",
       name: "NARU",
       url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/logo-wordmark.png`,
+      },
       founder: authorPerson,
     },
   };
