@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-10-03T09:19:29+09:00",
   "batchId": "preselected_2026-10-04_space",
-  "status": "PREVIEW_AWAITING_USER",
+  "status": "IN_PROGRESS",
   "items": [
     {
       "order": 1,
@@ -79,6 +79,25 @@
         "blockers": [],
         "deploymentId": "dpl_2qk2vQtDb1EmMZv5tbewAvw4cquT"
       }
+    },
+    {
+      "order": 2,
+      "genre": "evergreen",
+      "batchId": "batch_2026-10-04_chatgpt",
+      "candidateId": "cand_261004e1",
+      "articleId": 58,
+      "slug": "employee-to-contractor-social-insurance",
+      "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
+      "status": "SELECTED_RESEARCH",
+      "selectedAt": "2026-10-04T08:47:29+09:00",
+      "selectionEvidence": "User selected 1 after numbered morning candidate list",
+      "requestedPublishDate": "2026-10-04",
+      "requestedPublish": null,
+      "qa": {
+        "previewVisual": "not_requested",
+        "previewApprovedHeadSha": null,
+        "humanFactCheck": "pending"
+      }
     }
   ],
   "notes": [
@@ -93,6 +112,7 @@
     "2026-10-03 12:03 JST: user explicitly said both previews OK; article 57 approval recorded for exact head SHA. Publication remains scheduled for 18:00 JST subject to gates.",
     "2026-10-03 12:05 JST: article 57 current-head Article Factory Validation completed/success and Vercel commit status success; retained for 18:00 JST conditional gate.",
     "2026-10-03 18:05 JST: approved exact-head PR #75 squash merged at designated window; Production deployment pending.",
-    "2026-10-03 18:06 JST: user reports production URL opens, but Vercel status for merge SHA df8c82f is failure. Displayed revision unverified; not reported as published."
+    "2026-10-03 18:06 JST: user reports production URL opens, but Vercel status for merge SHA df8c82f is failure. Displayed revision unverified; not reported as published.",
+    "2026-10-04: User selected evergreen candidate1. Allocated58 after master/Open PR/Drive/prior queue duplicate checks. Existing topical reservation retained. Publication clock time not inferred; no scheduling."
   ]
 }
