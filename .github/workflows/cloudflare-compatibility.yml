@@ -1,0 +1,66 @@
+name: Cloudflare Compatibility
+
+on:
+  push:
+    branches:
+      - infra/cloudflare-workers
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  opennext-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install app dependencies
+        run: npm ci
+
+      - name: Install Cloudflare build tooling
+        run: npm install --no-save @opennextjs/cloudflare@latest wrangler@latest
+
+      - name: Create temporary OpenNext config
+        shell: bash
+        run: |
+          cat > open-next.config.ts <<'EOF'
+          import { defineCloudflareConfig } from "@opennextjs/cloudflare";
+          export default defineCloudflareConfig();
+          EOF
+
+          cat > wrangler.jsonc <<'EOF'
+          {
+            "$schema": "./node_modules/wrangler/config-schema.json",
+            "name": "naru-career",
+            "main": ".open-next/worker.js",
+            "compatibility_date": "2026-10-03",
+            "compatibility_flags": ["nodejs_compat"],
+            "assets": {
+              "directory": ".open-next/assets",
+              "binding": "ASSETS"
+            },
+            "observability": {
+              "enabled": true
+            }
+          }
+          EOF
+
+      - name: Build for Cloudflare Workers
+        run: npx opennextjs-cloudflare build
+
+      - name: Verify Worker output
+        shell: bash
+        run: |
+          test -f .open-next/worker.js
+          test -d .open-next/assets
+          du -sh .open-next
