@@ -8,7 +8,7 @@
 - Fact Check status: PENDING
 
 ## 自動抽出
-`npm run article:fact-check -- --slug <slug>`
+`node scripts/article-fact-check.mjs --slug <slug>`
 
 - [ ] BLOCK = 0
 - [ ] 数字・割合・金額・年次を確認
