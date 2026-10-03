@@ -27,7 +27,7 @@ Googleの生成AIコンテンツ利用ガイド更新を受け、AI生成・AI�
 3. Interpretation: Fact / Experience からの編集上の解釈。事実と混同しない。
 
 ## 公開ゲート
-1. `npm run article:fact-check -- --slug <slug>` で確認対象を抽出。
+1. `node scripts/article-fact-check.mjs --slug <slug>` で確認対象を抽出。
 2. BLOCK が1件でもあれば修正する。
 3. REVIEW対象を一次情報または著者実体験で確認する。
 4. 画像内の文言・数字・altも確認する。
