@@ -21,12 +21,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for path in / /about /articles /articles/agent-comparison-2026 /robots.txt /sitemap.xml /shindan; do
+          failed=0
+          for path in / /about /articles /articles/agent-comparison-2026 /articles/agent-job-mismatch /articles/business-outsourcing-conversion-risk /articles/second-new-grad-web-marketing-career /robots.txt /sitemap.xml /shindan; do
             code="$(curl -L -sS -o /tmp/body -w '%{http_code}' "$PREVIEW_URL$path")"
             echo "$path -> $code"
-            test "$code" -ge 200
-            test "$code" -lt 400
+            if [ "$code" -lt 200 ] || [ "$code" -ge 400 ]; then
+              failed=1
+            fi
           done
+          exit "$failed"
 
       - name: Check homepage metadata
         shell: bash
