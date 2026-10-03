@@ -34,6 +34,13 @@ async function processMention(envelope: SlackEventEnvelope): Promise<void> {
   }
 
   try {
+    await postSlackMessage({
+      token: botToken,
+      channel: event.channel,
+      threadTs,
+      text: "受信しました。ChatGPTで整理し、必要ならClaudeへ自動で回します。",
+    });
+
     const plan = await planWarRoomMessage(userText);
 
     if (plan.mode !== "delegate") {
