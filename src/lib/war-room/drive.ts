@@ -62,7 +62,38 @@ function readCredentials(): ServiceAccountCredentials | null {
   return parsed;
 }
 
+async function getOAuthRefreshAccessToken(): Promise<string | null> {
+  const clientId = process.env.WAR_ROOM_GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.WAR_ROOM_GOOGLE_CLIENT_SECRET;
+  const refreshToken = process.env.WAR_ROOM_GOOGLE_REFRESH_TOKEN;
+  if (!clientId || !clientSecret || !refreshToken) return null;
+
+  const response = await fetch(TOKEN_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      refresh_token: refreshToken,
+      grant_type: "refresh_token",
+    }),
+    cache: "no-store",
+  });
+
+  const body = (await response.json()) as {
+    access_token?: string;
+    error?: string;
+  };
+  if (!response.ok || !body.access_token) {
+    throw new Error(`Google OAuth refresh failed: ${body.error ?? response.status}`);
+  }
+  return body.access_token;
+}
+
 async function getAccessToken(): Promise<string> {
+  const oauthToken = await getOAuthRefreshAccessToken();
+  if (oauthToken) return oauthToken;
+
   const credentials = readCredentials();
   if (!credentials) throw new Error("Google Drive credentials are not configured");
 
@@ -229,7 +260,12 @@ export async function buildDriveContextFromText(text: string): Promise<DriveCont
   const targets = extractDriveTargets(text);
   if (targets.length === 0) return { linksFound: 0, context: "" };
 
-  if (!process.env.WAR_ROOM_GOOGLE_CREDENTIALS) {
+  const hasOAuth =
+    Boolean(process.env.WAR_ROOM_GOOGLE_CLIENT_ID) &&
+    Boolean(process.env.WAR_ROOM_GOOGLE_CLIENT_SECRET) &&
+    Boolean(process.env.WAR_ROOM_GOOGLE_REFRESH_TOKEN);
+
+  if (!hasOAuth && !process.env.WAR_ROOM_GOOGLE_CREDENTIALS) {
     return {
       linksFound: targets.length,
       context: "",
