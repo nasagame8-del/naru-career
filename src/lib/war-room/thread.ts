@@ -1,4 +1,4 @@
-const MAX_THREAD_MESSAGES = 20;
+const MAX_THREAD_MESSAGES = 100;
 const MAX_CONTEXT_CHARS = 8000;
 
 interface SlackMessage {
@@ -15,11 +15,30 @@ interface SlackRepliesResponse {
   messages?: SlackMessage[];
 }
 
+export function extractThreadResourceLinks(messages: SlackMessage[]): string[] {
+  const links: string[] = [];
+  const seen = new Set<string>();
+  const pattern = /https:\/\/(?:drive\.google\.com|docs\.google\.com)\/[^\s>|]+/g;
+
+  for (const message of messages) {
+    if (!message.text) continue;
+    for (const match of message.text.matchAll(pattern)) {
+      const url = match[0];
+      if (!seen.has(url)) {
+        seen.add(url);
+        links.push(url);
+      }
+    }
+  }
+
+  return links.slice(0, 12);
+}
+
 export function formatThreadContext(
   messages: SlackMessage[],
   currentMessageTs?: string
 ): string {
-  return messages
+  const recent = messages
     .filter((message) => message.text && !message.subtype)
     .slice(-MAX_THREAD_MESSAGES)
     .map((message) => {
@@ -34,6 +53,14 @@ export function formatThreadContext(
     })
     .join("\n")
     .slice(-MAX_CONTEXT_CHARS);
+
+  const resources = extractThreadResourceLinks(messages);
+  const resourceBlock =
+    resources.length > 0
+      ? ["## Thread resource links", ...resources.map((url) => `- ${url}`)].join("\n")
+      : "";
+
+  return [resourceBlock, recent].filter(Boolean).join("\n\n");
 }
 
 export async function fetchThreadContext(input: {

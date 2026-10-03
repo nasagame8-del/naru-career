@@ -46,15 +46,17 @@ async function processMessage(
       text: "受信しました。スレッドと参照資料を確認し、必要ならClaudeへ自動で回します。",
     });
 
-    const [threadContext, drive] = await Promise.all([
-      fetchThreadContext({
-        token: botToken,
-        channel: event.channel,
-        threadTs,
-        currentMessageTs: event.ts,
-      }).catch(() => ""),
-      buildDriveContextFromText(event.text, { vercelOidcToken }),
-    ]);
+    const threadContext = await fetchThreadContext({
+      token: botToken,
+      channel: event.channel,
+      threadTs,
+      currentMessageTs: event.ts,
+    }).catch(() => "");
+
+    const drive = await buildDriveContextFromText(
+      [event.text, threadContext].filter(Boolean).join("\n"),
+      { vercelOidcToken }
+    );
 
     const plan = await planWarRoomMessage({
       userText,
@@ -198,10 +200,15 @@ export async function POST(request: Request) {
   const allowedChannel =
     process.env.SLACK_WAR_ROOM_CHANNEL_ID || DEFAULT_WAR_ROOM_CHANNEL;
 
+  const chatgptBotUserId =
+    process.env.SLACK_CHATGPT_BOT_USER_ID || "U0C66MEQJ06";
+
   if (
     event.channel !== allowedChannel ||
     event.bot_id ||
-    event.subtype
+    event.subtype ||
+    (event.type === "message" &&
+      event.text.includes(`<@${chatgptBotUserId}>`))
   ) {
     return NextResponse.json({ ok: true });
   }
