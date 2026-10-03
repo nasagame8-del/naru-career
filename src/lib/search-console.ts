@@ -394,9 +394,18 @@ function deriveQueryInsights(data: {
 export async function fetchSearchConsoleData(): Promise<SCData> {
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  const oauthClientId =
+    process.env.GOOGLE_OAUTH_CLIENT_ID || process.env.WAR_ROOM_GOOGLE_CLIENT_ID;
+  const oauthClientSecret =
+    process.env.GOOGLE_OAUTH_CLIENT_SECRET || process.env.WAR_ROOM_GOOGLE_CLIENT_SECRET;
+  const oauthRefreshToken =
+    process.env.GOOGLE_OAUTH_REFRESH_TOKEN || process.env.WAR_ROOM_GOOGLE_REFRESH_TOKEN;
   const siteUrl = process.env.SEARCH_CONSOLE_SITE_URL;
 
-  if (!email || !privateKey || !siteUrl) {
+  const hasServiceAccount = Boolean(email && privateKey);
+  const hasOAuth = Boolean(oauthClientId && oauthClientSecret && oauthRefreshToken);
+
+  if ((!hasServiceAccount && !hasOAuth) || !siteUrl) {
     return {
       configured: false,
       error: "Search Console環境変数が未設定です（GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY, SEARCH_CONSOLE_SITE_URL）",
@@ -405,11 +414,17 @@ export async function fetchSearchConsoleData(): Promise<SCData> {
 
   try {
     const { google } = await import("googleapis");
-    const auth = new google.auth.JWT({
-      email,
-      key: privateKey,
-      scopes: ["https://www.googleapis.com/auth/webmasters.readonly"],
-    });
+    const auth = hasOAuth
+      ? (() => {
+          const client = new google.auth.OAuth2(oauthClientId, oauthClientSecret);
+          client.setCredentials({ refresh_token: oauthRefreshToken });
+          return client;
+        })()
+      : new google.auth.JWT({
+          email,
+          key: privateKey,
+          scopes: ["https://www.googleapis.com/auth/webmasters.readonly"],
+        });
 
     // 日付計算（3日前までを終了日とする）
     const endDate = getPacificDate(-3);
