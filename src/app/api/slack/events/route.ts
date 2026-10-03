@@ -15,7 +15,7 @@ export const runtime = "nodejs";
 
 const DEFAULT_WAR_ROOM_CHANNEL = "C0C71TPTSHW";
 
-async function processMention(
+async function processMessage(
   envelope: SlackEventEnvelope,
   vercelOidcToken?: string
 ): Promise<void> {
@@ -33,7 +33,7 @@ async function processMention(
       token: botToken,
       channel: event.channel,
       threadTs,
-      text: "相談内容を書いてメンションしてください。",
+      text: "相談内容を書いてください。",
     });
     return;
   }
@@ -186,7 +186,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  if (envelope.type !== "event_callback" || envelope.event?.type !== "app_mention") {
+  if (
+    envelope.type !== "event_callback" ||
+    !envelope.event ||
+    !["app_mention", "message"].includes(envelope.event.type)
+  ) {
     return NextResponse.json({ ok: true });
   }
 
@@ -206,7 +210,7 @@ export async function POST(request: Request) {
     request.headers.get("x-vercel-oidc-token") || undefined;
 
   after(async () => {
-    await processMention(envelope, vercelOidcToken);
+    await processMessage(envelope, vercelOidcToken);
   });
 
   return NextResponse.json({ ok: true });
