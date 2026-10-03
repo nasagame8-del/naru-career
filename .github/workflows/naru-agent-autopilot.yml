@@ -141,7 +141,7 @@ jobs:
             - If a decision is unsafe or ambiguous, stop and set REPORT status to NEEDS_DECISION.
             - Preserve existing SEO Editor and Article Factory safety gates.
             - Run only the tests/checks explicitly requested by NEXT_INSTRUCTION.md or directly needed for the changed code.
-            - Before finishing, replace docs/agent-handoff/REPORT.md with a concise complete report.
+            - Before finishing, replace docs/agent-handoff/REPORT.md with a concise complete report.\n            - REPORT.md must include a Japanese section headed exactly `## Slack reply` with the response that should be shown to the user in Slack (max 1200 characters).
 
             REPORT.md must include:
             - reportId
@@ -162,6 +162,35 @@ jobs:
             --max-turns 8
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash"
 
+      - name: Post Claude response to Slack
+        if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success'
+        continue-on-error: true
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
+          INSTRUCTION_ID: ${{ steps.gate.outputs.active }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        shell: bash
+        run: |
+          if [ -z "$SLACK_WEBHOOK" ]; then exit 0; fi
+
+          THREAD_TS="$(sed -n 's/^- messageTs: `\([^`]*\)`.*/\1/p' docs/agent-handoff/NEXT_INSTRUCTION.md | head -n1)"
+          CLAUDE_REPLY="$(awk '
+            /^## Slack reply[[:space:]]*$/ {capture=1; next}
+            /^## / && capture {exit}
+            capture {print}
+          ' docs/agent-handoff/REPORT.md | head -c 2400)"
+
+          if [ -z "$CLAUDE_REPLY" ]; then
+            CLAUDE_REPLY="Claudeの処理は完了しましたが、Slack向け回答をREPORTから取得できませんでした。REPORTを確認してください。"
+          fi
+
+          CLAUDE_REPLY="$(printf '%s' "$CLAUDE_REPLY" | sed -E 's/xox[baprs]-[A-Za-z0-9-]+/[redacted]/g; s/sk-[A-Za-z0-9_-]{12,}/[redacted]/g')"
+          TEXT="🟣 *NARU Claude Code*\n$CLAUDE_REPLY\nPR: #$PR_NUMBER"
+          jq -n --arg text "$TEXT" --arg thread "$THREAD_TS" '
+            if $thread == "" then {text:$text} else {text:$text, thread_ts:$thread} end
+          ' > /tmp/slack-claude-reply.json
+          curl --fail-with-body --silent --show-error -H 'Content-Type: application/json' --data @/tmp/slack-claude-reply.json "$SLACK_WEBHOOK"
+
       - name: Observer guard on Claude changes
         id: guard
         if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success'
@@ -180,7 +209,7 @@ jobs:
             exit 1
           fi
 
-          ADDED_LINES="$(git diff --unified=0 | grep '^+' | grep -v '^+++' || true)"
+          ADDED_LINES="$(git diff --unified=0 -- . ':(exclude)docs/agent-handoff/REPORT.md' | grep '^+' | grep -v '^+++' || true)"
           if printf '%s\n' "$ADDED_LINES" | grep -Eiq 'api\.openai\.com|OPENAI_API_KEY|ANTHROPIC_API_KEY|sk-ant-|sk-proj-'; then
             echo "::error::Observer blocked a metered-API credential or endpoint pattern"
             exit 1
@@ -327,8 +356,11 @@ jobs:
             ICON="🔁"
           fi
 
+          THREAD_TS="$(sed -n 's/^- messageTs: `\([^`]*\)`.*/\1/p' docs/agent-handoff/NEXT_INSTRUCTION.md | head -n1)"
           TEXT="🟢 *NARU ChatGPT*\n$ICON Claudeの実装をレビューしました。\n$SLACK_REPLY$FOLLOWUP\nPR: #$PR_NUMBER"
-          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack-review.json
+          jq -n --arg text "$TEXT" --arg thread "$THREAD_TS" '
+            if $thread == "" then {text:$text} else {text:$text, thread_ts:$thread} end
+          ' > /tmp/slack-review.json
           curl --fail-with-body --silent --show-error -H 'Content-Type: application/json' --data @/tmp/slack-review.json "$SLACK_WEBHOOK"
 
   observer:
