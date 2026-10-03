@@ -100,9 +100,9 @@ async function processMessage(
     }
 
     const sharedContext = [
-      threadContext ? `## Slack thread context\n${threadContext}` : "",
       drive.context ? `## Google Drive context\n${drive.context}` : "",
       drive.warning ? `## Drive access note\n${drive.warning}` : "",
+      threadContext ? `## Slack thread context\n${threadContext}` : "",
     ]
       .filter(Boolean)
       .join("\n\n")
