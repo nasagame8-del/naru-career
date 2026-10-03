@@ -2,8 +2,8 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 const MAX_REQUEST_AGE_SECONDS = 300;
 
-export interface SlackAppMentionEvent {
-  type: "app_mention";
+export interface SlackMessageEvent {
+  type: "app_mention" | "message";
   user: string;
   text: string;
   channel: string;
@@ -17,7 +17,7 @@ export interface SlackEventEnvelope {
   type: "url_verification" | "event_callback";
   challenge?: string;
   event_id?: string;
-  event?: SlackAppMentionEvent;
+  event?: SlackMessageEvent;
 }
 
 export function verifySlackSignature(input: {
