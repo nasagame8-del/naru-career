@@ -184,7 +184,7 @@ GitHub Actions:
 
 Optional:
 
-- `WAR_ROOM_OPENAI_MODEL`（default: `gpt-5.6-luna`）
+- `WAR_ROOM_OPENAI_MODEL`（default: `gpt-6-luna`）
 - `SLACK_WAR_ROOM_CHANNEL_ID`（default: `C0C71TPTSHW`）
 - `WAR_ROOM_GITHUB_REPO`（default: `nasagame8-del/naru-career`）
 
