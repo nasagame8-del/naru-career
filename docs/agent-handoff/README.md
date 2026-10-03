@@ -224,25 +224,39 @@ OpenAI側は `reasoning: none`, 小さいoutput上限, `store: false`,外部ツ�
 
 War RoomからprivateなGoogle Drive資料を読む場合、ChatGPT製品側の接続権限はVercelへ自動継承されないため、War Room runtime専用の認証が必要。
 
-推奨は**ユーザーOAuth + refresh token**。service account key作成が組織ポリシーで禁止されていても使える。
+推奨は**Vercel OIDC → Google Workload Identity Federation → service account impersonation**。長期service account keyを作らず、Vercel Functionごとの短期OIDC tokenだけでDriveを読む。
 
-### Recommended: user OAuth
+### Recommended: Vercel OIDC + Workload Identity Federation
 
-1. Google CloudでGoogle Drive APIを有効化。
-2. OAuth consent screenを設定し、自分のGoogleアカウントをtest userとして追加。
-3. OAuth client IDを作成（Desktop appでよい）。
-4. `https://www.googleapis.com/auth/drive.readonly` scopeで一度だけ認可し、refresh tokenを取得。
-5. Vercel Production/Previewへ以下をSecretとして保存:
-   - `WAR_ROOM_GOOGLE_CLIENT_ID`
-   - `WAR_ROOM_GOOGLE_CLIENT_SECRET`
-   - `WAR_ROOM_GOOGLE_REFRESH_TOKEN`
-6. 再デプロイ。
+Google Cloud側:
 
-War Roomはaccess tokenを短期発行してDrive APIをread-onlyで利用する。refresh tokenはSlack/GitHub/ログへ出さない。
+1. Google Drive API / IAM Credentials API / Security Token Service APIを有効化。
+2. Workload Identity Poolを作成（例: `vercel`）。
+3. OIDC Providerを作成し、Vercel team issuerを信頼する。
+4. attribute mapping: `google.subject = assertion.sub`。
+5. 対象service accountへ、production subjectだけ `roles/iam.workloadIdentityUser` を付与。
+6. NARUのDrive folderをservice accountのメールアドレスへ「閲覧者」で共有する。
 
-### Fallback: service account
+Vercel `career-media` 側:
 
-`WAR_ROOM_GOOGLE_CREDENTIALS` も互換用に残す。ただし `iam.disableServiceAccountKeyCreation` が適用されている環境では、このために組織ポリシーを緩めない。
+- OIDC federationをTeam issuer modeで有効化。
+- Environment Variables:
+  - `WAR_ROOM_GCP_PROJECT_NUMBER`
+  - `WAR_ROOM_GCP_POOL_ID`
+  - `WAR_ROOM_GCP_PROVIDER_ID`
+  - `WAR_ROOM_GCP_SERVICE_ACCOUNT_EMAIL`
+
+War RoomはVercel Functionの `x-vercel-oidc-token` をGoogle STSへ交換し、service accountを短時間だけimpersonateして `drive.readonly` access tokenを取得する。長期Google秘密鍵は保存しない。
+
+### Compatibility fallbacks
+
+必要ならユーザーOAuth refresh token方式も利用可能:
+
+- `WAR_ROOM_GOOGLE_CLIENT_ID`
+- `WAR_ROOM_GOOGLE_CLIENT_SECRET`
+- `WAR_ROOM_GOOGLE_REFRESH_TOKEN`
+
+旧 `WAR_ROOM_GOOGLE_CREDENTIALS` も互換用に残すが、`iam.disableServiceAccountKeyCreation` が適用されている環境では組織ポリシーを緩めない。
 
 ### Read scope
 
