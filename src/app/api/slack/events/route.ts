@@ -15,7 +15,10 @@ export const runtime = "nodejs";
 
 const DEFAULT_WAR_ROOM_CHANNEL = "C0C71TPTSHW";
 
-async function processMention(envelope: SlackEventEnvelope): Promise<void> {
+async function processMention(
+  envelope: SlackEventEnvelope,
+  vercelOidcToken?: string
+): Promise<void> {
   const event = envelope.event;
   if (!event) return;
 
@@ -50,9 +53,7 @@ async function processMention(envelope: SlackEventEnvelope): Promise<void> {
         threadTs,
         currentMessageTs: event.ts,
       }).catch(() => ""),
-      buildDriveContextFromText(event.text, {
-        vercelOidcToken: process.env.VERCEL_OIDC_TOKEN,
-      }),
+      buildDriveContextFromText(event.text, { vercelOidcToken }),
     ]);
 
     const plan = await planWarRoomMessage({
@@ -201,8 +202,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  const vercelOidcToken =
+    request.headers.get("x-vercel-oidc-token") || undefined;
+
   after(async () => {
-    await processMention(envelope);
+    await processMention(envelope, vercelOidcToken);
   });
 
   return NextResponse.json({ ok: true });
