@@ -10,7 +10,7 @@
       "articleId": 56,
       "slug": "interview-scheduling-while-employed",
       "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
-      "status": "READY_FOR_PUBLICATION_QA",
+      "status": "MERGED_PRODUCTION_PENDING",
       "prNumber": 73,
       "driveFolderId": "1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
       "imageStatus": "four_images_verified",
@@ -71,14 +71,16 @@
       "requestedPublishDate": "2026-10-03",
       "publishAutomationId": "6ac0683e2df08191bb6343c72a6618ff",
       "publicationGate": {
-        "checkedAt": "2026-10-03T12:00:00+09:00",
-        "result": "held",
-        "blockers": [
-          "qa.previewVisual is not user_confirmed",
-          "qa.previewApprovedHeadSha is not the current head SHA 94a091aa2260a81d7338900393cc2b805148acee"
-        ],
-        "mergeAttempted": false
-      }
+        "checkedAt": "2026-10-03T12:04:17+09:00",
+        "result": "merged_after_user_approval",
+        "blockers": [],
+        "mergeAttempted": true,
+        "productionStatus": "pending",
+        "productionVisual": "not_verified"
+      },
+      "mergeSha": "042a725108d3c11b840a37b12697016261bc642e",
+      "mergedAt": "2026-10-03T12:04:17+09:00",
+      "productionUrl": "https://naru-career.com/articles/interview-scheduling-while-employed"
     }
   ],
   "notes": [
@@ -90,6 +92,7 @@
     "User requested concerns about evening interviews; added empathetic opening, dedicated section, considerate scheduling example and workplace-hours questions. Reapproval required for revised head.",
     "2026-10-03: 12:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge.",
     "2026-10-03 12:00 JST: publication held. Current head CI and Vercel succeeded, but user visual approval for current head was not recorded. No merge and no automatic delay.",
-    "2026-10-03 12:03 JST: user explicitly said both previews OK; article 56 approval recorded for exact head SHA."
+    "2026-10-03 12:03 JST: user explicitly said both previews OK; article 56 approval recorded for exact head SHA.",
+    "2026-10-03 12:04 JST: PR #73 squash merged after exact-head preview approval; production deployment pending. Live page not yet verified."
   ]
 }
