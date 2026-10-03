@@ -1,18 +1,18 @@
 {
   "version": 5,
   "repo": "nasagame8-del/naru-career",
-  "coordinationBranch": null,
-  "mode": "CLOUD_CLAUDE_BRIDGE",
-  "status": "IDLE",
-  "instructionId": null,
-  "lastCompletedInstructionId": "USER-SITE-AUDIT-FOLLOWUP-2026-10-01",
-  "lastReportId": "REPORT-010",
-  "iteration": 0,
+  "coordinationBranch": "war-room/ev0c79dz5zs4",
+  "mode": "SLACK_LIVE_WAR_ROOM",
+  "status": "RUN_CLAUDE",
+  "instructionId": "WAR-EV0C79DZ5ZS4",
+  "lastCompletedInstructionId": null,
+  "lastReportId": null,
+  "iteration": 1,
   "maxIterations": 2,
   "maxClaudeTurns": 8,
   "sameBlockerCount": 0,
   "lastBlockerKey": null,
-  "nextWriter": "chatgpt",
+  "nextWriter": "claude",
   "targetBaseBranch": "master",
   "autoPublishRequested": false,
   "stopConditions": [
@@ -24,5 +24,5 @@
     "production merge or deploy requires approval",
     "irreversible content decision with insufficient evidence"
   ],
-  "notes": "Idle template for the cloud ChatGPT-to-Claude bridge. A task starts only after ChatGPT writes a new instruction on a task branch/PR and explicitly triggers @naru-autopilot with the matching instructionId."
+  "notes": "Created by NARU Slack War Room. Final merge/publish remains blocked."
 }
