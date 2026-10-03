@@ -1,0 +1,40 @@
+{
+  "batchId": "preselected_2026-10-04_space",
+  "generatedAt": "2026-10-03T09:19:29+09:00",
+  "trigger": "manual",
+  "inventorySize": 54,
+  "nextArticleId": 57,
+  "candidates": [
+    {
+      "id": "cand_261004t_space",
+      "title": "宇宙飛行士になれなくても宇宙で働ける？第二新卒がIT職の入口を求人票で検証",
+      "primaryKeyword": "宇宙業界 IT 転職 未経験",
+      "secondaryKeywords": [
+        "JAXA IT 採用 条件",
+        "宇宙業界 第二新卒",
+        "世界宇宙週間 2026"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "一般的なIT転職や企業研究の記事とは異なり、宇宙への憧れを勤務地・担当業務・応募要件へ分解。JAXA公式募集を使い、業界未経験と職種未経験を区別する。",
+      "reasonToWriteNow": "2026年10月4〜10日の世界宇宙週間（Rocket Revolution）が入口。10月4日の時事記事としてユーザーが明示選定。",
+      "category": "業界解説",
+      "proposedSlug": "space-industry-it-career-entry",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-career-change",
+        "second-new-grad-it-company-research"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "User confirmed the proposed World Space Week topic with おｋやって.",
+    "This reserves only the Oct 4 topical slot. Do not create another Oct 4 topical article. Evergreen article 56 remains in its existing Oct 3 queue; publication day/time has not been inferred.",
+    "Official source research checked Oct 3 JST; recheck recruitment status before publication."
+  ]
+}
