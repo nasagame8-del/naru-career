@@ -1,0 +1,121 @@
+{
+  "batchId": "batch_2026-10-04_chatgpt",
+  "generatedAt": "2026-10-04T08:01:01+09:00",
+  "trigger": "manual",
+  "candidates": [
+    {
+      "id": "cand_261004e1",
+      "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
+      "primaryKeyword": "正社員 業務委託 切り替え 社会保険",
+      "secondaryKeywords": [
+        "業務委託 健康保険 任意継続",
+        "業務委託 国民年金 手続き",
+        "第二新卒 業務委託"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "親記事business-outsourcing-conversion-riskは切替拒否・違法性・労働者性・リスク全体、子記事outsourcing-contract-termination-worker-statusは解除後の対応。本案は真に雇用を終了し事業者になる際の健康保険の選択、年金の種別、資格喪失資料、提出先・期限に限定。退職金や独立一般論には広げない。IT/Webの第二新卒が切替提案を受けた場面を起点とする。",
+      "reasonToWriteNow": "GSC確定28日で親記事164表示・5クリック・CTR3.05%・平均9.22位。クラスターを最優先するが本候補の社会保険クエリの直接実測はない。関連クエリ『正社員 業務委託 切り替え』は2表示・21.5位で母数小。親記事の制度変更一覧から具体的な手続きへ内部リンクを作る余地がある。日本年金機構・協会けんぽの一次情報を2026-10-04に確認。",
+      "category": "業界解説",
+      "proposedSlug": "employee-to-contractor-social-insurance",
+      "riskFlags": [
+        "CANNIBALIZATION",
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "outsourcing-contract-termination-worker-status",
+        "second-new-grad-retirement-pay"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "正社員 業務委託 切り替え",
+        "impressions": 2,
+        "clicks": 0,
+        "position": 21.5,
+        "window": "2026-09-02/2026-09-29 (28 settled days; GSC America/Los_Angeles)"
+      },
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261004e2",
+      "title": "正社員の月給30万円と業務委託40万円、どちらが得？切り替え前の報酬比較表",
+      "primaryKeyword": "正社員 業務委託 報酬 比較",
+      "secondaryKeywords": [
+        "業務委託 給与 手取り 違い",
+        "正社員 業務委託 切り替え 年収",
+        "IT 業務委託 経費"
+      ],
+      "searchIntent": "compare",
+      "differenceFromExisting": "親記事の『月給30万円→報酬40万円』という注意喚起を入口に、賞与・会社負担・経費・稼働月数・有給相当の休業・税前キャッシュフローを同じ前提で比較する記入式表に限定。違法性/切替を断れるか/解除対応は既存記事へ委譲。候補1の届出手順は扱わずリンクする。",
+      "reasonToWriteNow": "GSCで切替リスク親記事164表示・5クリック・平均9.22位。報酬比較の直接クエリ実測はなく、クラスター根拠からの編集提案。額面増額を実質増収と混同しない比較資料が親記事の未充足部分。国税庁の給与所得・事業所得・必要経費を一次情報で確認して制作し、条件不明な一律の手取り額や『必ず得』は提示しない。",
+      "category": "業界解説",
+      "proposedSlug": "employee-contractor-pay-comparison",
+      "riskFlags": [
+        "CANNIBALIZATION",
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "second-new-grad-desired-salary-2026",
+        "second-new-grad-retirement-pay"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "正社員 業務委託 切り替え",
+        "impressions": 2,
+        "clicks": 0,
+        "position": 21.5,
+        "window": "2026-09-02/2026-09-29 (28 settled days; GSC America/Los_Angeles)"
+      },
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261004e3",
+      "title": "転職エージェントの担当変更は選考中でも頼める？伝え方と引き継ぎ確認リスト",
+      "primaryKeyword": "転職エージェント 担当変更 選考中",
+      "secondaryKeywords": [
+        "転職エージェント 担当変更 メール",
+        "doda 担当変更",
+        "第二新卒 エージェント 合わない"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "親記事agent-not-recommendedは不満の原因分解、agent-job-mismatchは求人辞退・希望条件の伝え直し。本案は担当変更の依頼窓口、応募中企業・日程・回答期限・希望条件の引継ぎと連絡例に限定。求人が微妙な一般的対処法やサービス全体をやめる方法は既存記事に委譲。Open PR #99/#49の親記事改稿を重複制作しない。",
+      "reasonToWriteNow": "関連『転職エージェント 微妙』は3→16表示、平均24.67→17.75位、0クリック。『求人 微妙』は10表示・20.9位だが既存子記事があるため同テーマ再生成を除外。担当変更クエリそのものの実測はなく、周辺クラスターからの仮説。doda公式FAQで変更窓口と不利に扱わない説明を確認できるが全サービスへ一般化しない。",
+      "category": "エージェント比較",
+      "proposedSlug": "agent-change-adviser-during-selection",
+      "riskFlags": [
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "agent-not-recommended",
+        "agent-job-mismatch",
+        "agent-free-and-cancel"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "転職エージェント 微妙",
+        "impressions": 16,
+        "clicks": 0,
+        "position": 17.75,
+        "window": "2026-09-02/2026-09-29 (28 settled days; GSC America/Los_Angeles)"
+      },
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "inventorySize": 56,
+  "nextArticleId": 58,
+  "notes": [
+    "2026-10-04朝の提案。全3候補はevergreen/通常SEO。時事枠はpreselected-2026-10-04-space.jsonおよびselected-queue-2026-10-04.jsonが記事57を明示予約しているため、新しい時事候補を生成しない。記事57は10/4の話題を10/3公開に訂正されPR #75マージ済み。公開日の訂正とテーマ予約の解除は同一と推測しない。通常枠は未選定。追加記事PRなし。",
+    "現行Drive正本00_START_HERE(16AitLKGAL-uI_z9xnU_XYn_bSq0mZJsC)と01_MASTER_PROMPT(1ZQAO-m6VtR-tOps4NMmGrFGfWC_LyEZa)を取得。GitHub master記事56件、Open PR17件、候補バッチ・選定キューを再取得。既存/選定済みの『切替を断れる』『契約終了』『求人が微妙』は再候補化しない。元ファイル/古いqueueは変更しない。",
+    "GSC property sc-domain:naru-career.com / web / API。最新確定日2026-09-29、firstIncompleteDate2026-09-30、dateBasis America/Los_Angeles。28日2026-09-02〜09-29、比較2026-08-05〜09-01。クリック7→12、表示232→369、CTR3.0172→3.2520%、平均順位29.6638→19.1328。取得日2026-10-04 JST。未確定日を含むデフォルト範囲は採用しない。",
+    "GSC pages: business-outsourcing-conversion-risk=164impressions/5clicks/CTR3.0488%/position9.2195; agent-not-recommended=99/0/0%/46.9798; reference-check-explained=12/1/8.3333%/5.5833; guides/second-new-grad-complete-guide=8/1/12.5%/2.625; shindan=22/1/4.5455%/12.9091; home=10/4/40%/2.3。ブランド『naru 第二新卒』3clicks/6impressionsは非指名SEO成功の主要根拠から除外。",
+    "GSC queries: 『転職エージェント 微妙』3→16表示、平均24.6667→17.75、0clicks; 『転職エージェント 本音』23→51表示、55.2174→61.0784位、0clicks（悪化）; 『転職エージェント 求人 微妙』10表示/20.9位/0clicks; 『正社員 から業務委託 クビ』11表示/9.3636位/0clicks。各候補のsearchEvidenceは関連クエリの実測であり候補固有クエリの直接需要を示すものではない。匿名化クエリがあるためページ集計とクエリ集計を同一視しない。少数表示の順位を過大評価しない。",
+    "推奨順e1社会保険手続き→e2報酬比較→e3担当変更。e1とe2は代替案で同日に両方作らない。新しい関連記事で順位が上がることは保証しない。候補選定後に見出し単位のカニバリを再確認。画像・記事・公開工程は未着手。",
+    "一次情報（2026-10-04確認）: 日本年金機構『会社を退職したときの国民年金の手続き』（更新2024-07-01）https://www.nenkin.go.jp/service/kokunen/kanyu/20140710-03.html ; 協会けんぽ『任意継続』https://www.kyoukaikenpo.or.jp/benefit/voluntary_continuation/index.html ; 国税庁No.1350 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1350.htm ; No.1400 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1400.htm ; No.2210 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2210.htm ; doda『担当のキャリアアドバイザーを変更できますか？』https://faq.doda.jp/faq/show/45?site_domain=default 。公式画像調査は新規時事制作がないため対象外。",
+    "GA4補助集計は未実施。SEO主判断はGSC確定データ。Vercelはユーザーの利用停止指示を尊重し操作しない。",
+    "nextArticleId58は既存選定記事57までの採番に基づく提案値。制作開始直前に最新在庫/queueを再確認して採番。"
+  ]
+}
