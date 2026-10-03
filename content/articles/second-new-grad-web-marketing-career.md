@@ -29,7 +29,7 @@ note_published: false
 
 ## 結論：第二新卒でも準備次第でWebマーケターは狙える
 
-<a href="/guides/second-new-grad-complete-guide">第二新卒で未経験からWebマーケターを目指すことは</a>、十分に現実的です。採用実務上の「<a href="/articles/what-is-second-new-grad">第二新卒</a>」は、企業ごとの定義に差はあるものの、学校卒業後おおむね3年以内の若手を指す文脈で使われることが一般的です（参考：[厚生労働省資料](https://mhlw.go.jp/topics/2010/01/tp0127-2/21/dl/houkoku01a.pdf)）。
+<a href="/guides/second-new-grad-complete-guide">第二新卒で未経験からWebマーケターを目指すことは</a>、十分に現実的です。採用実務上の「<a href="/articles/what-is-second-new-grad">第二新卒</a>」は、企業ごとの定義に差はあるものの、学校卒業後おおむね3年以内の若手を指す文脈で使われることが一般的です（参考：[厚生労働省「若者への就職支援」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/jakunen/index.html)）。
 
 また、経済産業省の報告でも、DXやデジタル化の進展に伴うデジタル人材の育成・確保がテーマとして扱われており、Web／デジタル領域の人材需要は社会的にも重要度が高い領域です（参考：[経済産業省 令和6年度地域デジタル人材育成・確保推進事業](https://meti.go.jp/meti_lib/report/2024FY/1000136.pdf)）。
 
