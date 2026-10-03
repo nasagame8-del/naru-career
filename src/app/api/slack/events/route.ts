@@ -109,7 +109,7 @@ async function processMention(
     const delegation = await delegateToClaude({
       eventId: envelope.event_id,
       slackChannel: event.channel,
-      slackTs: event.ts,
+      slackTs: threadTs,
       userRequest: userText,
       chatgptPosition: plan.reply,
       claudeInstruction: [
