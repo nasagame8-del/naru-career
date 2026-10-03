@@ -5,6 +5,7 @@
 - target: `Claude Code`
 - status: `ACTIVE`
 - mode: `SLACK_LIVE_WAR_ROOM`
+- iteration: `1/2`
 
 ## Slack trace
 
@@ -18,27 +19,54 @@ Claudeと議論して、このWar Roomの受信・委譲フローに安全性や
 
 ## ChatGPT initial position
 
-私の見立てでは、受信内容の信頼境界、委譲時の権限・入力検証、失敗時の挙動、重複実行や監査ログを重点的に点検すべきです。Draft PRまでに留め、本番公開・mergeは行いません。
+受信内容の信頼境界、委譲時の権限・入力検証、失敗時の挙動、重複実行、監査ログを重点的に見るべきだと考える。
 
-## Claude assignment
+## Round 1 — critic only
 
-NARUのWar Room受信・委譲フローを調査し、安全性と運用上の穴をレビューしてください。まず独立に脅威モデルと問題候補を整理し、上記の観点（Slack入力の信頼境界とprompt injection、委譲条件の判定、出力/schema検証、権限・秘密情報、再試行/重複実行、タイムアウト・失敗時のfail-closed動作、監査ログ/個人情報、レート制限とコスト、テスト/監視）を確認。私の見立てにも反論・検証し、既存実装とテストを根拠に優先度付きで報告してください。必要な修正は最小限の安全な範囲で実装し、回帰テストを追加・実行してDraft PRを作成してください。既存のNARU安全ゲートを迂回せず、外部有料APIを新規利用せず、merge・production deploy・公開は絶対に行わないでください。不可逆または曖昧な変更は実施せず、確認が必要なら止めて報告してください。
+この第1ラウンドは**反論・監査・結論だけ**に限定する。実装ファイルは変更しない。
 
-Before implementing, explicitly challenge ChatGPT's initial position:
-1. state what is correct,
-2. state what is risky or wrong,
-3. propose the safest implementation approach.
+確認対象を次のファイルに限定する。
 
-Then make only safe, scoped changes needed for this request, run relevant tests, update `docs/agent-handoff/REPORT.md`, and stop.
+- `src/app/api/slack/events/route.ts`
+- `src/lib/war-room/slack.ts`
+- `src/lib/war-room/planner.ts`
+- `src/lib/war-room/github.ts`
+- `.github/workflows/naru-agent-autopilot.yml`
+- `.github/workflows/naru-war-room-relay.yml`
+- `src/lib/war-room/slack.test.ts`
+- `docs/agent-handoff/README.md`
+
+やること:
+
+1. ChatGPTの見立てに対して、正しい点・見落とし・過剰な点を明示的に反論する。
+2. P0 / P1 / P2 で具体的な問題を最大5件に絞る。
+3. 各問題について「根拠となるファイル/挙動」「修正案」「自動修正してよいか」を示す。
+4. 実装はまだしない。テストも新規実行しない。
+5. `docs/agent-handoff/REPORT.md` を、このInstruction専用の簡潔なレポートに置き換えて終了する。
+
+**最優先は8ターン上限より前にREPORTを完成させて正常終了すること。**
+深掘りより、まず返答を完成させる。追加調査が必要ならREPORTにremaining risksとして残す。
+
+## REPORT requirements
+
+- reportId: `REPORT-WAR-EV0C5ZBECZ0F-R1`
+- completedInstructionId: `WAR-EV0C5ZBECZ0F`
+- status: `PR_READY` if safe concrete fixes exist, otherwise `DONE` or `NEEDS_DECISION`
+- branch
+- ChatGPTへの反論
+- P0/P1/P2 findings（最大5件）
+- proposed fixes
+- implementation recommendation
+- remaining risks
+- recommended next step
 
 ## Hard boundaries
 
 - Do not edit `STATE.json` or `NEXT_INSTRUCTION.md`.
-- Do not push directly to master/main.
-- Do not merge any PR.
-- Do not deploy production.
-- Do not expose or request secret values.
-- Do not add or call paid external APIs.
-- Preserve existing NARU article/publication/preview approval gates.
-- If a destructive, credential, irreversible, or ambiguous decision is required, stop with REPORT status `NEEDS_DECISION`.
-- Maximum workflow budget remains 8 Claude turns and 15 minutes.
+- Do not edit implementation/test/workflow files in this round.
+- Only `REPORT.md` may be changed.
+- Do not push to master/main.
+- Do not merge or deploy production.
+- Do not expose or request secrets.
+- Do not call paid external APIs.
+- Stop as soon as REPORT is complete.
