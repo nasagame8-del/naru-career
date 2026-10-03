@@ -60,7 +60,16 @@ async function processMessage(
       { vercelOidcToken }
     );
 
-    if (explicitlyAddressedClaude) {
+    const lastBotLine =
+      threadContext
+        .split("\n")
+        .filter((line) => line.includes("[bot]"))
+        .at(-1) || "";
+    const claudeOwnedThread =
+      Boolean(event.thread_ts) && lastBotLine.includes("NARU Claude Code");
+    const directClaude = explicitlyAddressedClaude || claudeOwnedThread;
+
+    if (directClaude) {
       if (!githubDelegationReady()) {
         await postSlackMessage({
           token: botToken,
@@ -102,14 +111,6 @@ async function processMessage(
       driveContext: drive.context,
       driveWarning: drive.warning,
     });
-
-    if (explicitlyAddressedClaude && plan.mode !== "delegate") {
-      plan = {
-        mode: "delegate" as const,
-        reply: "Claudeへの直接依頼として受け取りました。Claude本人に回答させます。",
-        claude_instruction: userText,
-      };
-    }
 
     if (plan.mode !== "delegate") {
       await postSlackMessage({
