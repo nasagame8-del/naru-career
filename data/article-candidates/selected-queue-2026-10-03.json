@@ -10,13 +10,13 @@
       "articleId": 56,
       "slug": "interview-scheduling-while-employed",
       "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
-      "status": "PUBLICATION_HELD",
+      "status": "READY_FOR_PUBLICATION_QA",
       "prNumber": 73,
       "driveFolderId": "1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
       "imageStatus": "four_images_verified",
       "qa": {
-        "previewVisual": "awaiting_user",
-        "previewApprovedHeadSha": null,
+        "previewVisual": "user_confirmed",
+        "previewApprovedHeadSha": "94a091aa2260a81d7338900393cc2b805148acee",
         "draftStructure": "checked",
         "imageVisual": "passed",
         "articleFactoryValidation": "completed_success",
@@ -24,7 +24,8 @@
         "imageByteReadback": "matched",
         "validatedHeadSha": "94a091aa2260a81d7338900393cc2b805148acee",
         "assistantPreviewVisual": "not_performed_vercel_login_required",
-        "localFullQa": "not_run"
+        "localFullQa": "not_run",
+        "previewApprovalRecordedAt": "2026-10-03T12:03:31+09:00"
       },
       "requestedPublish": "2026-10-03T12:00:00+09:00",
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/73",
@@ -88,6 +89,7 @@
     "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge.",
     "User requested concerns about evening interviews; added empathetic opening, dedicated section, considerate scheduling example and workplace-hours questions. Reapproval required for revised head.",
     "2026-10-03: 12:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge.",
-    "2026-10-03 12:00 JST: publication held. Current head CI and Vercel succeeded, but user visual approval for current head was not recorded. No merge and no automatic delay."
+    "2026-10-03 12:00 JST: publication held. Current head CI and Vercel succeeded, but user visual approval for current head was not recorded. No merge and no automatic delay.",
+    "2026-10-03 12:03 JST: user explicitly said both previews OK; article 56 approval recorded for exact head SHA."
   ]
 }
