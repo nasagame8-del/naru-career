@@ -1,5 +1,19 @@
 # Claude Code Report
 
+## REPORT-011 — /about の「よくある質問」を削除
+
+- reportId: `REPORT-011`
+- completedInstructionId: `USER-ABOUT-REMOVE-FAQ-2026-10-03`（ユーザー直接依頼。NEXT_INSTRUCTIONはIDLE）
+- status: `DONE`
+- branch: `claude/inspiring-cerf-3odtbm`（PR未作成）
+- 実施内容: `src/app/about/page.tsx` から「よくある質問」見出し・アコーディオンUI・`aboutFaqs` データ・FAQPage構造化データ（JSON-LD）を削除。表示されないFAQをJSON-LDに残すとリッチリザルトのガイドライン違反になるため一緒に削除。Person / Breadcrumb のJSON-LDは維持。
+- テスト結果: tsc exit 0、eslint src/app/about エラー0、vitest 288件pass。
+- 変更ファイル: `src/app/about/page.tsx`, `docs/agent-handoff/REPORT.md`
+- git diff概要: about/page.tsx から約50行削除（追加なし）。
+- 既知の問題: なし。
+- 判断が必要な項目: なし。
+- 推奨する次の作業: master へ取り込み後、本番の /about でFAQ非表示を確認。
+
 ## REPORT-010 — ブランドカラー統一・診断SEO整理・既知不具合の修正
 
 - reportId: `REPORT-010`

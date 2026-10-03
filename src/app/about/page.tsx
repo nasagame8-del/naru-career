@@ -12,38 +12,7 @@ export const metadata: Metadata = {
   },
 };
 
-const aboutFaqs = [
-  {
-    question: "本当に転職を経験していますか？",
-    answer:
-      "はい。私は新卒で入社した飲食業界の会社を約1年で退職し、第二新卒としてIT/Web業界に転職しました。転職活動ではdodaとワークポートを利用し、最終的にdoda経由の自己応募で現在の会社に内定・入社しています。",
-  },
-  {
-    question: "現在も転職業界に関わる仕事をしていますか？",
-    answer:
-      "はい。現在はAIO対策企業で法人営業として勤務しており、主なクライアントは人材紹介会社・人材派遣会社です。SEO・AIO領域の提案営業を通じて、転職業界の採用動向や集客手法に日常的に接しています。",
-  },
-  {
-    question: "AIだけで記事を書いていますか？",
-    answer:
-      "いいえ。記事の下書きにはClaude Codeを活用していますが、実体験・事実確認・編集はすべて私自身が行っています。AIに体験談を捏造させることはなく、実際に経験したことだけを発信しています。",
-  },
-];
-
 export default function AboutPage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: aboutFaqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <PersonJsonLd />
@@ -52,10 +21,6 @@ export default function AboutPage() {
           { name: "ホーム", href: "/" },
           { name: "著者について", href: "/about" },
         ]}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className="max-w-2xl mx-auto px-4 py-16">
@@ -279,25 +244,6 @@ export default function AboutPage() {
               第二新卒の転職に関するアンケートに回答する →
             </SurveyLink>
           </p>
-
-          {/* よくある質問 */}
-          <h2>よくある質問</h2>
-        </div>
-
-        <div className="my-4 border border-line rounded-lg divide-y divide-line">
-          {aboutFaqs.map((faq) => (
-            <details key={faq.question} className="group">
-              <summary className="flex items-center justify-between cursor-pointer px-5 py-4 text-[15px] font-bold text-ink hover:text-primary transition-colors list-none [&::-webkit-details-marker]:hidden">
-                <span>{faq.question}</span>
-                <span className="text-ink-soft text-xs shrink-0 ml-4 transition-transform group-open:rotate-180">
-                  ▼
-                </span>
-              </summary>
-              <div className="px-5 pb-4 text-sm text-ink-soft leading-relaxed">
-                {faq.answer}
-              </div>
-            </details>
-          ))}
         </div>
       </div>
     </>
