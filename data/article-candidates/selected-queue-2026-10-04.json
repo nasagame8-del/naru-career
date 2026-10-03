@@ -11,7 +11,7 @@
       "slug": "space-industry-it-career-entry",
       "title": "10月4日は世界宇宙週間の始まり｜宇宙業界へIT転職できる？第二新卒が求人票で検証",
       "status": "PREVIEW_AWAITING_USER",
-      "requestedPublishDate": "2026-10-04",
+      "requestedPublishDate": "2026-10-03",
       "requestedPublish": null,
       "qa": {
         "previewVisual": "awaiting_user",
@@ -27,7 +27,7 @@
       "prNumber": 75,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/75",
       "branch": "article-factory/2026-10-04-057-space-it-career",
-      "headSha": "533de7269e5e5c7338dfca739819f1d9a36c8e9c",
+      "headSha": "f567fd649c3b1f1b0366d754b1056abf753fee44",
       "driveFolderUrl": "https://drive.google.com/drive/folders/15wRBRm_uBbbZbHef8ci7q75V-eRPNCQ4",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1Kc3C5-GGimk36YbX6SskUpAE0yphrZLK",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1s9OTr8A4cnESFuzCV544n4_jYdbQf7ue",
@@ -74,6 +74,7 @@
     "Official source research checked Oct 3 JST; recheck recruitment status before publication.",
     "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge.",
     "2026-10-03: fixed future-date 404 only for VERCEL_ENV=preview. Production publication-date guard retained. Latest head requires fresh CI and Preview checks.",
-    "2026-10-03: User requested title with calendar hook and career keywords. Updated article title; publication date remains 2026-10-04."
+    "2026-10-03: User requested title with calendar hook and career keywords. Updated article title; publication date remains 2026-10-04.",
+    "2026-10-03: User explicitly corrected publication to today (2026-10-03). October 4 refers to World Space Week topic, not publication day. This supersedes earlier October 4 publication assumptions. Exact clock time remains unspecified."
   ]
 }
