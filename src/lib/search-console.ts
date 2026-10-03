@@ -17,6 +17,10 @@ import { buildDecayingPages, buildQuickWins } from "./seo-opportunities";
 // 型を re-export（既存の import 元を壊さない）
 export type { SCRow, SCPeriodData, SCData, QueryInsight, QuerySuggestion, EnhancedActionItem, ThemeStat };
 
+type SearchConsoleAuth =
+  | InstanceType<typeof import("googleapis").google.auth.JWT>
+  | InstanceType<typeof import("googleapis").google.auth.OAuth2>;
+
 // ── 日付ヘルパー（太平洋時間を考慮） ──
 
 function getPacificDate(offsetDays: number): string {
@@ -30,7 +34,7 @@ function getPacificDate(offsetDays: number): string {
 // ── API呼び出し ──
 
 async function querySearchConsole(
-  auth: InstanceType<typeof import("googleapis").google.auth.JWT>,
+  auth: SearchConsoleAuth,
   siteUrl: string,
   startDate: string,
   endDate: string,
@@ -61,7 +65,7 @@ async function querySearchConsole(
 }
 
 async function querySiteTotal(
-  auth: InstanceType<typeof import("googleapis").google.auth.JWT>,
+  auth: SearchConsoleAuth,
   siteUrl: string,
   startDate: string,
   endDate: string
@@ -92,7 +96,7 @@ async function querySiteTotal(
 }
 
 async function fetchPeriod(
-  auth: InstanceType<typeof import("googleapis").google.auth.JWT>,
+  auth: SearchConsoleAuth,
   siteUrl: string,
   startDate: string,
   endDate: string
