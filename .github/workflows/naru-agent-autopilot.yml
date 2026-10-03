@@ -72,6 +72,12 @@ jobs:
           echo "iteration=$ITERATION" >> "$GITHUB_OUTPUT"
           echo "max_iterations=$MAX_ITERATIONS" >> "$GITHUB_OUTPUT"
 
+          if grep -q 'DIRECT_CLAUDE_NO_REVIEW' docs/agent-handoff/NEXT_INSTRUCTION.md; then
+            echo "direct_claude=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "direct_claude=false" >> "$GITHUB_OUTPUT"
+          fi
+
           if [ "$STATUS" = "RUN_CLAUDE" ] &&
              [ "$ACTIVE" != "$COMPLETED" ] &&
              [ "$COMMENT_ID" = "$ACTIVE" ] &&
@@ -106,7 +112,7 @@ jobs:
             echo "::warning::SLACK_CLAUDE_WEBHOOK_URL is not configured"
             exit 0
           fi
-          TEXT="🟣 *NARU Claude Code*\n実装を開始しました。\nInstruction: \`$INSTRUCTION_ID\`\nPR: #$PR_NUMBER\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          TEXT="🟣 *NARU Claude Code*\nリクエストを受け取りました。\nInstruction: \`$INSTRUCTION_ID\`\nPR: #$PR_NUMBER\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           jq -n --arg text "$TEXT" '{text:$text}' > /tmp/slack.json
           curl --fail-with-body --silent --show-error             -H 'Content-Type: application/json'             --data @/tmp/slack.json             "$SLACK_WEBHOOK"
 
@@ -236,7 +242,7 @@ jobs:
           echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Notify Claude completion
-        if: always() && steps.gate.outputs.run == 'true' && steps.claude.outcome == 'success' && steps.guard.outcome == 'success' && steps.commit.outcome == 'success'
+        if: always() && steps.gate.outputs.run == 'true' && steps.gate.outputs.direct_claude != 'true' && steps.claude.outcome == 'success' && steps.guard.outcome == 'success' && steps.commit.outcome == 'success'
         continue-on-error: true
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
