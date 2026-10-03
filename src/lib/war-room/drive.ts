@@ -6,8 +6,9 @@ const TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
 const MAX_CONTEXT_CHARS = 14000;
 const MAX_DIRECT_CHILDREN = 30;
 const MAX_SAMPLE_FOLDERS = 6;
-const MAX_FILES_PER_FOLDER = 3;
+const MAX_LEAF_FILES = 4;
 const MAX_FILE_CHARS = 3500;
+const MAX_COLLECTION_FILE_CHARS = 1800;
 
 const FOLDER_MIME = "application/vnd.google-apps.folder";
 const DOC_MIME = "application/vnd.google-apps.document";
@@ -270,7 +271,11 @@ function isReadableText(file: DriveFile): boolean {
   );
 }
 
-async function readFileText(token: string, file: DriveFile): Promise<string> {
+async function readFileText(
+  token: string,
+  file: DriveFile,
+  maxChars = MAX_FILE_CHARS
+): Promise<string> {
   let url: string;
   if (file.mimeType === DOC_MIME) {
     url = `${DRIVE_API}/files/${encodeURIComponent(file.id)}/export?mimeType=${encodeURIComponent("text/plain")}`;
@@ -285,35 +290,97 @@ async function readFileText(token: string, file: DriveFile): Promise<string> {
     cache: "no-store",
   });
   if (!response.ok) return "";
-  return (await response.text()).slice(0, MAX_FILE_CHARS);
+  return (await response.text()).slice(0, maxChars);
+}
+
+export function driveCollectionPriority(name: string): number {
+  const lower = name.toLowerCase();
+  if (lower === "article.md") return 0;
+  if (lower.startsWith("article-run")) return 1;
+  if (lower.includes("article") && !lower.includes("image")) return 2;
+  if (lower.endsWith(".md") && !lower.includes("image")) return 3;
+  if (lower.endsWith(".txt")) return 4;
+  return 10;
+}
+
+function primaryReadableFile(files: DriveFile[]): DriveFile | undefined {
+  return files
+    .filter((file) => isReadableText(file))
+    .sort((a, b) => {
+      const priority = driveCollectionPriority(a.name) - driveCollectionPriority(b.name);
+      if (priority !== 0) return priority;
+      return a.name.localeCompare(b.name);
+    })[0];
 }
 
 async function summarizeFolder(token: string, folder: DriveFile): Promise<string> {
   const children = await listChildren(token, folder.id);
-  const lines = [
+  const childFolders = children
+    .filter((child) => child.mimeType === FOLDER_MIME)
+    .slice(0, MAX_SAMPLE_FOLDERS);
+
+  const rootLines = [
     `## Drive folder: ${folder.name}`,
-    ...children.map((child) => `- ${child.mimeType === FOLDER_MIME ? "[folder]" : "[file]"} ${child.name}`),
+    ...children.map(
+      (child) =>
+        `- ${child.mimeType === FOLDER_MIME ? "[folder]" : "[file]"} ${child.name}`
+    ),
   ];
 
-  const directReadable = children.filter((child) => isReadableText(child)).slice(0, 8);
-  for (const file of directReadable) {
-    const text = await readFileText(token, file);
-    if (text) lines.push(`\n### ${file.name}\n${text}`);
+  if (childFolders.length === 0) {
+    const lines = [...rootLines];
+    const directReadable = children
+      .filter((child) => isReadableText(child))
+      .sort((a, b) => driveCollectionPriority(a.name) - driveCollectionPriority(b.name))
+      .slice(0, MAX_LEAF_FILES);
+
+    for (const file of directReadable) {
+      const text = await readFileText(token, file);
+      if (text) lines.push(`\n### ${file.name}\n${text}`);
+    }
+
+    return lines.join("\n").slice(0, MAX_CONTEXT_CHARS);
   }
 
-  const childFolders = children.filter((child) => child.mimeType === FOLDER_MIME).slice(0, MAX_SAMPLE_FOLDERS);
-  for (const childFolder of childFolders) {
-    const nested = await listChildren(token, childFolder.id, 12);
-    lines.push(`\n### Folder sample: ${childFolder.name}`);
-    lines.push(...nested.map((file) => `- ${file.name}`));
+  const nestedByFolder = await Promise.all(
+    childFolders.map(async (childFolder) => ({
+      childFolder,
+      nested: await listChildren(token, childFolder.id, 12),
+    }))
+  );
 
-    for (const file of nested.filter((item) => isReadableText(item)).slice(0, MAX_FILES_PER_FOLDER)) {
-      const text = await readFileText(token, file);
-      if (text) lines.push(`\n#### ${childFolder.name} / ${file.name}\n${text}`);
+  const metadataLines = [...rootLines];
+  for (const { childFolder, nested } of nestedByFolder) {
+    metadataLines.push(`\n### Folder sample: ${childFolder.name}`);
+    metadataLines.push(...nested.map((file) => `- ${file.name}`));
+  }
+
+  const metadata = metadataLines.join("\n");
+  const contentBudget = Math.max(0, MAX_CONTEXT_CHARS - metadata.length - 300);
+  const perFolderBudget = Math.max(
+    700,
+    Math.min(
+      MAX_COLLECTION_FILE_CHARS,
+      Math.floor(contentBudget / Math.max(1, nestedByFolder.length))
+    )
+  );
+
+  const contentBlocks: string[] = [];
+  for (const { childFolder, nested } of nestedByFolder) {
+    const primary = primaryReadableFile(nested);
+    if (!primary) continue;
+
+    const text = await readFileText(token, primary, perFolderBudget);
+    if (text) {
+      contentBlocks.push(
+        `\n#### ${childFolder.name} / ${primary.name}\n${text}`
+      );
     }
   }
 
-  return lines.join("\n").slice(0, MAX_CONTEXT_CHARS);
+  return [metadata, ...contentBlocks]
+    .join("\n")
+    .slice(0, MAX_CONTEXT_CHARS);
 }
 
 async function summarizeTarget(token: string, id: string): Promise<string> {
