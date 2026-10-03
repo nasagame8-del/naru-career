@@ -99,6 +99,25 @@
         "previewApprovedHeadSha": null,
         "humanFactCheck": "pending"
       }
+    },
+    {
+      "order": 2,
+      "genre": "topical",
+      "batchId": "batch_2026-10-04_chatgpt",
+      "candidateId": "cand_261004t1",
+      "articleId": 59,
+      "slug": "beginner-engineer-tutorial-portfolio",
+      "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
+      "status": "SELECTED_RESEARCH",
+      "selectedAt": "2026-10-04T08:56:01+09:00",
+      "selectionEvidence": "User said おけ to SEO title and then すすめて",
+      "requestedPublishDate": "2026-10-04",
+      "requestedPublish": null,
+      "qa": {
+        "previewVisual": "not_requested",
+        "previewApprovedHeadSha": null,
+        "humanFactCheck": "pending"
+      }
     }
   ],
   "notes": [
@@ -119,7 +138,7 @@
   ],
   "dailySlots": {
     "2026-10-04": {
-      "topical": "awaiting_selection",
+      "topical": 59,
       "evergreen": 58
     }
   }
