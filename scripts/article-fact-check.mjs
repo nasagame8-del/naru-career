@@ -85,48 +85,64 @@ export function scanFactCheckTargets(raw) {
 }
 
 function parseArgs(argv) {
-  const out = { slug: null, json: false };
+  const out = { slug: null, json: false, all: false };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--slug") out.slug = argv[++i] ?? null;
     else if (a.startsWith("--slug=")) out.slug = a.slice("--slug=".length);
     else if (a === "--json") out.json = true;
+    else if (a === "--all") out.all = true;
   }
   return out;
 }
 
 async function main() {
-  const { slug, json } = parseArgs(process.argv.slice(2));
-  if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
-    console.error("使い方: npm run article:fact-check -- --slug <slug> [--json]");
+  const { slug, json, all } = parseArgs(process.argv.slice(2));
+  if (!all && (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))) {
+    console.error("使い方: npm run article:fact-check -- --slug <slug> [--json] または --all");
     process.exit(1);
   }
 
-  const file = path.join(ARTICLES_DIR, `${slug}.md`);
-  const raw = await fs.readFile(file, "utf8");
-  const result = scanFactCheckTargets(raw);
+  const targets = all
+    ? (await fs.readdir(ARTICLES_DIR))
+        .filter((name) => name.endsWith(".md") && !name.endsWith("-note.md"))
+        .map((name) => name.replace(/\.md$/, ""))
+        .sort()
+    : [slug];
 
+  const results = [];
+  for (const targetSlug of targets) {
+    const file = path.join(ARTICLES_DIR, `${targetSlug}.md`);
+    const raw = await fs.readFile(file, "utf8");
+    results.push({ slug: targetSlug, ...scanFactCheckTargets(raw) });
+  }
+
+  const blockerCount = results.reduce((n, r) => n + r.blockers.length, 0);
   if (json) {
-    console.log(JSON.stringify({ slug, ...result }, null, 2));
+    console.log(JSON.stringify({ blockerCount, results }, null, 2));
   } else {
-    console.log(`Fact Check Gate scan: ${slug}`);
-    console.log(`blockers: ${result.blockers.length}`);
-    for (const x of result.blockers) {
-      console.log(`  BLOCK line ${x.line}: [${x.type}] ${x.match}`);
-    }
-    console.log(`manual review targets: ${result.reviewTargets.length}`);
-    for (const x of result.reviewTargets.slice(0, 80)) {
-      console.log(`  REVIEW line ${x.line}: [${x.type}] ${x.match}`);
-    }
-    if (result.reviewTargets.length > 80) {
-      console.log(`  ...and ${result.reviewTargets.length - 80} more`);
+    for (const result of results) {
+      console.log(`Fact Check Gate scan: ${result.slug}`);
+      console.log(`blockers: ${result.blockers.length}`);
+      for (const x of result.blockers) {
+        console.log(`  BLOCK line ${x.line}: [${x.type}] ${x.match}`);
+      }
+      console.log(`manual review targets: ${result.reviewTargets.length}`);
+      if (!all) {
+        for (const x of result.reviewTargets.slice(0, 80)) {
+          console.log(`  REVIEW line ${x.line}: [${x.type}] ${x.match}`);
+        }
+        if (result.reviewTargets.length > 80) {
+          console.log(`  ...and ${result.reviewTargets.length - 80} more`);
+        }
+      }
     }
     console.log("");
     console.log("REVIEW は自動的に真偽判定しません。一次情報または著者実体験で人間が確認してください。");
     console.log("対象: title / excerpt / summary / FAQ / 本文 / 数値 / 法制度 / 時系列 / サービス情報 / 画像内テキスト / alt");
   }
 
-  process.exit(result.blockers.length > 0 ? 1 : 0);
+  process.exit(blockerCount > 0 ? 1 : 0);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
