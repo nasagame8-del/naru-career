@@ -10,7 +10,7 @@
       "articleId": 56,
       "slug": "interview-scheduling-while-employed",
       "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
-      "status": "QA_PENDING_AFTER_REVISION",
+      "status": "PUBLICATION_HELD",
       "prNumber": 73,
       "driveFolderId": "1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
       "imageStatus": "four_images_verified",
@@ -20,9 +20,9 @@
         "draftStructure": "checked",
         "imageVisual": "passed",
         "articleFactoryValidation": "completed_success",
-        "vercelStatus": "pending_after_revision",
+        "vercelStatus": "success",
         "imageByteReadback": "matched",
-        "validatedHeadSha": "15f55ad1bdab73370fa6846353127da93d580a2b",
+        "validatedHeadSha": "94a091aa2260a81d7338900393cc2b805148acee",
         "assistantPreviewVisual": "not_performed_vercel_login_required",
         "localFullQa": "not_run"
       },
@@ -68,7 +68,16 @@
       },
       "previewUrl": "https://career-media-git-article-factory-dc9fa7-nasagame8-dels-projects.vercel.app/articles/interview-scheduling-while-employed",
       "requestedPublishDate": "2026-10-03",
-      "publishAutomationId": "6ac0683e2df08191bb6343c72a6618ff"
+      "publishAutomationId": "6ac0683e2df08191bb6343c72a6618ff",
+      "publicationGate": {
+        "checkedAt": "2026-10-03T12:00:00+09:00",
+        "result": "held",
+        "blockers": [
+          "qa.previewVisual is not user_confirmed",
+          "qa.previewApprovedHeadSha is not the current head SHA 94a091aa2260a81d7338900393cc2b805148acee"
+        ],
+        "mergeAttempted": false
+      }
     }
   ],
   "notes": [
@@ -78,6 +87,7 @@
     "Article 56 Draft PR #73 and Drive article/prompt folders created; four user images pending.",
     "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge.",
     "User requested concerns about evening interviews; added empathetic opening, dedicated section, considerate scheduling example and workplace-hours questions. Reapproval required for revised head.",
-    "2026-10-03: 12:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge."
+    "2026-10-03: 12:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge.",
+    "2026-10-03 12:00 JST: publication held. Current head CI and Vercel succeeded, but user visual approval for current head was not recorded. No merge and no automatic delay."
   ]
 }
