@@ -46,7 +46,7 @@ const REQUIRED_FRONTMATTER = [
   "note_published",
 ];
 
-const KNOWN_CATEGORIES = ["業界解説", "体験談", "エージェント比較"];
+const KNOWN_CATEGORIES = ["業界解説", "体験談", "エージェント比較", "雑記"];
 
 // ── 結果の収集 ──
 
