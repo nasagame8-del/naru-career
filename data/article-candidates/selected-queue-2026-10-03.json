@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-10-03T08:15:00+09:00",
   "batchId": "batch_2026-10-03_chatgpt",
-  "status": "DRAFT_PR_AWAITING_IMAGES",
+  "status": "PREVIEW_AWAITING_USER",
   "items": [
     {
       "order": 1,
@@ -10,34 +10,70 @@
       "articleId": 56,
       "slug": "interview-scheduling-while-employed",
       "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
-      "status": "DRAFT_AWAITING_IMAGES",
+      "status": "PREVIEW_AWAITING_USER",
       "prNumber": 73,
       "driveFolderId": "1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
-      "imageStatus": "four_user_images_pending",
+      "imageStatus": "four_images_verified",
       "qa": {
-        "previewVisual": "not_requested",
+        "previewVisual": "awaiting_user",
         "previewApprovedHeadSha": null,
         "draftStructure": "checked",
-        "imageVisual": "pending",
-        "articleFactoryValidation": "pending_after_images",
-        "vercelStatus": "pending_after_images"
+        "imageVisual": "passed",
+        "articleFactoryValidation": "completed_success",
+        "vercelStatus": "success",
+        "imageByteReadback": "matched",
+        "validatedHeadSha": "15f55ad1bdab73370fa6846353127da93d580a2b",
+        "assistantPreviewVisual": "not_performed_vercel_login_required",
+        "localFullQa": "not_run"
       },
       "requestedPublish": null,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/73",
       "branch": "article-factory/2026-10-03-056-interview-scheduling",
-      "headSha": "7907306b809ff7ba04829cd31b3ac12809639f5b",
+      "headSha": "15f55ad1bdab73370fa6846353127da93d580a2b",
       "imagesFolderId": "13fCtr6dCHZNLqMsj2uwH2uCCYy_R5G2O",
       "originalsFolderId": "10bkC53wmuTzh12P52OF1RzhzAWGAJO6j",
       "draftFileId": "1_ShRugCMa3oI_XPfIX-3D9KzSL9IWr6_",
       "imagePlanFileId": "1q7YcQ_-91M_NyL6nbs0TqdEy4e7NLbOB",
       "promptFileId": "18JEfpgxOJRwtt_NNAFj7F5pYzl1HwKAc",
-      "designPromptFileId": "1HO-KJXsacyUMzPRv_RyziO4E6efs4U_s"
+      "designPromptFileId": "1HO-KJXsacyUMzPRv_RyziO4E6efs4U_s",
+      "images": {
+        "status": "verified_drive_and_pr",
+        "receivedSlots": [
+          "card",
+          "01",
+          "02",
+          "03"
+        ],
+        "fileIds": [
+          "11A100htJFzXKtIuCrlc3fjBhmj0dojMD",
+          "1NT_LDFfinkd2KSzr5tGr8hBB7uPdDnjc",
+          "1TPqzrANIuft4rPTvHRHLWYDa6BVlLcDN",
+          "1CMgb43hrYoC8_XCkhoAkFEETtH6ApmBz"
+        ],
+        "originalFileIds": [
+          "1_ZXo6nB_G_FDdQSnWH8HdkCtTXvucFM8",
+          "1C-gLRNyP1OfSNtV18SrK0IwO0RsSKU6R",
+          "1ywnneK1xxb4fz-KsXA_8q02xYyuAaJji",
+          "1mx7Gp5YUp7ZmL0PbMlzM_gHSwbVnlOBx"
+        ],
+        "cardSize": [
+          1200,
+          630
+        ],
+        "bodySize": [
+          1200,
+          675
+        ],
+        "metadata": "none"
+      },
+      "previewUrl": "https://career-media-git-article-factory-dc9fa7-nasagame8-dels-projects.vercel.app/articles/interview-scheduling-while-employed"
     }
   ],
   "notes": [
     "2026-10-03 user selected evergreen #1.",
     "User wants topical article based on 2026-10-04; specific topic is not yet selected. Do not create a topical article PR until selection.",
     "Publication times not specified. Do not publish without four images, latest-head QA, and user preview approval.",
-    "Article 56 Draft PR #73 and Drive article/prompt folders created; four user images pending."
+    "Article 56 Draft PR #73 and Drive article/prompt folders created; four user images pending.",
+    "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge."
   ]
 }
