@@ -27,6 +27,13 @@ export function generateMetadata(): Metadata {
     },
     description: `著者・磯貝アルトの実体験（${getAuthorProfileLabel()}）をベースに、第二新卒がIT/Web業界へキャリアチェンジするためのノウハウを発信。転職エージェント比較・業界解説・体験談を掲載。`,
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com"),
+    // 所有権確認トークンは公開前提のメタ値。環境変数が設定されたときだけ出力する
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+      other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+        : undefined,
+    },
     icons: {
       icon: [
         { url: "/favicon.ico", sizes: "48x48" },
