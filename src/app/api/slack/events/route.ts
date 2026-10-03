@@ -1,7 +1,11 @@
 import { after, NextResponse } from "next/server";
 
 import { buildDriveContextFromText } from "@/lib/war-room/drive";
-import { delegateToClaude, githubDelegationReady } from "@/lib/war-room/github";
+import {
+  delegateToClaude,
+  dispatchClaudeDirectChat,
+  githubDelegationReady,
+} from "@/lib/war-room/github";
 import { planWarRoomMessage } from "@/lib/war-room/planner";
 import {
   postSlackMessage,
@@ -27,9 +31,11 @@ async function processMessage(
 
   const threadTs = event.thread_ts || event.ts;
   const userText = stripSlackMention(event.text);
+  const claudeBotUserId =
+    process.env.SLACK_CLAUDE_BOT_USER_ID || "U0C66M6ASLW";
   const explicitlyAddressedClaude =
     /(?:^|\s)(?:claude|クロード)(?:\s|$)/i.test(userText) ||
-    event.text.includes("<@U0C66M6ASLW>");
+    event.text.includes(`<@${claudeBotUserId}>`);
 
   if (!userText) {
     await postSlackMessage({
@@ -42,13 +48,6 @@ async function processMessage(
   }
 
   try {
-    await postSlackMessage({
-      token: botToken,
-      channel: event.channel,
-      threadTs,
-      text: "受信しました。スレッドと参照資料を確認し、必要ならClaudeへ自動で回します。",
-    });
-
     const threadContext = await fetchThreadContext({
       token: botToken,
       channel: event.channel,
@@ -60,6 +59,42 @@ async function processMessage(
       [event.text, threadContext].filter(Boolean).join("\n"),
       { vercelOidcToken }
     );
+
+    if (explicitlyAddressedClaude) {
+      if (!githubDelegationReady()) {
+        await postSlackMessage({
+          token: botToken,
+          channel: event.channel,
+          threadTs,
+          text: "Claude直通のクラウド実行権限が未設定です。",
+        });
+        return;
+      }
+
+      const sharedContext = [
+        drive.context ? `## Google Drive context\n${drive.context}` : "",
+        drive.warning ? `## Drive access note\n${drive.warning}` : "",
+        threadContext ? `## Slack thread context\n${threadContext}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n\n")
+        .slice(0, 18000);
+
+      await dispatchClaudeDirectChat({
+        slackChannel: event.channel,
+        slackTs: threadTs,
+        userRequest: userText,
+        sharedContext,
+      });
+      return;
+    }
+
+    await postSlackMessage({
+      token: botToken,
+      channel: event.channel,
+      threadTs,
+      text: "受信しました。スレッドと参照資料を確認し、必要ならClaudeへ自動で回します。",
+    });
 
     let plan = await planWarRoomMessage({
       userText,
