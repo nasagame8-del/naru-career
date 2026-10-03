@@ -69,7 +69,7 @@ jobs:
 
           claude_args: |
             --max-turns 4
-            --allowedTools "Read,Write,Glob,Grep,Bash"
+            --allowedTools "Read,Write,Glob,Grep"
 
       - name: Guard direct chat from repository changes
         if: always() && steps.claude.outcome == 'success'
