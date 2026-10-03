@@ -174,7 +174,11 @@ Vercel:
 - `OPENAI_API_KEY`
 - `SLACK_SIGNING_SECRET`
 - `SLACK_CHATGPT_BOT_TOKEN`
-- `WAR_ROOM_GOOGLE_CREDENTIALS`（任意。Google Driveを読む場合のread-only service account JSON。raw JSONまたはbase64）
+- Google Driveを読む場合は、優先してユーザーOAuthを使う:
+  - `WAR_ROOM_GOOGLE_CLIENT_ID`
+  - `WAR_ROOM_GOOGLE_CLIENT_SECRET`
+  - `WAR_ROOM_GOOGLE_REFRESH_TOKEN`
+- `WAR_ROOM_GOOGLE_CREDENTIALS`（旧フォールバック。service account JSON。組織ポリシーでkey作成が禁止されている場合は使わない）
 - GitHub delegate用: `WAR_ROOM_GITHUB_TOKEN` または既存の `SEO_EDITOR_GITHUB_TOKEN` / `GITHUB_TOKEN`
 
 GitHub Actions:
@@ -218,13 +222,29 @@ OpenAI側は `reasoning: none`, 小さいoutput上限, `store: false`,外部ツ�
 
 ## Google Drive read bridge
 
-War RoomからprivateなGoogle Drive資料を読む場合、ChatGPT製品側の接続権限はVercelへ自動継承されないため、専用のread-only service accountを使う。
+War RoomからprivateなGoogle Drive資料を読む場合、ChatGPT製品側の接続権限はVercelへ自動継承されないため、War Room runtime専用の認証が必要。
 
-1. Google Cloudでservice accountを1つ作成し、Google Drive APIを有効化する。
-2. service account key JSONを作成する。
-3. 読ませたいNARUのDrive root（または必要なフォルダだけ）を、そのservice accountの `client_email` に「閲覧者」で共有する。
-4. Vercel Production/PreviewのSecret `WAR_ROOM_GOOGLE_CREDENTIALS` にJSON全体を保存する。raw JSONでもbase64でもよい。
-5. 再デプロイする。
+推奨は**ユーザーOAuth + refresh token**。service account key作成が組織ポリシーで禁止されていても使える。
+
+### Recommended: user OAuth
+
+1. Google CloudでGoogle Drive APIを有効化。
+2. OAuth consent screenを設定し、自分のGoogleアカウントをtest userとして追加。
+3. OAuth client IDを作成（Desktop appでよい）。
+4. `https://www.googleapis.com/auth/drive.readonly` scopeで一度だけ認可し、refresh tokenを取得。
+5. Vercel Production/Previewへ以下をSecretとして保存:
+   - `WAR_ROOM_GOOGLE_CLIENT_ID`
+   - `WAR_ROOM_GOOGLE_CLIENT_SECRET`
+   - `WAR_ROOM_GOOGLE_REFRESH_TOKEN`
+6. 再デプロイ。
+
+War Roomはaccess tokenを短期発行してDrive APIをread-onlyで利用する。refresh tokenはSlack/GitHub/ログへ出さない。
+
+### Fallback: service account
+
+`WAR_ROOM_GOOGLE_CREDENTIALS` も互換用に残す。ただし `iam.disableServiceAccountKeyCreation` が適用されている環境では、このために組織ポリシーを緩めない。
+
+### Read scope
 
 War RoomはDrive URLがSlack発言に含まれる時だけDriveへアクセスする。フォルダは直下の一覧と最近更新された子フォルダを限定サンプルし、Google Docs / Sheets / text / Markdown / JSON / CSVを読み取る。画像やPDFなど非テキスト型は現時点では本文抽出せず、ファイル名と型だけ共有する。
 
