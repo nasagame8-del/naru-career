@@ -21,14 +21,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
 
       - name: Install app dependencies
         run: npm ci
 
-      - name: Install Cloudflare build tooling
-        run: npm install --no-save @opennextjs/cloudflare@latest wrangler@latest
+      - name: Install supported Next.js and Cloudflare tooling
+        run: npm install --no-save next@16.3.8 eslint-config-next@16.3.8 @opennextjs/cloudflare@latest wrangler@latest
 
       - name: Create temporary OpenNext config
         shell: bash
