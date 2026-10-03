@@ -174,7 +174,11 @@ Vercel:
 - `OPENAI_API_KEY`
 - `SLACK_SIGNING_SECRET`
 - `SLACK_CHATGPT_BOT_TOKEN`
-- `WAR_ROOM_GOOGLE_CREDENTIALS`（任意。Google Driveを読む場合のread-only service account JSON。raw JSONまたはbase64）
+- Google Driveを読む場合は、優先してユーザーOAuthを使う:
+  - `WAR_ROOM_GOOGLE_CLIENT_ID`
+  - `WAR_ROOM_GOOGLE_CLIENT_SECRET`
+  - `WAR_ROOM_GOOGLE_REFRESH_TOKEN`
+- `WAR_ROOM_GOOGLE_CREDENTIALS`（旧フォールバック。service account JSON。組織ポリシーでkey作成が禁止されている場合は使わない）
 - GitHub delegate用: `WAR_ROOM_GITHUB_TOKEN` または既存の `SEO_EDITOR_GITHUB_TOKEN` / `GITHUB_TOKEN`
 
 GitHub Actions:
@@ -218,13 +222,43 @@ OpenAI側は `reasoning: none`, 小さいoutput上限, `store: false`,外部ツ�
 
 ## Google Drive read bridge
 
-War RoomからprivateなGoogle Drive資料を読む場合、ChatGPT製品側の接続権限はVercelへ自動継承されないため、専用のread-only service accountを使う。
+War RoomからprivateなGoogle Drive資料を読む場合、ChatGPT製品側の接続権限はVercelへ自動継承されないため、War Room runtime専用の認証が必要。
 
-1. Google Cloudでservice accountを1つ作成し、Google Drive APIを有効化する。
-2. service account key JSONを作成する。
-3. 読ませたいNARUのDrive root（または必要なフォルダだけ）を、そのservice accountの `client_email` に「閲覧者」で共有する。
-4. Vercel Production/PreviewのSecret `WAR_ROOM_GOOGLE_CREDENTIALS` にJSON全体を保存する。raw JSONでもbase64でもよい。
-5. 再デプロイする。
+推奨は**Vercel OIDC → Google Workload Identity Federation → service account impersonation**。長期service account keyを作らず、Vercel Functionごとの短期OIDC tokenだけでDriveを読む。
+
+### Recommended: Vercel OIDC + Workload Identity Federation
+
+Google Cloud側:
+
+1. Google Drive API / IAM Credentials API / Security Token Service APIを有効化。
+2. Workload Identity Poolを作成（例: `vercel`）。
+3. OIDC Providerを作成し、Vercel team issuerを信頼する。
+4. attribute mapping: `google.subject = assertion.sub`。
+5. 対象service accountへ、production subjectだけ `roles/iam.workloadIdentityUser` を付与。
+6. NARUのDrive folderをservice accountのメールアドレスへ「閲覧者」で共有する。
+
+Vercel `career-media` 側:
+
+- OIDC federationをTeam issuer modeで有効化。
+- Environment Variables:
+  - `WAR_ROOM_GCP_PROJECT_NUMBER`
+  - `WAR_ROOM_GCP_POOL_ID`
+  - `WAR_ROOM_GCP_PROVIDER_ID`
+  - `WAR_ROOM_GCP_SERVICE_ACCOUNT_EMAIL`
+
+War RoomはVercel Functionの `x-vercel-oidc-token` をGoogle STSへ交換し、service accountを短時間だけimpersonateして `drive.readonly` access tokenを取得する。長期Google秘密鍵は保存しない。
+
+### Compatibility fallbacks
+
+必要ならユーザーOAuth refresh token方式も利用可能:
+
+- `WAR_ROOM_GOOGLE_CLIENT_ID`
+- `WAR_ROOM_GOOGLE_CLIENT_SECRET`
+- `WAR_ROOM_GOOGLE_REFRESH_TOKEN`
+
+旧 `WAR_ROOM_GOOGLE_CREDENTIALS` も互換用に残すが、`iam.disableServiceAccountKeyCreation` が適用されている環境では組織ポリシーを緩めない。
+
+### Read scope
 
 War RoomはDrive URLがSlack発言に含まれる時だけDriveへアクセスする。フォルダは直下の一覧と最近更新された子フォルダを限定サンプルし、Google Docs / Sheets / text / Markdown / JSON / CSVを読み取る。画像やPDFなど非テキスト型は現時点では本文抽出せず、ファイル名と型だけ共有する。
 

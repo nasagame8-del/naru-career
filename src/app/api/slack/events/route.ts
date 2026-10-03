@@ -50,7 +50,9 @@ async function processMention(envelope: SlackEventEnvelope): Promise<void> {
         threadTs,
         currentMessageTs: event.ts,
       }).catch(() => ""),
-      buildDriveContextFromText(event.text),
+      buildDriveContextFromText(event.text, {
+        vercelOidcToken: process.env.VERCEL_OIDC_TOKEN,
+      }),
     ]);
 
     const plan = await planWarRoomMessage({

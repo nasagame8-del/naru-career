@@ -62,7 +62,105 @@ function readCredentials(): ServiceAccountCredentials | null {
   return parsed;
 }
 
-async function getAccessToken(): Promise<string> {
+async function getOAuthRefreshAccessToken(): Promise<string | null> {
+  const clientId = process.env.WAR_ROOM_GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.WAR_ROOM_GOOGLE_CLIENT_SECRET;
+  const refreshToken = process.env.WAR_ROOM_GOOGLE_REFRESH_TOKEN;
+  if (!clientId || !clientSecret || !refreshToken) return null;
+
+  const response = await fetch(TOKEN_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      refresh_token: refreshToken,
+      grant_type: "refresh_token",
+    }),
+    cache: "no-store",
+  });
+
+  const body = (await response.json()) as {
+    access_token?: string;
+    error?: string;
+  };
+  if (!response.ok || !body.access_token) {
+    throw new Error(`Google OAuth refresh failed: ${body.error ?? response.status}`);
+  }
+  return body.access_token;
+}
+
+async function getWorkloadIdentityAccessToken(vercelOidcToken?: string): Promise<string | null> {
+  const projectNumber = process.env.WAR_ROOM_GCP_PROJECT_NUMBER;
+  const poolId = process.env.WAR_ROOM_GCP_POOL_ID;
+  const providerId = process.env.WAR_ROOM_GCP_PROVIDER_ID;
+  const serviceAccountEmail = process.env.WAR_ROOM_GCP_SERVICE_ACCOUNT_EMAIL;
+
+  if (!vercelOidcToken || !projectNumber || !poolId || !providerId || !serviceAccountEmail) {
+    return null;
+  }
+
+  const audience =
+    `//iam.googleapis.com/projects/${projectNumber}/locations/global/workloadIdentityPools/${poolId}/providers/${providerId}`;
+
+  const stsResponse = await fetch("https://sts.googleapis.com/v1/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      audience,
+      scope: "https://www.googleapis.com/auth/cloud-platform",
+      requested_token_type: "urn:ietf:params:oauth:token-type:access_token",
+      subject_token_type: "urn:ietf:params:oauth:token-type:jwt",
+      subject_token: vercelOidcToken,
+    }),
+    cache: "no-store",
+  });
+
+  const stsBody = (await stsResponse.json()) as {
+    access_token?: string;
+    error?: string;
+  };
+  if (!stsResponse.ok || !stsBody.access_token) {
+    throw new Error(`Google STS exchange failed: ${stsBody.error ?? stsResponse.status}`);
+  }
+
+  const impersonationResponse = await fetch(
+    `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${encodeURIComponent(serviceAccountEmail)}:generateAccessToken`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${stsBody.access_token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        scope: [DRIVE_SCOPE],
+        lifetime: "3600s",
+      }),
+      cache: "no-store",
+    }
+  );
+
+  const impersonationBody = (await impersonationResponse.json()) as {
+    accessToken?: string;
+    error?: { message?: string };
+  };
+  if (!impersonationResponse.ok || !impersonationBody.accessToken) {
+    throw new Error(
+      `Google service account impersonation failed: ${impersonationBody.error?.message ?? impersonationResponse.status}`
+    );
+  }
+
+  return impersonationBody.accessToken;
+}
+
+async function getAccessToken(vercelOidcToken?: string): Promise<string> {
+  const workloadToken = await getWorkloadIdentityAccessToken(vercelOidcToken);
+  if (workloadToken) return workloadToken;
+
+  const oauthToken = await getOAuthRefreshAccessToken();
+  if (oauthToken) return oauthToken;
+
   const credentials = readCredentials();
   if (!credentials) throw new Error("Google Drive credentials are not configured");
 
@@ -225,11 +323,26 @@ async function summarizeTarget(token: string, id: string): Promise<string> {
   return `## Drive file: ${file.name}\n${text}`;
 }
 
-export async function buildDriveContextFromText(text: string): Promise<DriveContextResult> {
+export async function buildDriveContextFromText(
+  text: string,
+  options: { vercelOidcToken?: string } = {}
+): Promise<DriveContextResult> {
   const targets = extractDriveTargets(text);
   if (targets.length === 0) return { linksFound: 0, context: "" };
 
-  if (!process.env.WAR_ROOM_GOOGLE_CREDENTIALS) {
+  const hasWorkloadIdentity =
+    Boolean(options.vercelOidcToken) &&
+    Boolean(process.env.WAR_ROOM_GCP_PROJECT_NUMBER) &&
+    Boolean(process.env.WAR_ROOM_GCP_POOL_ID) &&
+    Boolean(process.env.WAR_ROOM_GCP_PROVIDER_ID) &&
+    Boolean(process.env.WAR_ROOM_GCP_SERVICE_ACCOUNT_EMAIL);
+
+  const hasOAuth =
+    Boolean(process.env.WAR_ROOM_GOOGLE_CLIENT_ID) &&
+    Boolean(process.env.WAR_ROOM_GOOGLE_CLIENT_SECRET) &&
+    Boolean(process.env.WAR_ROOM_GOOGLE_REFRESH_TOKEN);
+
+  if (!hasWorkloadIdentity && !hasOAuth && !process.env.WAR_ROOM_GOOGLE_CREDENTIALS) {
     return {
       linksFound: targets.length,
       context: "",
@@ -238,7 +351,7 @@ export async function buildDriveContextFromText(text: string): Promise<DriveCont
   }
 
   try {
-    const token = await getAccessToken();
+    const token = await getAccessToken(options.vercelOidcToken);
     const chunks: string[] = [];
     for (const target of targets) {
       chunks.push(await summarizeTarget(token, target.id));
