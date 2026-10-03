@@ -1,7 +1,7 @@
 {
   "selectedAt": "2026-10-03T09:19:29+09:00",
   "batchId": "preselected_2026-10-04_space",
-  "status": "SELECTED",
+  "status": "WAITING_IMAGES",
   "items": [
     {
       "order": 1,
@@ -10,13 +10,33 @@
       "articleId": 57,
       "slug": "space-industry-it-career-entry",
       "title": "宇宙飛行士になれなくても宇宙で働ける？第二新卒がIT職の入口を求人票で検証",
-      "status": "RESEARCHED",
+      "status": "WAITING_IMAGES",
       "requestedPublishDate": "2026-10-04",
       "requestedPublish": null,
       "qa": {
         "previewVisual": "not_requested",
         "previewApprovedHeadSha": null
-      }
+      },
+      "prNumber": 75,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/75",
+      "branch": "article-factory/2026-10-04-057-space-it-career",
+      "headSha": "d755898ad4bfcebf4684aa0361f2ba2d6b36e732",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/15wRBRm_uBbbZbHef8ci7q75V-eRPNCQ4",
+      "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1Kc3C5-GGimk36YbX6SskUpAE0yphrZLK",
+      "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1s9OTr8A4cnESFuzCV544n4_jYdbQf7ue",
+      "imagePromptsUrl": "https://drive.google.com/file/d/1ZnQqZUO49BwWxWh4zT_TIu3W0jZV2EOU/view?usp=drivesdk",
+      "designPromptsUrl": "https://drive.google.com/file/d/1oJB9RyTT1-NG2YUfAbWOCB4WDS9mAMRd/view?usp=drivesdk",
+      "images": {
+        "status": "waiting_user",
+        "expectedSlots": [
+          "card",
+          "01",
+          "02",
+          "03"
+        ],
+        "receivedSlots": []
+      },
+      "officialImageDecision": "Official image searched; third-party rights or reuse conditions unverified. Use official links and NARU original diagrams."
     }
   ],
   "notes": [
