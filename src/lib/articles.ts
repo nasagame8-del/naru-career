@@ -144,6 +144,8 @@ export type Article = ArticleMeta & {
 
 /** 公開日が今日以前かどうか判定（日本時間基準） */
 function isPublished(datePublished: string): boolean {
+  // Preview deployments must expose scheduled articles for review before publication.
+  if (process.env.VERCEL_ENV === "preview") return true;
   if (!datePublished) return true; // 日付なしは公開扱い
   const today = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
