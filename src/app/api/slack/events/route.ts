@@ -105,7 +105,7 @@ async function processMessage(
       text: "受信しました。スレッドと参照資料を確認し、必要ならClaudeへ自動で回します。",
     });
 
-    let plan = await planWarRoomMessage({
+    const plan = await planWarRoomMessage({
       userText,
       threadContext,
       driveContext: drive.context,
