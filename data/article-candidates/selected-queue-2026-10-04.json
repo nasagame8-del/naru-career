@@ -10,7 +10,7 @@
       "articleId": 57,
       "slug": "space-industry-it-career-entry",
       "title": "10月4日は世界宇宙週間の始まり｜宇宙業界へIT転職できる？第二新卒が求人票で検証",
-      "status": "MERGED_PRODUCTION_PENDING",
+      "status": "MERGED_PRODUCTION_FAILED",
       "requestedPublishDate": "2026-10-03",
       "requestedPublish": "2026-10-03T18:00:00+09:00",
       "qa": {
@@ -74,9 +74,10 @@
         "checkedAt": "2026-10-03T18:05:21+09:00",
         "result": "merged",
         "mergeAttempted": true,
-        "productionStatus": "pending",
-        "productionVisual": "not_verified",
-        "blockers": []
+        "productionStatus": "failure",
+        "productionVisual": "user_opened_url_content_unverified",
+        "blockers": [],
+        "deploymentId": "dpl_2qk2vQtDb1EmMZv5tbewAvw4cquT"
       }
     }
   ],
@@ -91,6 +92,7 @@
     "2026-10-03: 18:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge.",
     "2026-10-03 12:03 JST: user explicitly said both previews OK; article 57 approval recorded for exact head SHA. Publication remains scheduled for 18:00 JST subject to gates.",
     "2026-10-03 12:05 JST: article 57 current-head Article Factory Validation completed/success and Vercel commit status success; retained for 18:00 JST conditional gate.",
-    "2026-10-03 18:05 JST: approved exact-head PR #75 squash merged at designated window; Production deployment pending."
+    "2026-10-03 18:05 JST: approved exact-head PR #75 squash merged at designated window; Production deployment pending.",
+    "2026-10-03 18:06 JST: user reports production URL opens, but Vercel status for merge SHA df8c82f is failure. Displayed revision unverified; not reported as published."
   ]
 }
