@@ -40,7 +40,7 @@ export async function planWarRoomMessage(userText: string): Promise<WarRoomPlan>
 
   const client = new OpenAI({ apiKey });
   const response = await client.responses.create({
-    model: process.env.WAR_ROOM_OPENAI_MODEL || "gpt-5.6-luna",
+    model: process.env.WAR_ROOM_OPENAI_MODEL || "gpt-6-luna",
     instructions,
     input: userText.slice(0, 6000),
     reasoning: { effort: "none" },
