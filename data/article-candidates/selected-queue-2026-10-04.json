@@ -12,13 +12,13 @@
       "title": "10月4日は世界宇宙週間の始まり｜宇宙業界へIT転職できる？第二新卒が求人票で検証",
       "status": "PREVIEW_AWAITING_USER",
       "requestedPublishDate": "2026-10-03",
-      "requestedPublish": null,
+      "requestedPublish": "2026-10-03T18:00:00+09:00",
       "qa": {
         "previewVisual": "awaiting_user",
         "previewApprovedHeadSha": null,
         "imageVisual": "passed",
         "imageByteReadback": "matched",
-        "articleFactoryValidation": "pending",
+        "articleFactoryValidation": "completed_success",
         "vercelStatus": "pending",
         "validatedHeadSha": null,
         "assistantPreviewVisual": "not_performed",
@@ -65,7 +65,8 @@
       },
       "officialImageDecision": "Official image searched; third-party rights or reuse conditions unverified. Use official links and NARU original diagrams.",
       "imageStatus": "four_images_verified",
-      "previewUrl": "https://career-media-git-article-factory-4f0a9a-nasagame8-dels-projects.vercel.app/articles/space-industry-it-career-entry"
+      "previewUrl": "https://career-media-git-article-factory-4f0a9a-nasagame8-dels-projects.vercel.app/articles/space-industry-it-career-entry",
+      "publishAutomationId": "6ac06840e3e481918a953bd87ec794f3"
     }
   ],
   "notes": [
@@ -75,6 +76,7 @@
     "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge.",
     "2026-10-03: fixed future-date 404 only for VERCEL_ENV=preview. Production publication-date guard retained. Latest head requires fresh CI and Preview checks.",
     "2026-10-03: User requested title with calendar hook and career keywords. Updated article title; publication date remains 2026-10-04.",
-    "2026-10-03: User explicitly corrected publication to today (2026-10-03). October 4 refers to World Space Week topic, not publication day. This supersedes earlier October 4 publication assumptions. Exact clock time remains unspecified."
+    "2026-10-03: User explicitly corrected publication to today (2026-10-03). October 4 refers to World Space Week topic, not publication day. This supersedes earlier October 4 publication assumptions. Exact clock time remains unspecified.",
+    "2026-10-03: 18:00 JST conditional publication task created and enabled. Await latest-head visual approval; no immediate merge."
   ]
 }
