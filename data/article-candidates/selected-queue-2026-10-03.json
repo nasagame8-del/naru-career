@@ -10,7 +10,7 @@
       "articleId": 56,
       "slug": "interview-scheduling-while-employed",
       "title": "在職中の転職面接はいつ入れる？勤務先に知られず日程を組む実務手順",
-      "status": "PREVIEW_AWAITING_USER",
+      "status": "QA_PENDING_AFTER_REVISION",
       "prNumber": 73,
       "driveFolderId": "1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
       "imageStatus": "four_images_verified",
@@ -19,8 +19,8 @@
         "previewApprovedHeadSha": null,
         "draftStructure": "checked",
         "imageVisual": "passed",
-        "articleFactoryValidation": "completed_success",
-        "vercelStatus": "success",
+        "articleFactoryValidation": "pending_after_revision",
+        "vercelStatus": "pending_after_revision",
         "imageByteReadback": "matched",
         "validatedHeadSha": "15f55ad1bdab73370fa6846353127da93d580a2b",
         "assistantPreviewVisual": "not_performed_vercel_login_required",
@@ -29,7 +29,7 @@
       "requestedPublish": null,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/73",
       "branch": "article-factory/2026-10-03-056-interview-scheduling",
-      "headSha": "15f55ad1bdab73370fa6846353127da93d580a2b",
+      "headSha": "94a091aa2260a81d7338900393cc2b805148acee",
       "imagesFolderId": "13fCtr6dCHZNLqMsj2uwH2uCCYy_R5G2O",
       "originalsFolderId": "10bkC53wmuTzh12P52OF1RzhzAWGAJO6j",
       "draftFileId": "1_ShRugCMa3oI_XPfIX-3D9KzSL9IWr6_",
@@ -74,6 +74,7 @@
     "User wants topical article based on 2026-10-04; specific topic is not yet selected. Do not create a topical article PR until selection.",
     "Publication times not specified. Do not publish without four images, latest-head QA, and user preview approval.",
     "Article 56 Draft PR #73 and Drive article/prompt folders created; four user images pending.",
-    "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge."
+    "2026-10-03: four user images inspected, originals saved, final metadata-free WebPs read back from Drive and blob SHAs matched at PR head. Await user visual approval; no merge.",
+    "User requested concerns about evening interviews; added empathetic opening, dedicated section, considerate scheduling example and workplace-hours questions. Reapproval required for revised head."
   ]
 }
