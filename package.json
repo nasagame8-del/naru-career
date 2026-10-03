@@ -16,14 +16,18 @@
     "article:prepare-images": "node scripts/prepare-article-images-from-folder.mjs",
     "data:popularity": "node scripts/generate-popularity.mjs",
     "data:seo-opportunities": "node scripts/generate-seo-opportunities.mjs",
-    "data:seo-experiments": "node scripts/measure-seo-experiments.mjs"
+    "data:seo-experiments": "node scripts/measure-seo-experiments.mjs",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "preview:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@google-analytics/data": "^6.1.0",
+    "@opennextjs/cloudflare": "^1.20.8",
     "dotenv": "^17.4.2",
     "googleapis": "^173.0.0",
     "gray-matter": "^4.0.3",
-    "next": "16.2.10",
+    "next": "^16.3.8",
     "openai": "^6.46.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -40,11 +44,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.10",
+    "eslint-config-next": "^16.3.8",
     "js-yaml": "^5.4.2",
     "sharp": "^0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^3.2.7"
+    "vitest": "^3.2.7",
+    "wrangler": "^4.147.0"
   }
 }
