@@ -1,42 +1,117 @@
 name: NARU article Cloudflare preview
+
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches:
-      - article-factory/2026-10-04-58-social-insurance
-      - article-factory/2026-10-04-59-tutorial-portfolio
+      - master
+    paths:
+      - "content/articles/**"
+      - "public/images/articles/**"
+      - "data/article-runs/**"
+
 permissions:
   contents: read
+  pull-requests: write
+  issues: write
+
 concurrency:
-  group: naru-article-preview-${{ github.ref }}
+  group: naru-article-preview-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
+
 jobs:
   preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       NEXT_TELEMETRY_DISABLED: "1"
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
+
       - name: Verify credentials
         run: test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID"
-      - run: npm ci
-      - run: npm run build:cloudflare
-      - name: Prepare isolated read-only noindex preview
+
+      - name: Detect single article
+        id: article
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "$BASE_SHA" "$HEAD_SHA"
+          mapfile -t ARTICLES < <(
+            git diff --name-only --diff-filter=AM "$BASE_SHA...$HEAD_SHA" -- 'content/articles/*.md' |
+            grep -E '^content/articles/[a-z0-9]+([a-z0-9-]*[a-z0-9])?\.md$' || true
+          )
+
+          if [ "${#ARTICLES[@]}" -ne 1 ]; then
+            echo "::error::Cloudflare article preview requires exactly one changed article Markdown; found ${#ARTICLES[@]}"
+            printf '%s\n' "${ARTICLES[@]}"
+            exit 1
+          fi
+
+          ARTICLE_FILE="${ARTICLES[0]}"
+          SLUG="$(basename "$ARTICLE_FILE" .md)"
+          echo "file=$ARTICLE_FILE" >> "$GITHUB_OUTPUT"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+          echo "Detected article: $SLUG"
+
+      - name: Check four article images
+        id: images
+        shell: bash
         env:
-          ARTICLE_BRANCH: ${{ github.ref_name }}
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        run: |
+          set -euo pipefail
+          MISSING=()
+          for SLOT in card 01 02 03; do
+            FILE="public/images/articles/$ARTICLE_SLUG-$SLOT.webp"
+            [ -s "$FILE" ] || MISSING+=("$FILE")
+          done
+
+          if [ "${#MISSING[@]}" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Preview deploy is waiting for all four WebP images:" >> "$GITHUB_STEP_SUMMARY"
+            printf -- '- %s\n' "${MISSING[@]}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - run: npm ci
+        if: steps.images.outputs.ready == 'true'
+
+      - name: Build Cloudflare output
+        if: steps.images.outputs.ready == 'true'
+        run: npm run build:cloudflare
+
+      - name: Prepare isolated read-only noindex preview
+        if: steps.images.outputs.ready == 'true'
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
         run: |
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
-          const article = process.env.ARTICLE_BRANCH.endsWith('58-social-insurance') ? 58 : process.env.ARTICLE_BRANCH.endsWith('59-tutorial-portfolio') ? 59 : null;
-          if (!article) throw new Error('Unexpected preview branch');
-          const slug = article === 58 ? 'employee-to-contractor-social-insurance' : 'beginner-engineer-tutorial-portfolio';
-          fs.copyFileSync('.next/server/app/articles/'+slug+'.html', '.open-next/assets/__article-preview.html');
+
+          const slug = process.env.ARTICLE_SLUG;
+          const pr = process.env.PR_NUMBER;
+          if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('Invalid article slug');
+          if (!pr || !/^\d+$/.test(pr)) throw new Error('Invalid PR number');
+
+          const builtHtml = '.next/server/app/articles/' + slug + '.html';
+          if (!fs.existsSync(builtHtml)) throw new Error('Built article HTML not found: ' + builtHtml);
+
+          fs.copyFileSync(builtHtml, '.open-next/assets/__article-preview.html');
           fs.writeFileSync('.open-next/article-preview.js', `
           import worker from './worker.js';
           export default {...worker, async fetch(request, env, ctx) {
@@ -52,40 +127,65 @@ jobs:
             return result;
           }};
           `);
+
           fs.writeFileSync('wrangler.article-preview.json', JSON.stringify({
-            name:'naru-article-'+article+'-preview',
-            main:'.open-next/article-preview.js',
-            compatibility_date:'2026-10-03',
-            compatibility_flags:['nodejs_compat'],
-            workers_dev:true,
-            assets:{directory:'.open-next/assets',binding:'ASSETS',run_worker_first:true}
+            name: 'naru-pr-' + pr + '-preview',
+            main: '.open-next/article-preview.js',
+            compatibility_date: '2026-10-03',
+            compatibility_flags: ['nodejs_compat'],
+            workers_dev: true,
+            assets: {directory: '.open-next/assets', binding: 'ASSETS', run_worker_first: true}
           }));
           NODE
+
       - name: Deploy isolated preview
+        if: steps.images.outputs.ready == 'true'
+        id: deploy
+        shell: bash
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
         run: |
           set -euo pipefail
           npx opennextjs-cloudflare deploy --config wrangler.article-preview.json 2>&1 | tee /tmp/article-preview.log
           URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
           test -n "$URL"
-          echo "Preview URL: $URL" >> "$GITHUB_STEP_SUMMARY"
-          echo "Head SHA: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+          ARTICLE_URL="$URL/articles/$ARTICLE_SLUG"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "article_url=$ARTICLE_URL" >> "$GITHUB_OUTPUT"
+          echo "Preview URL: $ARTICLE_URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "Head SHA: $HEAD_SHA" >> "$GITHUB_STEP_SUMMARY"
+
       - name: Smoke test article and noindex
+        if: steps.images.outputs.ready == 'true'
+        shell: bash
         env:
-          ARTICLE_BRANCH: ${{ github.ref_name }}
+          URL: ${{ steps.deploy.outputs.url }}
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
         run: |
           set -euo pipefail
-          URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
-          if [[ "$ARTICLE_BRANCH" == *58-social-insurance ]]; then
-            SLUG=employee-to-contractor-social-insurance
-            TITLE='正社員から業務委託へ切り替えると社会保険'
-          else
-            SLUG=beginner-engineer-tutorial-portfolio
-            TITLE='未経験エンジニアのポートフォリオは教材'
-          fi
-          curl --fail --retry 3 --retry-delay 3 -sS -D /tmp/preview-headers "$URL/articles/$SLUG" -o /tmp/preview-article.html
-          grep -q "$TITLE" /tmp/preview-article.html
+          curl --fail --retry 3 --retry-delay 3 -sS -D /tmp/preview-headers "$URL/articles/$ARTICLE_SLUG" -o /tmp/preview-article.html
+          grep -qi '<h1' /tmp/preview-article.html
           grep -qi 'x-robots-tag: noindex' /tmp/preview-headers
           for SLOT in card 01 02 03; do
-            curl --fail -sS "$URL/images/articles/$SLUG-$SLOT.webp" -o "/tmp/$SLOT.webp"
+            curl --fail -sS "$URL/images/articles/$ARTICLE_SLUG-$SLOT.webp" -o "/tmp/$SLOT.webp"
             test -s "/tmp/$SLOT.webp"
           done
+
+      - name: Publish direct preview URL to PR
+        if: steps.images.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTICLE_URL: ${{ steps.deploy.outputs.article_url }}
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          MARKER='<!-- naru-cloudflare-article-preview -->'
+          BODY="$(printf '%s\n\n### Cloudflare article preview\n\n- Article: %s\n- Direct preview: %s\n- Head SHA: `%s`\n- Robots: `noindex, nofollow`\n' "$MARKER" "$ARTICLE_SLUG" "$ARTICLE_URL" "$HEAD_SHA")"
+          COMMENT_ID="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" --paginate --jq '.[] | select(.body | contains("<!-- naru-cloudflare-article-preview -->")) | .id' | head -n1)"
+
+          if [ -n "$COMMENT_ID" ]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" -f body="$BODY" >/dev/null
+          else
+            gh pr comment "$PR_NUMBER" --body "$BODY"
+          fi
