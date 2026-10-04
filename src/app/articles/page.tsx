@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllArticleMetas } from "@/lib/articles";
 import { CATEGORIES } from "@/lib/categories";
+import { EditorialSidebar } from "@/components/EditorialSidebar";
 import { ArticleBrowser } from "@/components/ArticleBrowser";
 import { readPopularitySnapshot } from "@/lib/popularity";
 import { recommendedSlugOrder } from "@/lib/article-sort";
@@ -31,7 +32,7 @@ export default function ArticlesIndexPage() {
         ]}
       />
 
-      <div className="max-w-5xl mx-auto px-4 pt-8 pb-16">
+      <div className="site-container pt-8 pb-16">
         <nav aria-label="パンくずリスト" className="text-xs text-ink-soft mb-4">
           <Link href="/" className="hover:text-ink transition-colors">
             ホーム
@@ -40,12 +41,14 @@ export default function ArticlesIndexPage() {
           <span className="text-ink" aria-current="page">記事一覧</span>
         </nav>
 
-        <h1 className="text-2xl font-bold mb-2">記事一覧</h1>
+        <h1 className="editorial-title mb-2">記事一覧</h1>
         <p className="text-sm text-ink-soft mb-8">
           第二新卒のIT/Web転職に関する記事を新しい順に掲載しています。
           カテゴリタブで絞り込めます。
         </p>
 
+        <div className="editorial-layout">
+        <div className="min-w-0">
         <ArticleBrowser
           articles={articles}
           popularityOrder={popularity?.order ?? []}
@@ -71,6 +74,9 @@ export default function ArticlesIndexPage() {
             ))}
           </ul>
         </section>
+        </div>
+        <EditorialSidebar />
+        </div>
       </div>
     </>
   );

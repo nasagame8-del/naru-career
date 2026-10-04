@@ -3,50 +3,38 @@ import Image from "next/image";
 import type { ArticleMeta } from "@/lib/articles";
 import { getCategoryTheme } from "@/lib/categories";
 
-export function ArticleList({ articles }: { articles: ArticleMeta[] }) {
+export function ArticleList({ articles, priority = false, readingOrder }: { articles: ArticleMeta[]; priority?: boolean; readingOrder?: string[] }) {
   return (
-    <div className="divide-y divide-line">
-      {articles.map((article) => {
-        const tagStyle = getCategoryTheme(article.category).tag;
-        return (
-          <Link
-            key={article.slug}
-            href={`/articles/${article.slug}`}
-            className="flex gap-4 py-5 group transition-colors hover:bg-bg-soft -mx-3 px-3 rounded"
-          >
-            <div className="w-[120px] sm:w-[200px] aspect-card shrink-0 rounded overflow-hidden relative bg-line">
-              {article.cardImagePath ? (
-                <Image
-                  src={article.cardImagePath}
-                  alt={`${article.title}｜${article.category}記事のサムネイル画像`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 120px, 200px"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-ink-soft text-xs">{article.category}</span>
-                </div>
-              )}
+    <div className="article-grid">
+      {articles.map((article, index) => (
+        <Link key={article.slug} href={`/articles/${article.slug}`} className="article-card group">
+          <div className="aspect-card relative bg-bg-soft overflow-hidden">
+            {article.cardImagePath ? (
+              <Image src={article.cardImagePath}
+                alt={`${article.title}｜${article.category}記事のサムネイル画像`}
+                fill className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+                sizes="(min-width: 1240px) 293px, (min-width: 1024px) 23vw, (min-width: 640px) 46vw, calc(100vw - 40px)"
+                priority={priority && index < 3} />
+            ) : (
+              <div className="h-full flex items-center justify-center text-primary text-sm">{article.category}</div>
+            )}
+          </div>
+          <div className="flex flex-1 flex-col p-5">
+            {readingOrder?.includes(article.slug) && (
+              <p className="mb-3 text-[11px] font-bold text-primary">
+                {String(readingOrder.indexOf(article.slug) + 1).padStart(2, "0")}
+                {readingOrder[0] === article.slug ? " / まず読むべき記事" : " / おすすめの読む順番"}
+              </p>
+            )}
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span className={`text-[11px] font-bold px-3 py-0.5 rounded-full ${getCategoryTheme(article.category).tag}`}>{article.category}</span>
+              <time dateTime={article.datePublished} className="text-[11px] text-ink-soft tabular-nums">{article.datePublished}</time>
             </div>
-            <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h3 className="font-bold text-ink text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-primary transition-colors">
-                {article.title}
-              </h3>
-              <div className="flex items-center gap-2 mt-2">
-                <span
-                  className={`text-[11px] font-mono font-medium px-1.5 py-0.5 rounded ${tagStyle}`}
-                >
-                  {article.category}
-                </span>
-                <time dateTime={article.datePublished} className="text-[11px] text-ink-soft font-mono">
-                  {article.datePublished}
-                </time>
-              </div>
-            </div>
-          </Link>
-        );
-      })}
+            <h3 className="text-base font-bold leading-[1.8] line-clamp-3 group-hover:text-primary transition-colors">{article.title}</h3>
+            <p className="mt-5 text-xs leading-[1.8] text-ink-soft line-clamp-2">{article.excerpt}</p>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 }

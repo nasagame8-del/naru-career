@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllArticleMetas, type ArticleMeta } from "@/lib/articles";
-import { CATEGORIES, getCategoryTheme, isValidCategorySlug } from "@/lib/categories";
+import { CATEGORIES, isValidCategorySlug } from "@/lib/categories";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { getAuthorProfileLabel } from "@/lib/author";
+import { ArticleList } from "@/components/ArticleList";
+import { EditorialSidebar } from "@/components/EditorialSidebar";
+import { MobileCareerCTA } from "@/components/MobileCareerCTA";
 import { MiniAlto } from "@/components/MiniAlto";
 
 export function generateStaticParams() {
@@ -71,7 +73,7 @@ export default async function CategoryPage(props: {
         ]}
       />
 
-      <div className="max-w-5xl mx-auto px-4 pt-8 pb-16">
+      <div className="site-container pt-8 pb-16">
         <nav aria-label="パンくずリスト" className="text-sm text-ink-soft mb-6 flex items-center gap-1.5">
           <Link href="/" className="hover:text-primary transition-colors">
             ホーム
@@ -81,7 +83,7 @@ export default async function CategoryPage(props: {
         </nav>
 
         <section className="mb-12">
-          <h1 className="font-serif text-2xl md:text-3xl font-bold mb-4 leading-snug">
+          <h1 className="editorial-title mb-4">
             {cat.label}
           </h1>
           <p className="text-ink-soft leading-relaxed text-[15px] max-w-3xl">
@@ -89,6 +91,8 @@ export default async function CategoryPage(props: {
           </p>
         </section>
 
+        <div className="editorial-layout">
+        <div className="min-w-0">
         {articles.length > 0 ? (
           <section className="mb-16">
             {hasReadingOrder ? (
@@ -102,68 +106,9 @@ export default async function CategoryPage(props: {
               <h2 className="text-lg font-bold mb-6">記事一覧</h2>
             )}
 
-            <ol className="space-y-4">
-              {articles.map((article, i) => {
-                const isInOrder = i < cat.readingOrder.length;
-                return (
-                  <li key={article.slug}>
-                    <Link
-                      href={`/articles/${article.slug}`}
-                      className="flex items-start gap-4 p-4 rounded-lg border border-line hover:border-primary/30 hover:bg-bg-soft transition-colors group"
-                    >
-                      <span
-                        className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                          isInOrder ? cat.theme.badge : "bg-surface border border-line text-ink-soft"
-                        }`}
-                      >
-                        {i + 1}
-                      </span>
-
-                      <div className="shrink-0 w-[100px] md:w-[160px] aspect-card rounded overflow-hidden bg-bg-soft">
-                        {article.cardImagePath ? (
-                          <Image
-                            src={article.cardImagePath}
-                            alt={`${article.title}｜${article.category}記事のサムネイル画像`}
-                            width={320}
-                            height={168}
-                            className="w-full h-full object-cover"
-                            sizes="(max-width:768px) 100px, 160px"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-ink-soft text-xs">
-                            {article.category}
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
-                          <span
-                            className={`shrink-0 whitespace-nowrap text-[11px] font-medium px-2 py-0.5 rounded-full ${getCategoryTheme(article.category).tag}`}
-                          >
-                            {article.category}
-                          </span>
-                          {isInOrder && i === 0 && (
-                            <span className="text-[11px] font-medium text-primary">
-                              まず読むべき記事
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="font-bold text-ink leading-snug group-hover:text-primary transition-colors line-clamp-2 text-[15px]">
-                          {article.title}
-                        </h3>
-                        <p className="text-sm text-ink-soft mt-1 line-clamp-2 hidden md:block">
-                          {article.excerpt}
-                        </p>
-                        <time dateTime={article.datePublished} className="text-xs text-ink-soft font-mono mt-1.5 block">
-                          {article.datePublished}
-                        </time>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ol>
+            <ArticleList articles={articles.slice(0, 6)} readingOrder={cat.readingOrder} priority />
+            <MobileCareerCTA />
+            {articles.length > 6 && <div className="mt-6"><ArticleList articles={articles.slice(6)} readingOrder={cat.readingOrder} /></div>}
           </section>
         ) : (
           <div className="py-10 text-center">
@@ -195,6 +140,9 @@ export default async function CategoryPage(props: {
             </div>
           </section>
         )}
+        </div>
+        <EditorialSidebar />
+        </div>
       </div>
     </>
   );

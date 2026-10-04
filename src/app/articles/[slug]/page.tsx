@@ -4,7 +4,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticle, getArticleSlugs, getAllArticleMetas, getCTARegistry } from "@/lib/articles";
 import { getCategorySlug, getCategoryTheme } from "@/lib/categories";
-import { getAuthorProfileLabel } from "@/lib/author";
+import { EditorialSidebar } from "@/components/EditorialSidebar";
+import { MobileCareerCTA } from "@/components/MobileCareerCTA";
 import { FAQSection } from "@/components/FAQSection";
 import { ShareButtons } from "@/components/ShareButtons";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -109,7 +110,7 @@ export default async function ArticlePage(props: {
       ]} />
       <BreadcrumbJsonLd items={breadcrumbs} />
 
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="site-container py-8">
         <nav aria-label="パンくずリスト" className="text-sm text-ink-soft mb-6 flex items-center gap-1.5 flex-wrap">
           <Link href="/" className="hover:text-primary transition-colors">
             ホーム
@@ -122,14 +123,14 @@ export default async function ArticlePage(props: {
           <span className="text-ink" aria-current="page">{article.title}</span>
         </nav>
 
-        <div className="flex gap-10 min-w-0">
-          <article className="flex-1 min-w-0 max-w-[700px]">
+        <div className="editorial-layout article-detail-layout">
+          <article className="article-sheet">
             <span
               className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${theme.tag}`}
             >
               {article.category}
             </span>
-            <h1 className="text-2xl md:text-[32px] font-semibold leading-tight mt-3 mb-5">
+            <h1 className="editorial-title mt-3 mb-5">
               {article.title}
             </h1>
             <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-6">
@@ -146,15 +147,19 @@ export default async function ArticlePage(props: {
               <ShareButtons slug={slug} title={article.title} />
             </div>
 
+            <p className="text-ink-soft leading-relaxed mb-8">
+              {article.excerpt}
+            </p>
+
             {(article.heroImagePath || article.cardImagePath) && (
-              <div className="mb-8 rounded-lg overflow-hidden">
+              <div className="mb-8 rounded-sm overflow-hidden">
                 {/* hero は1600×600、card（heroが無い記事の代替）は1200×630 */}
                 <Image
                   src={article.heroImagePath || article.cardImagePath!}
                   alt={`${article.title}｜${article.category}記事のアイキャッチ画像`}
                   width={article.heroImagePath ? 1600 : 1200}
                   height={article.heroImagePath ? 600 : 630}
-                  sizes="(min-width: 768px) 700px, 100vw"
+                  sizes="(min-width: 1024px) 740px, (min-width: 640px) calc(100vw - 112px), calc(100vw - 40px)"
                   className="w-full h-auto"
                   priority
                 />
@@ -184,14 +189,11 @@ export default async function ArticlePage(props: {
               </details>
             )}
 
-            <p className="text-ink-soft leading-relaxed mb-8">
-              {article.excerpt}
-            </p>
 
             {article.naruPoint && (
               <div className="bg-primary-soft/50 border border-primary/20 rounded-lg px-5 py-5 mb-8">
                 <span className="inline-block bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded mb-2.5">
-                  NARU Point
+                  この記事の要点
                 </span>
                 <p className="text-[14px] text-ink leading-relaxed font-medium">
                   {article.naruPoint}
@@ -221,6 +223,8 @@ export default async function ArticlePage(props: {
               contentHtml={article.contentHtml}
               widgets={ARTICLE_WIDGETS[slug] ?? []}
             />
+
+            <MobileCareerCTA />
 
             {article.resume_template && <TemplateDownload />}
 
@@ -353,59 +357,7 @@ export default async function ArticlePage(props: {
             )}
           </article>
 
-          <aside className="hidden lg:block w-64 shrink-0">
-            <div className="sticky top-8 space-y-8">
-              <div className="border border-line rounded-lg p-5">
-                <p className="font-bold text-sm mb-3">この記事を書いた人</p>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="shrink-0">
-                    <Image
-                      src="/images/author-avatar.webp"
-                      alt="磯貝アルトのイラストアバター"
-                      width={48}
-                      height={48}
-                      className="rounded-full"
-                    />
-                    <span className="block text-[10px] text-ink-soft text-center mt-0.5">※アバター</span>
-                  </div>
-                  <p className="font-semibold text-sm">磯貝アルト</p>
-                </div>
-                <p className="text-sm text-ink-soft leading-relaxed">
-                  {getAuthorProfileLabel()}。AIO対策企業に営業職として勤務。業務外で自社のマーケティング・AIO戦略にも取り組む。エージェントの裏側を知る立場から転職情報を発信。
-                </p>
-                <div className="flex items-center justify-between mt-2">
-                  <Link
-                    href="/about"
-                    className="text-sm text-primary hover:underline"
-                  >
-                    プロフィールを見る →
-                  </Link>
-                  <MiniAlto pose="bow" size={48} />
-                </div>
-              </div>
-
-              {article.headings.length > 0 && (
-                <nav aria-label="目次" className="border border-line rounded-lg p-5">
-                  <p className="font-bold text-sm mb-3">目次</p>
-                  <ol className="space-y-1.5">
-                    {article.headings.map((h, i) => (
-                      <li key={h.id}>
-                        <a
-                          href={`#${h.id}`}
-                          className="text-xs text-ink-soft hover:text-primary transition-colors leading-relaxed flex gap-1.5"
-                        >
-                          <span className="font-mono text-ink-soft shrink-0">
-                            {i + 1}.
-                          </span>
-                          {h.text}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </nav>
-              )}
-            </div>
-          </aside>
+          <EditorialSidebar />
         </div>
       </div>
 
