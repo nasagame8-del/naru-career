@@ -41,7 +41,7 @@ jobs:
             const url = new URL(request.url);
             if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
               return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
-            const response = await worker.fetch(request, env, ctx);
+            const response = /^\\\\/(_next\\\\/static|images)(\\\\/|$)/.test(url.pathname) || /\\\\.(ico|png|svg|webp|woff2)$/.test(url.pathname)\n              ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
             const result = new Response(response.body, response);
             result.headers.set('X-Robots-Tag', 'noindex, nofollow');
             return result;
@@ -59,8 +59,28 @@ jobs:
       - name: Deploy isolated preview
         run: |
           set -euo pipefail
-          npx wrangler deploy --config wrangler.article-preview.json 2>&1 | tee /tmp/article-preview.log
+          npx opennextjs-cloudflare deploy --config wrangler.article-preview.json 2>&1 | tee /tmp/article-preview.log
           URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
           test -n "$URL"
           echo "Preview URL: $URL" >> "$GITHUB_STEP_SUMMARY"
           echo "Head SHA: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+      - name: Smoke test article and noindex
+        env:
+          ARTICLE_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
+          if [[ "$ARTICLE_BRANCH" == *58-social-insurance ]]; then
+            SLUG=employee-to-contractor-social-insurance
+            TITLE='正社員から業務委託へ切り替えると社会保険'
+          else
+            SLUG=beginner-engineer-tutorial-portfolio
+            TITLE='未経験エンジニアのポートフォリオは教材'
+          fi
+          curl --fail --retry 3 --retry-delay 3 -sS -D /tmp/preview-headers "$URL/articles/$SLUG" -o /tmp/preview-article.html
+          grep -q "$TITLE" /tmp/preview-article.html
+          grep -qi 'x-robots-tag: noindex' /tmp/preview-headers
+          for SLOT in card 01 02 03; do
+            curl --fail -sS "$URL/images/articles/$SLUG-$SLOT.webp" -o "/tmp/$SLOT.webp"
+            test -s "/tmp/$SLOT.webp"
+          done
