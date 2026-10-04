@@ -175,15 +175,30 @@ jobs:
           ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
         run: |
           set -euo pipefail
-          STATUS="$(curl --retry 3 --retry-delay 3 -sS -D /tmp/preview-headers -o /tmp/preview-article.html -w '%{http_code}' "$URL/articles/$ARTICLE_SLUG")"
-          echo "article status=$STATUS"
+          STATUS=""
+          for ATTEMPT in {1..12}; do
+            STATUS="$(curl -sS -D /tmp/preview-headers -o /tmp/preview-article.html -w '%{http_code}' "$URL/articles/$ARTICLE_SLUG" || true)"
+            echo "article attempt=$ATTEMPT status=$STATUS"
+            if [ "$STATUS" = "200" ]; then
+              break
+            fi
+            sleep 5
+          done
           echo "article bytes=$(wc -c < /tmp/preview-article.html | tr -d ' ')"
           test "$STATUS" = "200"
           grep -qi '<h1' /tmp/preview-article.html || { echo "::error::article HTML is missing <h1>"; exit 1; }
           grep -qi 'x-robots-tag: noindex' /tmp/preview-headers || { echo "::error::article response is missing X-Robots-Tag noindex"; exit 1; }
           for SLOT in card 01 02 03; do
-            IMAGE_STATUS="$(curl -sS -o "/tmp/$SLOT.webp" -w '%{http_code}' "$URL/images/articles/$ARTICLE_SLUG-$SLOT.webp")"
-            echo "$SLOT status=$IMAGE_STATUS bytes=$(wc -c < "/tmp/$SLOT.webp" | tr -d ' ')"
+            IMAGE_STATUS=""
+            for ATTEMPT in {1..6}; do
+              IMAGE_STATUS="$(curl -sS -o "/tmp/$SLOT.webp" -w '%{http_code}' "$URL/images/articles/$ARTICLE_SLUG-$SLOT.webp" || true)"
+              echo "$SLOT attempt=$ATTEMPT status=$IMAGE_STATUS"
+              if [ "$IMAGE_STATUS" = "200" ] && [ -s "/tmp/$SLOT.webp" ]; then
+                break
+              fi
+              sleep 3
+            done
+            echo "$SLOT bytes=$(wc -c < "/tmp/$SLOT.webp" | tr -d ' ')"
             test "$IMAGE_STATUS" = "200"
             test -s "/tmp/$SLOT.webp"
           done
