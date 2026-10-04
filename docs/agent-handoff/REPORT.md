@@ -1,3 +1,9 @@
+## 2026-10-04 フォント・表記の追加調整
+
+- ユーザー指定により、メディア共通フォントを Noto Sans JP / Noto Serif JP に統一。数字用の旧等幅フォントも Noto Sans JP に統一。
+- CAREER GUIDE と重複 NOTE ラベルを削除。ABOUT THE AUTHOR、SHARE、NARU Point を日本語化。
+- 検証: 変更した TSX の ESLint、Next.js 本番ビルド成功。ブラウザーで適用フォント・英文ラベル削除、375px表示で横溢れなしを確認。
+- RPG診断独自の演出フォント、記事本文、ブランド名は今回のメディアUI調整の対象外。
 # NARU Editorial Refresh — 2026-10-04
 
 - reportId: USER-EDITORIAL-REFRESH-20261004

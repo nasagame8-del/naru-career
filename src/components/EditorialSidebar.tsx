@@ -27,12 +27,11 @@ export function EditorialSidebar() {
       <div className="editorial-sticky space-y-6">
         <CareerDiscoveryCard />
         <Link href="/guides/second-new-grad-complete-guide" className="group block bg-primary-soft rounded-sm p-5">
-          <p className="font-mono text-[11px] tracking-widest text-primary">CAREER GUIDE</p>
-          <p className="mt-2 text-xl font-bold text-primary">はじめての転職に、<br />一冊の道しるべ。</p>
+          <p className="text-xl font-bold text-primary">はじめての転職に、<br />一冊の道しるべ。</p>
           <span className="mt-3 flex min-h-11 items-center justify-between border-t border-primary/20 text-sm font-bold text-primary">転職完全ガイド <span aria-hidden="true">→</span></span>
         </Link>
         <section className="border-t border-line pt-5">
-          <p className="text-[11px] font-mono tracking-widest text-ink-soft mb-3">ABOUT THE AUTHOR</p>
+          <p className="text-xs text-ink-soft mb-3">著者について</p>
           <Link href="/about" className="group flex items-center gap-3">
             <Image src="/images/author-avatar.webp" alt="磯貝アルトのイラストアバター" width={48} height={48} className="rounded-full" />
             <span className="text-sm font-bold group-hover:text-primary">磯貝アルト <span className="block text-[11px] font-normal text-ink-soft">{getAuthorProfileLabel()}</span></span>

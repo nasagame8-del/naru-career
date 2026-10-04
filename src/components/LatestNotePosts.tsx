@@ -11,9 +11,7 @@ export async function LatestNotePosts() {
       <div className="site-container py-12">
         <div className="flex items-center justify-between mb-5">
           <div>
-            <span className="inline-block font-mono text-[11px] font-medium tracking-widest text-primary uppercase mb-1">
-              NOTE
-            </span>
+
             <h2 className="text-lg font-bold text-ink">最新のnote投稿</h2>
           </div>
           <a

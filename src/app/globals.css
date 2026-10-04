@@ -49,10 +49,10 @@
   /* 淡色背景の上に置く小さい文字用（コントラスト4.5:1以上） */
   --color-amber-ink: #8F5214;
   --color-sage-ink: #46624F;
-  --font-sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  --font-heading: "Shippori Mincho", "Yu Mincho", serif;
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-heading: "Noto Serif JP", serif;
   --font-serif: var(--font-heading);
-  --font-mono: "JetBrains Mono", monospace;
+  --font-mono: var(--font-sans);
 }
 
 body {
