@@ -1,92 +1,108 @@
 # Next Instruction
 
-- instructionId: `NARU-EDITOR-V1-002A`
+- instructionId: `NARU-EDITOR-V1-002B`
 - issuedBy: `ChatGPT`
 - target: `Claude Code`
 - status: `ACTIVE`
 - branch: `agent/naru-editor-agent-v1`
 
-## Scope
+## Context
 
-The previous round-2 attempt hit the 8-turn cap before commit. Do only **manifest + pure reconciler** now. Do not implement CLI, workflows, adapters, or full build in this run.
+Round 1 and Round 2A are DONE. The editor-agent state core and repository manifest/reconciler already exist and have 26 passing targeted tests + tsc success.
 
-Read AGENTS.md and `src/lib/naru-editor-agent/*` first. Preserve the completed round-1 state evaluator.
+This is a very small final implementation pass: **safe local CLI only**. Do not revisit architecture.
+
+Read AGENTS.md and the current `src/lib/naru-editor-agent/*` first.
 
 ## Implement
 
-Under `src/lib/naru-editor-agent/` add a versioned daily manifest model and a pure evidence reconciler.
+Add a repository CLI command:
 
-### Manifest
+`npm run editor-agent -- <command> ...`
 
-Repository path convention (document only in core; no filesystem I/O required here):
-`data/editor-agent/run-YYYY-MM-DD.json`
+Commands:
 
-Manifest must include:
-- `schemaVersion: 1`
-- `date: YYYY-MM-DD`
-- `candidatesReady`
-- run blockers
-- two slots `1` and `2` using the existing `ArticleSlotFacts`
-- `lastReconciledAt` optional
-- evaluation is derived, not authoritative
+### `status --date YYYY-MM-DD`
 
-Add helpers:
-- create empty manifest for a date
-- validate/normalize a parsed manifest
-- serialize deterministically to JSON string
-- convert manifest -> existing `EditorRunFacts`
+- manifest path: `data/editor-agent/run-YYYY-MM-DD.json`
+- if file is missing, evaluate a new empty manifest in memory; do not write it
+- output JSON only, with at least:
+  - date
+  - runState
+  - slot 1/2 state
+  - nextAction
+  - humanGate
+  - reasons
+- no mutation
 
-Unknown optional fields may be ignored safely; critical malformed fields must throw a clear error. Never invent identities.
+### `next --date YYYY-MM-DD`
 
-### Evidence
+- no mutation
+- output concise JSON with each slot's next safe action and pending human gate(s)
 
-Define a partial `EditorRunEvidence` shape suitable for ChatGPT/connectors. It can update run-level facts and either article slot.
+### `reconcile --date YYYY-MM-DD --evidence <file.json>`
 
-Implement `reconcileRunManifest(existing, evidence)` with these rules:
-- update only explicitly supplied fields
-- omission never erases known facts
-- same evidence twice is semantically idempotent
-- candidateId / articleId / slug identity conflicts fail closed with an error; do not silently replace
-- selection must remain explicit (`selected: true`)
-- slot 1 and 2 merge independently
-- image refs card/01/02/03 merge independently
-- new latestHeadSha may be stored, but stale QA/CI/preview approval must not become valid (existing evaluator already SHA-binds them)
-- blockers are preserved by omission
-- support explicit blocker replacement via a clearly named field such as `replaceBlockers`; do not make ordinary omission clear blockers
-- no network/filesystem I/O
+- read existing manifest or initialize empty
+- parse evidence JSON
+- call the existing pure reconciler
+- write `data/editor-agent/run-YYYY-MM-DD.json`
+- create the directory if needed
+- output resulting evaluation as JSON
+- same evidence twice must be semantically idempotent
 
-### Tests
+## Runtime choice
 
-Add focused Vitest tests covering:
-1. empty manifest
-2. validation/serialization round trip
-3. partial evidence preserves known data
-4. identity conflict rejects
-5. image refs merge independently
-6. head change leaves stale gates ineffective under evaluator
-7. blocker omission preserves
-8. explicit blocker replacement clears/resolves
-9. two slots independent
-10. repeated reconciliation idempotent
-11. malformed date/schema rejected
-12. legacy/absent optional fields normalize safely
+Use the smallest maintainable approach compatible with this repo. If running TypeScript directly needs a tiny dev dependency such as `tsx`, adding it is acceptable, but do not add a large framework. Prefer reusing the existing TypeScript core over duplicating evaluator/reconciler logic in a separate JS implementation.
+
+## CLI safety
+
+- validate exact `YYYY-MM-DD`
+- reject evidence path missing/unreadable/invalid JSON with nonzero exit
+- reject unknown command/flags with nonzero exit
+- never call network
+- never merge/deploy/publish
+- never call LLM or paid API
+- never mutate selected-queue
+- no secrets
+- stdout should be machine-readable JSON; errors may go stderr
+
+## Tests
+
+Add focused tests for CLI behavior, preferably by spawning it in a temp working directory so repository data is not polluted:
+
+1. status on missing manifest
+2. next on missing manifest
+3. reconcile writes expected manifest
+4. reconcile same evidence twice is semantically idempotent
+5. status after reconcile reflects gate/state
+6. invalid date fails
+7. invalid/missing evidence fails
+8. unknown command fails
 
 Run only:
-- `npx vitest run src/lib/naru-editor-agent`
+- editor-agent targeted tests
 - `npx tsc --noEmit`
 
-Update `docs/naru-editor-agent-v1.md` only enough to document schemaVersion/path and that CLI is still pending.
+Do **not** run full npm test/build in Claude; PR CI will do that after commit to save turns.
 
-Update REPORT.md with exact results and Japanese `## Slack reply`.
+## Docs/report
+
+Expand `docs/naru-editor-agent-v1.md` with exact CLI examples and source-of-truth notes:
+- ChatGPT/connectors gather GSC/Web/Drive/GitHub evidence
+- selected-queue remains selection source of truth
+- Claude Code is implementation worker
+- no paid API fallback; quota/rate-limit means stop/hold
+
+Update REPORT.md with exact targeted test + tsc results and Japanese `## Slack reply`.
 
 ## Hard limits
 
-- no CLI/script/package.json yet
-- no .github/workflows
+- no workflow edits
 - no article edits
-- no network calls
+- no production action
+- no network use by feature
 - no paid APIs
-- no master push/merge/deploy
-- <= 8 changed files
+- no master push/merge
+- keep change focused, <= 8 files
 
-Finish and commit within this run; do not expand scope.
+Finish and commit within this run.
