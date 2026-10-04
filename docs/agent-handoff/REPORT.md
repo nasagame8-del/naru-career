@@ -1,3 +1,19 @@
+# Article 58 preview preparation — 2026-10-04
+
+- reportId: USER-ARTICLE-58-PREVIEW-20261004
+- completedInstructionId: USER-ARTICLE-PREVIEW-20261004
+- status: PREVIEW_DEPLOYMENT_IN_PROGRESS
+- branch: article-factory/2026-10-04-58-social-insurance
+- 実施内容: User images archived to Drive, four metadata-free WebPs reflected on this article PR and byte/blob readbacks matched. Added isolated Cloudflare preview workflow with a unique non-production worker name, read-only requests and noindex headers.
+- テスト結果: Image-stage CI completed/success. Internal article slugs exist on master; three body references/alt match images; no raw bold markers. Current-head Cloudflare build and browser QA will be recorded in selected-queue after completion.
+- 変更ファイル: Article Markdown and run records, four public WebPs, .github/workflows/cloudflare-article-preview.yml, this report.
+- git diff概要: New article and images; preview deployment workflow only. No production merge.
+- 既知の問題: Human fact check and user visual approval remain pending. The previous fact record describes the initial pre-image stage.
+- 判断が必要な項目: User visual approval of current article preview before publication.
+- 推奨する次の作業: Verify preview deployment and rendered PC/mobile article, record latest SHA and URL in selected-queue, then request user visual review.
+
+---
+
 # Claude Code Report
 
 ## REPORT-011 — /about の「よくある質問」を削除

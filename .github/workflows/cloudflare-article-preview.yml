@@ -1,0 +1,91 @@
+name: NARU article Cloudflare preview
+on:
+  push:
+    branches:
+      - article-factory/2026-10-04-58-social-insurance
+      - article-factory/2026-10-04-59-tutorial-portfolio
+permissions:
+  contents: read
+concurrency:
+  group: naru-article-preview-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Verify credentials
+        run: test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID"
+      - run: npm ci
+      - run: npm run build:cloudflare
+      - name: Prepare isolated read-only noindex preview
+        env:
+          ARTICLE_BRANCH: ${{ github.ref_name }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const article = process.env.ARTICLE_BRANCH.endsWith('58-social-insurance') ? 58 : process.env.ARTICLE_BRANCH.endsWith('59-tutorial-portfolio') ? 59 : null;
+          if (!article) throw new Error('Unexpected preview branch');
+          const slug = article === 58 ? 'employee-to-contractor-social-insurance' : 'beginner-engineer-tutorial-portfolio';
+          fs.copyFileSync('.next/server/app/articles/'+slug+'.html', '.open-next/assets/__article-preview.html');
+          fs.writeFileSync('.open-next/article-preview.js', `
+          import worker from './worker.js';
+          export default {...worker, async fetch(request, env, ctx) {
+            const url = new URL(request.url);
+            if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
+              return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
+            const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
+            const articleRequest = url.pathname === '/articles/${slug}';
+            const assetUrl = new URL('/__article-preview', url);
+            const response = articleRequest ? await env.ASSETS.fetch(new Request(assetUrl, request)) : isAsset ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
+            const result = new Response(response.body, response);
+            result.headers.set('X-Robots-Tag', 'noindex, nofollow');
+            return result;
+          }};
+          `);
+          fs.writeFileSync('wrangler.article-preview.json', JSON.stringify({
+            name:'naru-article-'+article+'-preview',
+            main:'.open-next/article-preview.js',
+            compatibility_date:'2026-10-03',
+            compatibility_flags:['nodejs_compat'],
+            workers_dev:true,
+            assets:{directory:'.open-next/assets',binding:'ASSETS',run_worker_first:true}
+          }));
+          NODE
+      - name: Deploy isolated preview
+        run: |
+          set -euo pipefail
+          npx opennextjs-cloudflare deploy --config wrangler.article-preview.json 2>&1 | tee /tmp/article-preview.log
+          URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
+          test -n "$URL"
+          echo "Preview URL: $URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "Head SHA: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+      - name: Smoke test article and noindex
+        env:
+          ARTICLE_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
+          if [[ "$ARTICLE_BRANCH" == *58-social-insurance ]]; then
+            SLUG=employee-to-contractor-social-insurance
+            TITLE='正社員から業務委託へ切り替えると社会保険'
+          else
+            SLUG=beginner-engineer-tutorial-portfolio
+            TITLE='未経験エンジニアのポートフォリオは教材'
+          fi
+          curl --fail --retry 3 --retry-delay 3 -sS -D /tmp/preview-headers "$URL/articles/$SLUG" -o /tmp/preview-article.html
+          grep -q "$TITLE" /tmp/preview-article.html
+          grep -qi 'x-robots-tag: noindex' /tmp/preview-headers
+          for SLOT in card 01 02 03; do
+            curl --fail -sS "$URL/images/articles/$SLUG-$SLOT.webp" -o "/tmp/$SLOT.webp"
+            test -s "/tmp/$SLOT.webp"
+          done
