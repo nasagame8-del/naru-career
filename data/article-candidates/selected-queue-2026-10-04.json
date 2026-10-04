@@ -208,10 +208,14 @@
         "cloudflarePreview": "completed_success",
         "previewUrl": "https://naru-pr-138-preview.broad-fuchsia.workers.dev/articles/employee-to-contractor-social-insurance",
         "imageSmoke": "card_01_02_03_success",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "user_confirmed_passed",
         "note": "Post-publication technical audit passed on the final audit head. Publication-time Human Fact Check/full-local-QA history is intentionally not rewritten.",
         "factCheckPreScan": "completed_success",
-        "fullLocalQa": "completed_success"
+        "fullLocalQa": "completed_success",
+        "previewVisual": "user_confirmed",
+        "humanApprovedAt": "2026-10-04T23:19:23+09:00",
+        "humanApprovedHeadSha": "c71118dea27aa7b52d257cc651385be8230ebec2",
+        "approvalEvidence": "User replied 「58・59 OK」 after reviewing the final audit previews."
       }
     },
     {
@@ -345,7 +349,7 @@
         "cloudflarePreview": "completed_success",
         "previewUrl": "https://naru-pr-139-preview.broad-fuchsia.workers.dev/articles/beginner-engineer-tutorial-portfolio",
         "imageSmoke": "card_01_02_03_success",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "user_confirmed_passed",
         "historicalApprovalMismatch": {
           "approvedHeadSha": "15ff4ec6f9308218a3f23dab7ef889482a600e85",
           "finalPublishedPrHeadSha": "03d543884d9741e4101fe23d1169d3f88ff2ee0b"
@@ -372,7 +376,11 @@
             "status": 200,
             "bytes": 67466
           }
-        }
+        },
+        "previewVisual": "user_confirmed",
+        "humanApprovedAt": "2026-10-04T23:19:26+09:00",
+        "humanApprovedHeadSha": "d9320c087586dcfb7364f523be7ae120c735fda6",
+        "approvalEvidence": "User replied 「58・59 OK」 after reviewing the final audit previews."
       }
     }
   ],
@@ -403,7 +411,8 @@
     "2026-10-04 12:05 JST: Article58 merge SHA 527b124 Cloudflare deploy completed/success, production article title/body/card/01/02/03 browser-verified. User's publishing approval clarification recorded; human fact-review not represented as completed.",
     "2026-10-04 21:45 JST: reconciled live GitHub state. Article59 PR119 actually merged at head 03d5438; Cloudflare deploy run 37197126428 succeeded, but human fact check/full local QA remained pending and user preview approval is for older head 15ff4ec. Production URL visual verification after merge is not claimed. Article58 remains display-verified but flagged for post-publication audit because human fact check/full local QA were pending.",
     "2026-10-04 22:48 JST: post-publication technical audits passed for article58 (PR138 head d4517fe) and article59 (PR139 head 9d7941c), including Article Factory Validation and Cloudflare preview/card+01+02+03 smoke checks. Human Fact Check remains pending for both. Article59 historical preview-approval SHA mismatch remains preserved.",
-    "2026-10-04 22:58 JST: final audit reruns passed Fact Check pre-scan + full local QA + Cloudflare preview for article58/59. Article59 production URL, title/H1, card/01/02/03 were verified from GitHub runner (HTTP 200); status updated to PUBLISHED_VERIFIED. Human Fact Check remains pending for both and article59 historical preview approval mismatch remains preserved."
+    "2026-10-04 22:58 JST: final audit reruns passed Fact Check pre-scan + full local QA + Cloudflare preview for article58/59. Article59 production URL, title/H1, card/01/02/03 were verified from GitHub runner (HTTP 200); status updated to PUBLISHED_VERIFIED. Human Fact Check remains pending for both and article59 historical preview approval mismatch remains preserved.",
+    "2026-10-04 23:19 JST: user explicitly approved both final audit previews with 「58・59 OK」. Post-publication Human Fact Check + visual audit approval recorded on audit heads c71118d (article58) and d9320c0 (article59). Original publication-time gate history is preserved."
   ],
   "dailySlots": {
     "2026-10-04": {
