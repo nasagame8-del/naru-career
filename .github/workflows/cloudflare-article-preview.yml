@@ -45,7 +45,7 @@ jobs:
               return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
             const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
             const articleRequest = url.pathname === '/articles/${slug}';
-            const assetUrl = new URL('/__article-preview.html', url);
+            const assetUrl = new URL('/__article-preview', url);
             const response = articleRequest ? await env.ASSETS.fetch(new Request(assetUrl, request)) : isAsset ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
             const result = new Response(response.body, response);
             result.headers.set('X-Robots-Tag', 'noindex, nofollow');
