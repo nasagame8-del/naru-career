@@ -8,6 +8,7 @@ import {
   extractInternalLinks,
   runLocalQa,
 } from "./article-local-qa.mjs";
+import { scanFactCheckTargets } from "./article-fact-check.mjs";
 
 // ── 引数 ──
 
@@ -124,4 +125,36 @@ test("レポートは全14項目相当の行を持ち、失敗有無を判定で
     assert.ok(steps.includes(step), `step ${step} が欠けています`);
   }
   assert.equal(report.failed, false);
+});
+
+
+test("Fact Check scanner は未処理プレースホルダをBLOCKする", () => {
+  const raw = `---
+title: "テスト"
+excerpt: "2026年の制度を確認する"
+summary: ["要約"]
+faq: []
+---
+
+本文です。[EXPERIENCE: 後で確認]
+`;
+  const result = scanFactCheckTargets(raw);
+  assert.equal(result.blockers.length, 1);
+  assert.match(result.blockers[0].type, /EXPERIENCE/);
+  assert.ok(result.reviewTargets.length >= 1);
+});
+
+test("Fact Check scanner は危険表現をREVIEWへ出すがBLOCKしない", () => {
+  const raw = `---
+title: "業界最大級のサービス"
+excerpt: "利用は無料です"
+summary: ["2026年に増加"]
+faq: []
+---
+
+年収500万円、施行日を確認する。
+`;
+  const result = scanFactCheckTargets(raw);
+  assert.equal(result.blockers.length, 0);
+  assert.ok(result.reviewTargets.length >= 4);
 });
