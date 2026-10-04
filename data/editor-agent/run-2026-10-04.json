@@ -50,14 +50,15 @@
       "productionDeployVerified": true,
       "publicArticleUrl": "https://naru-career.com/articles/employee-to-contractor-social-insurance",
       "publicArticleVerified": true,
-      "blockers": [
-        "publication-time Human Fact Check and full local QA were pending; post-publication technical audit later passed on audit PR #138 head d4517fe5232e0b4d1555e842ed663b6b06cd1a53, but that does not retroactively satisfy the original human gate"
-      ],
+      "blockers": [],
       "timestamps": {
         "selectedAt": "2026-10-04T08:47:29+09:00",
         "previewApprovedAt": "2026-10-04T10:32:00+09:00",
         "productionVerifiedAt": "2026-10-04T12:05:30+09:00",
-        "postPublicationTechnicalAuditAt": "2026-10-04T22:58:00+09:00"
+        "postPublicationTechnicalAuditAt": "2026-10-04T22:58:00+09:00",
+        "postPublicationHumanApprovalAt": "2026-10-04T23:19:23+09:00",
+        "postPublicationApprovedAuditHeadSha": "c71118dea27aa7b52d257cc651385be8230ebec2",
+        "postPublicationAuditResolvedAt": "2026-10-04T23:29:08+09:00"
       }
     },
     "2": {
@@ -105,19 +106,19 @@
       "mergeSha": "63225d77da21b1c5aefc4c23a832112b7a4d281d",
       "productionDeployVerified": true,
       "publicArticleUrl": "https://naru-career.com/articles/beginner-engineer-tutorial-portfolio",
-      "blockers": [
-        "publication-time Human Fact Check and full local QA were pending; post-publication technical audit later passed on audit PR #139 head 9d7941c2388fa4e39d635b8801c7787669eed285, but that does not retroactively satisfy the original human gate",
-        "preview approval is recorded for 15ff4ec6f9308218a3f23dab7ef889482a600e85 but the final published PR head was 03d543884d9741e4101fe23d1169d3f88ff2ee0b; strict exact-head approval remains stale"
-      ],
+      "blockers": [],
       "timestamps": {
         "selectedAt": "2026-10-04T08:56:01+09:00",
         "previewApprovedAt": "2026-10-04T10:32:00+09:00",
         "mergedAt": "2026-10-04T19:58:32+09:00",
         "postPublicationTechnicalAuditAt": "2026-10-04T22:58:00+09:00",
-        "productionVerifiedAt": "2026-10-04T22:58:00+09:00"
+        "productionVerifiedAt": "2026-10-04T22:58:00+09:00",
+        "postPublicationHumanApprovalAt": "2026-10-04T23:19:26+09:00",
+        "postPublicationApprovedAuditHeadSha": "d9320c087586dcfb7364f523be7ae120c735fda6",
+        "postPublicationAuditResolvedAt": "2026-10-04T23:29:29+09:00"
       },
       "publicArticleVerified": true
     }
   },
-  "lastReconciledAt": "2026-10-04T22:58:00+09:00"
+  "lastReconciledAt": "2026-10-04T23:29:29+09:00"
 }
