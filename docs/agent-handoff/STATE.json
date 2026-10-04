@@ -1,18 +1,18 @@
 {
   "version": 5,
   "repo": "nasagame8-del/naru-career",
-  "coordinationBranch": null,
+  "coordinationBranch": "agent/naru-editor-agent-v1",
   "mode": "CLOUD_CLAUDE_BRIDGE",
-  "status": "IDLE",
-  "instructionId": null,
+  "status": "RUN_CLAUDE",
+  "instructionId": "NARU-EDITOR-V1-001",
   "lastCompletedInstructionId": "USER-SITE-AUDIT-FOLLOWUP-2026-10-01",
   "lastReportId": "REPORT-010",
-  "iteration": 0,
+  "iteration": 1,
   "maxIterations": 2,
   "maxClaudeTurns": 8,
   "sameBlockerCount": 0,
   "lastBlockerKey": null,
-  "nextWriter": "chatgpt",
+  "nextWriter": "claude",
   "targetBaseBranch": "master",
   "autoPublishRequested": false,
   "stopConditions": [
@@ -24,5 +24,5 @@
     "production merge or deploy requires approval",
     "irreversible content decision with insufficient evidence"
   ],
-  "notes": "Idle template for the cloud ChatGPT-to-Claude bridge. A task starts only after ChatGPT writes a new instruction on a task branch/PR and explicitly triggers @naru-autopilot with the matching instructionId."
+  "notes": "Build NARU Editor Agent v1 control plane. No production publish, no paid APIs, no workflow edits in this Claude round."
 }
