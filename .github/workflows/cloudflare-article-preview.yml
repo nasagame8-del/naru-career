@@ -67,12 +67,36 @@ jobs:
           echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
           echo "Detected article: $SLUG"
 
+      - name: Check four article images
+        id: images
+        shell: bash
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        run: |
+          set -euo pipefail
+          MISSING=()
+          for SLOT in card 01 02 03; do
+            FILE="public/images/articles/$ARTICLE_SLUG-$SLOT.webp"
+            [ -s "$FILE" ] || MISSING+=("$FILE")
+          done
+
+          if [ "${#MISSING[@]}" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Preview deploy is waiting for all four WebP images:" >> "$GITHUB_STEP_SUMMARY"
+            printf -- '- %s\n' "${MISSING[@]}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - run: npm ci
+        if: steps.images.outputs.ready == 'true'
 
       - name: Build Cloudflare output
+        if: steps.images.outputs.ready == 'true'
         run: npm run build:cloudflare
 
       - name: Prepare isolated read-only noindex preview
+        if: steps.images.outputs.ready == 'true'
         env:
           ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
         run: |
@@ -115,6 +139,7 @@ jobs:
           NODE
 
       - name: Deploy isolated preview
+        if: steps.images.outputs.ready == 'true'
         id: deploy
         shell: bash
         env:
@@ -131,6 +156,7 @@ jobs:
           echo "Head SHA: $HEAD_SHA" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Smoke test article and noindex
+        if: steps.images.outputs.ready == 'true'
         shell: bash
         env:
           URL: ${{ steps.deploy.outputs.url }}
@@ -146,6 +172,7 @@ jobs:
           done
 
       - name: Publish direct preview URL to PR
+        if: steps.images.outputs.ready == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           ARTICLE_URL: ${{ steps.deploy.outputs.article_url }}
