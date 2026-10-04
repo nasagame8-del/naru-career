@@ -4,7 +4,7 @@
   "coordinationBranch": "agent/naru-editor-agent-v1",
   "mode": "CLOUD_CLAUDE_BRIDGE",
   "status": "RUN_CLAUDE",
-  "instructionId": "NARU-EDITOR-V1-002",
+  "instructionId": "NARU-EDITOR-V1-002A",
   "lastCompletedInstructionId": "NARU-EDITOR-V1-001A",
   "lastReportId": "REPORT-012",
   "iteration": 2,
@@ -24,5 +24,5 @@
     "production merge or deploy requires approval",
     "irreversible content decision with insufficient evidence"
   ],
-  "notes": "Round 2: add repository manifest, evidence reconciliation, safe CLI, full tests/build. No paid APIs, workflow edits, article writes, merge, or deploy."
+  "notes": "Retry round 2 after max-turns failure. This bounded subround implements manifest + pure reconciler only; CLI follows separately if successful."
 }
