@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-05",
+  "candidatesReady": false,
+  "blockers": [
+    {
+      "code": "CANDIDATE_BATCH_NOT_READY",
+      "detail": "article-factory/candidates に batch_2026-10-05_chatgpt.json と selected-queue-2026-10-05.json が未作成。latest.json は batch_2026-10-04_chatgpt を指している。"
+    }
+  ],
+  "slots": {
+    "1": {
+      "order": 1,
+      "selected": false,
+      "blockers": [
+        "candidate_selection_pending"
+      ]
+    },
+    "2": {
+      "order": 2,
+      "selected": false,
+      "blockers": [
+        "candidate_selection_pending"
+      ]
+    }
+  },
+  "lastReconciledAt": "2026-10-05T01:44:24+09:00"
+}
