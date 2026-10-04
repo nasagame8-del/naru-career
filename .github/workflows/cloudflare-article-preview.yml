@@ -112,17 +112,28 @@ jobs:
           const builtHtml = '.next/server/app/articles/' + slug + '.html';
           if (!fs.existsSync(builtHtml)) throw new Error('Built article HTML not found: ' + builtHtml);
 
-          fs.copyFileSync(builtHtml, '.open-next/assets/__article-preview.html');
+          const articleHtml = fs.readFileSync(builtHtml, 'utf8');
+          const embeddedHtml = JSON.stringify(articleHtml);
           fs.writeFileSync('.open-next/article-preview.js', `
           import worker from './worker.js';
+          const ARTICLE_HTML = ${embeddedHtml};
           export default {...worker, async fetch(request, env, ctx) {
             const url = new URL(request.url);
             if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
               return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
             const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
             const articleRequest = url.pathname === '/articles/${slug}';
-            const assetUrl = new URL('/__article-preview.html', url);
-            const response = articleRequest ? await env.ASSETS.fetch(new Request(assetUrl, request)) : isAsset ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
+            let response;
+            if (articleRequest) {
+              response = new Response(request.method === 'HEAD' ? null : ARTICLE_HTML, {
+                status: 200,
+                headers: {'Content-Type':'text/html; charset=utf-8'}
+              });
+            } else if (isAsset) {
+              response = await env.ASSETS.fetch(request);
+            } else {
+              response = await worker.fetch(request, env, ctx);
+            }
             const result = new Response(response.body, response);
             result.headers.set('X-Robots-Tag', 'noindex, nofollow');
             return result;
@@ -135,7 +146,7 @@ jobs:
             compatibility_date: '2026-10-03',
             compatibility_flags: ['nodejs_compat'],
             workers_dev: true,
-            assets: {directory: '.open-next/assets', binding: 'ASSETS', run_worker_first: true, html_handling: 'none'}
+            assets: {directory: '.open-next/assets', binding: 'ASSETS', run_worker_first: true}
           }));
           NODE
 
