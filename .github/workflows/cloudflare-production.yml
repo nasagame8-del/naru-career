@@ -68,3 +68,122 @@ jobs:
             test "$code" -ge 200
             test "$code" -lt 400
           done
+
+      - name: Verify latest published articles on canonical domain
+        env:
+          CANONICAL_ORIGIN: https://naru-career.com
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import matter from 'gray-matter';
+
+          const origin = process.env.CANONICAL_ORIGIN;
+          const dir = 'content/articles';
+          const slots = ['card', '01', '02', '03'];
+          const tokyoDate = new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'Asia/Tokyo',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+          }).format(new Date());
+
+          function normalizeDate(value) {
+            if (!value) return null;
+            if (value instanceof Date) return value.toISOString().slice(0, 10);
+            const text = String(value);
+            const match = text.match(/\d{4}-\d{2}-\d{2}/);
+            return match ? match[0] : null;
+          }
+
+          function escapeHtml(text) {
+            return String(text)
+              .replaceAll('&', '&amp;')
+              .replaceAll('<', '&lt;')
+              .replaceAll('>', '&gt;')
+              .replaceAll('"', '&quot;')
+              .replaceAll("'", '&#39;');
+          }
+
+          const articles = fs.readdirSync(dir)
+            .filter((name) => name.endsWith('.md'))
+            .map((name) => {
+              const file = path.join(dir, name);
+              const { data } = matter(fs.readFileSync(file, 'utf8'));
+              return {
+                slug: name.slice(0, -3),
+                title: String(data.title ?? ''),
+                datePublished: normalizeDate(data.datePublished),
+              };
+            })
+            .filter((article) =>
+              article.title &&
+              article.datePublished &&
+              article.datePublished <= tokyoDate
+            );
+
+          if (articles.length === 0) {
+            throw new Error('No published article metadata found');
+          }
+
+          const latestDate = articles
+            .map((article) => article.datePublished)
+            .sort()
+            .at(-1);
+          const targets = articles
+            .filter((article) => article.datePublished === latestDate)
+            .sort((a, b) => a.slug.localeCompare(b.slug));
+
+          async function fetchOk(url, attempts = 12, delayMs = 5000) {
+            let lastStatus = 0;
+            let lastError = null;
+            for (let attempt = 1; attempt <= attempts; attempt += 1) {
+              try {
+                const response = await fetch(url, {
+                  redirect: 'follow',
+                  headers: { 'cache-control': 'no-cache' },
+                });
+                lastStatus = response.status;
+                if (response.ok) {
+                  return response;
+                }
+              } catch (error) {
+                lastError = error;
+              }
+              console.log(`retry ${attempt}/${attempts}: ${url} status=${lastStatus}`);
+              await new Promise((resolve) => setTimeout(resolve, delayMs));
+            }
+            throw new Error(
+              `Canonical verification failed: ${url} status=${lastStatus} ${lastError ?? ''}`
+            );
+          }
+
+          console.log(`Canonical verification date: ${latestDate}; targets=${targets.length}`);
+
+          for (const article of targets) {
+            const articleUrl = `${origin}/articles/${article.slug}`;
+            const response = await fetchOk(articleUrl);
+            const html = await response.text();
+
+            if (!/<h1\b/i.test(html)) {
+              throw new Error(`Missing <h1> on ${articleUrl}`);
+            }
+            if (!html.includes(article.title) && !html.includes(escapeHtml(article.title))) {
+              throw new Error(`Title mismatch on ${articleUrl}: ${article.title}`);
+            }
+            console.log(`article ok: ${article.slug} status=${response.status}`);
+
+            for (const slot of slots) {
+              const local = `public/images/articles/${article.slug}-${slot}.webp`;
+              if (!fs.existsSync(local)) continue;
+
+              const imageUrl = `${origin}/images/articles/${article.slug}-${slot}.webp`;
+              const imageResponse = await fetchOk(imageUrl, 6, 3000);
+              const bytes = (await imageResponse.arrayBuffer()).byteLength;
+              if (bytes <= 0) {
+                throw new Error(`Empty production image: ${imageUrl}`);
+              }
+              console.log(`image ok: ${article.slug}-${slot} status=${imageResponse.status} bytes=${bytes}`);
+            }
+          }
+          NODE
