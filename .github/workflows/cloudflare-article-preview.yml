@@ -9,7 +9,6 @@ on:
       - "content/articles/**"
       - "public/images/articles/**"
       - "data/article-runs/**"
-      - ".github/workflows/cloudflare-article-preview.yml"
 
 permissions:
   contents: read
