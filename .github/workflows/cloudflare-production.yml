@@ -81,12 +81,15 @@ jobs:
           const origin = process.env.CANONICAL_ORIGIN;
           const dir = 'content/articles';
           const slots = ['card', '01', '02', '03'];
-          const tokyoDate = new Intl.DateTimeFormat('en-CA', {
-            timeZone: 'Asia/Tokyo',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-          }).format(new Date());
+          const tokyoParts = Object.fromEntries(
+            new Intl.DateTimeFormat('en', {
+              timeZone: 'Asia/Tokyo',
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+            }).formatToParts(new Date()).map((part) => [part.type, part.value])
+          );
+          const tokyoDate = `${tokyoParts.year}-${tokyoParts.month}-${tokyoParts.day}`;
 
           function normalizeDate(value) {
             if (!value) return null;
