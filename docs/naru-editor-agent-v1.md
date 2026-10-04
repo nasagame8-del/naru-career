@@ -37,6 +37,33 @@
 - `src/lib/naru-editor-agent/manifest.ts`: `createEmptyManifest` / `normalizeManifest` / `parseManifest` / `serializeManifest`（キー順固定・決定論的）/ `reconcileRunManifest(existing, evidence)`。
 - reconcile規則: 指定した項目だけ更新（省略・nullで消えない）／candidateId・articleId・slugの衝突はエラー（fail closed）／選択は `selected: true` のみ反映／画像refは枠ごとに独立／blockerは省略で保持、`replaceBlockers` を明示した時だけ置換／QA・CI・承認はSHA紐づけのため、head変更後は評価側で無効。
 
-## 次ラウンド
+## CLI
 
-CLI（manifestの読み書き）と各種アダプタ（GitHub / Drive / Cloudflare）は未実装。
+リポジトリ内のmanifestは安全なローカルCLIで読み書きできる。
+
+```bash
+npm run editor-agent -- status --date 2026-10-05
+npm run editor-agent -- next --date 2026-10-05
+npm run editor-agent -- reconcile --date 2026-10-05 --evidence ./evidence.json
+```
+
+- `status`: manifestが無くても空runをメモリ上で評価するだけで、ファイルは作らない。
+- `next`: 2スロットそれぞれの次の安全なアクションとhuman gateをJSONで返す。
+- `reconcile`: ChatGPT/automationが収集した正規化evidenceを既存manifestへ冪等に統合し、`data/editor-agent/run-YYYY-MM-DD.json` を更新する。
+- CLIはネットワーク、LLM、有料API、GitHub merge、Cloudflare deployを呼ばない。
+
+### Evidenceの正本
+
+- 候補選択: `article-factory/candidates` の `selected-queue-YYYY-MM-DD.json` とユーザーの明示選択。
+- GSC / Web / Drive / GitHub / Cloudflareの実状態: ChatGPTが接続済みツールから毎回取得し、evidenceとして渡す。
+- Claude Code: 実装ワーカー。編集上の事実やユーザー承認の正本にはしない。
+- preview承認: 現在のPR head SHAと完全一致するユーザー承認のみ有効。
+- 公開完了: mergeだけでは不可。Cloudflare Production成功と実記事URL確認が必要。
+
+## コスト・クォータ方針
+
+OpenAI API、Anthropic APIキー課金、Google Ads Keyword Planner、Semrush/Ahrefs等の有料SEO APIへ自動フォールバックしない。Claude Codeの利用枠・rate limitに達した場合は追加課金へ切り替えず、runをHELD/保留として次回再開する。
+
+## 残るアダプタ
+
+GitHub / Drive / GSC / Web / Cloudflareからevidenceを集め、CLIへ渡すスケジューラ層はChatGPT側の定期タスクで接続する。human gateを迂回する無人publish adapterは作らない。
