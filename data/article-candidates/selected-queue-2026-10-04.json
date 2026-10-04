@@ -188,7 +188,7 @@
       "articleId": 59,
       "slug": "beginner-engineer-tutorial-portfolio",
       "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
-      "status": "PREVIEW_READY_AWAITING_USER_APPROVAL",
+      "status": "CLOUDFLARE_PREVIEW_BUILDING",
       "selectedAt": "2026-10-04T08:56:01+09:00",
       "selectionEvidence": "User said おけ to SEO title and then すすめて",
       "requestedPublishDate": "2026-10-04",
@@ -203,16 +203,16 @@
         "driveAndPrDraftReadback": "matched",
         "imageVisual": "passed",
         "imageByteReadback": "matched",
-        "articleFactoryValidation": "completed_success",
+        "articleFactoryValidation": "pending_current_head",
         "sourceRecheck": "passed_2026-10-04",
         "assistantPreviewVisual": "revised_submission_section_verified_in_browser",
         "validatedHeadSha": "f8915b7ee4d61f4951f77457356048245cfe3ccd",
-        "cloudflarePreview": "completed_success"
+        "cloudflarePreview": "pending_current_head"
       },
       "branch": "article-factory/2026-10-04-59-tutorial-portfolio",
       "prNumber": 119,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/119",
-      "headSha": "f8915b7ee4d61f4951f77457356048245cfe3ccd",
+      "headSha": "a32b79e9a48cf44095f09df320d4194525b97b82",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1xOWrcNySEmB7QMC1X9FT88yaEL3oUPqD",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1N40A_G7GLcE6-yIJEOBBNB5P40fITmfP",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1EEFISU5BwlJOUCzUIMqcVsH3e-tefqhs",
@@ -299,7 +299,8 @@
     "2026-10-04: Draft PR118(article58) and119(article59), article/image-plan/prompts/fact records saved to dedicated Drive folders. Four slots per article await user images. Readback matched GitHub exact head and Drive. Structural QA passed; human review/images/CI/full visual QA pending. No merge/scheduling.",
     "2026-10-04: Eight user PNG originals archived and eight metadata-free WebPs saved to article58/59 Drive folders and Draft PR118/119. Drive bytes and exact GitHub blob SHAs verified. Human fact review, CI and visual preview approval remain pending; no publication.",
     "2026-10-04: Articles 58/59 isolated read-only noindex Cloudflare previews deployed; latest-head validation and preview smoke checks passed; browser article text and four images verified. Draft PRs remain unmerged. User visual approval remains pending.",
-    "Article59: clarify portfolio website/PDF/README submission options; README is optional. Latest-head CI and Cloudflare preview passed; revised text verified in browser."
+    "Article59: clarify portfolio website/PDF/README submission options; README is optional. Latest-head CI and Cloudflare preview passed; revised text verified in browser.",
+    "Article59: removed redundant GitHub/README explanation and unused reference on user request. Preview rebuilding."
   ],
   "dailySlots": {
     "2026-10-04": {
