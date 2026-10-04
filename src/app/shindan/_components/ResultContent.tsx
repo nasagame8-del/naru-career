@@ -189,7 +189,7 @@ export default function ResultContent({
           </li>
           <li>
             <span className="k">診断日</span>
-            <span className="v">{new Date().toLocaleDateString("ja-JP")}</span>
+            <span className="v date-text">{new Date().toLocaleDateString("ja-JP")}</span>
           </li>
         </ul>
 
