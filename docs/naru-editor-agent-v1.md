@@ -14,15 +14,15 @@
 - `evaluateArticleSlot(facts)` は `state / nextAction / humanGate / reasons` を返す。`evaluateRun(facts)` は2スロットを集約する。
 - 不明な値は null/省略のまま扱い、推測で埋めない。blockerがあれば `HELD`（確定済みの事実は保持）。
 
-主なルール: 選択は推測しない／画像は card・01・02・03 の4枚必須／QA・CIは最新headSHAに対する結果のみ有効／
-`previewApprovedHeadSha === latestHeadSha` のときだけ承認有効／`SCHEDULED` は明示的な `requestedPublishAt` が必要／
+主なルール: 選択は推測しない／画像は card・01・02・03 の4枚必須／QA・CI・Fact Checkは最新headSHAに対する結果のみ有効／
+`previewApprovedHeadSha === latestHeadSha` のときだけ承認有効／人間のFact Checkが同じhead SHAに対して記録されるまで `READY_TO_SCHEDULE` に進めない／`SCHEDULED` は明示的な `requestedPublishAt` が必要／
 `PUBLISHED` は mergeSha + 本番デプロイ確認 + 公開URL + 公開URL確認が揃うまで成立しない（mergeだけでは `PUBLISHING`）。
 
 ## 人間のゲート（3つ）
 
 1. 記事2本の選択
 2. 記事ごとの画像4枚の提供
-3. 正確なpreview headSHAの承認
+3. 正確なpreview headSHAの承認（同じ確認タイミングでFact Check記録も確認。AIの自己申告だけでは通さない）
 
 ## 本番とコスト方針
 
@@ -31,7 +31,7 @@
 
 ## Manifest（round 2 / subround A）
 
-- 日次manifestの置き場所（規約）: `data/editor-agent/run-YYYY-MM-DD.json`（コアはファイルI/Oを行わない）
+- 日次manifestの置き場所（規約）: `data/editor-agent/run-YYYY-MM-DD.json`（コアはファイルI/Oを行わない）。実運用では本番デプロイを不要に増やさないため `article-factory/candidates` ブランチ上で管理し、masterへ日次状態ファイルを直接書かない。
 - `schemaVersion: 1`。`date`, `candidatesReady`, run `blockers`, slot `1`/`2`（既存 `ArticleSlotFacts`）, 任意の `lastReconciledAt`。
 - 評価結果（state等）は保存せず、`manifestToRunFacts()` → `evaluateRun()` で都度導出する。
 - `src/lib/naru-editor-agent/manifest.ts`: `createEmptyManifest` / `normalizeManifest` / `parseManifest` / `serializeManifest`（キー順固定・決定論的）/ `reconcileRunManifest(existing, evidence)`。
@@ -57,7 +57,7 @@ npm run editor-agent -- reconcile --date 2026-10-05 --evidence ./evidence.json
 - 候補選択: `article-factory/candidates` の `selected-queue-YYYY-MM-DD.json` とユーザーの明示選択。
 - GSC / Web / Drive / GitHub / Cloudflareの実状態: ChatGPTが接続済みツールから毎回取得し、evidenceとして渡す。
 - Claude Code: 実装ワーカー。編集上の事実やユーザー承認の正本にはしない。
-- preview承認: 現在のPR head SHAと完全一致するユーザー承認のみ有効。
+- preview承認: 現在のPR head SHAと完全一致するユーザー承認のみ有効。公開前のFact Checkは一次情報・著者実体験に基づく人間確認を同じhead SHAへ別ゲートとして記録し、AIの自己判定で代替しない。
 - 公開完了: mergeだけでは不可。Cloudflare Production成功と実記事URL確認が必要。
 
 ## コスト・クォータ方針
