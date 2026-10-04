@@ -203,6 +203,49 @@ jobs:
             test -s "/tmp/$SLOT.webp"
           done
 
+      - name: Audit current production article
+        if: steps.images.outputs.ready == 'true'
+        shell: bash
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+          ARTICLE_FILE: ${{ steps.article.outputs.file }}
+        run: |
+          set -euo pipefail
+          PROD_URL="https://naru-career.com/articles/$ARTICLE_SLUG"
+          TITLE="$(node --input-type=module - "$ARTICLE_FILE" <<'NODE'
+          import fs from 'node:fs';
+          import matter from 'gray-matter';
+          const file = process.argv[2];
+          const { data } = matter(fs.readFileSync(file, 'utf8'));
+          if (!data.title) throw new Error('title missing');
+          process.stdout.write(String(data.title));
+          NODE
+          )"
+
+          STATUS=""
+          for ATTEMPT in {1..12}; do
+            STATUS="$(curl -L -sS -o /tmp/prod-article.html -w '%{http_code}' "$PROD_URL" || true)"
+            echo "production article attempt=$ATTEMPT status=$STATUS"
+            if [ "$STATUS" = "200" ]; then
+              break
+            fi
+            sleep 5
+          done
+          test "$STATUS" = "200"
+          grep -Fq "$TITLE" /tmp/prod-article.html || { echo "::error::production article title mismatch"; exit 1; }
+          grep -qi '<h1' /tmp/prod-article.html || { echo "::error::production article is missing <h1>"; exit 1; }
+
+          for SLOT in card 01 02 03; do
+            FILE="public/images/articles/$ARTICLE_SLUG-$SLOT.webp"
+            test -s "$FILE"
+            IMAGE_STATUS="$(curl -L -sS -o "/tmp/prod-$SLOT.webp" -w '%{http_code}' "https://naru-career.com/images/articles/$ARTICLE_SLUG-$SLOT.webp")"
+            echo "production $SLOT status=$IMAGE_STATUS bytes=$(wc -c < "/tmp/prod-$SLOT.webp" | tr -d ' ')"
+            test "$IMAGE_STATUS" = "200"
+            test -s "/tmp/prod-$SLOT.webp"
+          done
+
+          echo "Production article verified: $PROD_URL" >> "$GITHUB_STEP_SUMMARY"
+
       - name: Publish direct preview URL to PR
         if: steps.images.outputs.ready == 'true'
         env:
