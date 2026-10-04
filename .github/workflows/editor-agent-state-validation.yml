@@ -1,0 +1,55 @@
+name: NARU Editor Agent State Validation
+
+on:
+  push:
+    branches:
+      - editor-agent/state
+    paths:
+      - "data/editor-agent/**"
+      - ".github/workflows/editor-agent-state-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: naru-editor-agent-state-validation
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run Editor Agent tests
+        run: npm run test:editor-agent
+
+      - name: Parse and evaluate all daily manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          FILES=(data/editor-agent/run-*.json)
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            echo "No Editor Agent manifests yet."
+            exit 0
+          fi
+
+          for FILE in "${FILES[@]}"; do
+            DATE="${FILE#data/editor-agent/run-}"
+            DATE="${DATE%.json}"
+            echo "Validating $FILE"
+            npm run editor-agent -- status --date "$DATE" >/tmp/editor-agent-status.json
+            cat /tmp/editor-agent-status.json
+          done
