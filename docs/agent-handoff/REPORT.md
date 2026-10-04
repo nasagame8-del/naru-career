@@ -1,45 +1,44 @@
 # Claude Code Report
 
-- reportId: `REPORT-012`
-- completedInstructionId: `NARU-EDITOR-V1-001A`
+- reportId: `REPORT-013`
+- completedInstructionId: `NARU-EDITOR-V1-002A`
 - status: `DONE`
 - branch: `agent/naru-editor-agent-v1`
 
 ## summary
 
-NARU Editor Agent v1 の決定論的コアを追加。純粋関数・JSONシリアライズ可能な状態モデルで、I/Oなし。
-- Run状態5種、Slot状態12種、画像4枠（card/01/02/03）、QA/CIはlatestHeadShaに紐づくゲート。
-- `evaluateArticleSlot()` が `state / nextAction / humanGate / reasons` を返し、`evaluateRun()` が2スロットを独立に集約。
-- 必須ルール（選択は推測しない、4枚必須、承認SHA一致のみ有効、mergeだけではPUBLISHEDにならない、blockerでHELD、冪等）を実装。
-- 不整合な事実（例: 承認がないのにmergeSha）は先へ進めずゲートを再評価する。
+日次manifestモデルと純粋reconcilerを追加（CLI/workflow/adapterは未実装、指示どおり）。
+- `manifest.ts`: schemaVersion 1、`createEmptyManifest` / `normalizeManifest` / `parseManifest` / `serializeManifest`（キー順固定）/ `manifestToRunFacts` / `manifestPath`（`data/editor-agent/run-YYYY-MM-DD.json`、I/Oなし）。
+- `reconcileRunManifest(existing, evidence)`: 指定項目のみ更新、省略/nullで消さない、candidateId/articleId/slug衝突はエラー、`selected:true`のみ反映、slot1/2・画像枠は独立マージ、blockerは省略で保持し `replaceBlockers` 明示時のみ置換、冪等。QA/CI/承認はSHA紐づけなのでhead変更後は既存evaluatorで無効。
+- round 1のevaluatorは無変更。
 
 ## tests and timings
 
-- `npx vitest run src/lib/naru-editor-agent`: 14 passed（指示の12項目＋run評価2件）、約0.3秒
-- `npx tsc --noEmit`: exit 0
-- フルビルド・他テストは未実行（指示どおり）
+- `npm ci`（node_modules未導入だったため実行）: 約24秒
+- `npx vitest run src/lib/naru-editor-agent`: 26 passed（既存14＋新規12）、約0.5秒
+- `npx tsc --noEmit`: exit 0（出力なし）
 
 ## changed files
 
-- src/lib/naru-editor-agent/types.ts（新規）
-- src/lib/naru-editor-agent/evaluate.ts（新規）
-- src/lib/naru-editor-agent/index.ts（新規）
-- src/lib/naru-editor-agent/evaluate.test.ts（新規）
-- docs/naru-editor-agent-v1.md（新規）
+- src/lib/naru-editor-agent/manifest.ts（新規）
+- src/lib/naru-editor-agent/manifest.test.ts（新規）
+- src/lib/naru-editor-agent/index.ts（export追加）
+- docs/naru-editor-agent-v1.md（manifest節追加、CLI未実装を明記）
 - docs/agent-handoff/REPORT.md
 
 ## git diff summary
 
-新規ファイル5＋REPORT差し替え。既存コード・記事・workflow・STATE/NEXT_INSTRUCTIONは無変更。
+新規2ファイル＋既存3ファイル更新（計5ファイル）。package.json/workflow/記事/STATE/NEXT_INSTRUCTIONは無変更。
 
 ## existing issues found
 
-なし（REPORT.md内の旧レポートは履歴のため置換した。必要ならgit履歴を参照）。
+なし。
 
 ## remaining risks
 
-- 承認後にmergeSha等が入った状態で、head変更により承認が無効になった場合はWAITING_PREVIEW_APPROVALへ戻る（安全側）。実運用のmanifest対応はround 2で確認が必要。
-- ゲート判定はheadShaの文字列一致のみ。
+- `selected:false` のevidenceは「未指定」として無視（選択取り消しは未対応）。
+- 同一slot内のbranch/prNumber変更は衝突扱いにしていない（identityはcandidateId/articleId/slugのみ）。
+- 正規化でnull値は削除されるため、manifest上の「null」と「未設定」は区別されない。
 
 ## decisions needed
 
@@ -47,14 +46,12 @@ NARU Editor Agent v1 の決定論的コアを追加。純粋関数・JSONシリ�
 
 ## recommended next step
 
-Round 2: リポジトリmanifest、CLI、GitHub/Drive/Cloudflareアダプタの追加。
+Round 2B: manifestの読み書きCLI（`data/editor-agent/` I/O）。選択取り消しの扱いが必要なら指示で明示。
 
 ## Slack reply
 
-NARU Editor Agent v1 のコア部分を実装しました（DONE）。
-・`src/lib/naru-editor-agent/` に純粋関数の状態モデルを追加。Run5状態・記事スロット12状態、画像4枠、QA/CIは最新headSHA紐づけ。
-・`evaluateArticleSlot()` が state/nextAction/humanGate/reasons を返し、`evaluateRun()` が2記事を独立に集約します。
-・ルール: 選択は推測しない／画像4枚必須／承認は最新SHA一致のみ有効／mergeだけでは公開済みにならない（本番デプロイ確認＋実URL確認が必要）／blockerでHELD。
-・テスト14件pass、tsc exit 0。フルビルドは指示どおり未実行。
-・本番操作・merge・workflow変更・記事編集・有料APIなし。
-次はround 2でmanifest/CLI/アダプタを追加予定です。
+manifest＋純粋reconcilerを実装しました（DONE）。
+・`src/lib/naru-editor-agent/manifest.ts`: schemaVersion 1、空manifest作成／検証・正規化／決定論的JSON出力／EditorRunFactsへの変換。パス規約は `data/editor-agent/run-YYYY-MM-DD.json`（I/Oなし）。
+・`reconcileRunManifest`: 指定項目のみ更新、省略で消えない、ID衝突はエラー、選択は`selected:true`のみ、スロット1/2と画像枠は独立、blockerは省略で保持し`replaceBlockers`でのみ置換、冪等。head変更後の古いQA/CI/承認は既存evaluatorで無効のまま。
+・テスト26件pass（新規12）、tsc exit 0。
+・CLI/workflow/記事編集/ネットワーク/有料APIなし。次はCLI（Round 2B）です。

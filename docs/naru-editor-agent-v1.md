@@ -29,6 +29,14 @@
 - 本番の正本は Cloudflare Workers（`https://naru-career.com`）。公開確認はCloudflare deploy成功と実URLの確認で行う。
 - 有料APIへのフォールバックは持たない。
 
-## 次ラウンド（round 2）
+## Manifest（round 2 / subround A）
 
-リポジトリmanifest、CLI、各種アダプタ（GitHub / Drive / Cloudflare）を追加する。
+- 日次manifestの置き場所（規約）: `data/editor-agent/run-YYYY-MM-DD.json`（コアはファイルI/Oを行わない）
+- `schemaVersion: 1`。`date`, `candidatesReady`, run `blockers`, slot `1`/`2`（既存 `ArticleSlotFacts`）, 任意の `lastReconciledAt`。
+- 評価結果（state等）は保存せず、`manifestToRunFacts()` → `evaluateRun()` で都度導出する。
+- `src/lib/naru-editor-agent/manifest.ts`: `createEmptyManifest` / `normalizeManifest` / `parseManifest` / `serializeManifest`（キー順固定・決定論的）/ `reconcileRunManifest(existing, evidence)`。
+- reconcile規則: 指定した項目だけ更新（省略・nullで消えない）／candidateId・articleId・slugの衝突はエラー（fail closed）／選択は `selected: true` のみ反映／画像refは枠ごとに独立／blockerは省略で保持、`replaceBlockers` を明示した時だけ置換／QA・CI・承認はSHA紐づけのため、head変更後は評価側で無効。
+
+## 次ラウンド
+
+CLI（manifestの読み書き）と各種アダプタ（GitHub / Drive / Cloudflare）は未実装。
