@@ -75,7 +75,7 @@ test("reconcile writes a manifest and is semantically idempotent", async () => {
     assert.equal(status.status, 0, status.stderr);
     const parsed = JSON.parse(status.stdout);
     assert.equal(parsed.runState, "ACTIVE");
-    assert.equal(parsed.slots["1"].state, "SELECTED");
+    assert.equal(parsed.slots["1"].state, "DRAFTING");
     assert.equal(parsed.slots["2"].state, "UNSELECTED");
   } finally {
     await fsp.rm(root, { recursive: true, force: true });
