@@ -1,3 +1,23 @@
+<!-- BEGIN:naru-production-infra -->
+# NARU production infrastructure source of truth
+
+2026-10-04以降、NARUの本番ホスティングは **Cloudflare Workers** が正本です。Vercelは本番判定・公開ゲート・プレビュー成功条件として使用しません。
+
+- Production: `https://naru-career.com`
+- Worker: `naru-career` / Broad Fuchsia
+- Deploy source of truth: GitHub Actions `Deploy NARU to Cloudflare` on `master`
+- `www.naru-career.com` はCloudflare Worker経由でapexへ308 redirect
+- DNS authoritative nameservers: Cloudflare
+- GSC/GA4 runtime auth: Cloudflare上のOAuth設定
+- Contact: Cloudflare runtime + Resend。実送信・delivered確認済み
+- IndexNow: アプリ側経路は正常。外部IndexNowの429 TooManyRequestsは公開ブロッカーにしない
+- Vercelの自動ビルドは停止済み。Vercelのdeployment/statusが古い・失敗・未生成でも、それをNARU本番の失敗根拠にしない
+- `Vercel Production`, `Vercel Preview`, `Vercel commit status`, `Vercel Cron` を新規の成功条件に追加しない
+- 公開後の最終確認は、対象merge SHAのCloudflare deploy成功と `https://naru-career.com/articles/<slug>` の実レスポンス/表示で行う
+
+古い手順・タスク・ドキュメントにVercel前提が残っている場合は、この節を優先してCloudflare前提へ読み替えてください。
+<!-- END:naru-production-infra -->
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 
