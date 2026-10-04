@@ -80,6 +80,10 @@ jobs:
             echo "No article slug changed; running generic repository validation."
           fi
 
+      - name: Fact Check pre-scan
+        if: steps.article.outputs.mode == 'article'
+        run: npm run article:fact-check -- --slug "${{ steps.article.outputs.slug }}"
+
       - name: Full article local QA
         if: steps.article.outputs.mode == 'article'
         run: npm run article:local-qa -- --slug "${{ steps.article.outputs.slug }}"
