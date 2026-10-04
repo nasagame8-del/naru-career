@@ -664,7 +664,8 @@ export async function getRobots(origin, opts = {}) {
     try {
       const res = await withHostGate(hostOf(robotsUrl), () => rawFetch(robotsUrl, o.timeoutMs), o.sameHostDelayMs);
       if (res.status === 200) {
-        const { buf } = await readCapped(res, o.maxBytes);
+        const { buf } = await readCapped(res, o.maxBytes).catch(() => ({ buf: Buffer.alloc(0) }));
+        if (!buf.length) return { status: 'unavailable', note: 'robots_body_read_failed', groups: null, sitemaps: [] };
         return { status: 'available', ...parseRobots(buf.toString('utf8')) };
       }
       if (res.status >= 300 && res.status < 400) {
@@ -673,8 +674,8 @@ export async function getRobots(origin, opts = {}) {
           const next = new URL(loc, robotsUrl).toString();
           const res2 = await withHostGate(hostOf(next), () => rawFetch(next, o.timeoutMs), o.sameHostDelayMs);
           if (res2.status === 200) {
-            const { buf } = await readCapped(res2, o.maxBytes);
-            return { status: 'available', ...parseRobots(buf.toString('utf8')) };
+            const { buf } = await readCapped(res2, o.maxBytes).catch(() => ({ buf: Buffer.alloc(0) }));
+            if (buf.length) return { status: 'available', ...parseRobots(buf.toString('utf8')) };
           }
         }
         return { status: 'unavailable', note: `robots_redirect:${res.status}`, groups: null, sitemaps: [] };
@@ -822,7 +823,16 @@ export async function fetchDocument(startUrl, opts = {}) {
       return out;
     }
 
-    const { buf, truncated } = await readCapped(res, o.maxBytes);
+    // A connection can drop mid-body; undici throws here, not at fetch().
+    let buf;
+    let truncated;
+    try {
+      ({ buf, truncated } = await readCapped(res, o.maxBytes));
+    } catch (e) {
+      out.error = `body_read_failed:${e?.name ?? 'Error'}${e?.cause?.code ? `:${e.cause.code}` : ''}`;
+      requestStats.byError[out.error] = (requestStats.byError[out.error] ?? 0) + 1;
+      return out;
+    }
     out.bytesRead = buf.length;
     out.truncated = truncated;
     out.html = decodeBody(buf, ctype);
@@ -855,14 +865,23 @@ export function parseSitemap(xml) {
 // small async pool
 // ---------------------------------------------------------------------------
 
-export async function runPool(items, size, worker) {
+/**
+ * One failing item must never abort a multi-thousand-item run, so the worker's
+ * exception is handed back through `onItemError` instead of rejecting.
+ */
+export async function runPool(items, size, worker, onItemError = null) {
   const results = new Array(items.length);
   let next = 0;
   await Promise.all(Array.from({ length: Math.max(1, Math.min(size, items.length)) }, async () => {
     for (;;) {
       const i = next++;
       if (i >= items.length) return;
-      results[i] = await worker(items[i], i);
+      try {
+        results[i] = await worker(items[i], i);
+      } catch (e) {
+        if (!onItemError) throw e;
+        results[i] = await onItemError(items[i], e, i);
+      }
     }
   }));
   return results;

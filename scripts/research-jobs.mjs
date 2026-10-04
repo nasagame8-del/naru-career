@@ -906,6 +906,36 @@ async function main() {
     const jobs = r.candidates.filter(isAnalysisRecord).length;
     process.stderr.write(`[${done}/${companies.length}] jobs=${String(jobs).padStart(2)} cand=${String(r.candidates.length).padStart(2)} pages=${r.pagesFetched} req=${getRequestStats().totalHttpRequests} ${r.company}\n`);
     return r;
+  }, (c, err) => {
+    // Record the company as an explicit failure and keep the run going.
+    const r = {
+      corporateNumber: c.corporateNumber,
+      company: c.company,
+      prefecture: c.prefecture,
+      companySize: c.companySize,
+      stratum: c.stratum,
+      populationWeight: c.populationWeight,
+      homepageUrl: c.homepageUrl,
+      recruitmentUrl: c.recruitmentUrl,
+      recruitmentFinalUrl: c.finalUrl,
+      confidence: c.confidence,
+      hostCategory: c.hostCategory,
+      recruitmentPageStatus: null,
+      recruitmentPageRobots: null,
+      pagesFetched: 0,
+      indexPagesFetched: 0,
+      detailPagesFetched: 0,
+      detailLinkCandidates: 0,
+      depthReached: 0,
+      hitJobCap: false,
+      truncated: false,
+      candidates: [],
+      error: `unhandled:${err?.name ?? 'Error'}`,
+    };
+    done += 1;
+    appendCheckpoint(checkpointPath, r);
+    process.stderr.write(`[${done}/${companies.length}] FAILED ${r.error} ${c.company}\n`);
+    return r;
   });
   const byCorp = new Map([...doneByCorp, ...fresh.map((r) => [r.corporateNumber, r])]);
   const perCompany = companies.map((c) => byCorp.get(c.corporateNumber)).filter(Boolean);

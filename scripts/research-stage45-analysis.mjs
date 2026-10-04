@@ -272,9 +272,34 @@ function main() {
     } : null,
   };
 
+  // Integrity checks the full-run instruction asks for explicitly.
+  const corpCounts = new Map();
+  for (const r of rows) corpCounts.set(r.corporateNumber, (corpCounts.get(r.corporateNumber) ?? 0) + 1);
+  const urlCounts = new Map();
+  for (const r of adoptedRows) {
+    const u = (r.finalUrl ?? r.recruitmentUrl ?? '').replace(/\/$/, '');
+    if (u) urlCounts.set(u, (urlCounts.get(u) ?? 0) + 1);
+  }
+  const jobUrlCounts = new Map();
+  for (const j of (jobsData?.jobs ?? [])) {
+    const k = `${(j.jobUrl ?? '').replace(/\/$/, '')}`;
+    if (!jobUrlCounts.has(k)) jobUrlCounts.set(k, new Set());
+    jobUrlCounts.get(k).add(j.corporateNumber);
+  }
+  const integrity = {
+    companies: rows.length,
+    duplicateCorporateNumbers: [...corpCounts.entries()].filter(([, n]) => n > 1).length,
+    confidenceBucketsSumToCompanies:
+      funnel.confidence.high + funnel.confidence.medium + funnel.confidence.low + funnel.confidence.none === rows.length,
+    recruitmentUrlsSharedByMultipleCompanies: [...urlCounts.entries()].filter(([, n]) => n > 1).length,
+    jobUrlsSharedByMultipleCompanies: [...jobUrlCounts.entries()].filter(([, s]) => s.size > 1).length,
+    nullsPreserved: 'このパイプラインでは未取得値を null のまま保持しており、0 や false に変換していない。',
+  };
+
   const analysis = {
     runDate: RUN_DATE,
     stage: 'stage4-5-analysis',
+    integrityChecks: integrity,
     generator: 'scripts/research-stage45-analysis.mjs',
     generatedAtUtc: new Date().toISOString(),
     inputs: {

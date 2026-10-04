@@ -650,6 +650,52 @@ async function main() {
     }
     process.stderr.write(`[${done}/${sample.length}] ${String(r.confidence ?? 'none').padEnd(6)} ${String(r.discoveryMethod ?? '-').padEnd(28)} ${r.recruitmentUrl ?? r.homepageUrl}\n`);
     return r;
+  }, (t, err) => {
+    // Record the company as an explicit failure and keep the run going.
+    const r = {
+      corporateNumber: t.corporateNumber || null,
+      company: t.company || null,
+      prefecture: t.prefecture || null,
+      companySize: t.companySize || null,
+      employeeBand: sizeBand(sizeOf(t.companySize)),
+      prefectureBand: prefectureTier(t.prefecture),
+      stratum: t.stratum,
+      populationWeight: t.populationWeight ?? null,
+      homepageUrl: t.homepageUrl,
+      homepageStatus: null,
+      homepageRobotsStatus: null,
+      homepageError: `unhandled:${err?.name ?? 'Error'}`,
+      homepageFinalUrl: null,
+      recruitmentUrl: null,
+      finalUrl: null,
+      discoveryMethod: null,
+      discoveryAnchor: null,
+      hostCategory: null,
+      confidence: null,
+      httpStatus: null,
+      robotsStatus: null,
+      pageTitle: null,
+      verifiedAsRecruitmentPage: null,
+      candidateCount: 0,
+      candidatesConsidered: null,
+      sitemapsChecked: 0,
+      jobPlatformLinksOnHomepage: null,
+      shokubaRecruitmentUrl: t.shokubaRecruitmentUrl ?? null,
+      alreadyInShokuba: Boolean(t.shokubaRecruitmentUrl),
+      jobPostingJsonLdOnRecruitmentPage: null,
+      rootFallbackUsed: false,
+      normalizedOriginFallbackUsed: false,
+      rootFallbackUrl: null,
+      rootFallbackStatus: null,
+      redirects: 0,
+      redirectChain: null,
+      fetchedAt: null,
+      notes: [`unhandled_error:${String(err?.message ?? err).slice(0, 200)}`],
+    };
+    done += 1;
+    appendCheckpoint(checkpointPath, r);
+    process.stderr.write(`[${done}/${sample.length}] FAILED ${r.homepageError} ${t.homepageUrl}\n`);
+    return r;
   });
 
   // Keep the frame's order so the output is stable across resumes.
