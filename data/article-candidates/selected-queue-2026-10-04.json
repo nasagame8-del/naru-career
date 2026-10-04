@@ -89,7 +89,7 @@
       "articleId": 58,
       "slug": "employee-to-contractor-social-insurance",
       "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
-      "status": "PUBLICATION_HELD",
+      "status": "MERGED_PRODUCTION_PENDING",
       "selectedAt": "2026-10-04T08:47:29+09:00",
       "selectionEvidence": "User selected 1 after numbered morning candidate list",
       "requestedPublishDate": "2026-10-04",
@@ -182,18 +182,18 @@
       "previewUrl": "https://naru-article-58-preview.broad-fuchsia.workers.dev/articles/employee-to-contractor-social-insurance",
       "publishAutomationId": "6ac1ad0c46dc8191857eed5f80bf92d8",
       "publicationGate": {
-        "checkedAt": "2026-10-04T12:00:23+09:00",
-        "result": "held",
-        "mergeAttempted": false,
+        "checkedAt": "2026-10-04T12:02:45+09:00",
+        "result": "merged",
+        "mergeAttempted": true,
         "expectedHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
         "actualHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
-        "articleFactoryValidation": "completed_success",
-        "cloudflarePreview": "completed_success",
-        "blockers": [
-          "Human fact check remains pending in selected queue and PR fact-check record explicitly says 人間確認: 未実施. User visual preview approval does not record fact review."
-        ],
-        "notes": "12:00 JST target window only. No automatic delayed merge without new user schedule."
-      }
+        "mergeSha": "527b124825c3b9e26d4702108cddaede279f627b",
+        "cloudflareDeploy": "pending",
+        "productionVisual": "pending",
+        "approvalClarification": "User clarified 2026-10-04 12:01 JST that 「両方OK」was intended as approval to publish. Human fact-check status not reclassified as completed."
+      },
+      "mergeSha": "527b124825c3b9e26d4702108cddaede279f627b",
+      "productionUrl": "https://naru-career.com/articles/employee-to-contractor-social-insurance"
     },
     {
       "order": 2,
@@ -320,7 +320,8 @@
     "Article59: removed redundant GitHub/README explanation and unused reference on user request. Preview rebuilding.",
     "Article59: user-requested irrelevant model-photo FAQ removed. Updated preview browser verification passed.",
     "2026-10-04 user both previews approved at current heads. Combined exact-schedule task created/enabled for 12:00 article58 and18:00 article59 (2 occurrences); separate task hit plan limit. No merge yet.",
-    "2026-10-04 12:00 JST: Article58 publication held; human fact check unperformed per queue and fact-check record. CI, preview, exact head and images checked. Article59 18:00 reservation untouched."
+    "2026-10-04 12:00 JST: Article58 publication held; human fact check unperformed per queue and fact-check record. CI, preview, exact head and images checked. Article59 18:00 reservation untouched.",
+    "2026-10-04 12:02 JST: User clarified prior both-OK approval. Article58 PR118 merged at exact approved head; Cloudflare production checks pending. Human fact review is not claimed completed."
   ],
   "dailySlots": {
     "2026-10-04": {
