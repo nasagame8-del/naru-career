@@ -114,5 +114,3 @@ naruPoint: "委託報酬の額面を比べる前に、健康保険と年金の�
 - [協会けんぽ：任意継続の加入条件](https://www.kyoukaikenpo.or.jp/faq/voluntary_continuation/002/)
 - [協会けんぽ：任意継続の保険料](https://www.kyoukaikenpo.or.jp/faq/voluntary_continuation/005/)
 - [新宿区：国民健康保険の届出](https://www.city.shinjuku.lg.jp/hoken/file02_02_00001.html)
-
-<!-- preview-wrapper-smoke-140: 2026-10-04 -->
