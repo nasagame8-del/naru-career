@@ -273,7 +273,9 @@ function mergeSlot(existing: ArticleSlotFacts, evidence: SlotEvidence, order: Sl
  */
 export function reconcileRunManifest(existing: EditorRunManifest, evidence: EditorRunEvidence): EditorRunManifest {
   const base = normalizeManifest(existing);
-  if (typeof evidence !== "object" || evidence === null || Array.isArray(evidence)) {\n    throw new ManifestError("evidence must be an object");\n  }
+  if (typeof evidence !== "object" || evidence === null || Array.isArray(evidence)) {
+    throw new ManifestError("evidence must be an object");
+  }
   if (evidence.candidatesReady != null && typeof evidence.candidatesReady !== "boolean") {
     throw new ManifestError("evidence.candidatesReady must be a boolean");
   }
