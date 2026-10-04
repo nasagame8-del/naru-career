@@ -54,11 +54,11 @@ export async function LatestNotePosts() {
               </div>
 
               <div className="p-3 flex-1 min-w-0">
-                <h3 className="font-bold text-[13px] text-ink leading-snug line-clamp-2 group-hover:text-primary transition-colors">
+                <h3 className="card-title font-bold text-ink group-hover:text-primary transition-colors">
                   {post.title}
                 </h3>
                 {post.pubDate && (
-                  <time className="block text-[11px] text-ink-soft font-mono mt-1.5">
+                  <time className="block text-[11px] text-ink-soft mt-1.5">
                     {new Date(post.pubDate).toLocaleDateString("ja-JP", {
                       year: "numeric",
                       month: "2-digit",

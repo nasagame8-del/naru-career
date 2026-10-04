@@ -1,3 +1,50 @@
+# NARU 全サイト Typography QA — 2026-10-04
+
+- reportId: USER-TYPOGRAPHY-QA-20261004
+- completedInstructionId: USER-TYPOGRAPHY-QA-20261004（ユーザー直接依頼。NEXT_INSTRUCTIONはIDLE）
+- status: DONE_PENDING_REVIEW（PR未作成・master未反映）
+- branch: `claude/funny-cray-auvl1x`
+
+## 不自然改行の原因
+1. 日本語は既定で全文字間が改行可能。見出し・カードに文節単位の改行指定がなく「制｜作実績」「考｜える」など熟語途中で割れていた。
+2. `.editorial-title` とモバイル `.prose` の `overflow-wrap:anywhere`（+ `word-break:break-word`）。
+3. `line-break` 未指定で句読点・小書き仮名の禁則が緩い（句読点行頭21件）。
+4. 1024–1199pxで記事カードが3列＋サイドバーとなり、タイトル幅が約10字まで狭まっていた。
+5. パンくずが記事タイトル全文を複数行で表示しH1と重複。フッターリンク列が768pxで狭すぎた。
+
+## 共通ルール（globals.css）
+- `html { line-break: strict }`。
+- h1–h6 / `.jp-title` / フッターリンク: `word-break:normal; line-break:strict; overflow-wrap:normal; text-wrap:pretty`、`@supports (word-break:auto-phrase)` で文節改行。
+- `overflow-wrap:anywhere` を全廃。`.prose` は `break-word`（1行を超える長いURL・英数字のみ折返し、通常英単語は割らない）。`pre` は横スクロール、表は既存の横スクロール維持。
+- `.editorial-title`: `clamp(26px, 1.25vw + 22px, 33px)` / line-height 1.45。balanceも比較したが「切り替えた｜後」等が出たためprettyを採用。
+- `.card-title`（一覧・関連記事・note）: 15–15.5px / 1.65 / 3行clamp。記事グリッドの3列化を1200px以上に変更（1024–1199pxは2列）。
+- `.breadcrumb`: 1行・現在ページを省略表示（モバイル最大14em）。BreadcrumbJSON-LDは未変更。
+- `.ui-nowrap`: カテゴリタグ。カテゴリタブは既存nowrap。日付は `time, .date-text` でnowrap。
+- フッターナビ: md 3列→lg 3列（768pxは2列）。
+
+## 日付フォント
+- ユーザー提供の「YDW バナナスリップplus」（ymnk design works）を数字・`-/.:`・年月日のみにサブセットし `public/fonts/ydw-bananaslip-plus-date.woff2`（2.9KB）として追加。`unicode-range` で日付文字だけに適用。
+- 適用先: 全 `<time>`（記事公開/更新日・カード・関連記事・更新履歴・note投稿）、診断結果の診断日、プライバシーポリシーの制定日/最終更新日（`<time>`で囲んだのみ、文言不変）。
+- 既存の `font-mono` 指定を日付要素から外した。
+
+## Visual QA（自動計測 + スクリーンショット）
+- 17ページ × 375/390/430/768/1024/1440px。記事は短3・中3・長3本。
+- 修正前: 孤立1–2文字行150件、句読点行頭21件。修正後: 孤立4件（「違い」「する」の2文字行2種、文節単位なので許容）、句読点行頭0、括弧孤立0、英単語分割0、要素はみ出し0、横スクロール0。
+- カード高さ差: 1024/1440pxで0、375/768pxで最大25px。
+- テスト: `tsc --noEmit` 成功、変更TSXのESLint成功、vitest 319件成功、`npm run build` 成功。
+
+## 既知の問題・判断事項
+- `auto-phrase` はChromium系のみ。Safari/Firefoxは `line-break:strict` + `text-wrap:pretty` の範囲で改善（文節改行はしない）。
+- Chromeの文節モデル由来で「教材ど｜おり」「切り｜替える」が一部幅で残る。CSSのみでは解消不可（`<wbr>` 挿入は禁止のため未対応）。
+- フォントのWeb埋め込み可否はymnk design worksの利用規約で最終確認してください（NEEDS_DECISION）。
+- 変更禁止項目（タイトル文字列・本文・slug・metadata・JSON-LD・リンク・画像・日付値）は未変更。
+
+## 変更ファイル
+globals.css / articles/[slug]/page.tsx / articles/page.tsx / category/[slug]/page.tsx / privacy/page.tsx / shindan/_components/ResultContent.tsx / ArticleList.tsx / LatestNotePosts.tsx / Footer.tsx / public/fonts/ydw-bananaslip-plus-date.woff2
+
+## 推奨する次の作業
+- フォント規約確認後、PR作成→Cloudflareプレビューで実機（iOS Safari）確認。
+
 ## 2026-10-04 フォント・表記の追加調整
 
 - ユーザー指定により、メディア共通フォントを Noto Sans JP / Noto Serif JP に統一。数字用の旧等幅フォントも Noto Sans JP に統一。

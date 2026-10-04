@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* 日付専用: YDW バナナスリップplus（数字と日付記号だけのサブセット） */
+@font-face {
+  font-family: "YDW Bananaslip Plus Date";
+  src: url("/fonts/ydw-bananaslip-plus-date.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+002D-003A, U+5E74, U+6708, U+65E5;
+}
+
 /* ── Editorial Modern Design System ── */
 :root {
   --site-width: 1200px;
@@ -53,6 +61,7 @@
   --font-heading: "Noto Serif JP", serif;
   --font-serif: var(--font-heading);
   --font-mono: var(--font-sans);
+  --font-date: "YDW Bananaslip Plus Date", var(--font-sans);
 }
 
 body {
@@ -129,7 +138,8 @@ h1 {
 .prose {
   font-size: 17px;
   line-height: 1.95;
-  overflow-wrap: anywhere;
+  /* 1行に収まらない長いURL・英数字だけを折り返す（日本語・通常の英単語は分割しない） */
+  overflow-wrap: break-word;
 }
 
 .prose h2 {
@@ -520,7 +530,7 @@ h1 {
 
 /* Mobile article overflow guard */
 @media (max-width: 639px) {
-  .prose { min-width: 0; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; }
+  .prose { min-width: 0; max-width: 100%; }
   .prose > *, .prose > div > * { max-width: 100%; }
   .prose pre, .prose table { max-width: 100%; overflow-x: auto; }
   /* 表のセルは1文字ずつ折り返さず、足りなければ横スクロールさせる */
@@ -547,7 +557,7 @@ h1 {
 .article-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--card-gap); }
 .article-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; background: var(--surface); border-radius: var(--editorial-radius); }
 .editorial-hero h1 { font-family: var(--font-sans); }
-.editorial-title { font-family: var(--font-sans); font-weight: 700; line-height: 1.55; font-size: clamp(26px, 2.65vw, 38px); overflow-wrap: anywhere; }
+.editorial-title { font-family: var(--font-sans); font-weight: 700; line-height: 1.45; font-size: clamp(26px, 1.25vw + 22px, 33px); letter-spacing: 0.01em; }
 .article-sheet { min-width: 0; background: var(--surface); padding: 28px; border-radius: var(--editorial-radius); }
 .editorial-sticky { position: sticky; top: var(--sidebar-top); }
 :where(a, button, summary, input, select):focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
@@ -559,9 +569,77 @@ footer :where(a, button):focus-visible { outline-color: white; }
 }
 @media (min-width: 1024px) {
   .editorial-layout { grid-template-columns: minmax(0, 1fr) var(--sidebar-width); }
-  .article-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .article-detail-layout { grid-template-columns: minmax(0, var(--article-width)) var(--sidebar-width); justify-content: space-between; }
+}
+/* サイドバー併設時、3列ではタイトル幅が約10字まで狭まり文節が割れるため1200px以上で3列 */
+@media (min-width: 1200px) {
+  .article-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 639px) {
   .article-sheet { padding: 24px 20px; margin-inline: -20px; border-radius: 0; }
+}
+
+/* ── Japanese typography ──
+   見出し・カードタイトルは文節単位で改行し、1文字だけの孤立行や行頭の句読点を避ける。
+   overflow-wrap: anywhere は日本語の見出し・本文には使わない（長いURL・英数字は .prose の break-word で吸収）。 */
+html { line-break: strict; }
+:where(h1, h2, h3, h4, h5, h6),
+.jp-title,
+footer nav a {
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+@supports (word-break: auto-phrase) {
+  :where(h1, h2, h3, h4, h5, h6),
+  .jp-title,
+  footer nav a {
+    word-break: auto-phrase;
+  }
+}
+/* コードは単語を壊さず横スクロール */
+.prose pre { overflow-x: auto; white-space: pre; word-break: normal; overflow-wrap: normal; }
+.prose :not(pre) > code { overflow-wrap: break-word; }
+
+/* 記事カードのタイトル（一覧・PICKUP・関連記事・note） */
+.card-title {
+  font-size: 15px;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .card-title { font-size: 15.5px; }
+}
+
+/* UIラベル: 短い要素は折り返さない */
+.ui-nowrap { white-space: nowrap; }
+
+/* 日付 */
+time, .date-text {
+  font-family: var(--font-date);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* パンくず: 見た目上は1行に収め、現在ページ（記事タイトル）は省略表示。JSON-LDは別出力で全文のまま */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 0;
+  white-space: nowrap;
+}
+.breadcrumb > * { flex-shrink: 0; }
+.breadcrumb > [aria-current="page"] {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 639px) {
+  .breadcrumb > [aria-current="page"] { max-width: 14em; }
 }

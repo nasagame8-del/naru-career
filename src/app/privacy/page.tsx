@@ -79,9 +79,9 @@ export default function PrivacyPage() {
           </p>
 
           <p className="text-ink-soft text-sm mt-8">
-            制定日: 2026年7月10日
+            制定日: <time dateTime="2026-07-10">2026年7月10日</time>
             <br />
-            最終更新日: 2026年7月13日
+            最終更新日: <time dateTime="2026-07-13">2026年7月13日</time>
           </p>
         </div>
       </div>

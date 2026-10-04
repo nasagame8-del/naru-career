@@ -33,11 +33,11 @@ export default function ArticlesIndexPage() {
       />
 
       <div className="site-container pt-8 pb-16">
-        <nav aria-label="パンくずリスト" className="text-xs text-ink-soft mb-4">
+        <nav aria-label="パンくずリスト" className="breadcrumb text-xs text-ink-soft mb-4">
           <Link href="/" className="hover:text-ink transition-colors">
             ホーム
           </Link>
-          <span className="mx-1.5" aria-hidden="true">/</span>
+          <span aria-hidden="true">/</span>
           <span className="text-ink" aria-current="page">記事一覧</span>
         </nav>
 

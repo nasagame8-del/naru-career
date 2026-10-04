@@ -13,7 +13,7 @@ export function ArticleList({ articles, priority = false, readingOrder }: { arti
               <Image src={article.cardImagePath}
                 alt={`${article.title}｜${article.category}記事のサムネイル画像`}
                 fill className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
-                sizes="(min-width: 1240px) 293px, (min-width: 1024px) 23vw, (min-width: 640px) 46vw, calc(100vw - 40px)"
+                sizes="(min-width: 1240px) 293px, (min-width: 1200px) 24vw, (min-width: 1024px) 33vw, (min-width: 640px) 46vw, calc(100vw - 40px)"
                 priority={priority && index < 3} />
             ) : (
               <div className="h-full flex items-center justify-center text-primary text-sm">{article.category}</div>
@@ -27,11 +27,11 @@ export function ArticleList({ articles, priority = false, readingOrder }: { arti
               </p>
             )}
             <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-              <span className={`text-[11px] font-bold px-3 py-0.5 rounded-full ${getCategoryTheme(article.category).tag}`}>{article.category}</span>
+              <span className={`ui-nowrap text-[11px] font-bold px-3 py-0.5 rounded-full ${getCategoryTheme(article.category).tag}`}>{article.category}</span>
               <time dateTime={article.datePublished} className="text-[11px] text-ink-soft tabular-nums">{article.datePublished}</time>
             </div>
-            <h3 className="text-base font-bold leading-[1.8] line-clamp-3 group-hover:text-primary transition-colors">{article.title}</h3>
-            <p className="mt-5 text-xs leading-[1.8] text-ink-soft line-clamp-2">{article.excerpt}</p>
+            <h3 className="card-title font-bold group-hover:text-primary transition-colors">{article.title}</h3>
+            <p className="mt-4 text-xs leading-[1.8] text-ink-soft line-clamp-2">{article.excerpt}</p>
           </div>
         </Link>
       ))}

@@ -13,7 +13,7 @@ export function Footer() {
               第二新卒のIT転職ガイド
             </p>
           </div>
-          <nav aria-label="フッター" className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-sm text-white/80">
+          <nav aria-label="フッター" className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-sm text-white/80">
             <Link href="/guides/second-new-grad-complete-guide" className="inline-flex min-h-11 items-center hover:text-white transition-colors">
               転職完全ガイド
             </Link>

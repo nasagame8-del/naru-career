@@ -111,7 +111,7 @@ export default async function ArticlePage(props: {
       <BreadcrumbJsonLd items={breadcrumbs} />
 
       <div className="site-container py-8">
-        <nav aria-label="パンくずリスト" className="text-sm text-ink-soft mb-6 flex items-center gap-1.5 flex-wrap">
+        <nav aria-label="パンくずリスト" className="breadcrumb text-sm text-ink-soft mb-6">
           <Link href="/" className="hover:text-primary transition-colors">
             ホーム
           </Link>
@@ -120,13 +120,13 @@ export default async function ArticlePage(props: {
             {article.category}
           </Link>
           <span aria-hidden="true">/</span>
-          <span className="text-ink" aria-current="page">{article.title}</span>
+          <span className="text-ink" aria-current="page" title={article.title}>{article.title}</span>
         </nav>
 
         <div className="editorial-layout article-detail-layout">
           <article className="article-sheet">
             <span
-              className={`inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${theme.tag}`}
+              className={`ui-nowrap inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${theme.tag}`}
             >
               {article.category}
             </span>
@@ -300,16 +300,16 @@ export default async function ArticlePage(props: {
                           )}
                         </div>
                         <div className="p-3">
-                          <h3 className="font-bold text-sm text-ink leading-snug line-clamp-2 group-hover:text-primary transition-colors">
+                          <h3 className="card-title font-bold text-ink group-hover:text-primary transition-colors">
                             {a.title}
                           </h3>
                           <div className="flex items-center gap-2 mt-1.5">
                             <span
-                              className={`text-[11px] font-mono font-medium px-1.5 py-0.5 rounded ${relTagStyle}`}
+                              className={`ui-nowrap text-[11px] font-mono font-medium px-1.5 py-0.5 rounded ${relTagStyle}`}
                             >
                               {a.category}
                             </span>
-                            <time dateTime={a.datePublished} className="text-[11px] text-ink-soft font-mono">
+                            <time dateTime={a.datePublished} className="text-[11px] text-ink-soft">
                               {a.datePublished}
                             </time>
                           </div>
@@ -348,7 +348,7 @@ export default async function ArticlePage(props: {
                 <ul className="text-xs text-ink-soft space-y-1.5">
                   {article.updateHistory.map((entry, i) => (
                     <li key={i} className="flex gap-2">
-                      <time dateTime={entry.date} className="font-mono shrink-0">{entry.date}</time>
+                      <time dateTime={entry.date} className="shrink-0">{entry.date}</time>
                       <span>{entry.description}</span>
                     </li>
                   ))}

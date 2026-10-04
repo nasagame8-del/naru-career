@@ -74,7 +74,7 @@ export default async function CategoryPage(props: {
       />
 
       <div className="site-container pt-8 pb-16">
-        <nav aria-label="パンくずリスト" className="text-sm text-ink-soft mb-6 flex items-center gap-1.5">
+        <nav aria-label="パンくずリスト" className="breadcrumb text-sm text-ink-soft mb-6">
           <Link href="/" className="hover:text-primary transition-colors">
             ホーム
           </Link>
