@@ -35,6 +35,8 @@ jobs:
           import fs from 'node:fs';
           const article = process.env.ARTICLE_BRANCH.endsWith('58-social-insurance') ? 58 : process.env.ARTICLE_BRANCH.endsWith('59-tutorial-portfolio') ? 59 : null;
           if (!article) throw new Error('Unexpected preview branch');
+          const slug = article === 58 ? 'employee-to-contractor-social-insurance' : 'beginner-engineer-tutorial-portfolio';
+          fs.copyFileSync('.next/server/app/articles/'+slug+'.html', '.open-next/assets/__article-preview.html');
           fs.writeFileSync('.open-next/article-preview.js', `
           import worker from './worker.js';
           export default {...worker, async fetch(request, env, ctx) {
@@ -42,7 +44,9 @@ jobs:
             if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
               return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
             const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
-            const response = isAsset ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
+            const articleRequest = url.pathname === '/articles/${slug}';
+            const assetUrl = new URL('/__article-preview.html', url);
+            const response = articleRequest ? await env.ASSETS.fetch(new Request(assetUrl, request)) : isAsset ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
             const result = new Response(response.body, response);
             result.headers.set('X-Robots-Tag', 'noindex, nofollow');
             return result;
