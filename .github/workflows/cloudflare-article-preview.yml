@@ -115,38 +115,35 @@ jobs:
           const articleHtml = fs.readFileSync(builtHtml, 'utf8');
           const embeddedHtml = JSON.stringify(articleHtml);
           fs.writeFileSync('.open-next/article-preview.js', `
-          import worker from './worker.js';
           const ARTICLE_HTML = ${embeddedHtml};
-          export default {...worker, async fetch(request, env, ctx) {
-            const url = new URL(request.url);
-            if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
-              return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
-            const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
-            const articleRequest = url.pathname === '/articles/${slug}';
-            let response;
-            if (articleRequest) {
-              response = new Response(request.method === 'HEAD' ? null : ARTICLE_HTML, {
+          export default {
+            async fetch(request, env) {
+              const url = new URL(request.url);
+              if (!['GET','HEAD'].includes(request.method))
+                return new Response('Method not allowed', {status:405, headers:{'X-Robots-Tag':'noindex, nofollow'}});
+              if (url.pathname !== '/articles/${slug}')
+                return new Response('Not found', {status:404, headers:{'X-Robots-Tag':'noindex, nofollow'}});
+              return new Response(request.method === 'HEAD' ? null : ARTICLE_HTML, {
                 status: 200,
-                headers: {'Content-Type':'text/html; charset=utf-8'}
+                headers:{
+                  'Content-Type':'text/html; charset=utf-8',
+                  'X-Robots-Tag':'noindex, nofollow'
+                }
               });
-            } else if (isAsset) {
-              response = await env.ASSETS.fetch(request);
-            } else {
-              response = await worker.fetch(request, env, ctx);
             }
-            const result = new Response(response.body, response);
-            result.headers.set('X-Robots-Tag', 'noindex, nofollow');
-            return result;
-          }};
+          };
           `);
 
           fs.writeFileSync('wrangler.article-preview.json', JSON.stringify({
             name: 'naru-pr-' + pr + '-preview',
             main: '.open-next/article-preview.js',
             compatibility_date: '2026-10-03',
-            compatibility_flags: ['nodejs_compat'],
             workers_dev: true,
-            assets: {directory: '.open-next/assets', binding: 'ASSETS', run_worker_first: true}
+            assets: {
+              directory: '.open-next/assets',
+              binding: 'ASSETS',
+              run_worker_first: ['/articles/*']
+            }
           }));
           NODE
 
