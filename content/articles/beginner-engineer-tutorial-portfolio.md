@@ -83,11 +83,9 @@ naruPoint: "完成させることは学習の一歩です。応募時には『�
 
 教材を基にした作品は、完成画面だけを見せても、教材に含まれていた機能と自分で追加した機能を区別できません。応募先に自分の取り組みを説明するため、作品と一緒に、学習元・変更内容・確認した動作をまとめましょう。
 
-説明を載せる場所は、ポートフォリオサイトの作品紹介ページ、PDFの作品資料、GitHubのREADMEなどから、応募先の指定に合わせて選びます。GitHubを使うことが必須という意味ではありません。
+説明を載せる場所は、ポートフォリオサイトの作品紹介ページ、PDFの作品資料、GitHubのREADMEなどから、応募先の指定に合わせて選びます。
 
-GitHubでコードを公開する場合は、リポジトリの説明文書であるREADMEにまとめる方法もあります。GitHub公式ドキュメントでは、READMEでプロジェクトの内容や使い始め方などを説明できると案内しています。[GitHub：READMEファイルについて](https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
-
-以下は、提出形式にかかわらず作品の説明を整理するためのNARU独自の記載例です。GitHub公式が定めた採用向けの書式や、採用企業共通の必須項目ではありません。
+以下は、提出形式にかかわらず作品の説明を整理するためのNARU独自の記載例です。採用企業共通の必須書式ではありません。
 
 > 学習元：教材名・参照URL  
 > 作品の位置づけ：教材を基にした自主制作。実務案件ではない  
@@ -124,6 +122,5 @@ GitHubでコードを公開する場合は、リポジトリの説明文書で�
 ## 参考資料
 
 - [全日本模型ホビーショー公式サイト：第64回、一般公開日2026年10月3日・4日](https://hobbyshow.co.jp/)
-- [GitHub公式ドキュメント：リポジトリのREADMEファイルについて](https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
 
 一次情報は2026年10月4日に確認しました。模型と制作実績の比較、チェック表、変更案、面接文面はNARUの編集上の解釈・架空例です。Xの順位や反応数を需要の実測として扱っていません。
