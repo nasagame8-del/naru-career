@@ -89,7 +89,7 @@
       "articleId": 58,
       "slug": "employee-to-contractor-social-insurance",
       "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
-      "status": "MERGED_PRODUCTION_PENDING",
+      "status": "PUBLISHED_VERIFIED",
       "selectedAt": "2026-10-04T08:47:29+09:00",
       "selectionEvidence": "User selected 1 after numbered morning candidate list",
       "requestedPublishDate": "2026-10-04",
@@ -183,14 +183,17 @@
       "publishAutomationId": "6ac1ad0c46dc8191857eed5f80bf92d8",
       "publicationGate": {
         "checkedAt": "2026-10-04T12:02:45+09:00",
-        "result": "merged",
+        "result": "production_verified",
         "mergeAttempted": true,
         "expectedHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
         "actualHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
         "mergeSha": "527b124825c3b9e26d4702108cddaede279f627b",
-        "cloudflareDeploy": "pending",
-        "productionVisual": "pending",
-        "approvalClarification": "User clarified 2026-10-04 12:01 JST that 「両方OK」was intended as approval to publish. Human fact-check status not reclassified as completed."
+        "cloudflareDeploy": "completed_success",
+        "productionVisual": "verified_title_body_card_and_three_images",
+        "approvalClarification": "User clarified 2026-10-04 12:01 JST that 「両方OK」was intended as approval to publish. Human fact-check status not reclassified as completed.",
+        "cloudflareDeployRunUrl": "https://github.com/nasagame8-del/naru-career/actions/runs/37172903704",
+        "cloudflareDeployHeadSha": "527b124825c3b9e26d4702108cddaede279f627b",
+        "productionVerifiedAt": "2026-10-04T12:05:30+09:00"
       },
       "mergeSha": "527b124825c3b9e26d4702108cddaede279f627b",
       "productionUrl": "https://naru-career.com/articles/employee-to-contractor-social-insurance"
@@ -321,7 +324,8 @@
     "Article59: user-requested irrelevant model-photo FAQ removed. Updated preview browser verification passed.",
     "2026-10-04 user both previews approved at current heads. Combined exact-schedule task created/enabled for 12:00 article58 and18:00 article59 (2 occurrences); separate task hit plan limit. No merge yet.",
     "2026-10-04 12:00 JST: Article58 publication held; human fact check unperformed per queue and fact-check record. CI, preview, exact head and images checked. Article59 18:00 reservation untouched.",
-    "2026-10-04 12:02 JST: User clarified prior both-OK approval. Article58 PR118 merged at exact approved head; Cloudflare production checks pending. Human fact review is not claimed completed."
+    "2026-10-04 12:02 JST: User clarified prior both-OK approval. Article58 PR118 merged at exact approved head; Cloudflare production checks pending. Human fact review is not claimed completed.",
+    "2026-10-04 12:05 JST: Article58 merge SHA 527b124 Cloudflare deploy completed/success, production article title/body/card/01/02/03 browser-verified. User's publishing approval clarification recorded; human fact-review not represented as completed."
   ],
   "dailySlots": {
     "2026-10-04": {
