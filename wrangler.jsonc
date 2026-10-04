@@ -5,6 +5,9 @@
   "compatibility_date": "2026-10-03",
   "compatibility_flags": ["nodejs_compat"],
   "keep_vars": true,
+  "vars": {
+    "GA4_PROPERTY_ID": "545132613"
+  },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
