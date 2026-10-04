@@ -329,6 +329,128 @@ export function extractJobPostings(blocks) {
 }
 
 // ---------------------------------------------------------------------------
+// block segmentation (offset-preserving, no DOM library available)
+// ---------------------------------------------------------------------------
+
+/**
+ * Blanks out non-content regions while keeping every byte offset identical, so
+ * headings, tables and anchors can be located and sliced against each other.
+ */
+export function maskNonContent(html) {
+  const blank = (m) => ' '.repeat(m.length);
+  return html
+    .replace(/<!--[\s\S]*?-->/g, blank)
+    .replace(/<(script|style|noscript|svg|template|iframe|head)\b[\s\S]*?<\/\1\s*>/gi, blank);
+}
+
+function cellsOf(rowHtml) {
+  return [...rowHtml.matchAll(/<t[hd]\b[^>]*>([\s\S]*?)<\/t[hd]\s*>/gi)]
+    .map((m) => stripToVisibleText(m[1]));
+}
+
+/** label/value pairs from a <table>: 2 cells => pair, more => first vs rest. */
+function tableRows(inner) {
+  const rows = [];
+  for (const m of inner.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr\s*>/gi)) {
+    const cells = cellsOf(m[1]).filter((c) => c !== '');
+    if (cells.length >= 2) rows.push({ label: cells[0], value: cells.slice(1).join(' ').slice(0, 400) });
+    else if (cells.length === 1) rows.push({ label: cells[0], value: null });
+  }
+  return rows;
+}
+
+/** label/value pairs from a <dl>: each <dt> pairs with the <dd>s that follow. */
+function defListRows(inner) {
+  const rows = [];
+  const re = /<(dt|dd)\b[^>]*>([\s\S]*?)<\/\1\s*>/gi;
+  let current = null;
+  for (const m of inner.matchAll(re)) {
+    const text = stripToVisibleText(m[2]);
+    if (m[1].toLowerCase() === 'dt') {
+      if (current) rows.push(current);
+      current = { label: text, value: null };
+    } else if (current) {
+      current.value = [current.value, text].filter(Boolean).join(' ').slice(0, 400);
+    }
+  }
+  if (current) rows.push(current);
+  return rows;
+}
+
+/**
+ * Structural blocks of one page. All offsets refer to the masked HTML returned
+ * as `masked`, so callers can slice sections and ask which blocks fall inside.
+ */
+export function extractBlocks(html) {
+  const masked = maskNonContent(html);
+  const headings = [];
+  for (const m of masked.matchAll(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1\s*>/gi)) {
+    const text = stripToVisibleText(m[2]);
+    if (text) headings.push({ level: Number(m[1]), text: text.slice(0, 200), start: m.index, contentStart: m.index + m[0].length });
+  }
+  const tables = [];
+  for (const m of masked.matchAll(/<table\b[^>]*>([\s\S]*?)<\/table\s*>/gi)) {
+    tables.push({ start: m.index, end: m.index + m[0].length, rows: tableRows(m[1]), kind: 'table' });
+  }
+  const defLists = [];
+  for (const m of masked.matchAll(/<dl\b[^>]*>([\s\S]*?)<\/dl\s*>/gi)) {
+    defLists.push({ start: m.index, end: m.index + m[0].length, rows: defListRows(m[1]), kind: 'dl' });
+  }
+  const anchors = [];
+  for (const m of masked.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a\s*>/gi)) {
+    const hrefMatch = /href\s*=\s*("([^"]*)"|'([^']*)'|([^\s"'>]+))/i.exec(m[1]);
+    if (!hrefMatch) continue;
+    const raw = (hrefMatch[2] ?? hrefMatch[3] ?? hrefMatch[4] ?? '').trim();
+    if (!raw || /^(javascript:|mailto:|tel:|#)/i.test(raw)) continue;
+    anchors.push({
+      href: decodeEntities(raw),
+      text: stripToVisibleText(m[2]).slice(0, 200),
+      start: m.index,
+      end: m.index + m[0].length,
+    });
+  }
+  return { masked, headings, tables, defLists, anchors };
+}
+
+/**
+ * A heading's section runs until the next heading at the same or higher level.
+ * This is what turns a "all jobs on one page" layout into per-role sections.
+ */
+export function headingSections(blocks, { maxChars = 4000 } = {}) {
+  const { masked, headings } = blocks;
+  const sorted = [...headings].sort((a, b) => a.start - b.start);
+  return sorted.map((h, i) => {
+    let end = masked.length;
+    for (let j = i + 1; j < sorted.length; j += 1) {
+      if (sorted[j].level <= h.level) { end = sorted[j].start; break; }
+    }
+    const rawText = stripToVisibleText(masked.slice(h.contentStart, end));
+    return {
+      level: h.level,
+      heading: h.text,
+      start: h.contentStart,
+      end,
+      text: rawText.slice(0, maxChars),
+      textLength: rawText.length,
+      childHeadings: sorted.filter((x) => x.start > h.start && x.start < end).map((x) => ({ level: x.level, text: x.text })),
+    };
+  });
+}
+
+/** label/value rows of every table and dl that sits inside [start, end). */
+export function rowsWithin(blocks, start, end) {
+  const out = [];
+  for (const b of [...blocks.tables, ...blocks.defLists]) {
+    if (b.start >= start && b.start < end) out.push(...b.rows.map((r) => ({ ...r, kind: b.kind })));
+  }
+  return out;
+}
+
+export function anchorsWithin(blocks, start, end) {
+  return blocks.anchors.filter((a) => a.start >= start && a.start < end);
+}
+
+// ---------------------------------------------------------------------------
 // keyword flags
 // ---------------------------------------------------------------------------
 

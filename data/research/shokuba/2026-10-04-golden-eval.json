@@ -1,0 +1,1524 @@
+{
+  "runDate": "2026-10-04",
+  "stage": "stage5-golden-eval",
+  "generator": "scripts/research-golden.mjs eval",
+  "generatedAtUtc": "2026-10-04T15:08:40.723Z",
+  "goldenSet": "2026-10-04-golden-set-50.json",
+  "metrics": {
+    "pagesEvaluated": 50,
+    "pagesFailed": 0,
+    "expectedJobTitles": 65,
+    "predictedJobRecords": 31,
+    "truePositives": 31,
+    "jobLevelPrecision": 1,
+    "jobLevelRecall": 0.4769,
+    "containerOrCategoryAdoptionRate": 0,
+    "duplicateRate": 0,
+    "highMediumConfidenceRate": 1,
+    "knownRecruitTitleBugCount": 0,
+    "knownLocationSubstringBugCount": 0,
+    "byStructureType": {
+      "ats": {
+        "pages": 4,
+        "expected": 10,
+        "predicted": 4,
+        "truePositives": 4,
+        "precision": 1,
+        "recall": 0.4
+      },
+      "detail_links": {
+        "pages": 10,
+        "expected": 22,
+        "predicted": 5,
+        "truePositives": 5,
+        "precision": 1,
+        "recall": 0.2273
+      },
+      "job_detail_page": {
+        "pages": 4,
+        "expected": 4,
+        "predicted": 5,
+        "truePositives": 5,
+        "precision": 1,
+        "recall": 1
+      },
+      "js_dependent": {
+        "pages": 4,
+        "expected": 0,
+        "predicted": 0,
+        "truePositives": 0,
+        "precision": null,
+        "recall": null
+      },
+      "jsonld": {
+        "pages": 1,
+        "expected": 2,
+        "predicted": 2,
+        "truePositives": 2,
+        "precision": 1,
+        "recall": 1
+      },
+      "mid_career_only": {
+        "pages": 3,
+        "expected": 2,
+        "predicted": 1,
+        "truePositives": 1,
+        "precision": 1,
+        "recall": 0.5
+      },
+      "multi_role_single_page": {
+        "pages": 8,
+        "expected": 23,
+        "predicted": 12,
+        "truePositives": 12,
+        "precision": 1,
+        "recall": 0.5652
+      },
+      "negative_interview": {
+        "pages": 4,
+        "expected": 0,
+        "predicted": 0,
+        "truePositives": 0,
+        "precision": null,
+        "recall": null
+      },
+      "negative_other": {
+        "pages": 1,
+        "expected": 0,
+        "predicted": 0,
+        "truePositives": 0,
+        "precision": null,
+        "recall": null
+      },
+      "new_grad_only": {
+        "pages": 2,
+        "expected": 0,
+        "predicted": 0,
+        "truePositives": 0,
+        "precision": null,
+        "recall": null
+      },
+      "no_jobs_top": {
+        "pages": 7,
+        "expected": 0,
+        "predicted": 0,
+        "truePositives": 0,
+        "precision": null,
+        "recall": null
+      },
+      "single_role": {
+        "pages": 2,
+        "expected": 2,
+        "predicted": 2,
+        "truePositives": 2,
+        "precision": 1,
+        "recall": 1
+      }
+    }
+  },
+  "gates": {
+    "job-level precision >= 0.90": true,
+    "container/category adoption <= 0.05": true,
+    "duplicate rate <= 0.05": true,
+    "title high|medium >= 0.90": true,
+    "known \"Recruit 採用情報\" bug == 0": true,
+    "known location substring bug == 0": true
+  },
+  "allGatesPassed": true,
+  "note": "precision = 期待職種に一致した求人レコード / 生成した求人レコード。recall = 一致した期待職種 / 期待職種。judgementは golden-set-50.json の期待値に対する機械評価。",
+  "pages": [
+    {
+      "url": "https://herp.careers/v1/homie",
+      "company": "ｈｏｍｉｅ株式会社",
+      "structureType": "ats",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "Webアプリケーションエンジニア(バックエンド)",
+        "オープンポジション",
+        "カスタマーサクセス（キャリア採用）"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "Webアプリケーションエンジニア(バックエンド)",
+          "recordType": "job_detail",
+          "evidence": "section.heading",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [
+        "オープンポジション",
+        "カスタマーサクセス（キャリア採用）"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://recruit.jobcan.jp/sidebooks/",
+      "company": "東京インタープレイ株式会社",
+      "structureType": "ats",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://en-gage.net/evergreen/",
+      "company": "株式会社エヴァーグリーン",
+      "structureType": "ats",
+      "expectedJobCount": 7,
+      "expectedJobTitles": [
+        "エンジニアスペシャリスト",
+        "プログラマー（Web・オープン系）",
+        "システム営業",
+        "プロジェクトリーダー",
+        "営業"
+      ],
+      "predictedJobCount": 3,
+      "predictedTitles": [
+        {
+          "title": "プログラマー(Web・オープン系)",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "medium"
+        },
+        {
+          "title": "システム営業&ensp;【&ensp;営業経験者募集&ensp;】",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "medium"
+        },
+        {
+          "title": "営業&ensp;【&ensp;既卒・第二新卒&ensp;歓迎&ensp;】",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "medium"
+        }
+      ],
+      "truePositives": 3,
+      "falsePositives": [],
+      "matchedExpected": 3,
+      "missedExpected": [
+        "エンジニアスペシャリスト",
+        "プロジェクトリーダー"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 3,
+      "allCandidateTypes": {
+        "job_section": 3
+      }
+    },
+    {
+      "url": "https://recruit.zenken.co.jp/",
+      "company": "Ｚｅｎｋｅｎ株式会社",
+      "structureType": "detail_links",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://www.csn.co.jp/cb/saiyou.html",
+      "company": "株式会社コスモビジネス",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://fullenergy.co.jp/recruit/",
+      "company": "株式会社フルエナジー",
+      "structureType": "detail_links",
+      "expectedJobCount": 4,
+      "expectedJobTitles": [
+        "データベースエンジニア(アソシエイト)",
+        "データベースエンジニア（プロフェッショナル）",
+        "営業(プリセールス)",
+        "ネットワークエンジニア"
+      ],
+      "predictedJobCount": 4,
+      "predictedTitles": [
+        {
+          "title": "データベースエンジニア(アソシエイト) >>",
+          "recordType": "job_card",
+          "evidence": "card.listing",
+          "confidence": "medium"
+        },
+        {
+          "title": "データベースエンジニア(プロフェッショナル) >>",
+          "recordType": "job_card",
+          "evidence": "card.listing",
+          "confidence": "medium"
+        },
+        {
+          "title": "営業(プリセールス) >>",
+          "recordType": "job_card",
+          "evidence": "card.listing",
+          "confidence": "medium"
+        },
+        {
+          "title": "ネットワークエンジニア >>",
+          "recordType": "job_card",
+          "evidence": "card.listing",
+          "confidence": "medium"
+        }
+      ],
+      "truePositives": 4,
+      "falsePositives": [],
+      "matchedExpected": 4,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 4,
+      "allCandidateTypes": {
+        "container": 1,
+        "job_card": 4
+      }
+    },
+    {
+      "url": "https://shogo.co.jp/recruit",
+      "company": "株式会社ＶＡＳＥ　ＫＵＪＵ",
+      "structureType": "single_role",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "花公園 企画・運営スタッフ"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "花公園 企画・運営スタッフ",
+          "recordType": "job_detail",
+          "evidence": "field:職種",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://dsbranch.works/careers/",
+      "company": "株式会社ディーエスブランド",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "プログラマー",
+        "デザイナー",
+        "Webマーケター"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "プログラマー",
+        "デザイナー",
+        "Webマーケター"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.hitachi-solutions-east.co.jp/recruitment/",
+      "company": "株式会社日立ソリューションズ東日本",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.nsware.co.jp/career/",
+      "company": "日本ソフトウエア株式会社",
+      "structureType": "mid_career_only",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "制御系SE",
+        "Salseforceのエンジニア （SE・プログラマ）"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "制御系SE",
+          "recordType": "job_detail",
+          "evidence": "field:職種",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [
+        "Salseforceのエンジニア （SE・プログラマ）"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://office-craft.co.jp/recruit",
+      "company": "株式会社オフィス・クラフト",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.tes.co.jp/entry/new-graduate",
+      "company": "株式会社ＴＥＳ",
+      "structureType": "new_grad_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.kis.co.jp/recruit/",
+      "company": "株式会社ＫＩＳ",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "http://www.tj-think.co.jp/recruit/",
+      "company": "株式会社テクノ情報シンク",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "営業",
+        "プログラマー・システムエンジニア・その他ITエンジニア"
+      ],
+      "predictedJobCount": 2,
+      "predictedTitles": [
+        {
+          "title": "営業",
+          "recordType": "job_section",
+          "evidence": "field:職種",
+          "confidence": "high"
+        },
+        {
+          "title": "プログラマー・システムエンジニア・その他ITエンジニア",
+          "recordType": "job_section",
+          "evidence": "field:職種",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 2,
+      "falsePositives": [],
+      "matchedExpected": 2,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 2,
+      "allCandidateTypes": {
+        "job_section": 2
+      }
+    },
+    {
+      "url": "https://www.justin-inc.com/recruit.html",
+      "company": "ジャスティン株式会社",
+      "structureType": "single_role",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "プロジェクト・マネージャー システム・エンジニア／プログラマー サーバー／インフラ・エンジニア"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "プロジェクト・マネージャー システム・エンジニア/プログラマー サーバー/インフラ・エンジニア",
+          "recordType": "job_section",
+          "evidence": "field:職種",
+          "confidence": "medium"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_section": 1
+      }
+    },
+    {
+      "url": "http://www.lissaj.com/recruit_rookie.html",
+      "company": "株式会社リサージュ",
+      "structureType": "new_grad_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "category": 1
+      }
+    },
+    {
+      "url": "https://fullscale.jp/recruit/",
+      "company": "株式会社フルスケール",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "【中途】Webデザイナー（実務経験2年以上）",
+        "【中途】Webディレクター・プロジェクトマネージャー",
+        "【中途】Web広告プランナー・運用スタッフ"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "【中途】Webデザイナー（実務経験2年以上）",
+        "【中途】Webディレクター・プロジェクトマネージャー",
+        "【中途】Web広告プランナー・運用スタッフ"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://jsp.ne.jp/recruit/",
+      "company": "株式会社ＪＳＰ",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "システム開発エンジニア",
+        "システム提案営業",
+        "ヘルプデスク"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "システム開発エンジニア",
+        "システム提案営業",
+        "ヘルプデスク"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://www.softg.co.jp/recruit/recruit-form/",
+      "company": "株式会社ＳＯＦＴＧ",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://careers.bizreach.co.jp/?utm_source=bizreach&utm_medium=site&utm_campaign=recruitment",
+      "company": "株式会社ビズリーチ",
+      "structureType": "detail_links",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "category": 1
+      }
+    },
+    {
+      "url": "https://www.udom.co.jp/recruit/index.html",
+      "company": "株式会社ユードム",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "システムエンジニア"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "システムエンジニア",
+          "recordType": "job_section",
+          "evidence": "field:職種",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_section": 1
+      }
+    },
+    {
+      "url": "https://recruit.grinleap.co.jp/",
+      "company": "株式会社ｇｒｉｎｌｅａｐ",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.mesw.co.jp/recruit/index.html",
+      "company": "三菱電機ソフトウエア株式会社",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.frontend.co.jp/recruit/",
+      "company": "株式会社フロントエンド",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "システムエンジニア",
+        "プログラマー"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "システムエンジニア、プログラマー(※dbMagic、VB、PHP等 経験者歓迎)、カスタマーエンジニア、営業職等 経験者",
+          "recordType": "job_detail",
+          "evidence": "field:職種",
+          "confidence": "medium"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 2,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://www.cybertech.co.jp/recruit/",
+      "company": "株式会社サイバーテック",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "ソリューション営業",
+        "サポートエンジニア・フロントエンドエンジニア"
+      ],
+      "predictedJobCount": 2,
+      "predictedTitles": [
+        {
+          "title": "ソリューション営業",
+          "recordType": "job_section",
+          "evidence": "field:職種",
+          "confidence": "high"
+        },
+        {
+          "title": "サポートエンジニア・フロントエンドエンジニア",
+          "recordType": "job_section",
+          "evidence": "field:職種",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 2,
+      "falsePositives": [],
+      "matchedExpected": 2,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 2,
+      "allCandidateTypes": {
+        "job_section": 2
+      }
+    },
+    {
+      "url": "https://a-w-a.co.jp/recruitment/",
+      "company": "株式会社ＡＷＡ",
+      "structureType": "jsonld",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "ヘアケアメディア記事執筆者",
+        "美容師アシスタント/スタイリスト"
+      ],
+      "predictedJobCount": 2,
+      "predictedTitles": [
+        {
+          "title": "ヘアケアメディア記事執筆者",
+          "recordType": "job_detail",
+          "evidence": "jsonld.title",
+          "confidence": "high"
+        },
+        {
+          "title": "美容師アシスタント/スタイリスト",
+          "recordType": "job_detail",
+          "evidence": "jsonld.title",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 2,
+      "falsePositives": [],
+      "matchedExpected": 2,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 2,
+      "allCandidateTypes": {
+        "job_detail": 2
+      }
+    },
+    {
+      "url": "https://recruit.linkstory.co.jp/",
+      "company": "株式会社ＬｉｎｋＳｔｏｒｙ",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "デザイナー",
+        "エンジニア",
+        "ディレクター",
+        "進行管理",
+        "写植"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "デザイナー",
+        "エンジニア",
+        "ディレクター",
+        "進行管理",
+        "写植"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.dentsusoken.com/recruit",
+      "company": "株式会社電通総研",
+      "structureType": "mid_career_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://www.tsukaeru.net/recruit/",
+      "company": "使えるねっと株式会社",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "プリセールス",
+        "マーケティング",
+        "インフラエンジニア",
+        "カスタマーエンジニア",
+        "ITソリューション営業"
+      ],
+      "predictedJobCount": 5,
+      "predictedTitles": [
+        {
+          "title": "プリセールス",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "high"
+        },
+        {
+          "title": "マーケティング",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "high"
+        },
+        {
+          "title": "インフラエンジニア",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "high"
+        },
+        {
+          "title": "カスタマーエンジニア",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "high"
+        },
+        {
+          "title": "ITソリューション営業",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 5,
+      "falsePositives": [],
+      "matchedExpected": 5,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 5,
+      "allCandidateTypes": {
+        "job_section": 5
+      }
+    },
+    {
+      "url": "https://www.sainet.ne.jp/corporation/recruit/",
+      "company": "彩ネット株式会社",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "システムエンジニア・プログラマー",
+        "ネットワークエンジニア",
+        "営業",
+        "デザイナー",
+        "事務"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "システムエンジニア・プログラマー",
+        "ネットワークエンジニア",
+        "営業",
+        "デザイナー",
+        "事務"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://proengineer.co.jp/393/",
+      "company": "プロエンジニア株式会社",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.granks.co.jp/recruit",
+      "company": "兼松グランクス株式会社",
+      "structureType": "detail_links",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "フロントエンドエンジニア",
+        "ソリューション企画営業",
+        "Webディレクター",
+        "Webデザイナー",
+        "アプリエンジニア"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "フロントエンドエンジニア",
+        "ソリューション企画営業",
+        "Webディレクター",
+        "Webデザイナー",
+        "アプリエンジニア"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://www.musashi-abc.co.jp/recruit/",
+      "company": "株式会社ムサシ・エービーシー",
+      "structureType": "detail_links",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "営業部門"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "営業部門",
+          "recordType": "job_card",
+          "evidence": "card.listing",
+          "confidence": "medium"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "unknown": 1,
+        "job_card": 1
+      }
+    },
+    {
+      "url": "https://www.kcs.co.jp/recruit.html",
+      "company": "株式会社さくらケーシーエス",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.person3.com/recruit.html",
+      "company": "株式会社パーソン",
+      "structureType": "mid_career_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.iiinet.jp/recruit/",
+      "company": "有限会社アイネット",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://www.another-ware.co.jp/recruit/",
+      "company": "株式会社アナザーウェア",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "システムエンジニア",
+        "プログラマー",
+        "IoT（組込み）エンジニア"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "システムエンジニア",
+        "プログラマー",
+        "IoT（組込み）エンジニア"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "container": 1
+      }
+    },
+    {
+      "url": "https://www.macromill.com/recruit/",
+      "company": "株式会社マクロミル",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://saisproduction.com/recruit/",
+      "company": "ＳａｉＳプロダクション株式会社",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "ITエンジニア募集"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "ITエンジニア募集",
+          "recordType": "job_detail",
+          "evidence": "section.heading",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://www.tk-1.co.jp/recruit/",
+      "company": "株式会社テイク－ワン",
+      "structureType": "detail_links",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "category": 1,
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215",
+      "company": "ｈｏｍｉｅ株式会社",
+      "structureType": "ats",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "オープンポジション",
+        "カスタマーサクセス（キャリア採用）"
+      ],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [
+        "オープンポジション",
+        "カスタマーサクセス（キャリア採用）"
+      ],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://en-gage.net/evergreen/work_15303536/?via_recruit_page=1",
+      "company": "株式会社エヴァーグリーン",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "システムエンジニア"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "システムエンジニア",
+          "recordType": "job_detail",
+          "evidence": "jsonld.title",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://recruit.zenken.co.jp/people/jim_l/",
+      "company": "Ｚｅｎｋｅｎ株式会社",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://fullenergy.co.jp/recruits/database-associate/",
+      "company": "株式会社フルエナジー",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "データベースエンジニア(アソシエイト)"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "データベースエンジニア(アソシエイト)",
+          "recordType": "job_detail",
+          "evidence": "section.heading",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://dsbranch.works/careers/pages/450/",
+      "company": "株式会社ディーエスブランド",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "プログラマー"
+      ],
+      "predictedJobCount": 2,
+      "predictedTitles": [
+        {
+          "title": "プログラマーの取り組み",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "medium"
+        },
+        {
+          "title": "プログラマー",
+          "recordType": "job_section",
+          "evidence": "section.heading",
+          "confidence": "medium"
+        }
+      ],
+      "truePositives": 2,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 2,
+      "allCandidateTypes": {
+        "job_section": 2
+      }
+    },
+    {
+      "url": "https://www.nsware.co.jp/measure/security.html",
+      "company": "日本ソフトウエア株式会社",
+      "structureType": "negative_other",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://fullscale.jp/recruit/4308/",
+      "company": "株式会社フルスケール",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "【中途】Webデザイナー（実務経験2年以上）"
+      ],
+      "predictedJobCount": 1,
+      "predictedTitles": [
+        {
+          "title": "【中途】Webデザイナー(実務経験2年以上)",
+          "recordType": "job_detail",
+          "evidence": "section.heading",
+          "confidence": "high"
+        }
+      ],
+      "truePositives": 1,
+      "falsePositives": [],
+      "matchedExpected": 1,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 1,
+      "allCandidateTypes": {
+        "job_detail": 1
+      }
+    },
+    {
+      "url": "https://jsp.ne.jp/recruit/interview/interview_m/",
+      "company": "株式会社ＪＳＰ",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://careers.bizreach.co.jp/work/interviews/1648/",
+      "company": "株式会社ビズリーチ",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    },
+    {
+      "url": "https://www.koushi-intec.co.jp/recruit/interview/entry-276.html",
+      "company": "株式会社高志インテック",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "predictedJobCount": 0,
+      "predictedTitles": [],
+      "truePositives": 0,
+      "falsePositives": [],
+      "matchedExpected": 0,
+      "missedExpected": [],
+      "containerOrCategoryAdopted": [],
+      "duplicatesWithinPage": 0,
+      "recruitTitleBug": [],
+      "locationBug": [],
+      "highMediumConfidence": 0,
+      "allCandidateTypes": {
+        "unknown": 1
+      }
+    }
+  ]
+}
