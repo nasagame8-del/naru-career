@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - "content/articles/**"
+      - "public/images/articles/**"
       - "data/article-runs/**"
 
 # 読み取り専用で十分。シークレットは使わない。
@@ -31,6 +32,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Setup Node.js
@@ -42,11 +44,54 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Detect article slug
+        id: article
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          mapfile -t FILES < <(git diff --name-only --diff-filter=AM "$BASE_SHA...$HEAD_SHA")
+          declare -A SLUGS=()
+
+          for FILE in "${FILES[@]}"; do
+            if [[ "$FILE" =~ ^content/articles/([a-z0-9]+([a-z0-9-]*[a-z0-9])?)\.md$ ]]; then
+              SLUGS["${BASH_REMATCH[1]}"]=1
+            elif [[ "$FILE" =~ ^public/images/articles/(.+)-(card|01|02|03)\.webp$ ]]; then
+              SLUGS["${BASH_REMATCH[1]}"]=1
+            fi
+          done
+
+          if [ "${#SLUGS[@]}" -gt 1 ]; then
+            echo "::error::Article Factory PR must contain at most one article slug; found ${#SLUGS[@]}"
+            printf '%s\n' "${!SLUGS[@]}"
+            exit 1
+          fi
+
+          if [ "${#SLUGS[@]}" -eq 1 ]; then
+            for SLUG in "${!SLUGS[@]}"; do
+              echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+              echo "mode=article" >> "$GITHUB_OUTPUT"
+              echo "Detected article: $SLUG"
+            done
+          else
+            echo "mode=generic" >> "$GITHUB_OUTPUT"
+            echo "No article slug changed; running generic repository validation."
+          fi
+
+      - name: Full article local QA
+        if: steps.article.outputs.mode == 'article'
+        run: npm run article:local-qa -- --slug "${{ steps.article.outputs.slug }}"
+
+      - name: Generic tests
+        if: steps.article.outputs.mode == 'generic'
         run: npm test
 
-      - name: Typecheck
+      - name: Generic typecheck
+        if: steps.article.outputs.mode == 'generic'
         run: npx tsc --noEmit
 
-      - name: Build
+      - name: Generic build
+        if: steps.article.outputs.mode == 'generic'
         run: npm run build
