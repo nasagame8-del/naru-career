@@ -5,6 +5,7 @@ import { CategoryTabs } from "@/components/CategoryTabs";
 import { LatestNotePosts } from "@/components/LatestNotePosts";
 import { HeroSection } from "@/components/HeroSection";
 import { EditorialSidebar } from "@/components/EditorialSidebar";
+import { WebSiteJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export default function Home() {
   const articles = getAllArticleMetas();
   return (
     <>
+      <WebSiteJsonLd />
       <HeroSection />
       <div className="site-container editorial-layout pb-16">
         <section id="articles" className="min-w-0 scroll-mt-6">
