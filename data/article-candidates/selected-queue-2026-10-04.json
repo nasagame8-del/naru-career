@@ -89,7 +89,7 @@
       "articleId": 58,
       "slug": "employee-to-contractor-social-insurance",
       "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
-      "status": "IMAGES_REFLECTED_QA_PENDING",
+      "status": "CLOUDFLARE_PREVIEW_BUILDING",
       "selectedAt": "2026-10-04T08:47:29+09:00",
       "selectionEvidence": "User selected 1 after numbered morning candidate list",
       "requestedPublishDate": "2026-10-04",
@@ -103,12 +103,15 @@
         "factCheckScript": "pending_dependency_and_master_integration",
         "driveAndPrDraftReadback": "matched",
         "imageVisual": "passed",
-        "imageByteReadback": "matched"
+        "imageByteReadback": "matched",
+        "articleFactoryValidation": "pending_current_head",
+        "sourceRecheck": "passed_2026-10-04",
+        "assistantPreviewVisual": "initial_deployment_failed_correcting_cache"
       },
       "branch": "article-factory/2026-10-04-58-social-insurance",
       "prNumber": 118,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/118",
-      "headSha": "ea1020df5462ce598e5bdf2c044ce4589b524dcf",
+      "headSha": "eb7e26e9691df3c4a56ad0e7b75d13ec1647ce3f",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1aJiFZ5rmPWkHLvJrSo0pky_J9qk1FFHc",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1fpfpGDIXDO6uhssy3Y050XLLWVauQL4A",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1x9bP9AuETPuftK1cPX7gTOqhZxfbSvSm",
@@ -171,7 +174,9 @@
           }
         ]
       },
-      "factCheckUrl": "https://drive.google.com/file/d/1qjnlGmAD-QBpmjM2TOpGPu0wGh55_3VE/view?usp=drivesdk"
+      "factCheckUrl": "https://drive.google.com/file/d/1qjnlGmAD-QBpmjM2TOpGPu0wGh55_3VE/view?usp=drivesdk",
+      "previewProvider": "Cloudflare",
+      "previewUrl": null
     },
     {
       "order": 2,
@@ -181,7 +186,7 @@
       "articleId": 59,
       "slug": "beginner-engineer-tutorial-portfolio",
       "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
-      "status": "IMAGES_REFLECTED_QA_PENDING",
+      "status": "CLOUDFLARE_PREVIEW_BUILDING",
       "selectedAt": "2026-10-04T08:56:01+09:00",
       "selectionEvidence": "User said おけ to SEO title and then すすめて",
       "requestedPublishDate": "2026-10-04",
@@ -195,12 +200,15 @@
         "factCheckScript": "pending_dependency_and_master_integration",
         "driveAndPrDraftReadback": "matched",
         "imageVisual": "passed",
-        "imageByteReadback": "matched"
+        "imageByteReadback": "matched",
+        "articleFactoryValidation": "pending_current_head",
+        "sourceRecheck": "passed_2026-10-04",
+        "assistantPreviewVisual": "initial_deployment_failed_correcting_cache"
       },
       "branch": "article-factory/2026-10-04-59-tutorial-portfolio",
       "prNumber": 119,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/119",
-      "headSha": "48ee47d4a9650e82075ca44d1dea5f592229192f",
+      "headSha": "2a75fe90e967640cb0d79ce5a70692d5df696c76",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1xOWrcNySEmB7QMC1X9FT88yaEL3oUPqD",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1N40A_G7GLcE6-yIJEOBBNB5P40fITmfP",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1EEFISU5BwlJOUCzUIMqcVsH3e-tefqhs",
@@ -264,7 +272,9 @@
         ]
       },
       "factCheckUrl": "https://drive.google.com/file/d/14ILCpxRZx2TGtMb0fBV807LW9T4ICWtQ/view?usp=drivesdk",
-      "officialImageDecision": "Official event images searched; third-party product/character rights and reuse conditions unverified. Use official source link and NARU original diagrams."
+      "officialImageDecision": "Official event images searched; third-party product/character rights and reuse conditions unverified. Use official source link and NARU original diagrams.",
+      "previewProvider": "Cloudflare",
+      "previewUrl": null
     }
   ],
   "notes": [
