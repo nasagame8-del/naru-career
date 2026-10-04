@@ -3,6 +3,9 @@ name: SEO No-API Validation
 on:
   pull_request:
     paths:
+      - "src/components/JsonLd.tsx"
+      - "src/app/layout.tsx"
+      - "src/app/page.tsx"
       - "src/lib/search-console.ts"
       - "src/lib/seo-opportunities.ts"
       - "src/lib/seo-opportunities.test.ts"
