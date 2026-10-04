@@ -136,7 +136,7 @@ function parseSlotFields(raw: Obj, where: string): SlotEvidence {
     set(out, k, bool(raw, k, where));
   }
   set(out, "prNumber", num(raw, "prNumber", where));
-  for (const k of ["imageQa", "articleQa", "ci"] as const) set(out, k, gate(raw[k], `${where}.${k}`));
+  for (const k of ["imageQa", "factCheck", "articleQa", "ci"] as const) set(out, k, gate(raw[k], `${where}.${k}`));
   if (raw.drive != null) {
     if (!isObj(raw.drive)) throw new ManifestError(`${where}.drive must be an object`);
     const d: NonNullable<ArticleSlotFacts["drive"]> = {};
