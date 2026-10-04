@@ -205,14 +205,14 @@
         "imageByteReadback": "matched",
         "articleFactoryValidation": "completed_success",
         "sourceRecheck": "passed_2026-10-04",
-        "assistantPreviewVisual": "revised_section_verified_in_browser",
-        "validatedHeadSha": "a32b79e9a48cf44095f09df320d4194525b97b82",
+        "assistantPreviewVisual": "irrelevant_faq_removed_body_and_structured_data_verified",
+        "validatedHeadSha": "15ff4ec6f9308218a3f23dab7ef889482a600e85",
         "cloudflarePreview": "completed_success"
       },
       "branch": "article-factory/2026-10-04-59-tutorial-portfolio",
       "prNumber": 119,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/119",
-      "headSha": "a32b79e9a48cf44095f09df320d4194525b97b82",
+      "headSha": "15ff4ec6f9308218a3f23dab7ef889482a600e85",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1xOWrcNySEmB7QMC1X9FT88yaEL3oUPqD",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1N40A_G7GLcE6-yIJEOBBNB5P40fITmfP",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1EEFISU5BwlJOUCzUIMqcVsH3e-tefqhs",
@@ -300,7 +300,8 @@
     "2026-10-04: Eight user PNG originals archived and eight metadata-free WebPs saved to article58/59 Drive folders and Draft PR118/119. Drive bytes and exact GitHub blob SHAs verified. Human fact review, CI and visual preview approval remain pending; no publication.",
     "2026-10-04: Articles 58/59 isolated read-only noindex Cloudflare previews deployed; latest-head validation and preview smoke checks passed; browser article text and four images verified. Draft PRs remain unmerged. User visual approval remains pending.",
     "Article59: clarify portfolio website/PDF/README submission options; README is optional. Latest-head CI and Cloudflare preview passed; revised text verified in browser.",
-    "Article59: removed redundant GitHub/README explanation and unused reference on user request. Preview rebuilding."
+    "Article59: removed redundant GitHub/README explanation and unused reference on user request. Preview rebuilding.",
+    "Article59: user-requested irrelevant model-photo FAQ removed. Updated preview browser verification passed."
   ],
   "dailySlots": {
     "2026-10-04": {
