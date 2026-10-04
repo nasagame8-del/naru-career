@@ -31,7 +31,7 @@
 
 ## Manifest（round 2 / subround A）
 
-- 日次manifestの置き場所（規約）: `data/editor-agent/run-YYYY-MM-DD.json`（コアはファイルI/Oを行わない）。実運用では本番デプロイを不要に増やさないため `article-factory/candidates` ブランチ上で管理し、masterへ日次状態ファイルを直接書かない。
+- 日次manifestの置き場所（規約）: `data/editor-agent/run-YYYY-MM-DD.json`（コアはファイルI/Oを行わない）。実運用では本番デプロイを不要に増やさないため専用の `editor-agent/state` ブランチ上で管理し、masterへ日次状態ファイルを直接書かない。候補・selected queueの正本は引き続き `article-factory/candidates` から読む。
 - `schemaVersion: 1`。`date`, `candidatesReady`, run `blockers`, slot `1`/`2`（既存 `ArticleSlotFacts`）, 任意の `lastReconciledAt`。
 - 評価結果（state等）は保存せず、`manifestToRunFacts()` → `evaluateRun()` で都度導出する。
 - `src/lib/naru-editor-agent/manifest.ts`: `createEmptyManifest` / `normalizeManifest` / `parseManifest` / `serializeManifest`（キー順固定・決定論的）/ `reconcileRunManifest(existing, evidence)`。
@@ -54,7 +54,7 @@ npm run editor-agent -- reconcile --date 2026-10-05 --evidence ./evidence.json
 
 ### Evidenceの正本
 
-- 候補選択: `article-factory/candidates` の `selected-queue-YYYY-MM-DD.json` とユーザーの明示選択。
+- 候補選択: `article-factory/candidates` の `selected-queue-YYYY-MM-DD.json` とユーザーの明示選択。Editor Agent manifest自体は `editor-agent/state` に保存する。
 - GSC / Web / Drive / GitHub / Cloudflareの実状態: ChatGPTが接続済みツールから毎回取得し、evidenceとして渡す。
 - Claude Code: 実装ワーカー。編集上の事実やユーザー承認の正本にはしない。
 - preview承認: 現在のPR head SHAと完全一致するユーザー承認のみ有効。公開前のFact Checkは一次情報・著者実体験に基づく人間確認を同じhead SHAへ別ゲートとして記録し、AIの自己判定で代替しない。
@@ -66,4 +66,4 @@ OpenAI API、Anthropic APIキー課金、Google Ads Keyword Planner、Semrush/Ah
 
 ## 残るアダプタ
 
-GitHub / Drive / GSC / Web / Cloudflareからevidenceを集め、CLIへ渡すスケジューラ層はChatGPT側の定期タスクで接続する。human gateを迂回する無人publish adapterは作らない。
+GitHub / Drive / GSC / Web / Cloudflareからevidenceを集め、`editor-agent/state` のmanifestへ冪等に反映するスケジューラ層はChatGPT側の定期タスクで接続する。`article-factory/candidates` は候補・選択の正本、`editor-agent/state` は進行状態の正本として役割を分離する。human gateを迂回する無人publish adapterは作らない。
