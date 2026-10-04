@@ -89,7 +89,7 @@
       "articleId": 58,
       "slug": "employee-to-contractor-social-insurance",
       "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
-      "status": "SCHEDULED_APPROVED",
+      "status": "PUBLICATION_HELD",
       "selectedAt": "2026-10-04T08:47:29+09:00",
       "selectionEvidence": "User selected 1 after numbered morning candidate list",
       "requestedPublishDate": "2026-10-04",
@@ -180,7 +180,20 @@
       "factCheckUrl": "https://drive.google.com/file/d/1qjnlGmAD-QBpmjM2TOpGPu0wGh55_3VE/view?usp=drivesdk",
       "previewProvider": "Cloudflare",
       "previewUrl": "https://naru-article-58-preview.broad-fuchsia.workers.dev/articles/employee-to-contractor-social-insurance",
-      "publishAutomationId": "6ac1ad0c46dc8191857eed5f80bf92d8"
+      "publishAutomationId": "6ac1ad0c46dc8191857eed5f80bf92d8",
+      "publicationGate": {
+        "checkedAt": "2026-10-04T12:00:23+09:00",
+        "result": "held",
+        "mergeAttempted": false,
+        "expectedHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
+        "actualHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
+        "articleFactoryValidation": "completed_success",
+        "cloudflarePreview": "completed_success",
+        "blockers": [
+          "Human fact check remains pending in selected queue and PR fact-check record explicitly says 人間確認: 未実施. User visual preview approval does not record fact review."
+        ],
+        "notes": "12:00 JST target window only. No automatic delayed merge without new user schedule."
+      }
     },
     {
       "order": 2,
@@ -306,7 +319,8 @@
     "Article59: clarify portfolio website/PDF/README submission options; README is optional. Latest-head CI and Cloudflare preview passed; revised text verified in browser.",
     "Article59: removed redundant GitHub/README explanation and unused reference on user request. Preview rebuilding.",
     "Article59: user-requested irrelevant model-photo FAQ removed. Updated preview browser verification passed.",
-    "2026-10-04 user both previews approved at current heads. Combined exact-schedule task created/enabled for 12:00 article58 and18:00 article59 (2 occurrences); separate task hit plan limit. No merge yet."
+    "2026-10-04 user both previews approved at current heads. Combined exact-schedule task created/enabled for 12:00 article58 and18:00 article59 (2 occurrences); separate task hit plan limit. No merge yet.",
+    "2026-10-04 12:00 JST: Article58 publication held; human fact check unperformed per queue and fact-check record. CI, preview, exact head and images checked. Article59 18:00 reservation untouched."
   ],
   "dailySlots": {
     "2026-10-04": {
