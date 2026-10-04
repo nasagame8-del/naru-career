@@ -7,7 +7,6 @@ import { Footer } from "@/components/Footer";
 import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/GoogleTagManager";
 import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CtaTracker } from "@/components/CtaTracker";
-import { WebSiteJsonLd } from "@/components/JsonLd";
 import { CATEGORIES } from "@/lib/categories";
 import { getAuthorProfileLabel } from "@/lib/author";
 
@@ -60,7 +59,6 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
-        <WebSiteJsonLd />
         <Script id="google-fonts-loader" strategy="afterInteractive">
           {`
             var link = document.createElement('link');
