@@ -1,3 +1,77 @@
+# NARU Editorial Refresh — 2026-10-04
+
+- reportId: USER-EDITORIAL-REFRESH-20261004
+- completedInstructionId: USER-EDITORIAL-REFRESH-20261004（本タスクの直接依頼。既存の別タスクは実行していない）
+- status: DRAFT_REVIEW / CLOUDFLARE_BUILD_UNVERIFIED
+- branch: `ui/goodpatch-editorial-refresh`
+- base: `63225d77da21b1c5aefc4c23a832112b7a4d281d`（取得時の最新master）
+
+## 変更と Before / After
+
+著者中心の大型Heroと縦並び一覧から、コンパクトなブランド紹介、3列の記事カード、右サイドバーへ変更。参考サイトの中央ロゴ、白いヘッダー、淡い背景、画像→カテゴリ・日付→タイトルの階層に寄せた。NARUのCream / Tea Green / Amberは維持。
+
+- 共通の最大幅1200px、サイドバー272px、間隔36px。記事本文は1440px画面で740px。
+- 1024px以上で3列＋サイドバー、640〜1023pxは2列、639px以下は1列。
+- サイドバーは診断、転職ガイド、著者紹介の順。モバイルでは6記事の後に診断とガイドへのリンク。
+- 記事本文17px / 1.95、モバイル16px / 1.95。H1はSans Serifの26〜38px。H2は細い緑の左罫線。
+- フッターはTea Greenの複数列。既存リンク・広告表記・survey計測を保持。
+- カテゴリの読む順番と「まず読むべき記事」、絞り込み、人気順・おすすめ順、展開・折り畳みを維持。
+- 内蔵imagegenでオリジナルの診断用イラストを生成。900×600 WebP、88,494 bytes。既存記事画像は変更していない。
+
+## 参考分析
+
+https://goodpatch.com/blog と /blog/2026-09-sokai を1440 / 768 / 375pxで目視確認。録画56秒もフレーム抽出して確認した。デスクトップは中央ロゴと下段ナビ、画像主体の3列カード＋バナーサイドバー。タブレットは2列、スマホは1列で本文を広く使う。カードには大きな枠線や強い影がなく、記事詳細は白い読み物の面と右サイドバーで構成される。ロゴ・文章・画像・ソースコードは転用せず、レイアウトと情報の階層を参考にした。
+
+## 検証結果
+
+- `npm ci`: 成功、依存追加なし。
+- `npm test`: Windows sandboxでesbuildの親ディレクトリ列挙が拒否され起動失敗。そのためリポジトリ設定は変えず、同等の一時ESM設定（同じalias、include、node環境）と`--configLoader native`で実行。Vitest 17ファイル / 293件成功。
+- package.jsonの残りのNodeテスト6ファイル: 45件成功。合計338件。
+- `npx tsc --noEmit`: 成功。
+- 変更した全TSXへのESLint: 成功。
+- `npm run lint`: 既存の未変更ファイルに61 errors / 12 warnings。主にscriptsのCommonJS require、内部ダッシュボード等。UI改修による新規指摘なし。
+- `npm run build`: 成功。Turbopack、本番132ページ生成。最終変更後にも再実行して成功。
+- `npm run build:cloudflare`: WindowsでOpenNextがopen-next.config.tsを解決する前に親フォルダのAccess deniedで停止。Cloudflareビルド成功とは扱っていない。設定・ワークフローは未変更。
+- 開発画面: 初回Turbopackの子プロセス起動が権限で停止。バンドルNode＋Webpackで再起動してQAを完了。以降の新規ブラウザエラーなし。
+- Home、Articles、Category、記事2本、About × 375 / 430 / 768 / 1024 / 1440px: ページ全体の横はみ出し・読み込み済み画像の破損なし。
+- 1440px: 本文740px、サイドバーはスクロール2000px時もtop24px。表・本文・フッターを目視確認。
+- モバイル: タイトル、カード、本文、CTA、フッターを目視確認。サイドバー非表示。
+- Articles: カテゴリで4件に絞り込み、人気順・おすすめ順のpressed状態、12→58件展開→12件に戻る操作を確認。
+- Home: 12→58→12件を確認。キーボードTabによるフォーカス枠も確認。
+- 変更前後のHTML比較: 記事2本 / category / articles / aboutのmetadata・canonical・JSON-LD・prose HTMLが完全一致。
+- `content/`、既存記事画像、`src/lib/`、診断、計測、SEO/Editor、依存、Cloudflare設定に差分なし。
+
+## 変更ファイル
+
+- `src/app/articles/[slug]/page.tsx`
+- `src/app/articles/page.tsx`
+- `src/app/category/[slug]/page.tsx`
+- `src/app/globals.css`
+- `src/app/page.tsx`
+- `src/components/ArticleBrowser.tsx`
+- `src/components/ArticleList.tsx`
+- `src/components/CategoryNavBar.tsx`
+- `src/components/CategoryTabs.tsx`
+- `src/components/Footer.tsx`
+- `src/components/Header.tsx`
+- `src/components/HeroSection.tsx`
+- `src/components/LatestNotePosts.tsx`
+- `src/components/EditorialSidebar.tsx`
+- `src/components/MobileCareerCTA.tsx`
+- `public/images/editorial/career-discovery.webp`
+
+- `docs/agent-handoff/REPORT.md`（この報告を追記）
+
+## 残課題・判断が必要な項目
+
+Cloudflare用ビルドをLinux/CI環境で確認すること。全体Lintの既存指摘は別作業。実画面の見た目はユーザー確認待ち。masterへのpush、merge、本番deployは行っていない。
+
+## 推奨する次の作業
+
+Draft PRでデザイン確認後、Cloudflareビルドを検証してからマージ判断。
+
+---
+
 # Article 59 preview preparation — 2026-10-04
 
 - reportId: USER-ARTICLE-59-PREVIEW-20261004

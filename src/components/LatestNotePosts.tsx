@@ -8,7 +8,7 @@ export async function LatestNotePosts() {
 
   return (
     <section className="bg-bg-soft border-t border-line">
-      <div className="max-w-5xl mx-auto px-4 py-10">
+      <div className="site-container py-12">
         <div className="flex items-center justify-between mb-5">
           <div>
             <span className="inline-block font-mono text-[11px] font-medium tracking-widest text-primary uppercase mb-1">
