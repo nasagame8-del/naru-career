@@ -89,7 +89,7 @@
       "articleId": 58,
       "slug": "employee-to-contractor-social-insurance",
       "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
-      "status": "SELECTED_RESEARCH",
+      "status": "DRAFT_WAITING_IMAGES",
       "selectedAt": "2026-10-04T08:47:29+09:00",
       "selectionEvidence": "User selected 1 after numbered morning candidate list",
       "requestedPublishDate": "2026-10-04",
@@ -97,8 +97,27 @@
       "qa": {
         "previewVisual": "not_requested",
         "previewApprovedHeadSha": null,
-        "humanFactCheck": "pending"
-      }
+        "humanFactCheck": "pending",
+        "structuralChecks": "passed",
+        "fullLocalQa": "pending_images",
+        "factCheckScript": "pending_dependency_and_master_integration",
+        "driveAndPrDraftReadback": "matched"
+      },
+      "branch": "article-factory/2026-10-04-58-social-insurance",
+      "prNumber": 118,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/118",
+      "headSha": "73b09b20ed9da1809d4c0f86c1ae243b08cba201",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1aJiFZ5rmPWkHLvJrSo0pky_J9qk1FFHc",
+      "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1fpfpGDIXDO6uhssy3Y050XLLWVauQL4A",
+      "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1x9bP9AuETPuftK1cPX7gTOqhZxfbSvSm",
+      "imagePromptsUrl": "https://drive.google.com/file/d/1KVk0K6cBY2qKFIU9ofl9-naRsmErV3eM/view?usp=drivesdk",
+      "designPromptsUrl": "https://drive.google.com/file/d/114CJGfWEuvoNhESq3NO0Vs7JqEn7HWUc/view?usp=drivesdk",
+      "articleDraftUrl": "https://drive.google.com/file/d/1m_I-KZB2hjOKLi36zyhQUaNltUvvbpU_/view?usp=drivesdk",
+      "images": {
+        "status": "waiting_user_images",
+        "receivedSlots": []
+      },
+      "factCheckUrl": "https://drive.google.com/file/d/1qjnlGmAD-QBpmjM2TOpGPu0wGh55_3VE/view?usp=drivesdk"
     },
     {
       "order": 2,
@@ -108,7 +127,7 @@
       "articleId": 59,
       "slug": "beginner-engineer-tutorial-portfolio",
       "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
-      "status": "SELECTED_RESEARCH",
+      "status": "DRAFT_WAITING_IMAGES",
       "selectedAt": "2026-10-04T08:56:01+09:00",
       "selectionEvidence": "User said おけ to SEO title and then すすめて",
       "requestedPublishDate": "2026-10-04",
@@ -116,8 +135,28 @@
       "qa": {
         "previewVisual": "not_requested",
         "previewApprovedHeadSha": null,
-        "humanFactCheck": "pending"
-      }
+        "humanFactCheck": "pending",
+        "structuralChecks": "passed",
+        "fullLocalQa": "pending_images",
+        "factCheckScript": "pending_dependency_and_master_integration",
+        "driveAndPrDraftReadback": "matched"
+      },
+      "branch": "article-factory/2026-10-04-59-tutorial-portfolio",
+      "prNumber": 119,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/119",
+      "headSha": "6828fc64b0662d86a1da54605193e48f395dcadd",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1xOWrcNySEmB7QMC1X9FT88yaEL3oUPqD",
+      "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1N40A_G7GLcE6-yIJEOBBNB5P40fITmfP",
+      "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1EEFISU5BwlJOUCzUIMqcVsH3e-tefqhs",
+      "imagePromptsUrl": "https://drive.google.com/file/d/1-JI6gbHXq-WmRykFlrOzN4hNEySQTC2a/view?usp=drivesdk",
+      "designPromptsUrl": "https://drive.google.com/file/d/159eobkAE9yT1Xq9lI8PtkA4RiKhBrk60/view?usp=drivesdk",
+      "articleDraftUrl": "https://drive.google.com/file/d/1S6pf5X1w4v9_w3zjy9pGCtvhPOYtow7t/view?usp=drivesdk",
+      "images": {
+        "status": "waiting_user_images",
+        "receivedSlots": []
+      },
+      "factCheckUrl": "https://drive.google.com/file/d/14ILCpxRZx2TGtMb0fBV807LW9T4ICWtQ/view?usp=drivesdk",
+      "officialImageDecision": "Official event images searched; third-party product/character rights and reuse conditions unverified. Use official source link and NARU original diagrams."
     }
   ],
   "notes": [
@@ -134,7 +173,8 @@
     "2026-10-03 18:05 JST: approved exact-head PR #75 squash merged at designated window; Production deployment pending.",
     "2026-10-03 18:06 JST: user reports production URL opens, but Vercel status for merge SHA df8c82f is failure. Displayed revision unverified; not reported as published.",
     "2026-10-04: User selected evergreen candidate1. Allocated58 after master/Open PR/Drive/prior queue duplicate checks. Existing topical reservation retained. Publication clock time not inferred; no scheduling.",
-    "2026-10-04: User explicitly corrected that article57 was yesterday's publication and requested today's topical article. Supersedes Oct4 topical reservation notes. Today's topical slot is empty; evergreen58 selected."
+    "2026-10-04: User explicitly corrected that article57 was yesterday's publication and requested today's topical article. Supersedes Oct4 topical reservation notes. Today's topical slot is empty; evergreen58 selected.",
+    "2026-10-04: Draft PR118(article58) and119(article59), article/image-plan/prompts/fact records saved to dedicated Drive folders. Four slots per article await user images. Readback matched GitHub exact head and Drive. Structural QA passed; human review/images/CI/full visual QA pending. No merge/scheduling."
   ],
   "dailySlots": {
     "2026-10-04": {
