@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-04",
+  "candidatesReady": true,
+  "blockers": [],
+  "slots": {
+    "1": {
+      "order": 1,
+      "batchId": "batch_2026-10-04_chatgpt",
+      "candidateId": "cand_261004e1",
+      "selected": true,
+      "articleId": "58",
+      "slug": "employee-to-contractor-social-insurance",
+      "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
+      "branch": "article-factory/2026-10-04-58-social-insurance",
+      "prNumber": 118,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/118",
+      "draftReady": true,
+      "latestHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
+      "previewApprovedHeadSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b",
+      "drive": {
+        "articleId": "1aJiFZ5rmPWkHLvJrSo0pky_J9qk1FFHc",
+        "imagesId": "1fpfpGDIXDO6uhssy3Y050XLLWVauQL4A",
+        "promptId": "1KVk0K6cBY2qKFIU9ofl9-naRsmErV3eM"
+      },
+      "images": {
+        "card": {
+          "ref": "1CD5Pf4JjIQDUvpfUertORbMx1nwJ4wPp"
+        },
+        "01": {
+          "ref": "19QwXBwRmWVMegV0HzVYjf6fqgApvPHhp"
+        },
+        "02": {
+          "ref": "1T29szzkdPkKJPz99vLnLQwaGgMf9CuLz"
+        },
+        "03": {
+          "ref": "18FBjWgrdwbryBQvwc82X83ETFHXvsrSI"
+        }
+      },
+      "requestedPublishAt": "2026-10-04T12:00:00+09:00",
+      "imageQa": {
+        "passed": true,
+        "headSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b"
+      },
+      "ci": {
+        "passed": true,
+        "headSha": "c8b07763c28cbab461c595c2a18ac69f8dda7f8b"
+      },
+      "mergeSha": "527b124825c3b9e26d4702108cddaede279f627b",
+      "productionDeployVerified": true,
+      "publicArticleUrl": "https://naru-career.com/articles/employee-to-contractor-social-insurance",
+      "publicArticleVerified": true,
+      "blockers": [
+        "post-publication audit required: merge/production occurred while the queue still records humanFactCheck=pending and fullLocalQa=pending"
+      ],
+      "timestamps": {
+        "selectedAt": "2026-10-04T08:47:29+09:00",
+        "previewApprovedAt": "2026-10-04T10:32:00+09:00",
+        "productionVerifiedAt": "2026-10-04T12:05:30+09:00"
+      }
+    },
+    "2": {
+      "order": 2,
+      "batchId": "batch_2026-10-04_chatgpt",
+      "candidateId": "cand_261004t1",
+      "selected": true,
+      "articleId": "59",
+      "slug": "beginner-engineer-tutorial-portfolio",
+      "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
+      "branch": "article-factory/2026-10-04-59-tutorial-portfolio",
+      "prNumber": 119,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/119",
+      "draftReady": true,
+      "latestHeadSha": "03d543884d9741e4101fe23d1169d3f88ff2ee0b",
+      "previewApprovedHeadSha": "15ff4ec6f9308218a3f23dab7ef889482a600e85",
+      "drive": {
+        "articleId": "1xOWrcNySEmB7QMC1X9FT88yaEL3oUPqD",
+        "imagesId": "1N40A_G7GLcE6-yIJEOBBNB5P40fITmfP",
+        "promptId": "1-JI6gbHXq-WmRykFlrOzN4hNEySQTC2a"
+      },
+      "images": {
+        "card": {
+          "ref": "1eYOxyjDSi2p69H_AuA2VbvCYIwhqo0N_"
+        },
+        "01": {
+          "ref": "1Z5BKkhkrToWzJqZK3xOclhbq4f5l5q5g"
+        },
+        "02": {
+          "ref": "1Gy4OqhgqLcDyeTSQp8WC_BpQKxhNxXBg"
+        },
+        "03": {
+          "ref": "1VbTL76kAY5Ho3B4EuIKBRQzGNb7__3hc"
+        }
+      },
+      "requestedPublishAt": "2026-10-04T18:00:00+09:00",
+      "imageQa": {
+        "passed": true,
+        "headSha": "15ff4ec6f9308218a3f23dab7ef889482a600e85"
+      },
+      "ci": {
+        "passed": true,
+        "headSha": "03d543884d9741e4101fe23d1169d3f88ff2ee0b"
+      },
+      "mergeSha": "63225d77da21b1c5aefc4c23a832112b7a4d281d",
+      "productionDeployVerified": true,
+      "publicArticleUrl": "https://naru-career.com/articles/beginner-engineer-tutorial-portfolio",
+      "blockers": [
+        "post-publication audit required: merge/production occurred while the queue still records humanFactCheck=pending and fullLocalQa=pending",
+        "preview approval is recorded for 15ff4ec6f9308218a3f23dab7ef889482a600e85 but the merged PR head is 03d543884d9741e4101fe23d1169d3f88ff2ee0b; strict exact-head approval is therefore stale"
+      ],
+      "timestamps": {
+        "selectedAt": "2026-10-04T08:56:01+09:00",
+        "previewApprovedAt": "2026-10-04T10:32:00+09:00",
+        "mergedAt": "2026-10-04T19:58:32+09:00"
+      }
+    }
+  },
+  "lastReconciledAt": "2026-10-04T21:20:00+09:00"
+}
