@@ -1,9 +1,9 @@
-# Article 58 preview preparation — 2026-10-04
+# Article 59 preview preparation — 2026-10-04
 
-- reportId: USER-ARTICLE-58-PREVIEW-20261004
+- reportId: USER-ARTICLE-59-PREVIEW-20261004
 - completedInstructionId: USER-ARTICLE-PREVIEW-20261004
 - status: PREVIEW_DEPLOYMENT_IN_PROGRESS
-- branch: article-factory/2026-10-04-58-social-insurance
+- branch: article-factory/2026-10-04-59-tutorial-portfolio
 - 実施内容: User images archived to Drive, four metadata-free WebPs reflected on this article PR and byte/blob readbacks matched. Added isolated Cloudflare preview workflow with a unique non-production worker name, read-only requests and noindex headers.
 - テスト結果: Image-stage CI completed/success. Internal article slugs exist on master; three body references/alt match images; no raw bold markers. Current-head Cloudflare build and browser QA will be recorded in selected-queue after completion.
 - 変更ファイル: Article Markdown and run records, four public WebPs, .github/workflows/cloudflare-article-preview.yml, this report.
