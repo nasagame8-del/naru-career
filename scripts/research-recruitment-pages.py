@@ -55,7 +55,7 @@ KEYWORDS = {
 }
 
 robots_lock = threading.Lock()
-robots_cache: dict[str, tuple[bool, str | None]] = {}
+robots_cache: dict[str, tuple[urllib.robotparser.RobotFileParser | None, str | None]] = {}
 
 
 class VisibleTextParser(HTMLParser):
@@ -138,27 +138,32 @@ def robots_allowed(url: str) -> tuple[bool, str | None]:
     p = urllib.parse.urlparse(url)
     origin = f"{p.scheme}://{p.netloc}"
     with robots_lock:
-        if origin in robots_cache:
-            return robots_cache[origin]
-    robots_url = urllib.parse.urljoin(origin, "/robots.txt")
-    allowed = True
-    note = None
-    try:
-        rp = urllib.robotparser.RobotFileParser()
-        rp.set_url(robots_url)
-        req = urllib.request.Request(robots_url, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=8) as res:
-            txt = res.read(500_000).decode("utf-8", errors="ignore")
-        rp.parse(txt.splitlines())
-        allowed = rp.can_fetch(USER_AGENT, url)
-        if not allowed:
-            note = "blocked_by_robots"
-    except Exception as e:
-        # A missing/unreachable robots file is not treated as an explicit prohibition.
-        note = f"robots_unavailable:{type(e).__name__}"
-    with robots_lock:
-        robots_cache[origin] = (allowed, note)
-    return allowed, note
+        cached = robots_cache.get(origin)
+
+    if cached is None:
+        robots_url = urllib.parse.urljoin(origin, "/robots.txt")
+        rp = None
+        note = None
+        try:
+            rp = urllib.robotparser.RobotFileParser()
+            rp.set_url(robots_url)
+            req = urllib.request.Request(robots_url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=8) as res:
+                txt = res.read(500_000).decode("utf-8", errors="ignore")
+            rp.parse(txt.splitlines())
+        except Exception as e:
+            # A missing/unreachable robots file is not treated as an explicit prohibition.
+            rp = None
+            note = f"robots_unavailable:{type(e).__name__}"
+        with robots_lock:
+            robots_cache[origin] = (rp, note)
+        cached = (rp, note)
+
+    rp, note = cached
+    if rp is None:
+        return True, note
+    allowed = rp.can_fetch(USER_AGENT, url)
+    return allowed, (note if allowed else "blocked_by_robots")
 
 
 def flatten_jsonld(obj):
