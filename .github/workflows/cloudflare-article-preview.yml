@@ -158,7 +158,7 @@ jobs:
           ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
         run: |
           set -euo pipefail
-          npx opennextjs-cloudflare deploy --config wrangler.article-preview.json 2>&1 | tee /tmp/article-preview.log
+          npx wrangler deploy --config wrangler.article-preview.json 2>&1 | tee /tmp/article-preview.log
           URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
           test -n "$URL"
           ARTICLE_URL="$URL/articles/$ARTICLE_SLUG"
