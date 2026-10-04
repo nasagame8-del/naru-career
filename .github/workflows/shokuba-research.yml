@@ -1,0 +1,41 @@
+name: NARU Shokuba Research
+
+on:
+  push:
+    branches:
+      - research/shokuba-20261004
+    paths:
+      - .github/workflows/shokuba-research.yml
+      - scripts/research-shokuba.py
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/shokuba-20261004
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download and analyze official Shokuba Rabo CSV
+        run: python scripts/research-shokuba.py
+
+      - name: Commit research outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research/shokuba/
+          if git diff --cached --quiet; then
+            echo "No research output changes."
+            exit 0
+          fi
+          git commit -m "research: snapshot shokuba 2026-10-04"
+          git push origin HEAD:research/shokuba-20261004
