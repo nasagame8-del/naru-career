@@ -89,7 +89,7 @@
       "articleId": 58,
       "slug": "employee-to-contractor-social-insurance",
       "title": "正社員から業務委託へ切り替えると社会保険はどうなる？健康保険・年金の手続きと確認先",
-      "status": "DRAFT_WAITING_IMAGES",
+      "status": "IMAGES_REFLECTED_QA_PENDING",
       "selectedAt": "2026-10-04T08:47:29+09:00",
       "selectionEvidence": "User selected 1 after numbered morning candidate list",
       "requestedPublishDate": "2026-10-04",
@@ -99,14 +99,16 @@
         "previewApprovedHeadSha": null,
         "humanFactCheck": "pending",
         "structuralChecks": "passed",
-        "fullLocalQa": "pending_images",
+        "fullLocalQa": "pending",
         "factCheckScript": "pending_dependency_and_master_integration",
-        "driveAndPrDraftReadback": "matched"
+        "driveAndPrDraftReadback": "matched",
+        "imageVisual": "passed",
+        "imageByteReadback": "matched"
       },
       "branch": "article-factory/2026-10-04-58-social-insurance",
       "prNumber": 118,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/118",
-      "headSha": "73b09b20ed9da1809d4c0f86c1ae243b08cba201",
+      "headSha": "ea1020df5462ce598e5bdf2c044ce4589b524dcf",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1aJiFZ5rmPWkHLvJrSo0pky_J9qk1FFHc",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1fpfpGDIXDO6uhssy3Y050XLLWVauQL4A",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1x9bP9AuETPuftK1cPX7gTOqhZxfbSvSm",
@@ -114,8 +116,60 @@
       "designPromptsUrl": "https://drive.google.com/file/d/114CJGfWEuvoNhESq3NO0Vs7JqEn7HWUc/view?usp=drivesdk",
       "articleDraftUrl": "https://drive.google.com/file/d/1m_I-KZB2hjOKLi36zyhQUaNltUvvbpU_/view?usp=drivesdk",
       "images": {
-        "status": "waiting_user_images",
-        "receivedSlots": []
+        "status": "verified_drive_and_pr",
+        "receivedSlots": [
+          "card",
+          "01",
+          "02",
+          "03"
+        ],
+        "fileIds": [
+          "1CD5Pf4JjIQDUvpfUertORbMx1nwJ4wPp",
+          "19QwXBwRmWVMegV0HzVYjf6fqgApvPHhp",
+          "1T29szzkdPkKJPz99vLnLQwaGgMf9CuLz",
+          "18FBjWgrdwbryBQvwc82X83ETFHXvsrSI"
+        ],
+        "originalFileIds": [
+          "14nHWx9njDe0DF6poH8y8X_gv90L5_skM",
+          "1La40KNEFGLgiqbM0KEC-i-_w4pD25Yxg",
+          "1DRxSxGmkVDlYkEMnLh_gixk976Ahxgdv",
+          "1KzKGwY7yaYbEkfHaFLpDpxs9QOA5bGk_"
+        ],
+        "cardSize": [
+          1200,
+          630
+        ],
+        "bodySize": [
+          1200,
+          675
+        ],
+        "metadata": "none",
+        "files": [
+          {
+            "slot": "card",
+            "sha256": "04e70ed6dcd7e7dacc9da0a0a8b99abe0197a374b468af86bc82e94d01cfe6f1",
+            "gitBlobSha": "999d6750a989706460aa8cb520f09250179c1a55",
+            "driveFileId": "1CD5Pf4JjIQDUvpfUertORbMx1nwJ4wPp"
+          },
+          {
+            "slot": "01",
+            "sha256": "9167310097250e9e0f448880355a559d75d5726cb18248aafab9a0b0cbf9568c",
+            "gitBlobSha": "26c7396eab3402e2537c7acb2ee395bcebe894ca",
+            "driveFileId": "19QwXBwRmWVMegV0HzVYjf6fqgApvPHhp"
+          },
+          {
+            "slot": "02",
+            "sha256": "6199927e8e9d6eb92a27ece4686afd9a09e37c5b8ad259a463d95e04f53964d4",
+            "gitBlobSha": "3dab4a16b67011eea66b079cde015f3c7fb7b0d4",
+            "driveFileId": "1T29szzkdPkKJPz99vLnLQwaGgMf9CuLz"
+          },
+          {
+            "slot": "03",
+            "sha256": "1c22a2112d78c4ea924c06ec3ad9bfb6c343795299554e719a6e22d0340928c0",
+            "gitBlobSha": "7ea0b52b65c33387882c27e2c51166f83b8a22f5",
+            "driveFileId": "18FBjWgrdwbryBQvwc82X83ETFHXvsrSI"
+          }
+        ]
       },
       "factCheckUrl": "https://drive.google.com/file/d/1qjnlGmAD-QBpmjM2TOpGPu0wGh55_3VE/view?usp=drivesdk"
     },
@@ -127,7 +181,7 @@
       "articleId": 59,
       "slug": "beginner-engineer-tutorial-portfolio",
       "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
-      "status": "DRAFT_WAITING_IMAGES",
+      "status": "IMAGES_REFLECTED_QA_PENDING",
       "selectedAt": "2026-10-04T08:56:01+09:00",
       "selectionEvidence": "User said おけ to SEO title and then すすめて",
       "requestedPublishDate": "2026-10-04",
@@ -137,14 +191,16 @@
         "previewApprovedHeadSha": null,
         "humanFactCheck": "pending",
         "structuralChecks": "passed",
-        "fullLocalQa": "pending_images",
+        "fullLocalQa": "pending",
         "factCheckScript": "pending_dependency_and_master_integration",
-        "driveAndPrDraftReadback": "matched"
+        "driveAndPrDraftReadback": "matched",
+        "imageVisual": "passed",
+        "imageByteReadback": "matched"
       },
       "branch": "article-factory/2026-10-04-59-tutorial-portfolio",
       "prNumber": 119,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/119",
-      "headSha": "6828fc64b0662d86a1da54605193e48f395dcadd",
+      "headSha": "48ee47d4a9650e82075ca44d1dea5f592229192f",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1xOWrcNySEmB7QMC1X9FT88yaEL3oUPqD",
       "driveImagesFolderUrl": "https://drive.google.com/drive/folders/1N40A_G7GLcE6-yIJEOBBNB5P40fITmfP",
       "driveOriginalsFolderUrl": "https://drive.google.com/drive/folders/1EEFISU5BwlJOUCzUIMqcVsH3e-tefqhs",
@@ -152,8 +208,60 @@
       "designPromptsUrl": "https://drive.google.com/file/d/159eobkAE9yT1Xq9lI8PtkA4RiKhBrk60/view?usp=drivesdk",
       "articleDraftUrl": "https://drive.google.com/file/d/1S6pf5X1w4v9_w3zjy9pGCtvhPOYtow7t/view?usp=drivesdk",
       "images": {
-        "status": "waiting_user_images",
-        "receivedSlots": []
+        "status": "verified_drive_and_pr",
+        "receivedSlots": [
+          "card",
+          "01",
+          "02",
+          "03"
+        ],
+        "fileIds": [
+          "1eYOxyjDSi2p69H_AuA2VbvCYIwhqo0N_",
+          "1Z5BKkhkrToWzJqZK3xOclhbq4f5l5q5g",
+          "1Gy4OqhgqLcDyeTSQp8WC_BpQKxhNxXBg",
+          "1VbTL76kAY5Ho3B4EuIKBRQzGNb7__3hc"
+        ],
+        "originalFileIds": [
+          "12nVswINUdMvNIfCGTWhkf54fsgQ2QCHQ",
+          "1fdmIVMOCnlvL68eBrsRWu8MGR5Sr0BVt",
+          "1m8zlrTLpIB5b99gd3sOTzEokHTWkYvFt",
+          "1YQ0gZcZL3whu4_iIltVYEG0pzRhtO58J"
+        ],
+        "cardSize": [
+          1200,
+          630
+        ],
+        "bodySize": [
+          1200,
+          675
+        ],
+        "metadata": "none",
+        "files": [
+          {
+            "slot": "card",
+            "sha256": "70191d8960b821126f54d24c0235180c185d34021f2f923c12dacf56f7f97fe3",
+            "gitBlobSha": "a9e50145706e23ca41e3e261a76492a7cbe6cbd7",
+            "driveFileId": "1eYOxyjDSi2p69H_AuA2VbvCYIwhqo0N_"
+          },
+          {
+            "slot": "01",
+            "sha256": "32fd72947852df35b9621c8104dbf54617e6de4110d43e3ab9f1254c7f8aa3c4",
+            "gitBlobSha": "41dd4fd9882caf4048100786ed861c02f00d32d0",
+            "driveFileId": "1Z5BKkhkrToWzJqZK3xOclhbq4f5l5q5g"
+          },
+          {
+            "slot": "02",
+            "sha256": "e8db2688bb1be48d57fdc011db5c2d428a5043bbe858cb7cc72cc0c9ecfecfb9",
+            "gitBlobSha": "37e37147c28a0ca387a280588ee9445a43f19f13",
+            "driveFileId": "1Gy4OqhgqLcDyeTSQp8WC_BpQKxhNxXBg"
+          },
+          {
+            "slot": "03",
+            "sha256": "0ffd896551276099803592f4c54619d585e34e8b127ca48a7b4d89626e46e2d5",
+            "gitBlobSha": "d1ab35b45d4a2ae3dec88517eeaba9a858e9ef46",
+            "driveFileId": "1VbTL76kAY5Ho3B4EuIKBRQzGNb7__3hc"
+          }
+        ]
       },
       "factCheckUrl": "https://drive.google.com/file/d/14ILCpxRZx2TGtMb0fBV807LW9T4ICWtQ/view?usp=drivesdk",
       "officialImageDecision": "Official event images searched; third-party product/character rights and reuse conditions unverified. Use official source link and NARU original diagrams."
@@ -174,7 +282,8 @@
     "2026-10-03 18:06 JST: user reports production URL opens, but Vercel status for merge SHA df8c82f is failure. Displayed revision unverified; not reported as published.",
     "2026-10-04: User selected evergreen candidate1. Allocated58 after master/Open PR/Drive/prior queue duplicate checks. Existing topical reservation retained. Publication clock time not inferred; no scheduling.",
     "2026-10-04: User explicitly corrected that article57 was yesterday's publication and requested today's topical article. Supersedes Oct4 topical reservation notes. Today's topical slot is empty; evergreen58 selected.",
-    "2026-10-04: Draft PR118(article58) and119(article59), article/image-plan/prompts/fact records saved to dedicated Drive folders. Four slots per article await user images. Readback matched GitHub exact head and Drive. Structural QA passed; human review/images/CI/full visual QA pending. No merge/scheduling."
+    "2026-10-04: Draft PR118(article58) and119(article59), article/image-plan/prompts/fact records saved to dedicated Drive folders. Four slots per article await user images. Readback matched GitHub exact head and Drive. Structural QA passed; human review/images/CI/full visual QA pending. No merge/scheduling.",
+    "2026-10-04: Eight user PNG originals archived and eight metadata-free WebPs saved to article58/59 Drive folders and Draft PR118/119. Drive bytes and exact GitHub blob SHAs verified. Human fact review, CI and visual preview approval remain pending; no publication."
   ],
   "dailySlots": {
     "2026-10-04": {
