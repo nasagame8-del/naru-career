@@ -47,3 +47,17 @@
 - certification-exam-on-hold → job-type-employment, skill-based-hiring
 - vaguely-want-to-quit → casual-interview, what-is-second-new-grad
 - small-trigger-to-quit → direct-recruiting, casual-interview
+
+
+## 類似記事への内部リンク（2026-10-04追加）
+
+note版を作る際、公開済みの類似記事がある場合は本文中に1〜2本だけ自然にリンクする。
+
+- 最優先：自分の公開済みnote
+- 次点：NARU本体の対応記事
+- 「関連記事はこちら」のように機械的に並べるより、読者の疑問が発生する段落の直後に文脈として差し込む
+- 公開URLを実際に確認できない記事はリンクしない
+- URLを推測・捏造しない
+- 同じ検索意図の記事を量産しない。既存記事の補足・具体例・次の悩みに分解する
+
+タイトル選定は note-x-operation-rules.md の「note記事のテーマ・タイトル選定ルール」を優先する。
