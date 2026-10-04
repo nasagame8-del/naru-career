@@ -134,7 +134,7 @@ jobs:
             compatibility_date: '2026-10-03',
             compatibility_flags: ['nodejs_compat'],
             workers_dev: true,
-            assets: {directory: '.open-next/assets', binding: 'ASSETS', run_worker_first: true}
+            assets: {directory: '.open-next/assets', binding: 'ASSETS', run_worker_first: true, html_handling: 'none'}
           }));
           NODE
 
