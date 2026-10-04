@@ -20,7 +20,8 @@
     "build:cloudflare": "opennextjs-cloudflare build",
     "preview:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "editor-agent": "node scripts/naru-editor-agent.mjs"
+    "editor-agent": "node scripts/naru-editor-agent.mjs",
+    "test:editor-agent": "vitest run src/lib/naru-editor-agent && node --test scripts/naru-editor-agent.test.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^6.1.0",
