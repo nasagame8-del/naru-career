@@ -4,10 +4,10 @@
   "coordinationBranch": "agent/naru-editor-agent-v1",
   "mode": "CLOUD_CLAUDE_BRIDGE",
   "status": "RUN_CLAUDE",
-  "instructionId": "NARU-EDITOR-V1-001A",
-  "lastCompletedInstructionId": "USER-SITE-AUDIT-FOLLOWUP-2026-10-01",
-  "lastReportId": "REPORT-010",
-  "iteration": 1,
+  "instructionId": "NARU-EDITOR-V1-002",
+  "lastCompletedInstructionId": "NARU-EDITOR-V1-001A",
+  "lastReportId": "REPORT-012",
+  "iteration": 2,
   "maxIterations": 2,
   "maxClaudeTurns": 8,
   "sameBlockerCount": 0,
@@ -24,5 +24,5 @@
     "production merge or deploy requires approval",
     "irreversible content decision with insufficient evidence"
   ],
-  "notes": "Retry after prior max-turns failure with a smaller bounded round: implement only the NARU Editor Agent v1 state core + tests + concise docs. No paid APIs, workflow edits, article writes, merge, or deploy."
+  "notes": "Round 2: add repository manifest, evidence reconciliation, safe CLI, full tests/build. No paid APIs, workflow edits, article writes, merge, or deploy."
 }
