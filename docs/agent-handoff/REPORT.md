@@ -1,3 +1,63 @@
+# NARU Research｜しょくばらぼ × 公開採用ページ — 2026-10-04
+
+- reportId: USER-SHOKUBA-RESEARCH-20261004
+- completedInstructionId: USER-SHOKUBA-RESEARCH-20261004（ユーザー直接依頼。NEXT_INSTRUCTIONはIDLE。正本は `docs/research/shokuba-claude-handoff.md`）
+- status: DONE_PENDING_REVIEW（Draft PR #143 のブランチへpush済み。master未反映・記事未作成）
+- branch: `research/shokuba-20261004`
+- 詳細レポート: `docs/research/shokuba-2026-10-04-report.md`
+
+## 実施内容
+
+- 既存成果物（stage 1のsummary/seed、旧パイロット）を確認し、未完了工程のみ実施
+- stage 2を再実装（`scripts/research-recruitment-pages.mjs`）。採用ページ一意194件を取得し、
+  指示書の必須スキーマ（fetchedAt / pageTitle / httpStatus / JobPosting詳細）、リダイレクト追跡、
+  第三者求人サイト判定、ページ種別判定、古い新卒ページ判定を追加
+- stage 3を新規作成（`scripts/research-shokuba-analysis.mjs`）。母数併記の集計10種＋品質レポートを出力
+- 公式データの「制度あり」回答と採用ページ上の記載を法人番号で突合（新規指標）
+- `docs/research/shokuba-2026-10-04-report.md` に記事候補10件を導出
+- CIワークフローを `workflow_dispatch` のみに変更（pushで再クロールしデータを上書きする事故を防止）
+- 旧Python版stage 2に非推奨コメントを追記（初回パイロットの出所として保持）
+
+## テスト結果
+
+- `node --check scripts/research-recruitment-pages.mjs` / `scripts/research-shokuba-analysis.mjs`: PASS
+- スモークラン（8件・4件、`--out-tag smoke` で本データを汚さず）: 8/8, 4/4 取得成功
+- 本番ラン: 対象194件 / 成功181件（93.3%）/ 失敗13件（404×8, 403×1, 500×1, robots拒否×1, 証明書エラー×2）
+- 集計の再現性: 2回実行し `generatedAtUtc` 以外の差分なし
+- 検算: 失敗内訳合計=13、制度開示件数がstage 1のsummaryと一致、規模帯の企業数合計=8,118
+- 未実施: リポジトリ全体の `vitest`（アプリコード・テスト対象コードに変更なし）
+
+## 変更ファイル
+
+- 追加: `scripts/research-recruitment-pages.mjs`, `scripts/research-shokuba-analysis.mjs`,
+  `data/research/shokuba/2026-10-04-analysis.json`, `docs/research/shokuba-2026-10-04-report.md`
+- 更新: `data/research/shokuba/2026-10-04-recruitment-pages-pilot.json` / `.csv`,
+  `.github/workflows/shokuba-research.yml`, `scripts/research-recruitment-pages.py`（非推奨コメント）
+- 変更なし: `scripts/research-shokuba.py`, `2026-10-04-summary.json`, `*-information-communications-seed.csv`
+
+## git diff概要
+
+8 files changed, 15,875 insertions(+), 3,654 deletions(-)（大半は再取得したパイロットJSONの差分）
+
+## 既知の問題
+
+- stage 2のスクリプトが新旧2本あり、旧Python版は出力先が同一なので誤実行で上書きされる
+- このマシンにPythonがないため、stage 2/3はリポジトリ慣習に合わせNodeで実装（stage 1はPythonのまま）
+- 職種単位の粒度がないため、ポートフォリオ等一部指標は件数が一桁
+
+## 判断が必要な項目
+
+- 旧 `scripts/research-recruitment-pages.py` を削除してよいか
+- 記事化する候補の選定（候補1/2/3を推奨）
+
+## 推奨する次の作業
+
+- 記事候補1〜3のいずれかを選び、SEO Editorの通常フローで執筆（本セッションでは未着手）
+- 145社の自社採用ページを職種単位で再構造化し、職種×第二新卒×年収のクロスを作る
+- 四半期ごとの定点観測として同スクリプトを再実行
+
+---
+
 # NARU 全サイト Typography QA — 2026-10-04
 
 - reportId: USER-TYPOGRAPHY-QA-20261004

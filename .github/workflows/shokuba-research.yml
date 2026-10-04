@@ -1,13 +1,19 @@
 name: NARU Shokuba Research
 
+# Manual only. The previous `push` trigger re-ran the crawl on every script
+# change and committed the result back, which would overwrite the dataset that
+# the research branch already carries. Research runs are now explicit.
 on:
-  push:
-    branches:
-      - research/shokuba-20261004
-    paths:
-      - .github/workflows/shokuba-research.yml
-      - scripts/research-shokuba.py
-      - scripts/research-recruitment-pages.py
+  workflow_dispatch:
+    inputs:
+      refresh_official_csv:
+        description: 'Re-download the Shokuba Rabo CSV and rebuild the seed (stage 1)'
+        type: boolean
+        default: false
+      crawl_recruitment_pages:
+        description: 'Re-crawl the published recruitment pages (stage 2)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -15,7 +21,7 @@ permissions:
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,11 +32,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Download and analyze official Shokuba Rabo CSV
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Download and analyze official Shokuba Rabo CSV (stage 1)
+        if: ${{ inputs.refresh_official_csv }}
         run: python scripts/research-shokuba.py
 
-      - name: Crawl official recruitment pages pilot
-        run: python scripts/research-recruitment-pages.py
+      # Note: GitHub-hosted runners time out on a large share of Japanese
+      # corporate sites (136/194 from CI vs 181/194 from a local run), so a CI
+      # crawl is a fallback, not the source of truth.
+      - name: Crawl official recruitment pages (stage 2)
+        if: ${{ inputs.crawl_recruitment_pages }}
+        run: node scripts/research-recruitment-pages.mjs --concurrency 6
+
+      - name: Aggregate (stage 3)
+        run: node scripts/research-shokuba-analysis.mjs
 
       - name: Commit research outputs
         run: |

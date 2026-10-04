@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 """
+DEPRECATED. Superseded by scripts/research-recruitment-pages.mjs.
+
+Kept only as the provenance of the first (2026-10-04, CI) pilot run. Do not run
+it: it writes to the same output paths as the Node crawler and would overwrite
+the current dataset with a narrower schema and a lower success rate
+(136/194 from CI vs 181/194). See docs/research/shokuba-2026-10-04-report.md.
+
 NARU Research stage 2: crawl official recruitment pages listed in the
 Shokuba Rabo information/communications seed.
 
