@@ -75,13 +75,14 @@ describe("editor-agent manifest", () => {
           candidateId: "c1", selected: true, slug: "s", branch: "b", prNumber: 1, draftReady: true,
           latestHeadSha: "aaa",
           images: { card: { ref: "1" }, "01": { ref: "2" }, "02": { ref: "3" }, "03": { ref: "4" } },
-          imageQa: gate("aaa"), articleQa: gate("aaa"), ci: gate("aaa"), previewApprovedHeadSha: "aaa",
+          imageQa: gate("aaa"), factCheck: gate("aaa"), articleQa: gate("aaa"), ci: gate("aaa"), previewApprovedHeadSha: "aaa",
         },
       },
     });
     expect(evaluateArticleSlot(ready.slots["1"]).state).toBe("READY_TO_SCHEDULE");
     const moved = reconcileRunManifest(ready, { slots: { "1": { latestHeadSha: "bbb" } } });
     expect(moved.slots["1"].imageQa).toEqual(gate("aaa"));
+    expect(moved.slots["1"].factCheck).toEqual(gate("aaa"));
     const r = evaluateArticleSlot(moved.slots["1"]);
     expect(r.state).toBe("IMAGE_QA");
     expect(r.state).not.toBe("READY_TO_SCHEDULE");
