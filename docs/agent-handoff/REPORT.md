@@ -1,3 +1,72 @@
+# NARU Research｜Stage 4 採用ページDiscovery / Stage 5 求人単位化 — 2026-10-04
+
+- reportId: USER-SHOKUBA-STAGE45-20261004
+- completedInstructionId: USER-SHOKUBA-STAGE45-20261004（ユーザー直接依頼。NEXT_INSTRUCTIONはIDLE）
+- status: DONE_PENDING_REVIEW（Draft PR #143 のブランチへpush済み。master未反映・記事未作成）
+- branch: `research/shokuba-20261004`
+- 詳細レポート: `docs/research/shokuba-2026-10-04-stage4-5-report.md`
+
+## 実施内容
+
+- 旧194URL（しょくばらぼ採用ページ欄）はパイロットとして保持し、主母集団から外した
+- 母集団を「情報通信業 × 企業HPあり」3,512社 → 層化可能3,478社 → ホスト重複除外3,419社に定義
+- 企業規模7区分 × 都道府県3区分の21セルへ均等割当で300社を抽出（seed固定・再現可能）
+- Stage 4 Discoveryを実装（トップページのアンカー / robots.txtのSitemap / sitemap内URL /
+  自社サイト内採用ページ / 企業サイトから直リンクされた公式ATS のみ）
+- confidence high/medium/low を付与し、lowは自動採用しない設計
+- Stage 5で採用ページから求人詳細へ遷移し、1求人=1レコードで構造化（JSON-LD優先・HTML補完）
+- 共通ライブラリ `scripts/research-web.mjs` を切り出し、抽出ロジックのユニットテストを追加
+- 未解決97社のみでサイトルートへのフォールバックを検証（+10社、合算71.0%）
+- 3,419社への拡大コストを実測から外挿し、拡大可否を判断
+
+## テスト結果
+
+- `node --test scripts/research-jobs.test.mjs`: 26 tests / 26 pass / 0 fail
+  - テストで実データに影響する2件のバグを検出・修正（勤務地「東京都渋谷区」から京都府を生成していた／
+    サイト見出し「Recruit 採用情報」を求人名にしていた）
+- `npx eslint scripts/research-*.mjs`: 0 errors / 0 warnings
+- `node --check` 4ファイル: エラーなし
+- Stage 4本番ラン: 300社 / 259.3秒 / HP成功273 / 採用ページ203 / 403=5 / 429=0 / robots block=1
+- Stage 5本番ラン: 202社 / 182.0秒 / 到達106社 / 求人248件 / 非求人ページ221件除外
+- 未実施: リポジトリ全体の `npm test`（アプリコード・既存テスト対象に変更なし）
+
+## 変更ファイル
+
+- 追加: `scripts/research-web.mjs`, `scripts/research-discover-recruitment.mjs`,
+  `scripts/research-jobs.mjs`, `scripts/research-jobs.test.mjs`,
+  `scripts/research-stage45-analysis.mjs`,
+  `data/research/shokuba/2026-10-04-discovery-sample-300.csv`,
+  `data/research/shokuba/2026-10-04-discovery-300.json` / `.csv`,
+  `data/research/shokuba/2026-10-04-discovery-300-retry.json`,
+  `data/research/shokuba/2026-10-04-jobs-300.json` / `.csv`,
+  `data/research/shokuba/2026-10-04-discovery-analysis.json`,
+  `docs/research/shokuba-2026-10-04-stage4-5-report.md`
+- 変更なし: 旧パイロットの `2026-10-04-recruitment-pages-pilot.*`（保持）
+
+## git diff概要
+
+12 files added（データ中心）。アプリコード・既存スクリプトへの変更なし。
+
+## 既知の問題
+
+- Stage 5の「1求人=1レコード」達成度が53.6%。1ページ内複数求人の分解が未実装
+- `isJobLevelRecord` の判定順を直すとコミット済みデータと再現しなくなるため、拡大ランと同時に修正すべき
+- JobPosting JSON-LDは採用ページ203社中1社（0.5%）。構造化データ経由は当てにできない
+- 年収33件・必要経験年数40件と母数が小さく、分布を記事に出せない
+
+## 判断が必要な項目
+
+- Stage 4を3,419社へ拡大するか（レポートの結論は「拡大する価値あり」。約49分・約7,000リクエスト）
+- Stage 5は改良後に拡大するか（レポートの結論は「改良が前提」）
+
+## 推奨する次の作業
+
+1. Stage 5の改良（1ページ内複数求人の分解、recordLevelの型分け、判定順の修正）
+2. その後にStage 4を全3,419社へ拡大（Stage 5も同時に再実行）
+3. 四半期ごとの定点観測として同スクリプトを再実行
+
+---
+
 # NARU Research｜しょくばらぼ × 公開採用ページ — 2026-10-04
 
 - reportId: USER-SHOKUBA-RESEARCH-20261004
