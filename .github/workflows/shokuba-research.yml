@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/shokuba-research.yml
       - scripts/research-shokuba.py
+      - scripts/research-recruitment-pages.py
 
 permissions:
   contents: write
@@ -14,7 +15,7 @@ permissions:
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,6 +28,9 @@ jobs:
 
       - name: Download and analyze official Shokuba Rabo CSV
         run: python scripts/research-shokuba.py
+
+      - name: Crawl official recruitment pages pilot
+        run: python scripts/research-recruitment-pages.py
 
       - name: Commit research outputs
         run: |
