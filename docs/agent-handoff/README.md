@@ -5,10 +5,10 @@
 
 ## 役割
 
-- ChatGPT: 要件整理、Drive/GitHub/Vercelの現状確認、指示作成、diffレビュー、次工程判断
+- ChatGPT: 要件整理、Drive/GitHub/Cloudflareの現状確認、指示作成、diffレビュー、次工程判断
 - Claude Code: コード調査、実装、必要なテスト、REPORT更新
 - GitHub: 共有状態、PR、実行ログ、Actionsの実行基盤
-- Vercel: Preview / Production確認
+- Cloudflare Workers: Preview / Production確認
 - 人間: 仕様・公開・見た目など本当に判断が必要な箇所だけ確認
 
 ## Control plane
@@ -27,7 +27,7 @@ GitHub ActionsはPRのheadブランチをcheckoutし、STATEとコメントのin
 
 従量API課金は原則0です。
 
-- OpenAI API: Slack War Roomの司会・Claude後レビューに限り、低コストモデルを小さいtoken上限で使用する
+- OpenAI API: NARU Agent Autopilotでは使用しない。Claude後レビューはChatGPT製品セッション/接続済みツール側で行い、GitHub Actionsから従量APIを呼ばない
 - Anthropic API key: 使用しない
 - Claude Code: `CLAUDE_CODE_OAUTH_TOKEN` のサブスクリプション認証だけを使う
 - 外部の有料検索・生成API: 使用しない
@@ -42,8 +42,8 @@ GitHub ActionsのClaude Codeログにドル換算の利用量が表示される�
 Claude同士を無制限に会話させません。
 
 - workflowの `maxClaudeTurns`: 8（固定上限）
-- 1タスクの自律ラウンド: 原則2回まで
-- ChatGPTレビューで問題がなければ2回目は実行しない
+- 1回のGitHub Actions起動ではClaudeを1回だけ実行し、完了後は `WAITING_FOR_CHATGPT` へ戻す
+- 追加修正が必要な場合だけChatGPTが新しいinstructionIdを発行する
 - 同じinstructionIdは二重実行しない
 - 通常のlint/build/grep/画像変換など、LLM不要な処理はスクリプトやCIを優先する
 - Claude実行が失敗した場合、部分変更は自動commitしない
@@ -74,7 +74,8 @@ WAITING_FOR_CHATGPT
 5. 対象PRへ `@naru-autopilot <instructionId>` とコメントする。
 6. GitHub ActionsがClaude Codeをクラウド実行する。
 7. Claudeは `REPORT.md` と必要な実装を更新し、workflowが同じPR branchへcommit/pushする。
-8. ChatGPTがREPORT、diff、CIを確認し、終了または1回だけ追加修正を出す。
+8. workflowは外部LLM APIを呼ばず、`STATE.json` を `WAITING_FOR_CHATGPT`（または異常時 `HUMAN_REQUIRED`）へ遷移させる。
+9. ChatGPT製品側がREPORT、diff、CIを確認し、終了または新しいinstructionIdで追加修正を出す。
 
 ## Remote visibility
 
@@ -84,7 +85,7 @@ PCを起動しておく必要はありません。スマホからGitHubの対象
 - Claudeが変更したcommit
 - REPORTの結論
 - CI結果
-- Vercel Preview
+- Cloudflare Preview / Production
 
 を追えます。workflow完了時には対象PRへ実行結果の短いサマリーコメントも残します。
 
@@ -164,6 +165,10 @@ Observerは通常会話へ参加せず、異常時だけ発言する。
 
 
 ## Live Slack meeting ingress
+
+### Legacy paid-API path notice
+
+この節のSlack→ChatGPT直結経路はOpenAI APIを使う旧経路で、**NARU Editor Agent v1の無課金運用には含めない**。自動運用では起動せず、ChatGPT製品の接続済みツール/定期タスクとClaude Code OAuthの経路を使う。旧経路の完全無効化は別のinfra変更で行う。
 
 Slackの `#naru-war-room` から `NARU ChatGPT` をメンションすると、`POST /api/slack/events` がSlack Events APIを受ける。
 
