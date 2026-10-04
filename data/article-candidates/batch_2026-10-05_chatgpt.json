@@ -1,0 +1,69 @@
+{
+  "batchId": "batch_2026-10-05_chatgpt",
+  "generatedAt": "2026-10-05T08:04:01+09:00",
+  "trigger": "manual",
+  "inventorySize": 58,
+  "nextArticleId": 60,
+  "candidates": [
+    {
+      "id": "cand_261005_improve1",
+      "title": "【既存記事改善】正社員→業務委託の親記事から、社会保険・契約終了の確認先へつなぐ",
+      "primaryKeyword": "正社員 業務委託 切り替え リスク",
+      "secondaryKeywords": [
+        "正社員 から業務委託 クビ",
+        "正社員 から業務委託 違法"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "新規記事を増やさずbusiness-outsourcing-conversion-riskの既存本文を改善する提案。10/4公開のemployee-to-contractor-social-insuranceへ、制度変更表と末尾から自然な内部リンクを追加し、契約終了記事との分岐を整える。タイトルや導入は10/2改稿済みなので再変更を前提にしない。",
+      "reasonToWriteNow": "親記事は確定28日192表示・5クリック・平均8.95位。比較期88表示・2クリックから表示増。新しい社会保険子記事は既に公開済みだが親記事に同slug参照がないため、読者の次の行動とリンク網を改善できる。",
+      "category": "業界解説",
+      "proposedSlug": "business-outsourcing-conversion-risk",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "employee-to-contractor-social-insurance",
+        "outsourcing-contract-termination-worker-status"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "正社員 から業務委託 クビ",
+        "impressions": 13,
+        "clicks": 0,
+        "position": 9.307692307692308,
+        "window": "2026-09-05/2026-10-02 (28 settled days; America/Los_Angeles)"
+      },
+      "selectionEvidence": {
+        "gsc": "strong",
+        "serp": "unchecked",
+        "trends": "unavailable",
+        "demandExpansions": "unavailable",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "none",
+        "checkedAt": "2026-10-05T08:04:01+09:00",
+        "notes": [
+          "GSC strongはサイト内で最も反応する親ページの192表示・5クリック、比較88表示・2クリックという相対評価。候補クエリ13表示のみをstrongと評価していない。少母数・因果未確定。",
+          "Google SERP/PAA/suggest/relatedは取得不能。一般Web検索は調査補助だけでGoogle順位として扱わず0点。Google Trends取得不能0点。",
+          "35+0+0+0+15+5=55 C。根拠ゲート①GSC strongで通過。A/B不足時の補欠のみ。",
+          "厚労省 https://roukeiseminar.mhlw.go.jp/alteration.html と公取委 https://www.jftc.go.jp/freelancelaw_2025/ を一次情報として確認。",
+          "改善対象自体の検索意図は維持。新規同意図URLを作らないためカニバリnone。公開済み子記事を再制作しない。"
+        ]
+      },
+      "selectionScore": 55,
+      "selectionGrade": "C",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "2026-10-05朝。Drive現行00/01、GitHub master58記事、Open PR17件、latest、全selected-queueとpreselectedを再取得。10/5既存バッチなし。追加記事PRは作成していない。Cloudflare Workersが正本。",
+    "新規候補はA/B成立なし。Google SERP/Trends取得不能、PAA等未確認は加点せず。時事・独自検証枠の根拠ゲート通過候補なし。件数・時事1通常1を数合わせしない。通常枠の補欠として既存改善1件のみ提示。",
+    "GSC確定日2026-10-02、firstIncompleteDate10/3。9/5〜10/2 vs8/8〜9/4。クリック7→13、表示254→431、CTR2.7559→3.0162%、平均31.3504→15.6009。ブランドnaru第二新卒3click/6impは主要根拠除外。",
+    "親ページ88→192表示、2→5click、CTR2.2727→2.6042%、平均7.625→8.9479（順位は悪化）。agent-not-recommended103→83表示、0click、66.08→41.83位。『転職エージェント 微妙』5→14表示、21.4→17.93位、0click。『本音』30→44表示、54.23→62.68位で悪化。求人微妙10表示20.9位は公開済み子記事あり重複除外。",
+    "労働条件通知書 内定承諾前2表示23.5位、SNS裏アカ1表示23位、業務委託webディレクター1表示24位は母数不足で過大評価しない。",
+    "GA4未取得。クエリ匿名化等でquery合計とpage/property合計は一致しない。検索ボリューム・X人気は未確認。",
+    "未選定の過去候補と旧queueは保存継続。今日の新規2本分は選定なし。改善案は新規記事数に含めない。"
+  ]
+}
