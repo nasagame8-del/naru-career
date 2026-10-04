@@ -20,9 +20,35 @@ const RUN_DATE = '2026-10-04';
 const DIR = path.join('data', 'research', 'shokuba');
 
 function parseArgs(argv) {
-  const out = { tag: '300' };
-  for (let i = 0; i < argv.length; i += 1) if (argv[i] === '--tag') out.tag = argv[++i];
+  const out = { tag: '300', jobsTag: null, outName: null };
+  for (let i = 0; i < argv.length; i += 1) {
+    if (argv[i] === '--tag') out.tag = argv[++i];
+    else if (argv[i] === '--jobs-tag') out.jobsTag = argv[++i];
+    else if (argv[i] === '--out') out.outName = argv[++i];
+  }
+  if (!out.jobsTag) out.jobsTag = out.tag;
   return out;
+}
+
+/** Classify a transport/HTTP failure into the buckets the run report needs. */
+function errorClass(err) {
+  if (!err) return null;
+  if (/^http_(\d+)/.test(err)) {
+    const code = Number(/^http_(\d+)/.exec(err)[1]);
+    if (code === 403) return 'http403';
+    if (code === 404) return 'http404';
+    if (code === 429) return 'http429';
+    if (code >= 500) return 'http5xx';
+    return `http${code}`;
+  }
+  if (/429/.test(err)) return 'http429';
+  if (/CERT|SSL|TLS|SELF_SIGNED|UNABLE_TO_VERIFY/i.test(err)) return 'tls';
+  if (/ENOTFOUND|EAI_AGAIN|DNS/i.test(err)) return 'dns';
+  if (/Timeout|ETIMEDOUT|UND_ERR_CONNECT_TIMEOUT/i.test(err)) return 'timeout';
+  if (/blocked_by_robots/.test(err)) return 'robotsBlocked';
+  if (/non_html_content/.test(err)) return 'nonHtml';
+  if (/ECONNRESET|ECONNREFUSED|EPIPE|SystemError/i.test(err)) return 'connection';
+  return 'other';
 }
 
 const countBy = (arr, fn) => {
@@ -63,7 +89,7 @@ function groupRates(rows, keyFn, predicate) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const discovery = JSON.parse(fs.readFileSync(path.join(DIR, `${RUN_DATE}-discovery-${args.tag}.json`), 'utf8'));
-  const jobsPath = path.join(DIR, `${RUN_DATE}-jobs-${args.tag}.json`);
+  const jobsPath = path.join(DIR, `${RUN_DATE}-jobs-${args.jobsTag}.json`);
   const jobsData = fs.existsSync(jobsPath) ? JSON.parse(fs.readFileSync(jobsPath, 'utf8')) : null;
   const stage3Path = path.join(DIR, `${RUN_DATE}-analysis.json`);
   const stage3 = fs.existsSync(stage3Path) ? JSON.parse(fs.readFileSync(stage3Path, 'utf8')) : null;
@@ -104,6 +130,17 @@ function main() {
 
   // --- access / compliance outcomes --------------------------------------
   const access = {
+    totalHttpRequests: discovery.httpAccounting?.totalHttpRequests ?? null,
+    httpStatusCountsAcrossAllRequests: discovery.httpAccounting?.statusCounts ?? null,
+    hostsStoppedAfter429: discovery.httpAccounting?.hostsBlockedAfter429 ?? [],
+    failureClassesOnHomepage: countBy(rows.filter((r) => r.homepageError), (r) => errorClass(r.homepageError)),
+    failureClassesOnRecruitmentPage: countBy(
+      rows.filter((r) => r.notes?.some?.((n) => String(n).startsWith('candidate_not_fetched'))),
+      (r) => errorClass(String(r.notes.find((n) => String(n).startsWith('candidate_not_fetched'))).replace('candidate_not_fetched:', '')),
+    ),
+    originFallbackUsed: rows.filter((r) => r.normalizedOriginFallbackUsed || r.rootFallbackUsed).length,
+    originFallbackLedToDiscovery: rows.filter((r) => (r.normalizedOriginFallbackUsed || r.rootFallbackUsed) && adopted(r)).length,
+    companiesWithRedirects: rows.filter((r) => (r.redirects ?? 0) > 0).length,
     homepageStatusCounts: countBy(rows, (r) => r.homepageStatus),
     homepageErrorCounts: countBy(rows.filter((r) => r.homepageError), (r) => r.homepageError),
     recruitmentPageStatusCounts: countBy(rows.filter((r) => r.httpStatus !== null), (r) => r.httpStatus),
@@ -156,6 +193,16 @@ function main() {
         perCompany.map((c) => ({ ...c, hit: c.jobRecordCount > 0 })),
         (c) => c.hit,
       ),
+      provisional: jobsData.provisional === true,
+      provisionalReason: jobsData.provisionalReason ?? null,
+      elapsedSeconds: jobsData.elapsedSeconds ?? null,
+      totalHttpRequests: jobsData.httpAccounting?.totalHttpRequests ?? null,
+      companiesTruncatedAtCap: jobsData.counts.companiesTruncatedAtCap ?? null,
+      maxJobsPerCompany: jobsData.settings?.maxJobsPerCompany ?? null,
+      suspiciousJobTitles: jobsData.counts.suspiciousJobTitles ?? null,
+      categoryOrContainerLikeRecords: jobsData.counts.categoryOrContainerLikeRecords ?? null,
+      duplicateCandidateRecords: jobsData.counts.duplicateCandidateRecords ?? null,
+      jobPostingJsonLdRecords: jobsData.counts.jobPostingJsonLdRecords ?? null,
       jobRecords: all.length,
       granularity: {
         note: '1求人=1レコードがどれだけ達成できたかの精度指標。roleNamed は職種名を含むタイトルのレコード。',
@@ -236,6 +283,12 @@ function main() {
       stage3Analysis: stage3 ? `${RUN_DATE}-analysis.json` : null,
     },
     sampling: discovery.sampling,
+    executionTime: {
+      discoveryElapsedSeconds: discovery.elapsedSeconds ?? null,
+      discoveryResume: discovery.resume ?? null,
+      jobsElapsedSeconds: jobsData?.elapsedSeconds ?? null,
+      jobsResume: jobsData?.resume ?? null,
+    },
     discoveryFunnel: funnel,
     weightedAdoption,
     rootFallbackRetry: retry ? {
@@ -263,7 +316,7 @@ function main() {
     ],
   };
 
-  const outPath = path.join(DIR, `${RUN_DATE}-discovery-analysis.json`);
+  const outPath = path.join(DIR, args.outName ?? `${RUN_DATE}-discovery-analysis.json`);
   fs.writeFileSync(outPath, `${JSON.stringify(analysis, null, 2)}\n`, 'utf8');
   console.log(JSON.stringify({ out: outPath, funnel, weightedAdoption, jobs: jobs && { companiesReachingJobRecords: jobs.companiesReachingJobRecords, jobRecords: jobs.jobRecords, median: jobs.medianJobRecordsPerReachingCompany }, projection }, null, 2));
 }

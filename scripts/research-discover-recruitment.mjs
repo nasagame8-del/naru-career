@@ -37,7 +37,7 @@ import {
   readCsvObjects, writeCsv, fetchDocument, getRobots, parseSitemap, extractAnchors,
   extractTitle, extractHeadings, stripToVisibleText, extractJsonLdBlocks, extractJobPostings,
   classifyHost, hostOf, isAts, runPool, round, rate,
-  DEFAULTS, USER_AGENT,
+  DEFAULTS, USER_AGENT, getRequestStats, appendCheckpoint, readCheckpoint, atomicWriteFile,
 } from './research-web.mjs';
 
 const RUN_DATE = '2026-10-04';
@@ -289,6 +289,8 @@ async function discoverForCompany(target, opts, { allowRootFallback = true } = {
     company: target.company || null,
     prefecture: target.prefecture || null,
     companySize: target.companySize || null,
+    employeeBand: target.employeeBand ?? sizeBand(sizeOf(target.companySize)) ?? null,
+    prefectureBand: target.prefectureBand ?? prefectureTier(target.prefecture),
     stratum: target.stratum,
     populationWeight: target.populationWeight ?? null,
     homepageUrl: target.homepageUrl,
@@ -314,8 +316,11 @@ async function discoverForCompany(target, opts, { allowRootFallback = true } = {
     alreadyInShokuba: Boolean(target.shokubaRecruitmentUrl),
     jobPostingJsonLdOnRecruitmentPage: null,
     rootFallbackUsed: false,
+    normalizedOriginFallbackUsed: false,
     rootFallbackUrl: null,
     rootFallbackStatus: null,
+    redirects: 0,
+    redirectChain: null,
     fetchedAt: null,
     notes: [],
   };
@@ -365,6 +370,7 @@ async function discoverForCompany(target, opts, { allowRootFallback = true } = {
     if (rootUrl && rootUrl !== (home.finalUrl ?? target.homepageUrl)) {
       const root = await fetchDocument(rootUrl, opts);
       rec.rootFallbackUsed = true;
+      rec.normalizedOriginFallbackUsed = true;
       rec.rootFallbackUrl = rootUrl;
       rec.rootFallbackStatus = root.httpStatus;
       if (root.ok) {
@@ -463,6 +469,8 @@ async function discoverForCompany(target, opts, { allowRootFallback = true } = {
     rec.robotsStatus = doc.robotsStatus;
     rec.pageTitle = title;
     rec.fetchedAt = doc.fetchedAt;
+    rec.redirects = doc.redirectHops ?? 0;
+    rec.redirectChain = doc.redirectChain ?? null;
     rec.jobPostingJsonLdOnRecruitmentPage = jp ? jp.hasJobPosting : null;
     rec.verifiedAsRecruitmentPage = doc.ok ? Boolean(!rejected) : null;
     // A candidate that did not verify is downgraded, never silently adopted.
@@ -499,10 +507,11 @@ async function discoverForCompany(target, opts, { allowRootFallback = true } = {
 // ---------------------------------------------------------------------------
 
 function parseArgs(argv) {
-  const out = { sample: 300, seed: 20261004, concurrency: 8, outTag: null, all: false, dryRun: false, retryUnresolved: null, noRootFallback: false };
+  const out = { sample: 300, seed: 20261004, concurrency: 8, outTag: null, all: false, dryRun: false, retryUnresolved: null, noRootFallback: false, expect: null };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
-    if (a === '--retry-unresolved') out.retryUnresolved = argv[++i];
+    if (a === '--expect') out.expect = Number(argv[++i]);
+    else if (a === '--retry-unresolved') out.retryUnresolved = argv[++i];
     else if (a === '--no-root-fallback') out.noRootFallback = true;
     else if (a === '--sample') out.sample = Number(argv[++i]);
     else if (a === '--seed') out.seed = Number(argv[++i]);
@@ -582,6 +591,25 @@ async function main() {
   const rows = readCsvObjects(SEED_PATH);
   const { sample, frame } = buildSample(rows, args.all ? null : args.sample, args.seed);
 
+  // The full run must cover exactly the frame the pilot was drawn from.
+  if (args.all) {
+    if (args.expect !== null && sample.length !== args.expect) {
+      throw new Error(
+        `Frame size mismatch: expected ${args.expect} companies, built ${sample.length}. `
+        + `Frame: eligibleWithHomepage=${frame.eligibleWithHomepage}, afterHostDeduplication=${frame.afterHostDeduplication}. `
+        + 'Not continuing; report the difference instead of guessing.',
+      );
+    }
+    const corpNumbers = new Set(sample.map((s) => s.corporateNumber));
+    if (corpNumbers.size !== sample.length) {
+      throw new Error(`Duplicate corporateNumber in frame: ${sample.length} rows, ${corpNumbers.size} distinct`);
+    }
+    const hosts = new Set(sample.map((s) => hostOf(s.homepageUrl)));
+    if (hosts.size !== sample.length) {
+      throw new Error(`Duplicate homepage host in frame: ${sample.length} rows, ${hosts.size} distinct hosts`);
+    }
+  }
+
   writeCsv(outSample, [
     'corporateNumber', 'company', 'prefecture', 'companySize', 'stratum',
     'stratumPopulation', 'stratumSampled', 'populationWeight', 'homepageUrl', 'shokubaRecruitmentUrl',
@@ -599,14 +627,38 @@ async function main() {
 
   const opts = { ...DEFAULTS };
   const started = Date.now();
-  let done = 0;
-  const results = await runPool(sample, args.concurrency, async (t) => {
+
+  // Resume: companies already in the checkpoint are never requested again.
+  const checkpointPath = path.join(DIR, 'checkpoints', `${RUN_DATE}-discovery-${tag}.jsonl`);
+  const previous = readCheckpoint(checkpointPath);
+  const doneByCorp = new Map();
+  for (const r of previous) {
+    if (r && r.corporateNumber) doneByCorp.set(r.corporateNumber, r);
+  }
+  const todo = sample.filter((s) => !doneByCorp.has(s.corporateNumber));
+  if (doneByCorp.size) {
+    process.stderr.write(`resuming: ${doneByCorp.size} companies already done, ${todo.length} remaining\n`);
+  }
+
+  let done = doneByCorp.size;
+  const fresh = await runPool(todo, args.concurrency, async (t) => {
     const r = await discoverForCompany(t, opts, { allowRootFallback: !args.noRootFallback });
     done += 1;
+    appendCheckpoint(checkpointPath, r);
+    if (done % 25 === 0 || done === sample.length) {
+      process.stderr.write(`[${done}/${sample.length}] requests=${getRequestStats().totalHttpRequests}\n`);
+    }
     process.stderr.write(`[${done}/${sample.length}] ${String(r.confidence ?? 'none').padEnd(6)} ${String(r.discoveryMethod ?? '-').padEnd(28)} ${r.recruitmentUrl ?? r.homepageUrl}\n`);
     return r;
   });
+
+  // Keep the frame's order so the output is stable across resumes.
+  const byCorp = new Map([...doneByCorp, ...fresh.map((r) => [r.corporateNumber, r])]);
+  const results = sample.map((s) => byCorp.get(s.corporateNumber)).filter(Boolean);
   const elapsedSeconds = round((Date.now() - started) / 1000, 1);
+  if (results.length !== sample.length) {
+    process.stderr.write(`WARNING: ${sample.length - results.length} companies produced no record\n`);
+  }
 
   const byConfidence = (c) => results.filter((r) => r.confidence === c).length;
   const homepageOk = results.filter((r) => r.homepageStatus === 200 && !r.homepageError).length;
@@ -630,9 +682,21 @@ async function main() {
       excluded: '企業規模が0人/非開示の34社は層化対象外',
     },
     settings: { userAgent: USER_AGENT, ...opts, concurrency: args.concurrency },
+    resume: {
+      checkpoint: path.relative(process.cwd(), checkpointPath),
+      companiesFromCheckpoint: doneByCorp.size,
+      companiesCrawledThisRun: fresh.length,
+      frameSize: sample.length,
+    },
+    httpAccounting: getRequestStats(),
     counts: {
       companies: results.length,
+      confidenceSumCheck: ['high', 'medium', 'low'].reduce((a, c) => a + results.filter((r) => r.confidence === c).length, 0)
+        + results.filter((r) => r.confidence === null).length,
       homepageFetchSuccess: homepageOk,
+      originFallbackUsed: results.filter((r) => r.normalizedOriginFallbackUsed).length,
+      originFallbackLedToDiscovery: results.filter((r) => r.normalizedOriginFallbackUsed && (r.confidence === 'high' || r.confidence === 'medium')).length,
+      redirectsObserved: results.filter((r) => (r.redirects ?? 0) > 0).length,
       homepageFetchFailure: results.length - homepageOk,
       recruitmentPageFound: adopted.length,
       high: byConfidence('high'),
@@ -668,16 +732,17 @@ async function main() {
   };
 
   fs.mkdirSync(DIR, { recursive: true });
-  fs.writeFileSync(outJson, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  atomicWriteFile(outJson, `${JSON.stringify(payload, null, 2)}\n`);
   writeCsv(outCsv, [
-    'corporateNumber', 'company', 'prefecture', 'companySize', 'stratum', 'populationWeight',
+    'corporateNumber', 'company', 'prefecture', 'companySize', 'employeeBand', 'prefectureBand',
+    'stratum', 'populationWeight',
     'homepageUrl', 'homepageStatus', 'homepageRobotsStatus', 'homepageError',
     'recruitmentUrl', 'finalUrl', 'discoveryMethod', 'discoveryAnchor', 'hostCategory',
     'confidence', 'httpStatus', 'robotsStatus', 'pageTitle', 'verifiedAsRecruitmentPage',
     'candidateCount', 'sitemapsChecked', 'jobPostingJsonLdOnRecruitmentPage',
-    'rootFallbackUsed', 'rootFallbackUrl', 'rootFallbackStatus',
+    'normalizedOriginFallbackUsed', 'rootFallbackUrl', 'rootFallbackStatus', 'redirects',
     'shokubaRecruitmentUrl', 'alreadyInShokuba', 'fetchedAt',
-  ], results.map((r) => ({ ...r, notes: null })));
+  ], results.map((r) => ({ ...r, notes: null, redirectChain: null })));
 
   console.log(JSON.stringify({ out: [outJson, outCsv, outSample], elapsedSeconds, counts: payload.counts, access: payload.accessOutcomes }, null, 2));
 }

@@ -36,9 +36,9 @@ import crypto from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import {
   writeCsv, fetchDocument, extractAnchors, extractTitle, stripToVisibleText,
-  extractJsonLdBlocks, extractJobPostings, extractBlocks, headingSections, rowsWithin, anchorsWithin,
+  extractJsonLdBlocks, extractJobPostings, extractBlocks, headingSections, rowsWithin,
   classifyHost, hostOf, registrableDomain, isAts, matchFlags, nullFlags, runPool, median, round, rate,
-  DEFAULTS, USER_AGENT,
+  DEFAULTS, USER_AGENT, getRequestStats, appendCheckpoint, readCheckpoint, atomicWriteFile,
 } from './research-web.mjs';
 
 const RUN_DATE = '2026-10-04';
@@ -718,6 +718,7 @@ async function jobsForCompany(companyRow, opts) {
     detailLinkCandidates: 0,
     depthReached: 0,
     hitJobCap: false,
+    truncated: false,
     candidates: [],
     error: null,
   };
@@ -778,7 +779,7 @@ async function jobsForCompany(companyRow, opts) {
   });
   out.detailLinkCandidates = queue.length;
   for (const cand of queue) {
-    if (out.detailPagesFetched >= MAX_JOBS_PER_COMPANY) { out.hitJobCap = true; break; }
+    if (out.detailPagesFetched >= MAX_JOBS_PER_COMPANY) { out.hitJobCap = true; out.truncated = true; break; }
     const doc = await fetchDocument(cand.url, opts);
     out.pagesFetched += 1;
     out.detailPagesFetched += 1;
@@ -884,14 +885,30 @@ async function main() {
 
   const opts = { ...DEFAULTS };
   const started = Date.now();
-  let done = 0;
-  const perCompany = await runPool(companies, args.concurrency, async (c) => {
+
+  // Resume: a company already in the checkpoint is never re-crawled.
+  const checkpointPath = path.join(DIR, 'checkpoints', `${RUN_DATE}-jobs-${tag}.jsonl`);
+  const previous = readCheckpoint(checkpointPath);
+  const doneByCorp = new Map();
+  for (const r of previous) {
+    if (r && r.corporateNumber) doneByCorp.set(r.corporateNumber, r);
+  }
+  const todo = companies.filter((c) => !doneByCorp.has(c.corporateNumber));
+  if (doneByCorp.size) {
+    process.stderr.write(`resuming: ${doneByCorp.size} companies already done, ${todo.length} remaining\n`);
+  }
+
+  let done = doneByCorp.size;
+  const fresh = await runPool(todo, args.concurrency, async (c) => {
     const r = await jobsForCompany(c, opts);
     done += 1;
+    appendCheckpoint(checkpointPath, r);
     const jobs = r.candidates.filter(isAnalysisRecord).length;
-    process.stderr.write(`[${done}/${companies.length}] jobs=${String(jobs).padStart(2)} cand=${String(r.candidates.length).padStart(2)} pages=${r.pagesFetched} ${r.company}\n`);
+    process.stderr.write(`[${done}/${companies.length}] jobs=${String(jobs).padStart(2)} cand=${String(r.candidates.length).padStart(2)} pages=${r.pagesFetched} req=${getRequestStats().totalHttpRequests} ${r.company}\n`);
     return r;
   });
+  const byCorp = new Map([...doneByCorp, ...fresh.map((r) => [r.corporateNumber, r])]);
+  const perCompany = companies.map((c) => byCorp.get(c.corporateNumber)).filter(Boolean);
   const elapsedSeconds = round((Date.now() - started) / 1000, 1);
 
   const allCandidates = perCompany.flatMap((c) => c.candidates);
@@ -913,6 +930,8 @@ async function main() {
   const payload = {
     runDate: RUN_DATE,
     stage: 'stage5-jobs-v2',
+    provisional: true,
+    provisionalReason: '1求人=1レコードの達成度が未完成のため、求人件数および求人単位の割合は暫定値。記事の確定数値として使用しないこと。Golden Set 50ページでの precision は 0.97 だが recall は 0.47 で、一覧ページ側の求人を取りこぼす。',
     generator: 'scripts/research-jobs.mjs',
     generatedAtUtc: new Date(started).toISOString(),
     finishedAtUtc: new Date().toISOString(),
@@ -943,6 +962,12 @@ async function main() {
       meanJobRecordsPerReachingCompany: round(rate(jobs.length, byCompany.size), 2),
       companiesWithNineOrMoreJobRecords: companiesWithNineOrMore,
       companiesHittingTheFetchCap: perCompany.filter((c) => c.hitJobCap).length,
+      companiesTruncatedAtCap: perCompany.filter((c) => c.truncated).length,
+      truncationNote: `1社あたり求人詳細の取得上限は ${MAX_JOBS_PER_COMPANY} 件。truncated=true の企業は上限により求人が欠落している可能性がある。`,
+      suspiciousJobTitles: jobs.filter((j) => ['container', 'category', 'other', 'empty'].includes(j.titleClass)).length,
+      categoryOrContainerLikeRecords: allCandidates.filter((r) => ['category', 'container'].includes(r.recordType)).length,
+      duplicateCandidateRecords: allCandidates.filter((r) => r.isDuplicateOfEarlierRecord).length,
+      jobPostingJsonLdRecords: jobs.filter((j) => j.jobTitleEvidence === 'jsonld.title').length,
       maxJobRecordsForOneCompany: reaching.length ? Math.max(...reaching) : 0,
       pagesFetched: perCompany.reduce((a, c) => a + c.pagesFetched, 0),
       indexPagesFetched: perCompany.reduce((a, c) => a + c.indexPagesFetched, 0),
@@ -952,6 +977,12 @@ async function main() {
       duplicateRate: round(rate(dupJobs, jobs.length)),
       duplicateGroupsWithMoreThanOneUrl: new Set(jobs.filter((j) => j.duplicateGroupSize > 1).map((j) => j.duplicateGroupId)).size,
     },
+    resume: {
+      checkpoint: path.relative(process.cwd(), checkpointPath),
+      companiesFromCheckpoint: doneByCorp.size,
+      companiesCrawledThisRun: fresh.length,
+    },
+    httpAccounting: getRequestStats(),
     accessOutcomes: {
       recruitmentPageStatusCounts: countBy(perCompany, (c) => c.recruitmentPageStatus),
       recruitmentPageErrorCounts: countBy(perCompany.filter((c) => c.error), (c) => c.error),
@@ -992,8 +1023,8 @@ async function main() {
     jobs,
   };
 
-  fs.writeFileSync(outJson, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
-  fs.writeFileSync(outExcluded, `${JSON.stringify({
+  atomicWriteFile(outJson, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  atomicWriteFile(outExcluded, `${JSON.stringify({
     runDate: RUN_DATE,
     stage: 'stage5-jobs-v2-excluded',
     note: 'category / container / unknown、および jobTitleConfidence=low のレコード。求人件数には含めない。監査用に保持する。',

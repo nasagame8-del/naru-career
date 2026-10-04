@@ -16,6 +16,7 @@
  * this module so that its committed output stays reproducible.
  */
 import fs from 'node:fs';
+import path from 'node:path';
 
 export const USER_AGENT = 'NARUResearch/1.0 (+https://naru-career.com/; public recruitment-page research)';
 export const ROBOTS_UA_TOKEN = 'naruresearch';
@@ -499,6 +500,51 @@ export function nullFlags() {
 // polite fetching
 // ---------------------------------------------------------------------------
 
+// --- request accounting and 429 handling -----------------------------------
+
+const requestStats = { requests: 0, byStatus: {}, byError: {}, blockedHosts: [] };
+/** A host that answers 429 is dropped for the rest of the run, not retried. */
+const blockedHosts = new Set();
+
+export function getRequestStats() {
+  return {
+    totalHttpRequests: requestStats.requests,
+    statusCounts: { ...requestStats.byStatus },
+    errorCounts: { ...requestStats.byError },
+    hostsBlockedAfter429: [...blockedHosts].sort(),
+  };
+}
+
+export function isHostBlocked(host) { return blockedHosts.has(host); }
+
+// --- checkpoints ------------------------------------------------------------
+
+/** Write via a temp file + rename so a crash cannot leave a truncated JSON. */
+export function atomicWriteFile(file, contents) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const tmp = `${file}.tmp`;
+  fs.writeFileSync(tmp, contents, 'utf8');
+  fs.renameSync(tmp, file);
+}
+
+/** One JSON object per line; a partial last line is dropped on read. */
+export function appendCheckpoint(file, record) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.appendFileSync(file, `${JSON.stringify(record)}\n`, 'utf8');
+}
+
+export function readCheckpoint(file) {
+  if (!fs.existsSync(file)) return [];
+  const lines = fs.readFileSync(file, 'utf8').split('\n');
+  const out = [];
+  for (const line of lines) {
+    const t = line.trim();
+    if (!t) continue;
+    try { out.push(JSON.parse(t)); } catch { /* truncated final line */ }
+  }
+  return out;
+}
+
 const hostGates = new Map();
 
 /** Serialises requests per host and keeps a fixed gap between them. */
@@ -516,6 +562,7 @@ export async function withHostGate(host, fn, delayMs = DEFAULTS.sameHostDelayMs)
 }
 
 async function rawFetch(url, timeoutMs) {
+  requestStats.requests += 1;
   return fetch(url, {
     redirect: 'manual',
     signal: AbortSignal.timeout(timeoutMs),
@@ -691,6 +738,13 @@ export async function fetchDocument(startUrl, opts = {}) {
   for (let hop = 0; hop <= o.maxRedirects; hop += 1) {
     const host = hostOf(url);
     if (!host) { out.error = 'invalid_url'; return out; }
+    // A host that returned 429 is left alone for the rest of the run.
+    if (blockedHosts.has(host)) {
+      out.error = 'host_stopped_after_429';
+      out.finalUrl = url;
+      requestStats.byError[out.error] = (requestStats.byError[out.error] ?? 0) + 1;
+      return out;
+    }
 
     let robots;
     try {
@@ -720,6 +774,7 @@ export async function fetchDocument(startUrl, opts = {}) {
       attempts += 1;
       if (attempts < o.maxAttempts && RETRYABLE.has(name)) { hop -= 1; await sleep(2_000); continue; }
       out.error = `${name}${code}`;
+      requestStats.byError[out.error] = (requestStats.byError[out.error] ?? 0) + 1;
       out.finalUrl = url;
       out.redirectHops = chain.length;
       out.redirectChain = chain.length ? chain : null;
@@ -728,6 +783,14 @@ export async function fetchDocument(startUrl, opts = {}) {
 
     out.httpStatus = res.status;
     out.finalUrl = url;
+    requestStats.byStatus[res.status] = (requestStats.byStatus[res.status] ?? 0) + 1;
+    if (res.status === 429) {
+      blockedHosts.add(host);
+      requestStats.blockedHosts = [...blockedHosts];
+      out.error = 'http_429_host_stopped';
+      try { await res.body?.cancel(); } catch { /* ignore */ }
+      return out;
+    }
 
     if (res.status >= 300 && res.status < 400) {
       const loc = res.headers.get('location');
