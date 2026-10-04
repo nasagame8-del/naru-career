@@ -200,16 +200,18 @@
       "mergeSha": "527b124825c3b9e26d4702108cddaede279f627b",
       "productionUrl": "https://naru-career.com/articles/employee-to-contractor-social-insurance",
       "postPublicationAudit": {
-        "checkedAt": "2026-10-04T22:48:00+09:00",
+        "checkedAt": "2026-10-04T22:58:00+09:00",
         "prNumber": 138,
         "prUrl": "https://github.com/nasagame8-del/naru-career/pull/138",
-        "auditHeadSha": "d4517fe5232e0b4d1555e842ed663b6b06cd1a53",
+        "auditHeadSha": "c71118dea27aa7b52d257cc651385be8230ebec2",
         "articleFactoryValidation": "completed_success",
         "cloudflarePreview": "completed_success",
         "previewUrl": "https://naru-pr-138-preview.broad-fuchsia.workers.dev/articles/employee-to-contractor-social-insurance",
         "imageSmoke": "card_01_02_03_success",
         "humanFactCheck": "pending",
-        "note": "Technical audit passed on the audit head. This does not retroactively convert the original publication-time Human Fact Check/full-local-QA records to passed."
+        "note": "Post-publication technical audit passed on the final audit head. Publication-time Human Fact Check/full-local-QA history is intentionally not rewritten.",
+        "factCheckPreScan": "completed_success",
+        "fullLocalQa": "completed_success"
       }
     },
     {
@@ -220,7 +222,7 @@
       "articleId": 59,
       "slug": "beginner-engineer-tutorial-portfolio",
       "title": "未経験エンジニアのポートフォリオは教材どおりでもいい？ガンプラから考える「制作実績」",
-      "status": "MERGED_PRODUCTION_DEPLOYED_UNVERIFIED",
+      "status": "PUBLISHED_VERIFIED",
       "selectedAt": "2026-10-04T08:56:01+09:00",
       "selectionEvidence": "User said おけ to SEO title and then すすめて",
       "requestedPublishDate": "2026-10-04",
@@ -318,7 +320,7 @@
       "productionUrl": "https://naru-career.com/articles/beginner-engineer-tutorial-portfolio",
       "publicationGate": {
         "checkedAt": "2026-10-04T21:45:00+09:00",
-        "result": "merged_production_deploy_success_public_url_unverified",
+        "result": "production_verified_post_audit",
         "mergeAttempted": true,
         "expectedApprovedHeadSha": "15ff4ec6f9308218a3f23dab7ef889482a600e85",
         "actualHeadSha": "03d543884d9741e4101fe23d1169d3f88ff2ee0b",
@@ -326,18 +328,19 @@
         "cloudflareDeploy": "completed_success",
         "cloudflareDeployRunUrl": "https://github.com/nasagame8-del/naru-career/actions/runs/37197126428",
         "cloudflareDeployHeadSha": "63225d77da21b1c5aefc4c23a832112b7a4d281d",
-        "productionVisual": "not_verified_after_merge",
+        "productionVisual": "verified_title_h1_card_and_three_images",
         "blockers": [
           "human fact check is still pending",
           "full local QA is still pending",
           "preview approval is for 15ff4ec6f9308218a3f23dab7ef889482a600e85, not final PR head 03d543884d9741e4101fe23d1169d3f88ff2ee0b"
-        ]
+        ],
+        "productionVerifiedAt": "2026-10-04T22:58:00+09:00"
       },
       "postPublicationAudit": {
-        "checkedAt": "2026-10-04T22:48:00+09:00",
+        "checkedAt": "2026-10-04T22:58:00+09:00",
         "prNumber": 139,
         "prUrl": "https://github.com/nasagame8-del/naru-career/pull/139",
-        "auditHeadSha": "9d7941c2388fa4e39d635b8801c7787669eed285",
+        "auditHeadSha": "d9320c087586dcfb7364f523be7ae120c735fda6",
         "articleFactoryValidation": "completed_success",
         "cloudflarePreview": "completed_success",
         "previewUrl": "https://naru-pr-139-preview.broad-fuchsia.workers.dev/articles/beginner-engineer-tutorial-portfolio",
@@ -347,7 +350,29 @@
           "approvedHeadSha": "15ff4ec6f9308218a3f23dab7ef889482a600e85",
           "finalPublishedPrHeadSha": "03d543884d9741e4101fe23d1169d3f88ff2ee0b"
         },
-        "note": "Technical audit passed on the audit head. Historical preview approval remains stale for the final published PR head and is not retroactively inherited."
+        "note": "Production display is now verified by GitHub-hosted audit. Human Fact Check and the historical preview-approval SHA mismatch remain separate blockers.",
+        "factCheckPreScan": "completed_success",
+        "fullLocalQa": "completed_success",
+        "productionVerification": {
+          "articleStatus": 200,
+          "titleAndH1": "verified",
+          "card": {
+            "status": 200,
+            "bytes": 112416
+          },
+          "01": {
+            "status": 200,
+            "bytes": 88760
+          },
+          "02": {
+            "status": 200,
+            "bytes": 60394
+          },
+          "03": {
+            "status": 200,
+            "bytes": 67466
+          }
+        }
       }
     }
   ],
@@ -377,7 +402,8 @@
     "2026-10-04 12:02 JST: User clarified prior both-OK approval. Article58 PR118 merged at exact approved head; Cloudflare production checks pending. Human fact review is not claimed completed.",
     "2026-10-04 12:05 JST: Article58 merge SHA 527b124 Cloudflare deploy completed/success, production article title/body/card/01/02/03 browser-verified. User's publishing approval clarification recorded; human fact-review not represented as completed.",
     "2026-10-04 21:45 JST: reconciled live GitHub state. Article59 PR119 actually merged at head 03d5438; Cloudflare deploy run 37197126428 succeeded, but human fact check/full local QA remained pending and user preview approval is for older head 15ff4ec. Production URL visual verification after merge is not claimed. Article58 remains display-verified but flagged for post-publication audit because human fact check/full local QA were pending.",
-    "2026-10-04 22:48 JST: post-publication technical audits passed for article58 (PR138 head d4517fe) and article59 (PR139 head 9d7941c), including Article Factory Validation and Cloudflare preview/card+01+02+03 smoke checks. Human Fact Check remains pending for both. Article59 historical preview-approval SHA mismatch remains preserved."
+    "2026-10-04 22:48 JST: post-publication technical audits passed for article58 (PR138 head d4517fe) and article59 (PR139 head 9d7941c), including Article Factory Validation and Cloudflare preview/card+01+02+03 smoke checks. Human Fact Check remains pending for both. Article59 historical preview-approval SHA mismatch remains preserved.",
+    "2026-10-04 22:58 JST: final audit reruns passed Fact Check pre-scan + full local QA + Cloudflare preview for article58/59. Article59 production URL, title/H1, card/01/02/03 were verified from GitHub runner (HTTP 200); status updated to PUBLISHED_VERIFIED. Human Fact Check remains pending for both and article59 historical preview approval mismatch remains preserved."
   ],
   "dailySlots": {
     "2026-10-04": {
