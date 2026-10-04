@@ -41,3 +41,13 @@ Googleの生成AIコンテンツ利用ガイド更新を受け、AI生成・AI�
 - 古い統計を現在値として扱わない。
 - 個人の体験を業界全体へ一般化しない。
 - 架空の成功率・年収差・求人件数・実績を作らない。
+
+
+## CI pre-scan
+
+Article Factory Validation では、記事PRの最新headに対して `npm run article:fact-check -- --slug <slug>` をフルローカルQAの前に実行する。
+
+- `BLOCK` が1件でもあればCIを失敗させ、公開工程へ進めない。
+- `REVIEW` はログへ抽出するだけで、自動合格にはしない。
+- CI success は Human Fact Check の代替ではない。REVIEW対象は一次情報または著者本人の実体験で人間が確認し、同じhead SHAへ承認を記録する。
+- 表示に関わるcommitでhead SHAが変わった場合、古いHuman Fact Check承認を継承しない。
