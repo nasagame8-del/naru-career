@@ -41,7 +41,8 @@ jobs:
             const url = new URL(request.url);
             if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
               return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
-            const response = /^\\\\/(_next\\\\/static|images)(\\\\/|$)/.test(url.pathname) || /\\\\.(ico|png|svg|webp|woff2)$/.test(url.pathname)\n              ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
+            const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
+            const response = isAsset ? await env.ASSETS.fetch(request) : await worker.fetch(request, env, ctx);
             const result = new Response(response.body, response);
             result.headers.set('X-Robots-Tag', 'noindex, nofollow');
             return result;
