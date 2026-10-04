@@ -70,6 +70,8 @@ export interface ArticleSlotFacts {
   images?: Partial<Record<ImageSlotKey, ImageSlotFact | null>> | null;
   requestedPublishAt?: string | null;
   imageQa?: GateFact | null;
+  /** Human fact-check approval for this exact head SHA. AI self-review must not set this. */
+  factCheck?: GateFact | null;
   articleQa?: GateFact | null;
   ci?: GateFact | null;
   mergeSha?: string | null;

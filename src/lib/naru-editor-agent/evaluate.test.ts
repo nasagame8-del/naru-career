@@ -21,7 +21,7 @@ const drafted = (over: Partial<ArticleSlotFacts> = {}): ArticleSlotFacts => ({
 });
 
 const gate = (sha: string) => ({ passed: true, headSha: sha });
-const allGates = (sha = "aaa") => ({ imageQa: gate(sha), articleQa: gate(sha), ci: gate(sha) });
+const allGates = (sha = "aaa") => ({ imageQa: gate(sha), factCheck: gate(sha), articleQa: gate(sha), ci: gate(sha) });
 const approved = (over: Partial<ArticleSlotFacts> = {}) =>
   drafted({ ...allGates(), previewApprovedHeadSha: "aaa", ...over });
 
@@ -61,9 +61,14 @@ describe("evaluateArticleSlot", () => {
     expect(movedGates.state).toBe("WAITING_PREVIEW_APPROVAL");
   });
 
-  it("6. matching approval + QA/CI => ready to schedule", () => {
+  it("6. matching approval + QA/CI + human fact check => ready to schedule", () => {
     expect(evaluateArticleSlot(approved()).state).toBe("READY_TO_SCHEDULE");
     expect(evaluateArticleSlot(approved({ ci: gate("old") })).state).toBe("ARTICLE_QA");
+    const missingFactCheck = approved();
+    delete missingFactCheck.factCheck;
+    const blocked = evaluateArticleSlot(missingFactCheck);
+    expect(blocked.state).toBe("ARTICLE_QA");
+    expect(blocked.nextAction).toBe("record-human-fact-check");
   });
 
   it("7. explicit requestedPublishAt => scheduled", () => {

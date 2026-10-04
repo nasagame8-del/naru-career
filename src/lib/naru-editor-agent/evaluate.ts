@@ -104,6 +104,12 @@ export function evaluateArticleSlot(facts: ArticleSlotFacts): SlotEvaluation {
     ]);
   }
 
+  if (!gateValid(facts.factCheck, head)) {
+    return result(facts, "ARTICLE_QA", "record-human-fact-check", null, [
+      "human fact check not passed on latest head",
+    ]);
+  }
+
   if (nonEmpty(facts.mergeSha)) {
     if (isPublishedFactsComplete(facts)) {
       return result(facts, "PUBLISHED", "none", null, ["merged, deploy verified, public URL verified"]);
