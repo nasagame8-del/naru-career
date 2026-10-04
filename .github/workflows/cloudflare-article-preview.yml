@@ -163,11 +163,18 @@ jobs:
           ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
         run: |
           set -euo pipefail
-          curl --fail --retry 3 --retry-delay 3 -sS -D /tmp/preview-headers "$URL/articles/$ARTICLE_SLUG" -o /tmp/preview-article.html
-          grep -qi '<h1' /tmp/preview-article.html
-          grep -qi 'x-robots-tag: noindex' /tmp/preview-headers
+          STATUS="$(curl --retry 3 --retry-delay 3 -sS -D /tmp/preview-headers -o /tmp/preview-article.html -w '%{http_code}' "$URL/articles/$ARTICLE_SLUG")"
+          echo "article status=$STATUS"
+          sed -n '1,20p' /tmp/preview-headers
+          echo "article bytes=$(wc -c < /tmp/preview-article.html | tr -d ' ')"
+          head -c 240 /tmp/preview-article.html | tr '\n' ' '; echo
+          test "$STATUS" = "200"
+          grep -qi '<h1' /tmp/preview-article.html || { echo "::error::article HTML is missing <h1>"; exit 1; }
+          grep -qi 'x-robots-tag: noindex' /tmp/preview-headers || { echo "::error::article response is missing X-Robots-Tag noindex"; exit 1; }
           for SLOT in card 01 02 03; do
-            curl --fail -sS "$URL/images/articles/$ARTICLE_SLUG-$SLOT.webp" -o "/tmp/$SLOT.webp"
+            IMAGE_STATUS="$(curl -sS -o "/tmp/$SLOT.webp" -w '%{http_code}' "$URL/images/articles/$ARTICLE_SLUG-$SLOT.webp")"
+            echo "$SLOT status=$IMAGE_STATUS bytes=$(wc -c < "/tmp/$SLOT.webp" | tr -d ' ')"
+            test "$IMAGE_STATUS" = "200"
             test -s "/tmp/$SLOT.webp"
           done
 
