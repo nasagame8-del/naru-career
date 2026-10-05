@@ -31,8 +31,8 @@
       },
       "qa": {
         "sourceUrlsVerified": true,
-        "articleDraftReadback": false,
-        "imagePromptsReadback": false,
+        "articleDraftReadback": true,
+        "imagePromptsReadback": true,
         "generatedImagesProvided": false,
         "previewVisual": "not_requested",
         "humanFactCheck": {
@@ -71,8 +71,8 @@
       },
       "qa": {
         "sourceUrlsVerified": true,
-        "articleDraftReadback": false,
-        "imagePromptsReadback": false,
+        "articleDraftReadback": true,
+        "imagePromptsReadback": true,
         "generatedImagesProvided": false,
         "previewVisual": "not_requested",
         "humanFactCheck": {
