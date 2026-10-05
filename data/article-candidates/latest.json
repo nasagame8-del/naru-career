@@ -1,4 +1,8 @@
 {
   "batchId": "batch_2026-10-05_chatgpt",
-  "savedAt": "2026-10-05T08:04:01+09:00"
+  "savedAt": "2026-10-05T08:04:01+09:00",
+  "supplementalBatchIds": [
+    "batch_2026-10-05_chatgpt_supplement"
+  ],
+  "supplementSavedAt": "2026-10-05T09:38:00+09:00"
 }
