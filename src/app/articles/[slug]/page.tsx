@@ -191,7 +191,7 @@ export default async function ArticlePage(props: {
 
 
             {article.naruPoint && (
-              <div className="bg-primary-soft/50 border border-primary/20 rounded-lg px-5 py-5 mb-8">
+              <div className="article-key-point bg-primary-soft/50 border border-primary/20 rounded-lg px-5 py-5 mb-8">
                 <span className="inline-block bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded mb-2.5">
                   この記事の要点
                 </span>
