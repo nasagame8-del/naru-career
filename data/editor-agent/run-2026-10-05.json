@@ -53,7 +53,7 @@
       "order": 2,
       "selected": true,
       "blockers": [
-        "human_fact_check_pending"
+        "production_verification_pending"
       ],
       "articleId": "61",
       "slug": "disguised-contracting-freelance-difference",
@@ -71,7 +71,16 @@
       "ci": {
         "passed": true,
         "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1"
-      }
+      },
+      "factCheck": {
+        "passed": true,
+        "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1"
+      },
+      "previewApprovedHeadSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1",
+      "draftReady": true,
+      "mergeSha": "69c4b060de712cd90036db5ea4ba28dfbc1ee3cb",
+      "productionDeployVerified": false,
+      "publicArticleVerified": false
     }
   },
   "lastReconciledAt": "2026-10-05T12:29:36+09:00"
