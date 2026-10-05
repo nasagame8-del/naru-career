@@ -267,7 +267,7 @@
       "slug": "company-data-hygiene-security-breaches",
       "title": "個人情報流出が相次ぐ今、転職先の「データ体質」をどう見る？直近事例から考える",
       "genre": "雑記",
-      "status": "QA_RUNNING",
+      "status": "PREVIEW_READY",
       "selectionApproval": {
         "userText": "こんな感じで直近社外秘のデータが流出する事件が連発してるから、これを俺ら独自の視点で雑記にまとめたい。これnoteも同時に出す / じゃやって / やって",
         "approvedAt": "2026-10-05T22:46:03+09:00"
@@ -295,9 +295,9 @@
         "generatedImagesProvided": true,
         "webp4InDriveVerified": true,
         "webp4OnExactPrHead": true,
-        "fullLocalQaPassed": false,
-        "cloudflarePreview": "pending_redeploy",
-        "previewVisual": "needs_reapproval_after_tone_and_source-preview_change",
+        "fullLocalQaPassed": true,
+        "cloudflarePreview": "https://naru-pr-149-preview.broad-fuchsia.workers.dev/articles/company-data-hygiene-security-breaches",
+        "previewVisual": "waiting_user_reapproval",
         "humanFactCheck": {
           "status": "pending",
           "headSha": "3caa437871b0fd96d98b5e1e3457c2b5f1e76d02"
@@ -306,7 +306,7 @@
         "imageVisualAudit": "passed",
         "imageDimensionsAndMetadataVerified": true
       },
-      "blocker": "専門家口調の緩和と外部ソースプレビューカード反映後のCI/Cloudflare再デプロイ・ユーザー再確認待ち",
+      "blocker": "ユーザーによる更新後プレビューの目視承認待ち",
       "note": {
         "status": "DRAFT",
         "published": false
