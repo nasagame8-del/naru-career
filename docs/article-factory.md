@@ -4,6 +4,10 @@
 [`article-factory-two-touch.md`](./article-factory-two-touch.md) を参照してください。
 画像受領以降の会話エージェントの作業と、サーバー側で未実装の連結境界を明記しています。
 
+記事の見出し・囲みの装飾と、本文で使える `:::box` 記法は
+[`article-decoration.md`](./article-decoration.md) を参照してください。
+装飾は記事共通CSSで自動適用されるため、記事側でクラス・色を指定する必要はありません。
+
 既存の SEO Editor（リライト用）とは**独立した別ドメイン**です。
 SEO Editor の署名・QA・publish block・GitHub安全策には一切手を入れていません。
 

@@ -72,3 +72,20 @@ REPORTには最低限以下を含めます。
 - master/mainへの直接push、PR作成、merge、production deployはNEXT_INSTRUCTIONに明示された場合のみ行う。
 - SEO Editorの署名、QA、publish block、GitHub安全策を迂回しない。
 <!-- END:naru-agent-handoff -->
+
+<!-- BEGIN:naru-article-decoration -->
+# 記事装飾
+
+記事の見出し（H2の帯・H3・H4）と冒頭の囲みは、`src/app/globals.css` と
+`src/components/LabeledBox.tsx` の共通実装で**全記事に自動適用**されます。
+過去記事・今後の記事とも、通常のMarkdown見出しと既存frontmatterだけで同じ装飾になります。
+記事ごとのCSS・クラス・色の指定は不要です。
+
+本文中では `:::box ラベル` … `:::` でラベル付き囲みを使えます。
+記法・使用例・使ってよい場面は [`docs/article-decoration.md`](./docs/article-decoration.md) が正本です。
+
+- 要点・確認事項など、囲む意味がある箇所にだけ使う。
+- 装飾のために文章を増やさない。囲むためだけの箇条書き・言い換えを作らない。
+- 既存記事の本文へ `:::box` を一括挿入しない。
+- 全リスト・全太字・全段落を自動で囲まない。
+<!-- END:naru-article-decoration -->
