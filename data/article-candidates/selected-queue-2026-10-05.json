@@ -10,7 +10,7 @@
       "slug": "employee-contractor-pay-comparison",
       "title": "仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？",
       "genre": "通常SEO",
-      "status": "MERGED_PRODUCTION_PENDING",
+      "status": "PUBLISHED",
       "selectionApproval": {
         "userText": "おけ、それで進めるで問題ない？ / やって",
         "approvedAt": "2026-10-05T10:13:55+09:00"
@@ -111,7 +111,7 @@
         "articlePromptCopy": "1bLdMeSiXVjPAke0J0OkGx6Vgzl4cnXfh",
         "designPrompt": "1yZK60-VmQqke4FfJ_fmE8X0zhgf6gacg"
       },
-      "blocker": "Cloudflare Deploy NARU to Cloudflare 実行待ち。本番実記事表示未確認。",
+      "blocker": null,
       "previewUrl": "https://naru-pr-146-preview.broad-fuchsia.workers.dev/articles/employee-contractor-pay-comparison",
       "publishOverride": {
         "userText": "やって",
@@ -120,8 +120,10 @@
       },
       "mergeSha": "12e732699673a4138f65d18baf8827da12812059",
       "productionDeployRunId": 37259507047,
-      "productionDeployVerified": false,
-      "publicArticleVerified": false
+      "productionDeployVerified": true,
+      "publicArticleVerified": true,
+      "publicUrl": "https://naru-career.com/articles/employee-contractor-pay-comparison",
+      "publishedAt": "2026-10-05T12:29:36+09:00"
     },
     {
       "order": 2,
@@ -246,6 +248,7 @@
     "両Draft PR・Drive原稿/画像プラン/04_Designと記事コピーを再取得済み。generated WebP4枚は未提供。公開・プレビュー目視承認は未実施。",
     "2026-10-05提供8枚を内容で照合し元PNGをoriginals、メタデータなしWebPをimagesと各PRへ保存。8枚ともDrive bytes/Git blobを読み戻し照合。画像反映後headの承認は未実施。",
     "2026-10-05 11:06 JST「確認した。両方問題なし」を画像反映後の各head SHAに紐づけ記録。公開希望は継続指定の1本目12:00、2本目18:00。公開タスク設定は別途確認。",
-    "記事60: ユーザーが12:00保留の人手確認不足を「したやん」と訂正し、続けて「やって」と公開を指示。既存preview承認headと同じSHAで記録。"
+    "記事60: ユーザーが12:00保留の人手確認不足を「したやん」と訂正し、続けて「やって」と公開を指示。既存preview承認headと同じSHAで記録。",
+    "記事60 merge SHA 12e732699673a4138f65d18baf8827da12812059、Cloudflare run 37259507047 success、canonical記事と4画像が各HTTP 200。"
   ]
 }
