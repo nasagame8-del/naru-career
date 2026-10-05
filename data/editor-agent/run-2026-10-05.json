@@ -1,28 +1,49 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-05",
-  "candidatesReady": false,
-  "blockers": [
-    {
-      "code": "CANDIDATE_BATCH_NOT_READY",
-      "detail": "article-factory/candidates に batch_2026-10-05_chatgpt.json と selected-queue-2026-10-05.json が未作成。latest.json は batch_2026-10-04_chatgpt を指している。"
-    }
-  ],
+  "candidatesReady": true,
+  "blockers": [],
   "slots": {
     "1": {
       "order": 1,
-      "selected": false,
-      "blockers": [
-        "candidate_selection_pending"
-      ]
+      "selected": true,
+      "articleId": 60,
+      "slug": "employee-contractor-pay-comparison",
+      "prNumber": 146,
+      "latestHeadSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c",
+      "requestedPublishAt": "2026-10-05T12:00:00+09:00",
+      "previewApprovedHeadSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c",
+      "humanFactCheck": {
+        "status": "user_confirmed",
+        "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c",
+        "userText": "したやん / やって"
+      },
+      "imageQa": {
+        "status": "passed",
+        "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
+      },
+      "articleQa": {
+        "status": "passed",
+        "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
+      },
+      "ci": {
+        "status": "passed",
+        "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
+      },
+      "blockers": []
     },
     "2": {
       "order": 2,
-      "selected": false,
+      "selected": true,
       "blockers": [
-        "candidate_selection_pending"
-      ]
+        "human_fact_check_pending"
+      ],
+      "articleId": 61,
+      "slug": "disguised-contracting-freelance-difference",
+      "prNumber": 147,
+      "latestHeadSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1",
+      "requestedPublishAt": "2026-10-05T18:00:00+09:00"
     }
   },
-  "lastReconciledAt": "2026-10-05T01:44:24+09:00"
+  "lastReconciledAt": "2026-10-05T12:24:59+09:00"
 }
