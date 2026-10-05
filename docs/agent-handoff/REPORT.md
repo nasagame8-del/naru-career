@@ -459,3 +459,18 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - Known issues: non-blocking existing Next middleware deprecation and webpack cache snapshot warnings. Original working checkout Git metadata remains unwritable; merge uses the GitHub connector and a separate clean validation checkout. Shared OG artwork retains its existing design.
 - Decisions: user explicitly requested merge; this supersedes earlier no-publish instructions for the merge operation.
 - Next: create scoped PR and merge after checking GitHub status. No separate deployment operation requested.
+
+
+## Article decoration review — 2026-10-05
+
+- reportId: USER-UI-DECORATION-20261005
+- completedInstructionId: USER-UI-DECORATION-20261005（ユーザー直接依頼）
+- status: DONE_PENDING_REVIEW
+- branch: `ui/article-decoration-refresh`
+- 実施内容: H2の淡い緑の帯、H3下線、緑のリスト記号、表ヘッダーと交互背景、引用の中立色、FAQカードとQラベル、要点ボックスの上罫線。インラインFAQの段落余白を修正。本文・SEOメタデータ・記事画像は変更なし。
+- 変更ファイル: globals.css、article page、FAQSection、Cloudflare article preview workflow、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 共通記事装飾とUI専用ブランチの既存記事プレビュー対応。記事PRの単一記事・4画像条件は維持。
+- テスト結果: 対象TSX ESLint、tsc --noEmit、git diff --check、workflow YAML parse成功。Next production build成功（134ページ）。Cloudflare preview確認中。
+- 既知の問題: プレビュー前の目視QAは未完了。既存Next middleware deprecation警告あり。
+- 判断が必要な項目: プレビューで装飾確認後にマージ可否を判断。
+- 推奨する次の作業: Cloudflareプレビューのデスクトップ・モバイル表示を確認。masterへ直接pushせず、この変更は未公開。
