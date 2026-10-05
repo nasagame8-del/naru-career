@@ -150,7 +150,7 @@
         "internalLinksVerified": true,
         "frontmatterVerified": true,
         "generatedImagesProvided": true,
-        "fullLocalQaPassed": false,
+        "fullLocalQaPassed": true,
         "cloudflarePreview": "success",
         "checks": [
           {
@@ -172,7 +172,13 @@
         "imageVisualAudit": "passed",
         "imageDimensionsAndMetadataVerified": true,
         "previewApprovedAt": "2026-10-05T11:06:21+09:00",
-        "previewApprovalUserText": "確認した。両方問題なし"
+        "previewApprovalUserText": "確認した。両方問題なし",
+        "humanFactCheck": {
+          "status": "user_confirmed",
+          "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1",
+          "userText": "確認した。両方問題なし / したやん / やれ",
+          "confirmedAt": "2026-10-05T18:03:57+09:00"
+        }
       },
       "imageFiles": {
         "card": {
@@ -227,7 +233,7 @@
         "articlePromptCopy": "1c100snexLbwOZdIn2Jyw8wx8JpCr2wxU",
         "designPrompt": "1zOOAFYgxr0ILgBcVUDXkzEiNRqQ4sdCu"
       },
-      "blocker": "公開タスクの設定・実行待ち。",
+      "blocker": null,
       "officialImage": {
         "fileId": "1KeB28m408f6UvK9_Gvz60frHYu9pABA5",
         "githubBlobSha": "1afe45268a7bcc678d19e5e486658b224054bd99",
@@ -240,7 +246,12 @@
         "formatConversionOnly": true,
         "driveBytesReadbackVerified": true
       },
-      "previewUrl": "https://naru-pr-147-preview.broad-fuchsia.workers.dev/articles/disguised-contracting-freelance-difference"
+      "previewUrl": "https://naru-pr-147-preview.broad-fuchsia.workers.dev/articles/disguised-contracting-freelance-difference",
+      "publishOverride": {
+        "userText": "やれ",
+        "requestedAt": "2026-10-05T18:03:57+09:00",
+        "intent": "直ちに公開"
+      }
     }
   ],
   "notes": [
