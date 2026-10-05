@@ -10,7 +10,7 @@
       "slug": "employee-contractor-pay-comparison",
       "title": "仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？",
       "genre": "通常SEO",
-      "status": "READY_TO_PUBLISH",
+      "status": "MERGED_PRODUCTION_PENDING",
       "selectionApproval": {
         "userText": "おけ、それで進めるで問題ない？ / やって",
         "approvedAt": "2026-10-05T10:13:55+09:00"
@@ -111,13 +111,17 @@
         "articlePromptCopy": "1bLdMeSiXVjPAke0J0OkGx6Vgzl4cnXfh",
         "designPrompt": "1yZK60-VmQqke4FfJ_fmE8X0zhgf6gacg"
       },
-      "blocker": null,
+      "blocker": "Cloudflare Deploy NARU to Cloudflare 実行待ち。本番実記事表示未確認。",
       "previewUrl": "https://naru-pr-146-preview.broad-fuchsia.workers.dev/articles/employee-contractor-pay-comparison",
       "publishOverride": {
         "userText": "やって",
         "requestedAt": "2026-10-05T12:24:59+09:00",
         "intent": "12:00枠保留後に直ちに公開"
-      }
+      },
+      "mergeSha": "12e732699673a4138f65d18baf8827da12812059",
+      "productionDeployRunId": 37259507047,
+      "productionDeployVerified": false,
+      "publicArticleVerified": false
     },
     {
       "order": 2,
