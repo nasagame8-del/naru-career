@@ -9,6 +9,9 @@ on:
       - "content/articles/**"
       - "public/images/articles/**"
       - "data/article-runs/**"
+      - "src/app/globals.css"
+      - "src/app/articles/**"
+      - "src/components/FAQSection.tsx"
 
 permissions:
   contents: read
@@ -31,6 +34,7 @@ jobs:
       PR_NUMBER: ${{ github.event.pull_request.number }}
       BASE_SHA: ${{ github.event.pull_request.base.sha }}
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      HEAD_REF: ${{ github.event.pull_request.head.ref }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -54,6 +58,13 @@ jobs:
             git diff --name-only --diff-filter=AM "$BASE_SHA...$HEAD_SHA" -- 'content/articles/*.md' |
             grep -E '^content/articles/[a-z0-9]+([a-z0-9-]*[a-z0-9])?\.md$' || true
           )
+
+          # UI-only branches preview an existing representative article.
+          # Article PRs still require exactly one changed Markdown file.
+          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* ]]; then
+            ARTICLES=("content/articles/employee-contractor-pay-comparison.md")
+            test -s "${ARTICLES[0]}"
+          fi
 
           if [ "${#ARTICLES[@]}" -ne 1 ]; then
             echo "::error::Cloudflare article preview requires exactly one changed article Markdown; found ${#ARTICLES[@]}"
