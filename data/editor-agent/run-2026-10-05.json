@@ -30,7 +30,15 @@
         "status": "passed",
         "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
       },
-      "blockers": []
+      "blockers": [
+        "cloudflare_deploy_pending",
+        "canonical_article_pending"
+      ],
+      "mergeSha": "12e732699673a4138f65d18baf8827da12812059",
+      "status": "MERGED_PRODUCTION_PENDING",
+      "productionDeployRunId": 37259507047,
+      "productionDeployVerified": false,
+      "publicArticleVerified": false
     },
     "2": {
       "order": 2,
@@ -45,5 +53,5 @@
       "requestedPublishAt": "2026-10-05T18:00:00+09:00"
     }
   },
-  "lastReconciledAt": "2026-10-05T12:24:59+09:00"
+  "lastReconciledAt": "2026-10-05T12:30:00+09:00"
 }
