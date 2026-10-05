@@ -133,7 +133,7 @@
       "slug": "disguised-contracting-freelance-difference",
       "title": "偽装請負と偽装フリーランスは同じ？IT求人の「誰が指示するか」を公式資料で検証",
       "genre": "独自検証",
-      "status": "QA",
+      "status": "PUBLISHED",
       "selectionApproval": {
         "userText": "おけ、それで進めるで問題ない？ / やって",
         "approvedAt": "2026-10-05T10:13:55+09:00"
@@ -251,7 +251,13 @@
         "userText": "やれ",
         "requestedAt": "2026-10-05T18:03:57+09:00",
         "intent": "直ちに公開"
-      }
+      },
+      "mergeSha": "69c4b060de712cd90036db5ea4ba28dfbc1ee3cb",
+      "productionDeployVerified": true,
+      "publicArticleVerified": true,
+      "productionDeployRunId": 37287679641,
+      "publicUrl": "https://naru-career.com/articles/disguised-contracting-freelance-difference",
+      "publishedAt": "2026-10-05T18:06:50+09:00"
     }
   ],
   "notes": [
