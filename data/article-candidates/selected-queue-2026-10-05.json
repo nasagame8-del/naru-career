@@ -258,6 +258,56 @@
       "productionDeployRunId": 37287679641,
       "publicUrl": "https://naru-career.com/articles/disguised-contracting-freelance-difference",
       "publishedAt": "2026-10-05T18:06:50+09:00"
+    },
+    {
+      "order": 3,
+      "batchId": "ad-hoc-2026-10-05-data-hygiene",
+      "candidateId": "cand_261005z_company_data_hygiene",
+      "articleId": 62,
+      "slug": "company-data-hygiene-security-breaches",
+      "title": "個人情報流出が相次ぐ今、転職先の「データ体質」をどう見る？直近事例から考える",
+      "genre": "雑記",
+      "status": "WAITING_IMAGES",
+      "selectionApproval": {
+        "userText": "こんな感じで直近社外秘のデータが流出する事件が連発してるから、これを俺ら独自の視点で雑記にまとめたい。これnoteも同時に出す / じゃやって / やって",
+        "approvedAt": "2026-10-05T22:46:03+09:00"
+      },
+      "requestedPublish": null,
+      "prNumber": 149,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/149",
+      "branch": "article-factory/2026-10-05-062-company-data-hygiene",
+      "latestHeadSha": "77cfdea19465d0180c2291f499918afc4b372704",
+      "articleDriveFolderId": "1jWke02pbqMkS9kcSgXubuMsrpPq_UeGu",
+      "imagesDriveFolderId": "1Qn-Q9WSLCpGk_4hN77QcLFSEPU8nybs9",
+      "originalsDriveFolderId": "1SrpdeUHWUu_pJ7iUtoPA17Oljc0cSWT3",
+      "files": {
+        "article": "1haCrj2evLbHLvtt4rK03RyjyY6MiqNW_vn-JdCP10FE",
+        "research": "1ZZJA9AUSt9bUm7RF3cgIXg6qmgl27kubHD5CQlFVzQ8",
+        "imagePlan": "1Eh2GOVDT5DG36cLGwteBzz6IR0AYC-HszgiZ0qQwYFo",
+        "articlePromptCopy": "1jd04CiYaH_KooaRI0DOi9TUjwiW9-zMPeTQSrjr-4iE",
+        "designPrompt": "1fIfYqwkre-me4NbZhEZgfObUdfILh09MqstpgCHSlok",
+        "noteDraft": "1VgxNloCl1vpsQSbzykBsWPTz2n0vteTgkLJpHv7dY3Q"
+      },
+      "qa": {
+        "sourceUrlsVerified": true,
+        "articleDraftReadback": true,
+        "imagePromptsReadback": true,
+        "generatedImagesProvided": false,
+        "webp4InDriveVerified": false,
+        "webp4OnExactPrHead": false,
+        "fullLocalQaPassed": false,
+        "cloudflarePreview": "not_ready",
+        "previewVisual": "not_requested",
+        "humanFactCheck": {
+          "status": "pending",
+          "headSha": "77cfdea19465d0180c2291f499918afc4b372704"
+        }
+      },
+      "blocker": "ユーザー生成のcard/01/02/03の4画像待ち",
+      "note": {
+        "status": "DRAFT",
+        "published": false
+      }
     }
   ],
   "notes": [
@@ -266,6 +316,7 @@
     "2026-10-05提供8枚を内容で照合し元PNGをoriginals、メタデータなしWebPをimagesと各PRへ保存。8枚ともDrive bytes/Git blobを読み戻し照合。画像反映後headの承認は未実施。",
     "2026-10-05 11:06 JST「確認した。両方問題なし」を画像反映後の各head SHAに紐づけ記録。公開希望は継続指定の1本目12:00、2本目18:00。公開タスク設定は別途確認。",
     "記事60: ユーザーが12:00保留の人手確認不足を「したやん」と訂正し、続けて「やって」と公開を指示。既存preview承認headと同じSHAで記録。",
-    "記事60 merge SHA 12e732699673a4138f65d18baf8827da12812059、Cloudflare run 37259507047 success、canonical記事と4画像が各HTTP 200。"
+    "記事60 merge SHA 12e732699673a4138f65d18baf8827da12812059、Cloudflare run 37259507047 success、canonical記事と4画像が各HTTP 200。",
+    "記事62は通常の1日2本とは別のユーザー明示依頼による雑記＋note同時企画。一次資料調査・記事Draft PR・Drive原稿/調査メモ/画像プラン/画像プロンプトまで作成済み。画像4枚待ち。"
   ]
 }
