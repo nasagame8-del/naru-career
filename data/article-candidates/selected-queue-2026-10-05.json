@@ -10,7 +10,7 @@
       "slug": "employee-contractor-pay-comparison",
       "title": "仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？",
       "genre": "通常SEO",
-      "status": "WAITING_IMAGES",
+      "status": "QA",
       "selectionApproval": {
         "userText": "おけ、それで進めるで問題ない？ / やって",
         "approvedAt": "2026-10-05T10:13:55+09:00"
@@ -26,33 +26,74 @@
         "imagePromptsReadback": true,
         "internalLinksVerified": true,
         "frontmatterVerified": true,
-        "generatedImagesProvided": false,
+        "generatedImagesProvided": true,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "not_passed",
+        "cloudflarePreview": "in_progress",
         "checks": [
           {
             "name": "preview",
-            "status": "completed",
-            "conclusion": "failure",
-            "headSha": "28380dc78f1f9238459bbf9c207a0801dc770892"
+            "status": "in_progress",
+            "conclusion": null,
+            "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
           },
           {
             "name": "article-factory-validation",
-            "status": "completed",
-            "conclusion": "failure",
-            "headSha": "28380dc78f1f9238459bbf9c207a0801dc770892"
+            "status": "in_progress",
+            "conclusion": null,
+            "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
           }
-        ]
+        ],
+        "webp4InDriveVerified": true,
+        "webp4OnExactPrHead": true,
+        "originalImagesArchived": true,
+        "imageVisualAudit": "passed",
+        "imageDimensionsAndMetadataVerified": true
       },
       "imageFiles": {
-        "card": null,
-        "01": null,
-        "02": null,
-        "03": null
+        "card": {
+          "fileId": "1NBYdgl297UoDSvKhJ3hCtgXRsR8XCyWQ",
+          "originalFileId": "1PWBaoj-BIKUfs8HsCcULXeSGTAP9jbtC",
+          "fileName": "employee-contractor-pay-comparison-card.webp",
+          "githubBlobSha": "3ff1c850134de41391b1b494b108460a01d6c1d0",
+          "sha256": "189536dcefacb6542de2a1f1473bcaa118f437a6942ac8ef6bddd022ae00a421",
+          "width": 1200,
+          "height": 630,
+          "driveBytesReadbackVerified": true
+        },
+        "01": {
+          "fileId": "1-6RvC8B_f6S_XE5EdJmyItwJdASaGolB",
+          "originalFileId": "1dLiuDVyvM_zQD82AkTa2taLMLcmHuEM7",
+          "fileName": "employee-contractor-pay-comparison-01.webp",
+          "githubBlobSha": "252e47dfb5a6369a8325d129a739ba008a2f9018",
+          "sha256": "480e7137f465df073d26f10edc4c910923670d5030aca129f90bfd515b1f7dc2",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        },
+        "02": {
+          "fileId": "1zYyOLEe48GdNg8KZoFIxk169uNDiulob",
+          "originalFileId": "1yI1RZXAlZcQIBqCt1Yc8OtY1BieRsrjh",
+          "fileName": "employee-contractor-pay-comparison-02.webp",
+          "githubBlobSha": "b70570ffd7d2a458e36539c66172a9971fffbe6f",
+          "sha256": "ed8b94c77aa9122b8234547b412e1a07704271c62d82e4dc5fffa36d49244c61",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        },
+        "03": {
+          "fileId": "14OE0APtAVV5XsHa8bD93cNcXRt5sMZ0g",
+          "originalFileId": "17uXFmNBMmW3vYHrwcvRCyeIGWJGJ9j1g",
+          "fileName": "employee-contractor-pay-comparison-03.webp",
+          "githubBlobSha": "1979138a836502235873c547d350048327d875c9",
+          "sha256": "87b8947bccb2b34557fbfb63cd591d354d2bba66e40d5155e6d2aecec6100750",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        }
       },
       "branch": "article-factory/2026-10-05-060-pay-comparison",
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/146",
-      "latestHeadSha": "28380dc78f1f9238459bbf9c207a0801dc770892",
+      "latestHeadSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c",
       "imagesDriveFolderId": "1JyX7R7B7FEXR52BSfgXQNaQodpoaMo-o",
       "originalsDriveFolderId": "1JnQGj-4hvkDFYCpNJzfZehbfsaXfFSrj",
       "files": {
@@ -61,7 +102,7 @@
         "articlePromptCopy": "1bLdMeSiXVjPAke0J0OkGx6Vgzl4cnXfh",
         "designPrompt": "1yZK60-VmQqke4FfJ_fmE8X0zhgf6gacg"
       },
-      "blocker": "ユーザー生成画像card/01/02/03未提供。最新headのCI・Cloudflareプレビュー・目視承認も未完了。"
+      "blocker": "最新headのCI・Cloudflareプレビュー確認・ユーザー目視承認待ち。"
     },
     {
       "order": 2,
@@ -71,7 +112,7 @@
       "slug": "disguised-contracting-freelance-difference",
       "title": "偽装請負と偽装フリーランスは同じ？IT求人の「誰が指示するか」を公式資料で検証",
       "genre": "独自検証",
-      "status": "WAITING_IMAGES",
+      "status": "QA",
       "selectionApproval": {
         "userText": "おけ、それで進めるで問題ない？ / やって",
         "approvedAt": "2026-10-05T10:13:55+09:00"
@@ -87,33 +128,74 @@
         "imagePromptsReadback": true,
         "internalLinksVerified": true,
         "frontmatterVerified": true,
-        "generatedImagesProvided": false,
+        "generatedImagesProvided": true,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "not_passed",
+        "cloudflarePreview": "in_progress",
         "checks": [
           {
             "name": "article-factory-validation",
             "status": "in_progress",
             "conclusion": null,
-            "headSha": "8b68556d1b1caf9955ffdee3f2df9f57de8651c7"
+            "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1"
           },
           {
             "name": "preview",
-            "status": "completed",
-            "conclusion": "failure",
-            "headSha": "8b68556d1b1caf9955ffdee3f2df9f57de8651c7"
+            "status": "in_progress",
+            "conclusion": null,
+            "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1"
           }
-        ]
+        ],
+        "webp4InDriveVerified": true,
+        "webp4OnExactPrHead": true,
+        "originalImagesArchived": true,
+        "imageVisualAudit": "passed",
+        "imageDimensionsAndMetadataVerified": true
       },
       "imageFiles": {
-        "card": null,
-        "01": null,
-        "02": null,
-        "03": null
+        "card": {
+          "fileId": "1eeoGG-im5rhLNg1JmsMSlI7t8oM4m9H0",
+          "originalFileId": "1QYaQHjcbwJrzeVp6cqlDgI8QgLd3GEuY",
+          "fileName": "disguised-contracting-freelance-difference-card.webp",
+          "githubBlobSha": "282af2f05dce26d87f8b20525bdb9494ffd62f54",
+          "sha256": "584cff9668323b47af7ad232b291b8a73840db787fa8b74276464d0f0acd5e43",
+          "width": 1200,
+          "height": 630,
+          "driveBytesReadbackVerified": true
+        },
+        "01": {
+          "fileId": "1b4powl91hUW5onuKyKPKRQDwVWi5fVcR",
+          "originalFileId": "1erDnkbeqyMeFG98Le0u-f9ZeHz_Dt3dD",
+          "fileName": "disguised-contracting-freelance-difference-01.webp",
+          "githubBlobSha": "35c66c43ca0d0f32254274c814e8e3198a72de34",
+          "sha256": "4e8c193ca0a195c4193e2076da50dad69012db76d38e9290cd516928317fd08b",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        },
+        "02": {
+          "fileId": "1GIstW7ZISVEtsNf3Q1rpoMl5-rYCuEa5",
+          "originalFileId": "1yP3kVIzzKE-IbTFT-SlLoJ8riWhTtYMC",
+          "fileName": "disguised-contracting-freelance-difference-02.webp",
+          "githubBlobSha": "de8a34cd8972306ec32a481fbbe7b5eadf944726",
+          "sha256": "baccc89ebaee796f6f0210b602cf05bee4f4e28ef4e1d29e8e45d91a6bdb564f",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        },
+        "03": {
+          "fileId": "1WG-6vrTgwFsaI9nPSXx7scRPSReJzr4Y",
+          "originalFileId": "1OuxJX4cLIFkGdvYQ3YRxs-VhvJpWapyu",
+          "fileName": "disguised-contracting-freelance-difference-03.webp",
+          "githubBlobSha": "14e328072a1b54c1e144cb63f45e6138c84422e9",
+          "sha256": "4fbd987c4387f80ef177f73dce0946589e2ee648df811ce57b3a828e41658f19",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        }
       },
       "branch": "article-factory/2026-10-05-061-disguised-contract",
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/147",
-      "latestHeadSha": "8b68556d1b1caf9955ffdee3f2df9f57de8651c7",
+      "latestHeadSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1",
       "imagesDriveFolderId": "1mj9XZ0tz712knIPHwEuUeuXrJBbCc51C",
       "originalsDriveFolderId": "1EBbJpnWurbFvsey-nAbabQTUj6fVt44A",
       "files": {
@@ -122,7 +204,7 @@
         "articlePromptCopy": "1c100snexLbwOZdIn2Jyw8wx8JpCr2wxU",
         "designPrompt": "1zOOAFYgxr0ILgBcVUDXkzEiNRqQ4sdCu"
       },
-      "blocker": "ユーザー生成画像card/01/02/03未提供。最新headのCI・Cloudflareプレビュー・目視承認も未完了。",
+      "blocker": "最新headのCI・Cloudflareプレビュー確認・ユーザー目視承認待ち。",
       "officialImage": {
         "fileId": "1KeB28m408f6UvK9_Gvz60frHYu9pABA5",
         "githubBlobSha": "1afe45268a7bcc678d19e5e486658b224054bd99",
@@ -139,6 +221,7 @@
   ],
   "notes": [
     "通常SEO→独自検証の順でユーザー選定。公開時刻・プレビュー承認は未確定。Cloudflareを正本とする。",
-    "両Draft PR・Drive原稿/画像プラン/04_Designと記事コピーを再取得済み。generated WebP4枚は未提供。公開・プレビュー目視承認は未実施。"
+    "両Draft PR・Drive原稿/画像プラン/04_Designと記事コピーを再取得済み。generated WebP4枚は未提供。公開・プレビュー目視承認は未実施。",
+    "2026-10-05提供8枚を内容で照合し元PNGをoriginals、メタデータなしWebPをimagesと各PRへ保存。8枚ともDrive bytes/Git blobを読み戻し照合。画像反映後headの承認は未実施。"
   ]
 }
