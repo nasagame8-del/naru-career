@@ -21,17 +21,17 @@
       "selectionGatePassed": true,
       "blocked": false,
       "blockedReasons": [],
-      "id": "cand_261005t_payday",
-      "title": "「大企業なら報酬も安心」は本当？日本郵便への勧告から考える業務委託の支払期日",
-      "primaryKeyword": "業務委託 報酬 支払期日",
+      "id": "cand_261005t_disguised_difference",
+      "title": "偽装請負と偽装フリーランスは同じ？IT求人の「誰が指示するか」を公式資料で検証",
+      "primaryKeyword": "偽装請負 偽装フリーランス 違い",
       "secondaryKeywords": [
-        "フリーランス 請求書 未提出 支払い",
-        "業務委託 報酬 未払い"
+        "IT 業務委託 指揮命令",
+        "偽装請負 SES 違い"
       ],
-      "searchIntent": "do",
-      "proposedSlug": "contractor-payment-deadline-invoice",
-      "differenceFromExisting": "独自検証枠。親記事は切替リスク全体、契約終了子記事は解除/労働者性。本案は受領/役務提供から支払期日を確認し、請求書未提出・検収・再委託の例外を分ける。雇用給与と委託報酬の支払い基準を混同しない。未払い対応と証拠整理に限定。",
-      "reasonToWriteNow": "2026/9/2の日本郵便への公取委勧告を10/5再取得。大企業という属性から契約条件の安心を推測しない独自問い。直近24hニュースではなく1か月前の事例の独自検証と明示。親クラスターに実測反応があり、現行本文に支払期日を独立して解説する記事がない。",
+      "searchIntent": "know",
+      "proposedSlug": "disguised-contracting-freelance-difference",
+      "differenceFromExisting": "独自検証枠。自分が個人事業主として契約する形と、受託会社に雇われ客先で働く形を関係図で比較する。契約当事者・雇用関係・実際の指示者の3点で用語の混同を解く。親記事の切替リスク/労働者性チェック、契約終了子記事の救済手順、ses-explainedのSES一般説明を再執筆しない。",
+      "reasonToWriteNow": "ユーザーの検索意図仮説『偽装請負・偽装フリーランスを疑っている人』を反映。東京労働局の偽装請負解説と厚労省の労働者性資料を比較する独自検証。今日のニュース・Xバズを入口にした案ではなく公式資料の読み分け。",
       "selectionEvidence": {
         "gsc": "strong",
         "serp": "unchecked",
@@ -45,9 +45,9 @@
           "GSCは候補固有クエリでなく関連親ページの反応。確定9/5〜10/2で192表示5click8.9479位、比較期88表示2click7.625位。サイト内の相対的strongであり、大きな需要や順位改善を意味しない。",
           "35+0+0+0+15+5=55。根拠ゲート①関連クラスターGSC strong。A/B3件未満のためC補欠のみ。",
           "Google SERP unchecked、Trends unavailable、PAA/関連検索/サジェスト取得不能。一般Web検索はGoogle上位順位の証拠にしない。",
-          "一次情報 https://www.jftc.go.jp/houdou/pressrelease/2026/sep/260902_japanpost.html :9/2公表、取引条件明示と報酬支払いの勧告。 https://www.jftc.go.jp/fllaw_limited/fllaw_qa.html :請求書未提出の場合。",
-          "Xバズ未確認。日本郵便の個別事実をIT/Web企業の違反率や全社の慣行へ一般化しない。公式画像は執筆時に関連資料と利用条件を確認、転載不明ならリンク＋独自図解。",
-          "カニバリnoneは支払期日に限定した子記事としての設計評価。解除や社会保険を新記事内で再解説しない。"
+          "一次情報 https://jsite.mhlw.go.jp/tokyo-roudoukyoku/hourei_seido_tetsuzuki/roudousha_haken/001.html と https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/keiyaku/index02.html を2026-10-05確認。",
+          "両用語を同義にしない。実際の契約関係により重なる構造もあり、三者/二者だけで機械的な合法判定をしない。独自資料は指示系統比較図。",
+          "55 C補欠を維持。候補固有検索需要は未確認。用語比較に限定する設計で親記事との重複を抑える。執筆前にses-explained本文も詳細照合する。"
         ]
       }
     },
@@ -67,17 +67,17 @@
       "selectionGatePassed": true,
       "blocked": false,
       "blockedReasons": [],
-      "id": "cand_261005e_paycompare",
-      "title": "正社員の月給30万円と業務委託40万円、どちらが得？切り替え前の報酬比較表",
-      "primaryKeyword": "正社員 業務委託 報酬 比較",
+      "id": "cand_261005e_samework_pay",
+      "title": "仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？",
+      "primaryKeyword": "正社員 業務委託 切り替え 報酬",
       "secondaryKeywords": [
-        "業務委託 手取り 正社員 違い",
-        "正社員 業務委託 切り替え 年収"
+        "偽装フリーランス 報酬",
+        "業務委託 給料 上がる リスク"
       ],
       "searchIntent": "compare",
       "proposedSlug": "employee-contractor-pay-comparison",
-      "differenceFromExisting": "通常SEO枠。10/4の未選定cand_261004e2を再評価して再利用する同一案。社会保険記事は加入手続き、親記事はリスク概観。本案はIT/Web職の切替提示を年間報酬・賞与・経費・稼働月数・休業日・税負担の前提で同じ土俵にする記入式比較に限定。",
-      "reasonToWriteNow": "親ページ192表示5click。親記事には月給30万→委託40万の注意喚起があるが、本人が条件を埋める年間比較表はない。10/4公開の保険手続き記事へつなぐ。普遍的な報酬判断でありニュース依存なし。",
+      "differenceFromExisting": "通常SEO枠。独立志向の損得比較から、同じ仕事なのに契約変更される不安へ入口を修正。『法的な働き方の実態』と『経済条件の比較』を分け、賞与/経費/休業日等の記入式年間比較に限定する。労働者性の詳細判断は親記事、社会保険の加入手順は記事58、解除対応は記事52へリンク。",
+      "reasonToWriteNow": "親クラスターへの反応を、独立希望ではなく切替提案への疑問という編集仮説で受け止める。増額を適法性の証明にも実質増収の証明にも使わない。固有需要未確認、GSC関連192表示5clickのみ。",
       "selectionEvidence": {
         "gsc": "strong",
         "serp": "unchecked",
@@ -93,7 +93,8 @@
           "Google SERP unchecked、Trends unavailable、PAA/関連検索/サジェスト取得不能。一般Web検索はGoogle上位順位の証拠にしない。",
           "国税庁 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1350.htm と https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1400.htm を根拠にする。事業所得/雑所得など所得区分を自動的に断定しない。",
           "検索取得に計算ツールと業種別比較あり。ただしGoogleSERP上位としては未確認なので加点なし。独自角度は第二新卒IT/Webの切替提示に合わせた記入式表。",
-          "カニバリnoneは比較表・報酬条件に限定する設計評価。加入手順・切替違法性・解除対応は既存へ委譲。一律の手取り額や何倍なら必ず得は提示しない。"
+          "カニバリnoneは比較表・報酬条件に限定する設計評価。加入手順・切替違法性・解除対応は既存へ委譲。一律の手取り額や何倍なら必ず得は提示しない。",
+          "2026-10-05ユーザー指示で入口を再構成。報酬が高い/本人が同意しただけで労働者性が否定されると説明しない。合法性と年間比較を分ける。"
         ]
       }
     }
@@ -102,6 +103,7 @@
     "ユーザー『新規つくらないってこと？』『やって』により追加調査。今朝の本体バッチを上書きせず補足として保存。新規制作を停止する方針ではない。ユーザー選択待ち。記事PR作成なし。",
     "通常候補は10/4未選定案の再利用で二重記事にしない。追加案2件のみC補欠で、A/Bとして推奨しない。時事枠は速報でなく一次情報による独自検証。",
     "master58記事、Open17PRを再取得。関連本文・実型を照合。今朝再取得済み全queue/preselectedと今日の候補フォルダを参照。selected-queue-2026-10-05なし。",
-    "無料SEOシグナルが不足する項目はゼロ点。母数・候補固有実測不足を隠さない。優先順推奨は通常報酬比較→独自検証支払期日だがユーザー選択/順番を未確定のままにする。"
+    "無料SEOシグナルが不足する項目はゼロ点。母数・候補固有実測不足を隠さない。優先順推奨は通常報酬比較→独自検証支払期日だがユーザー選択/順番を未確定のままにする。",
+    "2026-10-05T10:02:29+09:00 ユーザー『おけ、じゃそれで組み直して』を根拠に補足候補を再構成。旧支払期日案は今回の候補から外す。旧内容はGit履歴に残る。選定・記事制作承認はまだ記録しない。候補固有需要を実測と称しない。推奨順は通常SEO→独自検証。"
   ]
 }
