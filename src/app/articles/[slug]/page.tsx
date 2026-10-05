@@ -20,6 +20,7 @@ import { MiniAlto } from "@/components/MiniAlto";
 import { SurveyLink } from "@/components/SurveyLink";
 import { getNoteLinkMap } from "@/lib/note-feed";
 import { ArticleBody } from "@/components/ArticleBody";
+import { LabeledBox } from "@/components/LabeledBox";
 import { ARTICLE_WIDGETS } from "@/lib/article-widgets";
 
 export const revalidate = 3600;
@@ -190,29 +191,22 @@ export default async function ArticlePage(props: {
             )}
 
 
-            {article.naruPoint && (
-              <div className="bg-primary-soft/50 border border-primary/20 rounded-lg px-5 py-5 mb-8">
-                <span className="inline-block bg-primary text-white text-[11px] font-bold tracking-wider px-2.5 py-1 rounded mb-2.5">
-                  この記事の要点
-                </span>
-                <p className="text-[14px] text-ink leading-relaxed font-medium">
-                  {article.naruPoint}
-                </p>
-              </div>
-            )}
-
             {article.summary.length > 0 && (
-              <div className={`border-l-[3px] ${theme.border} bg-bg-soft rounded-r-lg px-5 py-4 mb-8`}>
-                <p className="font-bold text-sm mb-2">この記事で分かること</p>
-                <ul className="space-y-1.5">
+              <LabeledBox label="この記事で分かること" className="mt-6 mb-5">
+                <ul>
                   {article.summary.map((point, i) => (
-                    <li key={i} className="text-sm text-ink-soft leading-relaxed flex gap-2">
-                      <span className="text-primary shrink-0" aria-hidden="true">✓</span>
-                      <span>{point}</span>
+                    <li key={i} className="text-[15px]">
+                      {point}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </LabeledBox>
+            )}
+
+            {article.naruPoint && (
+              <LabeledBox label="この記事の要点" variant="quiet" className="mt-0 mb-8">
+                <p className="text-[14px]">{article.naruPoint}</p>
+              </LabeledBox>
             )}
 
             <TableOfContents headings={article.headings} />

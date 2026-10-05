@@ -459,3 +459,85 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - Known issues: non-blocking existing Next middleware deprecation and webpack cache snapshot warnings. Original working checkout Git metadata remains unwritable; merge uses the GitHub connector and a separate clean validation checkout. Shared OG artwork retains its existing design.
 - Decisions: user explicitly requested merge; this supersedes earlier no-publish instructions for the merge operation.
 - Next: create scoped PR and merge after checking GitHub status. No separate deployment operation requested.
+
+
+## Article decoration review — 2026-10-05
+
+- reportId: USER-UI-DECORATION-20261005
+- completedInstructionId: USER-UI-DECORATION-20261005（ユーザー直接依頼）
+- status: DONE_PENDING_REVIEW
+- branch: `ui/article-decoration-refresh`
+- 実施内容: H2の淡い緑の帯、H3下線、緑のリスト記号、表ヘッダーと交互背景、引用の中立色、FAQカードとQラベル、要点ボックスの上罫線。インラインFAQの段落余白を修正。本文・SEOメタデータ・記事画像は変更なし。
+- 変更ファイル: globals.css、article page、FAQSection、Cloudflare article preview workflow、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 共通記事装飾とUI専用ブランチの既存記事プレビュー対応。記事PRの単一記事・4画像条件は維持。
+- テスト結果: 対象TSX ESLint、tsc --noEmit、git diff --check、workflow YAML parse成功。Next production build成功（134ページ）。Cloudflare preview run 37317834771 success（記事200・4画像・noindex検証）。838e956eb3ec6cd718ed75a239e778a3e9188e59でH2とFAQをデスクトップ目視確認、横はみ出しなし。
+- 既知の問題: スマホ実画面QAは未完了。既存Next middleware deprecation警告あり。
+- 判断が必要な項目: プレビューで装飾確認後にマージ可否を判断。
+- 推奨する次の作業: Cloudflareプレビューのユーザー確認とスマホ実画面確認。masterへ直接pushせず、この変更は未公開。
+
+
+## 記事装飾リフレッシュ（帯見出し＋ラベル付き囲み） — 2026-10-05
+
+- reportId: USER-UI-DECORATION-20261005-R2
+- completedInstructionId: USER-UI-DECORATION-20261005-R2（ユーザー直接依頼。NEXT_INSTRUCTIONはIDLEのまま、未変更）
+- status: DONE_PENDING_REVIEW
+- branch: `ui/article-decoration-refresh`（PR #148 を再利用。Draftのまま）
+
+### 実施内容
+
+参考画像（ベタ塗りの帯見出し／ラベル付き囲み）とXserverの読みやすさ記事に合わせ、R1の「淡い緑＋左罫線のH2」を置き換えた。
+
+1. **H2 = ベタ塗りの帯**: 本文幅いっぱいのティーグリーン `#1F6F66` 背景、白の太字、左にアンバーの二重山形アイコン。角丸は2pxのみ、グラデーション・影なし。アイコンはCSSの`::before`＋maskで、見出しテキスト・見出しID・目次・読み上げには入らない。`padding-left`をアイコン幅ぶん確保しているため、複数行でもアイコンと文字が重ならない。
+2. **H3/H4 = 帯より控えめ**: H3は下線の左4.5rem（スマホ3.25rem）だけティーグリーン、残りが淡い緑のlinear-gradient。H4は小さなアンバーの四角＋太字。
+3. **ラベル付き囲みボックス `.naru-box`**: 淡い緑の背景＋上端から左へ0.75rem飛び出す濃い緑のラベル（白文字、左下に折り返しの三角）。ラベルは絶対配置ではなく通常フローに置いたため、長いラベル・スマホ幅では折り返して本文へ重ならない。箇条書きはティーグリーンのチェック、番号付きはティーグリーンの番号。
+4. **冒頭2ボックス**: `summary`（この記事で分かること）を標準の淡い緑＋チェックリスト、`naruPoint`（この記事の要点）を同じ体系の控えめ版 `.naru-box--quiet`（クリーム背景・小さめラベル）にして、並んでも過密にならないようにした。共通コンポーネント `src/components/LabeledBox.tsx` を新設。
+5. **本文内で使える囲み記法**: `:::box ラベル` … `:::` を追加（`convertLabeledBoxes`）。開きタグの後に空行を挟むことでCommonMarkのHTMLブロックが閉じ、中身の段落・箇条書き・番号付きリスト・太字・リンク・表が通常のMarkdownとして解釈される。ラベルはHTMLエスケープ。ラベル省略可。入れ子は非対応。記法と使用例は `docs/article-decoration.md` に記載。
+
+既存記事のMarkdownは一切変更していない。装飾は記事共通CSSと共通コンポーネントで自動適用され、今後の記事も通常のH2/H3/H4と既存frontmatterだけで同じ装飾になる。全リスト・全太字・全段落を自動で囲む処理は入れていない。
+
+### 変更ファイル
+
+- `src/app/globals.css` — 帯見出し・H3/H4・`.naru-box` 一式、トークン（`--amber-on-primary` `--primary-deep` `--chevron-mask` `--check-mask`）
+- `src/components/LabeledBox.tsx` — 新規。共通の囲みコンポーネント
+- `src/app/articles/[slug]/page.tsx` — 冒頭2ボックスを `LabeledBox` へ統一
+- `src/lib/articles.ts` — `convertLabeledBoxes`、`renderArticleMarkdown` 切り出し、`escapeHtml`
+- `src/lib/articles.test.ts` — 囲み記法のテスト8件追加
+- `docs/article-decoration.md` — 新規。編集用の記法ドキュメント
+- `.github/workflows/cloudflare-article-preview.yml` — プレビュー起動パスを `src/components/**` と `src/lib/articles.ts` へ拡張
+
+### git diff概要
+
+記事共通の装飾CSSと囲みコンポーネント、本文Markdownの囲み記法。`content/`・`prompts/`・`data/` は未変更。記事PRの単一記事・4画像条件は維持。
+
+### テスト結果
+
+- `vitest run`: 19ファイル / **327件すべて成功**（新規の囲み記法テスト8件を含む）
+- `tsc --noEmit`: エラーなし
+- `eslint`: 変更した`src/`のファイルは警告・エラーなし（既存の`scripts/*.js` 61件は本PR以前からのもの）
+- `next build`（production）: 成功。**134ページ**生成、型チェック通過
+- workflow YAML parse: 成功
+- 自動レイアウト検査（Puppeteer / 375・390・768・1440px × 記事5本＋about・privacy）:
+  - 横スクロール・横はみ出し **0件**
+  - 目次リンク切れ **0件**
+  - ラベルの文字欠け・本文との重なり・ボックス右端越え **0件**
+  - ラベルの左への飛び出しは全幅で12px（0.75rem）で一定。ラベル左端は本文左端と一致
+- コントラスト: 白文字/帯 5.96:1、白文字/ラベル 5.96:1、山形アイコン/帯 3.33:1、H4四角/白 4.20:1、チェック/淡緑 5.06:1、本文/淡緑 13.02:1。テキストは4.5:1以上、図形は3:1以上を満たす
+- 目視確認（ローカルproduction build）: 長い日本語H2（117字・デスクトップ4行/375px 8行）、3行に折り返す長いラベル、表の横スクロール、引用・FAQ・体験談・囲みの見た目の区別、H2のID `section-N` と目次リンクの一致
+
+### 既知の問題 / 未確認事項
+
+- アンバー `#B5691B` はティーグリーン帯の上では1.42:1 で視認できないため、**帯のアイコンにだけ** 明度を上げた `--amber-on-primary: #F0B860` を新設した（3.33:1）。H4の四角は従来のブランドアンバーのまま。
+- Cloudflareプレビューは1記事（`employee-contractor-pay-comparison`）のみ埋め込み配信する。他記事は同じWorkerの通常経路で配信される。
+- `:::box` の入れ子は未対応（ドキュメントに明記）。
+- 既存のNext middleware deprecation警告は本PR以前から存在。
+- ローカル`node_modules`に `@opennextjs/cloudflare` が無く`npm install`で復旧した。`package.json`・`package-lock.json`は未変更。
+
+### 判断が必要な項目
+
+- 帯見出しが `.prose` 全体に効くため、`/about`・`/privacy` にも同じ帯が適用される。意図どおりか要確認（表示は検証済みで崩れなし）。
+- マージ・本番公開は未実施。今回の指示範囲外。
+
+### 推奨する次の作業
+
+- Cloudflareプレビューでユーザーが装飾を確認し、マージ可否を判断する。
+- 承認後、`:::box` を実記事へ適用するかはコンテンツ側の判断（必要な箇所だけに使う方針を `docs/article-decoration.md` に記載済み）。

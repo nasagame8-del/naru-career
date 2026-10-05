@@ -31,6 +31,14 @@
   --accent-soft: #F6E9DA;
   --amber: #B5691B;
   --amber-soft: #F6E9DA;
+  /* 帯見出しのアンバーはティーグリーン上では沈むため、アイコンだけ明度を上げる */
+  --amber-on-primary: #F0B860;
+  /* ラベルの折り返し部分 */
+  --primary-deep: #124A43;
+  /* 帯見出しの二重山形（装飾。読み上げ・目次には含めない） */
+  --chevron-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 5l6.5 7-6.5 7M13 5l6.5 7L13 19'/%3E%3C/svg%3E");
+  /* 囲みボックスのチェック */
+  --check-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5.5 5.5L20 6.5'/%3E%3C/svg%3E");
 }
 
 @theme inline {
@@ -142,29 +150,79 @@ h1 {
   overflow-wrap: break-word;
 }
 
+/* H2: 本文幅いっぱいのベタ塗りの帯。左のアンバーの二重山形はCSS装飾のみで、
+   見出し文字・目次・読み上げには入らない（IDとテキストはMarkdownのまま）。 */
 .prose h2 {
+  position: relative;
   font-size: 1.625rem;
   font-weight: 700;
   margin-top: 3.5rem;
   margin-bottom: 1.25rem;
-  padding-left: 0.875rem;
-  padding-bottom: 0.5rem;
-  border-left: 3px solid var(--primary);
+  /* 2行以上でもアイコン幅ぶんの余白を全行で確保し、文字と重ならないようにする */
+  padding: 0.9rem 1.25rem 0.9rem calc(1.25rem + 1.05em + 0.5rem);
+  background: var(--primary);
+  color: #fff;
+  border-radius: 2px;
   line-height: 1.55;
 }
 
+.prose h2::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  /* 1行目の中央に合わせる（padding-top + line-heightの半分） */
+  top: calc(0.9rem + 0.775em);
+  transform: translateY(-50%);
+  width: 1.05em;
+  height: 1.05em;
+  background-color: var(--amber-on-primary);
+  -webkit-mask: var(--chevron-mask) no-repeat center / contain;
+  mask: var(--chevron-mask) no-repeat center / contain;
+}
+
+/* 帯の上では本文リンク色が沈むため、白のままにする */
+.prose h2 a:not(.cta-button),
+.prose h2 a:not(.cta-button):hover {
+  color: #fff;
+}
+
+/* H3: 下線の左だけティーグリーン、残りは淡い緑 */
 .prose h3 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+  padding-bottom: 0.625rem;
+  line-height: 1.6;
+  background-image: linear-gradient(
+    to right,
+    var(--primary) 0 4.5rem,
+    var(--primary-soft) 4.5rem 100%
+  );
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 3px;
 }
 
+/* H4: 小さなアンバーの四角と太字 */
 .prose h4 {
+  position: relative;
   font-size: 1.0625rem;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  padding-left: 1.125rem;
+}
+
+.prose h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  transform: translateY(-50%);
+  width: 0.625rem;
+  height: 0.625rem;
+  background: var(--amber);
 }
 
 @media (max-width: 639px) {
@@ -172,9 +230,19 @@ h1 {
   .prose h2 {
     font-size: 1.375rem;
     margin-top: 2.75rem;
+    padding: 0.8rem 1rem 0.8rem calc(1rem + 1.05em + 0.45rem);
+  }
+  .prose h2::before {
+    left: 1rem;
+    top: calc(0.8rem + 0.775em);
   }
   .prose h3 {
     font-size: 1.125rem;
+    background-image: linear-gradient(
+      to right,
+      var(--primary) 0 3.25rem,
+      var(--primary-soft) 3.25rem 100%
+    );
   }
 }
 
@@ -205,14 +273,16 @@ h1 {
 }
 
 .prose li::marker {
-  color: var(--ink-soft);
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .prose blockquote {
   margin: 1.5rem 0;
   padding: 1.25rem 1.5rem;
   background: var(--bg-soft);
-  border-left: 3px solid var(--line);
+  border-left: 4px solid #b9b2a8;
+  border-radius: 0 8px 8px 0;
   color: var(--ink-soft);
 }
 
@@ -232,18 +302,18 @@ h1 {
 
 /* インラインFAQ（H2直後の一問一答） */
 .inline-faq {
-  background: var(--bg-soft);
-  border-left: 3px solid var(--accent);
+  background: var(--primary-soft);
+  border-left: 3px solid var(--primary);
   border-radius: 0 8px 8px 0;
   padding: 0.875rem 1.25rem;
   margin: 1rem 0 1.5rem;
   font-size: 0.9rem;
 }
-.inline-faq-q {
+.prose .inline-faq-q {
   margin: 0 0 0.375rem;
   color: var(--ink);
 }
-.inline-faq-a {
+.prose .inline-faq-a {
   margin: 0;
   color: var(--ink-soft);
   line-height: 1.7;
@@ -260,7 +330,8 @@ h1 {
 .prose a:not(.cta-button) {
   color: var(--primary);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
 }
 
 .prose a:not(.cta-button):hover {
@@ -312,8 +383,16 @@ h1 {
 }
 
 .prose th:not(.comparison-table th) {
-  background: var(--bg-soft);
+  background: var(--primary-soft);
   font-weight: 700;
+}
+
+.prose table:not(.comparison-table) tbody tr:nth-child(even) {
+  background: var(--bg);
+}
+
+.prose td:not(.comparison-table td) {
+  vertical-align: top;
 }
 
 /* ── Comparison Table ── */
@@ -642,4 +721,143 @@ time, .date-text {
 }
 @media (max-width: 639px) {
   .breadcrumb > [aria-current="page"] { max-width: 14em; }
+}
+
+/* ── ラベル付き囲みボックス ──
+   記事冒頭の「この記事の要点」「この記事で分かること」と、本文中の `:::box` が
+   同じ部品を共有する。ラベルは絶対配置ではなく通常フローに置いているため、
+   長いラベルやスマホ幅では折り返し、本文へ重ならない。
+   ボックスは左に0.75rem寄せ、ラベルが同じだけ左へ出る。
+   これでラベルの左端は本文の左端と揃い、どの幅でも横へはみ出さない。 */
+.naru-box {
+  margin: 2rem 0 2rem 0.75rem;
+  padding: 0.9rem 1.5rem 1.25rem;
+  background: var(--primary-soft);
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+.naru-box-label {
+  position: relative;
+  display: block;
+  width: fit-content;
+  /* 右端は本文領域の内側に収める。長いラベルはここで折り返す */
+  max-width: calc(100% + 2.25rem);
+  margin: 0 0 0.9rem -2.25rem;
+  padding: 0.4rem 1.125rem;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  border-radius: 2px;
+}
+
+/* ラベル左下の小さな折り返し */
+.naru-box-label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.4rem 0.45rem 0 0;
+  border-color: var(--primary-deep) transparent transparent transparent;
+}
+
+/* 本文と同じ文字色のまま、ボックス内の余白だけ詰める */
+.naru-box p {
+  margin-bottom: 0.75rem;
+  line-height: 1.85;
+}
+
+.naru-box ul,
+.naru-box ol {
+  margin-bottom: 0.75rem;
+}
+
+.naru-box li {
+  margin-bottom: 0.35rem;
+  line-height: 1.9;
+}
+
+.naru-box > :last-child {
+  margin-bottom: 0;
+}
+
+/* チェックリスト: 記号はティーグリーン。装飾なので読み上げには出さない */
+.naru-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.naru-box ul > li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.naru-box ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.95em;
+  transform: translateY(-50%);
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: var(--primary);
+  -webkit-mask: var(--check-mask) no-repeat center / contain;
+  mask: var(--check-mask) no-repeat center / contain;
+}
+
+.naru-box ol {
+  list-style: decimal;
+  padding-left: 1.4rem;
+}
+
+.naru-box ol > li::marker {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* 冒頭に2つ並べても過密にならないよう、要点側は背景と文字を一段落ち着かせる */
+.naru-box--quiet {
+  background: var(--bg-soft);
+  padding-bottom: 1.1rem;
+}
+
+.naru-box--quiet .naru-box-label {
+  font-size: 0.8125rem;
+  padding: 0.3rem 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 639px) {
+  .naru-box {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .naru-box-label {
+    margin-left: -2rem;
+    max-width: calc(100% + 2rem);
+  }
+}
+
+/* Article FAQ keeps its own card language, distinct from boxes and blockquotes. */
+.article-faq-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+.article-faq-question {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.article-faq-question::before {
+  content: "Q";
+  color: var(--primary);
+  font-weight: 700;
+  flex-shrink: 0;
 }
