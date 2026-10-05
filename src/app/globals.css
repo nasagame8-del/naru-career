@@ -147,9 +147,10 @@ h1 {
   font-weight: 700;
   margin-top: 3.5rem;
   margin-bottom: 1.25rem;
-  padding-left: 0.875rem;
-  padding-bottom: 0.5rem;
-  border-left: 3px solid var(--primary);
+  padding: 1rem 1.125rem;
+  background: var(--primary-soft);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
   line-height: 1.55;
 }
 
@@ -158,6 +159,9 @@ h1 {
   font-weight: 700;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 2px solid var(--primary-soft);
+  line-height: 1.6;
 }
 
 .prose h4 {
@@ -205,14 +209,16 @@ h1 {
 }
 
 .prose li::marker {
-  color: var(--ink-soft);
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .prose blockquote {
   margin: 1.5rem 0;
   padding: 1.25rem 1.5rem;
   background: var(--bg-soft);
-  border-left: 3px solid var(--line);
+  border-left: 4px solid #b9b2a8;
+  border-radius: 0 8px 8px 0;
   color: var(--ink-soft);
 }
 
@@ -232,18 +238,18 @@ h1 {
 
 /* インラインFAQ（H2直後の一問一答） */
 .inline-faq {
-  background: var(--bg-soft);
-  border-left: 3px solid var(--accent);
+  background: var(--primary-soft);
+  border-left: 3px solid var(--primary);
   border-radius: 0 8px 8px 0;
   padding: 0.875rem 1.25rem;
   margin: 1rem 0 1.5rem;
   font-size: 0.9rem;
 }
-.inline-faq-q {
+.prose .inline-faq-q {
   margin: 0 0 0.375rem;
   color: var(--ink);
 }
-.inline-faq-a {
+.prose .inline-faq-a {
   margin: 0;
   color: var(--ink-soft);
   line-height: 1.7;
@@ -260,7 +266,8 @@ h1 {
 .prose a:not(.cta-button) {
   color: var(--primary);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
 }
 
 .prose a:not(.cta-button):hover {
@@ -312,8 +319,16 @@ h1 {
 }
 
 .prose th:not(.comparison-table th) {
-  background: var(--bg-soft);
+  background: var(--primary-soft);
   font-weight: 700;
+}
+
+.prose table:not(.comparison-table) tbody tr:nth-child(even) {
+  background: var(--bg);
+}
+
+.prose td:not(.comparison-table td) {
+  vertical-align: top;
 }
 
 /* ── Comparison Table ── */
@@ -642,4 +657,26 @@ time, .date-text {
 }
 @media (max-width: 639px) {
   .breadcrumb > [aria-current="page"] { max-width: 14em; }
+}
+
+/* Article introductions and FAQ share the same restrained panel language. */
+.article-key-point {
+  border-top: 3px solid var(--primary);
+}
+.article-faq-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+.article-faq-question {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.article-faq-question::before {
+  content: "Q";
+  color: var(--primary);
+  font-weight: 700;
+  flex-shrink: 0;
 }
