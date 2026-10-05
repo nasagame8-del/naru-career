@@ -19,8 +19,8 @@ export function FAQSection({
       </div>
       <div className="space-y-6">
         {faqs.map((faq, i) => (
-          <div key={i}>
-            <h3 className={`font-bold text-ink mb-2 pl-3 border-l-[3px] ${borderClass}`}>
+          <div key={i} className="article-faq-item">
+            <h3 className={`article-faq-question font-bold text-ink mb-3 pl-3 border-l-[3px] ${borderClass}`}>
               {faq.question}
             </h3>
             <p className="text-ink-soft leading-relaxed pl-3">{faq.answer.replace(/\*\*/g, "")}</p>
