@@ -276,7 +276,7 @@
       "prNumber": 149,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/149",
       "branch": "article-factory/2026-10-05-062-company-data-hygiene",
-      "latestHeadSha": "a6a17632cbc70810d828fd7b413a0a33727eb910",
+      "latestHeadSha": "3caa437871b0fd96d98b5e1e3457c2b5f1e76d02",
       "articleDriveFolderId": "1jWke02pbqMkS9kcSgXubuMsrpPq_UeGu",
       "imagesDriveFolderId": "1Qn-Q9WSLCpGk_4hN77QcLFSEPU8nybs9",
       "originalsDriveFolderId": "1SrpdeUHWUu_pJ7iUtoPA17Oljc0cSWT3",
@@ -296,17 +296,17 @@
         "webp4InDriveVerified": true,
         "webp4OnExactPrHead": true,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "pending",
-        "previewVisual": "not_requested",
+        "cloudflarePreview": "pending_redeploy",
+        "previewVisual": "needs_reapproval_after_tone_and_source-preview_change",
         "humanFactCheck": {
           "status": "pending",
-          "headSha": "a6a17632cbc70810d828fd7b413a0a33727eb910"
+          "headSha": "3caa437871b0fd96d98b5e1e3457c2b5f1e76d02"
         },
         "originalImagesArchived": true,
         "imageVisualAudit": "passed",
         "imageDimensionsAndMetadataVerified": true
       },
-      "blocker": "最新headのArticle Factory Validation / Cloudflare Preview / 人手Fact Check / ユーザープレビュー承認待ち",
+      "blocker": "専門家口調の緩和と外部ソースプレビューカード反映後のCI/Cloudflare再デプロイ・ユーザー再確認待ち",
       "note": {
         "status": "DRAFT",
         "published": false
