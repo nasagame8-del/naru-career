@@ -205,3 +205,12 @@ DXの成果としては全部分かりやすい。
 ---
 
 NARU本編では、2026年8月〜10月5日に公表・更新された18事案を抽出し、「件数」「データの重さ」「データの寿命」「委託先・SaaS」の4軸で整理しています。NARU公開後に本記事からも参照できるようにします。
+
+## 参考にした一次資料
+
+- [物語コーポレーション「焼肉きんぐ公式アプリ 個人情報漏えいに関するお詫び」](https://www.monogatari.co.jp/news/261005_news/)
+- [タイムズモビリティ「タイムズカーWebシステムへの不正アクセス（第2報）」](https://www.timesmobi.co.jp/news/2026/09/33b24fb783a2d303b7e8664249ab57022cda975d.html)
+- [タイムズモビリティ「同（第3報）」](https://www.timesmobi.co.jp/news/2026/09/6485db3607d8a57d84d5e5816132cbafacd8d2cd.html)
+- [大阪市「採用試験録画面接システム事業者における個人情報の漏えいについて」](https://www.city.osaka.lg.jp/hodoshiryo/gyouseiiinkai/0000688062.html)
+- [個人情報保護委員会「取得した個人情報は、いつ廃棄しなければなりませんか」](https://www.ppc.go.jp/all_faq_index/faq1-q5-2/)
+- [IPA「情報セキュリティ10大脅威 2026」](https://www.ipa.go.jp/security/10threats/10threats2026.html)
