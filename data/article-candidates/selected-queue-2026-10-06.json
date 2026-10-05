@@ -41,7 +41,9 @@
         }
       },
       "blocker": "画像4枚未提供。Stage 4自動Discoveryには既知の誤検出があるため、公開前Human Fact Checkで数値表現を再確認する。"
-    },
+    }
+  ],
+  "deferred": [
     {
       "order": 2,
       "batchId": "batch_2026-10-06_chatgpt_research",
@@ -50,12 +52,12 @@
       "slug": "it-company-recruitment-page-by-size",
       "title": "小さいIT企業ほど採用ページが見つかりにくい？3,419社を企業規模別に比較",
       "genre": "独自調査",
-      "status": "WAITING_IMAGES",
+      "status": "DEFERRED_BY_USER",
       "selectionApproval": {
         "userText": "これ今日分の記事にしといてね",
         "approvedAt": "2026-10-06"
       },
-      "requestedPublish": "2026-10-06T18:00:00+09:00",
+      "requestedPublish": null,
       "prNumber": 153,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/153",
       "branch": "article-factory/2026-10-06-064-recruitment-page-size",
@@ -80,7 +82,9 @@
           "headSha": null
         }
       },
-      "blocker": "画像4枚未提供。Stage 4自動Discoveryには既知の誤検出があるため、公開前Human Fact Checkで数値表現を再確認する。"
+      "blocker": "画像4枚未提供。Stage 4自動Discoveryには既知の誤検出があるため、公開前Human Fact Checkで数値表現を再確認する。",
+      "deferredAt": "2026-10-06",
+      "deferReason": "ユーザー指示『1記事でいいよ』により本日分から外す。PR #153は未mergeでclosed、成果物は将来候補として保持。"
     }
   ]
 }
