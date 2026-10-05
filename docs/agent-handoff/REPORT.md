@@ -541,3 +541,85 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 
 - Cloudflareプレビューでユーザーが装飾を確認し、マージ可否を判断する。
 - 承認後、`:::box` を実記事へ適用するかはコンテンツ側の判断（必要な箇所だけに使う方針を `docs/article-decoration.md` に記載済み）。
+
+
+## 記事装飾リフレッシュ 本番反映 — 2026-10-05
+
+- reportId: USER-UI-DECORATION-20261005-R3
+- completedInstructionId: USER-UI-DECORATION-20261005-R3（ユーザー直接依頼。マージ・本番公開を明示的に指示されたため実施）
+- status: DONE
+- branch: `ui/article-decoration-refresh` → `master`（PR #148、squash merge 済み・ブランチ削除なし）
+
+### マージ前の再確認
+
+- 最新head再取得: `486231a`（ローカル・origin・PR headがすべて一致）
+- base `master` は `69c4b06` のまま未変更。`MERGEABLE` / `CLEAN`
+- 確認済み実装 `8cefef1` からの差分は、今回追加した導線コミット `486231a` のみ（ドキュメントと執筆プロンプトのみ。装飾の実装は不変）
+- CI（`486231a`）: `NARU article Cloudflare preview` success / `Article Factory No-API Validation` success / `SEO No-API Validation` success
+- Draft解除後に `ready_for_review` でpreviewが再実行され、同一SHAで再度 success。最終状態 `MERGEABLE` / `CLEAN`
+- `gh pr merge --squash --match-head-commit 486231aee0851dcdf91d55c36f50f3bb9640ba6f` でhead SHAを固定してマージ
+
+### マージとデプロイ
+
+- merge SHA（master）: **`55b90d7de6724ddc4d8829f75e9c3d047f18faf6`**
+- mergedAt: 2026-10-05T14:43:22Z
+- `Deploy NARU to Cloudflare` run **37326999988** / headSha `55b90d7…` / **success**
+
+### 本番確認（https://naru-career.com）
+
+| URL | HTTP | 確認内容 |
+| --- | --- | --- |
+| `/articles/employee-contractor-pay-comparison` | 200 | H2帯6本、囲み2つ、目次リンク切れ0、canonical正、JSON-LD 6本 |
+| `/articles/reference-check-explained` | 200 | 長いH2（117字）が375pxで折り返し、アイコンと重ならない |
+| `/about` | 200 | 帯見出し適用、崩れなし、canonical正 |
+| `/privacy` | 200 | 帯見出し適用、崩れなし、canonical正 |
+
+- 本番DOM検査（Puppeteer / 375・390・1440px）: 横スクロール・横はみ出し **0件**、目次リンク切れ **0件**、H2背景 `rgb(31,111,102)` / 文字色 `rgb(255,255,255)` を確認
+- 旧 `article-key-point` クラスは本番HTMLから消えている（新実装へ置換済み）
+- PC・スマホのスクリーンショットで、帯見出し・ラベル付き囲み・チェックリストの表示を目視確認
+
+### 全記事への反映
+
+共通CSS（`globals.css`）と共通コンポーネント（`LabeledBox.tsx`）による適用のため、記事ごとの作業は不要。production buildの全記事HTMLを走査して確認:
+
+- 記事HTML **60本** / ID付きH2 **424個** — すべて帯見出しの対象
+- 「この記事で分かること」ボックス: **60/60**
+- 「この記事の要点」ボックス: **24/60**（`naruPoint` を持つ記事のみ。既存frontmatterの差で、今回の変更による欠落ではない）
+- 未変換の `:::` 残存: **0件** / 目次リンク切れ: **0件**
+
+今後の記事も、通常のMarkdown見出しと既存frontmatterだけで同じ装飾になる。**既存記事の本文は未変更**（`content/` `prompts/` `data/` はいずれも未変更）。`:::box` の一括挿入は行っていない。
+
+### 記事制作側への導線（コミット `486231a`）
+
+| 追加先 | 内容 |
+| --- | --- |
+| `src/lib/article-factory/generation.ts` | 新規記事の本文フェーズの執筆ルールに `:::box` と `docs/article-decoration.md` 参照を追加 |
+| `src/lib/seo-editor/prompts/write.ts` | リライトの「Markdownの規約」に同上を追加 |
+| `AGENTS.md` | `naru-article-decoration` セクションを新設。共通実装で全記事に自動適用されること、`docs/article-decoration.md` が正本であることを明記 |
+| `docs/article-factory.md` | 冒頭から `article-decoration.md` へのリンク |
+
+いずれにも次の運用ルールを明記した。
+
+- 要点・確認事項など、囲む意味がある箇所にだけ使う（新規記事は0〜2個、リライトは1H2につき1つまでを目安）
+- 装飾のために文章を増やさない。囲むためだけの箇条書き・言い換えを作らない
+- 既存記事の本文へ `:::box` を一括挿入しない
+- 見出しの帯と冒頭ボックスは共通実装で付くので、本文側で再現しない
+
+### テスト結果
+
+- `vitest run`: 19ファイル / **327件すべて成功**
+- `tsc --noEmit`: エラーなし
+- `eslint`（変更ファイル）: 警告・エラーなし
+- `next build`（production）: 成功、**134ページ**
+- CI 3種（preview / article-factory-no-api / seo-no-api）: すべて success
+
+### 既知の問題 / 申し送り
+
+- `prompts/` 配下（`content-agent-brief.md` `draft-prompt.md` など）はコンテンツエージェント管轄のため**編集していない**。導線は `src/` の実行時プロンプト・`AGENTS.md`・`docs/` 側に入れてある。人が読む執筆ブリーフにも一文入れる場合は、コンテンツエージェント側での追記が必要。
+- `#B5691B` はティーグリーン帯の上では1.42:1で視認できないため、帯のアイコンにだけ `--amber-on-primary: #F0B860`（3.33:1）を使用。H4の四角は従来のブランドアンバーのまま。
+- 既存のNext middleware deprecation警告は本変更以前から存在。
+
+### 推奨する次の作業
+
+- 実記事で `:::box` を使い始めるかはコンテンツ側の判断。運用ルールは `docs/article-decoration.md` が正本。
+- 既存記事への `:::box` 追加は、一括ではなく記事単位で必要性を判断する。
