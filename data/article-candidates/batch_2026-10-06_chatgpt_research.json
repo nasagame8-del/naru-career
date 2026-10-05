@@ -1,0 +1,93 @@
+{
+  "batchId": "batch_2026-10-06_chatgpt_research",
+  "generatedAt": "2026-10-06T00:00:00+09:00",
+  "trigger": "manual",
+  "inventorySize": 61,
+  "nextArticleId": 63,
+  "candidates": [
+    {
+      "id": "cand_261006r_recruitment_page_gap",
+      "title": "IT企業の採用ページはどこにある？3,419社を公式サイトまで調べた結果",
+      "primaryKeyword": "IT企業 採用ページ 探し方",
+      "secondaryKeywords": [
+        "しょくばらぼ 採用ページ",
+        "IT企業 企業研究 採用サイト",
+        "第二新卒 企業 採用ページ"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "既存のsecond-new-grad-it-company-researchは企業研究の一般手順。本候補は厚労省しょくばらぼの情報通信業データと企業公式HPを3,419社分照合したNARU独自集計を主題にし、国DBの採用ページ欄だけでは拾えない情報をどう探すかを示す。",
+      "reasonToWriteNow": "2026-10-04版しょくばらぼ全件CSVと公式HP Discoveryの全件ランが完了し、3,419社の検証可能なStage 4データが揃ったため。",
+      "category": "業界解説",
+      "proposedSlug": "it-company-recruitment-page-research",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-company-research",
+        "it-training-program-job-checklist",
+        "agent-referral-vs-self-apply"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261006r_recruitment_page_size",
+      "title": "小さいIT企業ほど採用ページが見つかりにくい？3,419社を企業規模別に比較",
+      "primaryKeyword": "IT企業 採用ページ 企業規模",
+      "secondaryKeywords": [
+        "IT企業 企業規模 採用情報",
+        "中小IT企業 採用ページ",
+        "IT企業 企業研究 規模"
+      ],
+      "searchIntent": "compare",
+      "differenceFromExisting": "既存記事は企業規模ごとの採用情報の見つけやすさを実測比較していない。NARU独自の3,419社データで従業員規模7区分の採用ページ発見率を比較し、第二新卒が小規模企業を調べる際の注意点へ落とし込む。",
+      "reasonToWriteNow": "同一方法・同一母集団で企業規模別の差を比較できる全件データが揃い、1〜4人37.7%、300〜999人87.2%など大きな差が確認できたため。",
+      "category": "業界解説",
+      "proposedSlug": "it-company-recruitment-page-by-size",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-company-research",
+        "it-training-program-job-checklist",
+        "second-new-grad-web-agency-vs-inhouse"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261006r_homepage_access_failures",
+      "title": "IT企業の公式サイト3,419社を調べたら約9%で正常取得できなかった",
+      "primaryKeyword": "IT企業 公式サイト 企業研究",
+      "secondaryKeywords": [
+        "IT企業 ホームページ 企業研究",
+        "企業サイト 404 転職",
+        "採用ページ 見つからない"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "企業研究の一般論ではなく、公式HPのDNS・TLS・404・403・robots等の取得失敗を独自データで整理する。採用ページが見つからないことと募集がないことを混同しないための補助記事。",
+      "reasonToWriteNow": "Stage 4でHP取得成功3,126/3,419、失敗293社の分類まで揃ったため。ただし技術障害の解釈は企業評価に直結させず慎重に扱う。",
+      "category": "業界解説",
+      "proposedSlug": "it-company-website-research-failures",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE",
+        "THIN_DIFFERENTIATION"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-company-research",
+        "company-reputation-search-reality"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "ユーザーの明示指示「これ今日分の記事にしといてね」により、2026-10-04しょくばらぼ全件調査を2026-10-06の日次記事テーマとして採用。通常の朝候補スコアではなく、ユーザー指定の独自調査枠。",
+    "GSC 2026-09-05〜2026-10-02の関連語（企業研究、研修、未経験、採用、求人）を確認したが本候補を直接裏づける非ブランド実測はなし。searchEvidenceは捏造せずnull。",
+    "Stage 5求人単位データはprovisionalのため記事確定値に使わない。Stage 4の3,419社Discoveryのみを主データとする。",
+    "既知の日本IBM誤検出1件があるため、2,495社=真の採用ページ保有社と断定せず、自動Discoveryでhigh/medium採用した候補数として扱う。記事公開前Fact Checkで表現を再確認する。"
+  ]
+}
