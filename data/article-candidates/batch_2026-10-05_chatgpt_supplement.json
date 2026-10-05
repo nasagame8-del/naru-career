@@ -1,0 +1,107 @@
+{
+  "batchId": "batch_2026-10-05_chatgpt_supplement",
+  "generatedAt": "2026-10-05T09:38:00+09:00",
+  "trigger": "manual",
+  "inventorySize": 58,
+  "nextArticleId": 60,
+  "candidates": [
+    {
+      "category": "業界解説",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "employee-to-contractor-social-insurance",
+        "outsourcing-contract-termination-worker-status"
+      ],
+      "searchEvidence": null,
+      "selectionScore": 55,
+      "selectionGrade": "C",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": [],
+      "id": "cand_261005t_payday",
+      "title": "「大企業なら報酬も安心」は本当？日本郵便への勧告から考える業務委託の支払期日",
+      "primaryKeyword": "業務委託 報酬 支払期日",
+      "secondaryKeywords": [
+        "フリーランス 請求書 未提出 支払い",
+        "業務委託 報酬 未払い"
+      ],
+      "searchIntent": "do",
+      "proposedSlug": "contractor-payment-deadline-invoice",
+      "differenceFromExisting": "独自検証枠。親記事は切替リスク全体、契約終了子記事は解除/労働者性。本案は受領/役務提供から支払期日を確認し、請求書未提出・検収・再委託の例外を分ける。雇用給与と委託報酬の支払い基準を混同しない。未払い対応と証拠整理に限定。",
+      "reasonToWriteNow": "2026/9/2の日本郵便への公取委勧告を10/5再取得。大企業という属性から契約条件の安心を推測しない独自問い。直近24hニュースではなく1か月前の事例の独自検証と明示。親クラスターに実測反応があり、現行本文に支払期日を独立して解説する記事がない。",
+      "selectionEvidence": {
+        "gsc": "strong",
+        "serp": "unchecked",
+        "trends": "unavailable",
+        "demandExpansions": "unavailable",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "none",
+        "checkedAt": "2026-10-05T09:38:00+09:00",
+        "notes": [
+          "GSCは候補固有クエリでなく関連親ページの反応。確定9/5〜10/2で192表示5click8.9479位、比較期88表示2click7.625位。サイト内の相対的strongであり、大きな需要や順位改善を意味しない。",
+          "35+0+0+0+15+5=55。根拠ゲート①関連クラスターGSC strong。A/B3件未満のためC補欠のみ。",
+          "Google SERP unchecked、Trends unavailable、PAA/関連検索/サジェスト取得不能。一般Web検索はGoogle上位順位の証拠にしない。",
+          "一次情報 https://www.jftc.go.jp/houdou/pressrelease/2026/sep/260902_japanpost.html :9/2公表、取引条件明示と報酬支払いの勧告。 https://www.jftc.go.jp/fllaw_limited/fllaw_qa.html :請求書未提出の場合。",
+          "Xバズ未確認。日本郵便の個別事実をIT/Web企業の違反率や全社の慣行へ一般化しない。公式画像は執筆時に関連資料と利用条件を確認、転載不明ならリンク＋独自図解。",
+          "カニバリnoneは支払期日に限定した子記事としての設計評価。解除や社会保険を新記事内で再解説しない。"
+        ]
+      }
+    },
+    {
+      "category": "業界解説",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "employee-to-contractor-social-insurance",
+        "outsourcing-contract-termination-worker-status"
+      ],
+      "searchEvidence": null,
+      "selectionScore": 55,
+      "selectionGrade": "C",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": [],
+      "id": "cand_261005e_paycompare",
+      "title": "正社員の月給30万円と業務委託40万円、どちらが得？切り替え前の報酬比較表",
+      "primaryKeyword": "正社員 業務委託 報酬 比較",
+      "secondaryKeywords": [
+        "業務委託 手取り 正社員 違い",
+        "正社員 業務委託 切り替え 年収"
+      ],
+      "searchIntent": "compare",
+      "proposedSlug": "employee-contractor-pay-comparison",
+      "differenceFromExisting": "通常SEO枠。10/4の未選定cand_261004e2を再評価して再利用する同一案。社会保険記事は加入手続き、親記事はリスク概観。本案はIT/Web職の切替提示を年間報酬・賞与・経費・稼働月数・休業日・税負担の前提で同じ土俵にする記入式比較に限定。",
+      "reasonToWriteNow": "親ページ192表示5click。親記事には月給30万→委託40万の注意喚起があるが、本人が条件を埋める年間比較表はない。10/4公開の保険手続き記事へつなぐ。普遍的な報酬判断でありニュース依存なし。",
+      "selectionEvidence": {
+        "gsc": "strong",
+        "serp": "unchecked",
+        "trends": "unavailable",
+        "demandExpansions": "unavailable",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "none",
+        "checkedAt": "2026-10-05T09:38:00+09:00",
+        "notes": [
+          "GSCは候補固有クエリでなく関連親ページの反応。確定9/5〜10/2で192表示5click8.9479位、比較期88表示2click7.625位。サイト内の相対的strongであり、大きな需要や順位改善を意味しない。",
+          "35+0+0+0+15+5=55。根拠ゲート①関連クラスターGSC strong。A/B3件未満のためC補欠のみ。",
+          "Google SERP unchecked、Trends unavailable、PAA/関連検索/サジェスト取得不能。一般Web検索はGoogle上位順位の証拠にしない。",
+          "国税庁 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1350.htm と https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1400.htm を根拠にする。事業所得/雑所得など所得区分を自動的に断定しない。",
+          "検索取得に計算ツールと業種別比較あり。ただしGoogleSERP上位としては未確認なので加点なし。独自角度は第二新卒IT/Webの切替提示に合わせた記入式表。",
+          "カニバリnoneは比較表・報酬条件に限定する設計評価。加入手順・切替違法性・解除対応は既存へ委譲。一律の手取り額や何倍なら必ず得は提示しない。"
+        ]
+      }
+    }
+  ],
+  "notes": [
+    "ユーザー『新規つくらないってこと？』『やって』により追加調査。今朝の本体バッチを上書きせず補足として保存。新規制作を停止する方針ではない。ユーザー選択待ち。記事PR作成なし。",
+    "通常候補は10/4未選定案の再利用で二重記事にしない。追加案2件のみC補欠で、A/Bとして推奨しない。時事枠は速報でなく一次情報による独自検証。",
+    "master58記事、Open17PRを再取得。関連本文・実型を照合。今朝再取得済み全queue/preselectedと今日の候補フォルダを参照。selected-queue-2026-10-05なし。",
+    "無料SEOシグナルが不足する項目はゼロ点。母数・候補固有実測不足を隠さない。優先順推奨は通常報酬比較→独自検証支払期日だがユーザー選択/順番を未確定のままにする。"
+  ]
+}
