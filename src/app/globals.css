@@ -607,6 +607,100 @@ h1 {
 .prose a.x-post-screenshot { display:block; width:100%; max-width:100%; overflow:hidden; }
 .prose a.x-post-screenshot img { display:block; width:100%; max-width:100%; height:auto; box-sizing:border-box; }
 
+/* External source preview cards used inside articles.
+   They behave like a compact link preview rather than an inline citation. */
+.prose a.source-preview {
+  display: block;
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(37, 37, 37, 0.04);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.prose a.source-preview:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--line));
+  box-shadow: 0 5px 16px rgba(37, 37, 37, 0.08);
+  transform: translateY(-1px);
+}
+
+.source-preview-topline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.625rem;
+  min-width: 0;
+}
+
+.source-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 24px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.source-preview-badge-news {
+  background: var(--navy-soft);
+  color: var(--navy);
+}
+
+.source-preview-domain {
+  min-width: 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.source-preview-title,
+.source-preview-desc,
+.source-preview-cta {
+  display: block;
+}
+
+.source-preview-title {
+  color: var(--ink);
+  font-size: 0.975rem;
+  font-weight: 700;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.source-preview-desc {
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.source-preview-cta {
+  margin-top: 0.7rem;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 639px) {
+  .prose a.source-preview {
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.875rem 0.95rem;
+  }
+  .source-preview-title { font-size: 0.9375rem; }
+  .source-preview-desc { font-size: 0.78rem; }
+}
+
 /* Mobile article overflow guard */
 @media (max-width: 639px) {
   .prose { min-width: 0; max-width: 100%; }
