@@ -7,36 +7,47 @@
     "1": {
       "order": 1,
       "selected": true,
-      "articleId": 60,
+      "articleId": "60",
       "slug": "employee-contractor-pay-comparison",
       "prNumber": 146,
       "latestHeadSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c",
       "requestedPublishAt": "2026-10-05T12:00:00+09:00",
       "previewApprovedHeadSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c",
-      "humanFactCheck": {
-        "status": "user_confirmed",
-        "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c",
-        "userText": "したやん / やって"
-      },
       "imageQa": {
-        "status": "passed",
+        "passed": true,
         "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
       },
       "articleQa": {
-        "status": "passed",
+        "passed": true,
         "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
       },
       "ci": {
-        "status": "passed",
+        "passed": true,
         "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
       },
       "blockers": [],
       "mergeSha": "12e732699673a4138f65d18baf8827da12812059",
-      "status": "PUBLISHED",
-      "productionDeployRunId": 37259507047,
       "productionDeployVerified": true,
       "publicArticleVerified": true,
-      "publicUrl": "https://naru-career.com/articles/employee-contractor-pay-comparison"
+      "factCheck": {
+        "passed": true,
+        "headSha": "2eda8dd86b6ddf6ca95d410e0da2c0e11bd4dd2c"
+      },
+      "publicArticleUrl": "https://naru-career.com/articles/employee-contractor-pay-comparison",
+      "images": {
+        "card": {
+          "ref": "1NBYdgl297UoDSvKhJ3hCtgXRsR8XCyWQ"
+        },
+        "01": {
+          "ref": "1-6RvC8B_f6S_XE5EdJmyItwJdASaGolB"
+        },
+        "02": {
+          "ref": "1zYyOLEe48GdNg8KZoFIxk169uNDiulob"
+        },
+        "03": {
+          "ref": "14OE0APtAVV5XsHa8bD93cNcXRt5sMZ0g"
+        }
+      }
     },
     "2": {
       "order": 2,
@@ -44,11 +55,23 @@
       "blockers": [
         "human_fact_check_pending"
       ],
-      "articleId": 61,
+      "articleId": "61",
       "slug": "disguised-contracting-freelance-difference",
       "prNumber": 147,
       "latestHeadSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1",
-      "requestedPublishAt": "2026-10-05T18:00:00+09:00"
+      "requestedPublishAt": "2026-10-05T18:00:00+09:00",
+      "imageQa": {
+        "passed": true,
+        "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1"
+      },
+      "articleQa": {
+        "passed": true,
+        "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1"
+      },
+      "ci": {
+        "passed": true,
+        "headSha": "278f52f74f1211f19d434b4c8d7c13b77f8b77b1"
+      }
     }
   },
   "lastReconciledAt": "2026-10-05T12:29:36+09:00"
