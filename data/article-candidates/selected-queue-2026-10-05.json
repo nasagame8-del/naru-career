@@ -276,7 +276,7 @@
       "prNumber": 149,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/149",
       "branch": "article-factory/2026-10-05-062-company-data-hygiene",
-      "latestHeadSha": "77cfdea19465d0180c2291f499918afc4b372704",
+      "latestHeadSha": "abf039e59432d35df03b3d06c38a8b27a4a48241",
       "articleDriveFolderId": "1jWke02pbqMkS9kcSgXubuMsrpPq_UeGu",
       "imagesDriveFolderId": "1Qn-Q9WSLCpGk_4hN77QcLFSEPU8nybs9",
       "originalsDriveFolderId": "1SrpdeUHWUu_pJ7iUtoPA17Oljc0cSWT3",
@@ -296,14 +296,14 @@
         "webp4InDriveVerified": false,
         "webp4OnExactPrHead": false,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "not_ready",
+        "cloudflarePreview": "waiting_images",
         "previewVisual": "not_requested",
         "humanFactCheck": {
           "status": "pending",
-          "headSha": "77cfdea19465d0180c2291f499918afc4b372704"
+          "headSha": "abf039e59432d35df03b3d06c38a8b27a4a48241"
         }
       },
-      "blocker": "ユーザー生成のcard/01/02/03の4画像待ち",
+      "blocker": "ユーザー生成のcard/01/02/03の4画像待ち。現行CI/Previewは画像不足で通過不可。",
       "note": {
         "status": "DRAFT",
         "published": false
