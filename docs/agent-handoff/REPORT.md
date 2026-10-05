@@ -1,3 +1,89 @@
+# NARU Research｜3,419社フルラン（Stage 4確定 / Stage 5 provisional） — 2026-10-04
+
+- reportId: USER-SHOKUBA-FULLRUN-3419-20261004
+- completedInstructionId: USER-SHOKUBA-FULLRUN-3419-20261004（ユーザー直接依頼。`NEXT_INSTRUCTION.md` は `IDLE`）
+- status: DONE_PENDING_REVIEW（Draft PR #143 のブランチへpush済み。master未反映・記事未作成・未公開）
+- branch: `research/shokuba-20261004`
+- 指示書: `docs/research/shokuba-full-run-3419-claude.md`
+- 詳細レポート: `docs/research/shokuba-2026-10-04-full-run-report.md`
+
+## 実施内容
+
+- Stage 4を3,419社全件で完走（`--expect 3419` でフレームサイズをassert）
+- high 2,354 / medium 141 / low 172 / none 752 = **3,419**（`confidenceSumCheck` 一致）
+- 採用ページ発見2,495社（72.97%）。全数調査のため加重発見率は粗率と同値
+- Stage 5を2,436社で実行し `provisional: true` で保存。求人レコード7,622件、到達1,464社
+- `TypeError: terminated` 対策の回帰テスト `scripts/research-web.test.mjs` を追加
+- Stage 4確定データから記事候補8件、Stage 5 provisionalから5件を導出
+- 300社パイロット成果物は一切変更していない
+
+## テスト結果
+
+- `node --test scripts/research-web.test.mjs`: 5 tests / 5 pass / 0 fail（新規）
+- `node --test scripts/research-jobs.test.mjs`: 53 tests / 53 pass / 0 fail
+- `node --check` 5ファイル: エラーなし
+- 実ランでの `TypeError: terminated` 再発: 0件
+- `body_read_failed` ガード発火: 2件（いずれもページ単位の失敗として記録しrun継続）
+- `runPool` の `onItemError`（企業単位の明示failure）発火: 0件
+
+## 変更ファイル
+
+- `scripts/research-web.test.mjs`（新規）
+- `docs/research/shokuba-2026-10-04-full-run-report.md`（新規）
+- `data/research/shokuba/2026-10-04-discovery-full-3419.json` / `.csv`（新規）
+- `data/research/shokuba/2026-10-04-discovery-sample-full-3419.csv`（新規）
+- `data/research/shokuba/2026-10-04-jobs-full-3419-provisional.json` / `.csv`（新規）
+- `data/research/shokuba/2026-10-04-full-analysis.json`（新規）
+- `data/research/shokuba/checkpoints/*.jsonl`（新規・resume用）
+- `docs/agent-handoff/REPORT.md`（本追記）
+
+## git diff概要
+
+スクリプトの挙動変更なし。追加はテスト1本とデータ成果物・レポートのみ。
+既存の `scripts/research-*.mjs` と300社パイロットの成果物に差分はない。
+
+## 既知の問題
+
+1. **Stage 5は precision 0.97 / recall 0.47**。求人件数系の数字はすべて過小評価。確定値として記事化できない
+2. 採用求人レコードの55.2%が `job_section`（ページ内セクション分解）。1求人=1レコード未達成
+3. 「職種 / 募集ポジション」等のテーブル見出しを求人名と誤検出（40件）
+4. `employmentType` 未正規化（`正社員`/`FULL_TIME`、`CONTRACTOR`/`Contractor` 併存）
+5. 求人レコードの重複14.0%（1,067件）
+6. `scripts/research-stage45-analysis.mjs` のフィールド名がStage 5側のリネームに未追従。
+   分析JSONの `jobs.granularity.roleNamedJobRecords` と `jobs.sourceCounts` がnullになる（実データはjobs JSON側にある）
+7. 採用ページの誤検出1件（日本IBMにIBMカタール/アラビア語ケーススタディページを割当）。
+   ユニーク採用ページ数は2,495ではなく2,492
+8. Stage 4の `httpAccounting` は最終ラン（2,531社）のみの計測。3,419社全体のリクエスト総数は実測値がない
+9. `2026-10-04-jobs-full-3419-provisional-excluded.json`（20MB・除外10,724件）は
+   300社パイロットの前例に合わせてcommitしていない。再実行で再生成可能
+
+## 判断が必要な項目
+
+- Stage 5の精度改善（recall 0.47 → 一覧ページ側の取りこぼし解消）を次工程にするか、
+  Stage 4の確定データだけで記事を1本作るかの優先順位
+- `excluded.json`（20MB）をリポジトリに含めるかどうか
+
+## 推奨する次の作業
+
+1. Stage 4確定データで記事候補1（国DB 5.1% vs 実在73.0% ＝14.3倍）を執筆
+2. Stage 5の一覧ページ抽出を改善し recall を上げてから求人単位の数字を確定値へ昇格
+3. `research-stage45-analysis.mjs` のフィールド名をStage 5側へ追従させる
+4. `employmentType` の正規化（日本語/JSON-LD enum の統合）
+
+## 運用上の事故（データの素性に関わるため記録）
+
+同一リポジトリで並行作業していた別セッションにより2件発生。詳細は詳細レポート第5節。
+
+1. 作業ツリーが `ui/article-decoration-refresh` へcheckoutされ、`scripts/research-*.mjs` が消失
+2. `git stash --include-untracked`（23:02・stash `b443d08`）が実行中の未追跡成果物を巻き上げ、
+   **Stage 5の約1,695社分の結果が消失**（checkpointに残ったのは165社）。再開ランで再取得済み
+
+以降は専用worktree（`C:\Users\nasaz\naru-shokuba-research`）で作業し、メインツリーから隔離した。
+Stage 4のcheckpointは事故前に完走していたため3,419行が完全な状態で保全されている。
+復元時のCRLF変換はバイト単位でLFへ戻し、`discovery-full-3419.json` は元の7,286,743バイトと一致を確認。
+
+---
+
 # NARU Research｜Stage 4 採用ページDiscovery / Stage 5 求人単位化 — 2026-10-04
 
 - reportId: USER-SHOKUBA-STAGE45-20261004
