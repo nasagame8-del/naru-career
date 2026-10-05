@@ -4,12 +4,14 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   convertBoldMarkers,
+  convertLabeledBoxes,
   getAllSlugs,
   getArticle,
   getArticleImagePath,
   getArticleMeta,
   htmlToPlainText,
   removeFaqSection,
+  renderArticleMarkdown,
 } from "./articles";
 
 /**
@@ -130,5 +132,65 @@ describe("content/articles のインラインFAQ", () => {
       }
     }
     expect(missing).toEqual([]);
+  });
+});
+
+describe("ラベル付き囲みボックス記法", () => {
+  it("ラベルと中身を .naru-box のHTMLへ変換する", () => {
+    expect(convertLabeledBoxes(":::box 確認すること\n本文\n:::")).toBe(
+      '<div class="naru-box">\n\n<p class="naru-box-label">確認すること</p>\n\n本文\n\n</div>'
+    );
+  });
+
+  it("ラベルを省略できる", () => {
+    expect(convertLabeledBoxes(":::box\n本文\n:::")).toBe(
+      '<div class="naru-box">\n\n本文\n\n</div>'
+    );
+  });
+
+  it("ラベルのHTMLをエスケープする", () => {
+    expect(convertLabeledBoxes(':::box <img src=x onerror="1">\n本文\n:::')).toContain(
+      '<p class="naru-box-label">&lt;img src=x onerror="1"&gt;</p>'
+    );
+  });
+
+  it("閉じていない記法は本文のまま残す", () => {
+    const md = ":::box ラベル\n本文だけで閉じない\n";
+    expect(convertLabeledBoxes(md)).toBe(md);
+  });
+
+  it("1本の記事に複数のボックスを置ける", () => {
+    const html = convertLabeledBoxes(":::box A\n1\n:::\n\n段落\n\n:::box B\n2\n:::");
+    expect(html.match(/naru-box-label/g)).toHaveLength(2);
+    expect(html).toContain("\n\n段落\n\n");
+  });
+
+  it("ボックスの外は書き換えない", () => {
+    const md = "## 見出し\n\n本文です。\n\n- 箇条書き\n";
+    expect(convertLabeledBoxes(md)).toBe(md);
+  });
+
+  it("中身の箇条書き・太字・リンクはMarkdownとして解釈される", async () => {
+    const md = convertLabeledBoxes(
+      ":::box 応募前チェック\n- **職務内容**が書面にあるか\n- [相談先](/contact)を控えたか\n:::"
+    );
+    const rendered = await renderArticleMarkdown(convertBoldMarkers(md));
+    expect(rendered).toContain('<div class="naru-box">');
+    expect(rendered).toContain('<p class="naru-box-label">応募前チェック</p>');
+    expect(rendered).toContain("<ul>");
+    expect(rendered).toContain("<strong>職務内容</strong>");
+    expect(rendered).toContain('<a href="/contact">相談先</a>');
+    expect(rendered).toContain("</div>");
+    // 記法そのものは画面へ出ない
+    expect(rendered).not.toContain(":::");
+  });
+
+  it("中身の表はGFMの表として解釈される", async () => {
+    const md = convertLabeledBoxes(
+      ":::box 比較\n| 項目 | 値 |\n| --- | --- |\n| A | 1 |\n:::"
+    );
+    const rendered = await renderArticleMarkdown(md);
+    expect(rendered).toContain("<table>");
+    expect(rendered).toContain('<div class="naru-box">');
   });
 });

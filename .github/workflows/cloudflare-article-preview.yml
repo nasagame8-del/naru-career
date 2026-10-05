@@ -11,7 +11,8 @@ on:
       - "data/article-runs/**"
       - "src/app/globals.css"
       - "src/app/articles/**"
-      - "src/components/FAQSection.tsx"
+      - "src/components/**"
+      - "src/lib/articles.ts"
 
 permissions:
   contents: read
