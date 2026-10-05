@@ -10,24 +10,58 @@
       "slug": "employee-contractor-pay-comparison",
       "title": "仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？",
       "genre": "通常SEO",
-      "status": "SELECTED",
+      "status": "WAITING_IMAGES",
       "selectionApproval": {
         "userText": "おけ、それで進めるで問題ない？ / やって",
         "approvedAt": "2026-10-05T10:13:55+09:00"
       },
       "requestedPublish": null,
-      "prNumber": null,
-      "articleDriveFolderId": null,
+      "prNumber": 146,
+      "articleDriveFolderId": "17vumFUDr3HdOBCl7UfW_yXzIeyTpA8cL",
       "qa": {
         "previewVisual": "not_reviewed",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "sourceUrlsVerified": true,
+        "articleDraftReadback": true,
+        "imagePromptsReadback": true,
+        "internalLinksVerified": true,
+        "frontmatterVerified": true,
+        "generatedImagesProvided": false,
+        "fullLocalQaPassed": false,
+        "cloudflarePreview": "not_passed",
+        "checks": [
+          {
+            "name": "preview",
+            "status": "completed",
+            "conclusion": "failure",
+            "headSha": "28380dc78f1f9238459bbf9c207a0801dc770892"
+          },
+          {
+            "name": "article-factory-validation",
+            "status": "completed",
+            "conclusion": "failure",
+            "headSha": "28380dc78f1f9238459bbf9c207a0801dc770892"
+          }
+        ]
       },
       "imageFiles": {
         "card": null,
         "01": null,
         "02": null,
         "03": null
-      }
+      },
+      "branch": "article-factory/2026-10-05-060-pay-comparison",
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/146",
+      "latestHeadSha": "28380dc78f1f9238459bbf9c207a0801dc770892",
+      "imagesDriveFolderId": "1JyX7R7B7FEXR52BSfgXQNaQodpoaMo-o",
+      "originalsDriveFolderId": "1JnQGj-4hvkDFYCpNJzfZehbfsaXfFSrj",
+      "files": {
+        "article": "1NQcwpl0Smh4Q0NKuwJ6FIooGY-zQejqW",
+        "imagePlan": "19WqvDVhV7mdpHMBQUL3lKj4GwDux-mrj",
+        "articlePromptCopy": "1bLdMeSiXVjPAke0J0OkGx6Vgzl4cnXfh",
+        "designPrompt": "1yZK60-VmQqke4FfJ_fmE8X0zhgf6gacg"
+      },
+      "blocker": "ユーザー生成画像card/01/02/03未提供。最新headのCI・Cloudflareプレビュー・目視承認も未完了。"
     },
     {
       "order": 2,
@@ -37,27 +71,74 @@
       "slug": "disguised-contracting-freelance-difference",
       "title": "偽装請負と偽装フリーランスは同じ？IT求人の「誰が指示するか」を公式資料で検証",
       "genre": "独自検証",
-      "status": "SELECTED",
+      "status": "WAITING_IMAGES",
       "selectionApproval": {
         "userText": "おけ、それで進めるで問題ない？ / やって",
         "approvedAt": "2026-10-05T10:13:55+09:00"
       },
       "requestedPublish": null,
-      "prNumber": null,
-      "articleDriveFolderId": null,
+      "prNumber": 147,
+      "articleDriveFolderId": "1WnOkfkVSO64Y-6dTc-VdXh61rQIn140k",
       "qa": {
         "previewVisual": "not_reviewed",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "sourceUrlsVerified": true,
+        "articleDraftReadback": true,
+        "imagePromptsReadback": true,
+        "internalLinksVerified": true,
+        "frontmatterVerified": true,
+        "generatedImagesProvided": false,
+        "fullLocalQaPassed": false,
+        "cloudflarePreview": "not_passed",
+        "checks": [
+          {
+            "name": "article-factory-validation",
+            "status": "in_progress",
+            "conclusion": null,
+            "headSha": "8b68556d1b1caf9955ffdee3f2df9f57de8651c7"
+          },
+          {
+            "name": "preview",
+            "status": "completed",
+            "conclusion": "failure",
+            "headSha": "8b68556d1b1caf9955ffdee3f2df9f57de8651c7"
+          }
+        ]
       },
       "imageFiles": {
         "card": null,
         "01": null,
         "02": null,
         "03": null
+      },
+      "branch": "article-factory/2026-10-05-061-disguised-contract",
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/147",
+      "latestHeadSha": "8b68556d1b1caf9955ffdee3f2df9f57de8651c7",
+      "imagesDriveFolderId": "1mj9XZ0tz712knIPHwEuUeuXrJBbCc51C",
+      "originalsDriveFolderId": "1EBbJpnWurbFvsey-nAbabQTUj6fVt44A",
+      "files": {
+        "article": "1RY2IjyS2VLNuWmJs60x-89tA9bHYBu0L",
+        "imagePlan": "1Gk76YbvFc3em0RJNE63J71J3o4VPo4aS",
+        "articlePromptCopy": "1c100snexLbwOZdIn2Jyw8wx8JpCr2wxU",
+        "designPrompt": "1zOOAFYgxr0ILgBcVUDXkzEiNRqQ4sdCu"
+      },
+      "blocker": "ユーザー生成画像card/01/02/03未提供。最新headのCI・Cloudflareプレビュー・目視承認も未完了。",
+      "officialImage": {
+        "fileId": "1KeB28m408f6UvK9_Gvz60frHYu9pABA5",
+        "githubBlobSha": "1afe45268a7bcc678d19e5e486658b224054bd99",
+        "originalFileId": "15i3qcc5MRDmiONO8j5EjP5LdtRf70Uxq",
+        "sourceUrl": "https://www.mhlw.go.jp/content/001320369.jpg",
+        "rightsUrl": "https://www.mhlw.go.jp/chosakuken/",
+        "publishedDate": null,
+        "checkedDate": "2026-10-05",
+        "captionPresent": true,
+        "formatConversionOnly": true,
+        "driveBytesReadbackVerified": true
       }
     }
   ],
   "notes": [
-    "通常SEO→独自検証の順でユーザー選定。公開時刻・プレビュー承認は未確定。Cloudflareを正本とする。"
+    "通常SEO→独自検証の順でユーザー選定。公開時刻・プレビュー承認は未確定。Cloudflareを正本とする。",
+    "両Draft PR・Drive原稿/画像プラン/04_Designと記事コピーを再取得済み。generated WebP4枚は未提供。公開・プレビュー目視承認は未実施。"
   ]
 }
