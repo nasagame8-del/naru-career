@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-05",
+  "batchId": "batch_2026-10-05_chatgpt_supplement",
+  "selected": [
+    {
+      "order": 1,
+      "batchId": "batch_2026-10-05_chatgpt_supplement",
+      "candidateId": "cand_261005e_samework_pay",
+      "articleId": 60,
+      "slug": "employee-contractor-pay-comparison",
+      "title": "仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？",
+      "genre": "通常SEO",
+      "status": "SELECTED",
+      "selectionApproval": {
+        "userText": "おけ、それで進めるで問題ない？ / やって",
+        "approvedAt": "2026-10-05T10:13:55+09:00"
+      },
+      "requestedPublish": null,
+      "prNumber": null,
+      "articleDriveFolderId": null,
+      "qa": {
+        "previewVisual": "not_reviewed",
+        "previewApprovedHeadSha": null
+      },
+      "imageFiles": {
+        "card": null,
+        "01": null,
+        "02": null,
+        "03": null
+      }
+    },
+    {
+      "order": 2,
+      "batchId": "batch_2026-10-05_chatgpt_supplement",
+      "candidateId": "cand_261005t_disguised_difference",
+      "articleId": 61,
+      "slug": "disguised-contracting-freelance-difference",
+      "title": "偽装請負と偽装フリーランスは同じ？IT求人の「誰が指示するか」を公式資料で検証",
+      "genre": "独自検証",
+      "status": "SELECTED",
+      "selectionApproval": {
+        "userText": "おけ、それで進めるで問題ない？ / やって",
+        "approvedAt": "2026-10-05T10:13:55+09:00"
+      },
+      "requestedPublish": null,
+      "prNumber": null,
+      "articleDriveFolderId": null,
+      "qa": {
+        "previewVisual": "not_reviewed",
+        "previewApprovedHeadSha": null
+      },
+      "imageFiles": {
+        "card": null,
+        "01": null,
+        "02": null,
+        "03": null
+      }
+    }
+  ],
+  "notes": [
+    "通常SEO→独自検証の順でユーザー選定。公開時刻・プレビュー承認は未確定。Cloudflareを正本とする。"
+  ]
+}
