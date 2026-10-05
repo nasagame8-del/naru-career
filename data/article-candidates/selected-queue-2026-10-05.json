@@ -265,9 +265,9 @@
       "candidateId": "cand_261005z_company_data_hygiene",
       "articleId": 62,
       "slug": "company-data-hygiene-security-breaches",
-      "title": "個人情報流出が相次ぐ今、転職先の「データ体質」をどう見る？直近事例から考える",
+      "title": "焼肉きんぐ・タイムズカーで個人情報流出　相次ぐ不正アクセスを18件調べて見えた『データの持ち方』",
       "genre": "雑記",
-      "status": "PREVIEW_READY",
+      "status": "PUBLISHED",
       "selectionApproval": {
         "userText": "こんな感じで直近社外秘のデータが流出する事件が連発してるから、これを俺ら独自の視点で雑記にまとめたい。これnoteも同時に出す / じゃやって / やって",
         "approvedAt": "2026-10-05T22:46:03+09:00"
@@ -276,7 +276,7 @@
       "prNumber": 149,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/149",
       "branch": "article-factory/2026-10-05-062-company-data-hygiene",
-      "latestHeadSha": "3caa437871b0fd96d98b5e1e3457c2b5f1e76d02",
+      "latestHeadSha": "64a3ba70c6793f4a517b322c362bd8f5ed74939e",
       "articleDriveFolderId": "1jWke02pbqMkS9kcSgXubuMsrpPq_UeGu",
       "imagesDriveFolderId": "1Qn-Q9WSLCpGk_4hN77QcLFSEPU8nybs9",
       "originalsDriveFolderId": "1SrpdeUHWUu_pJ7iUtoPA17Oljc0cSWT3",
@@ -297,16 +297,17 @@
         "webp4OnExactPrHead": true,
         "fullLocalQaPassed": true,
         "cloudflarePreview": "https://naru-pr-149-preview.broad-fuchsia.workers.dev/articles/company-data-hygiene-security-breaches",
-        "previewVisual": "waiting_user_reapproval",
+        "previewVisual": "publish_approved_without_repreview",
         "humanFactCheck": {
-          "status": "pending",
-          "headSha": "3caa437871b0fd96d98b5e1e3457c2b5f1e76d02"
+          "status": "approved_for_publish",
+          "headSha": "64a3ba70c6793f4a517b322c362bd8f5ed74939e"
         },
         "originalImagesArchived": true,
         "imageVisualAudit": "passed",
-        "imageDimensionsAndMetadataVerified": true
+        "imageDimensionsAndMetadataVerified": true,
+        "previewApprovedHeadSha": "64a3ba70c6793f4a517b322c362bd8f5ed74939e"
       },
-      "blocker": "ユーザーによる更新後プレビューの目視承認待ち",
+      "blocker": null,
       "note": {
         "status": "DRAFT",
         "published": false
@@ -352,7 +353,12 @@
           "height": 675,
           "driveBytesReadbackVerified": true
         }
-      }
+      },
+      "mergeSha": "71382ffd73e405df2cab255ba72fa45ffe2fc1d3",
+      "productionDeployVerified": true,
+      "publicArticleVerified": true,
+      "productionDeployRunId": 37330772014,
+      "productionUrl": "https://naru-career.com/articles/company-data-hygiene-security-breaches"
     }
   ],
   "notes": [
