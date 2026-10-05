@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-06",
+  "batchId": "batch_2026-10-06_chatgpt_research",
+  "selected": [
+    {
+      "order": 1,
+      "batchId": "batch_2026-10-06_chatgpt_research",
+      "candidateId": "cand_261006r_recruitment_page_gap",
+      "articleId": 63,
+      "slug": "it-company-recruitment-page-research",
+      "title": "IT企業の採用ページはどこにある？3,419社を公式サイトまで調べて分かった探し方",
+      "genre": "独自調査",
+      "status": "WAITING_IMAGES",
+      "selectionApproval": {
+        "userText": "これ今日分の記事にしといてね",
+        "approvedAt": "2026-10-06"
+      },
+      "requestedPublish": "2026-10-06T12:00:00+09:00",
+      "prNumber": 152,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/152",
+      "branch": "article-factory/2026-10-06-063-recruitment-page-gap",
+      "latestHeadSha": "e7f56014d0b0207c287c803af89b1ee0fb4cd684",
+      "articleDriveFolderId": "1tDA_VgAuiG9nw1xfwupHiq5zOiiTQ2t9",
+      "imagesDriveFolderId": "15W-UyKcqCXWX0MQcT4u9FbV-L3gb2CHN",
+      "originalsDriveFolderId": "1unh8ej09ppO5DgzlLaVygVbZLkcz61zj",
+      "files": {
+        "article": "1HZyij-t8e1dNk-1d_cj_h1cx_gt7MDsvrlofjpg2jt4",
+        "imagePlan": "1O4UNknQkEGQrEfpoB5ZGlSd0IJZbemIW9w51LyJK-yk",
+        "articlePromptCopy": "15w_e3IblqxcRXA4FrZ1VwMxJsBO407K9I3Xhmbdn28c",
+        "designPrompt": "17Juj_MuPYWS2EG4hFzwDy6eYkyoEcZzPsUQz4R3GjPs"
+      },
+      "qa": {
+        "sourceUrlsVerified": true,
+        "articleDraftReadback": false,
+        "imagePromptsReadback": false,
+        "generatedImagesProvided": false,
+        "previewVisual": "not_requested",
+        "humanFactCheck": {
+          "status": "pending",
+          "headSha": null
+        }
+      },
+      "blocker": "画像4枚未提供。Stage 4自動Discoveryには既知の誤検出があるため、公開前Human Fact Checkで数値表現を再確認する。"
+    },
+    {
+      "order": 2,
+      "batchId": "batch_2026-10-06_chatgpt_research",
+      "candidateId": "cand_261006r_recruitment_page_size",
+      "articleId": 64,
+      "slug": "it-company-recruitment-page-by-size",
+      "title": "小さいIT企業ほど採用ページが見つかりにくい？3,419社を企業規模別に比較",
+      "genre": "独自調査",
+      "status": "WAITING_IMAGES",
+      "selectionApproval": {
+        "userText": "これ今日分の記事にしといてね",
+        "approvedAt": "2026-10-06"
+      },
+      "requestedPublish": "2026-10-06T18:00:00+09:00",
+      "prNumber": 153,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/153",
+      "branch": "article-factory/2026-10-06-064-recruitment-page-size",
+      "latestHeadSha": "fe3ed37390925fe439092158f521c42216b97c5e",
+      "articleDriveFolderId": "1fUstciyMu4XGQYxepMUHNjMIoU9zdLn6",
+      "imagesDriveFolderId": "1VBCl4cpcE95uMwtYQor8XwYJgqjYXO5w",
+      "originalsDriveFolderId": "1ujQfg8jV25lfmcCiLSsYadPgw9TfHLXg",
+      "files": {
+        "article": "1CCy_So936Jgp2sAve4VEqhuZINXg1yHzSGGULDSH9mQ",
+        "imagePlan": "1U0dJhwGHmJeo8P0sLqo0cCKzgjXBIxG1d2n2z2HijoY",
+        "articlePromptCopy": "1RtZ9CDBeAbo54i4xN7LRnT3qP2Boy1CnZzp2cxbxCLQ",
+        "designPrompt": "1UN4h5ebprh7IMNSVz_29ZTOilxm9Qybf6Zboxr9eSAg"
+      },
+      "qa": {
+        "sourceUrlsVerified": true,
+        "articleDraftReadback": false,
+        "imagePromptsReadback": false,
+        "generatedImagesProvided": false,
+        "previewVisual": "not_requested",
+        "humanFactCheck": {
+          "status": "pending",
+          "headSha": null
+        }
+      },
+      "blocker": "画像4枚未提供。Stage 4自動Discoveryには既知の誤検出があるため、公開前Human Fact Checkで数値表現を再確認する。"
+    }
+  ]
+}
