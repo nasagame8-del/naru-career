@@ -267,7 +267,7 @@
       "slug": "company-data-hygiene-security-breaches",
       "title": "個人情報流出が相次ぐ今、転職先の「データ体質」をどう見る？直近事例から考える",
       "genre": "雑記",
-      "status": "WAITING_IMAGES",
+      "status": "QA_RUNNING",
       "selectionApproval": {
         "userText": "こんな感じで直近社外秘のデータが流出する事件が連発してるから、これを俺ら独自の視点で雑記にまとめたい。これnoteも同時に出す / じゃやって / やって",
         "approvedAt": "2026-10-05T22:46:03+09:00"
@@ -276,7 +276,7 @@
       "prNumber": 149,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/149",
       "branch": "article-factory/2026-10-05-062-company-data-hygiene",
-      "latestHeadSha": "abf039e59432d35df03b3d06c38a8b27a4a48241",
+      "latestHeadSha": "a6a17632cbc70810d828fd7b413a0a33727eb910",
       "articleDriveFolderId": "1jWke02pbqMkS9kcSgXubuMsrpPq_UeGu",
       "imagesDriveFolderId": "1Qn-Q9WSLCpGk_4hN77QcLFSEPU8nybs9",
       "originalsDriveFolderId": "1SrpdeUHWUu_pJ7iUtoPA17Oljc0cSWT3",
@@ -292,21 +292,66 @@
         "sourceUrlsVerified": true,
         "articleDraftReadback": true,
         "imagePromptsReadback": true,
-        "generatedImagesProvided": false,
-        "webp4InDriveVerified": false,
-        "webp4OnExactPrHead": false,
+        "generatedImagesProvided": true,
+        "webp4InDriveVerified": true,
+        "webp4OnExactPrHead": true,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "waiting_images",
+        "cloudflarePreview": "pending",
         "previewVisual": "not_requested",
         "humanFactCheck": {
           "status": "pending",
-          "headSha": "abf039e59432d35df03b3d06c38a8b27a4a48241"
-        }
+          "headSha": "a6a17632cbc70810d828fd7b413a0a33727eb910"
+        },
+        "originalImagesArchived": true,
+        "imageVisualAudit": "passed",
+        "imageDimensionsAndMetadataVerified": true
       },
-      "blocker": "ユーザー生成のcard/01/02/03の4画像待ち。現行CI/Previewは画像不足で通過不可。",
+      "blocker": "最新headのArticle Factory Validation / Cloudflare Preview / 人手Fact Check / ユーザープレビュー承認待ち",
       "note": {
         "status": "DRAFT",
         "published": false
+      },
+      "imageFiles": {
+        "card": {
+          "fileId": "1DM7-hka431tPP54gYjpe3dBs88CWnuKs",
+          "originalFileId": "1AbEPMW4Z5Mpw80-vZr_qsCo96tWlHVjl",
+          "fileName": "company-data-hygiene-security-breaches-card.webp",
+          "githubBlobSha": "ff124431ddb5b8f12b2fe025f55b6a2bb00e6cda",
+          "sha256": "a456fdae01ab6b9232af5130fcbd0c707224a52056511c5a30a408211aea02aa",
+          "width": 1200,
+          "height": 630,
+          "driveBytesReadbackVerified": true
+        },
+        "01": {
+          "fileId": "1ZnHHylx0fsf0tu2nC4pbKVwpG-mPyezF",
+          "originalFileId": "19IdTCjc0IXpkSfJVApffYed16geCVZgx",
+          "fileName": "company-data-hygiene-security-breaches-01.webp",
+          "githubBlobSha": "24435f105f1414163b492a1552f8f7af7676d677",
+          "sha256": "b38b9042954f2e9459ddbc2472262042212e9b311d7ea59cbfd936d9badca4ca",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        },
+        "02": {
+          "fileId": "1ndWBO3LZtGiNCbTwRvztj7OPww5CkpV4",
+          "originalFileId": "1dgOT6TG6WM-n_NPa_yAjXjGNsL3as-nN",
+          "fileName": "company-data-hygiene-security-breaches-02.webp",
+          "githubBlobSha": "2a5c78767d36109df8f99d083ee38cf4bc0a80b8",
+          "sha256": "efc72171fb6282d3260d61addc0ceefd1df6f7fc08969248396ceb7b65eb7258",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        },
+        "03": {
+          "fileId": "1eZb78UYwSH0sHvt1E62ZeJtV11ghBOGN",
+          "originalFileId": "1wsYKrZO_U8WtDq3Iq8Qr8FINGku8BayA",
+          "fileName": "company-data-hygiene-security-breaches-03.webp",
+          "githubBlobSha": "8208fcf8fc335c1ca88ae71556cc0484023e967a",
+          "sha256": "188266cb0c2453ed966a9d7b31adc5ea43a7e3f12b6300e554f7f0ad6bb30a0e",
+          "width": 1200,
+          "height": 675,
+          "driveBytesReadbackVerified": true
+        }
       }
     }
   ],
