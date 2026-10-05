@@ -470,7 +470,7 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 実施内容: H2の淡い緑の帯、H3下線、緑のリスト記号、表ヘッダーと交互背景、引用の中立色、FAQカードとQラベル、要点ボックスの上罫線。インラインFAQの段落余白を修正。本文・SEOメタデータ・記事画像は変更なし。
 - 変更ファイル: globals.css、article page、FAQSection、Cloudflare article preview workflow、NEXT_INSTRUCTION、REPORT。
 - git diff概要: 共通記事装飾とUI専用ブランチの既存記事プレビュー対応。記事PRの単一記事・4画像条件は維持。
-- テスト結果: 対象TSX ESLint、tsc --noEmit、git diff --check、workflow YAML parse成功。Next production build成功（134ページ）。Cloudflare preview確認中。
-- 既知の問題: プレビュー前の目視QAは未完了。既存Next middleware deprecation警告あり。
+- テスト結果: 対象TSX ESLint、tsc --noEmit、git diff --check、workflow YAML parse成功。Next production build成功（134ページ）。Cloudflare preview run 37317834771 success（記事200・4画像・noindex検証）。838e956eb3ec6cd718ed75a239e778a3e9188e59でH2とFAQをデスクトップ目視確認、横はみ出しなし。
+- 既知の問題: スマホ実画面QAは未完了。既存Next middleware deprecation警告あり。
 - 判断が必要な項目: プレビューで装飾確認後にマージ可否を判断。
-- 推奨する次の作業: Cloudflareプレビューのデスクトップ・モバイル表示を確認。masterへ直接pushせず、この変更は未公開。
+- 推奨する次の作業: Cloudflareプレビューのユーザー確認とスマホ実画面確認。masterへ直接pushせず、この変更は未公開。
