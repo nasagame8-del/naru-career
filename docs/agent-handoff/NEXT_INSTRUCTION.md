@@ -28,3 +28,7 @@ Claude must execute only that instruction, update `REPORT.md`, and stop. ChatGPT
 - no recursive self-trigger
 - no direct push to master
 - no production merge/deploy without the normal NARU gates and required approval
+
+## UI decoration review — USER-UI-DECORATION-20261005
+
+User requested implementation using the Xserver readability article as reference. Authorized: dedicated `ui/article-decoration-refresh` branch, Draft PR, isolated Cloudflare preview. No master push, merge or production deploy. No Claude task is requested.
