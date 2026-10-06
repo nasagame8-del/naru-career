@@ -127,14 +127,21 @@ jobs:
           const articleHtml = fs.readFileSync(builtHtml, 'utf8');
           const categoryDir = '.next/server/app/category';
           const categoryHtml = {};
-          if (fs.existsSync(categoryDir)) {
-            for (const name of fs.readdirSync(categoryDir)) {
-              const htmlPath = categoryDir + '/' + name + '.html';
-              if (/^[a-z0-9-]+$/.test(name) && fs.existsSync(htmlPath)) {
-                categoryHtml['/category/' + name] = fs.readFileSync(htmlPath, 'utf8');
+          function collectCategoryHtml(dir) {
+            if (!fs.existsSync(dir)) return;
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = dir + '/' + entry.name;
+              if (entry.isDirectory()) {
+                collectCategoryHtml(full);
+                continue;
               }
+              if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
+              const name = entry.name.replace(/\.html$/, '');
+              if (!/^[a-z0-9-]+$/.test(name)) continue;
+              categoryHtml['/category/' + name] = fs.readFileSync(full, 'utf8');
             }
           }
+          collectCategoryHtml(categoryDir);
           const embeddedHtml = JSON.stringify(articleHtml);
           const embeddedCategories = JSON.stringify(categoryHtml);
           fs.writeFileSync('.open-next/article-preview.js', `
