@@ -3,8 +3,9 @@
   "date": "2026-10-06",
   "candidatesReady": true,
   "blockers": [
-    "NARU-063 最新headの画像QA再確認待ち",
-    "NARU-063 最新headのCI/Cloudflare Preview完了待ち"
+    "NARU-063 Human Fact Check未承認",
+    "NARU-063 Preview実画面のユーザー承認未取得",
+    "NARU-063 12:00公開枠は経過済み。新しい公開時刻の指定が必要"
   ],
   "slots": {
     "1": {
@@ -15,30 +16,39 @@
       "prNumber": 152,
       "latestHeadSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
       "requestedPublishAt": "2026-10-06T12:00:00+09:00",
-      "previewApprovedHeadSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
+      "previewApprovedHeadSha": null,
       "imageQa": {
-        "passed": false,
-        "headSha": null
-      },
-      "articleQa": {
-        "passed": false,
-        "headSha": null
-      },
-      "ci": {
-        "passed": false,
-        "headSha": null
-      },
-      "factCheck": {
         "passed": true,
         "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0"
       },
+      "articleQa": {
+        "passed": true,
+        "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0"
+      },
+      "ci": {
+        "passed": true,
+        "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0"
+      },
+      "factCheck": {
+        "passed": false,
+        "headSha": null,
+        "preScanPassed": true,
+        "preScanHeadSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0"
+      },
       "blockers": [
-        "最新headの画像QA再確認待ち",
-        "最新headのArticle Factory Validation/Cloudflare Preview完了待ち"
-      ]
+        "Human Fact Check未承認",
+        "Preview実画面のユーザー承認未取得",
+        "12:00公開枠は経過済み。新しい公開時刻の指定が必要"
+      ],
+      "previewUrl": "https://naru-pr-152-preview.broad-fuchsia.workers.dev/articles/it-company-recruitment-page-research",
+      "previewVisual": "pending_user_review",
+      "publishWindow": {
+        "requestedAt": "2026-10-06T12:00:00+09:00",
+        "status": "MISSED_WHILE_GATES_INCOMPLETE"
+      }
     }
   },
-  "lastReconciledAt": "2026-10-06T13:23:00+09:00",
+  "lastReconciledAt": "2026-10-06T13:25:00+09:00",
   "deferred": {
     "articleId": "64",
     "slug": "it-company-recruitment-page-by-size",
