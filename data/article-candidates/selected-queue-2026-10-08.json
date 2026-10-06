@@ -31,7 +31,7 @@
       },
       "qa": {
         "sourceUrlsVerified": true,
-        "articleDraftReadback": false,
+        "articleDraftReadback": true,
         "imagePromptsReadback": false,
         "generatedImagesProvided": false,
         "previewVisual": "not_requested",
@@ -59,7 +59,7 @@
       "prNumber": 157,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/157",
       "branch": "article-factory/2026-10-08-068-paid-leave-overtime",
-      "latestHeadSha": "83213cd629394c16c18b27eb834bbaa67df07752",
+      "latestHeadSha": "96d975eae23531391c42601fa081ce42beae4c02",
       "articleDriveFolderId": "1QBJQ6LXeXgI1tqdiI3FwweS79uCfllNJ",
       "imagesDriveFolderId": "1YjOwq05lvS1VN7GRbzKx4aAp0_R4giZz",
       "originalsDriveFolderId": "1__1BTlPvrWeVu2J8F0PPJ06Qt6W6O_bM",
@@ -71,7 +71,7 @@
       },
       "qa": {
         "sourceUrlsVerified": true,
-        "articleDraftReadback": false,
+        "articleDraftReadback": true,
         "imagePromptsReadback": false,
         "generatedImagesProvided": false,
         "previewVisual": "not_requested",
