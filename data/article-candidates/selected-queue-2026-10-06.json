@@ -10,7 +10,7 @@
       "slug": "it-company-recruitment-page-research",
       "title": "私たちは「良い会社」を選んでいるのか？ IT企業3,419社を調べて分かった“見つけやすい会社”への偏り",
       "genre": "独自調査",
-      "status": "IMAGES_REFLECTED",
+      "status": "READY_FOR_HUMAN_REVIEW",
       "selectionApproval": {
         "userText": "これ今日分の記事にしといてね",
         "approvedAt": "2026-10-06"
@@ -34,19 +34,46 @@
         "articleDraftReadback": true,
         "imagePromptsReadback": true,
         "generatedImagesProvided": true,
-        "previewVisual": "approved",
+        "previewVisual": "pending_user_review",
         "humanFactCheck": {
-          "status": "passed",
-          "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0"
+          "status": "pending_user_review",
+          "headSha": null,
+          "preScan": {
+            "status": "passed",
+            "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
+            "blockers": 0
+          }
         },
         "imageQa": {
-          "status": "pending_recheck",
-          "headSha": null,
-          "reason": "article content changed after prior image QA; approval not inherited across head SHA"
+          "status": "passed",
+          "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
+          "checks": [
+            "card 1200x630 WebP",
+            "body 01/02/03 1200x675 WebP",
+            "EXIF metadata absent",
+            "real-company logo/watermark not observed",
+            "latest preview workflow image check passed"
+          ]
         },
-        "previewApprovedHeadSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0"
+        "previewApprovedHeadSha": null,
+        "articleQa": {
+          "status": "passed",
+          "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
+          "workflow": "Article Factory Validation #169"
+        },
+        "ci": {
+          "status": "passed",
+          "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
+          "articleFactoryValidation": true,
+          "cloudflarePreview": true
+        },
+        "previewUrl": "https://naru-pr-152-preview.broad-fuchsia.workers.dev/articles/it-company-recruitment-page-research"
       },
-      "blocker": "最新headの画像QA再確認とArticle Factory Validation/Cloudflare Preview完了待ち。Human Fact CheckとPreviewはユーザーが最新headで確認済み。"
+      "blocker": "Human Fact CheckとPreviewのユーザー目視承認が未取得。12:00枠は経過済みのため、承認後も新しい公開時刻指定なしに遅延公開しない。",
+      "publishWindow": {
+        "requested": "2026-10-06T12:00:00+09:00",
+        "status": "MISSED_WHILE_GATES_INCOMPLETE"
+      }
     }
   ],
   "deferred": [
