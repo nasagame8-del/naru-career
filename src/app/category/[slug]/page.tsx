@@ -70,6 +70,7 @@ export default async function CategoryPage(props: {
             slug: debugArticle.slug,
             category: debugArticle.category,
             categories: debugArticle.categories,
+            matches: articleHasCategory(debugArticle, cat.name),
           }
         : null,
     }));
@@ -77,6 +78,12 @@ export default async function CategoryPage(props: {
   const allArticles = articleMetas.filter((a) =>
     articleHasCategory(a, cat.name)
   );
+  if (process.env.CI && slug === "original-research") {
+    console.log("original-research-filtered", JSON.stringify({
+      count: allArticles.length,
+      slugs: allArticles.map((a) => a.slug),
+    }));
+  }
   const articles = sortByReadingOrder(allArticles, cat.readingOrder);
   const hasReadingOrder = cat.readingOrder.length > 0;
 
