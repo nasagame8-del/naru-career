@@ -132,4 +132,4 @@ export const REQUIRED_FRONTMATTER_KEYS = [
 ] as const;
 
 /** 既存記事で使われているカテゴリ */
-export const KNOWN_CATEGORIES = ["業界解説", "体験談", "エージェント比較", "雑記"] as const;
+export const KNOWN_CATEGORIES = ["業界解説", "体験談", "エージェント比較", "独自調査", "雑記"] as const;
