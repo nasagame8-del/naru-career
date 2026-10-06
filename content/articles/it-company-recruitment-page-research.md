@@ -1,6 +1,8 @@
 ---
 title: "私たちは「良い会社」を選んでいるのか？ IT企業3,419社を調べて分かった“見つけやすい会社”への偏り"
-category: "業界解説"
+category: "独自調査"
+subCategories:
+  - "業界解説"
 keyword: "IT企業 企業研究 採用情報"
 datePublished: "2026-10-06"
 dateModified: "2026-10-06"
