@@ -38,7 +38,25 @@
         "humanFactCheck": {
           "status": "pending",
           "headSha": null
-        }
+        },
+        "internalLinksVerified": true,
+        "frontmatterVerified": true,
+        "fullLocalQaPassed": false,
+        "cloudflarePreview": "blocked_missing_images",
+        "checks": [
+          {
+            "name": "article-factory-validation",
+            "status": "completed",
+            "conclusion": "failure_expected_missing_images",
+            "headSha": "100540f41e1207138ec39459b8f0bf947d4981e4"
+          },
+          {
+            "name": "preview",
+            "status": "completed",
+            "conclusion": "failure_expected_missing_images",
+            "headSha": "100540f41e1207138ec39459b8f0bf947d4981e4"
+          }
+        ]
       },
       "blocker": "画像生成プロンプトと画像4枚は2026-10-07以降に実施。現時点ではマージ禁止。"
     },
@@ -78,7 +96,25 @@
         "humanFactCheck": {
           "status": "pending",
           "headSha": null
-        }
+        },
+        "internalLinksVerified": true,
+        "frontmatterVerified": true,
+        "fullLocalQaPassed": false,
+        "cloudflarePreview": "blocked_missing_images",
+        "checks": [
+          {
+            "name": "article-factory-validation",
+            "status": "completed",
+            "conclusion": "failure_expected_missing_images",
+            "headSha": "96d975eae23531391c42601fa081ce42beae4c02"
+          },
+          {
+            "name": "preview",
+            "status": "completed",
+            "conclusion": "failure_expected_missing_images",
+            "headSha": "96d975eae23531391c42601fa081ce42beae4c02"
+          }
+        ]
       },
       "blocker": "画像生成プロンプトと画像4枚は2026-10-07以降に実施。現時点ではマージ禁止。"
     }
