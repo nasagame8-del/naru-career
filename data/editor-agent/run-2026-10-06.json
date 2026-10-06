@@ -61,10 +61,22 @@
       "gateIncident": {
         "type": "MERGED_BEFORE_EXPLICIT_HUMAN_GATES",
         "detectedAt": "2026-10-06T13:28:00+09:00"
+      },
+      "postPublicationRemediation": {
+        "prNumber": 158,
+        "previewHeadSha": "195457131511790ccfe33b672bbf9b664a8e759a",
+        "userPreviewApprovalAt": "2026-10-06T14:14:00+09:00",
+        "mergeSha": "015cf8e228a148d7081d5fe7abb33d2005a3d71e",
+        "mergedAt": "2026-10-06T14:15:15+09:00",
+        "productionRunId": 37417614912,
+        "productionRunNumber": 40,
+        "productionStatus": "success",
+        "canonicalArticleVerified": true,
+        "preservesOriginalGateIncident": true
       }
     }
   },
-  "lastReconciledAt": "2026-10-06T13:28:00+09:00",
+  "lastReconciledAt": "2026-10-06T14:17:42+09:00",
   "deferred": {
     "articleId": "64",
     "slug": "it-company-recruitment-page-by-size",
