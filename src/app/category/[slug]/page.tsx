@@ -58,7 +58,23 @@ export default async function CategoryPage(props: {
   if (!isValidCategorySlug(slug)) notFound();
 
   const cat = CATEGORIES[slug];
-  const allArticles = getAllArticleMetas().filter((a) =>
+  const articleMetas = getAllArticleMetas();
+  if (process.env.CI && slug === "original-research") {
+    const debugArticle = articleMetas.find(
+      (a) => a.slug === "it-company-recruitment-page-research"
+    );
+    console.log("original-research-debug", JSON.stringify({
+      categoryName: cat.name,
+      article: debugArticle
+        ? {
+            slug: debugArticle.slug,
+            category: debugArticle.category,
+            categories: debugArticle.categories,
+          }
+        : null,
+    }));
+  }
+  const allArticles = articleMetas.filter((a) =>
     articleHasCategory(a, cat.name)
   );
   const articles = sortByReadingOrder(allArticles, cat.readingOrder);
