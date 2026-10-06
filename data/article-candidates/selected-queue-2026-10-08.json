@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-08",
+  "batchId": "batch_2026-10-07_chatgpt",
+  "selected": [
+    {
+      "order": 1,
+      "batchId": "batch_2026-10-07_chatgpt",
+      "candidateId": "cand_261007c_attendance_control",
+      "articleId": 67,
+      "slug": "contractor-attendance-control-worker-status",
+      "title": "業務委託なのに9時出社・勤怠管理・上司の指示。どこまでなら普通？",
+      "genre": "通常SEO",
+      "status": "WAITING_IMAGES",
+      "selectionApproval": {
+        "userText": "記事まで作っといて。画像とか明日やるから",
+        "approvedAt": "2026-10-06"
+      },
+      "requestedPublish": "2026-10-08T12:00:00+09:00",
+      "prNumber": 156,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/156",
+      "branch": "article-factory/2026-10-08-067-attendance-control",
+      "latestHeadSha": "100540f41e1207138ec39459b8f0bf947d4981e4",
+      "articleDriveFolderId": "1hhc310jBOBlSiuP1lhU5Zs_Gn6nIVfhs",
+      "imagesDriveFolderId": "1VSL1b94LSZCryuRz76E7TjPeZz-J_VVH",
+      "originalsDriveFolderId": "1mhphB19AjjD_JNSK40NHh80v9p9eGMbP",
+      "files": {
+        "article": "1t8NRNPDxBLJDHzaf10GEdEjZiDbptivtGE87imE4iM8",
+        "imagePlan": "1FvWZ2PUkRdO1IFYubJUDZ2Gcc_uSg-3S84jWbr4Rt3g",
+        "articlePromptCopy": null,
+        "designPrompt": null
+      },
+      "qa": {
+        "sourceUrlsVerified": true,
+        "articleDraftReadback": false,
+        "imagePromptsReadback": false,
+        "generatedImagesProvided": false,
+        "previewVisual": "not_requested",
+        "humanFactCheck": {
+          "status": "pending",
+          "headSha": null
+        }
+      },
+      "blocker": "画像生成プロンプトと画像4枚は2026-10-07以降に実施。現時点ではマージ禁止。"
+    },
+    {
+      "order": 2,
+      "batchId": "batch_2026-10-07_chatgpt",
+      "candidateId": "cand_261007d_paid_leave_overtime",
+      "articleId": 68,
+      "slug": "contractor-paid-leave-overtime",
+      "title": "正社員から業務委託になると有給・残業代はなくなる？「休める」と「有給」の違い",
+      "genre": "通常SEO",
+      "status": "WAITING_IMAGES",
+      "selectionApproval": {
+        "userText": "記事まで作っといて。画像とか明日やるから",
+        "approvedAt": "2026-10-06"
+      },
+      "requestedPublish": "2026-10-08T18:00:00+09:00",
+      "prNumber": 157,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/157",
+      "branch": "article-factory/2026-10-08-068-paid-leave-overtime",
+      "latestHeadSha": "83213cd629394c16c18b27eb834bbaa67df07752",
+      "articleDriveFolderId": "1QBJQ6LXeXgI1tqdiI3FwweS79uCfllNJ",
+      "imagesDriveFolderId": "1YjOwq05lvS1VN7GRbzKx4aAp0_R4giZz",
+      "originalsDriveFolderId": "1__1BTlPvrWeVu2J8F0PPJ06Qt6W6O_bM",
+      "files": {
+        "article": "1m0CQAN4sYiAR1mKftK3jUl1QZ4bb35BaAsKU7_eW26M",
+        "imagePlan": "17u-Gls3pnsKIrvkm3xSYjF-YWAIhW-16RRhqsqPzlvg",
+        "articlePromptCopy": null,
+        "designPrompt": null
+      },
+      "qa": {
+        "sourceUrlsVerified": true,
+        "articleDraftReadback": false,
+        "imagePromptsReadback": false,
+        "generatedImagesProvided": false,
+        "previewVisual": "not_requested",
+        "humanFactCheck": {
+          "status": "pending",
+          "headSha": null
+        }
+      },
+      "blocker": "画像生成プロンプトと画像4枚は2026-10-07以降に実施。現時点ではマージ禁止。"
+    }
+  ]
+}
