@@ -174,7 +174,7 @@ note_published: false
 
 （出典：[厚生労働省「フリーランスとして業務を行う方等へ」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyoukintou/zaitaku/index_00002.html)）
 
-勤務時間・指示・勤怠管理については、[業務委託なのに9時出社・勤怠管理・上司の指示。どこまでなら普通？](/articles/contractor-attendance-control-worker-status)で具体的に整理しています。
+勤務時間・指示・勤怠管理と労働者性の考え方は、[偽装請負と偽装フリーランスは同じ？](/articles/disguised-contracting-freelance-difference)も参考にしてください。
 
 ## 切り替え前に会社へ確認したい質問
 
