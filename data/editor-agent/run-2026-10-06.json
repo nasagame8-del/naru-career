@@ -3,9 +3,8 @@
   "date": "2026-10-06",
   "candidatesReady": true,
   "blockers": [
-    "NARU-063 Human Fact Check未実施",
-    "NARU-063 記事QA/CI未実施",
-    "NARU-063 Preview未承認"
+    "NARU-063 最新headの画像QA再確認待ち",
+    "NARU-063 最新headのCI/Cloudflare Preview完了待ち"
   ],
   "slots": {
     "1": {
@@ -14,12 +13,12 @@
       "articleId": "63",
       "slug": "it-company-recruitment-page-research",
       "prNumber": 152,
-      "latestHeadSha": "832621f8d25c79a68be512fad2cbf708508d4047",
+      "latestHeadSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
       "requestedPublishAt": "2026-10-06T12:00:00+09:00",
-      "previewApprovedHeadSha": null,
+      "previewApprovedHeadSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0",
       "imageQa": {
-        "passed": true,
-        "headSha": "832621f8d25c79a68be512fad2cbf708508d4047"
+        "passed": false,
+        "headSha": null
       },
       "articleQa": {
         "passed": false,
@@ -30,17 +29,16 @@
         "headSha": null
       },
       "factCheck": {
-        "passed": false,
-        "headSha": null
+        "passed": true,
+        "headSha": "7bb7f49aeaa7c3544bed369007d833c7f67c0ec0"
       },
       "blockers": [
-        "Human Fact Check未実施",
-        "記事QA/CI未実施",
-        "Preview未承認"
+        "最新headの画像QA再確認待ち",
+        "最新headのArticle Factory Validation/Cloudflare Preview完了待ち"
       ]
     }
   },
-  "lastReconciledAt": "2026-10-06T12:56:00+09:00",
+  "lastReconciledAt": "2026-10-06T13:23:00+09:00",
   "deferred": {
     "articleId": "64",
     "slug": "it-company-recruitment-page-by-size",
