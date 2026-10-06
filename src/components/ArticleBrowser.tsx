@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { CATEGORIES, getCategorySlug } from "@/lib/categories";
+import { CATEGORIES, getCategorySlug, getCategoryTheme } from "@/lib/categories";
 import type { ArticleMeta } from "@/lib/articles";
 import { ArticleList } from "./ArticleList";
 import { MobileCareerCTA } from "./MobileCareerCTA";
@@ -106,20 +106,23 @@ export function ArticleBrowser({
           {tabs.map((tab) => {
             const isActive = tab === filter;
             const label = tab === ALL ? "すべて" : tab;
+            const theme = tab === ALL ? null : getCategoryTheme(tab);
+            const stateClass =
+              tab === ALL
+                ? isActive
+                  ? "bg-primary-soft text-primary font-bold shadow-sm"
+                  : "text-ink-soft hover:text-ink"
+                : `${theme!.tag} ${isActive ? "font-bold shadow-sm opacity-100" : "opacity-70 hover:opacity-100"}`;
             return (
               <button
                 key={tab}
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => selectFilter(tab)}
-                className={`min-h-11 px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-colors relative ${
-                  isActive
-                    ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary"
-                    : "text-ink-soft hover:text-ink"
-                }`}
+                className={`min-h-11 px-4 py-2 mx-0.5 my-1 text-sm font-medium whitespace-nowrap transition-all rounded-full ${stateClass}`}
               >
                 {label}
-                <span className="ml-1.5 font-mono text-[11px] text-ink-soft">
+                <span className="ml-1.5 font-mono text-[11px] opacity-70">
                   {counts.get(tab) ?? 0}
                 </span>
               </button>
