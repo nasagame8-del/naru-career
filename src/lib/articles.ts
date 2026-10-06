@@ -144,7 +144,7 @@ export type InlineFAQ = {
   answer: string;
 };
 
-export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "雑記";
+export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "独自調査" | "雑記";
 
 /** 主カテゴリに、frontmatter.subCategories（追加で掲載するカテゴリ）を重複なしで足す */
 function resolveCategories(
