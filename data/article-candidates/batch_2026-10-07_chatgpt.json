@@ -1,0 +1,251 @@
+{
+  "batchId": "batch_2026-10-07_chatgpt",
+  "generatedAt": "2026-10-06T12:48:00+09:00",
+  "trigger": "manual",
+  "inventorySize": 61,
+  "nextArticleId": 65,
+  "candidates": [
+    {
+      "id": "cand_261007a_contractor_quit",
+      "title": "業務委託を辞めたい。「退職」ではなく契約解除？途中で抜ける前に確認すること",
+      "primaryKeyword": "業務委託 退職",
+      "secondaryKeywords": [
+        "業務委託 辞めたい",
+        "業務委託 契約解除",
+        "業務委託 途中解約",
+        "フリーランス 辞めたい"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存のoutsourcing-contract-termination-worker-statusは発注側から契約終了を告げられた人向け。本候補は受注側から辞めたい・途中解除したい人の検索意図に限定し、契約類型、予告条項、未払い報酬、違約金、実態が雇用に近い場合の確認先を整理する。",
+      "reasonToWriteNow": "GSCで「業務委託 退職」が実表示されている一方、現行記事は平均63位で検索意図を十分に満たせていない。既に伸び始めた業務委託クラスターから最も明確に派生した未充足意図。",
+      "category": "業界解説",
+      "proposedSlug": "contractor-how-to-quit",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "TIME_SENSITIVE_CLAIMS"
+      ],
+      "nearestExistingSlugs": [
+        "outsourcing-contract-termination-worker-status",
+        "business-outsourcing-conversion-risk",
+        "disguised-contracting-freelance-difference"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "業務委託 退職",
+        "impressions": 1,
+        "clicks": 0,
+        "position": 63,
+        "window": "2026-09-01〜2026-10-03"
+      },
+      "selectionEvidence": {
+        "gsc": "medium",
+        "serp": "medium",
+        "trends": "unavailable",
+        "demandExpansions": "medium",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "none",
+        "checkedAt": "2026-10-06T12:48:00+09:00",
+        "notes": [
+          "GSCで「業務委託 退職」を実測。",
+          "既存記事は会社側からの契約終了が主題で、本人側から辞める意図は未充足。",
+          "検索結果には法律相談・退職代行系が多く、NARUは第二新卒が正社員から業務委託へ切り替えたケースに限定して差別化する。"
+        ]
+      },
+      "selectionScore": 88,
+      "selectionGrade": "A",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261007b_unemployment_benefit",
+      "title": "正社員から業務委託に変わると失業手当はどうなる？退職から自営開始までの境目を確認",
+      "primaryKeyword": "正社員 業務委託 失業手当",
+      "secondaryKeywords": [
+        "業務委託 雇用保険",
+        "フリーランス 失業保険",
+        "業務委託 再就職手当",
+        "正社員から業務委託 雇用保険"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "employee-to-contractor-social-insuranceは健康保険と年金が主題で、雇用保険・基本手当・再就職手当は扱っていない。本候補は退職後すぐ業務委託を始める人がハローワークで何を申告するかに絞る。",
+      "reasonToWriteNow": "業務委託切替クラスターがGSCで上位表示を始めており、正社員から業務委託への移行時に発生する大きな制度ギャップの一つ。2026年時点のハローワーク公式資料で自営・業務委託開始時の扱いを確認できる。",
+      "category": "業界解説",
+      "proposedSlug": "employee-to-contractor-unemployment-benefit",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "TIME_SENSITIVE_CLAIMS"
+      ],
+      "nearestExistingSlugs": [
+        "employee-to-contractor-social-insurance",
+        "business-outsourcing-conversion-risk",
+        "employee-contractor-pay-comparison"
+      ],
+      "searchEvidence": null,
+      "selectionEvidence": {
+        "gsc": "weak",
+        "serp": "high",
+        "trends": "unavailable",
+        "demandExpansions": "medium",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "none",
+        "checkedAt": "2026-10-06T12:48:00+09:00",
+        "notes": [
+          "直接のGSCクエリ実績は未取得。",
+          "厚生労働省・ハローワークに業務委託・自営開始と基本手当の公式資料がある。",
+          "社会保険記事とは制度も検索意図も分離できる。"
+        ]
+      },
+      "selectionScore": 84,
+      "selectionGrade": "A",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261007c_attendance_control",
+      "title": "業務委託なのに9時出社・勤怠管理・上司の指示。どこまでなら普通？",
+      "primaryKeyword": "業務委託 勤怠管理",
+      "secondaryKeywords": [
+        "業務委託 出社 時間指定",
+        "業務委託 指示",
+        "偽装フリーランス 勤怠",
+        "業務委託 9時18時"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "disguised-contracting-freelance-differenceは偽装請負と偽装フリーランスの概念比較。本候補は出社時刻、勤怠報告、業務拒否の可否、具体的指示など現場の行動単位に落とし、労働者性の判断要素を自分の働き方に照らして確認する記事。",
+      "reasonToWriteNow": "伸びている「正社員→業務委託」「偽装フリーランス」群の次の具体的疑問。厚労省の労働者性資料で勤務時間・指揮命令・諾否の自由などを一次情報で確認できる。",
+      "category": "業界解説",
+      "proposedSlug": "contractor-attendance-control-worker-status",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "disguised-contracting-freelance-difference",
+        "business-outsourcing-conversion-risk",
+        "outsourcing-contract-termination-worker-status"
+      ],
+      "searchEvidence": null,
+      "selectionEvidence": {
+        "gsc": "weak",
+        "serp": "high",
+        "trends": "unavailable",
+        "demandExpansions": "high",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "medium",
+        "checkedAt": "2026-10-06T12:48:00+09:00",
+        "notes": [
+          "既存の偽装フリーランス記事と概念説明は重なるため、具体的な勤怠・出社・指示の事例に限定する。",
+          "厚労省資料では勤務時間、指揮命令、業務を断れるか等が労働者性の判断要素として示されている。",
+          "検索結果には発注企業向け解説も多く、働く本人向けに寄せる余地がある。"
+        ]
+      },
+      "selectionScore": 81,
+      "selectionGrade": "A",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261007d_paid_leave_overtime",
+      "title": "正社員から業務委託になると有給・残業代はなくなる？「休める」と「有給」の違い",
+      "primaryKeyword": "業務委託 有給",
+      "secondaryKeywords": [
+        "業務委託 残業代",
+        "業務委託 休み",
+        "正社員から業務委託 有給",
+        "業務委託 労働基準法"
+      ],
+      "searchIntent": "know",
+      "differenceFromExisting": "報酬比較記事は年額・自己負担、社会保険記事は健康保険・年金が主題。本候補は年次有給休暇と時間外割増という労働者向け制度が、真正な業務委託ではどう変わるか、実態が労働者に近い場合の例外まで整理する。",
+      "reasonToWriteNow": "業務委託切替の金銭面だけでなく『休みの権利』までクラスターを拡張できる。2026年の検索結果でも有給・残業代をセットで解説する需要が確認できる。",
+      "category": "業界解説",
+      "proposedSlug": "contractor-paid-leave-overtime",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "employee-contractor-pay-comparison",
+        "business-outsourcing-conversion-risk",
+        "disguised-contracting-freelance-difference"
+      ],
+      "searchEvidence": null,
+      "selectionEvidence": {
+        "gsc": "weak",
+        "serp": "medium",
+        "trends": "unavailable",
+        "demandExpansions": "medium",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "none",
+        "checkedAt": "2026-10-06T12:48:00+09:00",
+        "notes": [
+          "直接のGSCクエリ実績は未取得。",
+          "正社員からの切替時に失う可能性のある労働者保護として検索意図が明確。",
+          "労働者性に該当する場合を断定せず、公式判断要素へ誘導する。"
+        ]
+      },
+      "selectionScore": 78,
+      "selectionGrade": "B",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261007e_contract_checklist",
+      "title": "正社員から業務委託へ切り替える前に、契約書で見る8項目",
+      "primaryKeyword": "業務委託 契約書 チェックポイント",
+      "secondaryKeywords": [
+        "正社員から業務委託 契約書",
+        "業務委託 契約内容 確認",
+        "フリーランス法 取引条件",
+        "業務委託 契約前"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存記事は切替リスクや契約終了後の対応が中心。本候補は署名前に確認する業務範囲、報酬、支払期日、作業場所、契約期間、解除、知財・秘密保持、実際の指示方法を一枚の実務チェックリストにする。",
+      "reasonToWriteNow": "公正取引委員会のフリーランス法特設サイトに取引条件の明示事項が整理されており、既存4〜5本のクラスター記事へのハブとして機能する。ただし一般的な契約書解説は法律事務所・SaaSが強く競争が高い。",
+      "category": "業界解説",
+      "proposedSlug": "employee-to-contractor-contract-checklist",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "outsourcing-contract-termination-worker-status",
+        "employee-contractor-pay-comparison"
+      ],
+      "searchEvidence": null,
+      "selectionEvidence": {
+        "gsc": "weak",
+        "serp": "low",
+        "trends": "unavailable",
+        "demandExpansions": "high",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "medium",
+        "checkedAt": "2026-10-06T12:48:00+09:00",
+        "notes": [
+          "一般キーワードの検索結果は法律事務所や契約SaaSが強く、SERP競争は高い。",
+          "『正社員から業務委託へ切替を迫られた本人』に限定すれば差別化できる。",
+          "公取委の取引条件明示事項を一次情報として使える。"
+        ]
+      },
+      "selectionScore": 70,
+      "selectionGrade": "B",
+      "selectionGatePassed": true,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "2026-10-07〜2026-10-08の2日分を先行選定するための5候補。ユーザーが4本を順番付きで選ぶ。",
+    "master/content/articlesは61本。2026-10-06選定のNARU-063は進行中、NARU-064はユーザー指示でdeferredのため再利用せず、次の採番候補は65。",
+    "GSCの確定データは2026-10-03まで。業務委託関連では「正社員 から業務委託 クビ」14表示・平均9.29位、「正社員 から業務委託 違法」6表示・1クリック・平均9.17位、「業務委託 退職」1表示・平均63位を確認。",
+    "検索ボリューム数値は未取得。SemrushはAPI units不足のため使用できず、数値は推測していない。",
+    "一次情報として厚生労働省・ハローワーク・公正取引委員会の2026年時点資料を確認。法的結論は個別事情で変わるため断定しない。"
+  ]
+}
