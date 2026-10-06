@@ -1,0 +1,14 @@
+﻿dimension,group,services,continuing,not_continuing,unknown,determined,continuation_rate_among_determined,continuation_rate_if_all_unknown_continued,continuation_rate_if_all_unknown_stopped,caveat
+operator_type,UNKNOWN,23,9,9,5,18,0.5,0.6087,0.3913,到達不能・未調査のサービスがここに集まる
+operator_type,PRIVATE,17,17,0,0,17,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+operator_type,LAW_FIRM,12,12,0,0,12,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+operator_type,LABOR_UNION,3,3,0,0,3,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+operator_type,OTHER,3,3,0,0,3,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:lawyer_operated,弁護士が運営(claim)=true,12,12,0,0,12,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:lawyer_operated,弁護士が運営(claim)=false,23,23,0,0,23,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:lawyer_supervised_claim,弁護士監修の表記(claim)=true,14,14,0,0,14,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:lawyer_supervised_claim,弁護士監修の表記(claim)=false,21,21,0,0,21,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:labor_union_operated,労働組合が運営(claim)=true,7,7,0,0,7,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:labor_union_operated,労働組合が運営(claim)=false,28,28,0,0,28,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:labor_union_partnered,労働組合と提携(claim)=true,3,3,0,0,3,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。
+claim:labor_union_partnered,労働組合と提携(claim)=false,32,32,0,0,32,1,1,1,生存バイアスあり: operator_type は到達可能なサイトからしか取得できないため、型が判明しているサービスは定義上すべて継続側に入る。運営形態間の継続率比較は成立しない。

@@ -1,0 +1,10 @@
+﻿dimension,group,services,continuing,not_continuing,unknown,determined,continuation_rate_among_determined
+launch_year_or_proxy,2015(法人番号指定年・設立年ではない),8,8,0,0,8,1
+launch_year_or_proxy,2018(法人番号指定年・設立年ではない),2,2,0,0,2,1
+launch_year_or_proxy,2019(法人番号指定年・設立年ではない),3,3,0,0,3,1
+launch_year_or_proxy,2020(法人番号指定年・設立年ではない),3,3,0,0,3,1
+launch_year_or_proxy,2021(法人番号指定年・設立年ではない),3,3,0,0,3,1
+launch_year_or_proxy,2022(法人番号指定年・設立年ではない),2,2,0,0,2,1
+launch_year_or_proxy,2023(法人番号指定年・設立年ではない),2,2,0,0,2,1
+launch_year_or_proxy,2025(法人番号指定年・設立年ではない),1,1,0,0,1,1
+launch_year_or_proxy,UNKNOWN,34,20,9,5,29,0.6897

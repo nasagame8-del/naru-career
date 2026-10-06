@@ -1,0 +1,13 @@
+﻿variant_name,canonical_name,status,reason
+TORIKESHI（トリケシ）,退職代行トリケシ,CONFIRMED,同一ブランドのラテン表記とカタカナ表記。torikeshi.jp
+弁護士法人ITJ法律事務所,ITJ法律事務所,CONFIRMED,法人格の接頭辞「弁護士法人」の有無のみ。itjlaw.com
+弁護士法人ガイア総合法律事務所,弁護士法人ガイアの退職代行サービス,CONFIRMED,同一法律事務所の正式名称と略称。gaia-law-office.jp
+ガイア法律事務所,弁護士法人ガイアの退職代行サービス,CONFIRMED,公式ドメインが一致 gaia-law-office.jp
+退職代行サービスのretry,退職代行retry,CONFIRMED,同一ブランドretry。表記に「サービスの」が入るのみ
+退職代行オイトマ,退職代行OITOMA,CONFIRMED,公式ドメインが一致 o-itoma.jp。OITOMAのカタカナ表記
+アディーレ,アディーレ法律事務所,CONFIRMED,公式ドメインが一致 adire-roudou.jp
+退職代行サービス ライトプラン（アディーレ法律事務所）,アディーレ法律事務所,CONFIRMED,同一事務所の料金プラン追加であり別サービスではない。adire-roudou.jp
+フォーゲル,フォーゲル綜合法律事務所,CONFIRMED,公式ドメインが一致 enman-taishokudaikou.com
+退職代行スマートヤメマス 法人向けサービス,退職代行スマートヤメマス,CONFIRMED,同一サービスの法人向けプラン追加。smartyamemasu.co.jp
+退職代行ピンチヒッター,円満退職のピンチヒッター,CONFIRMED,同一サービス。公式ドメイン taishokudaikouenman.com と運営法人 株式会社Pino（京都市中京区）が一致。比較サイトは「正式名称：円満退職のピンチヒッター」と明記
+退職代行MIRAI,退職代行みらい,REJECTED,別サービスと確認。MIRAIは taishoku-mirai.com で東京の運営、みらいは mirai-restart.com で株式会社あいゆめ（大阪市都島区）。統合しない

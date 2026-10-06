@@ -1,0 +1,121 @@
+{
+  "generatedAt": "2026-10-06T17:49:32.713Z",
+  "rule": "分母と定義のない割合は作らない。各指標は value と denominator を必ず対で読むこと。",
+  "metrics": [
+    {
+      "metric": "調査対象サービス数",
+      "value": "58",
+      "denominator": "58（NARU独自構築の母集団）",
+      "definition": "2024-01-01〜2026-10-07に日本国内向けに提供されていた退職代行サービスとして、比較サイト・運営形態別特集・PR TIMESの新規参入告知・退出イベントの4系統から収集し、重複除去とスコープ外除外を行った件数。",
+      "source_files": [
+        "normalized/service_candidates.csv",
+        "normalized/services.csv"
+      ],
+      "confidence": "HIGH",
+      "caveat": "網羅性は保証されない。公式サイトを特定できなかったサービスも母集団に含めている。"
+    },
+    {
+      "metric": "2026年10月時点で営業継続を確認できたサービス数",
+      "value": "44",
+      "denominator": "53（営業状態を判定できたサービス数。母集団58件のうち5件は判定材料不足）",
+      "definition": "公式サイトが200応答し、ACTIVE または LIKELY_ACTIVE と判定したもの。法人の存続や経営状態の判定ではない。",
+      "source_files": [
+        "analysis/overall_status.csv",
+        "raw/liveness_checks.csv"
+      ],
+      "confidence": "HIGH",
+      "caveat": "「継続」はサイトが応答したという意味に限る。申込機能の実稼働まで確認できたのは ACTIVE の件数のみ。"
+    },
+    {
+      "metric": "書面で確認できた倒産件数",
+      "value": "1",
+      "denominator": "58（母集団全体）",
+      "definition": "破産手続開始決定等を裁判所情報または東京商工リサーチ等の一次性の高い情報で確認できた件数。期間は2024-01-01〜2026-10-07。",
+      "source_files": [
+        "raw/market_exit_events.csv",
+        "analysis/summary.json"
+      ],
+      "confidence": "HIGH",
+      "caveat": "サイトが到達不能なだけのサービスは含めていない。官報の直接確認は行っていない。"
+    },
+    {
+      "metric": "サイトに到達できないが倒産は確認できていないサービス数",
+      "value": "8",
+      "denominator": "58（母集団全体）",
+      "definition": "ドメインの名前解決不能・HTTP 404・接続不能などを2026-10-07に観測したが、倒産・解散・公式の終了告知を確認できなかったサービス。",
+      "source_files": [
+        "analysis/summary.json",
+        "raw/liveness_checks.csv"
+      ],
+      "confidence": "HIGH",
+      "caveat": "「消えた」の実体の大半はこれであり、倒産ではない。LPのサブドメインのみ消えた場合を誤計上しないよう、本体ドメインへのフォールバックを実施済み。"
+    },
+    {
+      "metric": "退職後のキャリア支援を何らか提供しているサービスの割合",
+      "value": "15/32（47%）",
+      "denominator": "32（退職後支援の有無を公式サイトで判定できたサービス数）",
+      "definition": "career_support_type が NONE 以外（情報提供のみ／提携先への送客／キャリア相談／自社の求人紹介）と判定できたもの。",
+      "source_files": [
+        "analysis/career_support.csv"
+      ],
+      "confidence": "MEDIUM",
+      "caveat": "母集団58件のうち26件は判定できていない。サイト上の訴求の有無であり、支援の実効性は測っていない。"
+    },
+    {
+      "metric": "自社で求人紹介まで行うサービス数",
+      "value": "3",
+      "denominator": "32（退職後支援の有無を判定できたサービス数）",
+      "definition": "career_support_type = JOB_PLACEMENT。提携先への送客ではなく、自社で求人紹介・人材紹介を行うと公式サイトに記載しているもの。",
+      "source_files": [
+        "analysis/career_support.csv"
+      ],
+      "confidence": "MEDIUM",
+      "caveat": "該当は退職代行モームリ・退職代行EXIT・退職あんしん代行。記載ベースであり、実際の紹介実績は確認していない。"
+    },
+    {
+      "metric": "「第二新卒」を対象として明示しているサービス数",
+      "value": "0",
+      "denominator": "35（公式サイトで訴求文言を確認できたサービス数）",
+      "definition": "公式サイト上に「第二新卒」という語で対象読者を示す記載があるかどうか。",
+      "source_files": [
+        "analysis/second_new_grad_support.csv",
+        "raw/archive_snapshots.csv"
+      ],
+      "confidence": "HIGH",
+      "caveat": "2024年・2025年のアーカイブ42件でも0件。母集団58件のうち23件は到達不能等により未確認。"
+    },
+    {
+      "metric": "弁護士法人が運営するサービスのうち退職後のキャリア支援を持つ件数",
+      "value": "1/12",
+      "denominator": "12（operator_type = LAW_FIRM かつ退職後支援を判定できたサービス数）",
+      "definition": "弁護士法人・法律事務所自身が提供者であるサービスのうち、career_support_type が NONE 以外のもの。",
+      "source_files": [
+        "analysis/cross_analysis.csv"
+      ],
+      "confidence": "MEDIUM",
+      "caveat": "運営形態は到達可能なサイトからしか判定できないため、弁護士系の母数は継続中のサービスに偏っている。継続率の比較には使えない。"
+    },
+    {
+      "metric": "同一サービス内で2024年から2026年に価格が下落した件数",
+      "value": "3",
+      "denominator": "10（2024年のアーカイブと2026年の現況の両方で正社員価格を取得できたサービス数）",
+      "definition": "同一サービスの正社員向け通常価格を2024年のアーカイブと2026年現在で比較し、減少したもの。",
+      "source_files": [
+        "analysis/price_change.csv"
+      ],
+      "confidence": "LOW",
+      "caveat": "変化なし5件・上昇2件。n=10と小さく、母集団全体の価格動向には一般化できない。母集団平均の年次比較は生存バイアスのため行っていない。"
+    },
+    {
+      "metric": "特定商取引法に基づく表記ページを確認できなかったサービス数",
+      "value": "14",
+      "denominator": "35（公式サイトを実地調査できたサービス数）",
+      "definition": "公式サイト上で特定商取引法に基づく表記ページを、複数の想定パスとフッターリンクを確認したうえで発見できなかったもの。",
+      "source_files": [
+        "normalized/services.csv"
+      ],
+      "confidence": "MEDIUM",
+      "caveat": "存在しないと断定はできない（画像内記載やPDF等で見落としうる）。調査者が通常の経路で到達できなかったという意味。"
+    }
+  ]
+}

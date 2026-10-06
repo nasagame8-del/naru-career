@@ -1,0 +1,11 @@
+﻿dimension,group,services,continuing,not_continuing,unknown,determined,continuation_rate_among_determined,median_yen,mean_yen,price_sources
+price_band_last_observed,20000_24999,13,12,0,1,12,1,22000,22276.9,OFFICIAL_2026 | ARCHIVE_2025
+price_band_last_observed,25000_29999,3,3,0,0,3,1,27000,26500,OFFICIAL_2026
+price_band_last_observed,30000_PLUS,7,6,0,1,6,1,50000,57900,OFFICIAL_2026 | ARCHIVE_2025
+price_band_last_observed,UNDER_20000,14,13,1,0,14,0.9286,17400,16118.6,OFFICIAL_2026 | ARCHIVE_2025
+price_band_last_observed,UNKNOWN,21,10,8,3,18,0.5556,,,
+price_band_2026_only(生存バイアスあり・参考),20000_24999,12,12,0,0,12,1,22000,22300,OFFICIAL_2026
+price_band_2026_only(生存バイアスあり・参考),25000_29999,3,3,0,0,3,1,27000,26500,OFFICIAL_2026
+price_band_2026_only(生存バイアスあり・参考),30000_PLUS,6,6,0,0,6,1,60750,59216.7,OFFICIAL_2026
+price_band_2026_only(生存バイアスあり・参考),UNDER_20000,13,13,0,0,13,1,15000,15835.4,OFFICIAL_2026
+price_band_2026_only(生存バイアスあり・参考),UNKNOWN,24,10,9,5,19,0.5263,,,OFFICIAL_2026

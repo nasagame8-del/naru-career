@@ -1,0 +1,7 @@
+﻿service_name,exclusion_reason,category
+引継ぎ代行プラス,退職代行ではなく業務引継ぎの代行サービス。隣接市場として記録のみ,ADJACENT_MARKET
+イテクレヤ,退職代行ではなく企業側の引き留め支援サービス。対抗サービスとして記録のみ,COUNTER_SERVICE
+モープリ,退職代行ではなく退職者向けのサプリメント商品,NOT_A_SERVICE
+MOMURI+（モームリプラス）,退職代行本体ではなく法人向けコンサルティングの派生,DERIVATIVE_OFFERING
+AI退職適正診断,退職代行ではなく退職の適性を測る診断ツール,DIAGNOSTIC_TOOL
+退職代行OITOMA×行政書士提携,既存サービスの提携発表であり新規サービスではない,FEATURE_ANNOUNCEMENT

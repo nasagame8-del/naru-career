@@ -1,0 +1,150 @@
+﻿service_id,field,value,source_url,source_title,source_type,published_at,retrieved_at,archive_url,quote_or_note
+SVC001,career_support_type,UNKNOWN,https://o-itoma.jp/,退職代行OITOMA,OFFICIAL,,2026-10-07,,転職サポート・成功数業界TOP！ / 退職前の給付金診断で最大500万円の給付金が貰える可能性があります！ / 退職代行オイトマは労働組合が運営しているので、会社への交渉も代行することができます
+SVC001,targets_second_new_grad,false,https://o-itoma.jp/,退職代行OITOMA,OFFICIAL,,2026-10-07,,転職サポート・成功数業界TOP！ / 退職前の給付金診断で最大500万円の給付金が貰える可能性があります！ / 退職代行オイトマは労働組合が運営しているので、会社への交渉も代行することができます
+SVC001,normal_price_2026,24000円,https://o-itoma.jp/,退職代行OITOMA,OFFICIAL,,2026-10-07,,転職サポート・成功数業界TOP！ / 退職前の給付金診断で最大500万円の給付金が貰える可能性があります！ / 退職代行オイトマは労働組合が運営しているので、会社への交渉も代行することができます
+SVC001,operator_name,株式会社H4,https://o-itoma.jp/law/,退職代行OITOMA,OFFICIAL,,2026-10-07,,転職サポート・成功数業界TOP！ / 退職前の給付金診断で最大500万円の給付金が貰える可能性があります！ / 退職代行オイトマは労働組合が運営しているので、会社への交渉も代行することができます
+SVC002,career_support_type,NONE,https://taisyokudaiko.jp/,退職代行ガーディアン,OFFICIAL,,2026-10-07,,民間企業による『監修』や『提携』ではなく、団体交渉権を持つ労働組合が直接対応します / 退職日の調整や有給休暇、未払い給与、退職書類など、退職に伴う労働条件について交渉できます
+SVC002,targets_second_new_grad,false,https://taisyokudaiko.jp/,退職代行ガーディアン,OFFICIAL,,2026-10-07,,民間企業による『監修』や『提携』ではなく、団体交渉権を持つ労働組合が直接対応します / 退職日の調整や有給休暇、未払い給与、退職書類など、退職に伴う労働条件について交渉できます
+SVC002,normal_price_2026,19800円,https://taisyokudaiko.jp/,退職代行ガーディアン,OFFICIAL,,2026-10-07,,民間企業による『監修』や『提携』ではなく、団体交渉権を持つ労働組合が直接対応します / 退職日の調整や有給休暇、未払い給与、退職書類など、退職に伴う労働条件について交渉できます
+SVC002,operator_name,東京労働経済組合（略称:TRK）,https://taisyokudaiko.jp/,退職代行ガーディアン,OFFICIAL,,2026-10-07,,民間企業による『監修』や『提携』ではなく、団体交渉権を持つ労働組合が直接対応します / 退職日の調整や有給休暇、未払い給与、退職書類など、退職に伴う労働条件について交渉できます
+SVC003,career_support_type,UNKNOWN,https://taisyokudaikou.com/,退職代行SARABA,OFFICIAL,,2026-10-07,,「無料転職サポート付き」退職が決まれば、転職を無料サポート致します。 / SARABAは労働組合ですので、会社との交渉が可能になります / 離職票、保険証、有給の消化など全てご依頼主様に代わって会社にその旨をお伝え致します
+SVC003,targets_second_new_grad,false,https://taisyokudaikou.com/,退職代行SARABA,OFFICIAL,,2026-10-07,,「無料転職サポート付き」退職が決まれば、転職を無料サポート致します。 / SARABAは労働組合ですので、会社との交渉が可能になります / 離職票、保険証、有給の消化など全てご依頼主様に代わって会社にその旨をお伝え致します
+SVC003,normal_price_2026,24000円,https://taisyokudaikou.com/,退職代行SARABA,OFFICIAL,,2026-10-07,,「無料転職サポート付き」退職が決まれば、転職を無料サポート致します。 / SARABAは労働組合ですので、会社との交渉が可能になります / 離職票、保険証、有給の消化など全てご依頼主様に代わって会社にその旨をお伝え致します
+SVC003,operator_name,株式会社スムリエ,https://taisyokudaikou.com/%e7%89%b9%e5%ae%9a%e5%95%86%e5%8f%96%e5%bc%95%e6%b3%95%e3%81%ab%e5%9f%ba%e3%81%a5%e3%81%8f%e8%a1%a8%e8%a8%98%e2%80%8b%e3%83%bb%e5%85%8d%e8%b2%ac%e4%ba%8b%e9%a0%85/,退職代行SARABA,OFFICIAL,,2026-10-07,,「無料転職サポート付き」退職が決まれば、転職を無料サポート致します。 / SARABAは労働組合ですので、会社との交渉が可能になります / 離職票、保険証、有給の消化など全てご依頼主様に代わって会社にその旨をお伝え致します
+SVC004,career_support_type,PARTNER_REFERRAL,https://taishoku.to-next.jp/,わたしNEXT,OFFICIAL,,2026-10-07,,業界初の『無料転職サポート』をぜひご利用ください / 失業給付金申請を徹底サポート。もらえる給付金の大幅増額を可能にする優良提携先をご紹介 / 日本初『女性向け退職代行』
+SVC004,targets_second_new_grad,false,https://taishoku.to-next.jp/,わたしNEXT,OFFICIAL,,2026-10-07,,業界初の『無料転職サポート』をぜひご利用ください / 失業給付金申請を徹底サポート。もらえる給付金の大幅増額を可能にする優良提携先をご紹介 / 日本初『女性向け退職代行』
+SVC004,normal_price_2026,21800円(税込),https://taishoku.to-next.jp/,わたしNEXT,OFFICIAL,,2026-10-07,,業界初の『無料転職サポート』をぜひご利用ください / 失業給付金申請を徹底サポート。もらえる給付金の大幅増額を可能にする優良提携先をご紹介 / 日本初『女性向け退職代行』
+SVC004,operator_name,toNEXTドットジェイピー（to-NEXT.jp）／合同労働組合「退職代行toNEXTユニオン」,https://taishoku.to-next.jp/law/,わたしNEXT,OFFICIAL,,2026-10-07,,業界初の『無料転職サポート』をぜひご利用ください / 失業給付金申請を徹底サポート。もらえる給付金の大幅増額を可能にする優良提携先をご紹介 / 日本初『女性向け退職代行』
+SVC005,career_support_type,PARTNER_REFERRAL,https://jobs1.jp,退職代行Jobs,OFFICIAL,,2026-10-07,,無料の求人紹介で転職もフォロー / 顧問弁護士監修の適法適正に厳格な安心の退職代行業者 / 入社辞退 or 入社3日以内退職
+SVC005,targets_second_new_grad,false,https://jobs1.jp,退職代行Jobs,OFFICIAL,,2026-10-07,,無料の求人紹介で転職もフォロー / 顧問弁護士監修の適法適正に厳格な安心の退職代行業者 / 入社辞退 or 入社3日以内退職
+SVC005,normal_price_2026,27000円(税込),https://jobs1.jp,退職代行Jobs,OFFICIAL,,2026-10-07,,無料の求人紹介で転職もフォロー / 顧問弁護士監修の適法適正に厳格な安心の退職代行業者 / 入社辞退 or 入社3日以内退職
+SVC005,operator_name,株式会社アレス,https://jobs1.jp/law/,退職代行Jobs,OFFICIAL,,2026-10-07,,無料の求人紹介で転職もフォロー / 顧問弁護士監修の適法適正に厳格な安心の退職代行業者 / 入社辞退 or 入社3日以内退職
+SVC006,career_support_type,CAREER_COUNSELING,https://newlife-support.com/,退職代行ネルサポ,OFFICIAL,,2026-10-07,,退職代行ネルサポは転職活動を応援します！ / 転職を希望される方はお気軽にご相談ください / 弁護士監修のテンプレートをプレゼント
+SVC006,targets_second_new_grad,false,https://newlife-support.com/,退職代行ネルサポ,OFFICIAL,,2026-10-07,,退職代行ネルサポは転職活動を応援します！ / 転職を希望される方はお気軽にご相談ください / 弁護士監修のテンプレートをプレゼント
+SVC006,normal_price_2026,15000円(税込),https://newlife-support.com/,退職代行ネルサポ,OFFICIAL,,2026-10-07,,退職代行ネルサポは転職活動を応援します！ / 転職を希望される方はお気軽にご相談ください / 弁護士監修のテンプレートをプレゼント
+SVC006,operator_name,ネルサポート株式会社,https://newlife-support.com/law,退職代行ネルサポ,OFFICIAL,,2026-10-07,,退職代行ネルサポは転職活動を応援します！ / 転職を希望される方はお気軽にご相談ください / 弁護士監修のテンプレートをプレゼント
+SVC007,career_support_type,PARTNER_REFERRAL,https://taishoku.to-next.jp/otoko/,男の退職代行,OFFICIAL,,2026-10-07,,業界初の『転職サポート』…本当に信頼できる実績ある転職エージェントのみを厳選してご紹介 / 辞めた後に毎月お金もらえる。退職給付金申請サポート / 20代30代男性が選ぶNo.1
+SVC007,targets_second_new_grad,false,https://taishoku.to-next.jp/otoko/,男の退職代行,OFFICIAL,,2026-10-07,,業界初の『転職サポート』…本当に信頼できる実績ある転職エージェントのみを厳選してご紹介 / 辞めた後に毎月お金もらえる。退職給付金申請サポート / 20代30代男性が選ぶNo.1
+SVC007,normal_price_2026,21800円(税込),https://taishoku.to-next.jp/otoko/,男の退職代行,OFFICIAL,,2026-10-07,,業界初の『転職サポート』…本当に信頼できる実績ある転職エージェントのみを厳選してご紹介 / 辞めた後に毎月お金もらえる。退職給付金申請サポート / 20代30代男性が選ぶNo.1
+SVC007,operator_name,合同労働組合「退職代行toNEXTユニオン」／toNEXTドットジェイピー（to-NEXT.jp）,https://taishoku.to-next.jp/otoko/law,男の退職代行,OFFICIAL,,2026-10-07,,業界初の『転職サポート』…本当に信頼できる実績ある転職エージェントのみを厳選してご紹介 / 辞めた後に毎月お金もらえる。退職給付金申請サポート / 20代30代男性が選ぶNo.1
+SVC008,career_support_type,NONE,https://enman-taishokudaikou.com/,フォーゲル綜合法律事務所,OFFICIAL,,2026-10-07,,『追加料金』『成功報酬』一切なし！ / 全件、代表である嵩原が打ち合わせ・通知書作成を担当しております / 書面作成も交渉も全て弁護士にお任せ！
+SVC008,targets_second_new_grad,false,https://enman-taishokudaikou.com/,フォーゲル綜合法律事務所,OFFICIAL,,2026-10-07,,『追加料金』『成功報酬』一切なし！ / 全件、代表である嵩原が打ち合わせ・通知書作成を担当しております / 書面作成も交渉も全て弁護士にお任せ！
+SVC008,normal_price_2026,25000円(消費税込),https://enman-taishokudaikou.com/,フォーゲル綜合法律事務所,OFFICIAL,,2026-10-07,,『追加料金』『成功報酬』一切なし！ / 全件、代表である嵩原が打ち合わせ・通知書作成を担当しております / 書面作成も交渉も全て弁護士にお任せ！
+SVC008,operator_name,弁護士法人フォーゲル綜合法律事務所,https://enman-taishokudaikou.com/,フォーゲル綜合法律事務所,OFFICIAL,,2026-10-07,,『追加料金』『成功報酬』一切なし！ / 全件、代表である嵩原が打ち合わせ・通知書作成を担当しております / 書面作成も交渉も全て弁護士にお任せ！
+SVC010,career_support_type,JOB_PLACEMENT,https://momuri.com/,退職代行モームリ,OFFICIAL,,2026-10-07,,退職後のサポートもすべてモームリにお任せください / 成長はチャレンジの数で決まる。アルバトロスの転職支援サービス / 退職確定・転職支援開始
+SVC010,targets_second_new_grad,false,https://momuri.com/,退職代行モームリ,OFFICIAL,,2026-10-07,,退職後のサポートもすべてモームリにお任せください / 成長はチャレンジの数で決まる。アルバトロスの転職支援サービス / 退職確定・転職支援開始
+SVC010,normal_price_2026,22000円,https://momuri.com/,退職代行モームリ,OFFICIAL,,2026-10-07,,退職後のサポートもすべてモームリにお任せください / 成長はチャレンジの数で決まる。アルバトロスの転職支援サービス / 退職確定・転職支援開始
+SVC010,operator_name,株式会社アルバトロス,https://momuri.com/tokusho/,退職代行モームリ,OFFICIAL,,2026-10-07,,退職後のサポートもすべてモームリにお任せください / 成長はチャレンジの数で決まる。アルバトロスの転職支援サービス / 退職確定・転職支援開始
+SVC010,event:LEGAL_ACTION,警視庁が弁護士法違反（有償での利用者あっせん）の疑いで運営会社アルバトロス本社を家宅捜索した。,https://www.jiji.com/jc/article?k=2025102200323&g=soc,退職代行モームリ運営会社を捜索 有償で利用者あっせん―弁護士法違反容疑・警視庁,NEWS,2025-10-22,2026-10-07,,
+SVC010,event:OTHER,運営会社が家宅捜索を受けたことを自社サイトで公表し、顧問弁護士との契約解除と役員体制の見直しを表明。「現在は退職代行モームリの営業再開しております」と記載。,https://www.alba-tross.jp/statement/,退職代行モームリに関する家宅捜索について,OFFICIAL,2025-10-24,2026-10-07,,
+SVC010,event:LEGAL_ACTION,警視庁が弁護士法違反の疑いで社長・谷本慎二と従業員で妻の谷本志織を逮捕。約200人を弁護士に紹介し紹介料を得ていた疑い。,https://www.itmedia.co.jp/news/articles/2602/03/news068.html,退職代行「モームリ」社長ら逮捕 紹介料目的で法律事務を仲介か,NEWS,2026-02-03,2026-10-07,,
+SVC010,event:LEGAL_ACTION,警視庁が弁護士法違反（非弁提携）容疑で弁護士2名を含む3人と法人を東京地検に書類送検。2024年7月〜10月に6人をあっせんし1人あたり16500円が支払われたとされる。,https://tokyonewsmedia.com/archives/18087,退職代行「モームリ」弁護士ら3人と運営会社書類送検 弁護士法違反容疑,NEWS,2026-02-06,2026-10-07,,
+SVC010,event:LEGAL_ACTION,東京地裁は代表の梶田潤被告に懲役1年6月・執行猶予3年、法人オーシャンに罰金150万円の有罪判決を言い渡した。,https://www.nikkei.com/article/DGXZQOUD05AY50V00C26A6000000/,退職代行モームリ事件、弁護士側に有罪判決 交渉あっせん受ける,NEWS,2026-06-05,2026-10-07,,
+SVC010,event:LEGAL_ACTION,東京地裁の初公判で代表・佐藤秀樹被告が起訴内容を認め、検察側は懲役2年・法人に罰金200万円を求刑して結審。判決期日は2026年10月7日。,https://www.saitama-np.co.jp/articles/209401,弁護士法人代表に懲役2年求刑 「モームリ」から法律事務紹介,NEWS,,2026-10-07,,
+SVC010,event:LEGAL_ACTION,東京地裁は前社長・谷本慎二被告に懲役2年・執行猶予3年、法人アルバトロスに罰金200万円の有罪判決を言い渡した。,https://www.tsr-net.co.jp/data/detail/1203188_1527.html,「モームリ」前社長らに有罪判決、退職代行サービスは転機に,TSR,2026-08-28,2026-10-07,,
+SVC010,event:OTHER,判決後もモームリのサービスは継続。会社は「今回の判決は紹介料に関するものでサービス自体ではない」と説明した。,https://www.tsr-net.co.jp/data/detail/1203188_1527.html,「モームリ」前社長らに有罪判決、退職代行サービスは転機に,TSR,2026-08-28,2026-10-07,,
+SVC011,career_support_type,NONE,https://yamedoki.co.jp,退職代行ヤメドキ,OFFICIAL,,2026-10-07,,「全てコミコミ追加料金なし！」 / 「入社1年以内でも辞められるの？」 / 「20代 K.S様（元飲食業）」
+SVC011,targets_second_new_grad,false,https://yamedoki.co.jp,退職代行ヤメドキ,OFFICIAL,,2026-10-07,,「全てコミコミ追加料金なし！」 / 「入社1年以内でも辞められるの？」 / 「20代 K.S様（元飲食業）」
+SVC011,normal_price_2026,24000円(税込),https://yamedoki.co.jp,退職代行ヤメドキ,OFFICIAL,,2026-10-07,,「全てコミコミ追加料金なし！」 / 「入社1年以内でも辞められるの？」 / 「20代 K.S様（元飲食業）」
+SVC011,operator_name,株式会社25H,https://yamedoki.co.jp/tokusho/index.php,退職代行ヤメドキ,OFFICIAL,,2026-10-07,,「全てコミコミ追加料金なし！」 / 「入社1年以内でも辞められるの？」 / 「20代 K.S様（元飲食業）」
+SVC012,career_support_type,NONE,https://www.miyabi-law.jp/retirement/,弁護士法人みやび,OFFICIAL,,2026-10-07,,「有給消化や未払いの残業代・退職金請求なども交渉が可能」 / 「Emailやテキストチャットで全国24時間対応」
+SVC012,targets_second_new_grad,false,https://www.miyabi-law.jp/retirement/,弁護士法人みやび,OFFICIAL,,2026-10-07,,「有給消化や未払いの残業代・退職金請求なども交渉が可能」 / 「Emailやテキストチャットで全国24時間対応」
+SVC012,normal_price_2026,27500〜77000円(税込),https://www.miyabi-law.jp/retirement/,弁護士法人みやび,OFFICIAL,,2026-10-07,,「有給消化や未払いの残業代・退職金請求なども交渉が可能」 / 「Emailやテキストチャットで全国24時間対応」
+SVC012,operator_name,弁護士法人みやび,https://www.miyabi-law.jp/retirement/,弁護士法人みやび,OFFICIAL,,2026-10-07,,「有給消化や未払いの残業代・退職金請求なども交渉が可能」 / 「Emailやテキストチャットで全国24時間対応」
+SVC013,career_support_type,NONE,https://www.adire-roudou.jp/daikou/lp_1907_a.html,アディーレ法律事務所,OFFICIAL,,2026-10-07,,「退職できなかった場合には、お支払いいただいた退職代行費用の全額をお返しいたします」 / 「退職に付随する有給取得などの交渉」
+SVC013,targets_second_new_grad,false,https://www.adire-roudou.jp/daikou/lp_1907_a.html,アディーレ法律事務所,OFFICIAL,,2026-10-07,,「退職できなかった場合には、お支払いいただいた退職代行費用の全額をお返しいたします」 / 「退職に付随する有給取得などの交渉」
+SVC013,normal_price_2026,19800円(ライトプラン),https://www.adire-roudou.jp/daikou/lp_1907_a.html,アディーレ法律事務所,OFFICIAL,,2026-10-07,,「退職できなかった場合には、お支払いいただいた退職代行費用の全額をお返しいたします」 / 「退職に付随する有給取得などの交渉」
+SVC013,operator_name,弁護士法人AdIre法律事務所,https://www.adire-roudou.jp/daikou/lp_1907_a.html,アディーレ法律事務所,OFFICIAL,,2026-10-07,,「退職できなかった場合には、お支払いいただいた退職代行費用の全額をお返しいたします」 / 「退職に付随する有給取得などの交渉」
+SVC015,career_support_type,JOB_PLACEMENT,https://www.taishokudaikou.com/,退職代行EXIT,OFFICIAL,,2026-10-07,,「次の職場探しも、内定が出るまで、ずっと無料でサポートさせていただきます。」 / 「お客様にマッチする求人の検索」 / 「履歴書、職務経歴書の作成」
+SVC015,targets_second_new_grad,false,https://www.taishokudaikou.com/,退職代行EXIT,OFFICIAL,,2026-10-07,,「次の職場探しも、内定が出るまで、ずっと無料でサポートさせていただきます。」 / 「お客様にマッチする求人の検索」 / 「履歴書、職務経歴書の作成」
+SVC015,normal_price_2026,15000円,https://www.taishokudaikou.com/,退職代行EXIT,OFFICIAL,,2026-10-07,,「次の職場探しも、内定が出るまで、ずっと無料でサポートさせていただきます。」 / 「お客様にマッチする求人の検索」 / 「履歴書、職務経歴書の作成」
+SVC015,operator_name,ENTRANCE株式会社,https://www.taishokudaikou.com/law/,退職代行EXIT,OFFICIAL,,2026-10-07,,「次の職場探しも、内定が出るまで、ずっと無料でサポートさせていただきます。」 / 「お客様にマッチする求人の検索」 / 「履歴書、職務経歴書の作成」
+SVC016,career_support_type,NONE,https://jisuru.com/,退職代行辞スル,OFFICIAL,,2026-10-07,,「弁護士監修だから安心!」 / 「顧問弁護士が監修しているから安心！」 / 「退職できなかったら全額返金保証」
+SVC016,targets_second_new_grad,false,https://jisuru.com/,退職代行辞スル,OFFICIAL,,2026-10-07,,「弁護士監修だから安心!」 / 「顧問弁護士が監修しているから安心！」 / 「退職できなかったら全額返金保証」
+SVC016,normal_price_2026,22000円(税込),https://jisuru.com/,退職代行辞スル,OFFICIAL,,2026-10-07,,「弁護士監修だから安心!」 / 「顧問弁護士が監修しているから安心！」 / 「退職できなかったら全額返金保証」
+SVC016,operator_name,株式会社シーズ,https://jisuru.com/tokusyo/,退職代行辞スル,OFFICIAL,,2026-10-07,,「弁護士監修だから安心!」 / 「顧問弁護士が監修しているから安心！」 / 「退職できなかったら全額返金保証」
+SVC017,career_support_type,NONE,https://www.gaia-law-office.jp/taisyoku/,弁護士法人ガイアの退職代行サービス,OFFICIAL,,2026-10-07,,「有給消化や離職票、源泉徴収票の取り寄せ、残業代、退職金の請求を行います」 / 「LINEで弁護士に無料相談」
+SVC017,targets_second_new_grad,false,https://www.gaia-law-office.jp/taisyoku/,弁護士法人ガイアの退職代行サービス,OFFICIAL,,2026-10-07,,「有給消化や離職票、源泉徴収票の取り寄せ、残業代、退職金の請求を行います」 / 「LINEで弁護士に無料相談」
+SVC017,operator_name,弁護士法人ガイア総合法律事務所,https://www.gaia-law-office.jp/taisyoku/tokusyo.html,弁護士法人ガイアの退職代行サービス,OFFICIAL,,2026-10-07,,「有給消化や離職票、源泉徴収票の取り寄せ、残業代、退職金の請求を行います」 / 「LINEで弁護士に無料相談」
+SVC018,career_support_type,NONE,https://aoba.lawyer/taishoku110/,退職110番,OFFICIAL,,2026-10-07,,「万が一、『退職する』というご希望に添えなかった場合は、入金いただいた料金を全額返金いたします」 / 「離職票の請求や、会社所定の退職手続き書類の手配なども弁護士法人だからこそ、全て代行可能です」
+SVC018,targets_second_new_grad,false,https://aoba.lawyer/taishoku110/,退職110番,OFFICIAL,,2026-10-07,,「万が一、『退職する』というご希望に添えなかった場合は、入金いただいた料金を全額返金いたします」 / 「離職票の請求や、会社所定の退職手続き書類の手配なども弁護士法人だからこそ、全て代行可能です」
+SVC018,normal_price_2026,43800円(税込),https://aoba.lawyer/taishoku110/,退職110番,OFFICIAL,,2026-10-07,,「万が一、『退職する』というご希望に添えなかった場合は、入金いただいた料金を全額返金いたします」 / 「離職票の請求や、会社所定の退職手続き書類の手配なども弁護士法人だからこそ、全て代行可能です」
+SVC018,operator_name,弁護士法人あおば,https://aoba.lawyer/taishoku110/tokusyoho,退職110番,OFFICIAL,,2026-10-07,,「万が一、『退職する』というご希望に添えなかった場合は、入金いただいた料金を全額返金いたします」 / 「離職票の請求や、会社所定の退職手続き書類の手配なども弁護士法人だからこそ、全て代行可能です」
+SVC020,career_support_type,PARTNER_REFERRAL,https://maimo-inc.co.jp/,退職代行イマスグヤメタイ,OFFICIAL,,2026-10-07,,「退職後の新たなキャリアをスタートするための転職支援サービスへのおつなぎ」 / 「専属のキャリアコンサルタントが履歴書添削から面接対策、求人紹介まで」 / 「労働組合と提携だから安心！」
+SVC020,targets_second_new_grad,false,https://maimo-inc.co.jp/,退職代行イマスグヤメタイ,OFFICIAL,,2026-10-07,,「退職後の新たなキャリアをスタートするための転職支援サービスへのおつなぎ」 / 「専属のキャリアコンサルタントが履歴書添削から面接対策、求人紹介まで」 / 「労働組合と提携だから安心！」
+SVC020,normal_price_2026,22000円(税込),https://maimo-inc.co.jp/,退職代行イマスグヤメタイ,OFFICIAL,,2026-10-07,,「退職後の新たなキャリアをスタートするための転職支援サービスへのおつなぎ」 / 「専属のキャリアコンサルタントが履歴書添削から面接対策、求人紹介まで」 / 「労働組合と提携だから安心！」
+SVC020,operator_name,株式会社Maimo,https://maimo-inc.co.jp/docs/tokusho,退職代行イマスグヤメタイ,OFFICIAL,,2026-10-07,,「退職後の新たなキャリアをスタートするための転職支援サービスへのおつなぎ」 / 「専属のキャリアコンサルタントが履歴書添削から面接対策、求人紹介まで」 / 「労働組合と提携だから安心！」
+SVC022,career_support_type,PARTNER_REFERRAL,https://rouki.help/,退職代行ローキ,OFFICIAL,,2026-10-07,,「国家資格キャリアコンサルタントによる相談サービス『キャリアバディ』との提携、および無料の転職支援により、退職後の進路までサポートします。」 / 「失業保険の申請方法・支給時期・再就職手当について、組合員向け失業手当完全ガイドを無料でご提供しております。」 / 「団体交渉権により 退職日・有給消化の交渉まで対応」
+SVC022,targets_second_new_grad,false,https://rouki.help/,退職代行ローキ,OFFICIAL,,2026-10-07,,「国家資格キャリアコンサルタントによる相談サービス『キャリアバディ』との提携、および無料の転職支援により、退職後の進路までサポートします。」 / 「失業保険の申請方法・支給時期・再就職手当について、組合員向け失業手当完全ガイドを無料でご提供しております。」 / 「団体交渉権により 退職日・有給消化の交渉まで対応」
+SVC022,normal_price_2026,19800円(税込),https://rouki.help/,退職代行ローキ,OFFICIAL,,2026-10-07,,「国家資格キャリアコンサルタントによる相談サービス『キャリアバディ』との提携、および無料の転職支援により、退職後の進路までサポートします。」 / 「失業保険の申請方法・支給時期・再就職手当について、組合員向け失業手当完全ガイドを無料でご提供しております。」 / 「団体交渉権により 退職日・有給消化の交渉まで対応」
+SVC022,operator_name,労働基準調査組合,https://rouki.help/raw,退職代行ローキ,OFFICIAL,,2026-10-07,,「国家資格キャリアコンサルタントによる相談サービス『キャリアバディ』との提携、および無料の転職支援により、退職後の進路までサポートします。」 / 「失業保険の申請方法・支給時期・再就職手当について、組合員向け失業手当完全ガイドを無料でご提供しております。」 / 「団体交渉権により 退職日・有給消化の交渉まで対応」
+SVC023,career_support_type,CAREER_COUNSELING,https://law-mamori.jp,弁護士ビーノ,OFFICIAL,,2026-10-07,,退職した後の転職やライフプランの相談・給付金サポートも行っています
+SVC023,targets_second_new_grad,false,https://law-mamori.jp,弁護士ビーノ,OFFICIAL,,2026-10-07,,退職した後の転職やライフプランの相談・給付金サポートも行っています
+SVC023,normal_price_2026,"33,000円(税込)",https://law-mamori.jp,弁護士ビーノ,OFFICIAL,,2026-10-07,,退職した後の転職やライフプランの相談・給付金サポートも行っています
+SVC023,operator_name,弁護士法人mamori,https://law-mamori.jp/law/,弁護士ビーノ,OFFICIAL,,2026-10-07,,退職した後の転職やライフプランの相談・給付金サポートも行っています
+SVC024,career_support_type,NONE,https://itjlaw.com,ITJ法律事務所,OFFICIAL,,2026-10-07,,
+SVC024,targets_second_new_grad,false,https://itjlaw.com,ITJ法律事務所,OFFICIAL,,2026-10-07,,
+SVC024,normal_price_2026,"19,900円",https://itjlaw.com,ITJ法律事務所,OFFICIAL,,2026-10-07,,
+SVC024,operator_name,弁護士法人ITJ法律事務所,https://itjlaw.com,ITJ法律事務所,OFFICIAL,,2026-10-07,,
+SVC025,career_support_type,NONE,https://aozora-union.com/resignation/,あおぞら退職代行サービス,OFFICIAL,,2026-10-07,,
+SVC025,targets_second_new_grad,false,https://aozora-union.com/resignation/,あおぞら退職代行サービス,OFFICIAL,,2026-10-07,,
+SVC025,normal_price_2026,"15,000円",https://aozora-union.com/resignation/,あおぞら退職代行サービス,OFFICIAL,,2026-10-07,,
+SVC025,operator_name,労働組合 あおぞらユニオン,https://aozora-union.com/resignation/,あおぞら退職代行サービス,OFFICIAL,,2026-10-07,,
+SVC028,career_support_type,UNKNOWN,https://www.taisyokudaikouhitoyasumi.com/,退職代行ヒトヤスミ,OFFICIAL,,2026-10-07,,無料相談・転職支援 / 当社の退職代行サービスは、弁護士が監修しており、法的に適正で安心してご利用いただけます / 安心して新しいスタートを切れるよう全力でサポートいたします
+SVC028,targets_second_new_grad,false,https://www.taisyokudaikouhitoyasumi.com/,退職代行ヒトヤスミ,OFFICIAL,,2026-10-07,,無料相談・転職支援 / 当社の退職代行サービスは、弁護士が監修しており、法的に適正で安心してご利用いただけます / 安心して新しいスタートを切れるよう全力でサポートいたします
+SVC028,normal_price_2026,"22,000円(税込)",https://www.taisyokudaikouhitoyasumi.com/,退職代行ヒトヤスミ,OFFICIAL,,2026-10-07,,無料相談・転職支援 / 当社の退職代行サービスは、弁護士が監修しており、法的に適正で安心してご利用いただけます / 安心して新しいスタートを切れるよう全力でサポートいたします
+SVC028,operator_name,株式会社PULLBACK,https://www.taisyokudaikouhitoyasumi.com/,退職代行ヒトヤスミ,OFFICIAL,,2026-10-07,,無料相談・転職支援 / 当社の退職代行サービスは、弁護士が監修しており、法的に適正で安心してご利用いただけます / 安心して新しいスタートを切れるよう全力でサポートいたします
+SVC029,career_support_type,PARTNER_REFERRAL,https://plus3-service.com/,退職代行プラスサービス,OFFICIAL,,2026-10-07,,プラスサービスは転職サポートも充実。 / 総合転職エージェントと提携しており、次の仕事がまだ決まっていない / 転職サポート用の簡単な質問シートにご回答いただくだけ
+SVC029,targets_second_new_grad,false,https://plus3-service.com/,退職代行プラスサービス,OFFICIAL,,2026-10-07,,プラスサービスは転職サポートも充実。 / 総合転職エージェントと提携しており、次の仕事がまだ決まっていない / 転職サポート用の簡単な質問シートにご回答いただくだけ
+SVC029,normal_price_2026,"19,800円(税込21,780円)",https://plus3-service.com/,退職代行プラスサービス,OFFICIAL,,2026-10-07,,プラスサービスは転職サポートも充実。 / 総合転職エージェントと提携しており、次の仕事がまだ決まっていない / 転職サポート用の簡単な質問シートにご回答いただくだけ
+SVC029,operator_name,株式会社スリープラス,https://plus3-service.com/wp/wp-content/themes/plus3/pdf/legal-policy.pdf,退職代行プラスサービス,OFFICIAL,,2026-10-07,,プラスサービスは転職サポートも充実。 / 総合転職エージェントと提携しており、次の仕事がまだ決まっていない / 転職サポート用の簡単な質問シートにご回答いただくだけ
+SVC030,career_support_type,PARTNER_REFERRAL,https://yametaraeenen.com/,退職代行やめたらええねん,OFFICIAL,,2026-10-07,,全国130社の人材紹介・人材派遣会社と提携しており、退職後の充実した転職サポートが受けられます / 社内には人材紹介10年以上の転職支援のプロも在籍しており / 新卒社員の方が入社してすぐに退職代行を利用する理由や背景
+SVC030,targets_second_new_grad,false,https://yametaraeenen.com/,退職代行やめたらええねん,OFFICIAL,,2026-10-07,,全国130社の人材紹介・人材派遣会社と提携しており、退職後の充実した転職サポートが受けられます / 社内には人材紹介10年以上の転職支援のプロも在籍しており / 新卒社員の方が入社してすぐに退職代行を利用する理由や背景
+SVC030,normal_price_2026,"19,800円",https://yametaraeenen.com/,退職代行やめたらええねん,OFFICIAL,,2026-10-07,,全国130社の人材紹介・人材派遣会社と提携しており、退職後の充実した転職サポートが受けられます / 社内には人材紹介10年以上の転職支援のプロも在籍しており / 新卒社員の方が入社してすぐに退職代行を利用する理由や背景
+SVC030,operator_name,株式会社熱狂スタイル,https://yametaraeenen.com/wp-content/uploads/2021/12/特定商取引法に基づく表記_211228.pdf,退職代行やめたらええねん,OFFICIAL,,2026-10-07,,全国130社の人材紹介・人材派遣会社と提携しており、退職後の充実した転職サポートが受けられます / 社内には人材紹介10年以上の転職支援のプロも在籍しており / 新卒社員の方が入社してすぐに退職代行を利用する理由や背景
+SVC031,event:BANKRUPTCY,東京地裁から破産手続開始決定を受けた。負債総額は約500万円、破産管財人は大澤一志弁護士。,https://www.tsr-net.co.jp/news/tsr/detail/1202701_1521.html,（株）スマートヤメマス,TSR,2026-04-01,2026-10-07,,
+SVC031,event:OTHER,東京商工リサーチは「2025年12月初旬までに事業を停止していた」と報じたが、停止日の明示はない。,https://www.tsr-net.co.jp/news/tsr/detail/1202701_1521.html,（株）スマートヤメマス,TSR,2026-04-01,2026-10-07,,
+SVC034,career_support_type,NONE,https://lawyer-taishokudaikou.com,弁護士法人川越みずほ法律会計,OFFICIAL,,2026-10-07,,新卒（卒業から３年以内） / ・特定理由離職者の失業保険給付コンサルティングは、こちらをご参照ください
+SVC034,targets_second_new_grad,false,https://lawyer-taishokudaikou.com,弁護士法人川越みずほ法律会計,OFFICIAL,,2026-10-07,,新卒（卒業から３年以内） / ・特定理由離職者の失業保険給付コンサルティングは、こちらをご参照ください
+SVC034,normal_price_2026,"22,000円(税込)",https://lawyer-taishokudaikou.com,弁護士法人川越みずほ法律会計,OFFICIAL,,2026-10-07,,新卒（卒業から３年以内） / ・特定理由離職者の失業保険給付コンサルティングは、こちらをご参照ください
+SVC034,operator_name,弁護士法人川越みずほ法律会計,https://lawyer-taishokudaikou.com,弁護士法人川越みずほ法律会計,OFFICIAL,,2026-10-07,,新卒（卒業から３年以内） / ・特定理由離職者の失業保険給付コンサルティングは、こちらをご参照ください
+SVC035,career_support_type,NONE,https://ai-taishoku.sg-gss.com/,AI退職代行 by 行政書士,OFFICIAL,,2026-10-07,,
+SVC035,targets_second_new_grad,false,https://ai-taishoku.sg-gss.com/,AI退職代行 by 行政書士,OFFICIAL,,2026-10-07,,
+SVC035,normal_price_2026,"2,980円(税込)",https://ai-taishoku.sg-gss.com/,AI退職代行 by 行政書士,OFFICIAL,,2026-10-07,,
+SVC035,operator_name,SG行政書士法務事務所,https://ai-taishoku.sg-gss.com/legal/tokushoho.html,AI退職代行 by 行政書士,OFFICIAL,,2026-10-07,,
+SVC039,career_support_type,PARTNER_REFERRAL,https://www.pif-yell.com/,YELL!!,OFFICIAL,,2026-10-07,,退職代行だけじゃない。失業給付金申請、転職支援をワンストップでサポート。 / 営業職専門のパートナーエージェント連携 / キャリアプランのカウンセリング・面接対策・書類添削
+SVC039,targets_second_new_grad,false,https://www.pif-yell.com/,YELL!!,OFFICIAL,,2026-10-07,,退職代行だけじゃない。失業給付金申請、転職支援をワンストップでサポート。 / 営業職専門のパートナーエージェント連携 / キャリアプランのカウンセリング・面接対策・書類添削
+SVC039,normal_price_2026,"11,000円(税込)",https://www.pif-yell.com/,YELL!!,OFFICIAL,,2026-10-07,,退職代行だけじゃない。失業給付金申請、転職支援をワンストップでサポート。 / 営業職専門のパートナーエージェント連携 / キャリアプランのカウンセリング・面接対策・書類添削
+SVC039,operator_name,合同会社Pay It Forward,https://www.pif-yell.com/commercial_transactions.html,YELL!!,OFFICIAL,,2026-10-07,,退職代行だけじゃない。失業給付金申請、転職支援をワンストップでサポート。 / 営業職専門のパートナーエージェント連携 / キャリアプランのカウンセリング・面接対策・書類添削
+SVC041,career_support_type,NONE,https://www.saitama-bengoshi.com/taisyokudaikou/,グリーンリーフ法律事務所,OFFICIAL,,2026-10-07,,離職票やその他社保年金税金関係の書類の発行依頼 / 社会保険・年金・税金関係の書類を、到着までサポートいたします
+SVC041,targets_second_new_grad,false,https://www.saitama-bengoshi.com/taisyokudaikou/,グリーンリーフ法律事務所,OFFICIAL,,2026-10-07,,離職票やその他社保年金税金関係の書類の発行依頼 / 社会保険・年金・税金関係の書類を、到着までサポートいたします
+SVC041,normal_price_2026,"80,000円（税込88,000円）",https://www.saitama-bengoshi.com/taisyokudaikou/,グリーンリーフ法律事務所,OFFICIAL,,2026-10-07,,離職票やその他社保年金税金関係の書類の発行依頼 / 社会保険・年金・税金関係の書類を、到着までサポートいたします
+SVC041,operator_name,弁護士法人グリーンリーフ法律事務所,https://www.saitama-bengoshi.com/taisyokudaikou/,グリーンリーフ法律事務所,OFFICIAL,,2026-10-07,,離職票やその他社保年金税金関係の書類の発行依頼 / 社会保険・年金・税金関係の書類を、到着までサポートいたします
+SVC045,career_support_type,NONE,https://wakailaw.com/taisyokudaiko/,若井綜合法律事務所,OFFICIAL,,2026-10-07,,
+SVC045,targets_second_new_grad,false,https://wakailaw.com/taisyokudaiko/,若井綜合法律事務所,OFFICIAL,,2026-10-07,,
+SVC045,normal_price_2026,"50,000円（税抜）",https://wakailaw.com/taisyokudaiko/,若井綜合法律事務所,OFFICIAL,,2026-10-07,,
+SVC045,operator_name,弁護士法人若井綜合法律事務所,https://wakailaw.com/taisyokudaiko/,若井綜合法律事務所,OFFICIAL,,2026-10-07,,
+SVC046,career_support_type,NONE,https://taisyoku-daikou.com/,小澤・竹内弁護士の退職代行,OFFICIAL,,2026-10-07,,"失業保険受給サポートオプション＋33,000円 / ・失業保険（雇用保険の基本手当）の申請 / 退職代行は若者だけのサービスではない"
+SVC046,targets_second_new_grad,false,https://taisyoku-daikou.com/,小澤・竹内弁護士の退職代行,OFFICIAL,,2026-10-07,,"失業保険受給サポートオプション＋33,000円 / ・失業保険（雇用保険の基本手当）の申請 / 退職代行は若者だけのサービスではない"
+SVC046,normal_price_2026,"71,500円（内税6,500円）",https://taisyoku-daikou.com/,小澤・竹内弁護士の退職代行,OFFICIAL,,2026-10-07,,"失業保険受給サポートオプション＋33,000円 / ・失業保険（雇用保険の基本手当）の申請 / 退職代行は若者だけのサービスではない"
+SVC046,operator_name,GK総合法律事務所／赤坂山王法律事務所（共同）,https://taisyoku-daikou.com/,小澤・竹内弁護士の退職代行,OFFICIAL,,2026-10-07,,"失業保険受給サポートオプション＋33,000円 / ・失業保険（雇用保険の基本手当）の申請 / 退職代行は若者だけのサービスではない"
+SVC048,career_support_type,JOB_PLACEMENT,https://taishoku-anshin-daiko.com/,退職あんしん代行,OFFICIAL,,2026-10-07,,AI案件のハイクラス求人をマッチング / 転職エージェント連携でキャリアアップをサポート。 / 退職完了後もキャリア相談、AIスキル習得支援、転職サポートまで一貫してフォローアップ
+SVC048,targets_second_new_grad,false,https://taishoku-anshin-daiko.com/,退職あんしん代行,OFFICIAL,,2026-10-07,,AI案件のハイクラス求人をマッチング / 転職エージェント連携でキャリアアップをサポート。 / 退職完了後もキャリア相談、AIスキル習得支援、転職サポートまで一貫してフォローアップ
+SVC048,normal_price_2026,"12,980円（税込）",https://taishoku-anshin-daiko.com/,退職あんしん代行,OFFICIAL,,2026-10-07,,AI案件のハイクラス求人をマッチング / 転職エージェント連携でキャリアアップをサポート。 / 退職完了後もキャリア相談、AIスキル習得支援、転職サポートまで一貫してフォローアップ
+SVC048,operator_name,株式会社エヌアンドエス,https://taishoku-anshin-daiko.com/,退職あんしん代行,OFFICIAL,,2026-10-07,,AI案件のハイクラス求人をマッチング / 転職エージェント連携でキャリアアップをサポート。 / 退職完了後もキャリア相談、AIスキル習得支援、転職サポートまで一貫してフォローアップ
+SVC051,career_support_type,PARTNER_REFERRAL,https://taishoku-jitai.com/,退職代行JITAI,OFFICIAL,,2026-10-07,,再就職支援への連携 / 退職後の悩みも即座に解決。転職に関するサポート、職業訓練等、新たな一歩へのご支援 / 失業保険・社会保険給付のサポート
+SVC051,targets_second_new_grad,false,https://taishoku-jitai.com/,退職代行JITAI,OFFICIAL,,2026-10-07,,再就職支援への連携 / 退職後の悩みも即座に解決。転職に関するサポート、職業訓練等、新たな一歩へのご支援 / 失業保険・社会保険給付のサポート
+SVC051,normal_price_2026,"22,000円（税込）",https://taishoku-jitai.com/,退職代行JITAI,OFFICIAL,,2026-10-07,,再就職支援への連携 / 退職後の悩みも即座に解決。転職に関するサポート、職業訓練等、新たな一歩へのご支援 / 失業保険・社会保険給付のサポート
+SVC051,operator_name,退職代行JITAI株式会社,https://taishoku-jitai.com/law/,退職代行JITAI,OFFICIAL,,2026-10-07,,再就職支援への連携 / 退職後の悩みも即座に解決。転職に関するサポート、職業訓練等、新たな一歩へのご支援 / 失業保険・社会保険給付のサポート
+SVC059,career_support_type,CAREER_COUNSELING,https://mirai-restart.com/,退職代行みらい,OFFICIAL,,2026-10-07,,気持ちのつらさに寄り添い、退職後のキャリアカウンセリングも充実 / キャリアカウンセリングも提供しており、退職後の生活や再就職の不安にも寄り添います / 転職支援サービス Coming soon・・・
+SVC059,targets_second_new_grad,false,https://mirai-restart.com/,退職代行みらい,OFFICIAL,,2026-10-07,,気持ちのつらさに寄り添い、退職後のキャリアカウンセリングも充実 / キャリアカウンセリングも提供しており、退職後の生活や再就職の不安にも寄り添います / 転職支援サービス Coming soon・・・
+SVC059,normal_price_2026,"27,500円（税込）",https://mirai-restart.com/,退職代行みらい,OFFICIAL,,2026-10-07,,気持ちのつらさに寄り添い、退職後のキャリアカウンセリングも充実 / キャリアカウンセリングも提供しており、退職後の生活や再就職の不安にも寄り添います / 転職支援サービス Coming soon・・・
+SVC059,operator_name,株式会社あいゆめ,https://mirai-restart.com/,退職代行みらい,OFFICIAL,,2026-10-07,,気持ちのつらさに寄り添い、退職後のキャリアカウンセリングも充実 / キャリアカウンセリングも提供しており、退職後の生活や再就職の不安にも寄り添います / 転職支援サービス Coming soon・・・
+SVC060,career_support_type,NONE,https://yame-route.com/,退職代行ヤメルート,OFFICIAL,,2026-10-07,,受け取りに不安があれば、完了後もLINEでご相談いただけます。 / 交渉・法的請求は行わず / （民間・弁護士監修）
+SVC060,targets_second_new_grad,false,https://yame-route.com/,退職代行ヤメルート,OFFICIAL,,2026-10-07,,受け取りに不安があれば、完了後もLINEでご相談いただけます。 / 交渉・法的請求は行わず / （民間・弁護士監修）
+SVC060,normal_price_2026,"一律15,000円（税込）",https://yame-route.com/,退職代行ヤメルート,OFFICIAL,,2026-10-07,,受け取りに不安があれば、完了後もLINEでご相談いただけます。 / 交渉・法的請求は行わず / （民間・弁護士監修）
+SVC060,operator_name,ミックスナッツ,https://yame-route.com/tokushoho/,退職代行ヤメルート,OFFICIAL,,2026-10-07,,受け取りに不安があれば、完了後もLINEでご相談いただけます。 / 交渉・法的請求は行わず / （民間・弁護士監修）
+SVC063,career_support_type,NONE,https://xn--m1q29bh7cv7etyjht3e70s.jp/retirement-agency/,弁護士法人サリュ,OFFICIAL,,2026-10-07,,失業保険の支給を申請する場合、会社から離職票をもらう必要があります / 雇用保険被保険者証は、転職後の雇用保険の手続きの際に必要となるもの
+SVC063,targets_second_new_grad,false,https://xn--m1q29bh7cv7etyjht3e70s.jp/retirement-agency/,弁護士法人サリュ,OFFICIAL,,2026-10-07,,失業保険の支給を申請する場合、会社から離職票をもらう必要があります / 雇用保険被保険者証は、転職後の雇用保険の手続きの際に必要となるもの
+SVC063,normal_price_2026,"20,000円（税込）",https://xn--m1q29bh7cv7etyjht3e70s.jp/retirement-agency/,弁護士法人サリュ,OFFICIAL,,2026-10-07,,失業保険の支給を申請する場合、会社から離職票をもらう必要があります / 雇用保険被保険者証は、転職後の雇用保険の手続きの際に必要となるもの
+SVC063,operator_name,弁護士法人サリュ,https://xn--m1q29bh7cv7etyjht3e70s.jp/retirement-agency/,弁護士法人サリュ,OFFICIAL,,2026-10-07,,失業保険の支給を申請する場合、会社から離職票をもらう必要があります / 雇用保険被保険者証は、転職後の雇用保険の手続きの際に必要となるもの

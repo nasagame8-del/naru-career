@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-10-06T17:47:51.804Z",
+  "population": 58,
+  "officialUrlObtained": 57,
+  "officialUrlRate": 0.9828,
+  "operatorIdentified": 48,
+  "operatorRate": 0.8276,
+  "corporateNumberObtained": 24,
+  "corporateNumberRate": 0.4138,
+  "status2026Determined": 53,
+  "status2026Rate": 0.9138,
+  "price2026Obtained": 34,
+  "price2026Rate": 0.5862,
+  "archive2024Obtained": 35,
+  "archive2025Obtained": 34,
+  "careerSupportDetermined": 32,
+  "secondNewGradDetermined": 35,
+  "unknownStatusCount": 5,
+  "reviewRequiredCount": 45,
+  "statusDistribution2026": {
+    "ACTIVE": 35,
+    "LIKELY_ACTIVE": 9,
+    "STOPPED": 8,
+    "UNKNOWN": 5,
+    "BANKRUPT": 1
+  },
+  "statusDistribution2025": {
+    "LIKELY_ACTIVE": 24,
+    "UNKNOWN": 34
+  },
+  "statusDistribution2024": {
+    "UNKNOWN": 40,
+    "LIKELY_ACTIVE": 18
+  },
+  "operatorTypeDistribution": {
+    "PRIVATE": 17,
+    "LABOR_UNION": 3,
+    "OTHER": 3,
+    "LAW_FIRM": 12,
+    "UNKNOWN": 23
+  },
+  "careerSupportDistribution": {
+    "UNKNOWN": 26,
+    "NONE": 17,
+    "PARTNER_REFERRAL": 9,
+    "CAREER_COUNSELING": 3,
+    "JOB_PLACEMENT": 3
+  },
+  "fieldsCollectedFor": 35,
+  "fieldsNotCollectedFor": [
+    "退職代行ニコイチ",
+    "辞めるんです",
+    "リーガルジャパン",
+    "退職代行トリケシ",
+    "ベンゴシNOW",
+    "退職代行サービスのretry",
+    "退職代行スマートヤメマス",
+    "退職代行の窓口",
+    "退職代行ピンチヒッター",
+    "SAYONARA CONCIERGE（サヨナラコンシェルジュ）",
+    "スイスイ退職代行",
+    "退職.com",
+    "退職サポート（私のユニオン）",
+    "退職代行J-NEXT",
+    "退職代行MIRAI",
+    "退職代行エージェント",
+    "退職代行スタイリード",
+    "退職代行ゼロユニオン",
+    "退職代行だいじょうぶ",
+    "退職代行ニチロー",
+    "退職代行のABAYO",
+    "退職代行即ヤメ",
+    "弁護士法人エース"
+  ],
+  "evidenceRows": 149,
+  "caveats": [
+    "additional_fee_claim_raw はバッチ間で解釈が揺れている（「追加料金なしと謳っている」をtrueとしたバッチがある）ため、見出し数値には使用しない。",
+    "status_2024 / status_2025 は、その年のスナップショットを実際に取得して読めた場合のみ LIKELY_ACTIVE とする。Wayback の availability API は連続実行で異なる結果を返したため、API上の有無だけでは判定していない。スナップショットがない年は UNKNOWN であり「存在しなかった」ではない。",
+    "archive_scope = APEX_HOMEPAGE のサービスは、保存されていたのが退職代行LPではなく事務所トップページである。これらの訴求文言の「変化なし」は観測範囲の制約であり、変化が無かったことの証拠ではない。",
+    "corporation_established_date は未取得。法人番号公表サイトから得られるのは corporate_number_assigned_date（法人番号指定年月日）であり設立年月日ではない。"
+  ]
+}

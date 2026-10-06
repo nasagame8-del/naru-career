@@ -1,0 +1,219 @@
+{
+  "generatedAt": "2026-10-06T17:49:32.711Z",
+  "population": 58,
+  "continuity": {
+    "continuing": 44,
+    "not_continuing": 9,
+    "unknown": 5,
+    "continuation_rate_among_determined": 0.8302,
+    "note": "「継続」は2026-10-07時点で公式サイトが応答したという意味。法人の存続や経営状態の判定ではない。"
+  },
+  "documentedExits": {
+    "bankruptcy": [
+      {
+        "service": "退職代行スマートヤメマス",
+        "date": "2026-03-25"
+      }
+    ],
+    "shutdownAnnounced": [],
+    "corporateClosed": [],
+    "note": "裁判所・官報・運営企業公式のいずれかで確認できたものだけを数えている。サイト到達不能は含めない。"
+  },
+  "unreachableButNotDocumentedAsExit": [
+    {
+      "service": "リーガルジャパン",
+      "observed": "dns_not_resolved:ENOTFOUND"
+    },
+    {
+      "service": "退職代行トリケシ",
+      "observed": "dns_not_resolved:ENOTFOUND"
+    },
+    {
+      "service": "ベンゴシNOW",
+      "observed": "dns_not_resolved:ENOTFOUND"
+    },
+    {
+      "service": "退職代行の窓口",
+      "observed": "HTTP 404"
+    },
+    {
+      "service": "退職代行MIRAI",
+      "observed": "dns_not_resolved:ENOTFOUND"
+    },
+    {
+      "service": "退職代行だいじょうぶ",
+      "observed": "dns_not_resolved:ENOTFOUND"
+    },
+    {
+      "service": "退職代行ニチロー",
+      "observed": "HTTP 404"
+    },
+    {
+      "service": "退職代行のABAYO",
+      "observed": "dns_not_resolved:ENOTFOUND"
+    }
+  ],
+  "careerSupport": {
+    "NONE": 17,
+    "INFORMATION_ONLY": 0,
+    "PARTNER_REFERRAL": 9,
+    "CAREER_COUNSELING": 3,
+    "JOB_PLACEMENT": 3,
+    "UNKNOWN": 26
+  },
+  "careerSupportDeterminedDenominator": 32,
+  "postResignationSupportAtAll": {
+    "count": 15,
+    "denominator": 32,
+    "rate": 0.4688
+  },
+  "inHouseJobPlacement": {
+    "count": 3,
+    "denominator": 32,
+    "names": [
+      "退職代行モームリ",
+      "退職代行EXIT",
+      "退職あんしん代行"
+    ]
+  },
+  "secondNewGrad": {
+    "field": "targets_second_new_grad",
+    "rows": 58,
+    "true": 0,
+    "false": 35,
+    "not_checked": 23,
+    "determined": 35,
+    "rate_among_determined": 0
+  },
+  "targeting": {
+    "targets_20s": {
+      "field": "targets_20s",
+      "rows": 58,
+      "true": 2,
+      "false": 32,
+      "not_checked": 24,
+      "determined": 34,
+      "rate_among_determined": 0.0588
+    },
+    "targets_new_grad": {
+      "field": "targets_new_grad",
+      "rows": 58,
+      "true": 2,
+      "false": 32,
+      "not_checked": 24,
+      "determined": 34,
+      "rate_among_determined": 0.0588
+    },
+    "targets_early_leavers": {
+      "field": "targets_early_leavers",
+      "rows": 58,
+      "true": 3,
+      "false": 30,
+      "not_checked": 25,
+      "determined": 33,
+      "rate_among_determined": 0.0909
+    },
+    "targets_first_resignation": {
+      "field": "targets_first_resignation",
+      "rows": 58,
+      "true": 0,
+      "false": 32,
+      "not_checked": 26,
+      "determined": 32,
+      "rate_among_determined": 0
+    }
+  },
+  "priceSummary": {
+    "servicesWithA2024Price": 10,
+    "servicesWithA2026Price": 37,
+    "comparablePairs2024to2026": 10,
+    "median2024AmongPairs": 22000,
+    "median2026AmongPairs": 20900,
+    "decreased": 3,
+    "unchanged": 5,
+    "increased": 2,
+    "caveat": "同一サービス内の変化のみを比較している。母集団全体の平均価格の比較ではない（生存バイアスが入るため）。"
+  },
+  "operatorTypeDistribution": {
+    "PRIVATE": 17,
+    "LABOR_UNION": 3,
+    "OTHER": 3,
+    "LAW_FIRM": 12,
+    "UNKNOWN": 23
+  },
+  "hypotheses": {
+    "H1": {
+      "statement": "2024〜2025年の大量参入後、2026年に市場の淘汰が進んでいる",
+      "verdict": "PARTIALLY_SUPPORTED",
+      "evidence": "母集団58のうち非継続と判定できたのは9件（判定済53件中）。ただし書面で確認できた退出は破産1件のみで、残り8件は到達不能の観測にとどまる。",
+      "caution": "「淘汰」の実体は倒産の連鎖ではなく確認不能化である。倒産件数で淘汰を語ってはならない。"
+    },
+    "H2": {
+      "statement": "低価格帯の民間サービスほど停止率が高い傾向がある",
+      "verdict": "NOT_TESTABLE",
+      "evidence": "最終観測価格ベースで低価格帯(2.5万円未満) 継続25/判定26、高価格帯(2.5万円以上) 継続9/判定9。",
+      "caution": "価格が判明しないサービスが21件あり、非継続9件のうち価格帯が分かるのは1件しかない。アーカイブから最終観測価格を復元しても交絡は解消しておらず、価格と継続の関係は本データでは判定できない。"
+    },
+    "H3": {
+      "statement": "弁護士法人運営サービスは民間運営より継続率が高い",
+      "verdict": "NOT_TESTABLE",
+      "evidence": "operator_type は到達可能なサイトからしか取得できず、型が判明した全サービスが継続側に入る。",
+      "caution": "運営形態別の継続率を出すと全型100%という生存バイアスの産物になる。比較してはならない。"
+    },
+    "H4": {
+      "statement": "市場の平均価格は下落している",
+      "verdict": "WEAK_EVIDENCE_ONLY",
+      "evidence": "同一サービス内で2024年と2026年の価格を比較できたのは10件。下落3 / 変化なし5 / 上昇2。中央値 22000円 → 20900円。",
+      "caution": "比較できた10件のうち過半（5件）は価格が動いていない。中央値は下がったが「価格競争が起きている」と言える水準ではない。母集団全体の平均価格の年次比較は生存バイアスが入るため行っていない。n が小さく、母集団全体への一般化はできない。"
+    },
+    "H5": {
+      "statement": "「退職意思を伝えるだけ」のサービスほど差別化が難しくなっている",
+      "verdict": "NOT_TESTABLE",
+      "evidence": "差別化の難易度を観測する指標を本調査は持たない。",
+      "caution": "価格や機能の分布から差別化の難易度を推論しない。"
+    },
+    "H6": {
+      "statement": "生き残っているサービスほど、法務対応・労働組合・転職支援など退職以外の機能を持っている",
+      "verdict": "NOT_TESTABLE",
+      "evidence": "機能の有無も到達可能なサイトからしか取得できないため、非継続側の機能構成が分からない。",
+      "caution": "H3と同じ生存バイアス。継続側だけを見て「生き残りには機能がある」と言ってはならない。"
+    },
+    "H7": {
+      "statement": "退職代行の多くは「辞めること」を支援しているが、第二新卒の「次の転職」までは十分支援していない",
+      "verdict": "SUPPORTED",
+      "evidence": "退職後の支援を何らか持つのは判定済32件中15件（47%）。自社で求人紹介まで行うのは3件。「第二新卒」を訴求するサービスは判定済35件中0件で、2024・2025年のスナップショット42件でも0件。",
+      "caution": "支援の有無はサイト上の訴求の有無であり、実際の支援品質は測っていない。"
+    },
+    "H8": {
+      "statement": "「退職のハードル低下」と「次の会社選びの難しさ」は別問題として残っている",
+      "verdict": "NOT_DIRECTLY_TESTABLE",
+      "evidence": "事実として観測できるのは、退職の代行は58サービスが供給する一方で、次の転職まで自社で担うのは3件（退職代行モームリ / 退職代行EXIT / 退職あんしん代行）であり、弁護士法人では1/12件にとどまるという供給構成の偏りまで。",
+      "caution": "読者が実際に次の会社選びで困っているかは本調査の観測範囲外。供給側の構成から需要側の困難を断定しない。民間は11/14件が退職後支援を持つため、「退職代行は退職後を一切見ない」という単純化も誤り。"
+    }
+  },
+  "externalBenchmark": {
+    "naru": {
+      "population": 58,
+      "notContinuing": 9,
+      "unknown": 5,
+      "rateAmongDetermined": 0.1698,
+      "asOf": "2026-10-07",
+      "criterion": "公式サイトの応答・公式告知・裁判所情報による判定。到達不能は停止扱いだが倒産ではない。"
+    },
+    "tdb": {
+      "population": 52,
+      "notContinuing": 14,
+      "rate": 0.269,
+      "asOf": "2026-09",
+      "criterion": "通常の手段でサービス継続が確認できない状態",
+      "source": "https://prtimes.jp/main/html/rd/p/000001442.000043465.html"
+    },
+    "whyTheyDiffer": [
+      "母集団の作り方が違う。NARUは比較サイト・運営形態別特集・PR TIMESの新規参入・退出イベントの4系統から独自に58件を構築し、TDBは自社企業データベースを起点に52件を定義している。",
+      "調査日が違う（NARU 2026-10-07 / TDB 2026-09）。",
+      "判定基準が違う。TDBは「継続が確認できない」を停止に数える非確認基準。NARUは到達不能を停止に数える一方で、判定材料が不足する場合はUNKNOWNとして分離している。",
+      "NARUの母集団にはTDBが対象にしていない可能性のある2026年参入組（ヤメルート等）を含む。"
+    ],
+    "note": "数値を一致させるための調整は行っていない。"
+  }
+}
