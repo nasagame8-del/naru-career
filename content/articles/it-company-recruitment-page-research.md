@@ -36,9 +36,9 @@ naruPoint: "企業を評価する前に、そもそも『見つけられた会�
 
 そこで見えたのは、想像以上に大きい“見つけやすさ”の差でした。
 
-![企業を評価する前に見つけやすさで候補が絞られる構造](/images/articles/it-company-recruitment-page-research-01.webp)
+![採用情報の見つけやすさが候補形成に影響しうる構造を示した概念図](/images/articles/it-company-recruitment-page-research-01.webp)
 
-出典：NARU独自調査（厚生労働省「しょくばらぼ」2026年10月4日取得データをもとに作成）。[しょくばらぼ](https://shokuba.mhlw.go.jp/)
+NARU作成の概念図。実際の求職者行動を計測したものではありません。厚生労働省「しょくばらぼ」の2026年10月4日取得データと企業サイト探索結果をもとに問題設定を図示しています。[しょくばらぼ](https://shokuba.mhlw.go.jp/)
 
 ## 比較する前に、候補企業はすでにふるいにかけられている
 
