@@ -19,7 +19,7 @@
       "prNumber": 152,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/152",
       "branch": "article-factory/2026-10-06-063-recruitment-page-gap",
-      "latestHeadSha": "9228993048d1fb2a1b96084a8111a6db120e37c3",
+      "latestHeadSha": "935ee65a60df74271996c48cf90af8845a472b3e",
       "articleDriveFolderId": "1tDA_VgAuiG9nw1xfwupHiq5zOiiTQ2t9",
       "imagesDriveFolderId": "15W-UyKcqCXWX0MQcT4u9FbV-L3gb2CHN",
       "originalsDriveFolderId": "1unh8ej09ppO5DgzlLaVygVbZLkcz61zj",
@@ -31,8 +31,8 @@
       },
       "qa": {
         "sourceUrlsVerified": true,
-        "articleDraftReadback": false,
-        "imagePromptsReadback": false,
+        "articleDraftReadback": true,
+        "imagePromptsReadback": true,
         "generatedImagesProvided": false,
         "previewVisual": "not_requested",
         "humanFactCheck": {
