@@ -91,6 +91,25 @@
         "type": "MERGED_BEFORE_EXPLICIT_HUMAN_GATES",
         "detectedAt": "2026-10-06T13:28:00+09:00",
         "detail": "最新headに対する明示的なユーザーPreview承認/Human Fact Check承認をこの会話で取得する前にPR #152がマージされ、本番デプロイが成功した。後から承認済みへ書き換えない。"
+      },
+      "postPublicationRemediation": {
+        "prNumber": 158,
+        "previewHeadSha": "195457131511790ccfe33b672bbf9b664a8e759a",
+        "userPreviewApproval": {
+          "status": "confirmed",
+          "userText": "マージで",
+          "approvedAt": "2026-10-06T14:14:00+09:00"
+        },
+        "mergeSha": "015cf8e228a148d7081d5fe7abb33d2005a3d71e",
+        "mergedAt": "2026-10-06T14:15:15+09:00",
+        "production": {
+          "workflow": "Deploy NARU to Cloudflare",
+          "runNumber": 40,
+          "runId": 37417614912,
+          "status": "success",
+          "canonicalArticleVerified": true
+        },
+        "note": "独自調査カテゴリ/UI修正の事後承認と本番反映記録。元記事の公開前Human Fact Check未取得という既存gateIncidentは遡及して解消しない。"
       }
     }
   ],
