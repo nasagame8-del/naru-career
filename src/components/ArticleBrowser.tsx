@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CATEGORIES, getCategorySlug, getCategoryTheme } from "@/lib/categories";
-import type { ArticleMeta } from "@/lib/articles";
+import { articleHasCategory, type ArticleMeta } from "@/lib/articles";
 import { ArticleList } from "./ArticleList";
 import { MobileCareerCTA } from "./MobileCareerCTA";
 import {
@@ -69,7 +69,7 @@ export function ArticleBrowser({
 
   const filtered = useMemo(() => {
     const scoped =
-      filter === ALL ? articles : articles.filter((a) => a.categories.includes(filter));
+      filter === ALL ? articles : articles.filter((a) => articleHasCategory(a, filter));
     return sortArticles(scoped, sort, { popularityOrder, recommendedOrder });
   }, [articles, filter, sort, popularityOrder, recommendedOrder]);
 
