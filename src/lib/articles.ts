@@ -182,6 +182,14 @@ export type ArticleMeta = {
   heroImagePath: string | null;
 };
 
+/** 主カテゴリを常に優先し、subCategories も含めて所属判定する */
+export function articleHasCategory(
+  article: Pick<ArticleMeta, "category" | "categories">,
+  category: ArticleCategory
+): boolean {
+  return article.category === category || article.categories.includes(category);
+}
+
 export type Heading = {
   id: string;
   text: string;
