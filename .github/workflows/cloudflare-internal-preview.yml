@@ -50,6 +50,18 @@ jobs:
           DASHBOARD_PASSWORD: preview-build-only
         run: npm run build:cloudflare
 
+      - name: Ensure Next static assets are present in Cloudflare assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d .next/static
+          mkdir -p .open-next/assets/_next/static
+          cp -a .next/static/. .open-next/assets/_next/static/
+          test -n "$(find .open-next/assets/_next/static -type f -name '*.css' -print -quit)"
+          test -n "$(find .open-next/assets/_next/static -type f -name '*.js' -print -quit)"
+          echo "css files=$(find .open-next/assets/_next/static -type f -name '*.css' | wc -l)"
+          echo "js files=$(find .open-next/assets/_next/static -type f -name '*.js' | wc -l)"
+
       - name: Prepare isolated noindex internal preview
         shell: bash
         run: |
