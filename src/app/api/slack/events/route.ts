@@ -1,7 +1,11 @@
 import { after, NextResponse } from "next/server";
 
 import { buildDriveContextFromText } from "@/lib/war-room/drive";
-import { delegateToClaude, githubDelegationReady } from "@/lib/war-room/github";
+import {
+  delegateToClaude,
+  dispatchClaudeDirectChat,
+  githubDelegationReady,
+} from "@/lib/war-room/github";
 import { planWarRoomMessage } from "@/lib/war-room/planner";
 import {
   postSlackMessage,
@@ -27,9 +31,11 @@ async function processMessage(
 
   const threadTs = event.thread_ts || event.ts;
   const userText = stripSlackMention(event.text);
+  const claudeBotUserId =
+    process.env.SLACK_CLAUDE_BOT_USER_ID || "U0C66M6ASLW";
   const explicitlyAddressedClaude =
     /(?:^|\s)(?:claude|クロード)(?:\s|$)/i.test(userText) ||
-    event.text.includes("<@U0C66M6ASLW>");
+    event.text.includes(`<@${claudeBotUserId}>`);
 
   if (!userText) {
     await postSlackMessage({
@@ -91,13 +97,6 @@ async function processMessage(
   }
 
   try {
-    await postSlackMessage({
-      token: botToken,
-      channel: event.channel,
-      threadTs,
-      text: "受信しました。スレッドと参照資料を確認し、必要ならClaudeへ自動で回します。",
-    });
-
     const threadContext = await fetchThreadContext({
       token: botToken,
       channel: event.channel,
@@ -110,20 +109,57 @@ async function processMessage(
       { vercelOidcToken }
     );
 
-    let plan = await planWarRoomMessage({
+    const lastBotLine =
+      threadContext
+        .split("\n")
+        .filter((line) => line.includes("[bot]"))
+        .at(-1) || "";
+    const claudeOwnedThread =
+      Boolean(event.thread_ts) && lastBotLine.includes("NARU Claude Code");
+    const directClaude = explicitlyAddressedClaude || claudeOwnedThread;
+
+    if (directClaude) {
+      if (!githubDelegationReady()) {
+        await postSlackMessage({
+          token: botToken,
+          channel: event.channel,
+          threadTs,
+          text: "Claude直通のクラウド実行権限が未設定です。",
+        });
+        return;
+      }
+
+      const sharedContext = [
+        drive.context ? `## Google Drive context\n${drive.context}` : "",
+        drive.warning ? `## Drive access note\n${drive.warning}` : "",
+        threadContext ? `## Slack thread context\n${threadContext}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n\n")
+        .slice(0, 18000);
+
+      await dispatchClaudeDirectChat({
+        slackChannel: event.channel,
+        slackTs: threadTs,
+        userRequest: userText,
+        sharedContext,
+      });
+      return;
+    }
+
+    await postSlackMessage({
+      token: botToken,
+      channel: event.channel,
+      threadTs,
+      text: "受信しました。スレッドと参照資料を確認し、必要ならClaudeへ自動で回します。",
+    });
+
+    const plan = await planWarRoomMessage({
       userText,
       threadContext,
       driveContext: drive.context,
       driveWarning: drive.warning,
     });
-
-    if (explicitlyAddressedClaude && plan.mode !== "delegate") {
-      plan = {
-        mode: "delegate" as const,
-        reply: "Claudeへの直接依頼として受け取りました。Claude本人に回答させます。",
-        claude_instruction: userText,
-      };
-    }
 
     if (plan.mode !== "delegate") {
       await postSlackMessage({
