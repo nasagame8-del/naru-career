@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "note": "独自データ製造ラインの試作。公開一次情報のみ。本文は保存せず、HTTP状態・title・hash・変更有無のみ記録する。",
+  "sources": [
+    {
+      "id": "ppc-annual",
+      "label": "個人情報保護委員会 年次報告",
+      "url": "https://www.ppc.go.jp/aboutus/report/annual_report_2025/",
+      "category": "privacy",
+      "cadence": "monthly"
+    },
+    {
+      "id": "ppc-retention-faq",
+      "label": "個人情報保護委員会 保存期間FAQ",
+      "url": "https://www.ppc.go.jp/all_faq_index/faq1-q5-2/",
+      "category": "privacy",
+      "cadence": "monthly"
+    },
+    {
+      "id": "ipa-10threats",
+      "label": "IPA 情報セキュリティ10大脅威2026",
+      "url": "https://www.ipa.go.jp/security/10threats/10threats2026.html",
+      "category": "security",
+      "cadence": "weekly"
+    },
+    {
+      "id": "digital-gss",
+      "label": "デジタル庁 GSS不正アクセス",
+      "url": "https://www.digital.go.jp/news/2026-0911-01",
+      "category": "security",
+      "cadence": "weekly"
+    },
+    {
+      "id": "times-car-breach",
+      "label": "タイムズカー 個人情報漏えい",
+      "url": "https://www.timesmobi.co.jp/news/2026/09/6485db3607d8a57d84d5e5816132cbafacd8d2cd.html",
+      "category": "security",
+      "cadence": "weekly"
+    },
+    {
+      "id": "jaea-breach",
+      "label": "JAEA 個人情報漏えい",
+      "url": "https://www.jaea.go.jp/02/press2026/p26100105/",
+      "category": "security",
+      "cadence": "weekly"
+    },
+    {
+      "id": "osaka-interview",
+      "label": "大阪市 録画面接システム漏えい",
+      "url": "https://www.city.osaka.lg.jp/hodoshiryo/gyouseiiinkai/0000688062.html",
+      "category": "recruiting_security",
+      "cadence": "weekly"
+    }
+  ]
+}
