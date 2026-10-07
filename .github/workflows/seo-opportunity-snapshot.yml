@@ -5,6 +5,15 @@ on:
     # 07:35 JST (22:35 UTC previous day), before the 08:00 candidate selection.
     - cron: "35 22 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/seo-opportunity-snapshot.yml"
+      - "scripts/generate-gsc-daily-snapshot.mjs"
+      - "scripts/generate-popularity.mjs"
+      - "scripts/generate-seo-opportunities.mjs"
+      - "scripts/lib/gsc-auth.mjs"
 
 permissions:
   contents: write
