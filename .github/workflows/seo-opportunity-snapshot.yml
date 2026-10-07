@@ -38,6 +38,7 @@ jobs:
       GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY }}
       SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
       SLACK_CHATGPT_WEBHOOK_URL: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
+      SLACK_OBSERVER_WEBHOOK_URL: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -113,3 +114,19 @@ jobs:
           fi
           git commit -m "data: refresh Search Console SEO snapshots"
           git push origin HEAD:master
+
+      - name: Alert NARU Observer when GSC refresh fails
+        if: failure()
+        continue-on-error: true
+        shell: bash
+        run: |
+          if [ -z "$SLACK_OBSERVER_WEBHOOK_URL" ]; then
+            echo "::warning::SLACK_OBSERVER_WEBHOOK_URL is not configured"
+            exit 0
+          fi
+          TEXT="🚨 *NARU GSC snapshot failure*\nWizard非依存のSearch Console日次取得に失敗しました。\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/gsc-failure-slack.json
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @/tmp/gsc-failure-slack.json \
+            "$SLACK_OBSERVER_WEBHOOK_URL"
