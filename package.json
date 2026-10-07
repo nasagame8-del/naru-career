@@ -23,7 +23,8 @@
     "editor-agent": "node scripts/naru-editor-agent.mjs",
     "test:editor-agent": "vitest run src/lib/naru-editor-agent && node --test scripts/naru-editor-agent.test.mjs",
     "article:fact-check": "node scripts/article-fact-check.mjs",
-    "data:gsc-daily": "node scripts/generate-gsc-daily-snapshot.mjs"
+    "data:gsc-daily": "node scripts/generate-gsc-daily-snapshot.mjs",
+    "research:watch": "node scripts/research-watch.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^6.1.0",
