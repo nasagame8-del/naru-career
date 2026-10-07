@@ -104,7 +104,7 @@
       "slug": "contractor-attendance-control-worker-status",
       "title": "業務委託なのに9時出社・勤怠管理・上司の指示。どこまでなら普通？",
       "genre": "通常SEO",
-      "status": "APPROVED_SCHEDULED",
+      "status": "MERGED_PRODUCTION_PENDING",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -186,14 +186,15 @@
         },
         "agentBrowserVisual": "unverified_browser_transport_disconnected"
       },
-      "blocker": null,
+      "blocker": "Cloudflare本番デプロイ・canonical検証待ち",
       "previewUrl": "https://naru-pr-156-preview.broad-fuchsia.workers.dev/articles/contractor-attendance-control-worker-status",
       "previewApprovedHeadSha": "63e07bbc440ee664efc9fe92790380ae1255bd30",
       "publishAutomation": {
         "id": "6ac5c38bae2c8191bfd5b291c909cf99",
         "scheduledAt": "2026-10-07T18:00:00+09:00",
         "approvedHeadSha": "63e07bbc440ee664efc9fe92790380ae1255bd30"
-      }
+      },
+      "mergeSha": "1287aa45d749db9ebafa23a5f0f06a2b7f93802c"
     }
   ],
   "strategyNote": "2026-10-06 GSC再分析により公開順を 065→067→068→066 へ変更。ID/PRは維持。"
