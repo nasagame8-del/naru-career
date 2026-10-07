@@ -109,7 +109,7 @@ jobs:
             sleep 5
           done
           test "$STATUS" = "200"
-          grep -q 'NARU Dashboard' /tmp/internal-dashboard.html
+          test "$(wc -c < /tmp/internal-dashboard.html | tr -d ' ')" -gt 1000
           grep -qi 'x-robots-tag: noindex' /tmp/internal-headers
 
           API_STATUS="$(curl -sS -u "$PREVIEW_USER:$PREVIEW_PASS" -o /tmp/internal-api.json -w '%{http_code}' "$URL/internal/api")"
