@@ -18,6 +18,10 @@ on:
       - "src/types/search-console.ts"
       - "scripts/measure-seo-experiments.mjs"
       - "scripts/measure-seo-experiments.test.mjs"
+      - "scripts/generate-popularity.mjs"
+      - "scripts/generate-seo-opportunities.mjs"
+      - "scripts/generate-gsc-daily-snapshot.mjs"
+      - "scripts/lib/gsc-auth.mjs"
       - "package.json"
       - ".github/workflows/seo-no-api-validation.yml"
   workflow_dispatch:
