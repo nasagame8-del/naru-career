@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllArticleMetas, type ArticleMeta } from "@/lib/articles";
+import { articleHasCategory, getAllArticleMetas, type ArticleMeta } from "@/lib/articles";
 import { CATEGORIES, isValidCategorySlug } from "@/lib/categories";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { getAuthorProfileLabel } from "@/lib/author";
@@ -58,8 +58,8 @@ export default async function CategoryPage(props: {
   if (!isValidCategorySlug(slug)) notFound();
 
   const cat = CATEGORIES[slug];
-  const allArticles = getAllArticleMetas().filter(
-    (a) => a.categories.includes(cat.name)
+  const allArticles = getAllArticleMetas().filter((a) =>
+    articleHasCategory(a, cat.name)
   );
   const articles = sortByReadingOrder(allArticles, cat.readingOrder);
   const hasReadingOrder = cat.readingOrder.length > 0;

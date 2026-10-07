@@ -55,6 +55,8 @@ note_published: false
 
 （出典：[厚生労働省「労働基準法における労働者性の判断基準」](https://www.mhlw.go.jp/content/11201250/000770086.pdf)）
 
+![業務委託の労働者性を確認する4つの要素](/images/articles/contractor-attendance-control-worker-status-01.webp)
+
 ## 1. 仕事を断る自由があるか
 
 最初に見るのが「諾否の自由」です。
@@ -108,6 +110,8 @@ IT・Webの業務委託では、発注者が成果物の仕様を示すこと自
 - 時間ではなく成果に対して報酬が決まっているか
 
 まで見ます。
+
+![業務上の調整と働き方の拘束を比較する図](/images/articles/contractor-attendance-control-worker-status-02.webp)
 
 ## 4. 「社員と同じ」が増えていないか
 
@@ -164,6 +168,8 @@ IT・Webでは、リモートワークでも朝会、Slack、Notion、Backlog、
 などを、自分が正当に扱える範囲で時系列に整理します。
 
 顧客情報、社外秘データ、ソースコードなどを相談のために無断で持ち出す必要はありません。
+
+![業務委託の働き方を記録して相談する3ステップ](/images/articles/contractor-attendance-control-worker-status-03.webp)
 
 ## 労働者性に疑問があるフリーランス向けの相談窓口がある
 
