@@ -69,6 +69,13 @@ jobs:
             test "$code" -lt 400
           done
 
+          curl -L -sS "$WORKER_URL/" -o /tmp/naru-home
+          if ! grep -q "GTM-KWH6XZJR" /tmp/naru-home; then
+            echo "GTM-KWH6XZJR is missing from the deployed homepage HTML"
+            exit 1
+          fi
+          echo "GTM marker verified on Cloudflare Worker"
+
       - name: Verify latest published articles on canonical domain
         env:
           CANONICAL_ORIGIN: https://naru-career.com
@@ -160,6 +167,27 @@ jobs:
               `Canonical verification failed: ${url} status=${lastStatus} ${lastError ?? ''}`
             );
           }
+
+          async function verifyHtmlMarker(url, marker, attempts = 12, delayMs = 5000) {
+            let lastStatus = 0;
+            for (let attempt = 1; attempt <= attempts; attempt += 1) {
+              const response = await fetch(url, {
+                redirect: 'follow',
+                headers: { 'cache-control': 'no-cache' },
+              });
+              lastStatus = response.status;
+              const html = response.ok ? await response.text() : '';
+              if (response.ok && html.includes(marker)) {
+                console.log(`marker ok: ${marker} on ${url}`);
+                return;
+              }
+              console.log(`marker retry ${attempt}/${attempts}: ${url} status=${lastStatus}`);
+              await new Promise((resolve) => setTimeout(resolve, delayMs));
+            }
+            throw new Error(`Missing HTML marker ${marker} on ${url}; status=${lastStatus}`);
+          }
+
+          await verifyHtmlMarker(`${origin}/`, 'GTM-KWH6XZJR');
 
           console.log(`Canonical verification date: ${latestDate}; targets=${targets.length}`);
 
