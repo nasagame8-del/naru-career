@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-10-07T04:46:50.017Z",
+  "window": "過去28日",
+  "privacy": "metrics_omitted",
+  "thresholds": {
+    "minImpressions": 5,
+    "strikingDistancePosition": [
+      11,
+      30
+    ],
+    "lowCtrPositionMax": 10,
+    "lowCtrMax": 0.02
+  },
+  "strikingDistance": [
+    {
+      "rank": 1,
+      "slug": "agent-not-recommended",
+      "query": "転職エージェント 微妙",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 2,
+      "slug": "agent-not-recommended",
+      "query": "転職エージェント 求人 微妙",
+      "reason": "position_11_30"
+    }
+  ],
+  "lowCtr": [
+    {
+      "rank": 1,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 クビ",
+      "reason": "low_ctr_top10"
+    }
+  ],
+  "cannibalization": [],
+  "prioritySlugs": [
+    "agent-not-recommended",
+    "business-outsourcing-conversion-risk"
+  ]
+}

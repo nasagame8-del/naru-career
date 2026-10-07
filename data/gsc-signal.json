@@ -1,0 +1,180 @@
+{
+  "generatedAt": "2026-10-07T04:46:49.515Z",
+  "source": "Google Search Console API via NARU Cloudflare Worker",
+  "dataState": "final",
+  "privacy": "traffic_metrics_omitted",
+  "currentRange": {
+    "startDate": "2026-09-20",
+    "endDate": "2026-10-03"
+  },
+  "previousRange": {
+    "startDate": "2026-09-06",
+    "endDate": "2026-09-19"
+  },
+  "visibleQueryCounts": {
+    "current": 20,
+    "previous": 10,
+    "new": 15
+  },
+  "positionBuckets": {
+    "current": {
+      "top3": 3,
+      "top10": 6,
+      "top20": 10
+    },
+    "previous": {
+      "top3": 0,
+      "top10": 2,
+      "top20": 3
+    }
+  },
+  "querySignals": [
+    {
+      "query": "正社員 から業務委託 クビ",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "正社員 から業務委託 クビ",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "正社員 から業務委託 違法",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "query": "rpg 診断",
+      "positionBand": "41+",
+      "signal": "new"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "正社員 業務委託 切り替え",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "itは？",
+      "positionBand": "1-3",
+      "signal": "new"
+    },
+    {
+      "query": "sns調査 (裏アカ調査) 採用",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "エージェント診断",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "query": "フリーランス 契約解除",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "ワークポート",
+      "positionBand": "1-3",
+      "signal": "new"
+    },
+    {
+      "query": "内定 承諾 確認事項",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "業務 委託 から 正社員",
+      "positionBand": "41+",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 webディレクター",
+      "positionBand": "21-40",
+      "signal": "new"
+    }
+  ],
+  "pageSignals": [
+    {
+      "page": "/",
+      "positionBand": "1-3",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/second-new-grad-it-interview-questions",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/agent-diagnosis",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/agent-comparison-2026",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/agent-free-and-cancel",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/agent-referral-vs-self-apply",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/aio-seo-industry-inside",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/bizreach-second-new-grad",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/casual-interview",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/certification-exam-on-hold",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/direct-recruiting",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/dx-award-company-entry-level-hiring",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/it-industry-quit-myth",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/new-grad-early-resignation-career-plan",
+      "positionBand": "4-10",
+      "signal": "new"
+    }
+  ]
+}
