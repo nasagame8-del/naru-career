@@ -6,8 +6,10 @@ const EXPECTED_ISSUER = "https://token.actions.githubusercontent.com";
 const EXPECTED_AUDIENCE = "naru-gsc-snapshot-v1";
 const EXPECTED_REPOSITORY = "nasagame8-del/naru-career";
 const EXPECTED_REF = "refs/heads/master";
-const EXPECTED_WORKFLOW_REF =
-  "nasagame8-del/naru-career/.github/workflows/seo-opportunity-snapshot.yml@refs/heads/master";
+const ALLOWED_WORKFLOW_REFS = new Set([
+  "nasagame8-del/naru-career/.github/workflows/seo-opportunity-snapshot.yml@refs/heads/master",
+  "nasagame8-del/naru-career/.github/workflows/seo-experiment-measurement.yml@refs/heads/master",
+]);
 const GITHUB_JWKS_URL =
   "https://token.actions.githubusercontent.com/.well-known/jwks";
 
@@ -69,7 +71,8 @@ async function verifyGitHubOidc(token: string): Promise<JwtClaims> {
     (claims.nbf && claims.nbf > now + 30) ||
     claims.repository !== EXPECTED_REPOSITORY ||
     claims.ref !== EXPECTED_REF ||
-    claims.workflow_ref !== EXPECTED_WORKFLOW_REF ||
+    !claims.workflow_ref ||
+    !ALLOWED_WORKFLOW_REFS.has(claims.workflow_ref) ||
     claims.sub !== `repo:${EXPECTED_REPOSITORY}:ref:${EXPECTED_REF}`
   ) {
     throw new Error("jwt_claims_rejected");
@@ -267,10 +270,7 @@ async function fetchPeriod(
   };
 }
 
-async function buildSnapshot() {
-  const accessToken = await refreshGoogleOAuthAccessToken();
-  const siteUrl =
-    process.env.SEARCH_CONSOLE_SITE_URL || "sc-domain:naru-career.com";
+async function buildSnapshot(accessToken: string, siteUrl: string) {
 
   const currentEnd = pacificDateDaysAgo(3);
   const currentStart = pacificDateDaysAgo(16);
@@ -302,6 +302,58 @@ function responseHeaders() {
   };
 }
 
+function normalizeQueryRequest(input: unknown): Record<string, unknown> | null {
+  if (!input || typeof input !== "object") return null;
+  const payload = input as { mode?: unknown; requestBody?: unknown };
+  if (payload.mode !== "query" || !payload.requestBody || typeof payload.requestBody !== "object") {
+    return null;
+  }
+
+  const body = payload.requestBody as Record<string, unknown>;
+  const startDate = typeof body.startDate === "string" ? body.startDate : "";
+  const endDate = typeof body.endDate === "string" ? body.endDate : "";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate)) {
+    throw new Error("invalid_query_date");
+  }
+
+  const dimensions = Array.isArray(body.dimensions)
+    ? body.dimensions.filter((value): value is string => typeof value === "string")
+    : [];
+  if (!dimensions.every((value) => ["query", "page", "date"].includes(value))) {
+    throw new Error("invalid_query_dimension");
+  }
+
+  const rowLimitRaw = Number(body.rowLimit ?? 1000);
+  const rowLimit = Math.max(1, Math.min(25000, Number.isFinite(rowLimitRaw) ? Math.trunc(rowLimitRaw) : 1000));
+
+  let dimensionFilterGroups: unknown = undefined;
+  if (body.dimensionFilterGroups !== undefined) {
+    if (!Array.isArray(body.dimensionFilterGroups) || body.dimensionFilterGroups.length > 4) {
+      throw new Error("invalid_query_filters");
+    }
+    for (const group of body.dimensionFilterGroups as Array<{ filters?: unknown }>) {
+      if (!Array.isArray(group?.filters) || group.filters.length > 4) throw new Error("invalid_query_filters");
+      for (const filter of group.filters as Array<Record<string, unknown>>) {
+        if (filter.dimension !== "query" || filter.operator !== "equals" || typeof filter.expression !== "string") {
+          throw new Error("invalid_query_filter");
+        }
+        if (filter.expression.length > 300) throw new Error("invalid_query_filter");
+      }
+    }
+    dimensionFilterGroups = body.dimensionFilterGroups;
+  }
+
+  return {
+    startDate,
+    endDate,
+    dimensions,
+    rowLimit,
+    type: "web",
+    dataState: "final",
+    ...(dimensionFilterGroups ? { dimensionFilterGroups } : {}),
+  };
+}
+
 export async function POST(request: NextRequest) {
   const authHeader = request.headers.get("authorization") || "";
   if (!authHeader.startsWith("Bearer ")) {
@@ -321,7 +373,21 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const snapshot = await buildSnapshot();
+    const siteUrl =
+      process.env.SEARCH_CONSOLE_SITE_URL || "sc-domain:naru-career.com";
+    const accessToken = await refreshGoogleOAuthAccessToken();
+    const payload = await request.json().catch(() => null);
+    const queryRequest = normalizeQueryRequest(payload);
+
+    if (queryRequest) {
+      const result = await querySearchAnalytics(accessToken, siteUrl, queryRequest);
+      return NextResponse.json(result, {
+        status: 200,
+        headers: responseHeaders(),
+      });
+    }
+
+    const snapshot = await buildSnapshot(accessToken, siteUrl);
     return NextResponse.json(snapshot, {
       status: 200,
       headers: responseHeaders(),

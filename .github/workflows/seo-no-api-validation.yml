@@ -7,6 +7,8 @@ on:
       - "src/app/layout.tsx"
       - "src/app/page.tsx"
       - "src/lib/search-console.ts"
+      - "src/lib/growth-lab.ts"
+      - "src/lib/growth-lab.test.ts"
       - "src/lib/seo-opportunities.ts"
       - "src/lib/seo-opportunities.test.ts"
       - "src/lib/seo-editor/**"
@@ -16,6 +18,12 @@ on:
       - "src/app/internal/dashboard/gsc/**"
       - "src/app/api/gsc-snapshot/**"
       - "src/app/internal/dashboard/DashboardClient.tsx"
+      - "src/app/internal/dashboard/growth/**"
+      - "src/app/internal/api/route.ts"
+      - "data/research-sources.json"
+      - "data/research/source-status.json"
+      - "scripts/research-watch.mjs"
+      - ".github/workflows/research-watch.yml"
       - "src/types/search-console.ts"
       - "scripts/measure-seo-experiments.mjs"
       - "scripts/measure-seo-experiments.test.mjs"
@@ -47,6 +55,8 @@ jobs:
           node --check scripts/generate-gsc-daily-snapshot.mjs
           node --check scripts/generate-popularity.mjs
           node --check scripts/generate-seo-opportunities.mjs
+          node --check scripts/measure-seo-experiments.mjs
+          node --check scripts/research-watch.mjs
       - run: npm test
       - run: npx tsc --noEmit
       - run: npm run build

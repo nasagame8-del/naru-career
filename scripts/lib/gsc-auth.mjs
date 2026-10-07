@@ -9,6 +9,28 @@ export function getSearchConsoleSiteUrl() {
   return process.env.SEARCH_CONSOLE_SITE_URL || "sc-domain:naru-career.com";
 }
 
+async function getGitHubOidcToken() {
+  const requestUrl = process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
+  const requestToken = process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;
+  if (!requestUrl || !requestToken) return null;
+
+  const separator = requestUrl.includes("?") ? "&" : "?";
+  const response = await fetch(
+    `${requestUrl}${separator}audience=naru-gsc-snapshot-v1`,
+    {
+      headers: {
+        Authorization: `Bearer ${requestToken}`,
+        "Accept-Encoding": "identity",
+      },
+    }
+  );
+  const body = await response.json();
+  if (!response.ok || !body.value) {
+    throw new Error(`GitHub OIDC token request failed: ${response.status}`);
+  }
+  return body.value;
+}
+
 async function refreshOAuthAccessToken(clientId, clientSecret, refreshToken) {
   const response = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
@@ -68,12 +90,44 @@ export async function resolveSearchConsoleAuth() {
     };
   }
 
+  const oidcToken = await getGitHubOidcToken();
+  if (oidcToken) {
+    return {
+      kind: "bridge",
+      token: oidcToken,
+      url:
+        process.env.GSC_BRIDGE_URL ||
+        "https://naru-career.com/api/gsc-snapshot",
+    };
+  }
+
   throw new Error(
-    "Search Console auth is not configured. Set Google OAuth client ID/secret/refresh token."
+    "Search Console auth is not configured. Set OAuth credentials or run from an allowed GitHub Actions workflow with OIDC."
   );
 }
 
 export async function querySearchAnalytics(auth, siteUrl, requestBody) {
+  if (auth.kind === "bridge") {
+    const response = await fetch(auth.url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+        "Content-Type": "application/json",
+        "Accept-Encoding": "identity",
+      },
+      body: JSON.stringify({
+        mode: "query",
+        siteUrl,
+        requestBody,
+      }),
+    });
+    const raw = await response.text();
+    if (!response.ok) {
+      throw new Error(`Search Console bridge ${response.status}: ${raw.slice(0, 240)}`);
+    }
+    return raw ? JSON.parse(raw) : {};
+  }
+
   if (auth.kind === "oauth") {
     const response = await fetch(
       `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(

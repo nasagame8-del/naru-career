@@ -1,0 +1,37 @@
+name: NARU Research Watch
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Monday 06:30 JST
+    - cron: "30 21 * * 0"
+  push:
+    branches: [master]
+    paths:
+      - "scripts/research-watch.mjs"
+      - "data/research-sources.json"
+      - ".github/workflows/research-watch.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Check public research sources
+        run: npm run research:watch
+      - name: Upload metadata-only research result
+        uses: actions/upload-artifact@v4
+        with:
+          name: naru-research-watch-${{ github.run_id }}
+          path: tmp/research-source-status.json
+          if-no-files-found: error
+          retention-days: 30
