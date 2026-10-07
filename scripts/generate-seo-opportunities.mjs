@@ -128,22 +128,31 @@ function daysAgo(n) {
 }
 
 async function main() {
-  const siteUrl = getSearchConsoleSiteUrl();
-  const auth = await resolveSearchConsoleAuth();
+  let rows;
 
-  const endDate = daysAgo(-3);
-  const startDate = daysAgo(-30);
-  const response = await querySearchAnalytics(auth, siteUrl, {
-    startDate,
-    endDate,
-    dimensions: ["page", "query"],
-    rowLimit: 25000,
-    type: "web",
-    dataState: "final",
-  });
+  if (process.env.GSC_SNAPSHOT_INPUT) {
+    const snapshot = JSON.parse(
+      await fs.readFile(path.resolve(process.env.GSC_SNAPSHOT_INPUT), "utf8")
+    );
+    rows = snapshot?.current28?.pageQueries ?? [];
+  } else {
+    const siteUrl = getSearchConsoleSiteUrl();
+    const auth = await resolveSearchConsoleAuth();
+    const endDate = daysAgo(-3);
+    const startDate = daysAgo(-30);
+    const response = await querySearchAnalytics(auth, siteUrl, {
+      startDate,
+      endDate,
+      dimensions: ["page", "query"],
+      rowLimit: 25000,
+      type: "web",
+      dataState: "final",
+    });
+    rows = response.rows ?? [];
+  }
 
   const known = await knownArticleSlugs();
-  const opportunities = buildSeoOpportunities(response.rows ?? [], known);
+  const opportunities = buildSeoOpportunities(rows, known);
 
   const snapshot = {
     generatedAt: new Date().toISOString(),
