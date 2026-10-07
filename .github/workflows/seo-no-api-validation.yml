@@ -18,6 +18,10 @@ on:
       - "src/types/search-console.ts"
       - "scripts/measure-seo-experiments.mjs"
       - "scripts/measure-seo-experiments.test.mjs"
+      - "scripts/generate-popularity.mjs"
+      - "scripts/generate-seo-opportunities.mjs"
+      - "scripts/generate-gsc-daily-snapshot.mjs"
+      - "scripts/lib/gsc-auth.mjs"
       - "package.json"
       - ".github/workflows/seo-no-api-validation.yml"
   workflow_dispatch:
@@ -36,6 +40,12 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - name: Check GSC data scripts
+        run: |
+          node --check scripts/lib/gsc-auth.mjs
+          node --check scripts/generate-gsc-daily-snapshot.mjs
+          node --check scripts/generate-popularity.mjs
+          node --check scripts/generate-seo-opportunities.mjs
       - run: npm test
       - run: npx tsc --noEmit
       - run: npm run build

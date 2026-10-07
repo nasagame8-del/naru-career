@@ -5,6 +5,15 @@ on:
     # 07:35 JST (22:35 UTC previous day), before the 08:00 candidate selection.
     - cron: "35 22 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/seo-opportunity-snapshot.yml"
+      - "scripts/generate-gsc-daily-snapshot.mjs"
+      - "scripts/generate-popularity.mjs"
+      - "scripts/generate-seo-opportunities.mjs"
+      - "scripts/lib/gsc-auth.mjs"
 
 permissions:
   contents: write
@@ -16,42 +25,108 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
+      # OAuth is the primary auth path. Service-account envs remain fallback only.
+      GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+      GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+      GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+      WAR_ROOM_GOOGLE_CLIENT_ID: ${{ secrets.WAR_ROOM_GOOGLE_CLIENT_ID }}
+      WAR_ROOM_GOOGLE_CLIENT_SECRET: ${{ secrets.WAR_ROOM_GOOGLE_CLIENT_SECRET }}
+      WAR_ROOM_GOOGLE_REFRESH_TOKEN: ${{ secrets.WAR_ROOM_GOOGLE_REFRESH_TOKEN }}
       GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
       GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY }}
       SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
+      SLACK_CHATGPT_WEBHOOK_URL: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
+      SLACK_OBSERVER_WEBHOOK_URL: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: master
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
       - run: npm ci
 
-      - name: Verify Search Console secrets
+      - name: Verify Search Console auth
         shell: bash
         run: |
-          test -n "$GOOGLE_SERVICE_ACCOUNT_EMAIL" || { echo "::error::Missing GOOGLE_SERVICE_ACCOUNT_EMAIL"; exit 1; }
-          test -n "$GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY" || { echo "::error::Missing GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY"; exit 1; }
-          test -n "$SEARCH_CONSOLE_SITE_URL" || { echo "::error::Missing SEARCH_CONSOLE_SITE_URL"; exit 1; }
+          set -euo pipefail
+          HAS_GOOGLE_OAUTH=false
+          HAS_WAR_ROOM_OAUTH=false
+          HAS_SERVICE_ACCOUNT=false
 
-      - name: Refresh SEO data
+          if [ -n "$GOOGLE_OAUTH_CLIENT_ID" ] && [ -n "$GOOGLE_OAUTH_CLIENT_SECRET" ] && [ -n "$GOOGLE_OAUTH_REFRESH_TOKEN" ]; then
+            HAS_GOOGLE_OAUTH=true
+          fi
+          if [ -n "$WAR_ROOM_GOOGLE_CLIENT_ID" ] && [ -n "$WAR_ROOM_GOOGLE_CLIENT_SECRET" ] && [ -n "$WAR_ROOM_GOOGLE_REFRESH_TOKEN" ]; then
+            HAS_WAR_ROOM_OAUTH=true
+          fi
+          if [ -n "$GOOGLE_SERVICE_ACCOUNT_EMAIL" ] && [ -n "$GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY" ]; then
+            HAS_SERVICE_ACCOUNT=true
+          fi
+
+          if [ "$HAS_GOOGLE_OAUTH" != true ] && [ "$HAS_WAR_ROOM_OAUTH" != true ] && [ "$HAS_SERVICE_ACCOUNT" != true ]; then
+            echo "::error::Missing Google Search Console auth. Configure OAuth client ID/secret/refresh token."
+            exit 1
+          fi
+
+          if [ -z "$SLACK_CHATGPT_WEBHOOK_URL" ]; then
+            echo "::error::Missing SLACK_CHATGPT_WEBHOOK_URL; private GSC delivery cannot continue."
+            exit 1
+          fi
+
+      - name: Refresh GSC snapshots
         run: |
+          npm run data:gsc-daily
           npm run data:popularity
           npm run data:seo-opportunities
 
-      - name: Commit snapshot when changed
+      - name: Upload private detailed GSC artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: naru-gsc-daily-${{ github.run_id }}
+          path: tmp/gsc-daily-snapshot.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Post private GSC digest to NARU Slack
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s tmp/gsc-daily-slack.txt
+          jq -Rs '{text:.}' < tmp/gsc-daily-slack.txt > /tmp/gsc-slack.json
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @/tmp/gsc-slack.json \
+            "$SLACK_CHATGPT_WEBHOOK_URL"
+
+      - name: Commit privacy-safe snapshots when changed
         shell: bash
         run: |
           git config user.name "naru-seo-bot"
           git config user.email "naru-seo-bot@users.noreply.github.com"
-          git add data/popularity.json data/seo-opportunities.json
+          git add data/popularity.json data/seo-opportunities.json data/gsc-signal.json
           if git diff --cached --quiet; then
-            echo "No SEO snapshot changes."
+            echo "No public SEO snapshot changes."
             exit 0
           fi
           git commit -m "data: refresh Search Console SEO snapshots"
           git push origin HEAD:master
+
+      - name: Alert NARU Observer when GSC refresh fails
+        if: failure()
+        continue-on-error: true
+        shell: bash
+        run: |
+          if [ -z "$SLACK_OBSERVER_WEBHOOK_URL" ]; then
+            echo "::warning::SLACK_OBSERVER_WEBHOOK_URL is not configured"
+            exit 0
+          fi
+          TEXT="🚨 *NARU GSC snapshot failure*\nWizard非依存のSearch Console日次取得に失敗しました。\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/gsc-failure-slack.json
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @/tmp/gsc-failure-slack.json \
+            "$SLACK_OBSERVER_WEBHOOK_URL"
