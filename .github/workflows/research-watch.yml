@@ -5,6 +5,12 @@ on:
   schedule:
     # Monday 06:30 JST
     - cron: "30 21 * * 0"
+  push:
+    branches: [master]
+    paths:
+      - "scripts/research-watch.mjs"
+      - "data/research-sources.json"
+      - ".github/workflows/research-watch.yml"
 
 permissions:
   contents: read
