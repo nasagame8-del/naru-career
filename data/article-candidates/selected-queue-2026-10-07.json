@@ -10,7 +10,7 @@
       "slug": "contractor-how-to-quit",
       "title": "業務委託を辞めたい。「退職」ではなく契約解除？途中で抜ける前に確認すること",
       "genre": "通常SEO",
-      "status": "QA_IN_PROGRESS",
+      "status": "READY_FOR_SCHEDULED_PUBLISH",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -40,18 +40,37 @@
         "articleDraftReadback": true,
         "imagePromptsReadback": true,
         "generatedImagesProvided": true,
-        "previewVisual": "not_requested",
+        "previewVisual": "user_confirmed",
         "humanFactCheck": {
-          "status": "pending",
-          "headSha": null
+          "status": "passed",
+          "headSha": "865b69c02f47c20a68799f1c13dfa4793269d698",
+          "userText": "問題ない",
+          "approvedAt": "2026-10-07T11:32:53+09:00",
+          "context": "本文の事実関係と画像・表示の確認依頼に対するユーザー承認"
         },
         "internalLinksVerified": true,
         "frontmatterVerified": true,
-        "fullLocalQaPassed": false,
-        "cloudflarePreview": "in_progress",
-        "checks": []
+        "fullLocalQaPassed": true,
+        "cloudflarePreview": "success",
+        "checks": [
+          {
+            "name": "Article Factory Validation",
+            "status": "completed",
+            "conclusion": "success",
+            "headSha": "865b69c02f47c20a68799f1c13dfa4793269d698",
+            "runId": 37562121633
+          },
+          {
+            "name": "Cloudflare article preview",
+            "status": "completed",
+            "conclusion": "success",
+            "headSha": "865b69c02f47c20a68799f1c13dfa4793269d698",
+            "runId": 37562121692
+          }
+        ]
       },
-      "blocker": "画像4枚反映済み。最新headのCI・Cloudflareプレビュー、人手の事実確認・目視承認待ち。"
+      "blocker": null,
+      "previewApprovedHeadSha": "865b69c02f47c20a68799f1c13dfa4793269d698"
     },
     {
       "order": 2,
