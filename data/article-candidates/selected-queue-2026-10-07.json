@@ -10,7 +10,7 @@
       "slug": "contractor-how-to-quit",
       "title": "業務委託を辞めたい。「退職」ではなく契約解除？途中で抜ける前に確認すること",
       "genre": "通常SEO",
-      "status": "WAITING_IMAGES",
+      "status": "QA_IN_PROGRESS",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -19,21 +19,27 @@
       "prNumber": 154,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/154",
       "branch": "article-factory/2026-10-07-065-contractor-quit",
-      "latestHeadSha": "4c418f25c2590d9f4d7d1f393692848918aa220f",
+      "latestHeadSha": "865b69c02f47c20a68799f1c13dfa4793269d698",
       "articleDriveFolderId": "1Xxci7p54F2clivD9JXlAv98JUhUpY9wQ",
       "imagesDriveFolderId": "1dgYfOdAOm2vqlB98_a5tnT5SWwhgSYIZ",
       "originalsDriveFolderId": "1qeN0htKTdrNjPgjOoGe7dNxIoRr7W17-",
       "files": {
         "article": "19a2L4ecVL-sgV--CGuzWmqWPAtmZLPooYxhN0rI_7_w",
         "imagePlan": "1wGvlTMD4W-zRDVb_K9MXaWClNt0OHWb9IugeigJflFE",
-        "articlePromptCopy": null,
-        "designPrompt": null
+        "articlePromptCopy": "1SePUPYa0GrHHqFfkraRGTtKKNigGXWmF",
+        "designPrompt": "1q2IaFBtx_d4IBS2DMbjsdVCyD1ClRJzO",
+        "images": {
+          "card": "1YlAvfoO3FtNYn_W5jUdXd5ucBTAIouav",
+          "01": "1dPcsoDyr3NDHhAWVXEj7qBgPXlz9Are0",
+          "02": "1VTqD_lSAoTR01HEduq1wddFtCFGAOYS_",
+          "03": "1TUmiJW-sXuPuki9yFC3uCP12ShAB7AJF"
+        }
       },
       "qa": {
         "sourceUrlsVerified": true,
         "articleDraftReadback": true,
-        "imagePromptsReadback": false,
-        "generatedImagesProvided": false,
+        "imagePromptsReadback": true,
+        "generatedImagesProvided": true,
         "previewVisual": "not_requested",
         "humanFactCheck": {
           "status": "pending",
@@ -42,23 +48,10 @@
         "internalLinksVerified": true,
         "frontmatterVerified": true,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "blocked_missing_images",
-        "checks": [
-          {
-            "name": "article-factory-validation",
-            "status": "completed",
-            "conclusion": "failure_expected_missing_images",
-            "headSha": "4c418f25c2590d9f4d7d1f393692848918aa220f"
-          },
-          {
-            "name": "preview",
-            "status": "completed",
-            "conclusion": "failure_expected_missing_images",
-            "headSha": "4c418f25c2590d9f4d7d1f393692848918aa220f"
-          }
-        ]
+        "cloudflarePreview": "in_progress",
+        "checks": []
       },
-      "blocker": "画像生成プロンプトと画像4枚はユーザー指示により2026-10-07に実施。現時点ではマージ禁止。"
+      "blocker": "画像4枚反映済み。最新headのCI・Cloudflareプレビュー、人手の事実確認・目視承認待ち。"
     },
     {
       "order": 2,
@@ -84,13 +77,13 @@
       "files": {
         "article": "1t8NRNPDxBLJDHzaf10GEdEjZiDbptivtGE87imE4iM8",
         "imagePlan": "1FvWZ2PUkRdO1IFYubJUDZ2Gcc_uSg-3S84jWbr4Rt3g",
-        "articlePromptCopy": null,
-        "designPrompt": null
+        "articlePromptCopy": "1BWvNCaRCs2w03OlcKHwjGQAQMISiVBTT",
+        "designPrompt": "12ib4rr2bQq4IoAWdjLaC-o3zDFlz96gP"
       },
       "qa": {
         "sourceUrlsVerified": true,
         "articleDraftReadback": true,
-        "imagePromptsReadback": false,
+        "imagePromptsReadback": true,
         "generatedImagesProvided": false,
         "previewVisual": "not_requested",
         "humanFactCheck": {
