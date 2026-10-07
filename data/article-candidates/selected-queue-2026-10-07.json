@@ -104,7 +104,7 @@
       "slug": "contractor-attendance-control-worker-status",
       "title": "業務委託なのに9時出社・勤怠管理・上司の指示。どこまでなら普通？",
       "genre": "通常SEO",
-      "status": "WAITING_IMAGES",
+      "status": "QA_IN_PROGRESS",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -113,7 +113,7 @@
       "prNumber": 156,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/156",
       "branch": "article-factory/2026-10-08-067-attendance-control",
-      "latestHeadSha": "a3be8078b8bc4363950a362f0adaa58c74f27db9",
+      "latestHeadSha": "63e07bbc440ee664efc9fe92790380ae1255bd30",
       "articleDriveFolderId": "1hhc310jBOBlSiuP1lhU5Zs_Gn6nIVfhs",
       "imagesDriveFolderId": "1VSL1b94LSZCryuRz76E7TjPeZz-J_VVH",
       "originalsDriveFolderId": "1mhphB19AjjD_JNSK40NHh80v9p9eGMbP",
@@ -121,14 +121,26 @@
         "article": "1t8NRNPDxBLJDHzaf10GEdEjZiDbptivtGE87imE4iM8",
         "imagePlan": "1FvWZ2PUkRdO1IFYubJUDZ2Gcc_uSg-3S84jWbr4Rt3g",
         "articlePromptCopy": "1BWvNCaRCs2w03OlcKHwjGQAQMISiVBTT",
-        "designPrompt": "12ib4rr2bQq4IoAWdjLaC-o3zDFlz96gP"
+        "designPrompt": "12ib4rr2bQq4IoAWdjLaC-o3zDFlz96gP",
+        "images": {
+          "card": "1Uy1N6M2KtUBSgW600DaePDsmh_hfg9Gr",
+          "01": "1gRfu-5RdjU4tx7jDcKz5Ppz_wm2YLWjt",
+          "02": "1EulYFqlyWpeSysXSk4Po_KAKXwbqvSsU",
+          "03": "1uk4T06rCv6Q7PLjF3ETLE0HAInRSXcX9"
+        },
+        "originals": {
+          "card": "11at0XZETW273eGx0lSjmXUmc020MDS0H",
+          "01": "1qH6VOF417cx7vfKdD3x9xdPx5D4vxNrs",
+          "02": "1cU7Kr4zoZsgLMV_dFvBT5fCMAzH07FQz",
+          "03": "14wHBEPTSENOtpN1g0s1Oe58ecPmO65Wc"
+        }
       },
       "qa": {
         "sourceUrlsVerified": true,
         "articleDraftReadback": true,
         "imagePromptsReadback": true,
-        "generatedImagesProvided": false,
-        "previewVisual": "not_requested",
+        "generatedImagesProvided": true,
+        "previewVisual": "pending",
         "humanFactCheck": {
           "status": "pending",
           "headSha": null
@@ -136,23 +148,14 @@
         "internalLinksVerified": true,
         "frontmatterVerified": true,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "blocked_missing_images",
-        "checks": [
-          {
-            "name": "article-factory-validation",
-            "status": "pending_after_schedule_update",
-            "conclusion": null,
-            "headSha": "a3be8078b8bc4363950a362f0adaa58c74f27db9"
-          },
-          {
-            "name": "preview",
-            "status": "pending_after_schedule_update",
-            "conclusion": null,
-            "headSha": "a3be8078b8bc4363950a362f0adaa58c74f27db9"
-          }
-        ]
+        "cloudflarePreview": "pending",
+        "checks": [],
+        "imagesDriveReadback": true,
+        "imageDimensionsVerified": true,
+        "imageMetadataRemoved": true,
+        "bodyImageReferencesVerified": true
       },
-      "blocker": "画像生成プロンプトと画像4枚は2026-10-07に実施予定。公開順変更後のfrontmatter更新済み。現時点ではマージ禁止。"
+      "blocker": "最新headのCI・Cloudflareプレビュー確認、本文の事実確認とユーザー表示承認待ち。"
     }
   ],
   "strategyNote": "2026-10-06 GSC再分析により公開順を 065→067→068→066 へ変更。ID/PRは維持。"
