@@ -104,7 +104,7 @@
       "slug": "contractor-attendance-control-worker-status",
       "title": "業務委託なのに9時出社・勤怠管理・上司の指示。どこまでなら普通？",
       "genre": "通常SEO",
-      "status": "QA_IN_PROGRESS",
+      "status": "WAITING_APPROVAL",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -140,22 +140,51 @@
         "articleDraftReadback": true,
         "imagePromptsReadback": true,
         "generatedImagesProvided": true,
-        "previewVisual": "pending",
+        "previewVisual": "pending_user_confirmation",
         "humanFactCheck": {
           "status": "pending",
           "headSha": null
         },
         "internalLinksVerified": true,
         "frontmatterVerified": true,
-        "fullLocalQaPassed": false,
-        "cloudflarePreview": "pending",
-        "checks": [],
+        "fullLocalQaPassed": true,
+        "cloudflarePreview": "success",
+        "checks": [
+          {
+            "name": "Article Factory Validation",
+            "status": "completed",
+            "conclusion": "success",
+            "headSha": "63e07bbc440ee664efc9fe92790380ae1255bd30",
+            "runId": 37567360616
+          },
+          {
+            "name": "NARU article Cloudflare preview",
+            "status": "completed",
+            "conclusion": "success",
+            "headSha": "63e07bbc440ee664efc9fe92790380ae1255bd30",
+            "runId": 37567360623
+          }
+        ],
         "imagesDriveReadback": true,
         "imageDimensionsVerified": true,
         "imageMetadataRemoved": true,
-        "bodyImageReferencesVerified": true
+        "bodyImageReferencesVerified": true,
+        "previewSmoke": {
+          "articleStatus": 200,
+          "imageStatuses": {
+            "card": 200,
+            "01": 200,
+            "02": 200,
+            "03": 200
+          },
+          "noindexVerified": true,
+          "headSha": "63e07bbc440ee664efc9fe92790380ae1255bd30",
+          "runId": 37567360623
+        },
+        "agentBrowserVisual": "unverified_browser_transport_disconnected"
       },
-      "blocker": "最新headのCI・Cloudflareプレビュー確認、本文の事実確認とユーザー表示承認待ち。"
+      "blocker": "本文の事実関係と画像・表示について、最新headのユーザー確認待ち。",
+      "previewUrl": "https://naru-pr-156-preview.broad-fuchsia.workers.dev/articles/contractor-attendance-control-worker-status"
     }
   ],
   "strategyNote": "2026-10-06 GSC再分析により公開順を 065→067→068→066 へ変更。ID/PRは維持。"
