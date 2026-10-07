@@ -61,7 +61,16 @@ jobs:
           fs.writeFileSync('.open-next/internal-preview.js', `
           import worker from './worker.js';
           export default {...worker, async fetch(request, env, ctx) {
-            const response = await worker.fetch(request, env, ctx);
+            const url = new URL(request.url);
+            const isAsset =
+              url.pathname.startsWith('/_next/static/') ||
+              url.pathname.startsWith('/images/') ||
+              ['.ico','.png','.svg','.webp','.woff2','.css','.js'].some(ext => url.pathname.endsWith(ext));
+
+            const response = isAsset
+              ? await env.ASSETS.fetch(request)
+              : await worker.fetch(request, env, ctx);
+
             const result = new Response(response.body, response);
             result.headers.set('X-Robots-Tag', 'noindex, nofollow');
             return result;
@@ -111,6 +120,20 @@ jobs:
           test "$STATUS" = "200"
           test "$(wc -c < /tmp/internal-dashboard.html | tr -d ' ')" -gt 1000
           grep -qi 'x-robots-tag: noindex' /tmp/internal-headers
+
+          CSS_PATH="$(grep -oE 'href="[^"]+\.css[^"]*"' /tmp/internal-dashboard.html | head -n1 | sed -E 's/^href="//; s/"$//' || true)"
+          JS_PATH="$(grep -oE 'src="[^"]+\.js[^"]*"' /tmp/internal-dashboard.html | head -n1 | sed -E 's/^src="//; s/"$//' || true)"
+          test -n "$CSS_PATH"
+          test -n "$JS_PATH"
+
+          CSS_STATUS="$(curl -sS -o /tmp/internal.css -w '%{http_code}' "$URL$CSS_PATH")"
+          JS_STATUS="$(curl -sS -o /tmp/internal.js -w '%{http_code}' "$URL$JS_PATH")"
+          echo "css=$CSS_PATH status=$CSS_STATUS bytes=$(wc -c < /tmp/internal.css | tr -d ' ')"
+          echo "js=$JS_PATH status=$JS_STATUS bytes=$(wc -c < /tmp/internal.js | tr -d ' ')"
+          test "$CSS_STATUS" = "200"
+          test "$JS_STATUS" = "200"
+          test "$(wc -c < /tmp/internal.css | tr -d ' ')" -gt 1000
+          test "$(wc -c < /tmp/internal.js | tr -d ' ')" -gt 1000
 
           API_STATUS="$(curl -sS -u "$PREVIEW_USER:$PREVIEW_PASS" -o /tmp/internal-api.json -w '%{http_code}' "$URL/internal/api")"
           test "$API_STATUS" = "200"
