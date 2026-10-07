@@ -10,6 +10,7 @@ on:
       - master
     paths:
       - ".github/workflows/seo-opportunity-snapshot.yml"
+      - "src/app/api/gsc-snapshot/**"
       - "scripts/generate-gsc-daily-snapshot.mjs"
       - "scripts/generate-popularity.mjs"
       - "scripts/generate-seo-opportunities.mjs"
@@ -17,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: seo-opportunity-snapshot
@@ -27,58 +29,65 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      # OAuth is the primary auth path. Service-account envs remain fallback only.
-      GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
-      GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
-      GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
-      WAR_ROOM_GOOGLE_CLIENT_ID: ${{ secrets.WAR_ROOM_GOOGLE_CLIENT_ID }}
-      WAR_ROOM_GOOGLE_CLIENT_SECRET: ${{ secrets.WAR_ROOM_GOOGLE_CLIENT_SECRET }}
-      WAR_ROOM_GOOGLE_REFRESH_TOKEN: ${{ secrets.WAR_ROOM_GOOGLE_REFRESH_TOKEN }}
-      GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
-      GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY }}
-      SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
+      GSC_BRIDGE_URL: https://naru-career.com/api/gsc-snapshot
+      GSC_SNAPSHOT_INPUT: tmp/gsc-daily-snapshot.json
       SLACK_CHATGPT_WEBHOOK_URL: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
       SLACK_OBSERVER_WEBHOOK_URL: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
     steps:
       - uses: actions/checkout@v6
         with:
           ref: master
+          fetch-depth: 0
+
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
+
       - run: npm ci
 
-      - name: Verify Search Console auth
+      - name: Fetch private GSC snapshot through GitHub OIDC
         shell: bash
         run: |
           set -euo pipefail
-          HAS_GOOGLE_OAUTH=false
-          HAS_WAR_ROOM_OAUTH=false
-          HAS_SERVICE_ACCOUNT=false
+          mkdir -p tmp
 
-          if [ -n "$GOOGLE_OAUTH_CLIENT_ID" ] && [ -n "$GOOGLE_OAUTH_CLIENT_SECRET" ] && [ -n "$GOOGLE_OAUTH_REFRESH_TOKEN" ]; then
-            HAS_GOOGLE_OAUTH=true
-          fi
-          if [ -n "$WAR_ROOM_GOOGLE_CLIENT_ID" ] && [ -n "$WAR_ROOM_GOOGLE_CLIENT_SECRET" ] && [ -n "$WAR_ROOM_GOOGLE_REFRESH_TOKEN" ]; then
-            HAS_WAR_ROOM_OAUTH=true
-          fi
-          if [ -n "$GOOGLE_SERVICE_ACCOUNT_EMAIL" ] && [ -n "$GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY" ]; then
-            HAS_SERVICE_ACCOUNT=true
-          fi
+          OIDC_JSON="$(curl --fail-with-body --silent --show-error \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=naru-gsc-snapshot-v1")"
+          OIDC_TOKEN="$(printf '%s' "$OIDC_JSON" | jq -r '.value // empty')"
+          test -n "$OIDC_TOKEN" || { echo "::error::GitHub OIDC token was not issued"; exit 1; }
 
-          if [ "$HAS_GOOGLE_OAUTH" != true ] && [ "$HAS_WAR_ROOM_OAUTH" != true ] && [ "$HAS_SERVICE_ACCOUNT" != true ]; then
-            echo "::error::Missing Google Search Console auth. Configure OAuth client ID/secret/refresh token."
+          STATUS=""
+          for ATTEMPT in {1..24}; do
+            STATUS="$(curl -L -sS -X POST \
+              -H "Authorization: Bearer $OIDC_TOKEN" \
+              -H "Content-Type: application/json" \
+              -o "$GSC_SNAPSHOT_INPUT" \
+              -w '%{http_code}' \
+              "$GSC_BRIDGE_URL" || true)"
+
+            if [ "$STATUS" = "200" ] &&
+               jq -e '.current14.total and .previous14.total and .current28.pages and .current28.pageQueries' "$GSC_SNAPSHOT_INPUT" >/dev/null 2>&1; then
+              echo "GSC bridge ready on attempt $ATTEMPT"
+              break
+            fi
+
+            ERROR_CODE="$(jq -r '.error // "non_json_or_unavailable"' "$GSC_SNAPSHOT_INPUT" 2>/dev/null || echo non_json_or_unavailable)"
+            echo "GSC bridge attempt=$ATTEMPT status=$STATUS error=$ERROR_CODE"
+            sleep 15
+          done
+
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::GSC bridge did not return 200 after retries (last status=$STATUS)"
             exit 1
           fi
+          jq -e '.current14.total and .previous14.total and .current28.pages and .current28.pageQueries' "$GSC_SNAPSHOT_INPUT" >/dev/null
 
-          if [ -z "$SLACK_CHATGPT_WEBHOOK_URL" ]; then
-            echo "::error::Missing SLACK_CHATGPT_WEBHOOK_URL; private GSC delivery cannot continue."
-            exit 1
-          fi
-
-      - name: Refresh GSC snapshots
+      - name: Generate privacy-safe SEO snapshots
+        shell: bash
         run: |
+          set -euo pipefail
           npm run data:gsc-daily
           npm run data:popularity
           npm run data:seo-opportunities
@@ -92,9 +101,14 @@ jobs:
           retention-days: 30
 
       - name: Post private GSC digest to NARU Slack
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
+          if [ -z "$SLACK_CHATGPT_WEBHOOK_URL" ]; then
+            echo "::warning::SLACK_CHATGPT_WEBHOOK_URL is not configured; artifact remains available."
+            exit 0
+          fi
           test -s tmp/gsc-daily-slack.txt
           jq -Rs '{text:.}' < tmp/gsc-daily-slack.txt > /tmp/gsc-slack.json
           curl --fail-with-body --silent --show-error \
@@ -105,6 +119,7 @@ jobs:
       - name: Commit privacy-safe snapshots when changed
         shell: bash
         run: |
+          set -euo pipefail
           git config user.name "naru-seo-bot"
           git config user.email "naru-seo-bot@users.noreply.github.com"
           git add data/popularity.json data/seo-opportunities.json data/gsc-signal.json
@@ -113,6 +128,8 @@ jobs:
             exit 0
           fi
           git commit -m "data: refresh Search Console SEO snapshots"
+          git fetch origin master
+          git rebase origin/master
           git push origin HEAD:master
 
       - name: Alert NARU Observer when GSC refresh fails
@@ -124,7 +141,7 @@ jobs:
             echo "::warning::SLACK_OBSERVER_WEBHOOK_URL is not configured"
             exit 0
           fi
-          TEXT="🚨 *NARU GSC snapshot failure*\nWizard非依存のSearch Console日次取得に失敗しました。\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          TEXT="🚨 *NARU GSC snapshot failure*\nGitHub OIDC→Cloudflare→Search Console日次取得に失敗しました。\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           jq -n --arg text "$TEXT" '{text:$text}' > /tmp/gsc-failure-slack.json
           curl --fail-with-body --silent --show-error \
             -H 'Content-Type: application/json' \

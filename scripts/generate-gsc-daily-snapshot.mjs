@@ -257,32 +257,49 @@ function buildSlackText(snapshot, signals) {
   return lines.join("\n");
 }
 
+async function loadSnapshotInput() {
+  const inputPath = process.env.GSC_SNAPSHOT_INPUT;
+  if (!inputPath) return null;
+
+  const resolved = path.resolve(inputPath);
+  const parsed = JSON.parse(await fs.readFile(resolved, "utf8"));
+  if (!parsed?.current14?.total || !parsed?.previous14?.total || !parsed?.current28?.pages) {
+    throw new Error("GSC_SNAPSHOT_INPUT is missing required period data");
+  }
+  return parsed;
+}
+
 export async function generateDailyGscSnapshot() {
-  const siteUrl = getSearchConsoleSiteUrl();
-  const auth = await resolveSearchConsoleAuth();
+  let snapshot = await loadSnapshotInput();
 
-  const currentEnd = pacificDateDaysAgo(3);
-  const currentStart = pacificDateDaysAgo(16);
-  const previousEnd = pacificDateDaysAgo(17);
-  const previousStart = pacificDateDaysAgo(30);
-  const current28Start = pacificDateDaysAgo(30);
+  if (!snapshot) {
+    const siteUrl = getSearchConsoleSiteUrl();
+    const auth = await resolveSearchConsoleAuth();
 
-  const [current14, previous14, current28] = await Promise.all([
-    fetchPeriod(auth, siteUrl, currentStart, currentEnd),
-    fetchPeriod(auth, siteUrl, previousStart, previousEnd),
-    fetchPeriod(auth, siteUrl, current28Start, currentEnd),
-  ]);
+    const currentEnd = pacificDateDaysAgo(3);
+    const currentStart = pacificDateDaysAgo(16);
+    const previousEnd = pacificDateDaysAgo(17);
+    const previousStart = pacificDateDaysAgo(30);
+    const current28Start = pacificDateDaysAgo(30);
 
-  const snapshot = {
-    generatedAt: new Date().toISOString(),
-    siteUrl,
-    source: "Google Search Console API",
-    dataState: "final",
-    current14,
-    previous14,
-    current28,
-  };
+    const [current14, previous14, current28] = await Promise.all([
+      fetchPeriod(auth, siteUrl, currentStart, currentEnd),
+      fetchPeriod(auth, siteUrl, previousStart, previousEnd),
+      fetchPeriod(auth, siteUrl, current28Start, currentEnd),
+    ]);
 
+    snapshot = {
+      generatedAt: new Date().toISOString(),
+      siteUrl,
+      source: "Google Search Console API",
+      dataState: "final",
+      current14,
+      previous14,
+      current28,
+    };
+  }
+
+  const { current14, previous14 } = snapshot;
   const signals = buildSignals(current14, previous14);
   delete signals._currentByQueryCount;
 

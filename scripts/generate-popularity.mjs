@@ -103,24 +103,38 @@ async function knownArticleSlugs() {
 }
 
 async function main() {
-  const siteUrl = getSearchConsoleSiteUrl();
-  const auth = await resolveSearchConsoleAuth();
+  let rows;
+  let startDate;
+  let endDate;
 
-  // GSCのデータは数日遅れるため、3日前を終了日にする
-  const endDate = daysAgo(-3);
-  const startDate = daysAgo(-30);
+  if (process.env.GSC_SNAPSHOT_INPUT) {
+    const snapshot = JSON.parse(
+      await fs.readFile(path.resolve(process.env.GSC_SNAPSHOT_INPUT), "utf8")
+    );
+    rows = snapshot?.current28?.pages ?? [];
+    startDate = snapshot?.current28?.startDate ?? "unknown";
+    endDate = snapshot?.current28?.endDate ?? "unknown";
+  } else {
+    const siteUrl = getSearchConsoleSiteUrl();
+    const auth = await resolveSearchConsoleAuth();
 
-  const response = await querySearchAnalytics(auth, siteUrl, {
-    startDate,
-    endDate,
-    dimensions: ["page"],
-    rowLimit: 500,
-    type: "web",
-    dataState: "final",
-  });
+    // GSCのデータは数日遅れるため、3日前を終了日にする
+    endDate = daysAgo(-3);
+    startDate = daysAgo(-30);
+
+    const response = await querySearchAnalytics(auth, siteUrl, {
+      startDate,
+      endDate,
+      dimensions: ["page"],
+      rowLimit: 500,
+      type: "web",
+      dataState: "final",
+    });
+    rows = response.rows ?? [];
+  }
 
   const known = await knownArticleSlugs();
-  const order = buildOrder(response.rows ?? [], known);
+  const order = buildOrder(rows, known);
 
   if (order.length === 0) {
     console.error(
