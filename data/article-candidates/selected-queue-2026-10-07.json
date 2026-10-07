@@ -10,7 +10,7 @@
       "slug": "contractor-how-to-quit",
       "title": "業務委託を辞めたい。「退職」ではなく契約解除？途中で抜ける前に確認すること",
       "genre": "通常SEO",
-      "status": "READY_FOR_SCHEDULED_PUBLISH",
+      "status": "PUBLISHED_VERIFIED",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -70,7 +70,31 @@
         ]
       },
       "blocker": null,
-      "previewApprovedHeadSha": "865b69c02f47c20a68799f1c13dfa4793269d698"
+      "previewApprovedHeadSha": "865b69c02f47c20a68799f1c13dfa4793269d698",
+      "mergeSha": "b192ecf448f06b7076289b85f62473cab32bebeb",
+      "mergedAt": "2026-10-07T03:04:37Z",
+      "productionDeployVerified": true,
+      "publicArticleVerified": true,
+      "publicUrl": "https://naru-career.com/articles/contractor-how-to-quit",
+      "production": {
+        "workflowRunId": 37565047928,
+        "status": "success",
+        "canonicalVerification": "success",
+        "verifiedAt": "2026-10-07T12:06:24+09:00",
+        "evidence": [
+          "2026-10-07T03:06:23.9868767Z article ok: contractor-how-to-quit status=200",
+          "2026-10-07T03:06:24.0990033Z image ok: contractor-how-to-quit-card status=200 bytes=108514",
+          "2026-10-07T03:06:24.2496702Z image ok: contractor-how-to-quit-01 status=200 bytes=75164",
+          "2026-10-07T03:06:24.3113404Z image ok: contractor-how-to-quit-02 status=200 bytes=70340",
+          "2026-10-07T03:06:24.3937118Z image ok: contractor-how-to-quit-03 status=200 bytes=98224"
+        ]
+      },
+      "publishWindow": {
+        "requestedAt": "2026-10-07T12:00:00+09:00",
+        "actualMergeAt": "2026-10-07T03:04:37Z",
+        "status": "PUBLISHED_LATE",
+        "mergeDelaySeconds": 277
+      }
     },
     {
       "order": 2,
