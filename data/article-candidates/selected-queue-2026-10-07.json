@@ -104,7 +104,7 @@
       "slug": "contractor-attendance-control-worker-status",
       "title": "業務委託なのに9時出社・勤怠管理・上司の指示。どこまでなら普通？",
       "genre": "通常SEO",
-      "status": "MERGED_PRODUCTION_PENDING",
+      "status": "PUBLISHED_VERIFIED",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -186,7 +186,7 @@
         },
         "agentBrowserVisual": "unverified_browser_transport_disconnected"
       },
-      "blocker": "Cloudflare本番デプロイ・canonical検証待ち",
+      "blocker": null,
       "previewUrl": "https://naru-pr-156-preview.broad-fuchsia.workers.dev/articles/contractor-attendance-control-worker-status",
       "previewApprovedHeadSha": "63e07bbc440ee664efc9fe92790380ae1255bd30",
       "publishAutomation": {
@@ -194,7 +194,24 @@
         "scheduledAt": "2026-10-07T18:00:00+09:00",
         "approvedHeadSha": "63e07bbc440ee664efc9fe92790380ae1255bd30"
       },
-      "mergeSha": "1287aa45d749db9ebafa23a5f0f06a2b7f93802c"
+      "mergeSha": "1287aa45d749db9ebafa23a5f0f06a2b7f93802c",
+      "mergedAt": "2026-10-07T09:00:21Z",
+      "productionDeployVerified": true,
+      "publicArticleVerified": true,
+      "publicUrl": "https://naru-career.com/articles/contractor-attendance-control-worker-status",
+      "production": {
+        "workflowRunId": 37597598052,
+        "status": "success",
+        "canonicalVerification": "success",
+        "verifiedAt": "2026-10-07T18:02:44+09:00",
+        "evidence": [
+          "2026-10-07T09:02:42.8309607Z article ok: contractor-attendance-control-worker-status status=200",
+          "2026-10-07T09:02:43.1257678Z image ok: contractor-attendance-control-worker-status-card status=200 bytes=98668",
+          "2026-10-07T09:02:43.7180836Z image ok: contractor-attendance-control-worker-status-01 status=200 bytes=71540",
+          "2026-10-07T09:02:44.0702107Z image ok: contractor-attendance-control-worker-status-02 status=200 bytes=93296",
+          "2026-10-07T09:02:44.3886923Z image ok: contractor-attendance-control-worker-status-03 status=200 bytes=88616"
+        ]
+      }
     }
   ],
   "strategyNote": "2026-10-06 GSC再分析により公開順を 065→067→068→066 へ変更。ID/PRは維持。"
