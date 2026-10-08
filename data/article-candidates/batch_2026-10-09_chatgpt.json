@@ -1,0 +1,106 @@
+{
+  "batchId": "batch_2026-10-09_chatgpt",
+  "generatedAt": "2026-10-09T08:00:00+09:00",
+  "trigger": "cron",
+  "inventorySize": 66,
+  "nextArticleId": 70,
+  "candidates": [
+    {
+      "id": "cand_261009a_offer_letter_missing",
+      "title": "労働条件通知書を内定承諾前にもらえない。返事をする前にどう頼む？",
+      "primaryKeyword": "労働条件通知書 内定承諾前",
+      "secondaryKeywords": [
+        "労働条件通知書 もらえない",
+        "内定承諾前 労働条件 確認",
+        "労働条件通知書 依頼 メール"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規専用記事。既存offer-acceptance-checksは給与・配属・研修を含む総合確認。本候補は書面が未提示で承諾期限が迫る場面、依頼文、内定時の契約成立と条件明示時期に限定。PR163は年収内部リンク追加のみで本意図の制作ではない。総合チェックリストを複製しない。",
+      "reasonToWriteNow": "最新取得成功GSCの確定9/21〜10/4で当該query2表示・0click・23.5位。母数は小さく需要確定とは扱わないが、第2クラスターの未充足手続意図を検証できる。厚労省の内定時契約成立資料で時期の誤解を解く。",
+      "category": "業界解説",
+      "proposedSlug": "offer-letter-before-acceptance-not-provided",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-offer-acceptance-checks"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "労働条件通知書 内定承諾前",
+        "impressions": 2,
+        "clicks": 0,
+        "position": 23.5,
+        "window": "2026-09-21〜2026-10-04"
+      },
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261009b_termination_rewrite",
+      "title": "【既存改善】業務委託の契約を突然切られたら？30日前予告と労働者性の確認順",
+      "primaryKeyword": "フリーランス 契約解除",
+      "secondaryKeywords": [
+        "業務委託 契約解除",
+        "業務委託 契約終了 突然"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規記事ではなくoutsourcing-contract-termination-worker-statusのリライト候補。発注側から終了を告げられた人に限定。本人から辞める065、切替前の親記事、勤務実態067、有給068、失業手当066を増設・再生成しない。",
+      "reasonToWriteNow": "同ページ27表示・0click・16.3位、queryフリーランス契約解除3表示・0click・47.7位。ページ平均とquery順位を混同せず、冒頭の行動順と30日前義務の条件・例外を明瞭化し、公開済み子記事とのリンクを補完する。",
+      "category": "業界解説",
+      "proposedSlug": "outsourcing-contract-termination-worker-status",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "outsourcing-contract-termination-worker-status",
+        "contractor-how-to-quit",
+        "business-outsourcing-conversion-risk"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "フリーランス 契約解除",
+        "impressions": 3,
+        "clicks": 0,
+        "position": 47.7,
+        "window": "2026-09-21〜2026-10-04"
+      },
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261009c_sns_rewrite",
+      "title": "【既存改善】採用のSNS・裏アカ調査はどこまで？同意を求められたときの確認点",
+      "primaryKeyword": "SNS調査 裏アカ調査 採用",
+      "secondaryKeywords": [
+        "転職 SNS 調査",
+        "裏アカ 調査 同意"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "second-new-grad-sns-background-checkを改善する候補。新規URLを作らず、冒頭の記念日依存を外し、公開SNS閲覧と匿名アカウント特定、同意時に聞く質問を優先。reference-check-explainedの第三者照会とは分離する。",
+      "reasonToWriteNow": "同ページ8表示・0click・9.6位。queryはprivacy-safe signalで21〜40位、新規表示と確認。露出は小さいため成功断定しないが、既存URLの検索意図を具体化する検証対象。大阪労働局の求職者資料を再確認済み。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-sns-background-check",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-sns-background-check",
+        "reference-check-explained"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "最新成功SEO Opportunity Snapshot run37716802831（2026-10-08 11:13 JST）、signal generatedAt2026-10-08T02:14:10.003Z。10/9 07:35当日成功runは確認できず。現時点の最新取得済みデータを使用し、当日取得と誤記しない。",
+    "Slack NARU_GSC_DAILY 2026-10-08 11:14 JST: 確定9/21〜10/4 vs9/7〜9/20。総表示297vs166、click9vs4、CTR3.03%vs2.41%、Top3=5vs0、Top10=10vs1、Top20=13vs2、新規可視query21。可視行は全クエリ母数ではない。",
+    "新規1件、既存改善2件。候補2/3は新規採番・重複URLを作らない。時事枠の未確認トレンドは数合わせで追加しない。",
+    "065/067/068/066はmaster掲載・queue公開済み、069はPR171最新head承認済み未公開・日時未指定のため再選定させない。",
+    "Google Trends、Google SERP順位、PAA/サジェストは未取得。公式資料をWeb検索で検証したがSEO無料シグナル取得と混同せず、採点は省略。",
+    "一次資料: https://www.mhlw.go.jp/new-info/kobetu/roudou/gyousei/dl/201712_saiyounaitei.pdf ; https://jsite.mhlw.go.jp/nara-roudoukyoku/content/contents/002320401.pdf ; https://jsite.mhlw.go.jp/osaka-roudoukyoku/content/contents/001878463.pdf",
+    "WBS候補判定10/9、着手はユーザー選定後。新規通知書記事は総合offer記事と範囲分離が崩れれば新規作成を中止し既存改修へ切替。"
+  ]
+}
