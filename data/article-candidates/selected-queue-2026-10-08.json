@@ -149,7 +149,7 @@
       "slug": "employee-to-contractor-unemployment-benefit",
       "title": "正社員から業務委託に変わると失業手当はどうなる？退職から自営開始までの境目を確認",
       "genre": "通常SEO",
-      "status": "QA_IN_PROGRESS",
+      "status": "WAITING_USER_PREVIEW",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -173,24 +173,40 @@
         "articleDraftReadback": true,
         "imagePromptsReadback": false,
         "generatedImagesProvided": true,
-        "previewVisual": "not_requested",
+        "previewVisual": "requested",
         "humanFactCheck": {
           "status": "pending",
           "headSha": null
         },
         "internalLinksVerified": true,
         "frontmatterVerified": true,
-        "fullLocalQaPassed": false,
-        "cloudflarePreview": "in_progress",
-        "checks": [],
+        "fullLocalQaPassed": true,
+        "cloudflarePreview": "success",
+        "checks": [
+          {
+            "name": "Article Factory Validation",
+            "runId": 37789509125,
+            "status": "completed",
+            "conclusion": "success",
+            "headSha": "334ee9f94a2ee5b5c4fe457adfe34e38c92c0090"
+          },
+          {
+            "name": "NARU article Cloudflare preview",
+            "runId": 37789509235,
+            "status": "completed",
+            "conclusion": "success",
+            "headSha": "334ee9f94a2ee5b5c4fe457adfe34e38c92c0090"
+          }
+        ],
         "imageQa": {
           "status": "passed",
           "headSha": "334ee9f94a2ee5b5c4fe457adfe34e38c92c0090",
           "metadata": "none",
           "dimensions": "card1200x630/body1200x675"
-        }
+        },
+        "previewUrl": "https://naru-pr-155-preview.broad-fuchsia.workers.dev/articles/employee-to-contractor-unemployment-benefit"
       },
-      "blocker": "18:00枠は遅延。最新headのCI・Cloudflare Preview・ユーザーFact Check/表示承認待ち。新たな公開時刻指定が必要",
+      "blocker": "18:00枠は遅延。技術QA成功、ユーザーHuman Fact Check/最新head表示承認と新たな公開時刻指定待ち",
       "imageFiles": {
         "employee-to-contractor-unemployment-benefit-03.webp": "1_oKotHl-_gpLquAqSFG-IdznT3HVvMme",
         "employee-to-contractor-unemployment-benefit-02.webp": "19yU1Nk3hrRcRCNuCBw8P_u2XxSFg-MbP",
