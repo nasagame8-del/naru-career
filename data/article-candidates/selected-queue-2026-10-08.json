@@ -149,7 +149,7 @@
       "slug": "employee-to-contractor-unemployment-benefit",
       "title": "正社員から業務委託に変わると失業手当はどうなる？退職から自営開始までの境目を確認",
       "genre": "通常SEO",
-      "status": "WAITING_IMAGES",
+      "status": "QA_IN_PROGRESS",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -158,21 +158,21 @@
       "prNumber": 155,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/155",
       "branch": "article-factory/2026-10-07-066-unemployment-benefit",
-      "latestHeadSha": "c1e6f37b2541afe5f1028f7c521ace18da1585d3",
+      "latestHeadSha": "334ee9f94a2ee5b5c4fe457adfe34e38c92c0090",
       "articleDriveFolderId": "1C8ajHc5b5xTGJ6nU5ozkVzSIOLPlcAsr",
       "imagesDriveFolderId": "1WEPcXPug8d4AH5ZS6F4GF71TGqDYc3Hm",
       "originalsDriveFolderId": "13inAubQKpYQwdgQsJ8lzcGST0sQhWCQB",
       "files": {
         "article": "1YhdAQrSxdSV_wTwGzx8WRS3B1LKXrAzv5tP71Fq04xM",
         "imagePlan": "1e5kZPp9fFfpApp_bKg_hbpos5d2yxWCa1JainydgyNQ",
-        "articlePromptCopy": null,
-        "designPrompt": null
+        "articlePromptCopy": "1MHwp5z1NWnbM4cGFdCOGbQQyfTbpPf7r",
+        "designPrompt": "1TcyNVk6tNgTjYA0wgB8PzPGh2PXBNFXf"
       },
       "qa": {
         "sourceUrlsVerified": true,
         "articleDraftReadback": true,
         "imagePromptsReadback": false,
-        "generatedImagesProvided": false,
+        "generatedImagesProvided": true,
         "previewVisual": "not_requested",
         "humanFactCheck": {
           "status": "pending",
@@ -181,23 +181,26 @@
         "internalLinksVerified": true,
         "frontmatterVerified": true,
         "fullLocalQaPassed": false,
-        "cloudflarePreview": "blocked_missing_images",
-        "checks": [
-          {
-            "name": "article-factory-validation",
-            "status": "pending_after_schedule_update",
-            "conclusion": null,
-            "headSha": "c1e6f37b2541afe5f1028f7c521ace18da1585d3"
-          },
-          {
-            "name": "preview",
-            "status": "pending_after_schedule_update",
-            "conclusion": null,
-            "headSha": "c1e6f37b2541afe5f1028f7c521ace18da1585d3"
-          }
-        ]
+        "cloudflarePreview": "in_progress",
+        "checks": [],
+        "imageQa": {
+          "status": "passed",
+          "headSha": "334ee9f94a2ee5b5c4fe457adfe34e38c92c0090",
+          "metadata": "none",
+          "dimensions": "card1200x630/body1200x675"
+        }
       },
-      "blocker": "画像生成プロンプトと画像4枚は2026-10-07に実施予定。公開順変更後のfrontmatter更新済み。現時点ではマージ禁止。"
+      "blocker": "18:00枠は遅延。最新headのCI・Cloudflare Preview・ユーザーFact Check/表示承認待ち。新たな公開時刻指定が必要",
+      "imageFiles": {
+        "employee-to-contractor-unemployment-benefit-03.webp": "1_oKotHl-_gpLquAqSFG-IdznT3HVvMme",
+        "employee-to-contractor-unemployment-benefit-02.webp": "19yU1Nk3hrRcRCNuCBw8P_u2XxSFg-MbP",
+        "employee-to-contractor-unemployment-benefit-01.webp": "1NGGtPtORVpODoOxSWRg2MPTAvj4ShzKC",
+        "employee-to-contractor-unemployment-benefit-card.webp": "1e5lp7HvLZbtBF9y5M4ix87nPmw1Gib-z",
+        "employee-to-contractor-unemployment-benefit-03-original.jpeg": "1Srnre94IPT2JkYac1FxxJgmfuegYYLJb",
+        "employee-to-contractor-unemployment-benefit-02-original.jpeg": "1kDhngcktwgEWm2F_l7YkTBISqvd6dnkP",
+        "employee-to-contractor-unemployment-benefit-01-original.jpeg": "15kwt2gy6vYufOKDJuIS9VzQ6PQdF1GmT",
+        "employee-to-contractor-unemployment-benefit-card-original.jpeg": "1Wkz1j5b8H5vIx4LooLWZRArBNtksTzcp"
+      }
     }
   ],
   "strategyNote": "2026-10-06 GSC再分析により公開順を 065→067→068→066 へ変更。ID/PRは維持。"
