@@ -41,17 +41,31 @@
         },
         "internalLinksVerified": true,
         "frontmatterVerified": true,
-        "fullLocalQaPassed": false,
-        "cloudflarePreview": "pending",
-        "checks": [],
+        "fullLocalQaPassed": true,
+        "cloudflarePreview": "retrying_category_initial_404",
+        "checks": [
+          {
+            "name": "Article Factory Validation",
+            "status": "completed",
+            "conclusion": "success",
+            "headSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
+            "runId": 37725773340
+          }
+        ],
         "imageQa": {
           "status": "passed",
           "headSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
           "dimensions": "card1200x630/body1200x675",
           "metadata": "none"
-        }
+        },
+        "articleQa": {
+          "status": "passed",
+          "headSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
+          "runId": 37725773340
+        },
+        "previewUrl": "https://naru-pr-157-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime"
       },
-      "blocker": "最新headのCI・Cloudflare Preview・ユーザーFact Check/表示承認待ち",
+      "blocker": "Cloudflare Previewカテゴリ初回404の再実行中。Human Fact Check/Preview承認待ち。14時公開予約はタスク上限で未成立",
       "imageFiles": {
         "contractor-paid-leave-overtime-card-original.jpeg": "1Fiit8E5jrvQN5stis-8Q-7ZN4XOL62RE",
         "contractor-paid-leave-overtime-card.webp": "1UAzZK6mVv7jQOw60xU3SWPxEw2v7IL9v",
@@ -65,6 +79,11 @@
       "publishReschedule": {
         "userText": "12時枠のやつ。14:00に出して",
         "date": "2026-10-08"
+      },
+      "scheduledTask": {
+        "status": "creation_failed",
+        "reason": "too_many_active_automations",
+        "limit": 5
       }
     },
     {
