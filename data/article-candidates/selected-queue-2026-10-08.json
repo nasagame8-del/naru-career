@@ -10,7 +10,7 @@
       "slug": "contractor-paid-leave-overtime",
       "title": "正社員から業務委託になると有給・残業代はなくなる？「休める」と「有給」の違い",
       "genre": "通常SEO",
-      "status": "MERGED_DEPLOYING",
+      "status": "PUBLISHED",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -83,7 +83,7 @@
           "previewUrl": "https://naru-pr-157-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime"
         }
       },
-      "blocker": "merge済み。本番Cloudflare deploy/canonical検証待ち",
+      "blocker": null,
       "imageFiles": {
         "contractor-paid-leave-overtime-card-original.jpeg": "1Fiit8E5jrvQN5stis-8Q-7ZN4XOL62RE",
         "contractor-paid-leave-overtime-card.webp": "1UAzZK6mVv7jQOw60xU3SWPxEw2v7IL9v",
@@ -107,7 +107,39 @@
       },
       "previewApprovedHeadSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
       "mergeSha": "8ffc1f6ebbc47c5575b269411bf7631255820e4d",
-      "deployRunId": 37726745271
+      "deployRunId": 37726745271,
+      "publishedAt": "2026-10-08T13:19:17+09:00",
+      "productionUrl": "https://naru-career.com/articles/contractor-paid-leave-overtime",
+      "publication": {
+        "status": "verified",
+        "mergeSha": "8ffc1f6ebbc47c5575b269411bf7631255820e4d",
+        "runId": 37726745271,
+        "jobId": 113146532831,
+        "runUrl": "https://github.com/nasagame8-del/naru-career/actions/runs/37726745271",
+        "deploy": "completed/success",
+        "canonicalVerification": "completed/success",
+        "articleStatus": 200,
+        "images": {
+          "card": {
+            "status": 200,
+            "bytes": 88890
+          },
+          "01": {
+            "status": 200,
+            "bytes": 71488
+          },
+          "02": {
+            "status": 200,
+            "bytes": 105930
+          },
+          "03": {
+            "status": 200,
+            "bytes": 106116
+          }
+        },
+        "verifiedAt": "2026-10-08T13:19:17+09:00",
+        "workerVersionId": "0f128416-78d7-4f34-b5d6-ecbf41c9cfcd"
+      }
     },
     {
       "order": 2,
