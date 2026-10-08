@@ -10,12 +10,12 @@
       "slug": "contractor-paid-leave-overtime",
       "title": "正社員から業務委託になると有給・残業代はなくなる？「休める」と「有給」の違い",
       "genre": "通常SEO",
-      "status": "APPROVED_WAITING_SCHEDULE",
+      "status": "MERGED_DEPLOYING",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
       },
-      "requestedPublish": "2026-10-08T14:00:00+09:00",
+      "requestedPublish": "2026-10-08T13:16:26+09:00",
       "prNumber": 157,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/157",
       "branch": "article-factory/2026-10-08-068-paid-leave-overtime",
@@ -83,7 +83,7 @@
           "previewUrl": "https://naru-pr-157-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime"
         }
       },
-      "blocker": "本文Fact Check・画像/表示はユーザー承認済み。14:00公開予約のみタスク上限5件で未成立",
+      "blocker": "merge済み。本番Cloudflare deploy/canonical検証待ち",
       "imageFiles": {
         "contractor-paid-leave-overtime-card-original.jpeg": "1Fiit8E5jrvQN5stis-8Q-7ZN4XOL62RE",
         "contractor-paid-leave-overtime-card.webp": "1UAzZK6mVv7jQOw60xU3SWPxEw2v7IL9v",
@@ -95,15 +95,19 @@
         "contractor-paid-leave-overtime-03.webp": "1pk-B1y6ivI_uAp_jgyj29vsG4dw2JCP7"
       },
       "publishReschedule": {
-        "userText": "12時枠のやつ。14:00に出して",
-        "date": "2026-10-08"
+        "userText": "なら今出して",
+        "requestedAt": "2026-10-08T13:16:26+09:00",
+        "previousRequestedPublish": "2026-10-08T14:00:00+09:00"
       },
       "scheduledTask": {
         "status": "creation_failed",
         "reason": "too_many_active_automations",
-        "limit": 5
+        "limit": 5,
+        "resolution": "user_requested_immediate_publish_no_task_needed"
       },
-      "previewApprovedHeadSha": "3d0f927135c2ba09947bc775f26b9163ab139f30"
+      "previewApprovedHeadSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
+      "mergeSha": "8ffc1f6ebbc47c5575b269411bf7631255820e4d",
+      "deployRunId": 37726745271
     },
     {
       "order": 2,
