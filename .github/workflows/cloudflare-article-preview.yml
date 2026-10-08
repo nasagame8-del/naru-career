@@ -62,7 +62,7 @@ jobs:
 
           # UI-only branches preview an existing representative article.
           # Article PRs still require exactly one changed Markdown file.
-          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* ]]; then
+          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* || "$HEAD_REF" == fix/* ]]; then
             ARTICLES=("content/articles/employee-contractor-pay-comparison.md")
             test -s "${ARTICLES[0]}"
           fi
@@ -125,19 +125,44 @@ jobs:
           if (!fs.existsSync(builtHtml)) throw new Error('Built article HTML not found: ' + builtHtml);
 
           const articleHtml = fs.readFileSync(builtHtml, 'utf8');
+          const categoryDir = '.next/server/app/category';
+          const categoryHtml = {};
+          function collectCategoryHtml(dir) {
+            if (!fs.existsSync(dir)) return;
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = dir + '/' + entry.name;
+              if (entry.isDirectory()) {
+                collectCategoryHtml(full);
+                continue;
+              }
+              if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
+              const name = entry.name.replace(/\.html$/, '');
+              if (!/^[a-z0-9-]+$/.test(name)) continue;
+              categoryHtml['/category/' + name] = fs.readFileSync(full, 'utf8');
+            }
+          }
+          collectCategoryHtml(categoryDir);
           const embeddedHtml = JSON.stringify(articleHtml);
+          const embeddedCategories = JSON.stringify(categoryHtml);
           fs.writeFileSync('.open-next/article-preview.js', `
           import worker from './worker.js';
           const ARTICLE_HTML = ${embeddedHtml};
+          const CATEGORY_HTML = ${embeddedCategories};
           export default {...worker, async fetch(request, env, ctx) {
             const url = new URL(request.url);
             if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
               return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
             const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
             const articleRequest = url.pathname === '/articles/${slug}';
+            const categoryPage = CATEGORY_HTML[url.pathname];
             let response;
             if (articleRequest) {
               response = new Response(request.method === 'HEAD' ? null : ARTICLE_HTML, {
+                status: 200,
+                headers: {'Content-Type':'text/html; charset=utf-8'}
+              });
+            } else if (categoryPage) {
+              response = new Response(request.method === 'HEAD' ? null : categoryPage, {
                 status: 200,
                 headers: {'Content-Type':'text/html; charset=utf-8'}
               });
@@ -200,6 +225,31 @@ jobs:
           test "$STATUS" = "200"
           grep -qi '<h1' /tmp/preview-article.html || { echo "::error::article HTML is missing <h1>"; exit 1; }
           grep -qi 'x-robots-tag: noindex' /tmp/preview-headers || { echo "::error::article response is missing X-Robots-Tag noindex"; exit 1; }
+          grep -q 'GTM-KWH6XZJR' /tmp/preview-article.html || { echo "::error::preview HTML is missing GTM-KWH6XZJR"; exit 1; }
+
+          CATEGORY_PATH="$(node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const file = process.env.ARTICLE_SLUG;
+          const raw = fs.readFileSync('content/articles/' + file + '.md', 'utf8');
+          const m = raw.match(/^category:\s*["']?([^"'\r\n]+)["']?\s*$/m);
+          const name = m?.[1]?.trim() || '';
+          const map = {
+            '体験談': 'taiken',
+            'エージェント比較': 'agent-comparison',
+            '業界解説': 'industry-guide',
+            '独自調査': 'original-research',
+            '雑記': 'zakki'
+          };
+          process.stdout.write(map[name] ? '/category/' + map[name] : '');
+          NODE
+          )"
+          if [ -n "$CATEGORY_PATH" ]; then
+            CATEGORY_STATUS="$(curl -sS -o /tmp/preview-category.html -w '%{http_code}' "$URL$CATEGORY_PATH")"
+            echo "category path=$CATEGORY_PATH status=$CATEGORY_STATUS"
+            test "$CATEGORY_STATUS" = "200"
+            grep -q "$ARTICLE_SLUG" /tmp/preview-category.html || { echo "::error::category preview is missing article slug $ARTICLE_SLUG"; exit 1; }
+          fi
+
           for SLOT in card 01 02 03; do
             IMAGE_STATUS=""
             for ATTEMPT in {1..6}; do

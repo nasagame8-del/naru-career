@@ -21,6 +21,7 @@ faq:
   - question: "業務委託でも再就職手当は対象になりますか？"
     answer: "自営の開始でも、1年を超えて事業を安定的に継続できると認められる場合など、要件を満たせば再就職手当を申請できる場合があります。必要書類や個別判断はハローワークへ確認してください。"
 cta_agents: []
+hero: "/images/articles/employee-to-contractor-unemployment-benefit-card.webp"
 note_published: false
 ---
 
@@ -49,6 +50,8 @@ note_published: false
 
 （出典：[厚生労働省「Q＆A～労働者の皆様へ（基本手当、再就職手当）」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000139508.html)）
 
+![失業手当の判断に必要な働く意思・能力・求職活動](/images/articles/employee-to-contractor-unemployment-benefit-01.webp)
+
 ## 正社員から業務委託へ切り替えるときは「空白期間」を見る
 
 同じ「正社員から業務委託」でも、実際の流れは人によって違います。
@@ -70,6 +73,8 @@ note_published: false
 副次的な仕事として業務委託をするのか、事業へ専念しているのかで扱いが変わる可能性があります。
 
 何時間なら大丈夫、いくらまでなら大丈夫というネット上の断片的な数字だけで判断せず、実際の契約と活動状況をハローワークへ伝えます。
+
+![退職・求職・業務委託開始と申告の境目](/images/articles/employee-to-contractor-unemployment-benefit-02.webp)
 
 ## 事業を始めたら「受給期間の特例」を確認する
 
@@ -106,6 +111,8 @@ note_published: false
 再就職手当には基本手当の支給残日数など複数の要件があります。業務委託契約書があるだけで自動的に対象になるわけではありません。
 
 申請前にハローワークで自分の状況を確認してください。
+
+![自営開始後に確認する受給期間の特例と再就職手当](/images/articles/employee-to-contractor-unemployment-benefit-03.webp)
 
 ## 雇用保険と健康保険・年金は別の手続き
 

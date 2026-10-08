@@ -12,6 +12,11 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import {
+  getSearchConsoleSiteUrl,
+  querySearchAnalytics,
+  resolveSearchConsoleAuth,
+} from "./lib/gsc-auth.mjs";
 
 const RUN_DIR = path.join(process.cwd(), "data", "seo-runs");
 const OUT_DIR = path.join(process.cwd(), "data", "seo-experiments");
@@ -116,28 +121,25 @@ async function readRuns() {
   return runs;
 }
 
-async function queryWindow(searchconsole, siteUrl, query, relatedPages, window) {
-  const res = await searchconsole.searchanalytics.query({
-    siteUrl,
-    requestBody: {
-      startDate: window.startDate,
-      endDate: window.endDate,
-      dimensions: ["query", "page"],
-      dimensionFilterGroups: [{
-        filters: [{
-          dimension: "query",
-          operator: "equals",
-          expression: query,
-        }],
+async function queryWindow(auth, siteUrl, query, relatedPages, window) {
+  const res = await querySearchAnalytics(auth, siteUrl, {
+    startDate: window.startDate,
+    endDate: window.endDate,
+    dimensions: ["query", "page"],
+    dimensionFilterGroups: [{
+      filters: [{
+        dimension: "query",
+        operator: "equals",
+        expression: query,
       }],
-      rowLimit: 25000,
-      type: "web",
-      dataState: "final",
-    },
+    }],
+    rowLimit: 25000,
+    type: "web",
+    dataState: "final",
   });
 
   const allowed = new Set(relatedPages || []);
-  const rows = (res.data.rows || [])
+  const rows = (res.rows || [])
     .map((r) => ({
       query: r.keys?.[0] || "",
       page: r.keys?.[1] || "",
@@ -151,7 +153,7 @@ async function queryWindow(searchconsole, siteUrl, query, relatedPages, window) 
   return summarizeRows(rows);
 }
 
-async function measureRun(searchconsole, siteUrl, run) {
+async function measureRun(auth, siteUrl, run) {
   const anchor = await resolveAnchorDate(run);
   const runDate = anchor.date;
   const relatedPages = run.selectedTopic?.relatedPages || [];
@@ -162,7 +164,7 @@ async function measureRun(searchconsole, siteUrl, run) {
   const baselineByQuery = {};
   for (const query of queries) {
     baselineByQuery[query] = await queryWindow(
-      searchconsole,
+      auth,
       siteUrl,
       query,
       relatedPages,
@@ -182,7 +184,7 @@ async function measureRun(searchconsole, siteUrl, run) {
 
     const byQuery = {};
     for (const query of queries) {
-      const current = await queryWindow(searchconsole, siteUrl, query, relatedPages, range);
+      const current = await queryWindow(auth, siteUrl, query, relatedPages, range);
       byQuery[query] = {
         ...current,
         delta: delta(current, baselineByQuery[query]),
@@ -204,28 +206,14 @@ async function measureRun(searchconsole, siteUrl, run) {
 }
 
 async function main() {
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n");
-  const siteUrl = process.env.SEARCH_CONSOLE_SITE_URL;
-  if (!email || !privateKey || !siteUrl) {
-    throw new Error(
-      "GSC環境変数が未設定です（GOOGLE_SERVICE_ACCOUNT_EMAIL / GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY / SEARCH_CONSOLE_SITE_URL）"
-    );
-  }
-
-  const { google } = await import("googleapis");
-  const auth = new google.auth.JWT({
-    email,
-    key: privateKey,
-    scopes: ["https://www.googleapis.com/auth/webmasters.readonly"],
-  });
-  const searchconsole = google.searchconsole({ version: "v1", auth });
+  const siteUrl = getSearchConsoleSiteUrl();
+  const auth = await resolveSearchConsoleAuth();
 
   const runs = await readRuns();
   await fs.mkdir(OUT_DIR, { recursive: true });
 
   for (const run of runs) {
-    const result = await measureRun(searchconsole, siteUrl, run);
+    const result = await measureRun(auth, siteUrl, run);
     if (!result) continue;
     const out = path.join(OUT_DIR, `${run.id}.json`);
     await fs.writeFile(out, JSON.stringify(result, null, 2) + "\n", "utf8");
