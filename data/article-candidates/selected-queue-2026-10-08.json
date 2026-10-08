@@ -149,7 +149,7 @@
       "slug": "employee-to-contractor-unemployment-benefit",
       "title": "正社員から業務委託に変わると失業手当はどうなる？退職から自営開始までの境目を確認",
       "genre": "通常SEO",
-      "status": "APPROVED",
+      "status": "MERGED_DEPLOYING",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -209,7 +209,7 @@
         "previewUrl": "https://naru-pr-155-preview.broad-fuchsia.workers.dev/articles/employee-to-contractor-unemployment-benefit",
         "previewApprovedHeadSha": "334ee9f94a2ee5b5c4fe457adfe34e38c92c0090"
       },
-      "blocker": null,
+      "blocker": "本番Cloudflare deploy/canonical検証待ち",
       "imageFiles": {
         "employee-to-contractor-unemployment-benefit-03.webp": "1_oKotHl-_gpLquAqSFG-IdznT3HVvMme",
         "employee-to-contractor-unemployment-benefit-02.webp": "19yU1Nk3hrRcRCNuCBw8P_u2XxSFg-MbP",
@@ -226,7 +226,9 @@
         "context": "066問題ない、今公開への返答",
         "requestedAt": "2026-10-08T23:10:25+09:00",
         "previousRequestedPublish": "2026-10-08T18:00:00+09:00"
-      }
+      },
+      "mergeSha": "dd3ecfdc7481e22686593d8e9ff4d098df4a0f36",
+      "deployRunId": 37790401015
     }
   ],
   "strategyNote": "2026-10-06 GSC再分析により公開順を 065→067→068→066 へ変更。ID/PRは維持。"
