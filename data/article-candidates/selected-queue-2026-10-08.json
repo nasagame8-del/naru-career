@@ -10,7 +10,7 @@
       "slug": "contractor-paid-leave-overtime",
       "title": "正社員から業務委託になると有給・残業代はなくなる？「休める」と「有給」の違い",
       "genre": "通常SEO",
-      "status": "WAITING_USER_PREVIEW",
+      "status": "APPROVED_WAITING_SCHEDULE",
       "selectionApproval": {
         "userText": "記事まで作っといて。画像とか明日やるから",
         "approvedAt": "2026-10-06"
@@ -34,10 +34,12 @@
         "articleDraftReadback": true,
         "imagePromptsReadback": true,
         "generatedImagesProvided": true,
-        "previewVisual": "requested",
+        "previewVisual": "passed",
         "humanFactCheck": {
-          "status": "pending",
-          "headSha": null
+          "status": "passed",
+          "headSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
+          "userText": "OK",
+          "approvedAt": "2026-10-08T13:13:40+09:00"
         },
         "internalLinksVerified": true,
         "frontmatterVerified": true,
@@ -71,9 +73,17 @@
           "headSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
           "runId": 37725773340
         },
-        "previewUrl": "https://naru-pr-157-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime"
+        "previewUrl": "https://naru-pr-157-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime",
+        "previewApprovedHeadSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
+        "previewApproval": {
+          "status": "passed",
+          "headSha": "3d0f927135c2ba09947bc775f26b9163ab139f30",
+          "userText": "OK",
+          "approvedAt": "2026-10-08T13:13:40+09:00",
+          "previewUrl": "https://naru-pr-157-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime"
+        }
       },
-      "blocker": "Human Fact Check・最新headプレビューのユーザー承認待ち。14:00公開予約はタスク上限で未成立",
+      "blocker": "本文Fact Check・画像/表示はユーザー承認済み。14:00公開予約のみタスク上限5件で未成立",
       "imageFiles": {
         "contractor-paid-leave-overtime-card-original.jpeg": "1Fiit8E5jrvQN5stis-8Q-7ZN4XOL62RE",
         "contractor-paid-leave-overtime-card.webp": "1UAzZK6mVv7jQOw60xU3SWPxEw2v7IL9v",
@@ -92,7 +102,8 @@
         "status": "creation_failed",
         "reason": "too_many_active_automations",
         "limit": 5
-      }
+      },
+      "previewApprovedHeadSha": "3d0f927135c2ba09947bc775f26b9163ab139f30"
     },
     {
       "order": 2,
