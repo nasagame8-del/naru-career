@@ -59,6 +59,10 @@
   /* 補助色: 雑記カテゴリ */
   --color-navy: #2F4A6B;
   --color-navy-soft: #E4EAF1;
+  /* 補助色: 独自調査カテゴリ */
+  --color-research: #7A4E61;
+  --color-research-soft: #F1E5EA;
+  --color-research-ink: #633F4F;
   /* 成功・完了などの状態表示 */
   --color-sage: #5E7F68;
   --color-sage-soft: #E5EDE7;

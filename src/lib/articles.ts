@@ -144,7 +144,7 @@ export type InlineFAQ = {
   answer: string;
 };
 
-export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "雑記";
+export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "独自調査" | "雑記";
 
 /** 主カテゴリに、frontmatter.subCategories（追加で掲載するカテゴリ）を重複なしで足す */
 function resolveCategories(
@@ -181,6 +181,14 @@ export type ArticleMeta = {
   cardImagePath: string | null;
   heroImagePath: string | null;
 };
+
+/** 主カテゴリを常に優先し、subCategories も含めて所属判定する */
+export function articleHasCategory(
+  article: Pick<ArticleMeta, "category" | "categories">,
+  category: ArticleCategory
+): boolean {
+  return article.category === category || article.categories.includes(category);
+}
 
 export type Heading = {
   id: string;

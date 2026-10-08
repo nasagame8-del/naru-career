@@ -21,6 +21,7 @@ faq:
   - question: "業務委託なのに毎日9時から18時まで働かされる場合は？"
     answer: "勤務時間・場所の指定や具体的な指揮命令は労働者性を判断する要素です。一つの事情だけでは決まりませんが、契約書と実際の働き方を整理し、必要なら労働基準監督署の相談窓口へ確認してください。"
 cta_agents: []
+hero: "/images/articles/contractor-paid-leave-overtime-card.webp"
 note_published: false
 ---
 
@@ -61,6 +62,8 @@ note_published: false
 この制度は「労働者」に対するものです。
 
 真正な業務委託で働く事業者については、同じ仕組みの法定年休が当然に発生するという前提ではなく、休業日の扱いや報酬を契約条件として確認する必要があります。
+
+![業務委託の休みと年次有給休暇を比較する図](/images/articles/contractor-paid-leave-overtime-01.webp)
 
 ## 正社員から切り替わる前に残っている有給を確認する
 
@@ -130,6 +133,8 @@ note_published: false
 
 を文字で確認しておくと、後から「月額に全部含まれている」と言われるリスクを減らせます。
 
+![業務委託の追加稼働で確認する報酬条件](/images/articles/contractor-paid-leave-overtime-02.webp)
+
 ## 月額報酬が高くても、休みと追加稼働を含めて比べる
 
 正社員時代の月給が30万円、業務委託報酬が40万円になったとします。
@@ -175,6 +180,8 @@ note_published: false
 （出典：[厚生労働省「フリーランスとして業務を行う方等へ」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyoukintou/zaitaku/index_00002.html)）
 
 勤務時間・指示・勤怠管理と労働者性の考え方は、[偽装請負と偽装フリーランスは同じ？](/articles/disguised-contracting-freelance-difference)も参考にしてください。
+
+![業務委託の契約条件と働き方の実態を分けて確認する図](/images/articles/contractor-paid-leave-overtime-03.webp)
 
 ## 切り替え前に会社へ確認したい質問
 

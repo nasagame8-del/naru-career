@@ -1,0 +1,93 @@
+{
+  "id": "quickwin-2026-10-07-early-resignation-entity-ctr",
+  "createdAt": "2026-10-07T16:23:00+09:00",
+  "source": "gsc_entity_title_snippet_test",
+  "selectedTopic": {
+    "id": "early-resignation-entity-ctr",
+    "topic": "山田瑠々・LiveDash固有名詞で早期離職記事のCTR改善",
+    "type": "rewrite",
+    "dataConfidence": "medium",
+    "queries": [
+      {
+        "query": "山田瑠々"
+      },
+      {
+        "query": "山田瑠々 退職"
+      },
+      {
+        "query": "山田瑠々 LiveDash"
+      },
+      {
+        "query": "LiveDash 山田瑠々"
+      },
+      {
+        "query": "新卒 半年 退職"
+      }
+    ],
+    "relatedPages": [
+      "https://naru-career.com/articles/new-grad-early-resignation-career-plan"
+    ],
+    "evidence": [
+      "GSC settled 2026-09-20〜2026-10-03: page had 7 impressions, 0 clicks, average position 8.7.",
+      "The page is already in the 4-10 position band, but query rows for this low-volume page are privacy-filtered and not fully visible.",
+      "The article body already centers on 山田瑠々さんの退職報告とLiveDash設立, while the previous title did not expose those entities."
+    ],
+    "caveats": [
+      "Exact entity-query baseline may be zero or privacy-filtered; judge page-level CTR and entity-query emergence together.",
+      "Do not add an unverified former employer name."
+    ]
+  },
+  "actionDecision": {
+    "summary": "Quick Win: preserve slug and article intent, expose the verified entities in title/excerpt/opening, then measure CTR and query expansion.",
+    "decisions": [
+      {
+        "targetType": "article",
+        "target": "new-grad-early-resignation-career-plan",
+        "action": "REWRITE",
+        "reason": "Page is already averaging position 8.7 with 7 impressions and 0 clicks; the article's strongest entity context was absent from the SERP-facing title."
+      }
+    ]
+  },
+  "intervention": {
+    "oldTitle": "新卒半年で退職すると転職で不利？第二新卒の早期離職で考える5つのこと",
+    "newTitle": "山田瑠々さんが新卒半年で退職、LiveDash設立へ。第二新卒が早期離職で考える5つのこと",
+    "slugChanged": false,
+    "changes": [
+      "title",
+      "keyword",
+      "excerpt",
+      "opening",
+      "dateModified"
+    ]
+  },
+  "measurementPlan": {
+    "anchor": "article_dateModified",
+    "checkpointDays": [
+      7,
+      14,
+      28
+    ],
+    "primaryQueries": [
+      "山田瑠々",
+      "山田瑠々 退職",
+      "山田瑠々 LiveDash",
+      "LiveDash 山田瑠々",
+      "新卒 半年 退職"
+    ],
+    "relatedPage": "https://naru-career.com/articles/new-grad-early-resignation-career-plan",
+    "primaryMetrics": [
+      "clicks",
+      "impressions",
+      "ctr",
+      "position"
+    ],
+    "secondaryMetrics": [
+      "page impressions",
+      "page clicks",
+      "new visible entity queries",
+      "Top10 query count"
+    ],
+    "command": "npm run data:seo-experiments -- --run quickwin-2026-10-07-early-resignation-entity-ctr",
+    "gscSettledThroughAtBaselineCapture": "2026-10-03"
+  }
+}
