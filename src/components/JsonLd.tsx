@@ -11,7 +11,6 @@ const authorPerson = {
   name: "磯貝アルト",
   alternateName: "アルト",
   url: `${baseUrl}/about`,
-  image: `${baseUrl}/images/author-avatar.webp`,
   jobTitle: "AIO対策企業・営業職 / 転職メディア運営",
   description:
     "第二新卒で飲食業界からIT/Web業界へ転職。AIO対策企業で人材紹介・人材派遣会社を中心にSEO・AIO領域の法人営業を担当。転職メディア「NARU」を個人運営。",
