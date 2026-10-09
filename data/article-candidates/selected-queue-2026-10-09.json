@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-09",
+  "selectionText": "69は12じ。新規1件作ります",
+  "articles": [
+    {
+      "articleId": 69,
+      "prNumber": 171,
+      "slug": "retirement-agency-second-new-grad-how-to-choose",
+      "qa": {
+        "previewVisual": "user_confirmed",
+        "previewApprovedHeadSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
+        "previewApproval": {
+          "userText": "OK",
+          "approvedAt": "2026-10-09T00:05:10+09:00",
+          "previewUrl": "https://naru-pr-171-preview.broad-fuchsia.workers.dev/articles/retirement-agency-second-new-grad-how-to-choose"
+        }
+      },
+      "requestedPublish": "2026-10-09T12:00:00+09:00",
+      "order": 1,
+      "slot": 1,
+      "latestHeadSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
+      "requestedPublishAt": "2026-10-09T12:00:00+09:00",
+      "status": "SCHEDULED",
+      "notes": [
+        "frontmatter datePublished=2026-10-08; actual requested publication Oct9 noon",
+        "Human Fact Check requires current-head evidence; not inferred from preview OK"
+      ]
+    },
+    {
+      "articleId": 70,
+      "candidateId": "cand_261009a_offer_letter_missing",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "order": 2,
+      "slot": 2,
+      "requestedPublishAt": null,
+      "status": "WRITING",
+      "genre": "通常SEO"
+    }
+  ]
+}
