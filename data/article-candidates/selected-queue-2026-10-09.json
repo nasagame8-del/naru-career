@@ -37,8 +37,8 @@
       "requestedPublishAt": "2026-10-09T12:12:00+09:00",
       "status": "PUBLISHED",
       "notes": [
-        "frontmatter datePublished=2026-10-08; actual requested publication Oct9 noon",
-        "Human Fact Check requires current-head evidence; not inferred from preview OK"
+        "Human Fact Check requires current-head evidence; not inferred from preview OK",
+        "2026-10-10: user requested correction; frontmatter aligned to actual publication 2026-10-09 via PR175"
       ],
       "schedule": {
         "automationId": "6ac576df8bac81919f4def6b2cb58d9a",
@@ -82,6 +82,20 @@
         "productionResponse": "article and card/01/02/03 HTTP 200 on canonical domain",
         "productionVisual": "別途ブラウザ目視未実施",
         "publishedAt": "2026-10-09T12:15:30+09:00"
+      },
+      "dateCorrection": {
+        "userText": "それ直して",
+        "prNumber": 175,
+        "headSha": "75ede42b8eb4108ccffd78355c41289df381568a",
+        "mergeSha": "31a9cde703ea45b458e38fcf7c81af0a64ae28b8",
+        "datePublished": "2026-10-09",
+        "dateModified": "2026-10-09",
+        "deployRunId": 37950599835,
+        "canonicalVerification": "completed/success",
+        "articleHttpStatus": 200,
+        "articleVisibleDate": "2026-10-09",
+        "homeLinkVerified": true,
+        "driveArticleDateVerified": true
       }
     },
     {
