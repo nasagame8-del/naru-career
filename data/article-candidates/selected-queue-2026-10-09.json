@@ -91,7 +91,7 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": "2026-10-09T18:00:00+09:00",
-      "status": "PUBLISHING",
+      "status": "PUBLISHED",
       "genre": "通常SEO",
       "prNumber": 172,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/172",
@@ -199,6 +199,23 @@
         "userText": "やって",
         "approvedAt": "2026-10-09T20:59:09+09:00",
         "context": "18時未公開の説明を受けて今すぐ公開を指示"
+      },
+      "mergeSha": "1e146e4a7578b927ac384a2615976ce531a548ee",
+      "productionUrl": "https://naru-career.com/articles/offer-letter-before-acceptance-not-provided",
+      "publication": {
+        "mergeSha": "1e146e4a7578b927ac384a2615976ce531a548ee",
+        "deployRunId": 37927254728,
+        "jobId": 113809057301,
+        "deploy": "completed/success",
+        "canonicalVerification": "completed/success",
+        "evidence": [
+          "targets=1\\n2026-10-09T12:02:25.6040161Z article ok: offer-letter-before-acceptance-not-provided status=200\\n2026-10-09T12:02:25.6840263Z image ok: offer-letter-before-acceptance-not-provided-card status=200 bytes=83798\\n2026",
+          "-10-09T12:02:25.7870321Z image ok: offer-letter-before-acceptance-not-provided-01 status=200 bytes=48042\\n2026-10-09T12:02:25.8447408Z image ok: offer-letter-before-acceptance-not-provided-02 status=200 byte",
+          "s=62388\\n2026-10-09T12:02:25.9352691Z image ok: offer-letter-before-acceptance-not-provided-03 status=200 bytes=69666\\n2026-10-09T12:02:25.9496690Z Post job cleanup.\\n2026-10-09T12:02:26.0492140Z (node:2671) [DEP0040] De"
+        ],
+        "productionDeployVerified": true,
+        "publicArticleVerified": true,
+        "productionVisual": "独立ブラウザ目視未実施"
       }
     }
   ]
