@@ -286,8 +286,10 @@ export async function getArticle(slug: string): Promise<Article> {
     /\[CTA_BUTTON:(\w+)\]/g,
     (_match, key: string) => {
       const cta = ctaRegistry[key];
-      if (!cta) return "";
-      const href = cta.url || "#";
+      // 未設定・不正なURLをクリックできるCTAとして表示しない。
+      // 従来の href="#" は押しても同じページに留まるだけだった。
+      const href = cta?.url?.trim();
+      if (!href || !/^https?:\/\//i.test(href)) return "";
       const relAttr = cta.affiliate === false ? "nofollow" : "nofollow sponsored";
       const noteText = cta.affiliate === false ? "" : `<span class="cta-note">※提携先のサービスです</span>`;
       return `<a href="${href}" class="cta-button" rel="${relAttr}" target="_blank">${cta.cta_text}（${cta.name}）</a>${noteText}`;
