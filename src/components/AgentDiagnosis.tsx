@@ -353,7 +353,7 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
       {/* CTA */}
       <div className="mb-3">
         {agent.url ? (
-          <a href={agent.url} target="_blank" rel={agent.affiliate ? "nofollow sponsored noopener noreferrer" : "noopener noreferrer"}
+          <a href={agent.url} target="_blank" rel={agent.affiliate ? "nofollow sponsored noopener noreferrer" : "nofollow noopener noreferrer"}
             data-track-event="agent_diagnosis_cta_click"
             data-track-agent={agent.key}
             data-track-destination="external"
