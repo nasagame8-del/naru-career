@@ -32,3 +32,7 @@ Claude must execute only that instruction, update `REPORT.md`, and stop. ChatGPT
 ## UI decoration review — USER-UI-DECORATION-20261005
 
 User requested implementation using the Xserver readability article as reference. Authorized: dedicated `ui/article-decoration-refresh` branch, Draft PR, isolated Cloudflare preview. No master push, merge or production deploy. No Claude task is requested.
+
+
+## USER-ARTICLE69-DATE-20261010
+ユーザーの「それ直して」に基づき、記事69のdatePublished/dateModifiedを実公開日2026-10-09へ修正する。専用PR作成、同head CI確認、squash mergeとCloudflare本番検証を許可。本文・画像・他PRは変更しない。Claudeタスクは起動しない。

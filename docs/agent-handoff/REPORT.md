@@ -623,3 +623,15 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 
 - 実記事で `:::box` を使い始めるかはコンテンツ側の判断。運用ルールは `docs/article-decoration.md` が正本。
 - 既存記事への `:::box` 追加は、一括ではなく記事単位で必要性を判断する。
+
+
+## 記事69公開日修正 — 2026-10-10
+- reportId / completedInstructionId: USER-ARTICLE69-DATE-20261010
+- status: READY_FOR_CI
+- branch: fix/article-69-published-date / PR175
+- 実施内容: 実公開日10/9にdatePublished/dateModifiedを一致させる。本文・画像は不変。
+- 変更ファイル: 記事69 Markdown、NEXT_INSTRUCTION、REPORT
+- diff: frontmatter日付2行と作業記録のみ。
+- 検証: 元本文との比較で日付2行以外の一致を確認。CI/Cloudflare本番はPR最新headで確認する。
+- 既知の問題: なし。判断項目: なし（ユーザー修正指示済み）。
+- 次: CI成功後マージ、本番日付とトップ導線、queue/WBS記録readback。
