@@ -39,11 +39,11 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": null,
-      "status": "READY_FOR_IMAGES",
+      "status": "PREVIEW_BUILDING",
       "genre": "通常SEO",
       "prNumber": 172,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/172",
-      "latestHeadSha": "05f0a6587a82c0250e78524898d979fe9abff23a",
+      "latestHeadSha": "4ca2df9eb9749a295b14cef7b15b6f8738c49d85",
       "drive": {
         "articleFolderId": "1zpo3NYKF1k46nP_7DZmgPnn26N9L1Y1m",
         "imagesFolderId": "1-kp5vQNPYiC0B8NCcnD4sNKhzRvM4xrU",
@@ -53,14 +53,21 @@
         "designPromptsFileId": "1MzDaIZWvKdWLlYbdL2FoJSD5fsiTDorT"
       },
       "qa": {
-        "imageQa": "pending",
+        "imageQa": {
+          "status": "passed",
+          "headSha": "4ca2df9eb9749a295b14cef7b15b6f8738c49d85",
+          "dimensions": "card 1200x630; 01/02/03 1200x675",
+          "metadata": "VP8 only; EXIF/XMP/ICC absent",
+          "visual": "文字欠け・透かし・記事意味の不整合なし"
+        },
         "articleQa": "draft_reviewed",
         "humanFactCheck": "pending",
-        "previewVisual": "pending"
+        "previewVisual": "pending",
+        "ci": "in_progress"
       },
       "blockers": [
-        "ユーザー提供のcard/01/02/03画像4枚未提供",
-        "最新head CI・画像QA・Human Fact Check・実記事Preview承認未完了"
+        "最新head CI/Cloudflare preview生成中",
+        "Human Fact Checkとユーザーの最新head実画面承認待ち"
       ],
       "searchEvidence": {
         "query": "労働条件通知書 内定承諾前",
@@ -69,7 +76,29 @@
         "position": 23.5,
         "period": "2026-09-21/2026-10-04",
         "note": "小母数。需要量の証明として扱わない"
-      }
+      },
+      "images": [
+        {
+          "slot": "card",
+          "driveFileId": "1E1HkrpvoQqm0KiR1qSCOIhpHE-6B2khE",
+          "name": "offer-letter-before-acceptance-not-provided-card.webp"
+        },
+        {
+          "slot": "01",
+          "driveFileId": "12H8kqT4MWqe8p3QSmwc1-v8HYVY6xVpA",
+          "name": "offer-letter-before-acceptance-not-provided-01.webp"
+        },
+        {
+          "slot": "02",
+          "driveFileId": "1hfy6ZX3-BocSrdgGbQDvs7bvAB6wSAVB",
+          "name": "offer-letter-before-acceptance-not-provided-02.webp"
+        },
+        {
+          "slot": "03",
+          "driveFileId": "1ODvxWIacLAvQ6ylqNOdPVdNL8rKB8qkw",
+          "name": "offer-letter-before-acceptance-not-provided-03.webp"
+        }
+      ]
     }
   ]
 }
