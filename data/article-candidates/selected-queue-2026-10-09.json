@@ -24,7 +24,13 @@
       "notes": [
         "frontmatter datePublished=2026-10-08; actual requested publication Oct9 noon",
         "Human Fact Check requires current-head evidence; not inferred from preview OK"
-      ]
+      ],
+      "schedule": {
+        "automationId": "6ac576df8bac81919f4def6b2cb58d9a",
+        "registered": true,
+        "timingMode": "flexible_schedule",
+        "exactTimeGuaranteed": false
+      }
     },
     {
       "articleId": 70,
@@ -33,8 +39,37 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": null,
-      "status": "WRITING",
-      "genre": "通常SEO"
+      "status": "READY_FOR_IMAGES",
+      "genre": "通常SEO",
+      "prNumber": 172,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/172",
+      "latestHeadSha": "05f0a6587a82c0250e78524898d979fe9abff23a",
+      "drive": {
+        "articleFolderId": "1zpo3NYKF1k46nP_7DZmgPnn26N9L1Y1m",
+        "imagesFolderId": "1-kp5vQNPYiC0B8NCcnD4sNKhzRvM4xrU",
+        "originalsFolderId": "1W8GC-9kpAVl_XC6rfs4xKVycu828RuUQ",
+        "articleFileId": "1HtKHbyniUh3tgOib7ZThsoeTjBHBX5FN",
+        "promptsFileId": "1-7Qow0-eMFCttnxDmuhbG-_tBl6GpjrU",
+        "designPromptsFileId": "1MzDaIZWvKdWLlYbdL2FoJSD5fsiTDorT"
+      },
+      "qa": {
+        "imageQa": "pending",
+        "articleQa": "draft_reviewed",
+        "humanFactCheck": "pending",
+        "previewVisual": "pending"
+      },
+      "blockers": [
+        "ユーザー提供のcard/01/02/03画像4枚未提供",
+        "最新head CI・画像QA・Human Fact Check・実記事Preview承認未完了"
+      ],
+      "searchEvidence": {
+        "query": "労働条件通知書 内定承諾前",
+        "impressions": 2,
+        "clicks": 0,
+        "position": 23.5,
+        "period": "2026-09-21/2026-10-04",
+        "note": "小母数。需要量の証明として扱わない"
+      }
     }
   ]
 }
