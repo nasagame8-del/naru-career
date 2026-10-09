@@ -13,6 +13,21 @@
           "userText": "OK",
           "approvedAt": "2026-10-09T00:05:10+09:00",
           "previewUrl": "https://naru-pr-171-preview.broad-fuchsia.workers.dev/articles/retirement-agency-second-new-grad-how-to-choose"
+        },
+        "humanFactCheck": "passed",
+        "humanFactCheckApproval": {
+          "status": "passed",
+          "headSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
+          "reviewer": "優貴",
+          "userText": "問題ない",
+          "approvedAt": "2026-10-09T12:10:00+09:00",
+          "scope": [
+            "本文の事実関係",
+            "出典",
+            "画像内の数字・文言",
+            "alt"
+          ],
+          "context": "069・070について上記全範囲を含む承認かとの確認への明示回答"
         }
       },
       "requestedPublish": "2026-10-09T12:00:00+09:00",
@@ -20,7 +35,7 @@
       "slot": 1,
       "latestHeadSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
       "requestedPublishAt": "2026-10-09T12:00:00+09:00",
-      "status": "BLOCKED",
+      "status": "AWAITING_RESCHEDULE",
       "notes": [
         "frontmatter datePublished=2026-10-08; actual requested publication Oct9 noon",
         "Human Fact Check requires current-head evidence; not inferred from preview OK"
@@ -32,7 +47,7 @@
         "exactTimeGuaranteed": false
       },
       "blockers": [
-        "Human Fact Checkの同head実記録なし（Drive記事フォルダ・PRコメントを2026-10-09 12:03 JST確認）"
+        "12時枠超過。遅延公開の新しい日時指定待ち"
       ],
       "publicationAttempt": {
         "checkedAt": "2026-10-09T12:03:26+09:00",
@@ -75,7 +90,7 @@
           "visual": "文字欠け・透かし・記事意味の不整合なし"
         },
         "articleQa": "draft_reviewed",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "passed",
         "previewVisual": "user_confirmed",
         "ci": {
           "status": "passed",
@@ -94,11 +109,23 @@
           "userText": "OK18時で",
           "approvedAt": "2026-10-09T10:46:25+09:00",
           "previewUrl": "https://naru-pr-172-preview.broad-fuchsia.workers.dev/articles/offer-letter-before-acceptance-not-provided"
+        },
+        "humanFactCheckApproval": {
+          "status": "passed",
+          "headSha": "4ca2df9eb9749a295b14cef7b15b6f8738c49d85",
+          "reviewer": "優貴",
+          "userText": "問題ない",
+          "approvedAt": "2026-10-09T12:10:00+09:00",
+          "scope": [
+            "本文の事実関係",
+            "出典",
+            "画像内の数字・文言",
+            "alt"
+          ],
+          "context": "069・070について上記全範囲を含む承認かとの確認への明示回答"
         }
       },
-      "blockers": [
-        "同head Human Fact Checkの実記録は公開時に確認"
-      ],
+      "blockers": [],
       "searchEvidence": {
         "query": "労働条件通知書 内定承諾前",
         "impressions": 2,
