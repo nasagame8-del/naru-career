@@ -91,7 +91,7 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": "2026-10-09T18:00:00+09:00",
-      "status": "PUBLICATION_HELD",
+      "status": "PUBLISHING",
       "genre": "通常SEO",
       "prNumber": 172,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/172",
@@ -148,9 +148,7 @@
           "context": "069・070について上記全範囲を含む承認かとの確認への明示回答"
         }
       },
-      "blockers": [
-        "18:00公開指定を超過しPR172は未merge。予定後の自動遅延公開禁止により、新しい公開時刻の明示指示待ち。承認不足ではない。"
-      ],
+      "blockers": [],
       "searchEvidence": {
         "query": "労働条件通知書 内定承諾前",
         "impressions": 2,
@@ -196,6 +194,11 @@
         "humanFactCheck": "passed",
         "previewApproval": "valid_same_head",
         "nextAction": "ユーザーの新しい公開時刻指定後、同head・CI・画像・承認を再確認して公開"
+      },
+      "rescheduleApproval": {
+        "userText": "やって",
+        "approvedAt": "2026-10-09T20:59:09+09:00",
+        "context": "18時未公開の説明を受けて今すぐ公開を指示"
       }
     }
   ]
