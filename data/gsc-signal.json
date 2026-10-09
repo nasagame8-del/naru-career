@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-08T02:14:10.003Z",
+  "generatedAt": "2026-10-09T02:29:10.914Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-21",
-    "endDate": "2026-10-04"
+    "startDate": "2026-09-22",
+    "endDate": "2026-10-05"
   },
   "previousRange": {
-    "startDate": "2026-09-07",
-    "endDate": "2026-09-20"
+    "startDate": "2026-09-08",
+    "endDate": "2026-09-21"
   },
   "visibleQueryCounts": {
-    "current": 25,
-    "previous": 9,
-    "new": 21
+    "current": 28,
+    "previous": 10,
+    "new": 22
   },
   "positionBuckets": {
     "current": {
       "top3": 5,
       "top10": 10,
-      "top20": 13
+      "top20": 16
     },
     "previous": {
       "top3": 0,
-      "top10": 1,
-      "top20": 2
+      "top10": 2,
+      "top20": 3
     }
   },
   "querySignals": [
@@ -35,8 +35,18 @@
       "signal": "quick_win"
     },
     {
+      "query": "rpg職業診断",
+      "positionBand": "21-40",
+      "signal": "rising"
+    },
+    {
       "query": "正社員 から業務委託 クビ",
       "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "転職エージェント 本音",
+      "positionBand": "41+",
       "signal": "rising"
     },
     {
@@ -55,8 +65,18 @@
       "signal": "new"
     },
     {
+      "query": "ワークポート",
+      "positionBand": "1-3",
+      "signal": "new"
+    },
+    {
       "query": "rpg 診断",
       "positionBand": "41+",
+      "signal": "new"
+    },
+    {
+      "query": "sns調査 (裏アカ調査) 採用",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
@@ -67,6 +87,11 @@
     {
       "query": "在職中 面接",
       "positionBand": "1-3",
+      "signal": "new"
+    },
+    {
+      "query": "山田 瑠々 就職 先",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -83,31 +108,21 @@
       "query": "itは？",
       "positionBand": "1-3",
       "signal": "new"
-    },
-    {
-      "query": "sns調査 (裏アカ調査) 採用",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "エージェント診断",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "query": "ワークポート",
-      "positionBand": "1-3",
-      "signal": "new"
     }
   ],
   "pageSignals": [
+    {
+      "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
     {
       "page": "/",
       "positionBand": "1-3",
       "signal": "rising"
     },
     {
-      "page": "/articles/business-outsourcing-conversion-risk",
+      "page": "/articles/reference-check-explained",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -142,6 +157,11 @@
       "signal": "new"
     },
     {
+      "page": "/articles/agent-job-mismatch",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
       "page": "/articles/agent-referral-vs-self-apply",
       "positionBand": "4-10",
       "signal": "rising"
@@ -165,16 +185,6 @@
       "page": "/articles/certification-exam-on-hold",
       "positionBand": "4-10",
       "signal": "rising"
-    },
-    {
-      "page": "/articles/direct-recruiting",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/dx-award-company-entry-level-hiring",
-      "positionBand": "4-10",
-      "signal": "new"
     }
   ]
 }
