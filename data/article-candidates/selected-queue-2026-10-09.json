@@ -35,7 +35,7 @@
       "slot": 1,
       "latestHeadSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
       "requestedPublishAt": "2026-10-09T12:12:00+09:00",
-      "status": "PUBLISHING",
+      "status": "PUBLISHED",
       "notes": [
         "frontmatter datePublished=2026-10-08; actual requested publication Oct9 noon",
         "Human Fact Check requires current-head evidence; not inferred from preview OK"
@@ -62,6 +62,26 @@
         "userText": "おけ",
         "approvedAt": "2026-10-09T12:12:00+09:00",
         "context": "069を今から公開してよいかへの承認"
+      },
+      "mergeSha": "9d28a1abea3753cdaf2d591d1593d5e1c0fd4715",
+      "publishedAt": "2026-10-09T12:15:30+09:00",
+      "productionUrl": "https://naru-career.com/articles/retirement-agency-second-new-grad-how-to-choose",
+      "publication": {
+        "mergeSha": "9d28a1abea3753cdaf2d591d1593d5e1c0fd4715",
+        "deployRunId": 37878248074,
+        "jobId": 113651675478,
+        "deploy": "completed/success",
+        "canonicalVerification": "completed/success",
+        "evidence": [
+          "2026-10-09T03:15:29.7646674Z article ok: retirement-agency-second-new-grad-how-to-choose status=200",
+          "2026-10-09T03:15:29.7860457Z image ok: retirement-agency-second-new-grad-how-to-choose-card status=200 bytes=70226",
+          "2026-10-09T03:15:29.9045998Z image ok: retirement-agency-second-new-grad-how-to-choose-01 status=200 bytes=80440",
+          "2026-10-09T03:15:29.9246114Z image ok: retirement-agency-second-new-grad-how-to-choose-02 status=200 bytes=49514",
+          "2026-10-09T03:15:30.0139485Z image ok: retirement-agency-second-new-grad-how-to-choose-03 status=200 bytes=72688"
+        ],
+        "productionResponse": "article and card/01/02/03 HTTP 200 on canonical domain",
+        "productionVisual": "別途ブラウザ目視未実施",
+        "publishedAt": "2026-10-09T12:15:30+09:00"
       }
     },
     {
