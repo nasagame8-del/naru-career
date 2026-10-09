@@ -28,14 +28,14 @@ export default function AboutPage() {
         <div className="flex items-start gap-6 mb-8">
           <div className="shrink-0">
             <Image
-              src="/images/author-avatar.webp"
-              alt="磯貝アルトのイラストアバター"
+              src="/images/author-avatar-illustration.webp"
+              alt="磯貝アルトの著者イメージイラスト"
               width={96}
               height={96}
               className="rounded-full"
             />
             <span className="block text-[10px] text-ink-soft text-center mt-1">
-              ※イラストです
+              著者イメージイラスト
             </span>
           </div>
           <div>
@@ -60,7 +60,7 @@ export default function AboutPage() {
             現在は、AIO（AI Optimization）対策を手がける企業で法人営業として勤務しています。人材紹介会社・人材派遣会社や不動産業界など、さまざまな業界のクライアントに対し、SEO・AIO領域の提案から商談、契約後のコンサルティングまで一貫して担当しています。
           </p>
           <p>
-            転職活動を経験した当事者としての視点と、現在の検索マーケティング・AI領域での実務経験を活かし、「第二新卒が納得して転職できる情報」を発信しています。
+            転職活動を経験した当事者としての視点と、現在の検索マーケティング・AI領域での実務経験を活かし、求人票・公式資料・一次情報を確かめながら、「第二新卒が納得して転職できる情報」を発信しています。
           </p>
 
           {/* プロフィール */}
