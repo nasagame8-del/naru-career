@@ -30,12 +30,12 @@
           "context": "069・070について上記全範囲を含む承認かとの確認への明示回答"
         }
       },
-      "requestedPublish": "2026-10-09T12:00:00+09:00",
+      "requestedPublish": "2026-10-09T12:12:00+09:00",
       "order": 1,
       "slot": 1,
       "latestHeadSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
-      "requestedPublishAt": "2026-10-09T12:00:00+09:00",
-      "status": "AWAITING_RESCHEDULE",
+      "requestedPublishAt": "2026-10-09T12:12:00+09:00",
+      "status": "PUBLISHING",
       "notes": [
         "frontmatter datePublished=2026-10-08; actual requested publication Oct9 noon",
         "Human Fact Check requires current-head evidence; not inferred from preview OK"
@@ -46,9 +46,7 @@
         "timingMode": "flexible_schedule",
         "exactTimeGuaranteed": false
       },
-      "blockers": [
-        "12時枠超過。遅延公開の新しい日時指定待ち"
-      ],
+      "blockers": [],
       "publicationAttempt": {
         "checkedAt": "2026-10-09T12:03:26+09:00",
         "result": "not_merged",
@@ -59,6 +57,11 @@
           "NARU article Cloudflare preview success run 37698024836"
         ],
         "mergeable": true
+      },
+      "rescheduleApproval": {
+        "userText": "おけ",
+        "approvedAt": "2026-10-09T12:12:00+09:00",
+        "context": "069を今から公開してよいかへの承認"
       }
     },
     {
