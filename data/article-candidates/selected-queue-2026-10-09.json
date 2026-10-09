@@ -20,7 +20,7 @@
       "slot": 1,
       "latestHeadSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
       "requestedPublishAt": "2026-10-09T12:00:00+09:00",
-      "status": "SCHEDULED",
+      "status": "BLOCKED",
       "notes": [
         "frontmatter datePublished=2026-10-08; actual requested publication Oct9 noon",
         "Human Fact Check requires current-head evidence; not inferred from preview OK"
@@ -30,6 +30,20 @@
         "registered": true,
         "timingMode": "flexible_schedule",
         "exactTimeGuaranteed": false
+      },
+      "blockers": [
+        "Human Fact Checkの同head実記録なし（Drive記事フォルダ・PRコメントを2026-10-09 12:03 JST確認）"
+      ],
+      "publicationAttempt": {
+        "checkedAt": "2026-10-09T12:03:26+09:00",
+        "result": "not_merged",
+        "reason": "同head Human Fact Check実記録なし。05_FACT_CHECK_GATEによりPreview承認では代替不可",
+        "headSha": "aee9df4a46f69332ce19adc4eacd116a55dd1bdd",
+        "ci": [
+          "Article Factory Validation success run 37698024859",
+          "NARU article Cloudflare preview success run 37698024836"
+        ],
+        "mergeable": true
       }
     },
     {
