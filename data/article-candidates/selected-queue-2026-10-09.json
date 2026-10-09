@@ -39,7 +39,7 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": null,
-      "status": "PREVIEW_BUILDING",
+      "status": "READY_FOR_PREVIEW_REVIEW",
       "genre": "通常SEO",
       "prNumber": 172,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/172",
@@ -63,11 +63,22 @@
         "articleQa": "draft_reviewed",
         "humanFactCheck": "pending",
         "previewVisual": "pending",
-        "ci": "in_progress"
+        "ci": {
+          "status": "passed",
+          "headSha": "4ca2df9eb9749a295b14cef7b15b6f8738c49d85",
+          "runId": 37870839598
+        },
+        "cloudflarePreview": {
+          "status": "passed",
+          "headSha": "4ca2df9eb9749a295b14cef7b15b6f8738c49d85",
+          "runId": 37870839591,
+          "smokeTest": "success",
+          "robots": "noindex,nofollow"
+        }
       },
       "blockers": [
-        "最新head CI/Cloudflare preview生成中",
-        "Human Fact Checkとユーザーの最新head実画面承認待ち"
+        "Human Fact Checkとユーザーの最新head実画面承認待ち",
+        "公開日時未指定"
       ],
       "searchEvidence": {
         "query": "労働条件通知書 内定承諾前",
@@ -98,7 +109,8 @@
           "driveFileId": "1ODvxWIacLAvQ6ylqNOdPVdNL8rKB8qkw",
           "name": "offer-letter-before-acceptance-not-provided-03.webp"
         }
-      ]
+      ],
+      "previewUrl": "https://naru-pr-172-preview.broad-fuchsia.workers.dev/articles/offer-letter-before-acceptance-not-provided"
     }
   ]
 }
