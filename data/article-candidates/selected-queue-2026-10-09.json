@@ -38,8 +38,8 @@
       "slug": "offer-letter-before-acceptance-not-provided",
       "order": 2,
       "slot": 2,
-      "requestedPublishAt": null,
-      "status": "READY_FOR_PREVIEW_REVIEW",
+      "requestedPublishAt": "2026-10-09T18:00:00+09:00",
+      "status": "SCHEDULED",
       "genre": "通常SEO",
       "prNumber": 172,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/172",
@@ -62,7 +62,7 @@
         },
         "articleQa": "draft_reviewed",
         "humanFactCheck": "pending",
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "ci": {
           "status": "passed",
           "headSha": "4ca2df9eb9749a295b14cef7b15b6f8738c49d85",
@@ -74,11 +74,16 @@
           "runId": 37870839591,
           "smokeTest": "success",
           "robots": "noindex,nofollow"
+        },
+        "previewApprovedHeadSha": "4ca2df9eb9749a295b14cef7b15b6f8738c49d85",
+        "previewApproval": {
+          "userText": "OK18時で",
+          "approvedAt": "2026-10-09T10:46:25+09:00",
+          "previewUrl": "https://naru-pr-172-preview.broad-fuchsia.workers.dev/articles/offer-letter-before-acceptance-not-provided"
         }
       },
       "blockers": [
-        "Human Fact Checkとユーザーの最新head実画面承認待ち",
-        "公開日時未指定"
+        "同head Human Fact Checkの実記録は公開時に確認"
       ],
       "searchEvidence": {
         "query": "労働条件通知書 内定承諾前",
@@ -110,7 +115,8 @@
           "name": "offer-letter-before-acceptance-not-provided-03.webp"
         }
       ],
-      "previewUrl": "https://naru-pr-172-preview.broad-fuchsia.workers.dev/articles/offer-letter-before-acceptance-not-provided"
+      "previewUrl": "https://naru-pr-172-preview.broad-fuchsia.workers.dev/articles/offer-letter-before-acceptance-not-provided",
+      "requestedPublish": "2026-10-09T18:00:00+09:00"
     }
   ]
 }
