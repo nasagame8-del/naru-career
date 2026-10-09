@@ -1,0 +1,108 @@
+{
+  "batchId": "batch_2026-10-10_chatgpt",
+  "generatedAt": "2026-10-10T08:00:50+09:00",
+  "trigger": "cron",
+  "inventorySize": 68,
+  "nextArticleId": 71,
+  "candidates": [
+    {
+      "id": "cand_261010a_termination_rewrite",
+      "title": "【既存改善】業務委託の契約を突然切られたら？30日前予告と労働者性の確認順",
+      "primaryKeyword": "フリーランス 契約解除",
+      "secondaryKeywords": [
+        "業務委託 契約解除",
+        "業務委託 契約終了 突然"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規記事ではなくoutsourcing-contract-termination-worker-statusのリライト候補。発注側から終了を告げられた人に限定。本人から辞める065、切替前の親記事、勤務実態067、有給068、失業手当066を増設・再生成しない。",
+      "reasonToWriteNow": "最新成功GSCの確定9/22〜10/5で同ページ35表示・0click・17.4位、queryフリーランス契約解除3表示・0click・47.7位。ページ平均とquery順位を混同せず、冒頭の行動順と30日前義務の条件・例外を明瞭化し、公開済み子記事とのリンクを補完する。",
+      "category": "業界解説",
+      "proposedSlug": "outsourcing-contract-termination-worker-status",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "outsourcing-contract-termination-worker-status",
+        "contractor-how-to-quit",
+        "business-outsourcing-conversion-risk"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "フリーランス 契約解除",
+        "impressions": 3,
+        "clicks": 0,
+        "position": 47.7,
+        "window": "2026-09-22〜2026-10-05"
+      },
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261010b_contract_missing",
+      "title": "業務委託の契約書がないまま働いていい？口約束と取引条件の明示を分けて確認",
+      "primaryKeyword": "業務委託 契約書 なし",
+      "secondaryKeywords": [
+        "業務委託 口約束",
+        "フリーランス 取引条件 明示",
+        "業務委託 契約書 もらえない"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規専用記事。仕事開始前の取引条件未提示、書面・メールの依頼文と確認項目に限定。切替の違法性を扱う親記事、報酬比較、勤務実態067、契約終了記事の一般論を複製しない。未提示意図から範囲が拡大して重複する場合は新規制作を止め既存記事へ統合する。",
+      "reasonToWriteNow": "主KW自体のGSC実測は未取得。関連親ページbusiness-outsourcing-conversion-riskが123表示・6click・9.6位、関連query正社員 から業務委託 違法8表示・2click・8.4位。反応が出ているクラスターの未充足手続意図として検証する。公取委の取引条件明示資料を一次情報に、契約書と明示義務を区別する。検索ボリュームがあるとは断定しない。",
+      "category": "業界解説",
+      "proposedSlug": "contractor-no-written-contract",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "employee-contractor-pay-comparison",
+        "contractor-attendance-control-worker-status"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261010c_sns_rewrite",
+      "title": "【既存改善】採用のSNS・裏アカ調査はどこまで？同意を求められたときの確認点",
+      "primaryKeyword": "SNS調査 裏アカ調査 採用",
+      "secondaryKeywords": [
+        "転職 SNS 調査",
+        "裏アカ 調査 同意"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "second-new-grad-sns-background-checkを改善する候補。新規URLを作らず、冒頭の記念日依存を外し、公開SNS閲覧と匿名アカウント特定、同意時に聞く質問を優先。reference-check-explainedの第三者照会とは分離する。",
+      "reasonToWriteNow": "最新成功GSCの確定9/22〜10/5で同ページ14表示・0click・10.2位、query sns調査 (裏アカ調査) 採用2表示・0click・24.5位。小さい母数を成功断定せず、既存URLで記念日依存を外し、同意時の確認点へ検索意図を具体化する。制作時は公的な公正採用選考・個人情報資料を再確認する。",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-sns-background-check",
+      "riskFlags": [
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-sns-background-check",
+        "reference-check-explained"
+      ],
+      "searchEvidence": {
+        "source": "search-console",
+        "query": "sns調査 (裏アカ調査) 採用",
+        "impressions": 2,
+        "clicks": 0,
+        "position": 24.5,
+        "window": "2026-09-22〜2026-10-05"
+      },
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "最新成功SEO Opportunity Snapshotは37874734771（2026-10-09取得）。10/10の成功runは確認できず、最新利用可能な確定9/22〜10/5と前期間9/8〜9/21を使用。未確定日を0扱いしない。",
+    "総表示335対167、click14対4、CTR4.18%対2.40%。可視Top3=5対0、Top10=10対2、Top20=16対3、新規可視query22。可視query行は全表示を網羅しない。",
+    "065/067/068/066/069/070は公開済みとして除外。昨日公開の通知書記事は観測待ち。転職エージェント新規は抑制。",
+    "候補①③は未選定の既存改善案を最新データで再評価。同一URLを維持し新規採番しない。候補②のみ新規。ユーザー選択前に記事PRを作らない。",
+    "SERP上位・Google Trends・PAA・関連検索の取得結果は未確認。数値・スコア・トレンドを捏造せず省略。未検証ニュースで時事案を数合わせしない。",
+    "一次情報：https://www.jftc.go.jp/freelancelaw_2024/ 、https://www.jftc.go.jp/freelancelaw_2025/assets/pdf/flow2506.pdf",
+    "WBS1000PV_10-08_10-21へ候補順・選定待ちを同期しreadback後に通知。"
+  ]
+}
