@@ -51,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head>
+        <meta name="google-adsense-account" content="ca-pub-5535543234748003" />
         {/* AdSense ownership verification: load Google's supplied site code on every public page. */}
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5535543234748003"
