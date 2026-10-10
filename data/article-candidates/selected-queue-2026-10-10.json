@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-10",
+  "batchId": "batch_2026-10-10_chatgpt",
+  "selectionText": "新規2と13リライトやる",
+  "selectedAt": "2026-10-10T11:23:46+09:00",
+  "articles": [
+    {
+      "candidateId": "cand_261010b_contract_missing",
+      "articleId": 71,
+      "slug": "contractor-no-written-contract",
+      "title": "業務委託の契約書がないまま働いていい？口約束と取引条件の明示を分けて確認",
+      "genre": "通常SEO",
+      "workType": "new",
+      "order": 1,
+      "slot": null,
+      "requestedPublishAt": null,
+      "status": "SELECTED",
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending"
+      },
+      "blockers": [
+        "画像4枚未提供",
+        "最新headのQA・人間Fact Check・Preview承認待ち",
+        "公開時刻未指定"
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "candidateId": "cand_261010a_termination_rewrite",
+      "slug": "outsourcing-contract-termination-worker-status",
+      "title": "【既存改善】業務委託の契約を突然切られたら？30日前予告と労働者性の確認順",
+      "workType": "rewrite",
+      "order": 2,
+      "status": "SELECTED",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending"
+      },
+      "blockers": [
+        "最新headのQA・人間Fact Check・Preview承認待ち"
+      ]
+    },
+    {
+      "candidateId": "cand_261010c_sns_rewrite",
+      "slug": "second-new-grad-sns-background-check",
+      "title": "【既存改善】採用のSNS・裏アカ調査はどこまで？同意を求められたときの確認点",
+      "workType": "rewrite",
+      "order": 3,
+      "status": "SELECTED",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending"
+      },
+      "blockers": [
+        "最新headのQA・人間Fact Check・Preview承認待ち"
+      ]
+    }
+  ],
+  "notes": [
+    "ユーザー指示により新規1件＋既存リライト2件。日次2本の新規採番を強制しない。公開枠は推測で設定しない。"
+  ]
+}
