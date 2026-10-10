@@ -14,7 +14,7 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": "2026-10-10T18:00:00+09:00",
-      "status": "APPROVED",
+      "status": "PUBLISHED",
       "qa": {
         "previewVisual": "user_confirmed",
         "humanFactCheck": "user_confirmed",
@@ -97,7 +97,45 @@
         "requestedAt": "2026-10-10T18:02:49+09:00",
         "text": "早く公開して",
         "confirmationAt": "2026-10-10T18:03:13+09:00"
-      }
+      },
+      "mergeSha": "f6893c60841997d145565fa354926c58c28f8c83",
+      "productionDeployVerified": true,
+      "publicArticleVerified": true,
+      "publishedAt": "2026-10-10T18:06:14+09:00",
+      "production": {
+        "mergeSha": "f6893c60841997d145565fa354926c58c28f8c83",
+        "deployRunId": 38040066829,
+        "deployConclusion": "success",
+        "canonicalWorkflowStep": "success",
+        "targetSlugInWorkflowLog": true,
+        "url": "https://naru-career.com/articles/contractor-no-written-contract",
+        "verifiedAt": "2026-10-10T18:06:14+09:00",
+        "evidence": [
+          "article ok: contractor-no-written-contract status=200",
+          "image ok: contractor-no-written-contract-card status=200 bytes=93502",
+          "image ok: contractor-no-written-contract-01 status=200 bytes=73834",
+          "image ok: contractor-no-written-contract-02 status=200 bytes=84624",
+          "image ok: contractor-no-written-contract-03 status=200 bytes=76866"
+        ]
+      },
+      "publicationAttempts": [
+        {
+          "scheduledAt": "2026-10-10T18:00:00+09:00",
+          "startedAt": "2026-10-10T18:00:02+09:00",
+          "delaySeconds": 2,
+          "outcome": "blocked",
+          "reason": "Independent Human Fact Check and latest-head preview approval were not recorded by the scheduled time; automatic delayed publish is prohibited.",
+          "observedHeadSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
+          "prMergeableAtCheck": true
+        },
+        {
+          "mode": "user_requested_immediate",
+          "outcome": "published",
+          "requestedAt": "2026-10-10T18:02:49+09:00",
+          "approvedAt": "2026-10-10T18:03:13+09:00",
+          "verifiedAt": "2026-10-10T18:06:14+09:00"
+        }
+      ]
     }
   ],
   "rewrites": [
