@@ -75,7 +75,7 @@ export default function PrivacyPage() {
           <p>
             パーソナライズド広告は
             <a
-              href="https://adssettings.google.com/"
+              href="https://myadcenter.google.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
