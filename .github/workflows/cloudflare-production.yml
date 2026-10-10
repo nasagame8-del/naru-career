@@ -218,3 +218,49 @@ jobs:
             }
           }
           NODE
+      - name: Verify AdSense ownership on the canonical domain
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          const origin = 'https://naru-career.com';
+          const publisherId = 'ca-pub-5535543234748003';
+          const adsRecord = 'google.com, pub-5535543234748003, DIRECT, f08c47fec0942fa0';
+          let lastError;
+          for (let attempt = 1; attempt <= 12; attempt++) {
+            try {
+              for (const userAgent of ['Mozilla/5.0', 'Mediapartners-Google']) {
+                const response = await fetch(origin + '/', {
+                  redirect: 'follow',
+                  headers: { 'user-agent': userAgent, 'cache-control': 'no-cache' },
+                });
+                if (!response.ok) {
+                  throw new Error('Homepage ' + userAgent + ': HTTP ' + response.status);
+                }
+                const html = await response.text();
+                const head = html.split(/<\/head>/i)[0];
+                if (!/<meta\b[^>]*name=["']google-adsense-account["'][^>]*content=["']ca-pub-5535543234748003["'][^>]*>/i.test(head)) {
+                  throw new Error('AdSense account meta missing from initial <head> for ' + userAgent);
+                }
+                console.log('AdSense meta OK in <head> for ' + userAgent);
+              }
+              const adsResponse = await fetch(origin + '/ads.txt', {
+                redirect: 'follow',
+                headers: { 'cache-control': 'no-cache' },
+              });
+              if (!adsResponse.ok) {
+                throw new Error('ads.txt HTTP ' + adsResponse.status);
+              }
+              const adsText = await adsResponse.text();
+              if (!adsText.split(/\r?\n/).some(line => line.trim() === adsRecord)) {
+                throw new Error('ads.txt does not contain the expected seller record');
+              }
+              console.log('AdSense seller record OK on /ads.txt');
+              process.exit(0);
+            } catch (error) {
+              lastError = error;
+              console.log('AdSense check ' + attempt + '/12: ' + error.message);
+              if (attempt < 12) await new Promise(resolve => setTimeout(resolve, 5000));
+            }
+          }
+          throw lastError;
+          NODE
