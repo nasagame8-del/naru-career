@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-09T02:29:10.914Z",
+  "generatedAt": "2026-10-10T01:53:57.176Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-22",
-    "endDate": "2026-10-05"
+    "startDate": "2026-09-23",
+    "endDate": "2026-10-06"
   },
   "previousRange": {
-    "startDate": "2026-09-08",
-    "endDate": "2026-09-21"
+    "startDate": "2026-09-09",
+    "endDate": "2026-09-22"
   },
   "visibleQueryCounts": {
-    "current": 28,
-    "previous": 10,
-    "new": 22
+    "current": 32,
+    "previous": 11,
+    "new": 26
   },
   "positionBuckets": {
     "current": {
       "top3": 5,
-      "top10": 10,
-      "top20": 16
+      "top10": 11,
+      "top20": 18
     },
     "previous": {
       "top3": 0,
       "top10": 2,
-      "top20": 3
+      "top20": 4
     }
   },
   "querySignals": [
@@ -50,8 +50,18 @@
       "signal": "rising"
     },
     {
+      "query": "転職エージェント 求人 微妙",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
       "query": "正社員 から業務委託 違法",
       "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "query": "山田 瑠々 辞め た 会社",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -67,6 +77,11 @@
     {
       "query": "ワークポート",
       "positionBand": "1-3",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 退職",
+      "positionBand": "41+",
       "signal": "new"
     },
     {
@@ -95,30 +110,25 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 退職",
-      "positionBand": "41+",
-      "signal": "new"
-    },
-    {
       "query": "正社員 業務委託 切り替え",
       "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "itは？",
-      "positionBand": "1-3",
       "signal": "new"
     }
   ],
   "pageSignals": [
+    {
+      "page": "/",
+      "positionBand": "1-3",
+      "signal": "rising"
+    },
     {
       "page": "/articles/business-outsourcing-conversion-risk",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/",
-      "positionBand": "1-3",
+      "page": "/articles/alumni-hiring",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -158,7 +168,7 @@
     },
     {
       "page": "/articles/agent-job-mismatch",
-      "positionBand": "4-10",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -178,11 +188,6 @@
     },
     {
       "page": "/articles/casual-interview",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/certification-exam-on-hold",
       "positionBand": "4-10",
       "signal": "rising"
     }
