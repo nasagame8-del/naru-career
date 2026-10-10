@@ -42,7 +42,7 @@ export default function Home() {
   }
   function start() {
     if (locked.current) return;
-    for (const name of ["laboratory", "crystal", "world", "portraits"]) {
+    for (const name of ["laboratory", "crystal", "world"]) {
       const image = new window.Image(); image.src = asset(name);
     }
     setAnswers([]); setQIndex(0); setSelected(null); setScreen("quiz");
@@ -56,6 +56,8 @@ export default function Home() {
     delay(() => {
       if (next.length === MATCH_QUESTIONS.length) {
         const id = diagnose(next);
+        const portrait = new window.Image();
+        portrait.src = `/shindan/rpg/portraits/${id}.webp`;
         setResultTypeId(id);
         trackEvent("quiz_complete", { type: TYPES16[id].name });
         setScreen("matching");

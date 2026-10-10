@@ -8,7 +8,7 @@ Base: master 84dc5721e2743e6d64ac01bc6a126be0a69207bf. Branch: feat/shindan-fait
 - Result share functions, X/native/image-download events, type links, article/survey/affiliate CTAs and disclosure remain in ResultContent.
 - Layout metadata and result/type routes retained. Added layout CSS import only.
 - No invented numeric abilities or radar chart. Status tabs show existing descriptions, good/bad environments, job categories and career advice.
-- All old image files retained. Atlas used by the archive remains the original official characters. New painted atlas only supports the large result portrait.
+- All old image files retained. Atlas used by the archive remains the original official characters. Sixteen independent high-resolution portraits support the result screen; no old character image was removed.
 
 ## Scene/component map
 1. Title: world backdrop, parchment, compass emblem + accessible DOM wordmark, information strip, signboard menu, blue/gold command.
@@ -22,7 +22,8 @@ Base: master 84dc5721e2743e6d64ac01bc6a126be0a69207bf. Branch: feat/shindan-fait
 - Pass 1: PC title composition close; guide too small/low, large void between commands and guide. Enlarged/raised guide. Added painted portraits preserving official class identities.
 - Pass 2: old circular avatar frame and centered result styling leaked through. Parchment transparent image gutters placed archive/status headings outside paper. Removed old result framing; corrected paper background sizing and padding.
 - Pass 3: result atlas bled neighboring feet at row boundaries; regenerated atlas with gutters. Added early scene/crystal preloads so 900ms analysis does not race image downloads. Mobile guide raised again.
-- Final verification and outstanding differences will be recorded after final capture.
+- Additional pass: atlas enlargement was visibly soft. Replaced it with 16 separately generated 800×1200 portraits. Corrected result copy inset and guide alignment to scene bottom. Added qualitative skill tags sourced from official descriptions (no new score/axis). Direct result URLs also retain illustrated backdrop.
+- Final Preview screenshots and QA results are recorded in QA.md.
 
 ## Preview
 Dedicated same-repository pull_request workflow builds and deploys `naru-pr-<PR>-shindan-preview`; no production binding, routes or production secrets copied. Responses are noindex/nofollow; API/internal/member/write operations blocked. Master deployment workflow is untouched. Never merge or publish production without user's visual approval.

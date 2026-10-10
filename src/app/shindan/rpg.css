@@ -78,7 +78,6 @@
 /* Comparison pass 2: keep the stage behind long results, bring the guide alongside commands. */
 .rpg-backdrop { position:fixed!important; height:100svh!important; }
 .rpg-guide { width:72%;left:-13%;bottom:0; }
-.result-hero .quest-character {background-image:url('/shindan/rpg/portraits.webp');}
 @media(min-width:701px){.rpg-quiz{height:min(820px,calc(100svh - 90px));}.rpg-question{margin-top:30px;min-height:260px;}.rpg-answers{margin-top:26px;}.rpg-guide{bottom:0;}.rpg-dialogue{bottom:30px;}}
 @media(max-width:700px){.rpg-guide{width:100%;left:-32%;bottom:90px;}.rpg-answers{margin-top:4px;}.rpg-question{min-height:210px;}.rpg-dialogue{bottom:20px;}}
 /* Comparison pass 3: remove inherited avatar framing and align text within the paper. */
@@ -93,3 +92,13 @@
 .rpg-status-paper>h2 {background:url('/shindan/rpg/sign.webp') left center/180px 100% no-repeat;color:#fff8e7;border:0;padding:10px 25px;width:210px;font-size:18px;}
 @media(min-width:701px){.rpg-status-paper{padding-top:30px;}.result-hero{padding-top:45px;}.rpg-archive{max-width:890px;}.rpg-types-grid{gap:10px 20px;}.rpg-type .quest-character{width:100px;}.result-char{top:5px;width:620px;}}
 @media(max-width:700px){.rpg-status-paper{padding-top:25px;}.result-char{top:125px;right:-4px;max-width:90%;}.result-title{font-size:29px;}.result-class-name{max-width:65%;}.rpg-guide{bottom:155px;}.rpg-archive{background-size:106% 127%;padding-top:32px;padding-bottom:32px;}}
+.rpg-skill-tags{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0;max-width:50%;}.rpg-skill-tags span{color:#15352a;background:#c0d9ae;border:1px solid #6a9362;padding:5px 12px;font-size:15px;font-weight:700;box-shadow:inset 0 0 5px #eef8d9;}.rpg-status .rpg-skill-tags{max-width:none;}
+@media(max-width:700px){.result-class-name{max-width:55%;font-size:16px;}.rpg-skill-tags{gap:5px;margin:10px 0;max-width:50%;}.rpg-skill-tags span{padding:4px 7px;font-size:11px;}.result-char{right:-12px;top:135px;max-width:88%;}.rpg-status-profile h3{font-size:16px;}.rpg-status-paper{min-height:550px;}}
+/* Each result uses its own high-resolution portrait; archive sprites remain unchanged. */
+.result-hero {overflow:hidden;}
+.result-portrait {position:absolute;right:0;top:0;width:59%;height:620px;object-fit:cover;object-position:center top;z-index:-1;animation:rpg-enter .4s ease-out both;}
+.rpg-direct-result {position:relative;isolation:isolate;min-height:100svh;}
+@media(max-width:700px){.result-portrait{width:77%;height:440px;top:130px;right:-5px;object-fit:cover;object-position:center top;}.result-class-name{max-width:53%;}.result-hero{min-height:670px;}}
+/* Final framing: the guide meets the scene edge and copy stays inside the paper's inset. */
+@media(min-width:701px){.rpg-quiz{height:calc(100svh - 90px);}.result-desc{padding-inline:65px;}}
+@media(max-width:700px){.result-desc{padding-inline:38px;}.rpg-header-actions button{min-height:40px;}}
