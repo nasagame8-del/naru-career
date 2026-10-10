@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-10",
+  "candidatesReady": true,
+  "blockers": [],
+  "slots": {
+    "1": {
+      "order": 1,
+      "batchId": "batch_2026-10-10_chatgpt",
+      "candidateId": "cand_261010b_contract_missing",
+      "selected": true,
+      "articleId": "NARU-071",
+      "slug": "contractor-no-written-contract",
+      "title": "業務委託の契約書がないまま働いていい？口約束と取引条件の明示を分けて確認",
+      "branch": "article-factory/2026-10-10-071-contract-missing",
+      "prNumber": 176,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/176",
+      "draftReady": true,
+      "latestHeadSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0",
+      "previewApprovedHeadSha": null,
+      "requestedPublishAt": null,
+      "drive": {
+        "articleId": "1cZlB_nM0VzAE8wq4CndhzDpboUU8qVZm",
+        "imagesId": "1S5q82-dtL_KA46g4zYaEjjx9XAhL5plV",
+        "promptId": "18LhnLO-_3wUdFiCGk6APQIjPj-1vPWFa"
+      },
+      "imageQa": {
+        "passed": null,
+        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+      },
+      "factCheck": {
+        "passed": null,
+        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+      },
+      "articleQa": {
+        "passed": null,
+        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+      },
+      "ci": {
+        "passed": false,
+        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+      },
+      "productionDeployVerified": false,
+      "publicArticleVerified": false,
+      "blockers": [
+        "画像4枚未提供",
+        "人間Fact Check・Preview承認待ち",
+        "公開時刻未指定"
+      ]
+    },
+    "2": {
+      "order": 2,
+      "selected": false
+    }
+  },
+  "lastReconciledAt": "2026-10-10T02:36:35.600Z"
+}
