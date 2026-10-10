@@ -26,7 +26,6 @@ export function generateMetadata(): Metadata {
     },
     description: `著者・磯貝アルトの実体験（${getAuthorProfileLabel()}）をベースに、第二新卒がIT/Web業界へキャリアチェンジするためのノウハウを発信。転職エージェント比較・業界解説・体験談を掲載。`,
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com"),
-    other: { "google-adsense-account": "ca-pub-5535543234748003" },
     icons: {
       icon: [
         { url: "/favicon.ico", sizes: "48x48" },
@@ -52,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head>
+        <meta name="google-adsense-account" content="ca-pub-5535543234748003" />
         {/* AdSense ownership verification: load Google's supplied site code on every public page. */}
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5535543234748003"
