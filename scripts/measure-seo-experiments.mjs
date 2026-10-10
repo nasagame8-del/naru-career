@@ -82,11 +82,22 @@ function selectedRunId() {
   return argValue("--run");
 }
 
+export function pinnedAnchorDate(run) {
+  const pinned = run.measurementPlan?.anchorDate;
+  return typeof pinned === "string" && /^\d{4}-\d{2}-\d{2}$/.test(pinned)
+    ? pinned
+    : null;
+}
+
 async function resolveAnchorDate(run) {
   const explicit = argValue("--anchor");
   if (explicit && /^\d{4}-\d{2}-\d{2}$/.test(explicit)) {
     return { date: explicit, source: "cli_anchor" };
   }
+
+  // Avoid moving a prior experiment's baseline when article dateModified changes.
+  const pinned = pinnedAnchorDate(run);
+  if (pinned) return { date: pinned, source: "measurement_plan_anchor_date" };
 
   const targets = run.actionDecision?.decisions
     ?.filter((d) => d.targetType === "article" && ["REWRITE", "EXPAND", "KEEP"].includes(d.action))
