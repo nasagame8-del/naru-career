@@ -658,3 +658,14 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - PC1440/スマホ390で6画面撮影、5回の比較修正を記録。詳細は docs/shindan-rpg/QA.md。
 - モックとの差分: 生成画の細部、正式タイプのキャラクター、根拠のないレーダー省略、スマホ2列図鑑。ユーザー目視承認待ち。
 - マージ・本番公開禁止を維持。master直接pushなし。
+
+### USER-SHINDAN-RPG-PUBLISH-20261010
+- reportId / completedInstructionId: USER-SHINDAN-RPG-PUBLISH-20261010
+- status: APPROVED_FOR_PRODUCTION
+- branch: feat/shindan-faithful-rpg-mock / PR180
+- 実施内容: ユーザーの明示公開承認を記録。UIの細かい追加修正はユーザーが担当。
+- テスト結果: コードhead e5d1cf0 のCloudflare Preview CI成功、PC/スマホ6画面再撮影成功。既存380テスト等は上記QAを参照。
+- 変更ファイル / diff: NEXT_INSTRUCTION・REPORTに公開承認の追記のみ。実装変更なし。
+- 既知の問題: 上記QA記載の既存lint・実機/GA4未確認は継続。
+- 判断が必要な項目: 公開承認取得済み。
+- 次: PR経由マージ後、対応merge SHAのCloudflare deployと本番 /shindan の20問回答を確認。

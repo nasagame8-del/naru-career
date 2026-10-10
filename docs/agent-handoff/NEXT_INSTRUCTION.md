@@ -36,3 +36,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-ARTICLE69-DATE-20261010
 ユーザーの「それ直して」に基づき、記事69のdatePublished/dateModifiedを実公開日2026-10-09へ修正する。専用PR作成、同head CI確認、squash mergeとCloudflare本番検証を許可。本文・画像・他PRは変更しない。Claudeタスクは起動しない。
+
+## USER-SHINDAN-RPG-PUBLISH-20261010
+ユーザーが「公開していいよ細かい修正はこっちでする」と明示承認。PR #180のReady化、masterへのPR経由マージ、Cloudflare本番デプロイ、実際の /shindan の確認を許可。追加のUI修正・他PRのマージは行わない。master直接pushなし。Claudeタスクは起動しない。
