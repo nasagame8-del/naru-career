@@ -37,18 +37,17 @@
         "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
       },
       "articleQa": {
-        "passed": null,
+        "passed": true,
         "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
       },
       "ci": {
-        "passed": null,
+        "passed": true,
         "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
       },
       "productionDeployVerified": false,
       "publicArticleVerified": false,
       "blockers": [
-        "最新headのCI・Cloudflare preview確認待ち",
-        "独立Human Fact Check・実画面Preview承認待ち"
+        "独立Human Fact Check・最新headの実画面Preview承認待ち"
       ],
       "images": {
         "card": {
@@ -71,8 +70,14 @@
           "driveId": "1fHWD_pUa-5NItPdt3GAEe8jLPXcZnCFc",
           "sha256": "2f356119a1d77be6da71968d9dfd910e2759576103625202be07279c9979f989"
         }
+      },
+      "previewUrl": "https://naru-pr-176-preview.broad-fuchsia.workers.dev/articles/contractor-no-written-contract",
+      "cloudflarePreview": {
+        "passed": true,
+        "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
+        "runId": 38020514207
       }
     }
   },
-  "lastReconciledAt": "2026-10-10T03:27:32.904Z"
+  "lastReconciledAt": "2026-10-10T03:28:47.690Z"
 }
