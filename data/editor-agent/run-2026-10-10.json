@@ -6,6 +6,10 @@
   "slots": {
     "1": {
       "order": 1,
+      "selected": false
+    },
+    "2": {
+      "order": 2,
       "batchId": "batch_2026-10-10_chatgpt",
       "candidateId": "cand_261010b_contract_missing",
       "selected": true,
@@ -16,42 +20,59 @@
       "prNumber": 176,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/176",
       "draftReady": true,
-      "latestHeadSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0",
+      "latestHeadSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
       "previewApprovedHeadSha": null,
-      "requestedPublishAt": null,
+      "requestedPublishAt": "2026-10-10T18:00:00+09:00",
       "drive": {
         "articleId": "1cZlB_nM0VzAE8wq4CndhzDpboUU8qVZm",
         "imagesId": "1S5q82-dtL_KA46g4zYaEjjx9XAhL5plV",
         "promptId": "18LhnLO-_3wUdFiCGk6APQIjPj-1vPWFa"
       },
       "imageQa": {
-        "passed": null,
-        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+        "passed": true,
+        "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
       },
       "factCheck": {
         "passed": null,
-        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+        "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
       },
       "articleQa": {
         "passed": null,
-        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+        "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
       },
       "ci": {
-        "passed": false,
-        "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+        "passed": null,
+        "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
       },
       "productionDeployVerified": false,
       "publicArticleVerified": false,
       "blockers": [
-        "画像4枚未提供",
-        "人間Fact Check・Preview承認待ち",
-        "公開時刻未指定"
-      ]
-    },
-    "2": {
-      "order": 2,
-      "selected": false
+        "最新headのCI・Cloudflare preview確認待ち",
+        "独立Human Fact Check・実画面Preview承認待ち"
+      ],
+      "images": {
+        "card": {
+          "ref": "/images/articles/contractor-no-written-contract-card.webp",
+          "driveId": "1RCrpL03djJSWQe-8slCPV2PzDkuuRbR1",
+          "sha256": "b9e28b407543dc4cacf5fc2308a65b57da00f850dbfdd930b42f5bcc607202b2"
+        },
+        "01": {
+          "ref": "/images/articles/contractor-no-written-contract-01.webp",
+          "driveId": "1dMRPj_jjsuSTZ8yeLCJ6usU6D4EzQqMn",
+          "sha256": "32e640b4877efc7747d59733c62ae189a7d73c69c0bc7d59077e59a715bc0a04"
+        },
+        "02": {
+          "ref": "/images/articles/contractor-no-written-contract-02.webp",
+          "driveId": "1g9N_NpMBUlQ1v_2pkNo6F9k6Xf4rScsL",
+          "sha256": "d731ef2e2efb0aa17a3e6e2a1412eeb522d8969d39cb5b92a91c8ec494f39872"
+        },
+        "03": {
+          "ref": "/images/articles/contractor-no-written-contract-03.webp",
+          "driveId": "1fHWD_pUa-5NItPdt3GAEe8jLPXcZnCFc",
+          "sha256": "2f356119a1d77be6da71968d9dfd910e2759576103625202be07279c9979f989"
+        }
+      }
     }
   },
-  "lastReconciledAt": "2026-10-10T02:36:35.600Z"
+  "lastReconciledAt": "2026-10-10T03:27:32.904Z"
 }
