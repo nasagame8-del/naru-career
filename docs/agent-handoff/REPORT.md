@@ -635,3 +635,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 検証: 元本文との比較で日付2行以外の一致を確認。CI/Cloudflare本番はPR最新headで確認する。
 - 既知の問題: なし。判断項目: なし（ユーザー修正指示済み）。
 - 次: CI成功後マージ、本番日付とトップ導線、queue/WBS記録readback。
+
+## USER-SHINDAN-RPG-MOCK-20261010
+- reportId: USER-SHINDAN-RPG-MOCK-20261010
+- completedInstructionId: pending (direct user request)
+- status: IMPLEMENTED_QA_IN_PROGRESS
+- branch: feat/shindan-faithful-rpg-mock
+- 実施内容: モックに基づく6画面、独立イラスト素材、詳細タブ、PC/スマホ比較3回。PR179未継承。
+- テスト結果: TypeScript・変更TSX ESLint・既存npm test成功。最終build/E2E/previewは確認中。
+- 変更ファイル: shindan page/layout/ResultContent/StatusDetails/rpg.css、public/shindan/rpg、専用preview workflow、docs/shindan-rpg。
+- git diff概要: UIのみ。質問/判定/正式データ/CTA定義/計測定義は未変更。
+- 既知の問題: 大型キャラクターは正式デザイン維持のためモックの仮キャラクターとは異なる。最終差分評価中。
+- 判断が必要な項目: ユーザー目視承認。マージ/本番公開は禁止。
+- 次: 最新headのQAとCloudflare Preview実画面確認。
