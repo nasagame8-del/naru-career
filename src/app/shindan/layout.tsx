@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./fonts.css";
 import "./shindan.css";
+import "./rpg.css";
 
 export const metadata: Metadata = {
   title: "RPG適職診断 | あなたの冒険者タイプは？",

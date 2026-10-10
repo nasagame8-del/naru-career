@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import MatchConfetti from "./MatchConfetti";
+import StatusDetails from "./StatusDetails";
+import { TYPE_SKILLS } from "./type-skills";
 import { RESULT_HEADLINES } from "../_lib/matching";
-import QuestCharacter from "./QuestCharacter";
+import Image from "next/image";
 import { TypeInfo, TYPE_COLORS } from "../_lib/data";
 import { trackEvent } from "../_lib/analytics";
 import {
@@ -91,15 +93,18 @@ export default function ResultContent({
       >
         {/* ── ヘッダー ── */}
         <div className="result-hero">
-          <QuestCharacter className="result-char" id={typeId} name={typeInfo.name} />
+          <Image className="result-portrait" src={`/shindan/rpg/portraits/${typeId}.webp`} alt={typeInfo.name} width={800} height={1200} preload unoptimized />
           <div className="result-hero-text">
             <span className="result-lead">あなたの冒険のスタイルは…</span>
-            <h1 className="result-title" ref={resultHeading} tabIndex={-1}>{RESULT_HEADLINES[typeId][0]}<br />{RESULT_HEADLINES[typeId][1]}</h1>
-<h2 className="result-class-name">{typeInfo.name}</h2>
-            <p className="result-desc">{typeInfo.desc}</p>
+            <h1 className="result-title" ref={resultHeading} tabIndex={-1}>{typeInfo.name.split("（")[0]}</h1>
+<h2 className="result-class-name">{RESULT_HEADLINES[typeId][0]}<br />{RESULT_HEADLINES[typeId][1]}</h2>
+            <div className="rpg-skill-tags">{TYPE_SKILLS[typeId].map(skill => <span key={skill}>{skill}</span>)}</div>
+            <p className="result-desc paper">{typeInfo.desc}</p>
+<div className="rpg-result-jobs"><h2>向いている仕事の例</h2><div className="rpg-job-tags">{typeInfo.strength.split("・").map(job => <span key={job}>{job}</span>)}</div></div>
           </div>
         </div>
 
+        <StatusDetails typeId={typeId} typeInfo={typeInfo} />
         {/* ── シェアボタン ── */}
         <div className="share-section">
           <a
