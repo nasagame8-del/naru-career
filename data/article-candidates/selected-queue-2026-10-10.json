@@ -85,16 +85,16 @@
       "title": "業務委託の契約を突然切られたら？30日前予告と偽装フリーランスの確認点",
       "workType": "rewrite",
       "order": 2,
-      "status": "PREVIEW_READY",
+      "status": "PUBLICATION_HELD",
       "requestedPublishAt": null,
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "humanFactCheck": "pending",
         "ci": {
           "passed": true,
           "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
         },
-        "previewApprovedHeadSha": null,
+        "previewApprovedHeadSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4",
         "imageQa": {
           "passed": null,
           "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
@@ -102,17 +102,22 @@
         "articleQa": {
           "passed": true,
           "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
-        }
+        },
+        "previewApprovedAt": "2026-10-10T12:38:33+09:00"
       },
       "blockers": [
-        "人間Fact Check・最新headの実画面Preview承認待ち",
-        "既存画像の目視再確認未完了（実行環境のHTTP403）"
+        "独立Human Fact Checkの同head合格記録未確認"
       ],
       "prNumber": 177,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/177",
       "branch": "seo/2026-10-10-termination-intent",
       "latestHeadSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4",
-      "previewUrl": "https://naru-pr-177-preview.broad-fuchsia.workers.dev/articles/outsourcing-contract-termination-worker-status"
+      "previewUrl": "https://naru-pr-177-preview.broad-fuchsia.workers.dev/articles/outsourcing-contract-termination-worker-status",
+      "publishInstruction": {
+        "mode": "immediate",
+        "requestedAt": "2026-10-10T12:38:36+09:00",
+        "text": "即時反映で"
+      }
     },
     {
       "candidateId": "cand_261010c_sns_rewrite",
@@ -120,16 +125,16 @@
       "title": "採用のSNS・裏アカ調査はどこまで？第二新卒が同意前に確認したいこと",
       "workType": "rewrite",
       "order": 3,
-      "status": "PREVIEW_READY",
+      "status": "PUBLICATION_HELD",
       "requestedPublishAt": null,
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "humanFactCheck": "pending",
         "ci": {
           "passed": true,
           "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
         },
-        "previewApprovedHeadSha": null,
+        "previewApprovedHeadSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1",
         "imageQa": {
           "passed": null,
           "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
@@ -137,17 +142,22 @@
         "articleQa": {
           "passed": true,
           "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
-        }
+        },
+        "previewApprovedAt": "2026-10-10T12:38:33+09:00"
       },
       "blockers": [
-        "人間Fact Check・最新headの実画面Preview承認待ち",
-        "既存画像の目視再確認未完了（実行環境のHTTP403）"
+        "独立Human Fact Checkの同head合格記録未確認"
       ],
       "prNumber": 178,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/178",
       "branch": "seo/2026-10-10-sns-consent-intent",
       "latestHeadSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1",
-      "previewUrl": "https://naru-pr-178-preview.broad-fuchsia.workers.dev/articles/second-new-grad-sns-background-check"
+      "previewUrl": "https://naru-pr-178-preview.broad-fuchsia.workers.dev/articles/second-new-grad-sns-background-check",
+      "publishInstruction": {
+        "mode": "immediate",
+        "requestedAt": "2026-10-10T12:38:36+09:00",
+        "text": "即時反映で"
+      }
     }
   ],
   "notes": [
