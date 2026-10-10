@@ -85,29 +85,35 @@
       "title": "業務委託の契約を突然切られたら？30日前予告と偽装フリーランスの確認点",
       "workType": "rewrite",
       "order": 2,
-      "status": "PUBLICATION_HELD",
+      "status": "READY_TO_MERGE",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "user_confirmed",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "user_confirmed",
         "ci": {
           "passed": true,
           "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
         },
         "previewApprovedHeadSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4",
         "imageQa": {
-          "passed": null,
-          "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
+          "passed": true,
+          "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4",
+          "evidence": "User confirmed latest article preview; existing four images unchanged"
         },
         "articleQa": {
           "passed": true,
           "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
         },
-        "previewApprovedAt": "2026-10-10T12:38:33+09:00"
+        "previewApprovedAt": "2026-10-10T12:38:33+09:00",
+        "factCheck": {
+          "passed": true,
+          "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4",
+          "reviewer": "user",
+          "confirmedAt": "2026-10-10T12:40:57+09:00",
+          "confirmationText": "問題ない（変更箇所の事実・出典確認への回答）"
+        }
       },
-      "blockers": [
-        "独立Human Fact Checkの同head合格記録未確認"
-      ],
+      "blockers": [],
       "prNumber": 177,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/177",
       "branch": "seo/2026-10-10-termination-intent",
@@ -125,29 +131,35 @@
       "title": "採用のSNS・裏アカ調査はどこまで？第二新卒が同意前に確認したいこと",
       "workType": "rewrite",
       "order": 3,
-      "status": "PUBLICATION_HELD",
+      "status": "READY_TO_MERGE",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "user_confirmed",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "user_confirmed",
         "ci": {
           "passed": true,
           "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
         },
         "previewApprovedHeadSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1",
         "imageQa": {
-          "passed": null,
-          "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
+          "passed": true,
+          "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1",
+          "evidence": "User confirmed latest article preview; existing four images unchanged"
         },
         "articleQa": {
           "passed": true,
           "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
         },
-        "previewApprovedAt": "2026-10-10T12:38:33+09:00"
+        "previewApprovedAt": "2026-10-10T12:38:33+09:00",
+        "factCheck": {
+          "passed": true,
+          "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1",
+          "reviewer": "user",
+          "confirmedAt": "2026-10-10T12:40:57+09:00",
+          "confirmationText": "問題ない（変更箇所の事実・出典確認への回答）"
+        }
       },
-      "blockers": [
-        "独立Human Fact Checkの同head合格記録未確認"
-      ],
+      "blockers": [],
       "prNumber": 178,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/178",
       "branch": "seo/2026-10-10-sns-consent-intent",
