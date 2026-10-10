@@ -14,50 +14,112 @@
       "order": 1,
       "slot": null,
       "requestedPublishAt": null,
-      "status": "SELECTED",
+      "status": "WAITING_IMAGES",
       "qa": {
         "previewVisual": "pending",
-        "humanFactCheck": "pending"
+        "humanFactCheck": "pending",
+        "ci": {
+          "passed": false,
+          "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+        },
+        "previewApprovedHeadSha": null,
+        "imageQa": {
+          "passed": null,
+          "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+        },
+        "articleQa": {
+          "passed": null,
+          "headSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0"
+        }
       },
       "blockers": [
-        "画像4枚未提供",
-        "最新headのQA・人間Fact Check・Preview承認待ち",
+        "画像card/01/02/03の4枚未提供（CI画像検証未通過）",
+        "人間Fact Check・実画面Preview承認待ち",
         "公開時刻未指定"
-      ]
+      ],
+      "prNumber": 176,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/176",
+      "branch": "article-factory/2026-10-10-071-contract-missing",
+      "latestHeadSha": "56c1de6ca3f80930522dc49725e3e3e7f49b58a0",
+      "drive": {
+        "articleFolderId": "1cZlB_nM0VzAE8wq4CndhzDpboUU8qVZm",
+        "imagesId": "1S5q82-dtL_KA46g4zYaEjjx9XAhL5plV",
+        "originalsId": "14F29Nn1GT3L5cHQlIkdY7sQVuTIZVZFA",
+        "promptId": "18LhnLO-_3wUdFiCGk6APQIjPj-1vPWFa",
+        "designPromptId": "1jObOLKJozVYcBGwkNoQ7hJ0RFQNQz3SE"
+      }
     }
   ],
   "rewrites": [
     {
       "candidateId": "cand_261010a_termination_rewrite",
       "slug": "outsourcing-contract-termination-worker-status",
-      "title": "【既存改善】業務委託の契約を突然切られたら？30日前予告と労働者性の確認順",
+      "title": "業務委託の契約を突然切られたら？30日前予告と偽装フリーランスの確認点",
       "workType": "rewrite",
       "order": 2,
-      "status": "SELECTED",
+      "status": "PREVIEW_READY",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
-        "humanFactCheck": "pending"
+        "humanFactCheck": "pending",
+        "ci": {
+          "passed": true,
+          "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
+        },
+        "previewApprovedHeadSha": null,
+        "imageQa": {
+          "passed": null,
+          "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
+        },
+        "articleQa": {
+          "passed": true,
+          "headSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4"
+        }
       },
       "blockers": [
-        "最新headのQA・人間Fact Check・Preview承認待ち"
-      ]
+        "人間Fact Check・最新headの実画面Preview承認待ち",
+        "既存画像の目視再確認未完了（実行環境のHTTP403）"
+      ],
+      "prNumber": 177,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/177",
+      "branch": "seo/2026-10-10-termination-intent",
+      "latestHeadSha": "eceee671cc7ef7e62bfbdec4c1f9c684d0d25df4",
+      "previewUrl": "https://naru-pr-177-preview.broad-fuchsia.workers.dev/articles/outsourcing-contract-termination-worker-status"
     },
     {
       "candidateId": "cand_261010c_sns_rewrite",
       "slug": "second-new-grad-sns-background-check",
-      "title": "【既存改善】採用のSNS・裏アカ調査はどこまで？同意を求められたときの確認点",
+      "title": "採用のSNS・裏アカ調査はどこまで？第二新卒が同意前に確認したいこと",
       "workType": "rewrite",
       "order": 3,
-      "status": "SELECTED",
+      "status": "PREVIEW_READY",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
-        "humanFactCheck": "pending"
+        "humanFactCheck": "pending",
+        "ci": {
+          "passed": true,
+          "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
+        },
+        "previewApprovedHeadSha": null,
+        "imageQa": {
+          "passed": null,
+          "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
+        },
+        "articleQa": {
+          "passed": true,
+          "headSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1"
+        }
       },
       "blockers": [
-        "最新headのQA・人間Fact Check・Preview承認待ち"
-      ]
+        "人間Fact Check・最新headの実画面Preview承認待ち",
+        "既存画像の目視再確認未完了（実行環境のHTTP403）"
+      ],
+      "prNumber": 178,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/178",
+      "branch": "seo/2026-10-10-sns-consent-intent",
+      "latestHeadSha": "36e70c3f5bb36a2df66ccfdcfc99545aa52bb0c1",
+      "previewUrl": "https://naru-pr-178-preview.broad-fuchsia.workers.dev/articles/second-new-grad-sns-background-check"
     }
   ],
   "notes": [
