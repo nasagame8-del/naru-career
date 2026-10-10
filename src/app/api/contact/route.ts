@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
         "",
         "--- 内容 ---",
         message,
-      ].join("\\n"),
+      ].join("\n"),
     });
 
     // Resend returns API failures as { error } without throwing.
