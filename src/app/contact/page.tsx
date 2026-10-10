@@ -27,12 +27,12 @@ export default function ContactPage() {
 
       {user && domain && (
         <div className="mt-12 pt-8 border-t border-line">
-        <h2 className="text-lg font-semibold mb-3">
-          直接メールでのご連絡はこちら
-        </h2>
-        <p className="text-sm text-ink-soft mb-3">
-          フォームをお使いにならない場合は、以下のメールアドレスに直接ご連絡いただけます。
-        </p>
+          <h2 className="text-lg font-semibold mb-3">
+            直接メールでのご連絡はこちら
+          </h2>
+          <p className="text-sm text-ink-soft mb-3">
+            フォームをお使いにならない場合は、以下のメールアドレスに直接ご連絡いただけます。
+          </p>
           <EmailDisplay user={user} domain={domain} />
         </div>
       )}
