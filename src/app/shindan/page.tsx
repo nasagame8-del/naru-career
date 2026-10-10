@@ -83,7 +83,7 @@ export default function Home() {
     <div className={`stage match-stage ${motionPaused ? "motion-paused" : ""} screen-${screen}`}>
       <header className="quest-header">
         <Link href="/" className="quest-brand" aria-label="NARU トップへ">NARU<span>CAREER<br />QUEST</span></Link>
-        <span className="header-caption">自分を知る、小さな冒険。</span>
+        <span className="header-caption">あなたのキャリアをめぐる冒険へ。</span>
         <div className="header-actions">
           {screen !== "title" && <button onClick={showTitle} disabled={busy}>診断トップ</button>}
           <button className="motion-toggle" onClick={() => setMotionPaused(!motionPaused)} aria-pressed={motionPaused} aria-label={motionPaused ? "アニメーションを再生" : "アニメーションを停止"}>{motionPaused ? "▶" : "Ⅱ"}</button>
@@ -93,34 +93,34 @@ export default function Home() {
 
       {screen === "title" && <section id="title-screen" className={`screen match-title-screen ${starting ? "title-leaving" : ""}`}>
         <div className="title-lockup">
-          <div className="lockup-top"><div className="title-intro"><p className="speech-label">あなたの「らしさ」が、冒険の武器になる！</p><p className="english-title">CAREER QUEST</p></div>
+          <div className="lockup-top"><div className="title-intro"><p className="speech-label">冒険者の資質を見つけよう</p><p className="english-title">CAREER QUEST</p></div>
             <div className="title-party" aria-hidden="true">{[2, 1, 5, 4, 9].map((id, i) => <QuestCharacter key={id} id={id} className={`party-member party-${i}`} />)}</div>
           </div>
           <h1 className="match-logo illustrated-logo" ref={heading} tabIndex={-1}><Image src="/shindan/quest-logo-v5.webp" alt="適職診断 — NARU CAREER QUEST" width={2172} height={724} priority unoptimized /></h1>
-          <div className="title-caption"><p className="title-tagline">きみの才能は、まだ冒険の途中だ。</p><span className="guild-class-badge">16 CLASSES</span></div>
+          <div className="title-caption"><p className="title-tagline">進む道は、まだ決まっていない。</p><span className="guild-class-badge">16 CLASSES</span></div>
         </div>
-        <div className="title-actions"><button className="diagnose-start" onClick={start} disabled={busy}>冒険をはじめる<span aria-hidden="true">→</span></button><p className="start-note">全20問・約2分 ／ 無料・登録不要</p><button className="archive-link" onClick={() => setScreen("types")} disabled={busy}>16タイプの冒険者を見る <span aria-hidden="true">↗</span></button></div>
+        <div className="title-actions"><button className="diagnose-start" onClick={start} disabled={busy}>冒険に出発する<span aria-hidden="true">→</span></button><p className="start-note">QUEST DATA　20問 ／ 約2分 ／ 登録不要</p><button className="archive-link" onClick={() => setScreen("types")} disabled={busy}>16タイプの冒険者を見る <span aria-hidden="true">↗</span></button></div>
         <p className="title-disclaimer">自己理解のヒントを楽しむための診断です。</p>
       </section>}
 
       {screen === "quiz" && <section id="quiz-screen" className="screen match-quiz">
-        <p className="quest-chapter">NARU GUILD / QUEST LOG</p>
+        <p className="quest-chapter">ADVENTURER'S JOURNAL</p>
         <div className="question-stack" aria-live="polite" aria-atomic="true">
           {previousQuestion !== null && <div className="question-card previous-card" aria-hidden="true"><FrameCorners /><p className="question-count">Q{previousQuestion + 1}<small>/{MATCH_QUESTIONS.length}</small></p><p className="question-copy">{MATCH_QUESTIONS[previousQuestion].text}</p></div>}
           <div className={`question-card card-in ${selected !== null ? "card-answered" : ""}`} key={qIndex}><FrameCorners /><p className="question-count">Q{qIndex + 1}<small>/{MATCH_QUESTIONS.length}</small></p><h1 className="question-copy" ref={heading} tabIndex={-1}>{MATCH_QUESTIONS[qIndex].text}</h1></div>
         </div>
         <div className="binary-answers" aria-label="質問への回答">
-          <button className={`binary-button yes-button ${selected === true ? "is-selected" : ""}`} onClick={() => answer(true)} disabled={busy}><span aria-hidden="true">✦</span>YES!<small>はい</small></button>
-          <button className={`binary-button no-button ${selected === false ? "is-selected" : ""}`} onClick={() => answer(false)} disabled={busy}><span aria-hidden="true">×</span>NO!<small>いいえ</small></button>
+          <button className={`binary-button yes-button ${selected === true ? "is-selected" : ""}`} onClick={() => answer(true)} disabled={busy}><span aria-hidden="true">✦</span>YES<small>そう思う</small></button>
+          <button className={`binary-button no-button ${selected === false ? "is-selected" : ""}`} onClick={() => answer(false)} disabled={busy}><span aria-hidden="true">×</span>NO<small>そう思わない</small></button>
         </div>
-        <p className="quiz-instruction">直感で選んでOK。正解も不正解もありません。</p>
-        <div className="quiz-progress" role="progressbar" aria-label="回答済みの質問" aria-valuemin={0} aria-valuemax={20} aria-valuenow={answers.length}><span style={{ width: `${answers.length * 5}%` }} /></div>
+        <p className="quiz-instruction">正解はありません。直感で、あなたらしい方を選ぼう。</p>
+        <p className="quest-progress-label">QUEST PROGRESS <strong>{Math.min(100, Math.round(answers.length / MATCH_QUESTIONS.length * 100))}%</strong></p><div className="quiz-progress" role="progressbar" aria-label="回答済みの質問" aria-valuemin={0} aria-valuemax={20} aria-valuenow={answers.length}><span style={{ width: `${answers.length * 5}%` }} /></div>
       </section>}
 
-      {screen === "matching" && <section className="screen matching-screen" aria-label="診断結果を準備しています"><div className="question-card matching-card"><FrameCorners /><div className="match-status" role="status"><p className="matching-message">APPRAISING...</p><h1 className="matched-message" ref={heading} tabIndex={-1}>CLASS FOUND!</h1></div><div className="matching-meter"><span /></div><p className="matching-caption">あなたの冒険者タイプを見つけています</p></div></section>}
+      {screen === "matching" && <section className="screen matching-screen" aria-label="診断結果を準備しています"><div className="question-card matching-card"><FrameCorners /><div className="match-status" role="status"><p className="matching-message">STATUS ANALYSIS</p><h1 className="matched-message" ref={heading} tabIndex={-1}>NEW CLASS UNLOCKED</h1></div><div className="matching-meter"><span /></div><p className="matching-caption">20の回答から、冒険者の資質を読み解いています</p></div></section>}
 
       {screen === "result" && <section id="result-screen" className="screen"><ResultContent typeId={resultTypeId} typeInfo={TYPES16[resultTypeId]} onRetry={showTitle} /></section>}
-      {screen === "types" && <section id="types-screen" className="screen"><div className="types-panel"><p className="section-kicker">CHARACTER ARCHIVE</p><h1 className="types-heading" ref={heading} tabIndex={-1}>16人の冒険者たち。</h1><p>どんな個性にも、活躍できるフィールドがある。</p><button className="text-button" onClick={showTitle}>← 診断トップへ</button><div className="types-grid">{Object.entries(TYPES16).map(([id, type]) => <Link href={`/types/${type.slug}`} className="type-card" key={id}><span className="type-number">CLASS {id.padStart(2, "0")}</span><QuestCharacter id={Number(id)} /><h2>{type.name}</h2><p>{type.desc}</p><span className="type-detail">タイプを詳しく見る ↗</span></Link>)}</div><button className="diagnose-start" onClick={start} disabled={busy}>自分のタイプを診断する →</button></div></section>}
+      {screen === "types" && <section id="types-screen" className="screen"><div className="types-panel"><p className="section-kicker">ADVENTURER'S GUILD</p><h1 className="types-heading" ref={heading} tabIndex={-1}>冒険者図鑑</h1><p>16のクラス、16の戦い方。あなたに近い冒険者を探そう。</p><button className="text-button" onClick={showTitle}>← 診断トップへ</button><div className="types-grid">{Object.entries(TYPES16).map(([id, type]) => <Link href={`/types/${type.slug}`} className="type-card" key={id}><span className="type-number">CLASS {id.padStart(2, "0")}</span><QuestCharacter id={Number(id)} /><h2>{type.name}</h2><p>{type.desc}</p><span className="type-detail">タイプを詳しく見る ↗</span></Link>)}</div><button className="diagnose-start" onClick={start} disabled={busy}>自分のタイプを診断する →</button></div></section>}
     </div>
   );
 }

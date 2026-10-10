@@ -190,3 +190,184 @@ body:has(.shindan-wrapper) { margin: 0; background: #1f6f66; }
 .title-caption .title-tagline { margin: 0 !important; }
 .guild-class-badge { display: inline-block; color: var(--primary); border-block: 1px solid #b5874980; padding: 3px 7px; font: 800 9px/1.4 Lato,sans-serif; letter-spacing: .12em; }
 @media(max-width:600px) { .illustrated-logo { margin-top: 14px !important; }.title-caption { gap: 9px; margin-top: 20px; }.guild-class-badge { font-size: 8px; } }
+
+
+/* Quest UI v2: a coherent JRPG interface — map, guild panels, and readable commands. */
+.quest-header {
+  border-bottom: 3px double #a67b42;
+  box-shadow: 0 3px 0 #1f6f6615;
+}
+.quest-brand { letter-spacing: -.045em; }
+.header-caption { color: #86683e; font-weight: 800; }
+.quest-map {
+  background: radial-gradient(ellipse at 50% 30%, #fff8e6 0%, #f4e8ce 66%, #e9d8b7 100%);
+}
+.quest-map:before {
+  background-image:
+    linear-gradient(90deg, transparent 49%, #b5874910 50%, transparent 51%),
+    radial-gradient(#98774619 .8px, transparent .8px);
+  background-size: 80px 80px, 8px 8px;
+}
+.map-orbit { opacity: .50; animation-duration: 240s; }
+.map-route { opacity: .14; }
+.map-label { opacity: .75; }
+.match-title-screen { padding-bottom: 38px; }
+.title-lockup { width: min(820px, 86vw); }
+.title-intro { width: 57%; }
+.speech-label {
+  font-size: clamp(11px, 1.25vw, 16px);
+  letter-spacing: .05em;
+  color: #6f532d;
+  border-bottom: 1px solid #ad8c59;
+  padding-bottom: 6px;
+}
+.english-title {
+  font-family: Georgia, "Noto Serif JP", serif;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+.title-party .party-member { animation-duration: 5s; }
+.illustrated-logo { max-width: 820px; margin-inline: auto; }
+.title-caption { gap: 10px 18px; }
+.guild-class-badge {
+  background: #1f6f66;
+  color: #fff8e6;
+  border: 1px solid #164f49;
+  padding: 4px 11px;
+  letter-spacing: .17em;
+}
+.diagnose-start {
+  border: 2px solid #1c4b44;
+  outline: 1px solid #d8b874;
+  outline-offset: -7px;
+  box-shadow: 0 5px 0 #123e38, 0 11px 26px #59422122;
+  border-radius: 2px;
+  letter-spacing: .06em;
+}
+.diagnose-start:hover:not(:disabled) {
+  background: #28796f;
+  box-shadow: 0 7px 0 #123e38, 0 12px 26px #59422122;
+}
+.quest-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #69512e;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  letter-spacing: .22em;
+}
+.quest-chapter:before,.quest-chapter:after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: #a88851;
+}
+.question-card {
+  border: 2px solid #816036;
+  background: #fff9ec;
+  box-shadow: 0 6px 0 #c4ab82, 0 18px 35px #5f482122;
+  border-radius: 3px;
+}
+.question-card:before { inset: 10px; border: 1px solid #d4b681; }
+.frame-corners i {
+  width: 8px;
+  height: 8px;
+  background: #b5691b;
+  border: 1px solid #81582d;
+}
+.question-count {
+  width: 100%;
+  border: 0;
+  text-align: left;
+  color: #1f6f66;
+  font-family: Georgia, serif;
+  font-weight: 800;
+  letter-spacing: -.035em;
+  font-size: 43px;
+}
+.question-count small { color: #906e3e; font-size: 19px; }
+.question-copy {
+  font-size: clamp(23px, 2.8vw, 35px);
+  letter-spacing: .015em;
+  line-height: 1.6;
+}
+.binary-answers { gap: 18px; margin-top: 30px; }
+.binary-button {
+  min-height: 76px;
+  border: 2px solid #1c4b44;
+  border-radius: 2px;
+  box-shadow: 0 5px 0 #ae9069;
+  font-size: 31px !important;
+  letter-spacing: .05em;
+}
+.binary-button > span { font-size: 26px; }
+.binary-button > small { font-size: 12px; }
+.binary-button:focus-visible { outline: 3px solid #c08036; outline-offset: 4px; }
+.quest-progress-label {
+  display: flex;
+  justify-content: space-between;
+  width: min(100%, 680px);
+  margin-top: 28px !important;
+  color: #705733;
+  font: 800 10px/1.5 Lato, sans-serif;
+  letter-spacing: .15em;
+}
+.quest-progress-label strong { font-size: 13px; color: #1f6f66; }
+.quiz-progress {
+  width: min(100%, 680px);
+  height: 7px;
+  border: 1px solid #a58c65;
+  border-radius: 0;
+  margin-top: 7px;
+  background: #e2d5ba;
+}
+.quiz-progress > span { background: #1f6f66; }
+.matching-card {
+  background: #fff9ec;
+  border: 2px solid #816036;
+}
+.matched-message {
+  background: none;
+  -webkit-text-fill-color: #1f6f66;
+  color: #1f6f66;
+}
+#types-screen { background: #f4ead9; }
+.types-heading { font-family: Georgia, "Noto Serif JP", serif; }
+.type-card {
+  border: 1px solid #b99766;
+  border-radius: 2px;
+  box-shadow: 0 3px 0 #c8b28d;
+  background: #fff9ed;
+}
+.type-card:hover { transform: translateY(-3px); border-color: #1f6f66; }
+.type-number { font-weight: 800; letter-spacing: .14em; }
+.type-detail { font-size: 11px; }
+#result-screen { background: #f4ead9; }
+.result-page { color: #35251f; }
+.result-hero {
+  background: #fff9ed;
+  border: 2px solid #b99766;
+  padding: 36px 28px;
+  min-height: 0;
+  margin-top: 34px;
+  border-radius: 3px;
+}
+.result-char { background-color: #f1e4c8; }
+.result-title { line-height: 1.35; }
+.sec-title { border-bottom-color: #b99766; }
+@media(max-width:600px) {
+  .title-lockup { width: 100%; }
+  .title-intro { width: 100%; }
+  .quest-chapter { font-size: 9px; letter-spacing: .12em; }
+  .quest-chapter:before,.quest-chapter:after { width: 18px; }
+  .question-card { min-height: 294px; }
+  .question-count { font-size: 34px; }
+  .question-copy { font-size: 23px; padding-inline: 4px; }
+  .binary-answers { gap: 12px; }
+  .binary-button { font-size: 27px !important; }
+  .binary-button > small { display: block; font-size: 9px; }
+  .quest-progress-label { margin-top: 26px !important; }
+  .result-hero { padding: 24px 15px; margin-top: 22px; }
+}
