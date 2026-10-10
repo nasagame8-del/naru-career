@@ -102,3 +102,7 @@
 /* Final framing: the guide meets the scene edge and copy stays inside the paper's inset. */
 @media(min-width:701px){.rpg-quiz{height:calc(100svh - 90px);}.result-desc{padding-inline:65px;}}
 @media(max-width:700px){.result-desc{padding-inline:38px;}.rpg-header-actions button{min-height:40px;}}
+/* Nine-slice parchment keeps corner ornaments undistorted on long mobile panels. */
+.rpg-archive,.rpg-status-paper{background:none;border:32px solid transparent;border-image:url('/shindan/rpg/parchment.webp') 160 120 fill stretch;padding:15px 18px;}
+.rpg-tabs{position:relative;z-index:1;margin-bottom:-14px;}
+@media(max-width:700px){.rpg-archive,.rpg-status-paper{border-width:24px;padding:12px 8px 20px;}.rpg-guide{width:112%;left:-36%;bottom:110px;}.rpg-archive h1{font-size:21px;}.rpg-status-profile{gap:8px;}.rpg-status-profile .quest-character{width:82px;}}

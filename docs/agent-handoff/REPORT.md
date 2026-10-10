@@ -648,3 +648,13 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 大型キャラクターは正式デザイン維持のためモックの仮キャラクターとは異なる。最終差分評価中。
 - 判断が必要な項目: ユーザー目視承認。マージ/本番公開は禁止。
 - 次: 最新headのQAとCloudflare Preview実画面確認。
+
+### 最終レビュー提出
+- status: READY_FOR_VISUAL_REVIEW
+- PR: #180 (Draft)
+- Preview: https://naru-pr-180-shindan-preview.broad-fuchsia.workers.dev/shindan
+- QA: TypeScript、変更ファイルESLint、既存380テスト、本番ビルド成功。Previewで全16パターン×20回答、詳細遷移を確認。
+- 全体ESLintは既存未変更18ファイルに61エラー。実機共有・GA4管理画面到達は未確認。
+- PC1440/スマホ390で6画面撮影、5回の比較修正を記録。詳細は docs/shindan-rpg/QA.md。
+- モックとの差分: 生成画の細部、正式タイプのキャラクター、根拠のないレーダー省略、スマホ2列図鑑。ユーザー目視承認待ち。
+- マージ・本番公開禁止を維持。master直接pushなし。

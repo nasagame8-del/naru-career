@@ -1,5 +1,7 @@
-const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const fs=require('fs');const ts=require('typescript');const Module=require('module');
+import { pathToFileURL } from 'node:url';
+const { chromium } = await import(process.env.PLAYWRIGHT_MODULE ? pathToFileURL(process.env.PLAYWRIGHT_MODULE).href : 'playwright');
+import fs from 'node:fs';import ts from 'typescript';
+import Module from 'node:module';
 function load(file){const m=new Module(file);m._compile(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,file);return m.exports;}
 const {MATCH_QUESTIONS,diagnose}=load('./src/app/shindan/_lib/matching.ts');const {TYPES16}=load('./src/app/shindan/_lib/data.ts');
 (async()=>{const b=await chromium.launch({headless:true,channel:'chrome'});const results=[];let cls=0;
