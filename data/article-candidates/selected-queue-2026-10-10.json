@@ -14,15 +14,15 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": "2026-10-10T18:00:00+09:00",
-      "status": "PUBLISH_BLOCKED",
+      "status": "APPROVED",
       "qa": {
-        "previewVisual": "pending",
-        "humanFactCheck": "pending",
+        "previewVisual": "user_confirmed",
+        "humanFactCheck": "user_confirmed",
         "ci": {
           "passed": true,
           "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
         },
-        "previewApprovedHeadSha": null,
+        "previewApprovedHeadSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
         "imageQa": {
           "passed": true,
           "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04"
@@ -35,12 +35,18 @@
           "passed": true,
           "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
           "runId": 38020514207
+        },
+        "previewApprovedAt": "2026-10-10T18:03:13+09:00",
+        "factCheck": {
+          "passed": true,
+          "headSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
+          "reviewer": "優貴",
+          "confirmedAt": "2026-10-10T18:03:13+09:00",
+          "confirmationText": "だから許可出してんだろ",
+          "context": "直前の質問「最新Previewについて、本文・出典・画像を確認して問題なしという認識で合っていますか」への回答。過去の時刻へ遡及せず現在の再確認として記録。"
         }
       },
-      "blockers": [
-        "独立Human Fact Check・最新headの実画面Preview承認待ち",
-        "18:00時点で独立Human Fact Check・最新headの実画面Preview承認が未記録"
-      ],
+      "blockers": [],
       "prNumber": 176,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/176",
       "branch": "article-factory/2026-10-10-071-contract-missing",
@@ -85,6 +91,12 @@
         "reason": "Independent Human Fact Check and latest-head preview approval were not recorded by the scheduled time; automatic delayed publish is prohibited.",
         "observedHeadSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
         "prMergeableAtCheck": true
+      },
+      "publishInstruction": {
+        "mode": "immediate",
+        "requestedAt": "2026-10-10T18:02:49+09:00",
+        "text": "早く公開して",
+        "confirmationAt": "2026-10-10T18:03:13+09:00"
       }
     }
   ],
