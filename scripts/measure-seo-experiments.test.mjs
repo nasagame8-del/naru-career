@@ -5,6 +5,7 @@ import {
   baselineWindow,
   checkpointWindow,
   summarizeRows,
+  pinnedAnchorDate,
 } from "./measure-seo-experiments.mjs";
 
 test("SEO experiment windows use comparable trailing seven-day periods", () => {
@@ -32,4 +33,11 @@ test("summarizeRows uses impression-weighted average position", () => {
   assert.equal(summary.impressions, 40);
   assert.equal(summary.ctr, 0.025);
   assert.equal(summary.position, 12.5);
+});
+
+test("SEO rewrite keeps the original experiment anchor after later article updates", () => {
+  const run = { measurementPlan: { anchorDate: "2026-10-07" } };
+  assert.equal(pinnedAnchorDate(run), "2026-10-07");
+  assert.equal(pinnedAnchorDate({ measurementPlan: { anchorDate: "today" } }), null);
+  assert.equal(pinnedAnchorDate({}), null);
 });
