@@ -8,6 +8,7 @@ on:
       - "src/app/privacy/**"
       - "src/app/contact/**"
       - "src/app/api/contact/**"
+      - "src/app/layout.tsx"
       - "src/app/robots.ts"
       - "src/app/robots.test.ts"
       - ".github/workflows/site-policy-validation.yml"
@@ -18,6 +19,7 @@ on:
       - "src/app/privacy/**"
       - "src/app/contact/**"
       - "src/app/api/contact/**"
+      - "src/app/layout.tsx"
       - "src/app/robots.ts"
       - "src/app/robots.test.ts"
       - ".github/workflows/site-policy-validation.yml"
@@ -37,7 +39,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Lint changed site-policy files
-        run: npx eslint src/app/privacy/page.tsx src/app/contact/page.tsx src/app/api/contact/route.ts src/app/robots.ts src/app/robots.test.ts
+        run: npx eslint src/app/layout.tsx src/app/privacy/page.tsx src/app/contact/page.tsx src/app/api/contact/route.ts src/app/robots.ts src/app/robots.test.ts
       - name: Typecheck
         run: npx tsc --noEmit
       - name: Check AdSense crawler rules
