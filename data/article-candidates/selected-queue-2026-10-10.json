@@ -85,7 +85,7 @@
       "title": "業務委託の契約を突然切られたら？30日前予告と偽装フリーランスの確認点",
       "workType": "rewrite",
       "order": 2,
-      "status": "READY_TO_MERGE",
+      "status": "MERGED_AWAITING_PRODUCTION",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "user_confirmed",
@@ -113,7 +113,9 @@
           "confirmationText": "問題ない（変更箇所の事実・出典確認への回答）"
         }
       },
-      "blockers": [],
+      "blockers": [
+        "Cloudflare本番デプロイ・canonical記事画像検証待ち"
+      ],
       "prNumber": 177,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/177",
       "branch": "seo/2026-10-10-termination-intent",
@@ -123,7 +125,9 @@
         "mode": "immediate",
         "requestedAt": "2026-10-10T12:38:36+09:00",
         "text": "即時反映で"
-      }
+      },
+      "mergeSha": "ffbfc1c64316164c588a16c955fe8a9db697dabb",
+      "mergedAt": "2026-10-10T03:42:39.413Z"
     },
     {
       "candidateId": "cand_261010c_sns_rewrite",
@@ -131,7 +135,7 @@
       "title": "採用のSNS・裏アカ調査はどこまで？第二新卒が同意前に確認したいこと",
       "workType": "rewrite",
       "order": 3,
-      "status": "READY_TO_MERGE",
+      "status": "MERGED_AWAITING_PRODUCTION",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "user_confirmed",
@@ -159,7 +163,9 @@
           "confirmationText": "問題ない（変更箇所の事実・出典確認への回答）"
         }
       },
-      "blockers": [],
+      "blockers": [
+        "Cloudflare本番デプロイ・canonical記事画像検証待ち"
+      ],
       "prNumber": 178,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/178",
       "branch": "seo/2026-10-10-sns-consent-intent",
@@ -169,7 +175,9 @@
         "mode": "immediate",
         "requestedAt": "2026-10-10T12:38:36+09:00",
         "text": "即時反映で"
-      }
+      },
+      "mergeSha": "84dc5721e2743e6d64ac01bc6a126be0a69207bf",
+      "mergedAt": "2026-10-10T03:42:39.413Z"
     }
   ],
   "notes": [
