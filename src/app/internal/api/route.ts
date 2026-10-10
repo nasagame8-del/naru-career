@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import aspStatusData from "../../../../data/asp-status.json";
 
 export const dynamic = "force-dynamic";
 
@@ -226,7 +227,8 @@ export async function GET() {
   const dataDir = path.join(process.cwd(), "data");
   const articlesDir = path.join(process.cwd(), "content", "articles");
 
-  const aspStatus = readJson(path.join(dataDir, "asp-status.json"));
+  // Bundle ASP data at build time: Cloudflare Workers cannot reliably read repository JSON using fs.
+  const aspStatus = aspStatusData;
   const articlesStatus = readJson(path.join(dataDir, "articles-status.json"));
   const ctaRegistry = readJson(path.join(dataDir, "cta-registry.json"));
 
