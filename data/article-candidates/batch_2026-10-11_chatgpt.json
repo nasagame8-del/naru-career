@@ -1,0 +1,95 @@
+{
+  "batchId": "batch_2026-10-11_chatgpt",
+  "generatedAt": "2026-10-11T08:01:04+09:00",
+  "trigger": "cron",
+  "inventorySize": 69,
+  "nextArticleId": 72,
+  "candidates": [
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "id": "cand_261011a_unpaid_fee",
+      "title": "業務委託の報酬が未払いになったら？支払期日・証拠・相談先の確認順",
+      "primaryKeyword": "業務委託 報酬 未払い",
+      "secondaryKeywords": [
+        "フリーランス 報酬 支払い 遅延",
+        "業務委託 未払い 相談"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規。約束した支払期日を過ぎても入金がない場面の確認・連絡・証拠整理に限定。071の契約開始前の条件未提示、053の契約解除、給与比較、労働者性と分離。訴訟・時効の網羅記事には広げない。",
+      "reasonToWriteNow": "主KWのGSC実測なし。関連親ページ121表示/6click/平均9.9位、関連query「正社員 から業務委託 違法」9表示/2click/8.6位。反応のある業務委託クラスターの未充足意図。公取委の支払期日案内と厚労省委託フリーランス・トラブル110番を使用し、検収・請求書遅延の理由と支払いの扱いを確認する。",
+      "proposedSlug": "contractor-unpaid-fee-consultation",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "contractor-no-written-contract",
+        "outsourcing-contract-termination-worker-status",
+        "business-outsourcing-conversion-risk"
+      ],
+      "searchEvidence": null
+    },
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "id": "cand_261011b_transfer_fee",
+      "title": "業務委託の振込手数料は誰が負担？報酬から差し引かれたときの確認点",
+      "primaryKeyword": "業務委託 振込手数料",
+      "secondaryKeywords": [
+        "フリーランス 振込手数料 差し引き",
+        "業務委託 報酬 減額"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "新規・公式更新起点の独自検証。入金はあるが手数料分が控除される意図に限定。①の入金なし、071の書面未提示、報酬総額比較と区別。2025年以前の解説と2026年発注分の取扱いの違いを公式情報で照合する。",
+      "reasonToWriteNow": "公取委2026年特設サイトが2026-10-08公開。2026-06-18勧告の注2も2026-01-01以降発注分について合意の有無にかかわらず手数料控除が減額に当たると明記。無料Web検索では古い取扱いを記載した解説も見つかり、混同解消の余地がある。主KWのGSC実測なし、関連親ページ121表示/6click/9.9位を間接根拠とする。適用対象・委託期間の条件は執筆時に確認し全契約へ一律断定しない。",
+      "proposedSlug": "contractor-bank-transfer-fee-deduction",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "employee-contractor-pay-comparison",
+        "contractor-no-written-contract",
+        "business-outsourcing-conversion-risk"
+      ],
+      "searchEvidence": null
+    },
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "id": "cand_261011c_interview_ctr",
+      "title": "【既存改善】在職中の面接はいつ受ける？18時以降の相談と日程調整",
+      "primaryKeyword": "在職中 面接",
+      "secondaryKeywords": [
+        "在職中 面接 18時以降",
+        "在職中 面接 日程調整"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "interview-scheduling-while-employedの既存URL改善。夜の面接への遠慮・ブラック疑念は本文にすでにあるため、新規節の重複追加をしない。検索結果のタイトルと冒頭の回答を点検し、観測用の変更を限定。新規採番なし。",
+      "reasonToWriteNow": "確定9/23〜10/6の同ページ14表示/0click/平均7.1位、query「在職中 面接」は1〜3位帯。queryの表示・click・正確順位は未取得のためSearchEvidence数値を捏造しない。小母数でCTR不良を断定せず、親子ページを増やす前に既存スニペットと意図を照合。Open PRに同記事改稿はない。",
+      "proposedSlug": "interview-scheduling-while-employed",
+      "riskFlags": [],
+      "nearestExistingSlugs": [
+        "interview-scheduling-while-employed",
+        "casual-interview"
+      ],
+      "searchEvidence": null
+    }
+  ],
+  "notes": [
+    "Drive00/01とWBS運用ルール・ガント・KPI、master記事69件、Open PR、候補latest・10/10batchとqueue・10/7/10/9queueを再取得。10/11batchは存在しない。",
+    "最新取得できた成功SEO Opportunity Snapshot run38014886932（2026-10-10 10:53 JST）。当日07:35成功runは未確認。確定9/23〜10/6 vs9/9〜9/22。master gsc-signalとSlack NARU_GSC_DAILYの一致を確認。",
+    "総表示392対172、click16対4、CTR4.08%対2.33%、Top3=5対0、Top10=11対2、Top20=18対4、新規可視query26。可視query32対11であり全表示の母数ではない。",
+    "071と昨日の053/048リライトは公開済み。065/067/068/066/069/070を再候補化しない。早期離職リライトPR186は既存作業として要承認のまま維持し重複PRを作らない。",
+    "主KW未取得の新規①②のsearchEvidenceはnull。GSC関連クラスターの根拠を理由欄に記載。③はページ実測をquery数値へ代用しない。",
+    "Google Trends/PAA/関連検索は未取得。Web検索は無料検索結果による予備調査でGoogle SERP実測と同一視しない。スコアは今回は未算定。",
+    "一次情報：https://www.jftc.go.jp/freelancelaw_2026/index.html（10/8公開）、https://www.jftc.go.jp/houdou/pressrelease/2026/jun/260618_spc.html（6/18公開）、https://freelance110.mhlw.go.jp/",
+    "②制作時は今回の公式更新に対応する公式画像と転載条件・第三者権利を確認。不明なら公式リンク＋独自図解へ切替。候補段階では転載承認済みとしない。",
+    "選択前に記事PR・公開時刻を設定しない。ユーザー選択待ち。WBSへ同候補順と日程・状態を同期してreadback。"
+  ]
+}
