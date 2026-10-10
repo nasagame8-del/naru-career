@@ -1,0 +1,46 @@
+name: Site Policy Validation
+
+on:
+  push:
+    branches:
+      - "fix/adsense-*"
+    paths:
+      - "src/app/privacy/**"
+      - "src/app/contact/**"
+      - "src/app/api/contact/**"
+      - "src/app/robots.ts"
+      - "src/app/robots.test.ts"
+      - ".github/workflows/site-policy-validation.yml"
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "src/app/privacy/**"
+      - "src/app/contact/**"
+      - "src/app/api/contact/**"
+      - "src/app/robots.ts"
+      - "src/app/robots.test.ts"
+      - ".github/workflows/site-policy-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  site-policy-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Lint changed site-policy files
+        run: npx eslint src/app/privacy/page.tsx src/app/contact/page.tsx src/app/api/contact/route.ts src/app/robots.ts src/app/robots.test.ts
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Check AdSense crawler rules
+        run: npx vitest run src/app/robots.test.ts
+      - name: Build for Cloudflare
+        run: npm run build:cloudflare

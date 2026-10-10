@@ -12,6 +12,9 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", disallow: privatePaths },
       // 検索・リアルタイム引用系
       allowed("Googlebot"),
+      // AdSense審査・広告配信クローラーにも公開ページへのアクセスを許可
+      allowed("Mediapartners-Google"),
+      allowed("Google-Display-Ads-Bot"),
       allowed("Bingbot"),
       allowed("OAI-SearchBot"),
       allowed("ChatGPT-User"),

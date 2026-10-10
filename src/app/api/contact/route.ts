@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const resend = getResend();
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: `NARU お問い合わせ <${from}>`,
       to: [to],
       replyTo: email,
@@ -56,6 +56,16 @@ export async function POST(req: NextRequest) {
         message,
       ].join("\n"),
     });
+
+    // Resend returns API failures as { error } without throwing.
+    // Do not report a successful submission if the provider rejected it.
+    if (error) {
+      console.error("Resend rejected contact request:", error.name);
+      return NextResponse.json(
+        { error: "送信に失敗しました。時間を置いて再度お試しください。" },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (e) {
