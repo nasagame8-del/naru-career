@@ -14,7 +14,7 @@
       "order": 2,
       "slot": 2,
       "requestedPublishAt": "2026-10-10T18:00:00+09:00",
-      "status": "PREVIEW_READY",
+      "status": "PUBLISH_BLOCKED",
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
@@ -38,7 +38,8 @@
         }
       },
       "blockers": [
-        "独立Human Fact Check・最新headの実画面Preview承認待ち"
+        "独立Human Fact Check・最新headの実画面Preview承認待ち",
+        "18:00時点で独立Human Fact Check・最新headの実画面Preview承認が未記録"
       ],
       "prNumber": 176,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/176",
@@ -75,7 +76,16 @@
           "sha256": "2f356119a1d77be6da71968d9dfd910e2759576103625202be07279c9979f989"
         }
       },
-      "previewUrl": "https://naru-pr-176-preview.broad-fuchsia.workers.dev/articles/contractor-no-written-contract"
+      "previewUrl": "https://naru-pr-176-preview.broad-fuchsia.workers.dev/articles/contractor-no-written-contract",
+      "publicationAttempt": {
+        "scheduledAt": "2026-10-10T18:00:00+09:00",
+        "startedAt": "2026-10-10T18:00:02+09:00",
+        "delaySeconds": 2,
+        "outcome": "blocked",
+        "reason": "Independent Human Fact Check and latest-head preview approval were not recorded by the scheduled time; automatic delayed publish is prohibited.",
+        "observedHeadSha": "40c7245339d5e4e56bac4f64fc5ee9afe612df04",
+        "prMergeableAtCheck": true
+      }
     }
   ],
   "rewrites": [
