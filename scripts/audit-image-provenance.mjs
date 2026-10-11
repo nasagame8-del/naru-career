@@ -65,11 +65,11 @@ async function main() {
   if (args.verify && !process.env.OPENAI_API_KEY) {
     throw new Error("--verify needs OPENAI_API_KEY; no images were uploaded.");
   }
-  const names = (await fs.readdir(directory))
+  const candidates = (await fs.readdir(directory))
     .filter((name) => supported.test(name))
     .filter((name) => !args.slug || name.startsWith(`${args.slug}-`))
-    .sort()
-    .slice(0, args.limit ?? undefined);
+    .sort();
+  const names = args.limit === null ? candidates : candidates.slice(0, args.limit);
   if (!names.length) throw new Error("No matching article images");
 
   const report = {
