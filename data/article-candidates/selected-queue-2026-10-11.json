@@ -12,7 +12,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "SCHEDULED_CONDITIONAL",
+      "status": "PUBLISHED",
       "requestedPublishAt": "2026-10-11T14:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -105,7 +105,25 @@
         }
       ],
       "previewUrl": "https://naru-pr-187-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation",
-      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a",
+      "publication": {
+        "merged": true,
+        "mergeSha": "df2bbf46b649a8e20b3b2dbfa4f6582bf2be12dc",
+        "mergedAt": "2026-10-11T14:06:14+09:00",
+        "deployRunId": 38113709688,
+        "deployStatus": "completed",
+        "deployConclusion": "success",
+        "canonicalVerified": true,
+        "canonicalVerifiedAt": "2026-10-11T14:08:33+09:00",
+        "articleStatus": 200,
+        "imageStatuses": {
+          "card": 200,
+          "01": 200,
+          "02": 200,
+          "03": 200
+        },
+        "productionUrl": "https://naru-career.com/articles/contractor-unpaid-fee-consultation"
+      }
     },
     {
       "candidateId": "cand_261011b_transfer_fee",
