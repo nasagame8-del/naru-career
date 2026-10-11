@@ -16,7 +16,7 @@
       "requestedPublishAt": "2026-10-11T14:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "passed",
         "previewApprovedHeadSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
         "automatedFactCheck": {
           "headSha": "0b53f7dc70ab0fbbc45f9459b257eb562d7963c4",
@@ -54,11 +54,13 @@
           "url": "https://naru-pr-187-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation"
         },
         "previewApprovedAt": "2026-10-11T13:26:58+09:00",
-        "previewApprovalText": "両方確認した。一戸は14時、もう一戸は18時"
+        "previewApprovalText": "両方確認した。一戸は14時、もう一戸は18時",
+        "humanFactCheckHeadSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
+        "humanFactCheckApprovedAt": "2026-10-11T13:29:44+09:00",
+        "humanFactCheckReviewer": "優貴",
+        "humanFactCheckApprovalText": "人手ファクトチェックも含めてOK出してんだけど"
       },
-      "blockers": [
-        "独立Human Fact Check未完了"
-      ],
+      "blockers": [],
       "prNumber": 187,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/187",
       "latestHeadSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
@@ -117,7 +119,7 @@
       "requestedPublishAt": "2026-10-11T18:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "passed",
         "previewApprovedHeadSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
         "automatedFactCheck": {
           "headSha": "822c290abb5b1a9417052f934f6c6573d2739152",
@@ -155,11 +157,13 @@
           "url": "https://naru-pr-188-preview.broad-fuchsia.workers.dev/articles/contractor-bank-transfer-fee-deduction"
         },
         "previewApprovedAt": "2026-10-11T13:26:58+09:00",
-        "previewApprovalText": "両方確認した。一戸は14時、もう一戸は18時"
+        "previewApprovalText": "両方確認した。一戸は14時、もう一戸は18時",
+        "humanFactCheckHeadSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
+        "humanFactCheckApprovedAt": "2026-10-11T13:29:44+09:00",
+        "humanFactCheckReviewer": "優貴",
+        "humanFactCheckApprovalText": "人手ファクトチェックも含めてOK出してんだけど"
       },
-      "blockers": [
-        "独立Human Fact Check未完了"
-      ],
+      "blockers": [],
       "prNumber": 188,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/188",
       "latestHeadSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
