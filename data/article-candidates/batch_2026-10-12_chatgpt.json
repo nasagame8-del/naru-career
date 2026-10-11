@@ -1,0 +1,97 @@
+{
+  "batchId": "batch_2026-10-12_chatgpt",
+  "generatedAt": "2026-10-12T08:00:00+09:00",
+  "trigger": "cron",
+  "inventorySize": 71,
+  "nextArticleId": 74,
+  "candidates": [
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261012a_exclusivity",
+      "title": "業務委託なのに他社の仕事は禁止？専属・競業避止・秘密保持の確認点",
+      "primaryKeyword": "業務委託 他社の仕事 禁止",
+      "secondaryKeywords": [
+        "業務委託 専属契約",
+        "フリーランス 競業避止義務"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "新規。契約中・終了後の他社受注制限の範囲・期間・対象業務・秘密保持との違いに限定。親記事の労働者性、065の辞め方、067の勤怠拘束と役割を分離。",
+      "reasonToWriteNow": "関連親119表示/5click/9.9位、違法query9表示/2click/8.6位（GSC final9/24〜10/7）。主KW実測なし。厚労省公式ガイドラインに他社仕事の禁止例があり、自由な働き方という説明と制限条項のギャップを検証できる。全ての競業避止を違法と断定しない。",
+      "proposedSlug": "contractor-exclusivity-noncompete-checks",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "contractor-how-to-quit",
+        "contractor-attendance-control-worker-status"
+      ]
+    },
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261012b_client_cancel",
+      "title": "業務委託を発注側にキャンセルされたら？作業済み費用と確保した日程の扱い",
+      "primaryKeyword": "業務委託 キャンセル料",
+      "secondaryKeywords": [
+        "フリーランス 発注 キャンセル",
+        "業務委託 発注者都合 中止"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規・公式更新起点の検証。発注済みの案件を発注者都合で中止された場面に限定。053の継続契約終了・労働者性、065の自分から辞める場面、072の確定報酬未払いと区別。任意の一律キャンセル料や常に全額請求可能との断定はしない。",
+      "reasonToWriteNow": "10/8公開の公取委特設サイトを入口に、2025/12/10公式留意点の発注キャンセル例を検証。今回の法改正と誤認させない。関連契約終了ページ41表示/0click/17.5位、親119表示/5click。主KW実測なし。Web制作・撮影等で作業と予約日程を分ける角度。",
+      "proposedSlug": "contractor-client-cancellation-costs",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "outsourcing-contract-termination-worker-status",
+        "contractor-unpaid-fee-consultation",
+        "contractor-how-to-quit"
+      ]
+    },
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261012c_probation_salary",
+      "title": "試用期間だけ給料が低い求人は大丈夫？本採用後の金額と切替条件の確認",
+      "primaryKeyword": "試用期間 給料 低い",
+      "secondaryKeywords": [
+        "試用期間 本採用 給与",
+        "試用期間 労働条件通知書"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "新規補欠。試用期間と本採用の給与・雇用形態・切替日・基準の照合に限定。総合承諾チェックや070の通知書が届かない対応を再掲しない。執筆前に既存親の試用期間記載と専用記事への役割分担を再QA。",
+      "reasonToWriteNow": "GSCに『労働条件通知書 内定承諾前』21〜40位帯の新規露出あり。ただし表示母数・query×pageと主KW実測未取得なので優先度Bの補欠。厚労省の若者向け資料とハローワーク公式が試用期間中の条件明示を説明。低いだけでブラック・違法と決めず具体条件を確認する。",
+      "proposedSlug": "probation-period-lower-salary-checks",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-offer-acceptance-checks",
+        "offer-letter-before-acceptance-not-provided"
+      ]
+    }
+  ],
+  "notes": [
+    "Drive00/01、WBS3タブ、master記事71件、Open PR、latest、10/11queue、10/6〜10/10queue取得。候補ディレクトリに10/12batch/queueなし。065/067/068/066/069/070/071/072/073は公開済みで再候補化しない。",
+    "最新成功SEO Opportunity Snapshot run38100992319、10/11 10:12 JST。10/12 07:35成功runは確認できず、当日新データ取得済みとしない。master signalとSlack最新NARU_GSC_DAILY一致。",
+    "GSC final9/24〜10/7 vs9/10〜9/23：総表示382vs166、click15vs4、CTR3.93%vs2.41%、Top3=5vs0、Top10=11vs2、Top20=18vs4、可視query32vs7、新規27。可視queryは全体母数ではない。GA4日別値未取得。",
+    "主KWは全件searchEvidence:null。関連クラスター実測は理由に記載、ページ値をquery値に代用しない。Google SERP/Trends/PAA/サジェスト未取得。無料検索による一次資料確認のみでスコア未算定。",
+    "①②優先、③補欠。②は10/8公取委公式更新起点、①③は通常SEO。選択前に記事PR・公開時刻設定・採番確定しない。",
+    "既存改善PR189(記事56)、186(早期離職)、191(業務委託親のリンク)はOpenで重複案/PRを作らない。",
+    "一次情報：https://www.check-roudou.mhlw.go.jp/study/roudousya_freelance.html 、https://www.jftc.go.jp/freelancelaw_2026/index.html 、https://www.jftc.go.jp/houdou/pressrelease/2025/dec/251210_flshido_2.pdf 、https://www.mhlw.go.jp/file/06-Seisakujouhou-12600000-Seisakutoukatsukan/0000205544.pdf 。②は画像転載条件/第三者権利を制作時に確認し不明なら公式リンク＋独自図解。"
+  ]
+}
