@@ -39,3 +39,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-SHINDAN-RPG-PUBLISH-20261010
 ユーザーが「公開していいよ細かい修正はこっちでする」と明示承認。PR #180のReady化、masterへのPR経由マージ、Cloudflare本番デプロイ、実際の /shindan の確認を許可。追加のUI修正・他PRのマージは行わない。master直接pushなし。Claudeタスクは起動しない。
+
+## USER-NARU073-CATEGORY-FIX
+ユーザー「修正してすぐ」に基づき記事73のcategoryを独自調査から業界解説へ修正する。専用PR作成、CI確認、head固定squash merge、Cloudflare本番確認を許可。本文・画像・他記事は変更しない。Claude起動なし。
