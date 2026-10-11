@@ -1,6 +1,6 @@
 ---
 title: "業務委託の振込手数料は誰が負担？報酬から差し引かれたときの確認点"
-category: "独自調査"
+category: "業界解説"
 keyword: "業務委託 振込手数料"
 datePublished: "2026-10-11"
 dateModified: "2026-10-11"
