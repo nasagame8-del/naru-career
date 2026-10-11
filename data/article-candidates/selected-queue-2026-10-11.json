@@ -133,7 +133,7 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "SCHEDULED_CONDITIONAL",
+      "status": "PUBLISHED",
       "requestedPublishAt": "2026-10-11T18:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -226,7 +226,25 @@
         }
       ],
       "previewUrl": "https://naru-pr-188-preview.broad-fuchsia.workers.dev/articles/contractor-bank-transfer-fee-deduction",
-      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a",
+      "publication": {
+        "merged": true,
+        "mergeSha": "84b3eb64f27e28e912b9b622e80e621e418fde82",
+        "mergedAt": "2026-10-11T18:06:12+09:00",
+        "deployRunId": 38127175140,
+        "deployStatus": "completed",
+        "deployConclusion": "success",
+        "canonicalVerified": true,
+        "canonicalVerifiedAt": "2026-10-11T18:08:08+09:00",
+        "articleStatus": 200,
+        "imageStatuses": {
+          "card": 200,
+          "01": 200,
+          "02": 200,
+          "03": 200
+        },
+        "productionUrl": "https://naru-career.com/articles/contractor-bank-transfer-fee-deduction"
+      }
     }
   ],
   "rewrites": [
