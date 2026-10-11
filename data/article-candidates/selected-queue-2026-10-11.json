@@ -12,7 +12,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "SCHEDULE_REQUESTED",
+      "status": "SCHEDULED_CONDITIONAL",
       "requestedPublishAt": "2026-10-11T14:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -102,7 +102,8 @@
           "driveByteReadback": true
         }
       ],
-      "previewUrl": "https://naru-pr-187-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation"
+      "previewUrl": "https://naru-pr-187-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation",
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
     },
     {
       "candidateId": "cand_261011b_transfer_fee",
@@ -112,7 +113,7 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "SCHEDULE_REQUESTED",
+      "status": "SCHEDULED_CONDITIONAL",
       "requestedPublishAt": "2026-10-11T18:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -202,7 +203,8 @@
           "driveByteReadback": true
         }
       ],
-      "previewUrl": "https://naru-pr-188-preview.broad-fuchsia.workers.dev/articles/contractor-bank-transfer-fee-deduction"
+      "previewUrl": "https://naru-pr-188-preview.broad-fuchsia.workers.dev/articles/contractor-bank-transfer-fee-deduction",
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
     }
   ],
   "rewrites": [
