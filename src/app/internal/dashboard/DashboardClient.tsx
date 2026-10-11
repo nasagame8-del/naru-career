@@ -176,7 +176,7 @@ export function DashboardClient() {
         {tab === "new-article" && <NewArticleTab />}
         {tab === "seo" && <SeoEditorTab />}
         {tab === "site" && <SiteTab site={data.site} keywords={data.keywords} />}
-        {tab === "asp" && <AspTab asps={data.asp?.asps || []} />}
+        {tab === "asp" && <AspTab asps={data.asp?.asps} />}
         {tab === "cta" && <CtaTab cta={data.cta} />}
         {tab === "aio" && (
           <>
@@ -421,13 +421,15 @@ const ASP_URLS: Record<string, string> = {
   "afb": "https://www.afi-b.com/",
 };
 
-function AspTab({ asps }: { asps: Asp[] }) {
+function AspTab({ asps }: { asps?: Asp[] }) {
+  if (!asps) return <p role="alert" className="text-sm text-red-700">ASPデータを取得できませんでした。管理APIの応答を確認してください。</p>;
+  if (asps.length === 0) return <p role="status" className="text-sm text-gray-600">ASP登録データがありません。</p>;
   return (
     <div className="space-y-4">
       {asps.map((asp) => (
         <Card key={asp.name} title={asp.name} badge={<StatusBadge status={asp.status} />} subtitle={`更新: ${asp.updatedAt}`}
           titleLink={ASP_URLS[asp.name]}>
-          {asp.programs.length > 0 ? (
+          {(asp.programs ?? []).length > 0 ? (
             <table className="w-full text-sm">
               <thead><tr className="border-b border-gray-100">
                 <th className="text-left py-1.5 text-gray-500 font-medium text-xs">案件名</th>
@@ -435,7 +437,7 @@ function AspTab({ asps }: { asps: Asp[] }) {
                 <th className="text-left py-1.5 text-gray-500 font-medium text-xs">状態</th>
               </tr></thead>
               <tbody>
-                {asp.programs.map((p) => (
+                {(asp.programs ?? []).map((p) => (
                   <tr key={p.key} className="border-b border-gray-50">
                     <td className="py-1.5 text-xs">{p.name}</td>
                     <td className="py-1.5 font-mono text-[10px] text-gray-400">{p.key}</td>
