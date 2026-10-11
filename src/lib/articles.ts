@@ -168,7 +168,7 @@ export type ArticleMeta = {
   dateModified: string;
   excerpt: string;
   /** Voluntary, source-confirmed disclosure for the hero/card illustration. */
-  imageDisclosure: string;
+  imageDisclosure?: string;
   faq: FAQ[];
   cta_agents: string[];
   note_published: boolean;
