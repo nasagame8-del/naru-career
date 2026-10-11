@@ -12,17 +12,43 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "SELECTED",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "automatedFactCheck": {
+          "headSha": "0b53f7dc70ab0fbbc45f9459b257eb562d7963c4",
+          "blockerCount": 0,
+          "reviewCount": 20
+        },
+        "ci": [
+          {
+            "name": "preview",
+            "status": "completed",
+            "conclusion": "failure",
+            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109387379/job/114381591109"
+          },
+          {
+            "name": "article-factory-validation",
+            "status": "completed",
+            "conclusion": "failure",
+            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109387334/job/114381590933"
+          }
+        ]
       },
       "blockers": [
-        "原稿・画像・QA・Preview承認未完了"
+        "card/01/02/03のユーザー画像4枚未提供",
+        "Human Fact Check未完了",
+        "画像反映後のQA・CI・Cloudflare preview・ユーザー目視承認未完了",
+        "公開時刻未指定"
       ],
-      "prNumber": null
+      "prNumber": 187,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/187",
+      "latestHeadSha": "0b53f7dc70ab0fbbc45f9459b257eb562d7963c4",
+      "branch": "article-factory/2026-10-11-72-unpaid-fee",
+      "driveFolderId": "1F8SqYQEftMchsgPAAOylyS7EKfNyrs3r"
     },
     {
       "candidateId": "cand_261011b_transfer_fee",
@@ -32,17 +58,43 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "SELECTED",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "automatedFactCheck": {
+          "headSha": "822c290abb5b1a9417052f934f6c6573d2739152",
+          "blockerCount": 0,
+          "reviewCount": 57
+        },
+        "ci": [
+          {
+            "name": "article-factory-validation",
+            "status": "completed",
+            "conclusion": "failure",
+            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109446913/job/114381764030"
+          },
+          {
+            "name": "preview",
+            "status": "completed",
+            "conclusion": "failure",
+            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109446856/job/114381763570"
+          }
+        ]
       },
       "blockers": [
-        "原稿・画像・QA・Preview承認未完了"
+        "card/01/02/03のユーザー画像4枚未提供",
+        "Human Fact Check未完了",
+        "画像反映後のQA・CI・Cloudflare preview・ユーザー目視承認未完了",
+        "公開時刻未指定"
       ],
-      "prNumber": null
+      "prNumber": 188,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/188",
+      "latestHeadSha": "822c290abb5b1a9417052f934f6c6573d2739152",
+      "branch": "article-factory/2026-10-11-73-transfer-fee",
+      "driveFolderId": "1nGB2e4Tcsvzuahh-uD1AMbUljHHuOiXn"
     }
   ],
   "rewrites": [
@@ -53,20 +105,33 @@
       "title": "【既存改善】在職中の面接はいつ受ける？18時以降の相談と日程調整",
       "workType": "rewrite",
       "order": 3,
-      "status": "SELECTED",
+      "status": "DRAFT_PR",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
-        "previewApprovedHeadSha": null
+        "previewApprovedHeadSha": null,
+        "automatedFactCheck": {
+          "headSha": "44ee74a7fcd4a67688a2f5c095d3d82c9cafb934",
+          "blockerCount": 0,
+          "reviewCount": 8
+        },
+        "ci": "in_progress"
       },
       "blockers": [
-        "リライト・QA・Preview承認未完了"
+        "Human Fact Check未完了",
+        "最新headのCI・Cloudflare preview確認中",
+        "最新headのユーザー目視承認未完了",
+        "公開時刻未指定"
       ],
-      "prNumber": null
+      "prNumber": 189,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/189",
+      "latestHeadSha": "44ee74a7fcd4a67688a2f5c095d3d82c9cafb934",
+      "branch": "seo/2026-10-11-56-interview-ctr"
     }
   ],
   "notes": [
-    "ユーザーが①②③を順番付きで選定。新規2本＋既存記事56リライト1件。公開時刻は未指定なので推測で予約・公開しない。記事72/73はこのqueueで採番予約し、PR作成前に再照合する。"
+    "ユーザーが①②③を順番付きで選定。新規2本＋既存記事56リライト1件。公開時刻は未指定なので推測で予約・公開しない。記事72/73はこのqueueで採番予約し、PR作成前に再照合する。",
+    "2026-10-11：ユーザーの「やって」に基づき新規72/73・リライト56を専用Draft PRへ保存。原稿と画像プラン・プロンプトをDriveへ保存しreadback確認。公開・承認の代用はしていない。"
   ]
 }
