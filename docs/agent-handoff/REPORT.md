@@ -669,3 +669,14 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 上記QA記載の既存lint・実機/GA4未確認は継続。
 - 判断が必要な項目: 公開承認取得済み。
 - 次: PR経由マージ後、対応merge SHAのCloudflare deployと本番 /shindan の20問回答を確認。
+
+## USER-NARU073-CATEGORY-FIX
+- reportId / completedInstructionId: USER-NARU073-CATEGORY-FIX
+- status: READY_FOR_CI
+- branch: fix/naru-073-category
+- 実施内容: 公取委等の公式資料による解説記事73を業界解説へ訂正。
+- 変更ファイル: 記事73 frontmatter、NEXT_INSTRUCTION、REPORT。
+- diff: category一行のみ。本文・画像・日付は同一。
+- 検証: 既存カテゴリ定義と業務委託記事65の業界解説分類を確認。CI/本番は最新headで検証。
+- 既知の問題/判断: なし。ユーザー即時修正指示済み。
+- 次: CI成功後head固定mergeとCloudflare/canonicalカテゴリ確認。
