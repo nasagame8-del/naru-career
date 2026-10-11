@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-11",
+  "batchId": "batch_2026-10-11_chatgpt",
+  "selectionText": "1.2.3",
+  "selectedAt": "2026-10-11T11:37:14+09:00",
+  "articles": [
+    {
+      "candidateId": "cand_261011a_unpaid_fee",
+      "articleId": 72,
+      "slug": "contractor-unpaid-fee-consultation",
+      "title": "業務委託の報酬が未払いになったら？支払期日・証拠・相談先の確認順",
+      "genre": "通常SEO",
+      "workType": "new",
+      "order": 1,
+      "status": "SELECTED",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending",
+        "previewApprovedHeadSha": null
+      },
+      "blockers": [
+        "原稿・画像・QA・Preview承認未完了"
+      ],
+      "prNumber": null
+    },
+    {
+      "candidateId": "cand_261011b_transfer_fee",
+      "articleId": 73,
+      "slug": "contractor-bank-transfer-fee-deduction",
+      "title": "業務委託の振込手数料は誰が負担？報酬から差し引かれたときの確認点",
+      "genre": "公式更新・独自検証",
+      "workType": "new",
+      "order": 2,
+      "status": "SELECTED",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending",
+        "previewApprovedHeadSha": null
+      },
+      "blockers": [
+        "原稿・画像・QA・Preview承認未完了"
+      ],
+      "prNumber": null
+    }
+  ],
+  "rewrites": [
+    {
+      "candidateId": "cand_261011c_interview_ctr",
+      "articleId": 56,
+      "slug": "interview-scheduling-while-employed",
+      "title": "【既存改善】在職中の面接はいつ受ける？18時以降の相談と日程調整",
+      "workType": "rewrite",
+      "order": 3,
+      "status": "SELECTED",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending",
+        "previewApprovedHeadSha": null
+      },
+      "blockers": [
+        "リライト・QA・Preview承認未完了"
+      ],
+      "prNumber": null
+    }
+  ],
+  "notes": [
+    "ユーザーが①②③を順番付きで選定。新規2本＋既存記事56リライト1件。公開時刻は未指定なので推測で予約・公開しない。記事72/73はこのqueueで採番予約し、PR作成前に再照合する。"
+  ]
+}
