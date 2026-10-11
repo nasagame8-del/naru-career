@@ -12,12 +12,12 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "PREVIEW_READY",
-      "requestedPublishAt": null,
+      "status": "SCHEDULE_REQUESTED",
+      "requestedPublishAt": "2026-10-11T14:00:00+09:00",
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "humanFactCheck": "pending",
-        "previewApprovedHeadSha": null,
+        "previewApprovedHeadSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
         "automatedFactCheck": {
           "headSha": "0b53f7dc70ab0fbbc45f9459b257eb562d7963c4",
           "blockerCount": 0,
@@ -52,12 +52,12 @@
           "headSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
           "status": "passed",
           "url": "https://naru-pr-187-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation"
-        }
+        },
+        "previewApprovedAt": "2026-10-11T13:26:58+09:00",
+        "previewApprovalText": "両方確認した。一戸は14時、もう一戸は18時"
       },
       "blockers": [
-        "独立Human Fact Check未完了",
-        "最新headのユーザーPreview目視承認未完了",
-        "公開時刻未指定"
+        "独立Human Fact Check未完了"
       ],
       "prNumber": 187,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/187",
@@ -112,12 +112,12 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "PREVIEW_READY",
-      "requestedPublishAt": null,
+      "status": "SCHEDULE_REQUESTED",
+      "requestedPublishAt": "2026-10-11T18:00:00+09:00",
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "humanFactCheck": "pending",
-        "previewApprovedHeadSha": null,
+        "previewApprovedHeadSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
         "automatedFactCheck": {
           "headSha": "822c290abb5b1a9417052f934f6c6573d2739152",
           "blockerCount": 0,
@@ -152,12 +152,12 @@
           "headSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
           "status": "passed",
           "url": "https://naru-pr-188-preview.broad-fuchsia.workers.dev/articles/contractor-bank-transfer-fee-deduction"
-        }
+        },
+        "previewApprovedAt": "2026-10-11T13:26:58+09:00",
+        "previewApprovalText": "両方確認した。一戸は14時、もう一戸は18時"
       },
       "blockers": [
-        "独立Human Fact Check未完了",
-        "最新headのユーザーPreview目視承認未完了",
-        "公開時刻未指定"
+        "独立Human Fact Check未完了"
       ],
       "prNumber": 188,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/188",
