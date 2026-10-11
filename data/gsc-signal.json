@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-10-10T01:53:57.176Z",
+  "generatedAt": "2026-10-11T01:12:21.981Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-23",
-    "endDate": "2026-10-06"
+    "startDate": "2026-09-24",
+    "endDate": "2026-10-07"
   },
   "previousRange": {
-    "startDate": "2026-09-09",
-    "endDate": "2026-09-22"
+    "startDate": "2026-09-10",
+    "endDate": "2026-09-23"
   },
   "visibleQueryCounts": {
     "current": 32,
-    "previous": 11,
-    "new": 26
+    "previous": 7,
+    "new": 27
   },
   "positionBuckets": {
     "current": {
@@ -33,11 +33,6 @@
       "query": "正社員 から業務委託 クビ",
       "positionBand": "4-10",
       "signal": "quick_win"
-    },
-    {
-      "query": "rpg職業診断",
-      "positionBand": "21-40",
-      "signal": "rising"
     },
     {
       "query": "正社員 から業務委託 クビ",
@@ -172,11 +167,6 @@
       "signal": "new"
     },
     {
-      "page": "/articles/agent-referral-vs-self-apply",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
       "page": "/articles/aio-seo-industry-inside",
       "positionBand": "4-10",
       "signal": "new"
@@ -190,6 +180,11 @@
       "page": "/articles/casual-interview",
       "positionBand": "4-10",
       "signal": "rising"
+    },
+    {
+      "page": "/articles/company-data-hygiene-security-breaches",
+      "positionBand": "4-10",
+      "signal": "new"
     }
   ]
 }
