@@ -38,6 +38,8 @@ OPENAI_API_KEY=... node scripts/audit-image-provenance.mjs \
 
 ## 現段階の制約
 
-2026-10-12時点、この作業からGoogle/OpenAIの検出APIへの実ファイル送信・検出結果の取得は完了していない。実ファイルを取得し、検証ツールを実行するまでは「透かしあり／なし」を公表しない。
+2026-10-12、NARU-073のWebP 4枚をGoogle Driveから取得してWebPチャンクを確認。4枚とも画像本体の `VP8 ` チャンクだけで、EXIF/XMP/ICC等の追加メタデータチャンクはなかった。各ファイルのGit blob SHA-1はmaster上の同名ファイルと一致。実測記録は `docs/audits/image-provenance-naru-073-20261012.json` 参照。
+
+ただしGoogle/OpenAIのSynthID検出APIへの実ファイル送信・検出結果の取得は完了していない。残る215ファイルも未監査。検出ツールを実行するまでは「不可視透かしあり／なし」を公表しない。
 
 参照：Google 2026-10-07 発表 https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synth-id-ai-content/ 、OpenAI Content Provenance API https://developers.openai.com/api/docs/guides/content-provenance 、Google Search Central https://developers.google.com/search/docs/fundamentals/using-gen-ai-content
