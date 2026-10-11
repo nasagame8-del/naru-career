@@ -12,7 +12,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "WAITING_IMAGES",
+      "status": "PREVIEW_READY",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
@@ -23,32 +23,86 @@
           "blockerCount": 0,
           "reviewCount": 20
         },
-        "ci": [
-          {
-            "name": "preview",
-            "status": "completed",
-            "conclusion": "failure",
-            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109387379/job/114381591109"
-          },
-          {
-            "name": "article-factory-validation",
-            "status": "completed",
-            "conclusion": "failure",
-            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109387334/job/114381590933"
-          }
-        ]
+        "ci": {
+          "headSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
+          "status": "passed",
+          "checks": [
+            {
+              "name": "article-factory-validation",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38111283461/job/114387202640"
+            },
+            {
+              "name": "preview",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38111283462/job/114387202627"
+            }
+          ]
+        },
+        "imageQa": {
+          "headSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
+          "status": "passed",
+          "dimensions": "card1200x630;01/02/03 1200x675",
+          "metadataRemoved": true,
+          "visualChecked": true
+        },
+        "cloudflarePreview": {
+          "headSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
+          "status": "passed",
+          "url": "https://naru-pr-187-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation"
+        }
       },
       "blockers": [
-        "card/01/02/03のユーザー画像4枚未提供",
-        "Human Fact Check未完了",
-        "画像反映後のQA・CI・Cloudflare preview・ユーザー目視承認未完了",
+        "独立Human Fact Check未完了",
+        "最新headのユーザーPreview目視承認未完了",
         "公開時刻未指定"
       ],
       "prNumber": 187,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/187",
-      "latestHeadSha": "0b53f7dc70ab0fbbc45f9459b257eb562d7963c4",
+      "latestHeadSha": "adce01e5f0f0ed5d60f339cbdcfa24fd2c580160",
       "branch": "article-factory/2026-10-11-72-unpaid-fee",
-      "driveFolderId": "1F8SqYQEftMchsgPAAOylyS7EKfNyrs3r"
+      "driveFolderId": "1F8SqYQEftMchsgPAAOylyS7EKfNyrs3r",
+      "images": [
+        {
+          "slot": "card",
+          "fileName": "contractor-unpaid-fee-consultation-card.webp",
+          "driveFileId": "1vdNXLePiaaCgRpjXojkkw36qCQEpCGN3",
+          "originalFileId": "1y7U58So4Im96WXrSpexOzrxz1zTE7AXe",
+          "sha256": "be26a48d571e5563736b82b244e83e6f09a466ebe4fd7b71c47204a4752cae50",
+          "githubBlobSha": "9df36fd1184b9ded15a4dd6e9ed0539874f2555c",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "01",
+          "fileName": "contractor-unpaid-fee-consultation-01.webp",
+          "driveFileId": "1_nR5QxrrCTtylP510uLLpsQVYiea3H6Q",
+          "originalFileId": "1j-Lus56l9S9clfI8j0MYBO4KMm4ahnm9",
+          "sha256": "55b4189284394efd3ec477fb670499301fc6b38fd6ee25e936872406777983be",
+          "githubBlobSha": "4716cfc364b3230f2834d017363489d9f75b6bdb",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "02",
+          "fileName": "contractor-unpaid-fee-consultation-02.webp",
+          "driveFileId": "1xCYn8qzwv7ENHXDVjB2_-X9I6JdgFYBS",
+          "originalFileId": "1rpETqMZD0MgDBeOA9mCQnAop40RN-ZS1",
+          "sha256": "8bcfb0572bcd0a9e5421c77fe227beb88d563b3ceca5287a764a508399406524",
+          "githubBlobSha": "47bc9ed44b2377d03d43343f598854e87dfc17dc",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "03",
+          "fileName": "contractor-unpaid-fee-consultation-03.webp",
+          "driveFileId": "1KPbYjclC9a3V2acRgrtH0kxRq88GA2D-",
+          "originalFileId": "1y2UgrMXjysX5kSygU-jgoTAX79qX1fZ7",
+          "sha256": "a67ba2bd723772962b6d1e78618ae780ed73e376bb025be22edab27326eb129d",
+          "githubBlobSha": "b0c363ef2c4a1c6701d290f466aea18f99afa367",
+          "driveByteReadback": true
+        }
+      ],
+      "previewUrl": "https://naru-pr-187-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation"
     },
     {
       "candidateId": "cand_261011b_transfer_fee",
@@ -58,7 +112,7 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "WAITING_IMAGES",
+      "status": "PREVIEW_READY",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
@@ -69,32 +123,86 @@
           "blockerCount": 0,
           "reviewCount": 57
         },
-        "ci": [
-          {
-            "name": "article-factory-validation",
-            "status": "completed",
-            "conclusion": "failure",
-            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109446913/job/114381764030"
-          },
-          {
-            "name": "preview",
-            "status": "completed",
-            "conclusion": "failure",
-            "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38109446856/job/114381763570"
-          }
-        ]
+        "ci": {
+          "headSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
+          "status": "passed",
+          "checks": [
+            {
+              "name": "preview",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38111331941/job/114387348321"
+            },
+            {
+              "name": "article-factory-validation",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38111331922/job/114387348247"
+            }
+          ]
+        },
+        "imageQa": {
+          "headSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
+          "status": "passed",
+          "dimensions": "card1200x630;01/02/03 1200x675",
+          "metadataRemoved": true,
+          "visualChecked": true
+        },
+        "cloudflarePreview": {
+          "headSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
+          "status": "passed",
+          "url": "https://naru-pr-188-preview.broad-fuchsia.workers.dev/articles/contractor-bank-transfer-fee-deduction"
+        }
       },
       "blockers": [
-        "card/01/02/03のユーザー画像4枚未提供",
-        "Human Fact Check未完了",
-        "画像反映後のQA・CI・Cloudflare preview・ユーザー目視承認未完了",
+        "独立Human Fact Check未完了",
+        "最新headのユーザーPreview目視承認未完了",
         "公開時刻未指定"
       ],
       "prNumber": 188,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/188",
-      "latestHeadSha": "822c290abb5b1a9417052f934f6c6573d2739152",
+      "latestHeadSha": "d45ba2ab1e1f7c85ebaea5330c2f66b77bc65fbd",
       "branch": "article-factory/2026-10-11-73-transfer-fee",
-      "driveFolderId": "1nGB2e4Tcsvzuahh-uD1AMbUljHHuOiXn"
+      "driveFolderId": "1nGB2e4Tcsvzuahh-uD1AMbUljHHuOiXn",
+      "images": [
+        {
+          "slot": "card",
+          "fileName": "contractor-bank-transfer-fee-deduction-card.webp",
+          "driveFileId": "1fkCS0lIKfadRsUthu_meiPOt90pOhX5R",
+          "originalFileId": "10qhzuMhcj2wqmmTAzix0erSTiSgASaMZ",
+          "sha256": "511b9b329e7a4b1ce748793c3c1654a717a03cd8624dccb49ff75fa4343559b2",
+          "githubBlobSha": "90befe74219c768ca2adac666b5563abe6975b60",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "01",
+          "fileName": "contractor-bank-transfer-fee-deduction-01.webp",
+          "driveFileId": "1PEaaRVLjmLl63pe0GiMu3KKCrh1twVhl",
+          "originalFileId": "1TVHFPCOAsu_SKaK2ZHDaI_KnnzRpqxKl",
+          "sha256": "a7430a4e0c5e97f8be4f5eee29ebeb81ac18401d982e90334bba647c26ab839f",
+          "githubBlobSha": "a6625c375f19a938f3c8bc07ae3ca1d71e9ca434",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "02",
+          "fileName": "contractor-bank-transfer-fee-deduction-02.webp",
+          "driveFileId": "1mx7QnGiz24VSfeh4Q_pTvciKzz0N6qKy",
+          "originalFileId": "1H-nhRhVmLTkbMjnhSMA4XOt2ILfz1mN9",
+          "sha256": "eb62614ef700376d7296794e9be6f5c08e211a06ba1ea5ad400ff3c8675b89a2",
+          "githubBlobSha": "21ab5f6ec200aaa15fc02025dae105ea0d4f5445",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "03",
+          "fileName": "contractor-bank-transfer-fee-deduction-03.webp",
+          "driveFileId": "1YtMOtzWwXASU0lEpCFP0LbBgBGztVsJX",
+          "originalFileId": "10nkssrORgiJY2w--7o06IjRxMIRufzb_",
+          "sha256": "c0a3cbec75286e24d2cf12c20cc619cd2b4aafb39467edde1146841317d5985f",
+          "githubBlobSha": "60fc4fc61eceef7340b5735c10fcb6b991334e6b",
+          "driveByteReadback": true
+        }
+      ],
+      "previewUrl": "https://naru-pr-188-preview.broad-fuchsia.workers.dev/articles/contractor-bank-transfer-fee-deduction"
     }
   ],
   "rewrites": [
