@@ -13,17 +13,65 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "SELECTED",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
-        "humanFactCheck": "pending"
+        "humanFactCheck": "pending",
+        "automatedFactCheck": {
+          "headSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
+          "blockerCount": 0,
+          "reviewCount": 32
+        },
+        "ci": {
+          "headSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
+          "checks": [
+            {
+              "name": "article-factory-validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187902913/job/114614146195"
+            },
+            {
+              "name": "preview",
+              "status": "completed",
+              "conclusion": "failure",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187902926/job/114614145942"
+            }
+          ],
+          "status": "pending"
+        },
+        "cloudflarePreview": {
+          "headSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
+          "status": "failed",
+          "reason": "WebP4枚未提供でPreviewゲート失敗"
+        },
+        "draftReadback": true,
+        "driveReadback": true
       },
       "blockers": [
-        "本文・画像プラン未作成",
-        "画像未提供",
+        "ユーザー画像4枚未提供",
+        "画像実体QA未完了",
+        "最新head CI未完了",
+        "Cloudflare Previewは画像待ち",
+        "Human Fact Check未完了",
+        "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
-      ]
+      ],
+      "prNumber": 193,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/193",
+      "branch": "article-factory/2026-10-12-74-exclusivity",
+      "latestHeadSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
+      "driveFolderId": "1NbeXrdp1l2KqVmgsvjap5gqW6mF1vsZ3",
+      "imagesDriveFolderId": "1rpFBLTEl-GxWz2UBFBWC2TkWQZYUYbBb",
+      "originalsDriveFolderId": "1LtlR1zDR9qa_2Tygxmm35VLFqVcwRoxU",
+      "driveFiles": {
+        "article": "1FpFk8jlcpV6QJNBxOtx1BMhltDqEwKTD",
+        "imagePlan": "1fIEgSeoMTiXZcDrC1HL949lQXOg1VP1f",
+        "prompts": "1gMH9B9jo-DGo3EYYBA5COXvoh8mPRLKY",
+        "factCheck": "1zqgVz4uLGc60tFBL_D1KVjY8igetLIin",
+        "designPrompts": "19kCfjdAslAxfPb4bJDczW734bD71gVYi"
+      }
     },
     {
       "candidateId": "cand_261012b_client_cancel",
@@ -34,17 +82,65 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "SELECTED",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
-        "humanFactCheck": "pending"
+        "humanFactCheck": "pending",
+        "automatedFactCheck": {
+          "headSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
+          "blockerCount": 0,
+          "reviewCount": 27
+        },
+        "ci": {
+          "headSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
+          "checks": [
+            {
+              "name": "preview",
+              "status": "completed",
+              "conclusion": "failure",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187910128/job/114614167862"
+            },
+            {
+              "name": "article-factory-validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187910084/job/114614167717"
+            }
+          ],
+          "status": "pending"
+        },
+        "cloudflarePreview": {
+          "headSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
+          "status": "failed",
+          "reason": "WebP4枚未提供でPreviewゲート失敗"
+        },
+        "draftReadback": true,
+        "driveReadback": true
       },
       "blockers": [
-        "本文・画像プラン未作成",
-        "画像未提供",
+        "ユーザー画像4枚未提供",
+        "画像実体QA未完了",
+        "最新head CI未完了",
+        "Cloudflare Previewは画像待ち",
+        "Human Fact Check未完了",
+        "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
-      ]
+      ],
+      "prNumber": 194,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/194",
+      "branch": "article-factory/2026-10-12-75-client-cancel",
+      "latestHeadSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
+      "driveFolderId": "1ON_5kgQtVzSmWy-QbqYh3uBr0YNI5qLz",
+      "imagesDriveFolderId": "1f2bv4kONYuSjl4vwLU4NwOuea2BsJCdq",
+      "originalsDriveFolderId": "1NzZ-AJjb72lg214qwhOLagn5RGelSliS",
+      "driveFiles": {
+        "article": "1Y3aXuUhXkXTubNjWin6xQvrCYa5cr_fm",
+        "imagePlan": "1djHpPZzqiENYJJ4n21Ryzz3Mjdf-lIye",
+        "prompts": "1_8Bme1ZTu-PB4yqOuNvQeVSc_RgGjyp2",
+        "factCheck": "16nuxXiW8MQZHqx0Qu5yFb5aeE6RgoATj",
+        "designPrompts": "1aV3s_jOtEwy9xEXF7THarZsSDDJRxvCt"
+      }
     }
   ],
   "notes": [
