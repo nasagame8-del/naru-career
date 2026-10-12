@@ -304,6 +304,22 @@ h1 {
   color: var(--ink);
 }
 
+/* 記事本文の重要度を伝える文字装飾。色だけに依存せず太字・下線も併用する。 */
+.prose strong.naru-emphasis-term {
+  color: var(--primary-deep);
+  font-weight: 750;
+}
+
+.prose strong.naru-emphasis-key {
+  color: #875016; /* 白背景でも読める濃いアンバー */
+  font-weight: 750;
+  text-decoration-line: underline;
+  text-decoration-color: var(--amber);
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: auto;
+}
+
 /* インラインFAQ（H2直後の一問一答） */
 .inline-faq {
   background: var(--primary-soft);
