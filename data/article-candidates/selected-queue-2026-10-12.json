@@ -13,11 +13,11 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "PREVIEW_APPROVED",
-      "requestedPublishAt": null,
+      "status": "SCHEDULED_CONDITIONAL",
+      "requestedPublishAt": "2026-10-12T12:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "passed",
         "automatedFactCheck": {
           "headSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
           "blockerCount": 0,
@@ -57,12 +57,18 @@
         },
         "previewApprovedHeadSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
         "previewApprovedAt": "2026-10-12T09:50:22+09:00",
-        "previewApprovalText": "74.75プレビュー問題ない"
+        "previewApprovalText": "74.75プレビュー問題ない",
+        "humanFactCheckHeadSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
+        "humanFactCheckApprovedAt": "2026-10-12T10:02:37+09:00",
+        "humanFactCheckReviewer": "優貴",
+        "humanFactCheckApprovalText": "ファクトチェックOK投稿時間はそれでいい",
+        "articleQa": {
+          "headSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
+          "status": "passed",
+          "basis": "本文・出典・内部リンク・frontmatter照合、ユーザーHuman Fact Check承認"
+        }
       },
-      "blockers": [
-        "Human Fact Check未完了",
-        "公開時刻未指定"
-      ],
+      "blockers": [],
       "prNumber": 193,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/193",
       "branch": "article-factory/2026-10-12-74-exclusivity",
@@ -115,7 +121,8 @@
           "driveByteReadback": true
         }
       ],
-      "previewUrl": "https://naru-pr-193-preview.broad-fuchsia.workers.dev/articles/contractor-exclusivity-noncompete-checks"
+      "previewUrl": "https://naru-pr-193-preview.broad-fuchsia.workers.dev/articles/contractor-exclusivity-noncompete-checks",
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
     },
     {
       "candidateId": "cand_261012b_client_cancel",
@@ -126,11 +133,11 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "PREVIEW_APPROVED",
-      "requestedPublishAt": null,
+      "status": "SCHEDULED_CONDITIONAL",
+      "requestedPublishAt": "2026-10-12T18:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "passed",
         "automatedFactCheck": {
           "headSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
           "blockerCount": 0,
@@ -170,12 +177,18 @@
         },
         "previewApprovedHeadSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
         "previewApprovedAt": "2026-10-12T09:50:22+09:00",
-        "previewApprovalText": "74.75プレビュー問題ない"
+        "previewApprovalText": "74.75プレビュー問題ない",
+        "humanFactCheckHeadSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
+        "humanFactCheckApprovedAt": "2026-10-12T10:02:37+09:00",
+        "humanFactCheckReviewer": "優貴",
+        "humanFactCheckApprovalText": "ファクトチェックOK投稿時間はそれでいい",
+        "articleQa": {
+          "headSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
+          "status": "passed",
+          "basis": "本文・出典・内部リンク・frontmatter照合、ユーザーHuman Fact Check承認"
+        }
       },
-      "blockers": [
-        "Human Fact Check未完了",
-        "公開時刻未指定"
-      ],
+      "blockers": [],
       "prNumber": 194,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/194",
       "branch": "article-factory/2026-10-12-75-client-cancel",
@@ -228,7 +241,8 @@
           "driveByteReadback": true
         }
       ],
-      "previewUrl": "https://naru-pr-194-preview.broad-fuchsia.workers.dev/articles/contractor-client-cancellation-costs"
+      "previewUrl": "https://naru-pr-194-preview.broad-fuchsia.workers.dev/articles/contractor-client-cancellation-costs",
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
     }
   ],
   "notes": [
