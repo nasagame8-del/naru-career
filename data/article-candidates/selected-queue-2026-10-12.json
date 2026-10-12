@@ -13,7 +13,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "SCHEDULED_CONDITIONAL",
+      "status": "PUBLISHED",
       "requestedPublishAt": "2026-10-12T12:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -122,7 +122,27 @@
         }
       ],
       "previewUrl": "https://naru-pr-193-preview.broad-fuchsia.workers.dev/articles/contractor-exclusivity-noncompete-checks",
-      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a",
+      "actualPublishAt": "2026-10-12T12:08:46+09:00",
+      "publication": {
+        "merged": true,
+        "mergeSha": "716250e0552697af97285db7a5db6dc3fcc05228",
+        "mergedAt": "2026-10-12T12:06:33+09:00",
+        "deployRunId": 38198459086,
+        "deployStatus": "completed",
+        "deployConclusion": "success",
+        "canonicalVerified": true,
+        "canonicalVerifiedAt": "2026-10-12T12:08:46+09:00",
+        "productionUrl": "https://naru-career.com/articles/contractor-exclusivity-noncompete-checks",
+        "articleStatus": 200,
+        "imageStatuses": {
+          "card": 200,
+          "01": 200,
+          "02": 200,
+          "03": 200
+        },
+        "verificationJobId": 114646293514
+      }
     },
     {
       "candidateId": "cand_261012b_client_cancel",
