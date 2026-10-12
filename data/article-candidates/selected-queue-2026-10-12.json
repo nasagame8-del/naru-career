@@ -153,7 +153,7 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "SCHEDULED_CONDITIONAL",
+      "status": "PUBLISHED",
       "requestedPublishAt": "2026-10-12T18:00:00+09:00",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -262,7 +262,27 @@
         }
       ],
       "previewUrl": "https://naru-pr-194-preview.broad-fuchsia.workers.dev/articles/contractor-client-cancellation-costs",
-      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a"
+      "publicationTaskId": "6ac576df8bac81919f4def6b2cb58d9a",
+      "actualPublishAt": "2026-10-12T18:09:50+09:00",
+      "publication": {
+        "merged": true,
+        "mergeSha": "38ed6f8eb8450526a0c8b51ce7c06dc686012fd6",
+        "mergedAt": "2026-10-12T18:05:43+09:00",
+        "deployRunId": 38227874120,
+        "deployStatus": "completed",
+        "deployConclusion": "success",
+        "canonicalVerified": true,
+        "canonicalVerifiedAt": "2026-10-12T18:09:50+09:00",
+        "productionUrl": "https://naru-career.com/articles/contractor-client-cancellation-costs",
+        "articleStatus": 200,
+        "imageStatuses": {
+          "card": 200,
+          "01": 200,
+          "02": 200,
+          "03": 200
+        },
+        "verificationJobId": 114739745231
+      }
     }
   ],
   "notes": [
