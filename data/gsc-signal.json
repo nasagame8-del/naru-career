@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-11T01:12:21.981Z",
+  "generatedAt": "2026-10-12T01:40:39.923Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-24",
-    "endDate": "2026-10-07"
+    "startDate": "2026-09-25",
+    "endDate": "2026-10-08"
   },
   "previousRange": {
-    "startDate": "2026-09-10",
-    "endDate": "2026-09-23"
+    "startDate": "2026-09-11",
+    "endDate": "2026-09-24"
   },
   "visibleQueryCounts": {
-    "current": 32,
-    "previous": 7,
-    "new": 27
+    "current": 49,
+    "previous": 9,
+    "new": 42
   },
   "positionBuckets": {
     "current": {
       "top3": 5,
-      "top10": 11,
-      "top20": 18
+      "top10": 15,
+      "top20": 23
     },
     "previous": {
       "top3": 0,
-      "top10": 2,
-      "top20": 4
+      "top10": 3,
+      "top20": 5
     }
   },
   "querySignals": [
@@ -35,7 +35,7 @@
       "signal": "quick_win"
     },
     {
-      "query": "正社員 から業務委託 クビ",
+      "query": "正社員 から業務委託 違法",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -46,17 +46,17 @@
     },
     {
       "query": "転職エージェント 求人 微妙",
-      "positionBand": "11-20",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "正社員 から業務委託 違法",
+      "query": "転職エージェント本音",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "query": "山田 瑠々 辞め た 会社",
-      "positionBand": "11-20",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
@@ -75,8 +75,23 @@
       "signal": "new"
     },
     {
+      "query": "山田 瑠々 就職 先",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
       "query": "業務委託 退職",
       "positionBand": "41+",
+      "signal": "new"
+    },
+    {
+      "query": "正社員から業務委託に変更",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "2026 年世界宇宙週間",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -90,22 +105,12 @@
       "signal": "new"
     },
     {
+      "query": "偽装フリーランス",
+      "positionBand": "41+",
+      "signal": "new"
+    },
+    {
       "query": "労働条件通知書 内定承諾前",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "在職中 面接",
-      "positionBand": "1-3",
-      "signal": "new"
-    },
-    {
-      "query": "山田 瑠々 就職 先",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "query": "正社員 業務委託 切り替え",
       "positionBand": "21-40",
       "signal": "new"
     }
@@ -117,14 +122,24 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/business-outsourcing-conversion-risk",
-      "positionBand": "4-10",
+      "page": "/about",
+      "positionBand": "1-3",
       "signal": "rising"
     },
     {
+      "page": "/articles/agent-job-mismatch",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
       "page": "/articles/alumni-hiring",
-      "positionBand": "21-40",
+      "positionBand": "11-20",
       "signal": "rising"
+    },
+    {
+      "page": "/articles/contractor-attendance-control-worker-status",
+      "positionBand": "4-10",
+      "signal": "new"
     },
     {
       "page": "/articles/reference-check-explained",
@@ -142,11 +157,6 @@
       "signal": "rising"
     },
     {
-      "page": "/about",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
       "page": "/agent-diagnosis",
       "positionBand": "4-10",
       "signal": "rising"
@@ -159,11 +169,6 @@
     {
       "page": "/articles/agent-free-and-cancel",
       "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/agent-job-mismatch",
-      "positionBand": "11-20",
       "signal": "new"
     },
     {
