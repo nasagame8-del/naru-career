@@ -1,0 +1,93 @@
+{
+  "batchId": "batch_2026-10-13_chatgpt",
+  "generatedAt": "2026-10-13T08:03:01+09:00",
+  "trigger": "cron",
+  "inventorySize": 73,
+  "nextArticleId": 76,
+  "candidates": [
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261013a_unpaid_revisions",
+      "title": "業務委託の修正はどこまで無料？仕様変更・やり直し・追加報酬の確認点",
+      "primaryKeyword": "業務委託 修正 追加料金",
+      "secondaryKeywords": [
+        "フリーランス 無償 やり直し",
+        "業務委託 仕様変更"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規・一次資料の独自検証。発注後の仕様変更と修正範囲・費用負担に限定。075の案件全体の中止、072の確定報酬未払い、071の条件明示とは検索意図を分離。受注側の不備への修正と発注側都合の変更を混同しない。",
+      "reasonToWriteNow": "GSC確定9/25〜10/8で親business-outsourcing-conversion-riskは122表示/4click/10.5位、契約終了ページ54表示/0click/16.5位。主KW実測なし。公取委公式パンフレットp17にソフトウェアの検査基準変更・無償やり直し事例あり。IT/Webで実用的な確認手順へ展開できる。法律の対象・期間条件を確認し修正すべて違法とは断定しない。",
+      "proposedSlug": "contractor-unpaid-revisions-scope",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "business-outsourcing-conversion-risk",
+        "contractor-client-cancellation-costs",
+        "contractor-unpaid-fee-consultation"
+      ]
+    },
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261013b_probation_salary",
+      "title": "試用期間だけ給料が低い求人は大丈夫？本採用後の金額と切替条件の確認",
+      "primaryKeyword": "試用期間 給料 低い",
+      "secondaryKeywords": [
+        "試用期間 本採用 給与",
+        "試用期間 労働条件通知書"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "新規補欠。試用期間と本採用の給与・雇用形態・切替日・基準の照合に限定。総合承諾チェックや070の通知書が届かない対応を再掲しない。執筆前に既存親の試用期間記載と専用記事への役割分担を再QA。",
+      "reasonToWriteNow": "10/12未選定の補欠を引継ぎ。最新signalで『労働条件通知書 内定承諾前』21〜40位帯の新規露出を継続確認。ただしquery表示母数・query×page・主KW実測は未取得。通知書クラスターの未充足意図として、試用中/本採用後の金額・切替日・条件照合に限定。母数未確認なので①より優先度を下げる。",
+      "proposedSlug": "probation-period-lower-salary-checks",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-it-offer-acceptance-checks",
+        "offer-letter-before-acceptance-not-provided"
+      ]
+    },
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261013c_data_hygiene_rewrite",
+      "title": "個人情報流出があった会社への転職は大丈夫？公式発表から確かめるデータ管理",
+      "primaryKeyword": "個人情報 流出 企業 セキュリティ 転職",
+      "secondaryKeywords": [
+        "個人情報流出 会社 転職",
+        "転職先 データ管理"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "既存company-data-hygiene-security-breachesの改善。新規記事・新URLは作らない。既存の18件調査と出典を維持し、タイトル/導入で転職判断への回答を明確化する案。着手時にquery×pageを取得できるか確認し、流入意図が異なる場合はタイトルの大幅変更を避ける。",
+      "reasonToWriteNow": "最新確定GSCの該当ページは28表示/0click/9.9位。検索結果に露出している既存資産の改善候補。ただし母数は小さく、低CTRの原因・主KWの直接実測は不明。ニュース固有名詞中心の現タイトルと転職判断の本文との整合を点検する。Open PRの変更ファイルに当該本文の重複リライトなし。",
+      "proposedSlug": "company-data-hygiene-security-breaches",
+      "riskFlags": [
+        "NO_SEARCH_EVIDENCE",
+        "TIME_SENSITIVE_CLAIMS"
+      ],
+      "nearestExistingSlugs": [
+        "company-data-hygiene-security-breaches"
+      ]
+    }
+  ],
+  "notes": [
+    "Drive00/01・WBS運用ルール/1000PV/KPI、master記事73件・Open PR・候補ディレクトリ/latest・10/12queue再取得。10/13同日batch/queueなし。074/075は実queue/masterで本番公開済み、065/067/068/066等とともに再提案しない。",
+    "最新成功SEO Opportunity Snapshot run38192761854、生成2026-10-12T10:40:39+09:00。10/13朝の新成功runは未確認。master signal/Slack最新NARU_GSC_DAILYを使用。確定9/25〜10/8 vs9/11〜9/24：表示528vs179、click18vs5、CTR3.41%vs2.79%、Top3=5vs0、Top10=15vs3、Top20=23vs5、可視query49vs9、新規42。可視queryは全体母数ではない。",
+    "全候補searchEvidence:null。関連ページ実測は理由に記載、ページ値をquery実測に代用しない。GA4日別未取得。Google SERP/Trends/PAA/サジェスト未取得。無料Web検索で一次資料を確認。未実測のスコアは作らない。",
+    "①新規独自検証、②通常SEO・前日未選定案、③既存改善。推奨優先順①→②、③は追加改善の選択肢。選択前に記事PR/確定採番/公開時刻設定を行わない。既存PR189/186/191の重複提案・作成なし。転職エージェント新規抑制を解除する根拠は不足。",
+    "一次資料：https://www.jftc.go.jp/file/flpamph.pdf p17 / https://www.jftc.go.jp/freelancelaw_2026/index.html / https://www.mhlw.go.jp/bunya/roudoukijun/faq_kijyunhou_4.html 。画像転載可否は制作時に別途確認。",
+    "WBSへ候補・優先順・選択待ち・最新snapshot日時と74/75公開実態を反映しreadbackしてから報告する。"
+  ]
+}
