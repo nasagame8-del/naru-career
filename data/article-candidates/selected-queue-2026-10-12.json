@@ -13,10 +13,10 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "WAITING_USER_PREVIEW",
+      "status": "PREVIEW_APPROVED",
       "requestedPublishAt": null,
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "humanFactCheck": "pending",
         "automatedFactCheck": {
           "headSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
@@ -54,11 +54,13 @@
           "visualChecked": true,
           "metadataRemoved": true,
           "dimensions": "card1200x630;01/02/03 1200x675"
-        }
+        },
+        "previewApprovedHeadSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
+        "previewApprovedAt": "2026-10-12T09:50:22+09:00",
+        "previewApprovalText": "74.75プレビュー問題ない"
       },
       "blockers": [
         "Human Fact Check未完了",
-        "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
       ],
       "prNumber": 193,
@@ -124,10 +126,10 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "WAITING_USER_PREVIEW",
+      "status": "PREVIEW_APPROVED",
       "requestedPublishAt": null,
       "qa": {
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "humanFactCheck": "pending",
         "automatedFactCheck": {
           "headSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
@@ -165,11 +167,13 @@
           "visualChecked": true,
           "metadataRemoved": true,
           "dimensions": "card1200x630;01/02/03 1200x675"
-        }
+        },
+        "previewApprovedHeadSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
+        "previewApprovedAt": "2026-10-12T09:50:22+09:00",
+        "previewApprovalText": "74.75プレビュー問題ない"
       },
       "blockers": [
         "Human Fact Check未完了",
-        "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
       ],
       "prNumber": 194,
