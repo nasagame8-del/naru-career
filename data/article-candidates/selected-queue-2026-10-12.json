@@ -124,7 +124,7 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "WAITING_IMAGES",
+      "status": "IMAGES_APPLIED_QA_PENDING",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
@@ -135,36 +135,25 @@
           "reviewCount": 27
         },
         "ci": {
-          "headSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
-          "checks": [
-            {
-              "name": "preview",
-              "status": "completed",
-              "conclusion": "failure",
-              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187910128/job/114614167862"
-            },
-            {
-              "name": "article-factory-validation",
-              "status": "in_progress",
-              "conclusion": null,
-              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187910084/job/114614167717"
-            }
-          ],
+          "headSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
           "status": "pending"
         },
         "cloudflarePreview": {
-          "headSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
-          "status": "failed",
-          "reason": "WebP4枚未提供でPreviewゲート失敗"
+          "headSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
+          "status": "pending"
         },
         "draftReadback": true,
-        "driveReadback": true
+        "driveReadback": true,
+        "imageQa": {
+          "headSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
+          "status": "passed",
+          "visualChecked": true,
+          "metadataRemoved": true,
+          "dimensions": "card1200x630;01/02/03 1200x675"
+        }
       },
       "blockers": [
-        "ユーザー画像4枚未提供",
-        "画像実体QA未完了",
-        "最新head CI未完了",
-        "Cloudflare Previewは画像待ち",
+        "最新head CI・Cloudflare Preview確認中",
         "Human Fact Check未完了",
         "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
@@ -172,7 +161,7 @@
       "prNumber": 194,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/194",
       "branch": "article-factory/2026-10-12-75-client-cancel",
-      "latestHeadSha": "37fbb4140219b01b36fab0a964fd3f6fbc2fc26c",
+      "latestHeadSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
       "driveFolderId": "1ON_5kgQtVzSmWy-QbqYh3uBr0YNI5qLz",
       "imagesDriveFolderId": "1f2bv4kONYuSjl4vwLU4NwOuea2BsJCdq",
       "originalsDriveFolderId": "1NzZ-AJjb72lg214qwhOLagn5RGelSliS",
@@ -182,7 +171,45 @@
         "prompts": "1_8Bme1ZTu-PB4yqOuNvQeVSc_RgGjyp2",
         "factCheck": "16nuxXiW8MQZHqx0Qu5yFb5aeE6RgoATj",
         "designPrompts": "1aV3s_jOtEwy9xEXF7THarZsSDDJRxvCt"
-      }
+      },
+      "images": [
+        {
+          "slot": "card",
+          "fileName": "contractor-client-cancellation-costs-card.webp",
+          "driveFileId": "1pAuk4kX8r-y18RJhwrBdRxcTHRqMRjQz",
+          "originalFileId": "1_3uNrHG6DYhWOH1Wz7pLvEMwf3VEqvS2",
+          "sha256": "a43ba443f2a0c830972545bd830acd3f69c35a5f5be7b3b18ad69e3ad65acb4b",
+          "githubBlobSha": "15b75d7fe4bbf99c4fd35969142b6fd8e1e6a34e",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "01",
+          "fileName": "contractor-client-cancellation-costs-01.webp",
+          "driveFileId": "1dcaAeQnhktrCmNFA2Z_WYgesoVuocoiy",
+          "originalFileId": "1XU4kx5AvQdeZKfkukyAlzAN-tn1MPOW2",
+          "sha256": "1ceee7b4d7355389f4f9432f77f351a1d0f16c7d56b3b517f6212be34e2618c1",
+          "githubBlobSha": "863bdf82975b645de3a6337eb9320ca423a06a9c",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "02",
+          "fileName": "contractor-client-cancellation-costs-02.webp",
+          "driveFileId": "1-nQt23lu9Aowo92HZgHFHu_fwNx2NIlQ",
+          "originalFileId": "150srW7OGrjg5GQH_bwPX0G_BU_kHQsAy",
+          "sha256": "ef83d8b23b71d9a375cb7cbeaadd0ce3a7301aa757824b7bc244d5d158ba9727",
+          "githubBlobSha": "538443bc8e67bd56f28105314cd3d76a336d98c8",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "03",
+          "fileName": "contractor-client-cancellation-costs-03.webp",
+          "driveFileId": "1mg20_h0_TwJ1uxL2Xd4bR9XFBfPv4h1o",
+          "originalFileId": "18ITeE_dXXTFnHJsqvZ6-fuax0Y74Jp3W",
+          "sha256": "be9c2df6966aa9cd1ec1920a624e747d4cf397f7cdc91801881e9080444ef5ea",
+          "githubBlobSha": "1b98bfba64bcf3ae68786c89a5b75160b969e76c",
+          "driveByteReadback": true
+        }
+      ]
     }
   ],
   "notes": [
