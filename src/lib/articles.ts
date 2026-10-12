@@ -126,6 +126,31 @@ export function convertLabeledBoxes(markdown: string): string {
 }
 
 /**
+ * 記事本文で編集者が明示した短い強調箇所だけを装飾する。
+ * Markdown→HTMLの後に処理するため、コードブロックやHTML属性は対象外。
+ * [TERM:用語] = ティーグリーン、[KEY:最重要の判断基準] = 濃いアンバー＋下線。
+ * 既存の ==マーカー== と通常の太字には影響しない。
+ */
+export function convertInlineEmphasis(htmlStr: string): string {
+  const tokens = htmlStr.split(/(<[^>]+>)/);
+  let protectedDepth = 0;
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.startsWith("<")) {
+      if (/^<(?:pre|code|a|h[1-6])(?:\s|>)/i.test(token)) protectedDepth++;
+      if (/^<\/(?:pre|code|a|h[1-6])>/i.test(token)) protectedDepth = Math.max(0, protectedDepth - 1);
+      continue;
+    }
+    if (protectedDepth > 0) continue;
+    tokens[i] = token.replace(/\[(TERM|KEY):([^\]\r\n<>]{1,80})\]/g, (_match, kind: string, text: string) => {
+      const className = kind === "TERM" ? "naru-emphasis-term" : "naru-emphasis-key";
+      return `<strong class="${className}">${text}</strong>`;
+    });
+  }
+  return tokens.join("");
+}
+
+/**
  * 本文の「## よくある質問」セクションだけを取り除く（FAQSectionで別途表示するため）。
  * 次のH2以降の本文は残す。
  */
@@ -321,7 +346,7 @@ export async function getArticle(slug: string): Promise<Article> {
   );
 
   // h2見出しを抽出し、IDを付与
-  let htmlStr = await renderArticleMarkdown(processedContent);
+  let htmlStr = convertInlineEmphasis(await renderArticleMarkdown(processedContent));
   const headings: Heading[] = [];
   let headingIndex = 0;
   htmlStr = htmlStr.replace(/<h2>(.*?)<\/h2>/g, (_match, inner: string) => {
