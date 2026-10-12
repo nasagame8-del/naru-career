@@ -13,7 +13,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "IMAGES_APPLIED_QA_PENDING",
+      "status": "WAITING_USER_PREVIEW",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
@@ -25,11 +25,26 @@
         },
         "ci": {
           "headSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
-          "status": "pending"
+          "status": "passed",
+          "checks": [
+            {
+              "name": "article-factory-validation",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38188720429/job/114616611498"
+            },
+            {
+              "name": "preview",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38188720433/job/114616611443"
+            }
+          ]
         },
         "cloudflarePreview": {
           "headSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
-          "status": "pending"
+          "status": "passed",
+          "url": "https://naru-pr-193-preview.broad-fuchsia.workers.dev/articles/contractor-exclusivity-noncompete-checks"
         },
         "draftReadback": true,
         "driveReadback": true,
@@ -42,7 +57,6 @@
         }
       },
       "blockers": [
-        "最新head CI・Cloudflare Preview確認中",
         "Human Fact Check未完了",
         "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
@@ -98,7 +112,8 @@
           "githubBlobSha": "69ad57b8935317b21e0595cca95c701320d09b18",
           "driveByteReadback": true
         }
-      ]
+      ],
+      "previewUrl": "https://naru-pr-193-preview.broad-fuchsia.workers.dev/articles/contractor-exclusivity-noncompete-checks"
     },
     {
       "candidateId": "cand_261012b_client_cancel",
