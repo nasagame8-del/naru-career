@@ -124,7 +124,7 @@
       "genre": "公式更新・独自検証",
       "workType": "new",
       "order": 2,
-      "status": "IMAGES_APPLIED_QA_PENDING",
+      "status": "WAITING_USER_PREVIEW",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
@@ -136,11 +136,26 @@
         },
         "ci": {
           "headSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
-          "status": "pending"
+          "status": "passed",
+          "checks": [
+            {
+              "name": "article-factory-validation",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38189153616/job/114617955920"
+            },
+            {
+              "name": "preview",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38189153623/job/114617955863"
+            }
+          ]
         },
         "cloudflarePreview": {
           "headSha": "14e91ea703147c265fa1f5e1b3c175647099bb03",
-          "status": "pending"
+          "status": "passed",
+          "url": "https://naru-pr-194-preview.broad-fuchsia.workers.dev/articles/contractor-client-cancellation-costs"
         },
         "draftReadback": true,
         "driveReadback": true,
@@ -153,7 +168,6 @@
         }
       },
       "blockers": [
-        "最新head CI・Cloudflare Preview確認中",
         "Human Fact Check未完了",
         "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
@@ -209,7 +223,8 @@
           "githubBlobSha": "1b98bfba64bcf3ae68786c89a5b75160b969e76c",
           "driveByteReadback": true
         }
-      ]
+      ],
+      "previewUrl": "https://naru-pr-194-preview.broad-fuchsia.workers.dev/articles/contractor-client-cancellation-costs"
     }
   ],
   "notes": [
