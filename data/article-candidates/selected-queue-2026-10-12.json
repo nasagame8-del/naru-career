@@ -13,7 +13,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "WAITING_IMAGES",
+      "status": "IMAGES_APPLIED_QA_PENDING",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
@@ -24,36 +24,25 @@
           "reviewCount": 32
         },
         "ci": {
-          "headSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
-          "checks": [
-            {
-              "name": "article-factory-validation",
-              "status": "in_progress",
-              "conclusion": null,
-              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187902913/job/114614146195"
-            },
-            {
-              "name": "preview",
-              "status": "completed",
-              "conclusion": "failure",
-              "url": "https://github.com/nasagame8-del/naru-career/actions/runs/38187902926/job/114614145942"
-            }
-          ],
+          "headSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
           "status": "pending"
         },
         "cloudflarePreview": {
-          "headSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
-          "status": "failed",
-          "reason": "WebP4枚未提供でPreviewゲート失敗"
+          "headSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
+          "status": "pending"
         },
         "draftReadback": true,
-        "driveReadback": true
+        "driveReadback": true,
+        "imageQa": {
+          "headSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
+          "status": "passed",
+          "visualChecked": true,
+          "metadataRemoved": true,
+          "dimensions": "card1200x630;01/02/03 1200x675"
+        }
       },
       "blockers": [
-        "ユーザー画像4枚未提供",
-        "画像実体QA未完了",
-        "最新head CI未完了",
-        "Cloudflare Previewは画像待ち",
+        "最新head CI・Cloudflare Preview確認中",
         "Human Fact Check未完了",
         "ユーザーPreview目視承認未完了",
         "公開時刻未指定"
@@ -61,7 +50,7 @@
       "prNumber": 193,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/193",
       "branch": "article-factory/2026-10-12-74-exclusivity",
-      "latestHeadSha": "d4c8b50b8700c9b24f27eb2193a49b9f210032b1",
+      "latestHeadSha": "fea7833b1d9f67d79545d6184e652151fd62cff8",
       "driveFolderId": "1NbeXrdp1l2KqVmgsvjap5gqW6mF1vsZ3",
       "imagesDriveFolderId": "1rpFBLTEl-GxWz2UBFBWC2TkWQZYUYbBb",
       "originalsDriveFolderId": "1LtlR1zDR9qa_2Tygxmm35VLFqVcwRoxU",
@@ -71,7 +60,45 @@
         "prompts": "1gMH9B9jo-DGo3EYYBA5COXvoh8mPRLKY",
         "factCheck": "1zqgVz4uLGc60tFBL_D1KVjY8igetLIin",
         "designPrompts": "19kCfjdAslAxfPb4bJDczW734bD71gVYi"
-      }
+      },
+      "images": [
+        {
+          "slot": "card",
+          "fileName": "contractor-exclusivity-noncompete-checks-card.webp",
+          "driveFileId": "1d_eDO745MQ0uKMI6eSR-6kFE1lqzTjm0",
+          "originalFileId": "117lY4fkCulYyda-1NZtqOA2SBe6uaxbb",
+          "sha256": "092e2c9381b1f29e772b3585fa401a4589a6045a02e76d0af269d12e001df56d",
+          "githubBlobSha": "9af932e22166eabc82be3aad886fb23ea62433d6",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "01",
+          "fileName": "contractor-exclusivity-noncompete-checks-01.webp",
+          "driveFileId": "1R4k5bO6-25yMl80n9NP9MVpp7FllUQ-P",
+          "originalFileId": "1bAHZbSmBnfcPOnB6mgB36pKicuIfL0Zu",
+          "sha256": "d4474e2ed0cf7f6dcf3bcf1a5e91fd8770feff77c61c4985af6f460de3cf6c07",
+          "githubBlobSha": "06fc054bee473ed56bab5ef2d613c7d20fd40e68",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "02",
+          "fileName": "contractor-exclusivity-noncompete-checks-02.webp",
+          "driveFileId": "1qQZqmxBuWDnUtiPPdUIqDBLiv_qnWvp3",
+          "originalFileId": "1QtjjgP5reZ4KM6BV7KFOlvMnoggyPLk1",
+          "sha256": "49808ee766c9343fa424ad7f3fccdb659ba7ff21bdedde1fe461d043a689e204",
+          "githubBlobSha": "34d192cc87196b8c68b64a202ca2e6174b2524ed",
+          "driveByteReadback": true
+        },
+        {
+          "slot": "03",
+          "fileName": "contractor-exclusivity-noncompete-checks-03.webp",
+          "driveFileId": "1cOhoWQMbi7HKfk0xftacW5Wrv9tgw8QL",
+          "originalFileId": "1nGvlTg_kbWOi5AXEf-OF8YWY3-zrVaCg",
+          "sha256": "ab33743ac65791ea1d0e6a171b111bbc16f8ac5b3559942b403afc83e6d349eb",
+          "githubBlobSha": "69ad57b8935317b21e0595cca95c701320d09b18",
+          "driveByteReadback": true
+        }
+      ]
     },
     {
       "candidateId": "cand_261012b_client_cancel",
