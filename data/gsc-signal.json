@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-10-12T01:40:39.923Z",
+  "generatedAt": "2026-10-13T03:08:56.396Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-25",
-    "endDate": "2026-10-08"
+    "startDate": "2026-09-26",
+    "endDate": "2026-10-09"
   },
   "previousRange": {
-    "startDate": "2026-09-11",
-    "endDate": "2026-09-24"
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-25"
   },
   "visibleQueryCounts": {
-    "current": 49,
+    "current": 65,
     "previous": 9,
-    "new": 42
+    "new": 58
   },
   "positionBuckets": {
     "current": {
-      "top3": 5,
-      "top10": 15,
-      "top20": 23
+      "top3": 7,
+      "top10": 26,
+      "top20": 34
     },
     "previous": {
       "top3": 0,
@@ -65,6 +65,11 @@
       "signal": "new"
     },
     {
+      "query": "業務委託 退職",
+      "positionBand": "41+",
+      "signal": "new"
+    },
+    {
       "query": "フリーランス 契約解除",
       "positionBand": "41+",
       "signal": "new"
@@ -80,13 +85,18 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 退職",
-      "positionBand": "41+",
+      "query": "正社員から業務委託に変更",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "query": "正社員から業務委託に変更",
+      "query": "転職 現職中 面接",
       "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "転職エージェント 合わない 辞めたい",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
@@ -101,16 +111,6 @@
     },
     {
       "query": "sns調査 (裏アカ調査) 採用",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "偽装フリーランス",
-      "positionBand": "41+",
-      "signal": "new"
-    },
-    {
-      "query": "労働条件通知書 内定承諾前",
       "positionBand": "21-40",
       "signal": "new"
     }
@@ -138,7 +138,17 @@
     },
     {
       "page": "/articles/contractor-attendance-control-worker-status",
-      "positionBand": "4-10",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/contractor-how-to-quit",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/interview-scheduling-while-employed",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -157,6 +167,11 @@
       "signal": "rising"
     },
     {
+      "page": "/shindan",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
       "page": "/agent-diagnosis",
       "positionBand": "4-10",
       "signal": "rising"
@@ -167,27 +182,12 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/agent-free-and-cancel",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
       "page": "/articles/aio-seo-industry-inside",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
       "page": "/articles/bizreach-second-new-grad",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/casual-interview",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/company-data-hygiene-security-breaches",
       "positionBand": "4-10",
       "signal": "new"
     }
