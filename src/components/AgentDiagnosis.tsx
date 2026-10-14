@@ -353,13 +353,19 @@ function ResultScreen({ agent, onRestart }: { agent: AgentInfo; onRestart: () =>
       {/* CTA */}
       <div className="mb-3">
         {agent.url ? (
-          <a href={agent.url} target="_blank" rel={agent.affiliate ? "nofollow sponsored" : "nofollow"}
+          <a href={agent.url} target="_blank" rel={agent.affiliate ? "nofollow sponsored noopener noreferrer" : "nofollow noopener noreferrer"}
+            data-track-event="agent_diagnosis_cta_click"
+            data-track-agent={agent.key}
+            data-track-destination="external"
             className="block w-full bg-primary text-white font-bold py-4 rounded-full text-center text-[14px] hover:bg-primary/90 transition-colors">
             {agent.ctaText}
           </a>
         ) : (
           // 提携リンク未設定のサービスは、比較記事で詳細を案内する
           <Link href="/articles/agent-comparison-2026"
+            data-track-event="agent_diagnosis_article_click"
+            data-track-agent={agent.key}
+            data-track-destination="comparison"
             className="block w-full bg-primary text-white font-bold py-4 rounded-full text-center text-[14px] hover:bg-primary/90 transition-colors">
             エージェント比較で詳しく見る
           </Link>
