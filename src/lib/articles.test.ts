@@ -4,6 +4,7 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   convertBoldMarkers,
+  convertInlineEmphasis,
   convertLabeledBoxes,
   getAllSlugs,
   getArticle,
@@ -192,5 +193,29 @@ describe("ラベル付き囲みボックス記法", () => {
     const rendered = await renderArticleMarkdown(md);
     expect(rendered).toContain("<table>");
     expect(rendered).toContain('<div class="naru-box">');
+  });
+});
+
+describe("本文の重要語・判断基準の装飾", () => {
+  it("TERMとKEYだけを専用クラスの太字へ変換する", async () => {
+    const md = "通常 [TERM:終了条件] と [KEY:通知期限を確認] する。";
+    const result = convertInlineEmphasis(await renderArticleMarkdown(md));
+    expect(result).toContain('<strong class="naru-emphasis-term">終了条件</strong>');
+    expect(result).toContain('<strong class="naru-emphasis-key">通知期限を確認</strong>');
+    expect(result).not.toContain("[TERM:");
+    expect(result).not.toContain("[KEY:");
+  });
+
+  it("コード内とリンク内の表記は変換しない", async () => {
+    const md = "`[KEY:例]` と [参照先 [TERM:文字]](/contact)";
+    const result = convertInlineEmphasis(await renderArticleMarkdown(md));
+    expect(result).toContain("<code>[KEY:例]</code>");
+    expect(result).not.toContain('class="naru-emphasis-key"');
+    expect(result).not.toContain('class="naru-emphasis-term"');
+  });
+
+  it("タグ属性や80字を超える強調・不正な記法は変換しない", () => {
+    const raw = '<a title="[KEY:属性]">リンク</a> [KEY:' + "長".repeat(81) + '] [TERM:あ<い]';
+    expect(convertInlineEmphasis(raw)).toBe(raw);
   });
 });
