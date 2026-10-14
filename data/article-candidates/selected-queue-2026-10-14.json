@@ -12,7 +12,7 @@
       "primaryKeyword": "業務委託 修正 追加料金",
       "order": 1,
       "workType": "new",
-      "status": "merged_production_verifying",
+      "status": "published",
       "requestedPublishAt": "2026-10-14T21:02:26+09:00",
       "branch": "article-factory/2026-10-14-76-unpaid-revisions",
       "prNumber": 199,
@@ -104,7 +104,21 @@
         "headSha": "ce8cb07876d36fed62d253ec77a234ced9546f93"
       },
       "mergeSha": "f923aa2cd432f83f8fcaa2ec13db2ecb2c3b4b46",
-      "deployRunId": 38561202757
+      "deployRunId": 38561202757,
+      "publishedAt": "2026-10-14T21:08:03+09:00",
+      "productionUrl": "https://naru-career.com/articles/contractor-unpaid-revisions-scope",
+      "productionVerification": {
+        "status": "passed",
+        "deployRunId": 38561202757,
+        "canonicalStep": "success",
+        "evidence": [
+          "2026-10-14T12:07:44.8672347Z article ok: contractor-unpaid-revisions-scope status=200",
+          "2026-10-14T12:07:49.0416168Z image ok: contractor-unpaid-revisions-scope-card status=200 bytes=111604",
+          "2026-10-14T12:07:49.1807422Z image ok: contractor-unpaid-revisions-scope-01 status=200 bytes=81284",
+          "2026-10-14T12:07:49.2680692Z image ok: contractor-unpaid-revisions-scope-02 status=200 bytes=122176",
+          "2026-10-14T12:07:49.3328688Z image ok: contractor-unpaid-revisions-scope-03 status=200 bytes=135242"
+        ]
+      }
     },
     {
       "candidateId": "cand_261013b_probation_salary",
@@ -114,7 +128,7 @@
       "primaryKeyword": "試用期間 給料 低い",
       "order": 2,
       "workType": "new",
-      "status": "merged_production_verifying",
+      "status": "published",
       "requestedPublishAt": "2026-10-14T21:02:26+09:00",
       "branch": "article-factory/2026-10-14-77-probation-salary",
       "prNumber": 200,
@@ -201,7 +215,26 @@
         "headSha": "d1a3e4a02f4be1c5f15a224e6f663753257d6309"
       },
       "mergeSha": "aa07708b2339d3278654e4a67a8ebe6c8d4bcd2a",
-      "deployRunId": 38561234953
+      "deployRunId": 38561234953,
+      "publishedAt": "2026-10-14T21:08:03+09:00",
+      "productionUrl": "https://naru-career.com/articles/probation-period-lower-salary-checks",
+      "productionVerification": {
+        "status": "passed",
+        "deployRunId": 38561234953,
+        "canonicalStep": "success",
+        "evidence": [
+          "2026-10-14T12:07:47.8446873Z article ok: contractor-unpaid-revisions-scope status=200",
+          "2026-10-14T12:07:47.9445344Z image ok: contractor-unpaid-revisions-scope-card status=200 bytes=111604",
+          "2026-10-14T12:07:48.0913552Z image ok: contractor-unpaid-revisions-scope-01 status=200 bytes=81284",
+          "2026-10-14T12:07:48.1947709Z image ok: contractor-unpaid-revisions-scope-02 status=200 bytes=122176",
+          "2026-10-14T12:07:48.2777191Z image ok: contractor-unpaid-revisions-scope-03 status=200 bytes=135242",
+          "2026-10-14T12:07:54.6402968Z article ok: probation-period-lower-salary-checks status=200",
+          "2026-10-14T12:07:58.0199242Z image ok: probation-period-lower-salary-checks-card status=200 bytes=196462",
+          "2026-10-14T12:07:58.1570622Z image ok: probation-period-lower-salary-checks-01 status=200 bytes=109398",
+          "2026-10-14T12:08:01.2854260Z image ok: probation-period-lower-salary-checks-02 status=200 bytes=126148",
+          "2026-10-14T12:08:01.4299166Z image ok: probation-period-lower-salary-checks-03 status=200 bytes=124444"
+        ]
+      }
     }
   ],
   "notes": [
