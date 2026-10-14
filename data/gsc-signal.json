@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-13T03:08:56.396Z",
+  "generatedAt": "2026-10-14T01:21:50.678Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-26",
-    "endDate": "2026-10-09"
+    "startDate": "2026-09-27",
+    "endDate": "2026-10-10"
   },
   "previousRange": {
-    "startDate": "2026-09-12",
-    "endDate": "2026-09-25"
+    "startDate": "2026-09-13",
+    "endDate": "2026-09-26"
   },
   "visibleQueryCounts": {
-    "current": 65,
+    "current": 70,
     "previous": 9,
-    "new": 58
+    "new": 63
   },
   "positionBuckets": {
     "current": {
       "top3": 7,
-      "top10": 26,
-      "top20": 34
+      "top10": 29,
+      "top20": 36
     },
     "previous": {
-      "top3": 0,
-      "top10": 3,
-      "top20": 5
+      "top3": 1,
+      "top10": 4,
+      "top20": 6
     }
   },
   "querySignals": [
@@ -50,18 +50,8 @@
       "signal": "rising"
     },
     {
-      "query": "転職エージェント本音",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
       "query": "山田 瑠々 辞め た 会社",
       "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "naru 第二新卒",
-      "positionBand": "1-3",
       "signal": "new"
     },
     {
@@ -75,6 +65,11 @@
       "signal": "new"
     },
     {
+      "query": "転職エージェント 合わない 辞めたい",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
       "query": "ワークポート",
       "positionBand": "1-3",
       "signal": "new"
@@ -82,6 +77,11 @@
     {
       "query": "山田 瑠々 就職 先",
       "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 契約更新しない 伝え方",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
@@ -95,7 +95,7 @@
       "signal": "new"
     },
     {
-      "query": "転職エージェント 合わない 辞めたい",
+      "query": "転職 面接 いつ",
       "positionBand": "21-40",
       "signal": "new"
     },
@@ -107,11 +107,6 @@
     {
       "query": "rpg 診断",
       "positionBand": "41+",
-      "signal": "new"
-    },
-    {
-      "query": "sns調査 (裏アカ調査) 採用",
-      "positionBand": "21-40",
       "signal": "new"
     }
   ],
@@ -134,11 +129,11 @@
     {
       "page": "/articles/alumni-hiring",
       "positionBand": "11-20",
-      "signal": "rising"
+      "signal": "new"
     },
     {
       "page": "/articles/contractor-attendance-control-worker-status",
-      "positionBand": "11-20",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
