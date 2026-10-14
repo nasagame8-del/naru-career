@@ -1,0 +1,62 @@
+{
+  "auditedAtJST": "2026-10-12",
+  "articleSlug": "contractor-bank-transfer-fee-deduction",
+  "source": "Google Drive article images, byte matched to GitHub master using Git blob SHA-1",
+  "scope": "NARU-073 four saved article images only; not the entire site or live CDN",
+  "method": "Read WebP RIFF chunk table, check EXIF/XMP/ICC/C2PA-related metadata chunks; SHA-256 and Git blob SHA-1 calculated from source bytes",
+  "note": "No OpenAI/Google SynthID verifier was run. Embedded pixel watermark status is unknown. Empty metadata chunks do not prove absence of SynthID.",
+  "files": [
+    {
+      "filename": "contractor-bank-transfer-fee-deduction-card.webp",
+      "bytes": 144174,
+      "width": 1200,
+      "height": 630,
+      "sha256": "511b9b329e7a4b1ce748793c3c1654a717a03cd8624dccb49ff75fa4343559b2",
+      "gitBlobSha1": "90befe74219c768ca2adac666b5563abe6975b60",
+      "chunks": [
+        "VP8 "
+      ],
+      "metadataChunksFound": [],
+      "synthid": "not_checked"
+    },
+    {
+      "filename": "contractor-bank-transfer-fee-deduction-01.webp",
+      "bytes": 89332,
+      "width": 1200,
+      "height": 675,
+      "sha256": "a7430a4e0c5e97f8be4f5eee29ebeb81ac18401d982e90334bba647c26ab839f",
+      "gitBlobSha1": "a6625c375f19a938f3c8bc07ae3ca1d71e9ca434",
+      "chunks": [
+        "VP8 "
+      ],
+      "metadataChunksFound": [],
+      "synthid": "not_checked"
+    },
+    {
+      "filename": "contractor-bank-transfer-fee-deduction-02.webp",
+      "bytes": 91870,
+      "width": 1200,
+      "height": 675,
+      "sha256": "eb62614ef700376d7296794e9be6f5c08e211a06ba1ea5ad400ff3c8675b89a2",
+      "gitBlobSha1": "21ab5f6ec200aaa15fc02025dae105ea0d4f5445",
+      "chunks": [
+        "VP8 "
+      ],
+      "metadataChunksFound": [],
+      "synthid": "not_checked"
+    },
+    {
+      "filename": "contractor-bank-transfer-fee-deduction-03.webp",
+      "bytes": 88542,
+      "width": 1200,
+      "height": 675,
+      "sha256": "c0a3cbec75286e24d2cf12c20cc619cd2b4aafb39467edde1146841317d5985f",
+      "gitBlobSha1": "60fc4fc61eceef7340b5735c10fcb6b991334e6b",
+      "chunks": [
+        "VP8 "
+      ],
+      "metadataChunksFound": [],
+      "synthid": "not_checked"
+    }
+  ]
+}
