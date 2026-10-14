@@ -680,3 +680,13 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 検証: 既存カテゴリ定義と業務委託記事65の業界解説分類を確認。CI/本番は最新headで検証。
 - 既知の問題/判断: なし。ユーザー即時修正指示済み。
 - 次: CI成功後head固定mergeとCloudflare/canonicalカテゴリ確認。
+
+## USER-HIDE-RPG-CTA-20261014
+- reportId / completedInstructionId: USER-HIDE-RPG-CTA-20261014
+- status: IMPLEMENTED_CI_PENDING
+- branch: fix/hide-rpg-diagnosis-ctas-20261014
+- 実施内容: サイドバー・スマホ・記事下・ガイドのRPG CTA削除、追従バナーのRPG遷移非表示、旧本文HTML内CTAを共通レンダラで除去。
+- テスト結果: CTA除去パターンの確認済み。PR CIとCloudflare build/本番DOM検証を実施予定。
+- 変更ファイル: EditorialSidebar, MobileCareerCTA, DiagnosisBanner, article page, guide page, articles renderer, NEXT_INSTRUCTION, REPORT。
+- git diff概要: RPG診断導線のみ非表示。エージェント診断等は維持。
+- 既知の問題: なし。判断項目: なし。推奨次作業: CI成功後PR mergeと本番検証。

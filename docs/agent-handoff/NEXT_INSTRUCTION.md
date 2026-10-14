@@ -42,3 +42,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-NARU073-CATEGORY-FIX
 ユーザー「修正してすぐ」に基づき記事73のcategoryを独自調査から業界解説へ修正する。専用PR作成、CI確認、head固定squash merge、Cloudflare本番確認を許可。本文・画像・他記事は変更しない。Claude起動なし。
+
+## USER-HIDE-RPG-CTA-20261014
+ユーザー「RPG診断のCTA全部非表示にしといて」。専用PRで全サイトのRPG診断CTAを非表示にし、CI確認後head固定squash mergeとCloudflare本番反映・検証を許可。master直接push・Claude起動なし。
