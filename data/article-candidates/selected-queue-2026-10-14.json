@@ -12,12 +12,12 @@
       "primaryKeyword": "業務委託 修正 追加料金",
       "order": 1,
       "workType": "new",
-      "status": "WAITING_IMAGES",
+      "status": "QA",
       "requestedPublishAt": null,
       "branch": "article-factory/2026-10-14-76-unpaid-revisions",
       "prNumber": 199,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/199",
-      "latestHeadSha": "44a306d35dee9d29bcd4027f704743c879ac42b5",
+      "latestHeadSha": "ce8cb07876d36fed62d253ec77a234ced9546f93",
       "driveFolderId": "1jWy1NZhxhdgdHeGB1SGdw2yttqzyNQ5e",
       "imagesDriveFolderId": "1zHniLSMyPdCfIl3rwZ9qkSiX862Aish6",
       "originalsDriveFolderId": "10c_ZPXjW4NFDM5v3Lahao2bha4zHXx3h",
@@ -30,14 +30,79 @@
       "qa": {
         "humanFactCheck": "pending",
         "previewVisual": "pending",
-        "ci": "pending",
-        "imageQa": "pending"
+        "ci": {
+          "headSha": "ce8cb07876d36fed62d253ec77a234ced9546f93",
+          "checks": [
+            {
+              "id": 38559794740,
+              "name": "NARU article Cloudflare preview",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 166,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559794740/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559794740/logs",
+              "workflow_id": 374276063
+            },
+            {
+              "id": 38559794735,
+              "name": "Article Factory Validation",
+              "status": "completed",
+              "conclusion": "success",
+              "run_number": 234,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559794735/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559794735/logs",
+              "workflow_id": 364678305
+            }
+          ]
+        },
+        "imageQa": {
+          "headSha": "ce8cb07876d36fed62d253ec77a234ced9546f93",
+          "status": "passed",
+          "visualChecked": true,
+          "metadataRemoved": true,
+          "dimensions": "card1200x630;01/02/03 1200x675"
+        }
       },
       "blockers": [
-        "ユーザー生成画像4枚待ち",
-        "画像反映後のQA・実Preview確認待ち",
+        "最新head CI・Cloudflare Preview確認中",
+        "Human Fact Check・ユーザー実Preview確認待ち",
         "公開日時未設定"
-      ]
+      ],
+      "images": [
+        {
+          "slot": "card",
+          "fileName": "contractor-unpaid-revisions-scope-card.webp",
+          "driveFileId": "1SF92ub5T1VYWC7-p60ze2GAmb0OLcUl-",
+          "originalFileId": "17jtdi9n-ktEXfcOt12KaVTskDIyaMglW",
+          "githubBlobSha": "07b72b986a2565edb93d648b6d257db9e9763372"
+        },
+        {
+          "slot": "01",
+          "fileName": "contractor-unpaid-revisions-scope-01.webp",
+          "driveFileId": "1PbO8tu9GVYygW-ZK1Z8KjydA1Ply41fH",
+          "originalFileId": "12QevS7DbyiTjXXGEuEmfTSMlmQGbCo5O",
+          "githubBlobSha": "1d4ea0bb9721e6edf30d2943005262b348c60d2a"
+        },
+        {
+          "slot": "02",
+          "fileName": "contractor-unpaid-revisions-scope-02.webp",
+          "driveFileId": "1BbomVcikdCeqPSaZtefXH6gwXqxL8Mr5",
+          "originalFileId": "10DidfEvRm-IopY9VUAoZuTEWUUwVfPVR",
+          "githubBlobSha": "0e8842ba49bc535c743cb2f7ecc2b1b132b996b3"
+        },
+        {
+          "slot": "03",
+          "fileName": "contractor-unpaid-revisions-scope-03.webp",
+          "driveFileId": "1Mwt9HRKTRUpE9KfG_3TYIrc8fivBUXd5",
+          "originalFileId": "1mzcPvDxo9fZ58yqqNJd6JoGWk0xelilj",
+          "githubBlobSha": "08749919bbdee9c6c9356490688918a828680ebd"
+        }
+      ],
+      "cardSelection": {
+        "selectedAt": "2026-10-14T20:45:55+09:00",
+        "selectionText": "試しでこっち行く。今までと違う形には変わらないから",
+        "style": "人物入り制作ボード構図"
+      }
     },
     {
       "candidateId": "cand_261013b_probation_salary",
@@ -47,12 +112,12 @@
       "primaryKeyword": "試用期間 給料 低い",
       "order": 2,
       "workType": "new",
-      "status": "WAITING_IMAGES",
+      "status": "QA",
       "requestedPublishAt": null,
       "branch": "article-factory/2026-10-14-77-probation-salary",
       "prNumber": 200,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/200",
-      "latestHeadSha": "7f1ce6eb977feed3b4c2c425ce4f01f754deb614",
+      "latestHeadSha": "d1a3e4a02f4be1c5f15a224e6f663753257d6309",
       "driveFolderId": "1gPini8sc5lUXVkpGHFsKwM82rcH9864w",
       "imagesDriveFolderId": "1eKRlUDJp3AyxTEjBF5Bf9Nr5CWQrRQxP",
       "originalsDriveFolderId": "1t2ReM0cdsOr_UdBAF168ELQn_2HuacxR",
@@ -65,13 +130,73 @@
       "qa": {
         "humanFactCheck": "pending",
         "previewVisual": "pending",
-        "ci": "pending",
-        "imageQa": "pending"
+        "ci": {
+          "headSha": "d1a3e4a02f4be1c5f15a224e6f663753257d6309",
+          "checks": [
+            {
+              "id": 38559817799,
+              "name": "Article Factory Validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 235,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559817799/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559817799/logs",
+              "workflow_id": 364678305
+            },
+            {
+              "id": 38559817786,
+              "name": "NARU article Cloudflare preview",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 167,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559817786/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/38559817786/logs",
+              "workflow_id": 374276063
+            }
+          ]
+        },
+        "imageQa": {
+          "headSha": "d1a3e4a02f4be1c5f15a224e6f663753257d6309",
+          "status": "passed",
+          "visualChecked": true,
+          "metadataRemoved": true,
+          "dimensions": "card1200x630;01/02/03 1200x675"
+        }
       },
       "blockers": [
-        "ユーザー生成画像4枚待ち",
-        "画像反映後のQA・実Preview確認待ち",
+        "最新head CI・Cloudflare Preview確認中",
+        "Human Fact Check・ユーザー実Preview確認待ち",
         "公開日時未設定"
+      ],
+      "images": [
+        {
+          "slot": "card",
+          "fileName": "probation-period-lower-salary-checks-card.webp",
+          "driveFileId": "1GHmG3pbTC1_t3zSWdmZtBaQIOcD85N4n",
+          "originalFileId": "1OeErUHNPjJRS53y67GBQ9G-hJazXIi7q",
+          "githubBlobSha": "fd944d2b90c63bfa43c68c76930099d581ebdd73"
+        },
+        {
+          "slot": "01",
+          "fileName": "probation-period-lower-salary-checks-01.webp",
+          "driveFileId": "1mAHujHxkzXRykbrtLFrrvlHE0PJV8oLS",
+          "originalFileId": "16EExC6ixm6fAyxdscMtaAsf5Wx06qpN1",
+          "githubBlobSha": "1ba384afc8f67c30687d4424d2e0ebcb41b0f1f4"
+        },
+        {
+          "slot": "02",
+          "fileName": "probation-period-lower-salary-checks-02.webp",
+          "driveFileId": "1hhj9QOET0wU16q3M4UPZLf5OoFpirnP-",
+          "originalFileId": "1wDZlTI81oFmHcEfsJ2tol26YMQRTEHzl",
+          "githubBlobSha": "6228680cf65505f04bf9202668127ef65bfccbe5"
+        },
+        {
+          "slot": "03",
+          "fileName": "probation-period-lower-salary-checks-03.webp",
+          "driveFileId": "1v-9_2Y9b-svE3Pk0EfLuQH5dOgkUui8_",
+          "originalFileId": "13YbKETt3UpGmnZArq-qayVR-Eg20iVHA",
+          "githubBlobSha": "aab6307e08fc18e844440d2019daba95bf1e0a08"
+        }
       ]
     }
   ],
