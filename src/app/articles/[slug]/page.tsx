@@ -315,18 +315,6 @@ export default async function ArticlePage(props: {
               </section>
             )}
 
-            <div className="mt-10 pt-6 border-t border-line">
-              <Link
-                href="/shindan"
-                className="group flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors"
-              >
-                <MiniAlto pose="idea" size={36} />
-                <span>
-                  自分がどんな仕事に向いているか、約2分の適職診断で見てみませんか？
-                </span>
-              </Link>
-            </div>
-
             <div className="mt-4">
               <SurveyLink className="flex items-center gap-3 text-sm text-ink-soft hover:text-primary transition-colors">
                 <MiniAlto pose="bow" size={36} />
