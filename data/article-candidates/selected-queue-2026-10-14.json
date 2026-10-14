@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-14",
+  "batchId": "batch_2026-10-14_chatgpt",
+  "selectionText": "おｋ",
+  "selectedAt": "2026-10-14T20:28:08+09:00",
+  "articles": [
+    {
+      "candidateId": "cand_261013a_unpaid_revisions",
+      "articleId": 76,
+      "slug": "contractor-unpaid-revisions-scope",
+      "title": "業務委託の修正はどこまで無料？仕様変更・やり直し・追加報酬の確認点",
+      "primaryKeyword": "業務委託 修正 追加料金",
+      "order": 1,
+      "workType": "new",
+      "status": "WAITING_IMAGES",
+      "requestedPublishAt": null,
+      "branch": "article-factory/2026-10-14-76-unpaid-revisions",
+      "prNumber": 199,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/199",
+      "latestHeadSha": "44a306d35dee9d29bcd4027f704743c879ac42b5",
+      "driveFolderId": "1jWy1NZhxhdgdHeGB1SGdw2yttqzyNQ5e",
+      "imagesDriveFolderId": "1zHniLSMyPdCfIl3rwZ9qkSiX862Aish6",
+      "originalsDriveFolderId": "10c_ZPXjW4NFDM5v3Lahao2bha4zHXx3h",
+      "driveFiles": {
+        "article": "1lRU5gAVRitibZ7QTinO1YUO5WMD2GQSj",
+        "imagePlan": "1cjpOGYeNuIH7O5WG-6k-0WVEEc3WbsSU",
+        "prompts": "1DK4AMBY8SoOHPJTf2pe-4qqf7eZa_BOs",
+        "designPrompts": "1YP3idYYywiH4p9c5DuhI6WVq8xLxAt38"
+      },
+      "qa": {
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
+        "ci": "pending",
+        "imageQa": "pending"
+      },
+      "blockers": [
+        "ユーザー生成画像4枚待ち",
+        "画像反映後のQA・実Preview確認待ち",
+        "公開日時未設定"
+      ]
+    },
+    {
+      "candidateId": "cand_261013b_probation_salary",
+      "articleId": 77,
+      "slug": "probation-period-lower-salary-checks",
+      "title": "試用期間だけ給料が低い求人は大丈夫？本採用後の金額と切替条件の確認",
+      "primaryKeyword": "試用期間 給料 低い",
+      "order": 2,
+      "workType": "new",
+      "status": "WAITING_IMAGES",
+      "requestedPublishAt": null,
+      "branch": "article-factory/2026-10-14-77-probation-salary",
+      "prNumber": 200,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/200",
+      "latestHeadSha": "7f1ce6eb977feed3b4c2c425ce4f01f754deb614",
+      "driveFolderId": "1gPini8sc5lUXVkpGHFsKwM82rcH9864w",
+      "imagesDriveFolderId": "1eKRlUDJp3AyxTEjBF5Bf9Nr5CWQrRQxP",
+      "originalsDriveFolderId": "1t2ReM0cdsOr_UdBAF168ELQn_2HuacxR",
+      "driveFiles": {
+        "article": "1onSEJkr-Z8H6m_RAYc8gURjPAdjQyA0z",
+        "imagePlan": "1sID3lJxKvvJhXA6iKcKdCy8MsGr2dqRd",
+        "prompts": "1GxbLfUiW4_aW1tUrC87SYpiuhZB8d_oO",
+        "designPrompts": "1o7dYHoQI_WTx7_7H3WMGFMMczIbsjtj_"
+      },
+      "qa": {
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
+        "ci": "pending",
+        "imageQa": "pending"
+      },
+      "blockers": [
+        "ユーザー生成画像4枚待ち",
+        "画像反映後のQA・実Preview確認待ち",
+        "公開日時未設定"
+      ]
+    }
+  ],
+  "notes": [
+    "20:28のOKは候補1→候補3の選定承認。人手Fact Check・Preview承認・本日過去枠の公開承認には代用しない。12/18時保留の履歴は維持。"
+  ]
+}
