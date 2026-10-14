@@ -61,7 +61,7 @@
     ]
   },
   "measurementPlan": {
-    "anchor": "article_dateModified",
+    "anchor": "pinned_anchor_date",
     "checkpointDays": [
       7,
       14,
@@ -88,6 +88,17 @@
       "Top10 query count"
     ],
     "command": "npm run data:seo-experiments -- --run quickwin-2026-10-07-early-resignation-entity-ctr",
-    "gscSettledThroughAtBaselineCapture": "2026-10-03"
-  }
+    "gscSettledThroughAtBaselineCapture": "2026-10-03",
+    "anchorDate": "2026-10-07",
+    "caveat": "10/11の追加説明・事実訂正により、10/7のタイトル変更のみの独立効果は分離できない。7/14/28日の結果は複合介入として解釈する。"
+  },
+  "additionalInterventions": [
+    {
+      "date": "2026-10-11",
+      "status": "draft_pending_preview_approval_and_production",
+      "type": "snippet_intent_and_fact_correction",
+      "change": "前職社名未確認・退職後のLiveDash経営という検索意図に回答し、7/12公式サイト公開により時系列の誤認を訂正。タイトル・slug変更なし。",
+      "pullRequest": "https://github.com/nasagame8-del/naru-career/pull/186"
+    }
+  ]
 }
