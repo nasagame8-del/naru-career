@@ -1,0 +1,5898 @@
+{
+  "runDate": "2026-10-04",
+  "note": "人間が期待値を付けるための中立な構造ダイジェスト。HTML全文はリポジトリに保存していない（キャッシュは外部ディレクトリ）。",
+  "cacheDir": "C:\\Users\\nasaz\\AppData\\Local\\Temp\\naru-golden-cache",
+  "selection": {
+    "tag": "300",
+    "count": 60,
+    "seed": 20261004
+  },
+  "guessedTypeCounts": {
+    "ats": 3,
+    "detail_links": 26,
+    "no_jobs_top": 22,
+    "new_grad_only": 1,
+    "js_dependent": 4,
+    "jsonld": 1,
+    "multi_role_single_page": 2,
+    "mid_career_only": 1
+  },
+  "digests": [
+    {
+      "company": "ｈｏｍｉｅ株式会社",
+      "corporateNumber": "2011001127705",
+      "stratum": "100-299人 / 東京",
+      "hostCategory": "atsHosted",
+      "guessedStructureType": "ats",
+      "url": "https://herp.careers/v1/homie",
+      "httpStatus": 200,
+      "pageTitle": "homie株式会社 の全ての求人一覧",
+      "visibleChars": 2421,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "homie株式会社 の全ての求人一覧",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Webアプリケーションエンジニア(バックエンド)",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "オープンポジション",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "カスタマーサクセス（キャリア採用）",
+          "titleClass": "role"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "homie株式会社 の全ての求人一覧",
+          "titleClass": "other",
+          "chars": 2364
+        },
+        {
+          "level": 2,
+          "heading": "Webアプリケーションエンジニア(バックエンド)",
+          "titleClass": "role",
+          "chars": 1639
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "カスタマーサクセス 2件",
+          "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215"
+        },
+        {
+          "text": "Webアプリケーションエンジニア(バックエンド)",
+          "url": "https://herp.careers/v1/homie/Q2bP3PMynjAH"
+        },
+        {
+          "text": "カスタマーサクセス",
+          "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215"
+        },
+        {
+          "text": "カスタマーサクセス（キャリア採用）",
+          "url": "https://herp.careers/v1/homie/o9wPL4Qxma_n"
+        },
+        {
+          "text": "カスタマーサクセス",
+          "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "東京インタープレイ株式会社",
+      "corporateNumber": "5010001148221",
+      "stratum": "5-9人 / 東京",
+      "hostCategory": "atsHosted",
+      "guessedStructureType": "ats",
+      "url": "https://recruit.jobcan.jp/sidebooks/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 東京インタープレイ株式会社",
+      "visibleChars": 522,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "東京インタープレイ株式会社 ～採用情報～",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "＜求める人物像＞",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社エヴァーグリーン",
+      "corporateNumber": "9020001088561",
+      "stratum": "10-29人 / 主要都市圏",
+      "hostCategory": "atsHosted",
+      "guessedStructureType": "ats",
+      "url": "https://en-gage.net/evergreen/",
+      "httpStatus": 200,
+      "pageTitle": "株式会社エヴァーグリーンの採用・求人情報-engage",
+      "visibleChars": 2714,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "株式会社エヴァーグリーンの採用・求人情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "【技術に自信がある方大歓迎★】受託開発案件のエンジニアスペシャリスト！",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "プログラマー（Web・オープン系）",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "システム営業&ensp;【&ensp;営業経験者募集&ensp;】",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "【リーダー経験にチャレンジしたい方大歓迎】受託開発案件のプロジェクトリーダー！！",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "営業&ensp;【&ensp;既卒・第二新卒&ensp;歓迎&ensp;】",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "プログラマー（Web・オープン系）",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "営業&ensp;【&ensp;週１日～ＯＫ】",
+          "titleClass": "role"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "株式会社エヴァーグリーンの採用・求人情報",
+          "titleClass": "other",
+          "chars": 2693
+        },
+        {
+          "level": 2,
+          "heading": "【技術に自信がある方大歓迎★】受託開発案件のエンジニアスペシャリスト！",
+          "titleClass": "role",
+          "chars": 48
+        },
+        {
+          "level": 2,
+          "heading": "プログラマー（Web・オープン系）",
+          "titleClass": "role",
+          "chars": 48
+        },
+        {
+          "level": 2,
+          "heading": "システム営業&ensp;【&ensp;営業経験者募集&ensp;】",
+          "titleClass": "role",
+          "chars": 48
+        },
+        {
+          "level": 2,
+          "heading": "【リーダー経験にチャレンジしたい方大歓迎】受託開発案件のプロジェクトリーダー！！",
+          "titleClass": "other",
+          "chars": 53
+        },
+        {
+          "level": 2,
+          "heading": "営業&ensp;【&ensp;既卒・第二新卒&ensp;歓迎&ensp;】",
+          "titleClass": "role",
+          "chars": 40
+        },
+        {
+          "level": 2,
+          "heading": "プログラマー（Web・オープン系）",
+          "titleClass": "role",
+          "chars": 52
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "会社名",
+          "value": "株式会社エヴァーグリーン"
+        },
+        {
+          "label": "事業内容",
+          "value": "ソフトウェアならびにインフラの設計、開発業務。 主にWebシステムを中心とした業務用システムの開発やスマートフォンアプリの開発。"
+        },
+        {
+          "label": "企業 WEBサイト",
+          "value": "https://www.ever-g.co.jp/"
+        },
+        {
+          "label": "企業 SNS",
+          "value": null
+        },
+        {
+          "label": "所在地",
+          "value": "神奈川県横浜市中区花咲町2-65-6コウノビルMM21&ensp;6階"
+        },
+        {
+          "label": "中途採用",
+          "value": "【技術に自信がある方大歓迎★】受託開発案件のエンジニアスペシャリスト! 月給&ensp;350,000円~500,000円"
+        },
+        {
+          "label": "新卒採用",
+          "value": "営業&ensp;【&ensp;既卒・第二新卒&ensp;歓迎&ensp;】 月給&ensp;240,000円~"
+        },
+        {
+          "label": "アルバイト・パート採用",
+          "value": "営業&ensp;【&ensp;週1日~OK】 時給&ensp;1,225円~1,500円"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "【技術に自信がある方大歓迎★】受託開発案件のエンジニアスペシャリスト！ 月給&ensp;350,000円～500,000",
+          "url": "https://en-gage.net/evergreen/work_15303536/?via_recruit_page=1"
+        },
+        {
+          "text": "プログラマー（Web・オープン系） 月給&ensp;240,000円～317,000円 神奈川県横浜市 最終更新日：20",
+          "url": "https://en-gage.net/evergreen/work_537443/?via_recruit_page=1"
+        },
+        {
+          "text": "システム営業&ensp;【&ensp;営業経験者募集&ensp;】 月給&ensp;300,000円～400,000円 ",
+          "url": "https://en-gage.net/evergreen/work_26712/?via_recruit_page=1"
+        },
+        {
+          "text": "営業&ensp;【&ensp;既卒・第二新卒&ensp;歓迎&ensp;】 月給&ensp;240,000円～ 神奈川県",
+          "url": "https://en-gage.net/evergreen/work_16183082/?via_recruit_page=1"
+        },
+        {
+          "text": "プログラマー（Web・オープン系） 月給&ensp;240,000円～ 神奈川県横浜市 最終更新日：2026/7/8",
+          "url": "https://en-gage.net/evergreen/work_1523201/?via_recruit_page=1"
+        },
+        {
+          "text": "営業&ensp;【&ensp;週１日～ＯＫ】 時給&ensp;1,225円～1,500円 神奈川県横浜市 10:00～1",
+          "url": "https://en-gage.net/evergreen/work_16259010/?via_recruit_page=1"
+        }
+      ],
+      "tableCount": 1,
+      "dlCount": 15
+    },
+    {
+      "company": "Ｚｅｎｋｅｎ株式会社",
+      "corporateNumber": "4011101011096",
+      "stratum": "300-999人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://recruit.zenken.co.jp/",
+      "httpStatus": 200,
+      "pageTitle": "Zenken 新卒・中途採用求人TOP",
+      "visibleChars": 2753,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Zenken 採用サイト",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "トライアングルトーク",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "なんでもできる。 なんにでもなれる。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "プロジェクトZ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "「コロナ禍でも成長」 の舞台裏。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "入国制限のピンチ を チャンスに変えろ！",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "日本の英語教育 に 革命を。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "人を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Zenkenを知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "「Zenken」って どんな会社？",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "はたらく環境 ・成長の仕組み",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "Zenkenまるわかり データガイド",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "Zenken×SDGs 私たちが 取り組むこと",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用情報・エントリー",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "ITエンジニア人材採用",
+          "url": "https://recruit.zenken.co.jp/it-engineer/"
+        },
+        {
+          "text": "エンジニア",
+          "url": "https://recruit.zenken.co.jp/people/jim_l/"
+        },
+        {
+          "text": "営業",
+          "url": "https://recruit.zenken.co.jp/people/n_daichi/"
+        },
+        {
+          "text": "営業",
+          "url": "https://recruit.zenken.co.jp/people/a_manami/"
+        },
+        {
+          "text": "エンジニア",
+          "url": "https://recruit.zenken.co.jp/people/jeong_d/"
+        },
+        {
+          "text": "自社メディア ディレクター",
+          "url": "https://recruit.zenken.co.jp/people/s_yosuke/"
+        },
+        {
+          "text": "アートディレクター ・デザイナー",
+          "url": "https://recruit.zenken.co.jp/people/o_moe/"
+        },
+        {
+          "text": "動画ディレクター ・プランナー",
+          "url": "https://recruit.zenken.co.jp/people/k_atsuhiro/"
+        },
+        {
+          "text": "ディレクター・ 編集 ・ディレクター 編集",
+          "url": "https://recruit.zenken.co.jp/people/i_yosuke/"
+        },
+        {
+          "text": "セールス オペレーション セールス オペレーション",
+          "url": "https://recruit.zenken.co.jp/people/s_sara/"
+        },
+        {
+          "text": "営業 営業",
+          "url": "https://recruit.zenken.co.jp/people/h_koji/"
+        },
+        {
+          "text": "営業 営業",
+          "url": "https://recruit.zenken.co.jp/people/m_miho/"
+        },
+        {
+          "text": "エンジニア エンジニア",
+          "url": "https://recruit.zenken.co.jp/people/n_naoki/"
+        },
+        {
+          "text": "ITエンジニア人材採用",
+          "url": "https://recruit.zenken.co.jp/it-engineer/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社コスモビジネス",
+      "corporateNumber": "6220001002760",
+      "stratum": "30-99人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.csn.co.jp/cb/saiyou.html",
+      "httpStatus": 200,
+      "pageTitle": "採用情報｜株式会社コスモビジネス",
+      "visibleChars": 408,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 3,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 4,
+          "text": "正社員情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "パート社員採用",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "連絡先",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "| サイトマップ | 個人情報保護方針 |",
+          "value": null
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 1,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ジィ・シィ企画",
+      "corporateNumber": "5040001046876",
+      "stratum": "100-299人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.gck.co.jp/recruitment/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | GC | 株式会社ジィ・シィ企画",
+      "visibleChars": 545,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "採用情報",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティ基本方針",
+          "url": "https://www.gck.co.jp/security/"
+        },
+        {
+          "text": "財務報告に係る内部統制の基本方針",
+          "url": "https://www.gck.co.jp/internalcontrol_financial/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社フルエナジー",
+      "corporateNumber": "6011101047015",
+      "stratum": "5-9人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://fullenergy.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報｜株式会社フルエナジーの採用情報を掲載しています",
+      "visibleChars": 2272,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "募集職種",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "データベースエンジニア(アソシエイト) >>",
+          "url": "https://fullenergy.co.jp/recruits/database-associate/"
+        },
+        {
+          "text": "データベースエンジニア（プロフェッショナル） >>",
+          "url": "https://fullenergy.co.jp/recruits/database/"
+        },
+        {
+          "text": "営業(プリセールス) >>",
+          "url": "https://fullenergy.co.jp/recruits/sales/"
+        },
+        {
+          "text": "ネットワークエンジニア >>",
+          "url": "https://fullenergy.co.jp/recruits/network-engineer/"
+        },
+        {
+          "text": "データベースエンジニア(アソシエイト) >>",
+          "url": "https://fullenergy.co.jp/recruits/database-associate/"
+        },
+        {
+          "text": "データベースエンジニア（プロフェッショナル） >>",
+          "url": "https://fullenergy.co.jp/recruits/database/"
+        },
+        {
+          "text": "ネットワークエンジニア >>",
+          "url": "https://fullenergy.co.jp/recruits/network-engineer/"
+        },
+        {
+          "text": "営業(プリセールス) >>",
+          "url": "https://fullenergy.co.jp/recruits/sales/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ＶＡＳＥ　ＫＵＪＵ",
+      "corporateNumber": "1011001115413",
+      "stratum": "30-99人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://shogo.co.jp/recruit",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 笑５株式会社",
+      "visibleChars": 682,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "採用について",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 595
+        },
+        {
+          "level": 2,
+          "heading": "採用について",
+          "titleClass": "container",
+          "chars": 588
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "募集職種",
+          "value": "花公園 企画・運営スタッフ"
+        },
+        {
+          "label": "応募資格",
+          "value": "新卒、中途(実務経験2年以上)"
+        },
+        {
+          "label": "雇用形態",
+          "value": "正社員・契約社員"
+        },
+        {
+          "label": "試用期間",
+          "value": "3ヶ月有(試用期間中の異なる条件等はありません)"
+        },
+        {
+          "label": "諸手当",
+          "value": "通勤費全額支給"
+        },
+        {
+          "label": "勤務時間",
+          "value": "10:00〜18:00(実働8時間※1時間の休憩を含む)"
+        },
+        {
+          "label": "休日・休暇",
+          "value": "完全週休2日制(土・日)、祝日 年末年始休暇(12月29日~1月3日)、年次有給休暇、慶弔休暇、年間休日120日以上"
+        },
+        {
+          "label": "就業場所",
+          "value": "【本社】 東京都港区赤坂1-3-5 赤坂アビタシオン8F 【くじゅう花公園】 大分県竹田市久住町 大字久住 4050"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティポリシー/プライバシーポリシー",
+          "url": "https://shogo.co.jp/privacy-policy"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 8
+    },
+    {
+      "company": "株式会社ディーエスブランド",
+      "corporateNumber": "3310001003604",
+      "stratum": "300-999人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://dsbranch.works/careers/",
+      "httpStatus": 200,
+      "pageTitle": "株式会社ディーエスブランド｜求人・採用情報サイト",
+      "visibleChars": 1575,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報サイト RECRUITING DSB|株式会社ディーエスブランド新卒・キャリア募集中。お気軽にお問い合わせください。",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "採用情報サイト RECRUITING DSB|株式会社ディーエスブランド新卒・キャリア募集中。お気軽にお問い合わせください。",
+          "titleClass": "other",
+          "chars": 1512
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": " 職場見学 メタバース公開中!! 会社の取り組みや仕事内容をご紹介しております",
+          "value": null
+        },
+        {
+          "label": "RSS(別ウィンドウで開きます)",
+          "value": "もっと見る"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "プログラマー",
+          "url": "https://dsbranch.works/careers/pages/450/"
+        },
+        {
+          "text": "デザイナー",
+          "url": "https://dsbranch.works/careers/pages/381/"
+        },
+        {
+          "text": "Webマーケター",
+          "url": "https://dsbranch.works/careers/pages/717/"
+        }
+      ],
+      "tableCount": 2,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社日立ソリューションズ東日本",
+      "corporateNumber": "1370001009911",
+      "stratum": "1000人以上 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.hitachi-solutions-east.co.jp/recruitment/",
+      "httpStatus": 200,
+      "pageTitle": "日立ソリューションズ東日本とは：採用サイト：日立ソリューションズ東日本",
+      "visibleChars": 1265,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "株式会社 日立ソリューションズ東日本",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "About",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "What’s Hitachi Solutions East",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Works",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "Career",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "talk session",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Recruit",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "RECRUIT SITE",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ABOUT 日立ソリューションズ東日本とは",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "WORKS 私たちの仕事と人財",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "CAREER 自分らしいキャリアを実現する環境",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "RECRUIT 採用情報",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "営業日のご案内",
+          "url": "https://www.hitachi-solutions-east.co.jp/calendar/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "日本ソフトウエア株式会社",
+      "corporateNumber": "7120001093280",
+      "stratum": "100-299人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.nsware.co.jp/career/",
+      "httpStatus": 200,
+      "pageTitle": "募集要項－キャリア採用－日本ソフトウエア株式会社",
+      "visibleChars": 2750,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "キャリア採用",
+          "titleClass": "category"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 2283
+        },
+        {
+          "level": 2,
+          "heading": "キャリア採用",
+          "titleClass": "category",
+          "chars": 2276
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "募集職種",
+          "value": "制御系SE"
+        },
+        {
+          "label": "雇用形態",
+          "value": "正社員"
+        },
+        {
+          "label": "試用期間",
+          "value": "6ヶ月 (労働条件変更なし)"
+        },
+        {
+          "label": "職務内容",
+          "value": "各種端末装置、工業系などの分野における制御系システム開発から組み込み系ソフトウェア開発ハードウェア、システムメーカなどから依頼され、プロジェクトチームを編成し、"
+        },
+        {
+          "label": "応募資格",
+          "value": "ソフトウェア業界で働きたい・スキルアップしたいという方 C、C++などによる通信・制御系、ファームウエア、組み込み系開発経験ある方歓迎 システム開発における、キ"
+        },
+        {
+          "label": "勤務地",
+          "value": "当社事業所(大阪府大阪市、滋賀県草津市、兵庫県神戸市)"
+        },
+        {
+          "label": "勤務時間",
+          "value": "9:00~17:30 または 8:00~16:30を選択 (休憩 12:00~13:00 または 11:00から12:00を選択)"
+        },
+        {
+          "label": "休日休暇",
+          "value": "■休日 完全週休2日制 (土・日曜、祝日、会社指定日) ■休暇 年次有給休暇 (初年度10日、2年目11日、最高20日)、年末年始、春季、夏季、特別休暇"
+        },
+        {
+          "label": "給与",
+          "value": "経験、能力に応じ当社規程により優遇致します。 昇給:年1回(4月) 賞与:年2回(7月、12月) 諸手当:残業手当、役職手当、職位手当、住宅手当、家族手当、通勤"
+        },
+        {
+          "label": "福利厚生",
+          "value": "■社会保険 各種社保完備(健康・厚生年金・雇用・労災) ■諸制度 慶弔見舞金、財形貯蓄、退職金共済、社内旅行、資格取得支援、 永年勤続者表彰 ほか"
+        },
+        {
+          "label": "連絡先",
+          "value": "〒553-0003 大阪市福島区福島7-20-1 KM西梅田ビル7階 戦略管理部 TEL 06-6105-1200 E-mail: career@nsware."
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティへの取り組み",
+          "url": "https://www.nsware.co.jp/measure/security.html"
+        },
+        {
+          "text": "開発者の声",
+          "url": "https://www.nsware.co.jp/development/traffic.html"
+        },
+        {
+          "text": "制御系SE",
+          "url": "https://www.nsware.co.jp/career/index.html"
+        },
+        {
+          "text": "Salseforceのエンジニア （SE・プログラマ）",
+          "url": "https://www.nsware.co.jp/career/index2.html"
+        },
+        {
+          "text": "情報セキュリティへの取り組み",
+          "url": "https://www.nsware.co.jp/measure/security.html"
+        },
+        {
+          "text": "開発者の声",
+          "url": "https://www.nsware.co.jp/development/traffic.html"
+        },
+        {
+          "text": "情報セキュリティへの取り組み",
+          "url": "https://www.nsware.co.jp/measure/security.html"
+        },
+        {
+          "text": "開発者の声",
+          "url": "https://www.nsware.co.jp/development/traffic.html"
+        }
+      ],
+      "tableCount": 1,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社オフィス・クラフト",
+      "corporateNumber": "1500001023023",
+      "stratum": "5-9人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://office-craft.co.jp/recruit",
+      "httpStatus": 200,
+      "pageTitle": "Office Craft Co. Ltd. - 採用情報",
+      "visibleChars": 1126,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "ホームページ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "Table of Contents",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 3,
+          "text": "キャリア採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 4,
+          "text": "現在個人事業主として活動されている方",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "Uターン・Jターン・Iターン・地方移住を志向される方",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "新しい会社組織の在り方を求めている方",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "待遇・条件等",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "ホームページ",
+          "titleClass": "other",
+          "chars": 1119
+        },
+        {
+          "level": 2,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 1114
+        },
+        {
+          "level": 3,
+          "heading": "待遇・条件等",
+          "titleClass": "other",
+          "chars": 278
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ライフ",
+      "corporateNumber": "1011001144981",
+      "stratum": "1-4人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://life-enterprise.net/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用について | 株式会社ライフ",
+      "visibleChars": 1057,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用 について",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "なぜライフで働くのか？",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ひとりひとりが大切",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ひとりひとりの キャリアを優先",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ひとりひとりの 働き方を優先",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ライフってどんな会社？",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "社長が エンジニアの女性",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "IT人材の 育成のノウハウ がある",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "未経験分野の挑戦は 常に歓迎",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "就業開始までの流れ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "面談 / ご相談",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "案件面談",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "案件決定",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "就業中のフォロー",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "株式会社ライフはシステム以上に、 「あなた」の生き方 に着目します。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "社員について",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ライフで働こう!",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用応募フォーム",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "お名前 *",
+          "value": null
+        },
+        {
+          "label": "ふりがな *",
+          "value": null
+        },
+        {
+          "label": "電話番号 *",
+          "value": null
+        },
+        {
+          "label": "メールアドレス *",
+          "value": null
+        },
+        {
+          "label": "お問い合わせ内容 *",
+          "value": null
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 1
+    },
+    {
+      "company": "株式会社ＴＥＳ",
+      "corporateNumber": "1021001013186",
+      "stratum": "30-99人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.tes.co.jp/entry/new-graduate",
+      "httpStatus": 200,
+      "pageTitle": "New Graduate Entry | TES Inc.",
+      "visibleChars": 1292,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "TES",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Entry",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "九州朝日放送株式会社",
+      "corporateNumber": "9290001097189",
+      "stratum": "100-299人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://kbc.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 ～KBC RECRUITING SITE～｜KBC九州朝日放送",
+      "visibleChars": 407,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "つくろう、 ユニークな未来。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "DEPARTMENT 部署紹介",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "BEHIND STORY KBCの舞台裏",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ＮＯＧＩＣ",
+      "corporateNumber": "8140001109141",
+      "stratum": "5-9人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://nogic.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 - 株式会社NOGIC",
+      "visibleChars": 679,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "R ECRUIT",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "C ONTACT お問い合わせ",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ＫＩＳ",
+      "corporateNumber": "5330001001488",
+      "stratum": "300-999人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.kis.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "KISリクルートサイト｜熊本のIT企業で、人と繋がり成長しよう",
+      "visibleChars": 1792,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "リクルートサイト",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "「人が好き」 は、 最強のスキル",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "KISを知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "働く環境を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "数字でわかるKIS",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "福利厚生・制度",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集要項",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "インスタグラム",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "【本社】",
+          "value": "〒861-4108 熊本市南区幸田1丁目6番27号 TEL:096-379-2231"
+        },
+        {
+          "label": "【本社】",
+          "value": "〒861-4108 熊本市南区幸田1丁目6番27号 TEL:096-379-2231"
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 2
+    },
+    {
+      "company": "株式会社テクノ情報シンク",
+      "corporateNumber": "9013301035259",
+      "stratum": "30-99人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "http://www.tj-think.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報｜株式会社テクノ情報シンク",
+      "visibleChars": 879,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "テクノ情報シンク",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "募集内容",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "学歴",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "職種",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "仕事内容",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "各種手当",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "昇給",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "休日休暇",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "歓迎する人物像",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "採用までの流れ",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 844
+        },
+        {
+          "level": 2,
+          "heading": "募集内容",
+          "titleClass": "other",
+          "chars": 822
+        },
+        {
+          "level": 4,
+          "heading": "給与",
+          "titleClass": "other",
+          "chars": 45
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "営業",
+          "value": "IT営業・技術営業"
+        },
+        {
+          "label": "プログラマー・システムエンジニア・その他ITエンジニア",
+          "value": "Web・アプリケーション・組み込み・その他サーバーやネットワーク関係"
+        },
+        {
+          "label": "営業",
+          "value": "IT事業に関する営業・開発委託関係取得営業 新規顧客開拓・既存顧客訪問"
+        },
+        {
+          "label": "プログラマー・システムエンジニア・その他ITエンジニア",
+          "value": "システム開発 開発言語:Java、C言語、C++、Visual C#、Visual Basic、Perl、PHP、Ruby、COBOL など ※Javaは、Or"
+        },
+        {
+          "label": "給与体系",
+          "value": "月給制 ※経験内容、スキルを考慮し決定します。"
+        },
+        {
+          "label": "賞与",
+          "value": "決算賞与(会社業績による)"
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 3
+    },
+    {
+      "company": "株式会社スペースリンク",
+      "corporateNumber": "3011101052934",
+      "stratum": "10-29人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://spacelink.co.jp/recruit/index.html",
+      "httpStatus": 200,
+      "pageTitle": "採用情報｜株式会社スペースリンク",
+      "visibleChars": 721,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "現在募集中の事業",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "えくぼ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ライフディア",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用についての お問い合わせ",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 635
+        },
+        {
+          "level": 2,
+          "heading": "現在募集中の事業",
+          "titleClass": "other",
+          "chars": 232
+        },
+        {
+          "level": 3,
+          "heading": "ライフディア",
+          "titleClass": "other",
+          "chars": 133
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "AIコンサルティング",
+          "url": "https://spacelink.co.jp/ai/index.html"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "ジャスティン株式会社",
+      "corporateNumber": "9430001038814",
+      "stratum": "10-29人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.justin-inc.com/recruit.html",
+      "httpStatus": 200,
+      "pageTitle": "採用情報|ジャスティン株式会社",
+      "visibleChars": 624,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "応募を希望される方は、履歴書、業務経歴書（スキルシート）または、ジョブカードを弊社宛に郵送して下さい。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "お問い合わせ",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 2,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 391
+        },
+        {
+          "level": 3,
+          "heading": "応募を希望される方は、履歴書、業務経歴書（スキルシート）または、ジョブカードを弊社宛に郵送して下さい。",
+          "titleClass": "other",
+          "chars": 339
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "職 種",
+          "value": "プロジェクト・マネージャー システム・エンジニア/プログラマー サーバー/インフラ・エンジニア"
+        },
+        {
+          "label": "応募資格",
+          "value": "高卒以上"
+        },
+        {
+          "label": "就業場所",
+          "value": "札幌市 ※業務内容により出張あり"
+        },
+        {
+          "label": "就業時間",
+          "value": "9:00~18:00(休憩60分)"
+        },
+        {
+          "label": "休 日",
+          "value": "土日祝、夏期休暇(3日)、年末年始休暇(5日)、誕生日休暇(1日) ワクチン休暇(最大4日)"
+        },
+        {
+          "label": "賃 金",
+          "value": "月給制(経験に応じて優遇)"
+        },
+        {
+          "label": "賞 与",
+          "value": "年2回+決算賞与(業績による) ※初年度、支給なし(経験に応じて優遇)"
+        },
+        {
+          "label": "昇 給",
+          "value": "年1回(業績による)"
+        },
+        {
+          "label": "各種保険および福利厚生",
+          "value": "厚生年金、社会保険、雇用保険、健康診断、インフルエンザワクチン 中小企業退職共済、さぽーとさっぽろ退職金共済、チケットレストラン"
+        },
+        {
+          "label": "SECURITY ACTION セキュリティ対策 自己宣言企業",
+          "value": null
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティ基本方針",
+          "url": "https://www.justin-inc.com/security.html"
+        },
+        {
+          "text": "情報セキュリティ基本方針",
+          "url": "https://www.justin-inc.com/security.html"
+        }
+      ],
+      "tableCount": 1,
+      "dlCount": 1
+    },
+    {
+      "company": "株式会社リサージュ",
+      "corporateNumber": "5070001003684",
+      "stratum": "10-29人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "new_grad_only",
+      "url": "http://www.lissaj.com/recruit_rookie.html",
+      "httpStatus": 200,
+      "pageTitle": "株式会社リサージュ [新卒者 募集要項]",
+      "visibleChars": 576,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 3,
+          "text": "◆新卒者 募集要項◆",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 3,
+          "heading": "◆新卒者 募集要項◆",
+          "titleClass": "other",
+          "chars": 490
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社技電工業",
+      "corporateNumber": "7400001000480",
+      "stratum": "10-29人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.giden.co.jp/pages/30/",
+      "httpStatus": 200,
+      "pageTitle": "採用特設サイト｜株式会社技電工業（公式ホームページ）",
+      "visibleChars": 1009,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用特設サイト",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社フルスケール",
+      "corporateNumber": "2330001007694",
+      "stratum": "5-9人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://fullscale.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | フルスケール（熊本）",
+      "visibleChars": 1502,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "唯一の必須条件は 「一緒に背伸びできること」。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "働く環境",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集職種",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "お問い合わせ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用情報",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "【中途】Webデザイナー（実務経験2年以上）",
+          "url": "https://fullscale.jp/recruit/4308/"
+        },
+        {
+          "text": "【中途】Webディレクター・プロジェクトマネージャー",
+          "url": "https://fullscale.jp/recruit/353/"
+        },
+        {
+          "text": "【中途】Web広告プランナー・運用スタッフ",
+          "url": "https://fullscale.jp/recruit/354/"
+        },
+        {
+          "text": "【中途】Webデザイナー（実務経験2年以上）",
+          "url": "https://fullscale.jp/recruit/4308/"
+        },
+        {
+          "text": "【中途】Webディレクター・プロジェクトマネージャー",
+          "url": "https://fullscale.jp/recruit/353/"
+        },
+        {
+          "text": "【中途】Web広告プランナー・運用スタッフ",
+          "url": "https://fullscale.jp/recruit/354/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ＪＳＰ",
+      "corporateNumber": "6130001021019",
+      "stratum": "5-9人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://jsp.ne.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報｜株式会社メディカルJSP",
+      "visibleChars": 896,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "PRODUCTS",
+          "value": "製品情報 医療DXツール 電子カルテ Ex-Karte IJIα-5 MightyChecker 共同仕入れサービス オンライン診療"
+        },
+        {
+          "label": "BUSINESS",
+          "value": "事業内容"
+        },
+        {
+          "label": "COMPANY",
+          "value": "企業情報 企業理念 会社概要 沿革"
+        },
+        {
+          "label": "NEWS",
+          "value": "お知らせ"
+        },
+        {
+          "label": "RECRUIT",
+          "value": "採用情報 インタビュー 募集要項"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "INTERVIEW 営業",
+          "url": "https://jsp.ne.jp/recruit/interview/interview_m/"
+        },
+        {
+          "text": "INTERVIEW エンジニア",
+          "url": "https://jsp.ne.jp/recruit/interview/interview_n/"
+        },
+        {
+          "text": "INTERVIEW ヘルプデスク",
+          "url": "https://jsp.ne.jp/recruit/interview/interview_t/"
+        },
+        {
+          "text": "システム開発エンジニア",
+          "url": "https://jsp.ne.jp/recruit/guideline/enginner/"
+        },
+        {
+          "text": "システム提案営業",
+          "url": "https://jsp.ne.jp/recruit/guideline/sales/"
+        },
+        {
+          "text": "ヘルプデスク",
+          "url": "https://jsp.ne.jp/recruit/guideline/helpdesk/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 5
+    },
+    {
+      "company": "株式会社ＳＯＦＴＧ",
+      "corporateNumber": "1010401016295",
+      "stratum": "30-99人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "js_dependent",
+      "url": "https://www.softg.co.jp/recruit/recruit-form/",
+      "httpStatus": 200,
+      "pageTitle": "パートナー募集フォーム - 株式会社SOFTG",
+      "visibleChars": 249,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティ基本方針",
+          "url": "https://www.softg.co.jp/policy/isms"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ビズリーチ",
+      "corporateNumber": "2011001058413",
+      "stratum": "1000人以上 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://careers.bizreach.co.jp/?utm_source=bizreach&utm_medium=site&utm_campaign=recruitment",
+      "httpStatus": 200,
+      "pageTitle": "株式会社ビズリーチ キャリア採用サイト",
+      "visibleChars": 2291,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 3,
+          "text": "ビズリーチを知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "ビジネス組織",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "プロダクト組織",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "ひとりでは辿り着けない、 成功のストーリー。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "働き方は一つじゃない、 自分らしいキャリア。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "お客様を深く理解し、 意義と価値のあるデザインを。 お客様を深く理解し、 意義と価値のあるデザインを。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "学生と社会をつなぎ、 キャリアに向き合える環境をつくる。 学生と社会をつなぎ、 キャリアに向き合える環境をつくる。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "喜びも失 敗 もチームで分かち合い、 お客様の採用成功に伴走する。 喜びも失 敗 も チームで分かち合い、 お客様の採用成功に伴走する。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "仲間との共創で、 事業の、企業の未来をつくる。 仲間との共創で、 事業の、企業の未来をつくる。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "「正解のなき問い」に 自らの意思で最適解を導き出し、 事業を牽引するエンジニアへ。 「正解のなき問い」に 自らの意思で最適解を導き出し、 事業を牽引するエンジニ",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "採用支援の枠を超え、 経営課題の解決にまで貢献したい。 採用支援の枠を超え、 経営課題の解決にまで貢献 したい。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "真摯に人に向き合う環境で 成長機会を得る。 真摯に人に向き合う環境で 成長機会を得る。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "お客様の採用課題解決の伴走者として 選ばれる存在を目指して。 お客様の採用課題解決の 伴走者として 選ばれる存在を目指して。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "複雑な課題を、 デザインのチカラで価値に変える。 複雑な課題を、 デザインのチカラで価値に変える。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "働く環境を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "会社紹介資料",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "ホーム",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "ビズリーチを知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "仕事を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "働く環境を知る",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "01",
+          "value": "リスクマネジメントマネージャー プロジェクトマネージャー ソリューションセールス ソリューションセールス AIプロダクトマネージャー 各職種の課題を、AIで解決"
+        },
+        {
+          "label": "02",
+          "value": "プロダクトマネージャー ソリューションセールス エンジニア プロダクトデザイナー オンボーディングの課題にAIで挑む。 「Onboard AI」開発の軌跡。 ア"
+        },
+        {
+          "label": "03",
+          "value": "クライアントセールス ソリューションセールス カスタマーサクセス コンサルティングファーム、金融機関、人材業界。 多様なバックグラウンドを持つ人材がキャリアを生"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "お客様を深く理解し、 意義と価値のあるデザインを。 お客様を深く理解し、 意義と価値のあるデザインを。 K.Funako",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1648/"
+        },
+        {
+          "text": "喜びも失 敗 もチームで分かち合い、 お客様の採用成功に伴走する。 喜びも失 敗 も チームで分かち合い、 お客様の採用",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1401/"
+        },
+        {
+          "text": "仲間との共創で、 事業の、企業の未来をつくる。 仲間との共創で、 事業の、企業の未来をつくる。 マネージャー K.Han",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1417/"
+        },
+        {
+          "text": "「正解のなき問い」に 自らの意思で最適解を導き出し、 事業を牽引するエンジニアへ。 「正解のなき問い」に 自らの意思で最",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1497/"
+        },
+        {
+          "text": "採用支援の枠を超え、 経営課題の解決にまで貢献したい。 採用支援の枠を超え、 経営課題の解決にまで貢献 したい。 Y.H",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1381/"
+        },
+        {
+          "text": "真摯に人に向き合う環境で 成長機会を得る。 真摯に人に向き合う環境で 成長機会を得る。 H.Takemaki クライアン",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1396/"
+        },
+        {
+          "text": "お客様の採用課題解決の伴走者として 選ばれる存在を目指して。 お客様の採用課題解決の 伴走者として 選ばれる存在を目指し",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1427/"
+        },
+        {
+          "text": "複雑な課題を、 デザインのチカラで価値に変える。 複雑な課題を、 デザインのチカラで価値に変える。 部室長 Y.Okaw",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1509/"
+        }
+      ],
+      "tableCount": 1,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ユードム",
+      "corporateNumber": "5050001002358",
+      "stratum": "300-999人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.udom.co.jp/recruit/index.html",
+      "httpStatus": 200,
+      "pageTitle": "採用情報｜株式会社ユードム",
+      "visibleChars": 4714,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Recruit 採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "採用メッセージ",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "会社紹介ムービー",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ユードムのメンバーをご紹介！",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "教育・研修制度",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "研修制度",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "新入社員研修",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "中堅社員研修",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "管理職研修",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "資格取得奨励制度",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "職場環境",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "仕事と家庭の両立支援企業宣言",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "社内イベントの開催",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "社員の1日",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集要項",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "新卒採用の方",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "2027年3月卒業見込の方の【会社説明会】等の詳しい内容やお申し込み",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "2028年3月卒業見込の方の【オープンカンパニー】、【インターンシップ】等の詳しい内容やお申し込み",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "キャリア採用の方",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "Recruit 採用情報",
+          "titleClass": "container",
+          "chars": 4644
+        },
+        {
+          "level": 2,
+          "heading": "募集要項",
+          "titleClass": "container",
+          "chars": 1182
+        },
+        {
+          "level": 3,
+          "heading": "キャリア採用の方",
+          "titleClass": "other",
+          "chars": 1052
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "資格の種類",
+          "value": "資格名 奨励金"
+        },
+        {
+          "label": "情報処理 技術者試験",
+          "value": "情報セキュリティマネジメント 30,000円"
+        },
+        {
+          "label": "基本情報技術者",
+          "value": "100,000円"
+        },
+        {
+          "label": "応用情報技術者",
+          "value": "200,000円"
+        },
+        {
+          "label": "情報セキュリティスペシャリストなどの高度資格",
+          "value": "250,000円~300,000円"
+        },
+        {
+          "label": "OracleMaster 試験",
+          "value": "ORACLE MASTER Bronze 30,000円"
+        },
+        {
+          "label": "ORACLE MASTER Silver",
+          "value": "100,000円"
+        },
+        {
+          "label": "ORACLE MASTER Gold",
+          "value": "250,000円"
+        },
+        {
+          "label": "募集職種",
+          "value": "システムエンジニア"
+        },
+        {
+          "label": "募集対象",
+          "value": "システム開発実務経験3年以上"
+        },
+        {
+          "label": "主な開発言語",
+          "value": "C,C++,C#,VC,Java,LADDR,HTML,Javascript,VB.NET,SQL など"
+        },
+        {
+          "label": "勤務地",
+          "value": "茨城県(水戸・土浦)、東京都(千代田区)、愛知県(名古屋市)"
+        },
+        {
+          "label": "給与",
+          "value": "当社規定による"
+        },
+        {
+          "label": "賞与",
+          "value": "年2回(6月、12月)"
+        },
+        {
+          "label": "諸手当",
+          "value": "通勤手当:全額支給(私有車通勤・自転車通勤時の駐車場・駐輪場の費用補填あり) 住宅手当:最大40,000円(当社規定による) 家族手当:最大47,000円(当社"
+        },
+        {
+          "label": "勤務時間",
+          "value": "本社:08:45~17:15(休憩12:00~12:45) 土浦支社:08:45~17:30(休憩12:00~13:00) 東京本社・名古屋事業所:09:00~"
+        },
+        {
+          "label": "休日休暇",
+          "value": "完全週休2日制、年末年始、GW、創立記念日、夏季、慶弔、年次有給、半日年休制、 褒章休暇(20年、30年)、アニバーサリー休暇 ほか"
+        },
+        {
+          "label": "福利厚生",
+          "value": "各種社会保険、全国情報サービス産業厚生年金基金、親睦会など 確定拠出年金、前払い退職金制度 確定拠出年金未加入の場合は前払い退職金として給与時に支給 実年齢と身"
+        },
+        {
+          "label": "応募方法",
+          "value": "キャリア:事前に お問い合わせ 下さい。 (履歴書(写真貼付)と職務経歴書をご用意下さい。)"
+        },
+        {
+          "label": "選考方法",
+          "value": "面接"
+        },
+        {
+          "label": "選考場所",
+          "value": "別途連絡いたします。"
+        },
+        {
+          "label": "採否通知",
+          "value": "選考後本人に通知いたします。"
+        },
+        {
+          "label": "本社",
+          "value": "310-0803 茨城県 水戸市 城南1-5-11 029-227-3061 029-225-8143"
+        },
+        {
+          "label": "東京本社",
+          "value": "102-0071 東京都 千代田区 富士見2-7-2 ステージビルディング5F 03-5226-8825"
+        },
+        {
+          "label": "土浦支社",
+          "value": "300-0034 茨城県 土浦市 港町2-2-12 029-825-2720 029-825-2721"
+        },
+        {
+          "label": "名古屋 事業所",
+          "value": "450-0003 愛知県 名古屋市 中村区名駅南2-14-19 住友生命名古屋ビル8F 052-756-2111"
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 2,
+      "dlCount": 4
+    },
+    {
+      "company": "株式会社高志インテック",
+      "corporateNumber": "7230001005373",
+      "stratum": "300-999人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.koushi-intec.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 高志インテック",
+      "visibleChars": 1106,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "富山 から、 ITの未来を創る。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "OUR WORK 仕事を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "INTERVIEW 社員インタビュー",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "DATA 数字で知る",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 2,
+          "heading": "INTERVIEW 社員インタビュー",
+          "titleClass": "other",
+          "chars": 298
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "好きな富山で暮らしながら、好きな仕事に取り組める日々。 総務部経理課 経理（2022年入社）） M.I",
+          "url": "https://www.koushi-intec.co.jp/recruit/interview/entry-276.html"
+        },
+        {
+          "text": "チームでお客さまの課題を解決していく喜び、営業職の魅力を知ってほしい。 システム営業部システム営業課 営業（2008年入",
+          "url": "https://www.koushi-intec.co.jp/recruit/interview/entry-275.html"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社プロトコーポレーション",
+      "corporateNumber": "2180001040422",
+      "stratum": "300-999人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.proto-g.co.jp/job/",
+      "httpStatus": 200,
+      "pageTitle": "採用・カルチャー | PROTO CORPORATION – 循環経済を創造する",
+      "visibleChars": 1208,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 3,
+          "text": "2つの事業と8つのフィールド",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "企業情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "採用・カルチャー",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "採用・カルチャー",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "挑戦を未来の力に変え、夢と感動、楽しい！で社会に貢献する",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ニュース＆トピックス",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "「派遣」を、可能性を広げる選択肢に。OCSで描くキャリアの形",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "人を成長させる組織を作りたい",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "「挑戦」の力で日本の食を豊かにする。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "仕事・カルチャー",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "私たちが一緒に働きたい人",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "制度・働き方",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "数字で見るPROTO",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "社員インタビュー",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "教育・研修について",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "応募する",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 3,
+          "text": "キャリア採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 3,
+          "text": "よくある質問",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "会社を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "プロトコーポレーションについて",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "会社概要",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "事業・サービス",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "採用情報",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ビルドシステム",
+      "corporateNumber": "5010001063230",
+      "stratum": "1-4人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "http://www.buildsystems.jp/Recruit.html",
+      "httpStatus": 200,
+      "pageTitle": "株式会社ビルドシステム Recruit",
+      "visibleChars": 1315,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ｇｒｉｎｌｅａｐ",
+      "corporateNumber": "2012701012725",
+      "stratum": "10-29人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://recruit.grinleap.co.jp/",
+      "httpStatus": 200,
+      "pageTitle": "grinleap 採用",
+      "visibleChars": 1024,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "トップページ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "仲間を大募集",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "キャリア採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "公式X",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "トップページ",
+          "titleClass": "other",
+          "chars": 862
+        },
+        {
+          "level": 2,
+          "heading": "仲間を大募集",
+          "titleClass": "other",
+          "chars": 376
+        },
+        {
+          "level": 2,
+          "heading": "公式X",
+          "titleClass": "other",
+          "chars": 364
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ＮＴＴデータＳＢＣ",
+      "corporateNumber": "4010601028617",
+      "stratum": "300-999人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.nttdata-sbc.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 株式会社NTTデータSBC",
+      "visibleChars": 477,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Recruit",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "求職者向けハラスメント相談窓口",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社リンクアット・ジャパン",
+      "corporateNumber": "5010701020150",
+      "stratum": "100-299人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://recruit.la-j.com/",
+      "httpStatus": 200,
+      "pageTitle": "LAJ RECRUIT SITE – リンクアット・ジャパンの採用サイトです。",
+      "visibleChars": 1170,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "IT業界を俯瞰から見つめ直す",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "いつだって新しくなれる！",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "挑戦し続ける 明日への成長に向かって",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "【リンクアット・ジャパン人事部】仕事のヒントvol.21 リーダーシップと専門的知識",
+          "url": "https://recruit.la-j.com/topics/%e3%80%90%e3%83%aa%e3%83%b3%e3%82%af%e3%82%a2%e3%83%83%e3%83%88%e3%83%bb%e3%82%b8%e3%83%a3%e3%83%91%e3%83%b3%e4%ba%ba%e4%ba%8b%e9%83%a8%e3%80%91%e4%bb%95%e4%ba%8b%e3%81%ae%e3%83%92%e3%83%b3-21/"
+        },
+        {
+          "text": "【リンクアット・ジャパン人事部】仕事のヒントvol.20 『他者と働く』を読んで",
+          "url": "https://recruit.la-j.com/topics/%e3%80%90%e3%83%aa%e3%83%b3%e3%82%af%e3%82%a2%e3%83%83%e3%83%88%e3%83%bb%e3%82%b8%e3%83%a3%e3%83%91%e3%83%b3%e4%ba%ba%e4%ba%8b%e9%83%a8%e3%80%91%e4%bb%95%e4%ba%8b%e3%81%ae%e3%83%92%e3%83%b3-20/"
+        },
+        {
+          "text": "【リンクアット・ジャパン人事部】仕事のヒントvol.19 昨日と今日では同じ顔でも、十年前とはだいぶ違う",
+          "url": "https://recruit.la-j.com/topics/%e3%80%90%e3%83%aa%e3%83%b3%e3%82%af%e3%82%a2%e3%83%83%e3%83%88%e3%83%bb%e3%82%b8%e3%83%a3%e3%83%91%e3%83%b3%e4%ba%ba%e4%ba%8b%e9%83%a8%e3%80%91%e4%bb%95%e4%ba%8b%e3%81%ae%e3%83%92%e3%83%b3-19/"
+        },
+        {
+          "text": "I.S 営業 MORE",
+          "url": "https://recruit.la-j.com/interview/interview_1/"
+        },
+        {
+          "text": "H.N＆N.R サーバエンジニア MORE",
+          "url": "https://recruit.la-j.com/interview/interview_5/"
+        },
+        {
+          "text": "I.H ネットワークエンジニア MORE",
+          "url": "https://recruit.la-j.com/interview/interview_3/"
+        },
+        {
+          "text": "名称非公開 サポートエンジニア MORE",
+          "url": "https://recruit.la-j.com/interview/interview_4/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "ナショナルソフトウェア株式会社",
+      "corporateNumber": "6010001121012",
+      "stratum": "300-999人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.nationalsoftware.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "ナショナルソフトウェア採用サイト",
+      "visibleChars": 1874,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "あなたの可能性に、限界なんてない。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "News",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Hello NSCo",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "COMPANY／BUSINESS",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ENVIRONMENT",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "INTERVIEW",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "AWS全資格制覇。競技プログラミング出身エンジニアが、“効率化”の先に見る未来。 M.H M.H/2022年入社／システ",
+          "url": "https://www.nationalsoftware.co.jp/recruit/interview/6601"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "三菱電機ソフトウエア株式会社",
+      "corporateNumber": "9010401028746",
+      "stratum": "1000人以上 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.mesw.co.jp/recruit/index.html",
+      "httpStatus": 200,
+      "pageTitle": "希望の開発を、ともに。 - 採用情報 - 三菱電機ソフトウエア",
+      "visibleChars": 1681,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "希望 の 開発 を、 とも に。",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "希望の開発を、 ともに。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "希望 の開発を、ともに。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "SPECIAL",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ABOUT",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "何のためにつくるのか。 何のための技術か。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "何のためにつくるのか。何のための技術か。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "早わかり三菱電機ソフトウエア",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "こんなところに私たちのテクノロジー",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "キーワードで知る強み",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "社長メッセージ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "JOB &and; PEOPLE",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "トップエンジニアが集う 刺激的な環境がある。",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "トップエンジニアが集う刺激的な環境がある。",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "仕事紹介",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "社員インタビュー 希望をつくりだす社員たち",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ENVIRONMENT",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "三菱電機グループならではの 安定した環境で、自分らしく働ける。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "三菱電機グループならではの安定した環境で、自分らしく働ける。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "教育・研修制度",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "福利厚生とライフプラン",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "働く環境とまち",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "ダイバーシティ座談会",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "RECRUIT",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "求める人材像",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "さらに詳しい情報はこちらもチェック!",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "主なコンテンツ",
+          "value": "・事業分野紹介 ・事業・技術トピックス ・仕事紹介 ・働く場としての三菱電機ソフトウエア ・事業所紹介"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "システムエンジニア Y.K",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/01/"
+        },
+        {
+          "text": "構造解析エンジニア S.K",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/02/"
+        },
+        {
+          "text": "システムエンジニア K.T",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/03/"
+        },
+        {
+          "text": "システムエンジニア M.T",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/04/"
+        },
+        {
+          "text": "システムエンジニア K.I",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/05/"
+        },
+        {
+          "text": "ハードウェアエンジニア N.I",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/06/"
+        },
+        {
+          "text": "システムエンジニア R.S",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/07/"
+        },
+        {
+          "text": "システムエンジニア S.I",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/08/"
+        },
+        {
+          "text": "総務人事 K.B",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/09/"
+        },
+        {
+          "text": "経理財務 H.M",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/10/"
+        },
+        {
+          "text": "営業 T.Y",
+          "url": "https://www.mesw.co.jp/recruit/jobpeople/introduction/11/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 1
+    },
+    {
+      "company": "株式会社ソルネット",
+      "corporateNumber": "2290801009473",
+      "stratum": "100-299人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.solnet-dot.com/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 株式会社ソルネット",
+      "visibleChars": 3165,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "ソルネットの注力事業",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "クラウド 先進技術を最適構成で提供、企業のデジタル化を支援します。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ソルネットのクラウドの特長、価値",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "セキュリティ 高度化するサイバー攻撃を全方位のセキュリティで守ります。",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "ソルネットのセキュリティの特長、価値",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "超高速開発（JBアジャイル） 高品質なシステムを脅威の開発スピードで実現します。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ソルネットの超高速開発の特長、価値",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "職場環境・働きやすさ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ソルネットの魅力",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "人材こそがソルネットの財産",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集要項",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 3,
+          "text": "キャリア採用",
+          "titleClass": "category"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "えるぼし認定 女性活躍推進企業",
+          "value": "くるみん認定 子育てサポート企業 その他の制度 育児休業給付率8割保障 育児のための短時間勤務制度 育児のための費用補助 フル(スーパー)フレックス、テレワーク"
+        },
+        {
+          "label": "新卒採用 私たちと一緒に新しい未来に挑戦してみませんか。 皆さまからのエントリー",
+          "value": "キャリア採用 キャリア採用募集要項を公開しています。 ご興味のある方はぜひご応募ください。"
+        },
+        {
+          "label": "エントリーはこちら (「マイナビ2027」サイトへ移動します)",
+          "value": "募集要項はこちら (「JBCCグループ採用情報」サイトへ移動します)"
+        },
+        {
+          "label": "エントリーはこちら (「マイナビ2028」サイトへ移動します)",
+          "value": null
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "セキュリティ",
+          "url": "https://www.solnet-dot.com/products/sec-main/sec-main.html"
+        },
+        {
+          "text": "サーバー監視",
+          "url": "https://www.solnet-dot.com/products/surveillance/post.html"
+        },
+        {
+          "text": "セキュリティ診断",
+          "url": "https://www.solnet-dot.com/products/attacksurface/attacksurface.html"
+        },
+        {
+          "text": "セキュリティ",
+          "url": "https://www.solnet-dot.com/column/security/index.html"
+        },
+        {
+          "text": "セキュリティ",
+          "url": "https://www.solnet-dot.com/casestudy/2023/10/post-11.html"
+        },
+        {
+          "text": "セキュリティ",
+          "url": "https://www.solnet-dot.com/products/sec-main/sec-main.html"
+        },
+        {
+          "text": "サーバー監視",
+          "url": "https://www.solnet-dot.com/products/surveillance/post.html"
+        },
+        {
+          "text": "セキュリティ診断",
+          "url": "https://www.solnet-dot.com/products/attacksurface/attacksurface.html"
+        },
+        {
+          "text": "セキュリティ",
+          "url": "https://www.solnet-dot.com/column/security/index.html"
+        },
+        {
+          "text": "セキュリティ",
+          "url": "https://www.solnet-dot.com/casestudy/2023/10/post-11.html"
+        }
+      ],
+      "tableCount": 5,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社メトロ",
+      "corporateNumber": "9010701009710",
+      "stratum": "300-999人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.metro.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 株式会社メトロ",
+      "visibleChars": 714,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "キャリア採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "インターンシップ",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "契約社員/個人事業主",
+          "titleClass": "role"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "2026年07月08日",
+          "value": "新着求人のお知らせ(【沼津】経理メンバー)"
+        },
+        {
+          "label": "2026年06月05日",
+          "value": "夏季1Dayオープンカンパニー 参加募集のお知らせ"
+        },
+        {
+          "label": "2026年03月01日",
+          "value": "2027年新卒採用を開始しました"
+        },
+        {
+          "label": "2025年06月13日",
+          "value": "27卒向け 夏季1Dayオープンカンパニー 参加募集のお知らせ"
+        },
+        {
+          "label": "2024年12月19日",
+          "value": "新着求人のお知らせ(【東京・静岡】GPUプログラミングエンジニア)"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "新着求人のお知らせ（【沼津】経理メンバー）",
+          "url": "http://www.metro.co.jp/recruit/careers/jobs_jobtype.html"
+        },
+        {
+          "text": "新着求人のお知らせ（【東京・静岡】GPUプログラミングエンジニア）",
+          "url": "http://www.metro.co.jp/recruit/careers/jobs_jobtype.html"
+        },
+        {
+          "text": "契約社員/個人事業主",
+          "url": "https://www.metro.co.jp/recruit/contract/"
+        },
+        {
+          "text": "契約社員/個人事業主",
+          "url": "https://www.metro.co.jp/recruit/contract/"
+        },
+        {
+          "text": "電話帳データベースの取り扱いについて",
+          "url": "https://www.metro.co.jp/phone_book.html"
+        }
+      ],
+      "tableCount": 1,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社フロントエンド",
+      "corporateNumber": "8500001014453",
+      "stratum": "10-29人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.frontend.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 – 株式会社フロントエンド",
+      "visibleChars": 2610,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 1,
+          "text": "WORK",
+          "titleClass": "container"
+        },
+        {
+          "level": 1,
+          "text": "VOICE",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "募 集 要 項",
+          "titleClass": "container"
+        },
+        {
+          "level": 1,
+          "text": "採 用 情 報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "新入社員対象",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "中途採用対象",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "募 集 要 項",
+          "titleClass": "container",
+          "chars": 171
+        },
+        {
+          "level": 1,
+          "heading": "採 用 情 報",
+          "titleClass": "container",
+          "chars": 1599
+        },
+        {
+          "level": 2,
+          "heading": "新入社員対象",
+          "titleClass": "other",
+          "chars": 503
+        },
+        {
+          "level": 2,
+          "heading": "中途採用対象",
+          "titleClass": "other",
+          "chars": 1060
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "応募資格",
+          "value": "新卒採用:2027年卒業予定者(全学部全学科対象) 中途採用:とくに年齢の制限を設けていません"
+        },
+        {
+          "label": "選考基準",
+          "value": "与えられた仕事をこなすだけでなく、企画力や実行力、そして創造力を発揮して、 自分自身の可能性に挑戦したいと考えている方に、私たちの仲間に加わっていただきたいと考"
+        },
+        {
+          "label": "採用人数",
+          "value": "5人"
+        },
+        {
+          "label": "給与",
+          "value": "短大・専門・専修学校卒初任給 月給 200,000円 高専卒初任給 月給 210,000円 大学卒初任給 月給 220,000円 大学院卒初任給 月給 230,"
+        },
+        {
+          "label": "諸手当",
+          "value": "通勤手当(最高31,600円迄)、家族手当、資格手当、住宅手当、日直手当 他"
+        },
+        {
+          "label": "昇給",
+          "value": "年1回(4月)"
+        },
+        {
+          "label": "賞与",
+          "value": "年2回(6月、12月)"
+        },
+        {
+          "label": "勤務地",
+          "value": "愛媛県四国中央市"
+        },
+        {
+          "label": "勤務時間",
+          "value": "8:00~17:00"
+        },
+        {
+          "label": "休日休暇",
+          "value": "完全週休二日制 年間休日120日(土・日曜日、祝日、年末年始休暇、夏季休暇、計画有給含む) 有給休暇(入社 6か月後より20日付与、うち10日は計画有給) 特別"
+        },
+        {
+          "label": "保険",
+          "value": "健康・厚生年金・雇用・労災保険"
+        },
+        {
+          "label": "福利厚生",
+          "value": "昼食費補助(8,100円/月まで)、社内旅行費用補助(30,000円/人) 退職金制度、育児休業制度、マイカー通勤可 他"
+        },
+        {
+          "label": "募集学科",
+          "value": "全学部全学科"
+        },
+        {
+          "label": "応募方法",
+          "value": "自由応募又は学校推薦"
+        },
+        {
+          "label": "提出書類",
+          "value": "履歴書(写真貼付)、成績証明書、卒業見込証明書、健康診断書"
+        },
+        {
+          "label": "選考方法",
+          "value": "適性検査・面接"
+        },
+        {
+          "label": "教育制度",
+          "value": "新入社員研修、各種開発技術研修 他"
+        },
+        {
+          "label": "人事制度",
+          "value": "能力主義を基本に、社員の働きを最大限に評価するシステムを導入"
+        },
+        {
+          "label": "給与",
+          "value": "年齢・経験を考慮し、本人との面談の上決定"
+        },
+        {
+          "label": "諸手当",
+          "value": "通勤手当(最高31,600円迄)、家族手当、資格手当、住宅手当、日直手当 他"
+        },
+        {
+          "label": "昇給",
+          "value": "年1回(4月)"
+        },
+        {
+          "label": "賞与",
+          "value": "年2回(6月、12月)"
+        },
+        {
+          "label": "勤務地",
+          "value": "愛媛県四国中央市"
+        },
+        {
+          "label": "勤務時間",
+          "value": "8:00~17:00"
+        },
+        {
+          "label": "休日休暇",
+          "value": "完全週休二日制 年間休日120日(土・日曜日、祝日、年末年始休暇、夏季休暇、計画有給含む) 有給休暇(入社 6か月後より20日付与、うち10日は計画有給) 特別"
+        },
+        {
+          "label": "保険",
+          "value": "健康・厚生年金・雇用・労災保険"
+        },
+        {
+          "label": "福利厚生",
+          "value": "昼食費補助(8,100円/月まで)、社内旅行費用補助(30,000円/人) 退職金制度、育児休業制度、マイカー通勤可 他"
+        },
+        {
+          "label": "募集職種",
+          "value": "システムエンジニア、プログラマー(※dbMagic、VB、PHP等 経験者歓迎)、カスタマーエンジニア、営業職等 経験者"
+        },
+        {
+          "label": "応募方法",
+          "value": "当社の中途採用エントリーフォームよりエントリー"
+        },
+        {
+          "label": "提出書類",
+          "value": "履歴書(写真貼付)、健康診断書"
+        },
+        {
+          "label": "選考方法",
+          "value": "適性検査・面接"
+        },
+        {
+          "label": "教育制度",
+          "value": "新入社員研修、各種開発技術研修 他"
+        },
+        {
+          "label": "人事制度",
+          "value": "能力主義を基本に、社員の働きを最大限に評価するシステムを導入"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "■ セキュリティーポリシー",
+          "url": "https://www.frontend.co.jp/wp/security/"
+        },
+        {
+          "text": "株式会社フロントエンド",
+          "url": "https://www.frontend.co.jp/"
+        }
+      ],
+      "tableCount": 3,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社サイバーテック",
+      "corporateNumber": "5011101060984",
+      "stratum": "30-99人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.cybertech.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "サイバーテック求人情報",
+      "visibleChars": 3663,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "未来をともに創る仲間へ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "サイバーテックで働くということ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "特徴1：自社製品中心のじっくり系IT企業 - 腰を据えてしっかり学べる！",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "特徴2：ワーク・ライフ・バランス重視 - 多様な勤務形態で自社製品への携わり方はいろいろ！",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "特徴3：自社オフショア拠点が英語圏のフィリピン セブ島にあり、英語学習やブリッジエンジニアの経験ができる！",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "サイバーテックでのお仕事の流れについて",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ソリューション営業",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "サポートエンジニア・フロントエンドエンジニア",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "新卒採用情報",
+          "titleClass": "category"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "本社・沖縄・セブの中途採用に応募される方の応募フォームです。 応募する(中途採用",
+          "value": "新卒の方向けのエントリーフォームはこちらです。 エントリーする(新卒採用)"
+        },
+        {
+          "label": "ソリューション営業",
+          "value": "業界未経験の方でも、何らかの法人対応をされている方で、自主学習中が苦にならない、あるいは職業訓練校に通っているなど、IT業界に興味がある方であればOK! 自分の"
+        },
+        {
+          "label": "サポートエンジニア・フロントエンドエンジニア",
+          "value": "IT業界や開発業務が未経験の方でも、ロジカルシンキングが出来る方であれば大丈夫。 サイバーテックはエンジニア派遣や受託開発ではなく、自社製品中心の事業だからこそ"
+        },
+        {
+          "label": "新卒採用情報",
+          "value": "新卒採用を実施しています。皆さんのご応募をお待ちしております! 新卒採用情報 詳細はこちら"
+        },
+        {
+          "label": "募集職種",
+          "value": "新卒採用 国内採用/ソリューション営業 国内採用/営業事務・マーケティング・広報 国内採用/マニュアル作成・テクニカルライティング 国内採用/サーバーサイドエン"
+        },
+        {
+          "label": "About US",
+          "value": "会社概要 プライバシーポリシー セキュリティポリシー AIポリシー 環境ポリシー D&I宣言 アクセスマップ サイトマップ"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "ソリューション営業",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/solution-sales/"
+        },
+        {
+          "text": "営業事務・マーケティング・広報",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inside-sales/"
+        },
+        {
+          "text": "サーバーサイドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/se/"
+        },
+        {
+          "text": "サポートエンジニア・フロントエンドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inexperienced-engineer/"
+        },
+        {
+          "text": "ディレクター",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/director/"
+        },
+        {
+          "text": "HTMLコーダー・CMSオペレータ",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/htmlcoder-okinawa/"
+        },
+        {
+          "text": "ソリューション営業",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/solution-sales/"
+        },
+        {
+          "text": "営業事務・マーケティング・広報",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inside-sales/"
+        },
+        {
+          "text": "サーバーサイドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/se/"
+        },
+        {
+          "text": "サポートエンジニア・フロントエンドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inexperienced-engineer/"
+        },
+        {
+          "text": "ディレクター",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/director/"
+        },
+        {
+          "text": "システムエンジニア・プログラマ（フィリピン セブ）",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career-cebu/programmer/"
+        },
+        {
+          "text": "XMLデータベース",
+          "url": "https://www.cybertech.co.jp/xml/xmldb/neocore/"
+        },
+        {
+          "text": "ソリューション営業",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/solution-sales/"
+        },
+        {
+          "text": "ソリューション営業 詳細はこちら",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/solution-sales/"
+        },
+        {
+          "text": "サポートエンジニア・フロントエンドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inexperienced-engineer/"
+        },
+        {
+          "text": "サポートエンジニア・フロントエンドエンジニア 詳細はこちら",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inexperienced-engineer/"
+        },
+        {
+          "text": "国内採用／ソリューション営業",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/solution-sales/"
+        },
+        {
+          "text": "国内採用／営業事務・マーケティング・広報",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inside-sales/"
+        },
+        {
+          "text": "国内採用／サーバーサイドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/se/"
+        },
+        {
+          "text": "国内採用／サポートエンジニア・フロントエンドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inexperienced-engineer/"
+        },
+        {
+          "text": "国内採用／ディレクター",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/director/"
+        },
+        {
+          "text": "フィリピン セブ現地採用／システムエンジニア・プログラマ（フィリピン セブ）",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career-cebu/programmer/"
+        },
+        {
+          "text": "セキュリティポリシー",
+          "url": "https://www.cybertech.co.jp/security/"
+        },
+        {
+          "text": "ソリューション営業",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/solution-sales/"
+        },
+        {
+          "text": "営業事務・マーケティング・広報",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inside-sales/"
+        },
+        {
+          "text": "サーバーサイドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/se/"
+        },
+        {
+          "text": "サポートエンジニア・フロントエンドエンジニア",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/inexperienced-engineer/"
+        },
+        {
+          "text": "ディレクター",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/director/"
+        },
+        {
+          "text": "HTMLコーダー・CMSオペレータ",
+          "url": "https://www.cybertech.co.jp/recruit/mid-career/htmlcoder-okinawa/"
+        }
+      ],
+      "tableCount": 1,
+      "dlCount": 5
+    },
+    {
+      "company": "株式会社ＡＷＡ",
+      "corporateNumber": "5190001029692",
+      "stratum": "1-4人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "jsonld",
+      "url": "https://a-w-a.co.jp/recruitment/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 株式会社AWA",
+      "visibleChars": 3268,
+      "jsonLdJobPostings": 2,
+      "jsonLdJobTitles": [
+        "ヘアケアメディア記事執筆者",
+        "美容師アシスタント/スタイリスト"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "メディア業務の採用情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "美容師アシスタント/スタイリストの採用情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "当社チームの特徴",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "美容師の経験を最大限に活かせる多様な業務",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "心強いサポート体制",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "得意分野でのキャスティング",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "当社で働くメリット",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "美容師の“次のキャリア”をつくる場所",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "美容×マーケティングの知識を実践で学べる",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "自分のペースで働けるから、長く続けられる",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "よくある質問",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ヘアケアトーク",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "会社情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "本店所在地",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 3074
+        },
+        {
+          "level": 2,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 811
+        },
+        {
+          "level": 3,
+          "heading": "メディア業務の採用情報",
+          "titleClass": "other",
+          "chars": 395
+        },
+        {
+          "level": 3,
+          "heading": "美容師アシスタント/スタイリストの採用情報",
+          "titleClass": "other",
+          "chars": 381
+        },
+        {
+          "level": 2,
+          "heading": "会社情報",
+          "titleClass": "other",
+          "chars": 544
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "お仕事内容",
+          "value": "1webサイトの文章作成2webサイトの装飾パーツ等の作成3データまとめ、インターネット調査4その他(サイト運営プロセス、SNSマーケティングなど)能力・適性に"
+        },
+        {
+          "label": "資格・条件",
+          "value": "化粧品関連の資格/美容師資格"
+        },
+        {
+          "label": "給与",
+          "value": "・タスク成果制・固定報酬制・文字単価制お仕事の内容によって上記いずれかを採用しています。"
+        },
+        {
+          "label": "勤務地・勤務体系",
+          "value": "自由・在宅ワーク"
+        },
+        {
+          "label": "必要なツールスキル",
+          "value": "Googleドキュメント・スプレッドシート、Chatwork"
+        },
+        {
+          "label": "身に付くスキル",
+          "value": "・webライティング・SEO対策、webマーケティング"
+        },
+        {
+          "label": "休暇",
+          "value": "自由ご自身のスケジュールに合わせて、休暇を取ってください。"
+        },
+        {
+          "label": "就業時間",
+          "value": "コアタイム:特になし1日にどのくらい就労可能かをお教えください。"
+        },
+        {
+          "label": "募集内容",
+          "value": "1美容師アシスタント/スタイリスト 2パート・アルバイト"
+        },
+        {
+          "label": "資格",
+          "value": "美容師免許"
+        },
+        {
+          "label": "営業時間",
+          "value": "10時〜17時"
+        },
+        {
+          "label": "休日・休暇",
+          "value": "毎週月曜日・火曜日(第3週目のみ日・月曜日)"
+        },
+        {
+          "label": "給与",
+          "value": "1160,000円〜 21,023円〜 経験有無・スキルによって応相談。 研修期間を経て、技術・頑張りに応じて昇給等に対応しています。"
+        },
+        {
+          "label": "待遇・福利厚生",
+          "value": "応募時にご確認ください。"
+        },
+        {
+          "label": "勤務地",
+          "value": "三重県 津市 城山一丁目14-2"
+        },
+        {
+          "label": "こんな方を待ってます",
+          "value": "・美容が好きな方 ・素直で前向きな姿勢を持っている方 ・チームワークを大切に出来る方 ・お客様に寄り添える方"
+        },
+        {
+          "label": "会社名",
+          "value": "株式会社AWA(法人番号: 5190001029692 )"
+        },
+        {
+          "label": "代表取締役",
+          "value": "長崎弘幸"
+        },
+        {
+          "label": "電話番号",
+          "value": "050-8885-0769"
+        },
+        {
+          "label": "メール",
+          "value": "[email protected]"
+        },
+        {
+          "label": "所在地",
+          "value": "〒450-0002 愛知県名古屋市中村区名駅4丁目24-5 第2森ビル401"
+        },
+        {
+          "label": "業務内容",
+          "value": "美容室運営 美容室「白髪染め専門美容室ソマリ」「ヘアケアトーク」の運営を通じて、お客様に満足いただける白髪染め体験とヘアケアを提供しています。 メディア運営 ヘ"
+        },
+        {
+          "label": "設立日",
+          "value": "2022.08.08(2019.09.04 個人事業)"
+        },
+        {
+          "label": "お取引銀行",
+          "value": "住信SBIネット銀行 百五銀行 愛知信用金庫"
+        },
+        {
+          "label": "子育て中で決まった時間が取れないのですが...。",
+          "value": "空いている時間に働けます。 稼働時間が、1日1時間程度でもタスクを調整して取り組んで頂く事が可能です。 子育て中の働きたい方を応援しています。応募の際にご相談く"
+        },
+        {
+          "label": "ウェブの知識はどれくらい必要ですか?",
+          "value": "最低限のPC操作、Googleドキュメント、スプレッドシートが使えたら働けます。"
+        },
+        {
+          "label": "メディア業務にて美容関係の仕事経験はないけど、大丈夫ですか?",
+          "value": "メディア業務であっても美容職経験者を優遇致します。美容師資格でなくても、化粧品関連の資格取得者を募集します。"
+        },
+        {
+          "label": "副業としてしっかりと稼ぎたいのですが?",
+          "value": "タスク量を増やして取り組んで頂く事が可能です。成果報酬制なので集中して働いて頂いた分、報酬に反映されます。 また、採用状況によってはディレクター職(経験、スキル"
+        },
+        {
+          "label": "白髪染め専門美容室ソマリのお客様の年齢層はどれくらいですか?",
+          "value": "ヘナを使用した白髪染めメニューを専門とした美容室ですので、年齢層は40代~80代までの白髪世代の方が多く来店されます。"
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 3,
+      "dlCount": 1
+    },
+    {
+      "company": "株式会社ＬｉｎｋＳｔｏｒｙ",
+      "corporateNumber": "7200001030597",
+      "stratum": "1-4人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://recruit.linkstory.co.jp/",
+      "httpStatus": 200,
+      "pageTitle": "LinkStory採用特設サイト",
+      "visibleChars": 2952,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "物語や/想いを形にし、/人々の/幸せへと/つなぐ。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "会社 として、 個人 として、 私たちができること",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "それぞれが「自分らしく」仕事をするために。 働きやすさをとことん追求します。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "benefits 福利厚生",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "Work style symposium ワークスタイル座談会",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "Office tour オフィスツアー",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "お知らせ・ブログ News",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "採用特設サイトを公開しました。",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "採用特設サイトを公開しました。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "社員インタビュー",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "理念と指針",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集要項 Information",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "デザイナー Designer",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "エンジニア Engineer",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "ディレクター Director",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "進行管理 Management",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "写植 Typesetter / Retoucher",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Q&A",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Main office",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Tokyo office",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Vietnam office [LinkStory Asia]",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "デザイナー / 2020年入社 S.F",
+          "url": "https://recruit.linkstory.co.jp/interview/uncategorised/265.html"
+        },
+        {
+          "text": "デザイナー Designer Webサイト、チラシ・パンフレット等の印刷物など幅広くデザインの制作を行います。",
+          "url": "https://recruit.linkstory.co.jp/placement?id=designer"
+        },
+        {
+          "text": "エンジニア Engineer HTML・CSSによる構築、CMSやPHPを使用したシステムの導入を行います。",
+          "url": "https://recruit.linkstory.co.jp/placement?id=engineer"
+        },
+        {
+          "text": "ディレクター Director 制作から納品までのスケジュールと進捗を管理し、プロジェクトを推進します。",
+          "url": "https://recruit.linkstory.co.jp/placement?id=director"
+        },
+        {
+          "text": "進行管理 Management ディレクターと共にプロジェクトのスケジュールと進捗を管理、営業活動のサポートを行います。",
+          "url": "https://recruit.linkstory.co.jp/placement?id=management"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社電通総研",
+      "corporateNumber": "7010401053829",
+      "stratum": "1000人以上 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.dentsusoken.com/recruit",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 電通総研",
+      "visibleChars": 1003,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "採用責任者メッセージ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "電通総研とは",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "コンサルティング",
+          "url": "https://www.dentsusoken.com/consulting/"
+        },
+        {
+          "text": "業績・財務",
+          "url": "https://www.dentsusoken.com/ir/financial/"
+        },
+        {
+          "text": "アナリスト一覧",
+          "url": "https://www.dentsusoken.com/ir/stocks/analyst.html"
+        },
+        {
+          "text": "キャリア採用（コンサルティング職）",
+          "url": "https://www.dentsusoken.com/consulting_career/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "使えるねっと株式会社",
+      "corporateNumber": "5100001005339",
+      "stratum": "10-29人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "multi_role_single_page",
+      "url": "https://www.tsukaeru.net/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "使えるねっと RECRUIT",
+      "visibleChars": 5906,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "長野から世界へ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "シンプルで コスパに優れたITを 全ての人に",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "使えるねっとって こんな会社",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "多様性があたりまえの職場",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "長野を拠点に、日本全国・世界のお客様と働く",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "正解を待つより、動きながら考える",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "事業紹介",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "クラウドインフラ事業",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "情報セキュリティ事業",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "オフィスソリューション事業",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "長野で働く4つの魅力",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "自然×生活コスト",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "東京まで新幹線約1.5時間",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "長野から世界へ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "移住しやすい環境",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "UIターン社員の声",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "社員インタビュー",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "サポート業務の経験を活かしてプロダクトマネジメントへ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "少人数だからこそ味わえる、自分の成果が会社を動かす面白さ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "サーバー・ネットワークの運用保守から、より高度なインフラ設計へ",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "数字で見る 使えるねっと",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "よくある質問",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集要項・エントリー",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "プリセールス",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "雇用形態",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務地",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務時間",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "求める人物像",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "マーケティング",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "雇用形態",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務地",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務時間",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "求める人物像",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "インフラエンジニア",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "雇用形態",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務地",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務時間",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "求める人物像",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "カスタマーエンジニア",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "雇用形態",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務地",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務時間",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "求める人物像",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ITソリューション営業",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "雇用形態",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務地",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "勤務時間",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "求める人物像",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "あなたのキャリアを、 ここから始めよう。",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "長野から世界へ",
+          "titleClass": "other",
+          "chars": 5827
+        },
+        {
+          "level": 2,
+          "heading": "よくある質問",
+          "titleClass": "other",
+          "chars": 495
+        },
+        {
+          "level": 2,
+          "heading": "募集要項・エントリー",
+          "titleClass": "other",
+          "chars": 2232
+        },
+        {
+          "level": 3,
+          "heading": "プリセールス",
+          "titleClass": "role",
+          "chars": 404
+        },
+        {
+          "level": 4,
+          "heading": "給与",
+          "titleClass": "other",
+          "chars": 25
+        },
+        {
+          "level": 3,
+          "heading": "マーケティング",
+          "titleClass": "role",
+          "chars": 646
+        },
+        {
+          "level": 4,
+          "heading": "給与",
+          "titleClass": "other",
+          "chars": 25
+        },
+        {
+          "level": 4,
+          "heading": "求める人物像",
+          "titleClass": "other",
+          "chars": 576
+        },
+        {
+          "level": 3,
+          "heading": "インフラエンジニア",
+          "titleClass": "role",
+          "chars": 406
+        },
+        {
+          "level": 4,
+          "heading": "給与",
+          "titleClass": "other",
+          "chars": 25
+        },
+        {
+          "level": 3,
+          "heading": "カスタマーエンジニア",
+          "titleClass": "role",
+          "chars": 374
+        },
+        {
+          "level": 4,
+          "heading": "給与",
+          "titleClass": "other",
+          "chars": 25
+        },
+        {
+          "level": 3,
+          "heading": "ITソリューション営業",
+          "titleClass": "role",
+          "chars": 318
+        },
+        {
+          "level": 4,
+          "heading": "給与",
+          "titleClass": "other",
+          "chars": 25
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "Q. 選考プロセスについて教えてください。",
+          "value": "A. エントリー → 書類選考 → 一次面接 → 二次面接 → 最終面接の流れとなります。選考期間は通常2〜3週間程度です。各段階でフィードバックを丁寧に行い、"
+        },
+        {
+          "label": "Q. リモートワークは可能ですか?",
+          "value": "A. はい、可能です。職種や業務内容、家庭の都合に合わせて働きやすい環境を相談できます。"
+        },
+        {
+          "label": "Q. フレックスタイム制度はありますか?",
+          "value": "A. はい、導入しています。ライフスタイルに合わせた時間や環境、働き方の要望は随時相談してください。"
+        },
+        {
+          "label": "Q. 入社後の研修制度について教えてください。",
+          "value": "A. 入社時のオリエンテーション研修に加え、OJTによる実務研修、外部セミナーへの参加支援、資格取得支援制度などを用意しています。定期的な1on1ミーティングで"
+        },
+        {
+          "label": "Q. 副業は可能ですか?",
+          "value": "A. 原則として可能です。ただし、事前に会社への申請・承認が必要です。本業に支障がなく、利益相反に該当しない範囲であれば、スキルアップや新しい経験を積む機会とし"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "経営企画室 経営企画 / マーケティング 少人数だからこそ味わえる、自分の成果が会社を動かす面白さ 「これも任せてみよう",
+          "url": "https://www.tsukaeru.net/recruit/interview/interview-26/"
+        },
+        {
+          "text": "技術部 インフラエンジニア サーバー・ネットワークの運用保守から、より高度なインフラ設計へ 幅広い業務を通して新しい知識",
+          "url": "https://www.tsukaeru.net/recruit/interview/interview-40/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 1
+    },
+    {
+      "company": "彩ネット株式会社",
+      "corporateNumber": "8030001075015",
+      "stratum": "10-29人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.sainet.ne.jp/corporation/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 – SaiNet – 彩ネット株式会社",
+      "visibleChars": 1612,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "採用までの手順",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集職種",
+          "titleClass": "container"
+        },
+        {
+          "level": 3,
+          "text": "システムエンジニア・プログラマー",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "ネットワークエンジニア",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "営業",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "デザイナー",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "事務",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "待遇",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "賞与",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "休日休暇",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "各種保険",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "福利厚生他",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "勤務地",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "応募方法",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "必要書類",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "書類送付先",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 2,
+          "heading": "待遇",
+          "titleClass": "other",
+          "chars": 155
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "Web制作",
+          "url": "https://www.sainet.ne.jp/web/"
+        },
+        {
+          "text": "Web制作",
+          "url": "https://www.sainet.ne.jp/web/"
+        },
+        {
+          "text": "Web制作",
+          "url": "https://www.sainet.ne.jp/web/"
+        },
+        {
+          "text": "Web制作の流れ",
+          "url": "https://www.sainet.ne.jp/web/flow/"
+        },
+        {
+          "text": "ネットワーク構築",
+          "url": "https://www.sainet.ne.jp/si/network/"
+        },
+        {
+          "text": "セキュリティ診断",
+          "url": "https://www.sainet.ne.jp/si/security/"
+        },
+        {
+          "text": "コンサルティング",
+          "url": "https://www.sainet.ne.jp/si/management/"
+        },
+        {
+          "text": "ネットワーク機器",
+          "url": "https://www.sainet.ne.jp/services/sale/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "プロエンジニア株式会社",
+      "corporateNumber": "7130001075856",
+      "stratum": "5-9人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "mid_career_only",
+      "url": "https://proengineer.co.jp/393/",
+      "httpStatus": 200,
+      "pageTitle": "地方企業の採用難を救う「おまかせ採用さん」導入事例公開、商標登録も完了 | プロエンジニア株式会社",
+      "visibleChars": 2785,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "NEWS",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "地方企業の採用難を救う「おまかせ採用さん」導入事例公開、商標登録も完了",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "「採用できなかった建設会社が、応募3倍に──」",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "「おまかせ採用さん」とは？",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "採用のプロに母集団形成を“まるっと”おまかせできる、新しい採用支援のカタチ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "■ 募集職種ごとに最適化された「LP型 採用サイト」の制作",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "■ 求人媒体の運用代行（Indeed・AirWORK等）",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "導入企業の成果（一部抜粋）",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "■ 京都府北部・建設会社（従業員約20名／施工管理職採用）",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "■ 大阪府・飲食業（複数店舗展開／アルバイト採用）",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "■ 福井県・製造業（従業員約100名／中途採用強化）",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "代表コメント",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "無料相談受付中｜採用サイトの無料診断も実施中！",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "CONTACT",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "地方企業の採用難を救う「おまかせ採用さん」導入事例公開、商標登録も完了",
+          "titleClass": "other",
+          "chars": 2571
+        },
+        {
+          "level": 2,
+          "heading": "導入企業の成果（一部抜粋）",
+          "titleClass": "other",
+          "chars": 907
+        },
+        {
+          "level": 3,
+          "heading": "■ 福井県・製造業（従業員約100名／中途採用強化）",
+          "titleClass": "other",
+          "chars": 314
+        },
+        {
+          "level": 2,
+          "heading": "無料相談受付中｜採用サイトの無料診断も実施中！",
+          "titleClass": "other",
+          "chars": 243
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "地域の人事部",
+          "url": "https://proengineer.co.jp/?page_id=61"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "兼松グランクス株式会社",
+      "corporateNumber": "5011101042099",
+      "stratum": "30-99人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.granks.co.jp/recruit",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 兼松グランクス株式会社",
+      "visibleChars": 1092,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "データ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "働き方・サポート制度",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "中途採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "アルバイト採用",
+          "titleClass": "category"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "マーケティング事業",
+          "url": "https://www.granks.co.jp/service/marketing"
+        },
+        {
+          "text": "フロントエンドエンジニア",
+          "url": "https://www.granks.co.jp/recruit/frontend-engineer"
+        },
+        {
+          "text": "ソリューション企画営業",
+          "url": "https://www.granks.co.jp/recruit/solution-planning-sales"
+        },
+        {
+          "text": "Webディレクター",
+          "url": "https://www.granks.co.jp/recruit/web-director"
+        },
+        {
+          "text": "Webデザイナー",
+          "url": "https://www.granks.co.jp/recruit/web-designer"
+        },
+        {
+          "text": "アプリエンジニア",
+          "url": "https://www.granks.co.jp/recruit/app-engineer"
+        },
+        {
+          "text": "Webコーダー",
+          "url": "https://www.granks.co.jp/recruit/web-coder"
+        },
+        {
+          "text": "マーケティング事業",
+          "url": "https://www.granks.co.jp/service/marketing"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ムサシ・エービーシー",
+      "corporateNumber": "3010001058678",
+      "stratum": "100-299人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.musashi-abc.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "株式会社ムサシ・エービーシー | 東京/つくば/仙台のデータ入力・委託",
+      "visibleChars": 2543,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "求める人材像",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集中の職種",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用の流れ",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 4,
+          "text": "中途採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 4,
+          "text": "パート・アルバイト",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用に関するよくあるご質問",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "営業部門",
+          "url": "https://www.musashi-abc.co.jp/sales"
+        },
+        {
+          "text": "営業部門",
+          "url": "https://www.musashi-abc.co.jp/sales"
+        },
+        {
+          "text": "営業部門",
+          "url": "https://www.musashi-abc.co.jp/sales"
+        },
+        {
+          "text": "営業部門",
+          "url": "https://www.musashi-abc.co.jp/sales"
+        },
+        {
+          "text": "営業部門",
+          "url": "https://www.musashi-abc.co.jp/sales"
+        },
+        {
+          "text": "情報セキュリティ方針",
+          "url": "https://www.musashi-abc.co.jp/security"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社さくらケーシーエス",
+      "corporateNumber": "3140001007886",
+      "stratum": "1000人以上 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "js_dependent",
+      "url": "https://www.kcs.co.jp/recruit.html",
+      "httpStatus": 200,
+      "pageTitle": "新卒採用",
+      "visibleChars": 181,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "サイト内検索",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社オキジモ",
+      "corporateNumber": "3360001031385",
+      "stratum": "1-4人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://okijimo.jp/business/mid-career",
+      "httpStatus": 200,
+      "pageTitle": "事業領域-求人サービス – オキジモ！",
+      "visibleChars": 453,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "事業領域",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "求人、ジョブ事業",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ハイエレコン",
+      "corporateNumber": "8240001008754",
+      "stratum": "100-299人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.hek.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "ハイエレコン採用サイト | 株式会社ハイエレコン",
+      "visibleChars": 1634,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "IoT・AI時代を迎えた社会のイノベーションを 引き出す、新しい力。 私たちは新たな価値を創り出す力を求めています。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "About us ハイエレコンで働くということ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "COMPANY 会社説明会",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "ABOUT 数字でわかるハイエレコン",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "BUSINESS 仕事を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "WORKSTYLE REFORM 働き方改革",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "People ハイエレコンの人を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Cross Talk クロストーク",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "CROSS TALK 若手ならではの素直な思い",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "CROSS TALK 中堅社員からみたハイエレコン",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "Recruit Information 採用情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "SUPPORT 働く環境",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "FAQ よくあるご質問",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "SELECTION 採用プロセス",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "REPORT 改善取組みレポート",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "MOVIE 会社紹介動画",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 2,
+          "heading": "Cross Talk クロストーク",
+          "titleClass": "other",
+          "chars": 184
+        },
+        {
+          "level": 3,
+          "heading": "CROSS TALK 若手ならではの素直な思い",
+          "titleClass": "other",
+          "chars": 52
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "TOP",
+          "value": "新卒採用トップ"
+        },
+        {
+          "label": "ABOUT US",
+          "value": "会社説明会 数字でわかるハイエレコン 仕事を知る 働き方改革"
+        },
+        {
+          "label": "PEOPLE",
+          "value": "社員インタビュー 若手クロストーク 中堅クロストーク"
+        },
+        {
+          "label": "INFO",
+          "value": "働く環境 採用プロセス よくあるご質問 新卒採用募集要項 中途採用募集要項"
+        },
+        {
+          "label": "ENTRY",
+          "value": "新卒採用エントリー 中途採用エントリー"
+        },
+        {
+          "label": "TOP",
+          "value": "新卒採用トップ"
+        },
+        {
+          "label": "ABOUT US",
+          "value": "会社概要 数字でわかるハイエレコン 仕事を知る 働き方改革"
+        },
+        {
+          "label": "PEOPLE",
+          "value": "社員インタビュー 若手クロストーク 中堅クロストーク"
+        },
+        {
+          "label": "INFO",
+          "value": "働く環境 よくあるご質問 採用プロセス 新卒採用募集要項 中途採用募集要項"
+        },
+        {
+          "label": "ENTRY",
+          "value": "新卒採用エントリー 中途採用エントリー"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "BUSINESS 仕事を知る ハイエレコンは高度なソフトウェア開発・ネットワーク構築等、お客様のニーズに合わせた最善のサ",
+          "url": "https://www.hek.co.jp/recruit/business/"
+        },
+        {
+          "text": "CROSS TALK 若手ならではの素直な思い SEという道を選んだ理由・現在の職務内容・そして今後のキャリアプランにつ",
+          "url": "https://www.hek.co.jp/recruit/crosstalk/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 10
+    },
+    {
+      "company": "トラストコミュニケーション株式会社",
+      "corporateNumber": "1360001014581",
+      "stratum": "30-99人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://tcom.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | トラストコミュニケーション株式会社【公式】システムやネットワーク構築・保守のコンサルティング会社",
+      "visibleChars": 732,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "採用情報 ABOUT US",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "私たちと共に成長しプロフェッショナルを目指す方からの エントリーお待ちしております。 ご応募の時点で技術力がなくとも プロフェッショナルに成長できる環境をご用意",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "● VALUE● 求める人材",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "主体的である",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "好奇心旺盛である",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "挑戦が好き",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "話すことが好き",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "●RECRUIT● 募集要項",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "ABOUT US 私たちについて",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティー基本方針",
+          "url": "https://tcom.co.jp/securitypolicy/"
+        },
+        {
+          "text": "情報セキュリティー基本方針",
+          "url": "https://tcom.co.jp/securitypolicy/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社アドヴァンスト・インフォーメイション・デザイン",
+      "corporateNumber": "6100001012664",
+      "stratum": "300-999人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.a-i-d.co.jp/recruit",
+      "httpStatus": 200,
+      "pageTitle": "AID｜採用情報",
+      "visibleChars": 1256,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Recruit 採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "インターン",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "中途採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "パート採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 2,
+          "text": "プログラミング講座",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用直結型",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "お問い合せ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "応募者専用",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "企業情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "本社ビル案内",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "個人情報保護",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "応募者専用 お問い合せ先",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "人事部採用担当",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "0120-373-314",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "entry",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "応募する",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "パート採用 パートタイムプログラマーを募集しています",
+          "url": "https://www.a-i-d.co.jp/recruit/part"
+        },
+        {
+          "text": "ITインフラ構築",
+          "url": "https://www.a-i-d.co.jp/business-solution/IT-infrastructure"
+        },
+        {
+          "text": "情報セキュリティ",
+          "url": "https://www.a-i-d.co.jp/company/isms"
+        },
+        {
+          "text": "情報セキュリティ・個人情報保護",
+          "url": "https://www.a-i-d.co.jp/company/isms"
+        },
+        {
+          "text": "ＩＴインフラ構築",
+          "url": "https://www.a-i-d.co.jp/business-solution/IT-infrastructure"
+        },
+        {
+          "text": "情報セキュリティ",
+          "url": "https://www.a-i-d.co.jp/company/isms"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社パーソン",
+      "corporateNumber": "6290001024245",
+      "stratum": "10-29人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.person3.com/recruit.html",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 株式会社パーソン",
+      "visibleChars": 807,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "株式会社パーソン",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "福岡県で地域密着・地域貢献を創造する企業",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "メニュー",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "募集要項",
+          "titleClass": "container"
+        },
+        {
+          "level": 1,
+          "text": "メニュー",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "募集要項",
+          "titleClass": "container",
+          "chars": 531
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "必要技能",
+          "value": ".NET(VB,C#,C++,ASP),Java 他 (開発経験2年以上)"
+        },
+        {
+          "label": "雇用形態",
+          "value": "正社員または契約社員"
+        },
+        {
+          "label": "勤務地",
+          "value": "福岡(本社)、九州全域、広島"
+        },
+        {
+          "label": "諸手当",
+          "value": "通勤手当(実費支給、非課税限度額内) 時間外手当"
+        },
+        {
+          "label": "昇給",
+          "value": "年1回(4月)"
+        },
+        {
+          "label": "賞与",
+          "value": "年2回(7月・12月) 業績により期末手当を支給"
+        },
+        {
+          "label": "勤務時間",
+          "value": "始業 9時00分 / 終業 18時00分(休憩60分)"
+        },
+        {
+          "label": "休日・休暇",
+          "value": "週休2日制「日曜日、土曜日」 国民の祝祭日 年末年始休暇 年次有給休暇"
+        },
+        {
+          "label": "退職金",
+          "value": "退職一時金"
+        },
+        {
+          "label": "福利厚生",
+          "value": "各種社会保険完備"
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 3,
+      "dlCount": 1
+    },
+    {
+      "company": "有限会社アイネット",
+      "corporateNumber": "1350002006281",
+      "stratum": "1-4人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "js_dependent",
+      "url": "https://www.iiinet.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "有限会社アイネット",
+      "visibleChars": 247,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "採用情報 RECRUIT",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社テイルウィンドシステム",
+      "corporateNumber": "8012801006761",
+      "stratum": "100-299人 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.tailwind.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用 - テイルウィンドシステム",
+      "visibleChars": 1573,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 3,
+          "text": "新卒採用 エントリー",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "中途採用 エントリー",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "TWSの実績",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "スキルアップ支援",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "社内紹介",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "福利厚生",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "people and work",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "2017年入社 SES事業部",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "2014年入社 受託事業部",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "WEB制作実績",
+          "url": "https://www.tailwind.co.jp/category/products/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社アナザーウェア",
+      "corporateNumber": "1020001038458",
+      "stratum": "100-299人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.another-ware.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 – 株式会社 アナザーウェア",
+      "visibleChars": 1981,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 1,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 2,
+          "text": "エンジニアの「将来像」実現に、本気になる。 それが、アナザーウェアが20年以上成長してこれた理由です。",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "IT業界セミナー & 会社説明会",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "新卒採用",
+          "titleClass": "category"
+        },
+        {
+          "level": 3,
+          "text": "キャリア採用",
+          "titleClass": "category"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "採用情報",
+          "titleClass": "container",
+          "chars": 971
+        },
+        {
+          "level": 2,
+          "heading": "エンジニアの「将来像」実現に、本気になる。 それが、アナザーウェアが20年以上成長してこれた理由です。",
+          "titleClass": "role",
+          "chars": 893
+        },
+        {
+          "level": 3,
+          "heading": "IT業界セミナー & 会社説明会",
+          "titleClass": "other",
+          "chars": 266
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティ基本方針",
+          "url": "https://www.another-ware.co.jp/security-policy/"
+        },
+        {
+          "text": "AI（人工知能）・データサイエンス",
+          "url": "https://www.another-ware.co.jp/service/data-science/"
+        },
+        {
+          "text": "データサイエンスエンジン®",
+          "url": "https://www.another-ware.co.jp/service/data-science-engine/"
+        },
+        {
+          "text": "システムエンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/se/"
+        },
+        {
+          "text": "プログラマー",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/pg/"
+        },
+        {
+          "text": "IoT（組込み）エンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/embeded-engineer/"
+        },
+        {
+          "text": "ITコンサルタント",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/it-consultant/"
+        },
+        {
+          "text": "データサイエンティスト",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/data-scientist/"
+        },
+        {
+          "text": "インフラエンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/infrastructure-engineer/"
+        },
+        {
+          "text": "システム運用エンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/system-operation-engineer/"
+        },
+        {
+          "text": "サポートデスク / ヘルプデスク",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/support-desk/"
+        },
+        {
+          "text": "PLCエンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/plc-engineer/"
+        },
+        {
+          "text": "回路設計エンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/circuit-design-engineer/"
+        },
+        {
+          "text": "01 ｜ ITサービスエンジニア",
+          "url": "https://www.another-ware.co.jp/interview-haruna-goto/"
+        },
+        {
+          "text": "02 ｜ システムエンジニア",
+          "url": "https://www.another-ware.co.jp/interview-yuki-takara/"
+        },
+        {
+          "text": "03 ｜ システムエンジニア",
+          "url": "https://www.another-ware.co.jp/interview-yuta-otsuka/"
+        },
+        {
+          "text": "情報セキュリティ基本方針",
+          "url": "https://www.another-ware.co.jp/security-policy/"
+        },
+        {
+          "text": "AI（人工知能）・データサイエンス",
+          "url": "https://www.another-ware.co.jp/service/data-science/"
+        },
+        {
+          "text": "データサイエンスエンジン®",
+          "url": "https://www.another-ware.co.jp/service/data-science-engine/"
+        },
+        {
+          "text": "システムエンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/se/"
+        },
+        {
+          "text": "プログラマー",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/pg/"
+        },
+        {
+          "text": "IoT（組込み）エンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/embeded-engineer/"
+        },
+        {
+          "text": "ITコンサルタント",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/it-consultant/"
+        },
+        {
+          "text": "データサイエンティスト",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/data-scientist/"
+        },
+        {
+          "text": "インフラエンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/infrastructure-engineer/"
+        },
+        {
+          "text": "システム運用エンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/system-operation-engineer/"
+        },
+        {
+          "text": "サポートデスク / ヘルプデスク",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/support-desk/"
+        },
+        {
+          "text": "PLCエンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/plc-engineer/"
+        },
+        {
+          "text": "回路設計エンジニア",
+          "url": "https://www.another-ware.co.jp/recruit/mid-career/circuit-design-engineer/"
+        },
+        {
+          "text": "01 ｜ ITサービスエンジニア",
+          "url": "https://www.another-ware.co.jp/interview-haruna-goto/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社マクロミル",
+      "corporateNumber": "7010001247946",
+      "stratum": "1000人以上 / 東京",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "js_dependent",
+      "url": "https://www.macromill.com/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 株式会社マクロミル 採用サイト",
+      "visibleChars": 368,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "Macromill Recruit 採用情報",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "Information",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "Macromill Program",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "note マクロミルで描く！わたしらしいキャリア",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "Office tour",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "総合職 本社採用コース向け 会社説明会 コンサルティングセールス、リサーチャー、その他職種への配属、品川本社以外の拠点へ",
+          "url": "https://www.macromill.com/recruit/winter-program_2025/"
+        },
+        {
+          "text": "エリア総合職 仙台採用コース向け 会社説明会 仙台オフィス勤務の確約、（希望しない）転勤はないコースとなります。",
+          "url": "https://www.macromill.com/recruit/winter-program_2025/sendai/"
+        },
+        {
+          "text": "アナリスト採用",
+          "url": "https://www.macromill.com/recruit/analyst/"
+        },
+        {
+          "text": "エンジニア採用",
+          "url": "https://shipit.macromill.com/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "ＳａｉＳプロダクション株式会社",
+      "corporateNumber": "1370001023334",
+      "stratum": "10-29人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "multi_role_single_page",
+      "url": "https://saisproduction.com/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報－recruit | SaiSproduction",
+      "visibleChars": 1304,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "ITエンジニア募集",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "求める技術者",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "応募方法",
+          "titleClass": "other"
+        },
+        {
+          "level": 1,
+          "text": "サイトコンテンツ",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 2,
+          "heading": "ITエンジニア募集",
+          "titleClass": "role",
+          "chars": 1089
+        },
+        {
+          "level": 3,
+          "heading": "求める技術者",
+          "titleClass": "other",
+          "chars": 545
+        },
+        {
+          "level": 5,
+          "heading": "①システム設計開発",
+          "titleClass": "other",
+          "chars": 154
+        },
+        {
+          "level": 5,
+          "heading": "②インフラ構築運用",
+          "titleClass": "role",
+          "chars": 144
+        },
+        {
+          "level": 5,
+          "heading": "③ＩＴサポート事務（未経験可）",
+          "titleClass": "other",
+          "chars": 98
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社テイク－ワン",
+      "corporateNumber": "5120001054177",
+      "stratum": "100-299人 / 主要都市圏",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "detail_links",
+      "url": "https://www.tk-1.co.jp/recruit/",
+      "httpStatus": 200,
+      "pageTitle": "採用情報｜株式会社テイク－ワン／TAKE-1 コンピュータシステムの設計構築運用",
+      "visibleChars": 2172,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "メッセージ",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "テイク－ワンで自分の可能性を 広げてみませんか",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "新卒、未経験の方へ",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "入社時研修が充実しています",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "テイクーワンの特徴",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "面接や会社説明会で、よくいただくご質問",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "テイク－ワンのビジョン",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "自らの努力で培った、 優れた技術をもって お客様に奉仕する",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "事業内容",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "システム開発",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "インフラ構築",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "ソフトウェアテスト",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "環境と物語",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "選考フロー",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "採用に至るまで、 主に以下のような形で進んでいきます。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "エントリーはこちら",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "インフラ構築",
+          "url": "https://www.tk-1.co.jp/service/work/"
+        },
+        {
+          "text": "インフラ構築",
+          "url": "https://www.tk-1.co.jp/service/work/"
+        },
+        {
+          "text": "情報セキュリティ基本方針",
+          "url": "https://www.tk-1.co.jp/security/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ウディスソフト研究所",
+      "corporateNumber": "8330001017176",
+      "stratum": "5-9人 / その他",
+      "hostCategory": "ownDomain",
+      "guessedStructureType": "no_jobs_top",
+      "url": "https://www.udissoftlab.com/?page_id=1457",
+      "httpStatus": 200,
+      "pageTitle": "採用情報 | 株式会社ウディスソフト研究所",
+      "visibleChars": 443,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "株式会社ウディスソフト研究所",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "株式会社ウディスソフト研究所は各種情報処理システムの開発・運用・保守・管理・受託会社です。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "メインナビゲーション",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用情報",
+          "titleClass": "container"
+        },
+        {
+          "level": 1,
+          "text": "新卒・既卒・未経験者",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "システムエンジニア・プログラマー（未経験者）募集は こちらから",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "サブナビゲーション",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "システムエンジニア・プログラマー（未経験者）募集は こちらから",
+          "url": "https://www.udissoftlab.com/?p=1490"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    }
+  ]
+}
