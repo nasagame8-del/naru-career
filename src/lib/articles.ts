@@ -322,6 +322,8 @@ export async function getArticle(slug: string): Promise<Article> {
 
   // h2見出しを抽出し、IDを付与
   let htmlStr = await renderArticleMarkdown(processedContent);
+  // Retired RPG diagnosis CTAs embedded in older Markdown/HTML must not render.
+  htmlStr = htmlStr.replace(/<a\b(?=[^>]*\bhref=["'](?:https:\/\/naru-career\.com)?\/shindan(?:[/?#][^"']*)?["'])[^>]*>[\s\S]*?<\/a>/gi, "");
   const headings: Heading[] = [];
   let headingIndex = 0;
   htmlStr = htmlStr.replace(/<h2>(.*?)<\/h2>/g, (_match, inner: string) => {
