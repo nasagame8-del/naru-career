@@ -1,0 +1,71 @@
+{
+  "batchId": "batch_2026-10-15_chatgpt",
+  "generatedAt": "2026-10-15T07:59:02+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 78,
+  "candidates": [
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261015a_equipment",
+      "title": "業務委託のパソコン・ソフト代は自腹？貸与・指定購入・契約終了時の確認点",
+      "primaryKeyword": "業務委託 パソコン 自腹",
+      "secondaryKeywords": [
+        "業務委託 パソコン 貸与",
+        "フリーランス ソフト代 負担"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "新規独自検証。機材/有料ソフトの費用負担、指定購入、貸与品返却、データ削除・ライセンスの確認に限定。報酬比較記事の費用一覧は総額試算の役割を維持し、詳細確認手順を分離。勤怠記事の労働者性判断を再掲せず、自己負担だけで独立事業者とは断定しない。",
+      "reasonToWriteNow": "最新GSC final9/27〜10/10：関連親119表示/3click/10.4位、契約終了61表示/0click/16.3位。主KW実測なし。10/8公取委特設サイトの購入・利用強制説明を入口に、単なる自費購入と正当理由のない強制を区別してIT/Web実務へ落とす。法の当事者・期間条件を要確認。",
+      "proposedSlug": "contractor-equipment-software-costs",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "employee-contractor-pay-comparison",
+        "contractor-attendance-control-worker-status",
+        "business-outsourcing-conversion-risk"
+      ]
+    },
+    {
+      "category": "業界解説",
+      "blocked": false,
+      "blockedReasons": [],
+      "searchEvidence": null,
+      "id": "cand_261015b_fixed_overtime",
+      "title": "固定残業代込みの月給はどう比べる？基本給・時間数・超過分を求人票で確認",
+      "primaryKeyword": "固定残業代 求人票 見方",
+      "secondaryKeywords": [
+        "固定残業代 基本給 比較",
+        "みなし残業 超過分 求人"
+      ],
+      "searchIntent": "compare",
+      "differenceFromExisting": "新規通常SEO・補欠。求人票2件を同じ項目にそろえる比較、基本給/固定残業時間・金額/超過分と実残業の違いに限定。077の試用中/本採用後の比較と、内定承諾総合チェックの一文を拡張せず役割分担。固定残業あり=ブラックと断定しない。",
+      "reasonToWriteNow": "077公開により給与条件の比較クラスターへ接続可能。ただし主KW・最新通知書query×pageのGSC実測なし。過去の通知書query21〜40位を最新実測として転用しない。厚労省の公式明示3項目と架空と明示した求人比較例で実用性を出せる。①より根拠が弱い補欠。",
+      "proposedSlug": "job-offer-fixed-overtime-pay-comparison",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "probation-period-lower-salary-checks",
+        "second-new-grad-it-offer-acceptance-checks",
+        "second-new-grad-desired-salary-2026"
+      ]
+    }
+  ],
+  "notes": [
+    "Drive00/01・WBS3タブ→master75記事・Open31PRの全変更ファイル・candidateディレクトリ/latest/10/14batch/queueを再取得。同日batch/queueなし。076/077はqueue publishedかつmaster実在。再提案しない。",
+    "既存データ流出記事/契約終了記事はmaster dateModified10/14でタイトル・導入が更新済み。前日までのリライト案を新候補として再提示せず観測に回す。PR189/186/191等の重複PRなし。",
+    "最新成功SEO Opportunity Snapshot run38495238798生成2026-10-14T10:21:50+09:00。10/15新成功未確認。final9/27〜10/10 vs9/13〜9/26：表示632vs177、click19vs6、CTR3.01%vs3.39%、Top3 7vs1/Top10 29vs4/Top20 36vs6、可視query70vs9、新規63。可視行は全体母数ではない。前回観測587/21/26/34から表示+45/click-2/Top10+3/Top20+2、ローリング窓差を日次成長としない。",
+    "業務委託最優先継続、転職エージェント新規抑制継続。3〜5件の数合わせをせず新規2案のみ、①独自検証・②通常SEO補欠。主KW直接実測なし全件searchEvidence:null。Google SERP/Trends/PAA未取得、採点未算定。",
+    "一次資料を無料Webで確認：https://www.jftc.go.jp/freelancelaw_2026/index.html （10/8公開） https://www.check-roudou.mhlw.go.jp/study/roudousya_roudoujouken.html 。公式画像の利用条件/第三者権利は制作時別確認。",
+    "GA4は今回未取得。WBSの10/8〜13暫定292PV（自己アクセス完全除外未検証）は過去入力値として維持し今回新取得としない。選択前にPR・確定採番・公開予約なし。WBS更新/readback後報告。"
+  ]
+}
