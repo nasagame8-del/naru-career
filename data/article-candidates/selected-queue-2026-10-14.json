@@ -12,7 +12,7 @@
       "primaryKeyword": "業務委託 修正 追加料金",
       "order": 1,
       "workType": "new",
-      "status": "publishing",
+      "status": "merged_production_verifying",
       "requestedPublishAt": "2026-10-14T21:02:26+09:00",
       "branch": "article-factory/2026-10-14-76-unpaid-revisions",
       "prNumber": 199,
@@ -102,7 +102,9 @@
         "text": "即時本番反映で",
         "type": "explicit_user_instruction",
         "headSha": "ce8cb07876d36fed62d253ec77a234ced9546f93"
-      }
+      },
+      "mergeSha": "f923aa2cd432f83f8fcaa2ec13db2ecb2c3b4b46",
+      "deployRunId": 38561202757
     },
     {
       "candidateId": "cand_261013b_probation_salary",
@@ -112,7 +114,7 @@
       "primaryKeyword": "試用期間 給料 低い",
       "order": 2,
       "workType": "new",
-      "status": "publishing",
+      "status": "merged_production_verifying",
       "requestedPublishAt": "2026-10-14T21:02:26+09:00",
       "branch": "article-factory/2026-10-14-77-probation-salary",
       "prNumber": 200,
@@ -197,7 +199,9 @@
         "text": "即時本番反映で",
         "type": "explicit_user_instruction",
         "headSha": "d1a3e4a02f4be1c5f15a224e6f663753257d6309"
-      }
+      },
+      "mergeSha": "aa07708b2339d3278654e4a67a8ebe6c8d4bcd2a",
+      "deployRunId": 38561234953
     }
   ],
   "notes": [
