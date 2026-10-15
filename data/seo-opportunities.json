@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T01:21:51.088Z",
+  "generatedAt": "2026-10-15T00:47:18.116Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -20,14 +20,20 @@
     },
     {
       "rank": 2,
+      "slug": "new-grad-early-resignation-career-plan",
+      "query": "山田 瑠々 辞め た 会社",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 3,
       "slug": "agent-not-recommended",
       "query": "転職エージェント 求人 微妙",
       "reason": "position_11_30"
     },
     {
-      "rank": 3,
-      "slug": "new-grad-early-resignation-career-plan",
-      "query": "山田 瑠々 辞め た 会社",
+      "rank": 4,
+      "slug": "agent-not-recommended",
+      "query": "転職エージェント 合わない 辞めたい",
       "reason": "position_11_30"
     }
   ],
