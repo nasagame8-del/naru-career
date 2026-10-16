@@ -1,0 +1,35 @@
+{
+  "articleId": 79,
+  "slug": "job-offer-fixed-overtime-pay-comparison",
+  "status": "awaiting_user_images",
+  "card": {
+    "file": "job-offer-fixed-overtime-pay-comparison-card.webp",
+    "width": 1200,
+    "height": 630
+  },
+  "bodyImages": [
+    {
+      "slot": "01",
+      "file": "job-offer-fixed-overtime-pay-comparison-01.webp",
+      "alt": "固定残業代を含む月給を基本給、固定残業代、超過分の三項目で読む図",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "slot": "02",
+      "file": "job-offer-fixed-overtime-pay-comparison-02.webp",
+      "alt": "同じ月給の求人を基本給と固定残業代の内訳に分けて比較する図",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "slot": "03",
+      "file": "job-offer-fixed-overtime-pay-comparison-03.webp",
+      "alt": "給与の内訳を聞き、勤務実態と照合し、書面を保存して判断する手順",
+      "width": 1200,
+      "height": 675
+    }
+  ],
+  "officialImageDecision": "公式資料は本文リンクで提示。図解はNARU独自制作。公式画像の転載は行わない。",
+  "promptFile": "image-prompts-79.md"
+}
