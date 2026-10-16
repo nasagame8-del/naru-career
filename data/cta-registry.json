@@ -114,5 +114,21 @@
     "asp": "アクセストレード",
     "affiliate": true,
     "note": "第二新卒・既卒・フリーター・ニート向けの一般就職支援サービス。著者の利用経験なし、事実ベースの紹介に留める"
+  },
+  "retirement_jobs": {
+    "name": "退職代行Jobs",
+    "url": "https://h.accesstrade.net/sp/cc?rk=0100q25q00ovm3",
+    "cta_text": "退職代行Jobsの詳細を確認する",
+    "asp": "アクセストレード",
+    "affiliate": true,
+    "note": "2026-10-16提携承認。運営主体・対応範囲・料金・申込条件は掲載時に公式情報を確認。画像素材はASP別途管理。"
+  },
+  "samurai_job": {
+    "name": "Samurai Job",
+    "url": "https://h.accesstrade.net/sp/cc?rk=0100q6nt00ovm3",
+    "cta_text": "Samurai Jobの詳細を確認する",
+    "asp": "アクセストレード",
+    "affiliate": true,
+    "note": "2026-10-16提携承認。ハイクラス転職向けの適合記事を審査して配置。第二新卒全般の記事には自動設置しない。"
   }
 }
