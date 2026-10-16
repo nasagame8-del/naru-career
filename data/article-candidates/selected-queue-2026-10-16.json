@@ -31,7 +31,8 @@
         },
         "cloudflarePreview": {
           "status": "failed",
-          "headSha": "dacb2ad40bef63e6ac7a0729ea116750aaf027fe"
+          "headSha": "dacb2ad40bef63e6ac7a0729ea116750aaf027fe",
+          "runId": 38878879686
         },
         "sourceReview": {
           "status": "ai_reviewed",
@@ -79,8 +80,9 @@
           "headSha": "ffc7254ba11068e174a709b8c3bf81a7ad7258c8"
         },
         "cloudflarePreview": {
-          "status": "pending",
-          "headSha": "ffc7254ba11068e174a709b8c3bf81a7ad7258c8"
+          "status": "failed",
+          "headSha": "ffc7254ba11068e174a709b8c3bf81a7ad7258c8",
+          "runId": 38878885829
         },
         "sourceReview": {
           "status": "ai_reviewed",
