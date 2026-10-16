@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-16",
+  "batchId": "batch_2026-10-16_chatgpt",
+  "selectionText": "1組み直して、2と同時にすすめて",
+  "selectedAt": "2026-10-16T18:01:42+09:00",
+  "articles": [
+    {
+      "candidateId": "cand_261016c_training",
+      "articleId": 78,
+      "slug": "contractor-unpaid-mandatory-training",
+      "title": "業務委託なのに研修が無給？参加義務・報酬・断れるかの確認点",
+      "primaryKeyword": "業務委託 研修 無給",
+      "genre": "独自検証",
+      "workType": "new",
+      "order": 1,
+      "status": "WRITING",
+      "requestedPublishAt": null,
+      "latestHeadSha": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending",
+        "articleQa": {
+          "status": "pending"
+        },
+        "imageQa": {
+          "status": "pending"
+        },
+        "ci": {
+          "status": "pending"
+        },
+        "cloudflarePreview": {
+          "status": "pending"
+        }
+      },
+      "blockers": [
+        "ユーザー画像4枚未反映",
+        "Human Fact Check・Preview承認未了",
+        "公開時刻未指定"
+      ]
+    },
+    {
+      "candidateId": "cand_261015b_fixed_overtime",
+      "articleId": 79,
+      "slug": "job-offer-fixed-overtime-pay-comparison",
+      "title": "固定残業代込みの月給はどう比べる？基本給・時間数・超過分を求人票で確認",
+      "primaryKeyword": "固定残業代 求人票 見方",
+      "genre": "通常SEO",
+      "workType": "new",
+      "order": 2,
+      "status": "WRITING",
+      "requestedPublishAt": null,
+      "latestHeadSha": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending",
+        "articleQa": {
+          "status": "pending"
+        },
+        "imageQa": {
+          "status": "pending"
+        },
+        "ci": {
+          "status": "pending"
+        },
+        "cloudflarePreview": {
+          "status": "pending"
+        }
+      },
+      "blockers": [
+        "ユーザー画像4枚未反映",
+        "Human Fact Check・Preview承認未了",
+        "公開時刻未指定"
+      ]
+    }
+  ],
+  "notes": [
+    "元の機材費案は撤回。ユーザーは①再構成と②を同時に制作することを指示。公開承認に代用しない。78/79はmaster75記事、割当済み最大77、Open PR/Drive最新記事フォルダ照合で確保。"
+  ]
+}
