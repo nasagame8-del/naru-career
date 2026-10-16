@@ -13,9 +13,9 @@
       "genre": "独自検証",
       "workType": "new",
       "order": 1,
-      "status": "WRITING",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
-      "latestHeadSha": null,
+      "latestHeadSha": "dacb2ad40bef63e6ac7a0729ea116750aaf027fe",
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
@@ -26,17 +26,32 @@
           "status": "pending"
         },
         "ci": {
-          "status": "pending"
+          "status": "pending",
+          "headSha": "dacb2ad40bef63e6ac7a0729ea116750aaf027fe"
         },
         "cloudflarePreview": {
-          "status": "pending"
+          "status": "failed",
+          "headSha": "dacb2ad40bef63e6ac7a0729ea116750aaf027fe"
+        },
+        "sourceReview": {
+          "status": "ai_reviewed",
+          "headSha": "dacb2ad40bef63e6ac7a0729ea116750aaf027fe",
+          "humanApproval": false,
+          "factScannerBlockers": 0,
+          "internalLinks": "all_exist_on_master"
         }
       },
       "blockers": [
         "ユーザー画像4枚未反映",
         "Human Fact Check・Preview承認未了",
         "公開時刻未指定"
-      ]
+      ],
+      "prNumber": 207,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/207",
+      "branch": "article-factory/2026-10-16-78-unpaid-training",
+      "driveFolderId": "1qvvSOIVrr52NsoW-XPdGz3Cfk9Xj3oKQ",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1qvvSOIVrr52NsoW-XPdGz3Cfk9Xj3oKQ",
+      "imagePromptsUrl": "https://drive.google.com/file/d/1t22Vm1Sox9nupQN8BkB7f5YUe_310TuN/view?usp=drivesdk"
     },
     {
       "candidateId": "cand_261015b_fixed_overtime",
@@ -47,9 +62,9 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 2,
-      "status": "WRITING",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
-      "latestHeadSha": null,
+      "latestHeadSha": "ffc7254ba11068e174a709b8c3bf81a7ad7258c8",
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
@@ -60,17 +75,32 @@
           "status": "pending"
         },
         "ci": {
-          "status": "pending"
+          "status": "pending",
+          "headSha": "ffc7254ba11068e174a709b8c3bf81a7ad7258c8"
         },
         "cloudflarePreview": {
-          "status": "pending"
+          "status": "pending",
+          "headSha": "ffc7254ba11068e174a709b8c3bf81a7ad7258c8"
+        },
+        "sourceReview": {
+          "status": "ai_reviewed",
+          "headSha": "ffc7254ba11068e174a709b8c3bf81a7ad7258c8",
+          "humanApproval": false,
+          "factScannerBlockers": 0,
+          "internalLinks": "all_exist_on_master"
         }
       },
       "blockers": [
         "ユーザー画像4枚未反映",
         "Human Fact Check・Preview承認未了",
         "公開時刻未指定"
-      ]
+      ],
+      "prNumber": 208,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/208",
+      "branch": "article-factory/2026-10-16-79-fixed-overtime",
+      "driveFolderId": "1plcS_3QPQnZ8EqAzGdTvGJP0Rzr_JoEH",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1plcS_3QPQnZ8EqAzGdTvGJP0Rzr_JoEH",
+      "imagePromptsUrl": "https://drive.google.com/file/d/1d0ZyX8LfCeseTXL1Z1xgL7zOq-d457mq/view?usp=drivesdk"
     }
   ],
   "notes": [
