@@ -1,0 +1,69 @@
+{
+  "batchId": "batch_2026-10-17_chatgpt",
+  "generatedAt": "2026-10-17T08:04:00+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 80,
+  "candidates": [
+    {
+      "id": "cand_261017a_interview_existing",
+      "title": "在職中の面接はいつ受ける？18時以降の相談・有休・日程調整（既存PR189の仕上げ）",
+      "primaryKeyword": "在職中 面接",
+      "secondaryKeywords": [
+        "在職中 面接 いつ",
+        "面接 18時以降 迷惑"
+      ],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規記事ではない。公開済み記事56と既存PR189のタイトル・導入差分を確認し、同PRを再利用。本文で対応済みの夜間面接の不安を別記事に分割しない。",
+      "reasonToWriteNow": "確定9/29〜10/12のページ実測53表示/1click/12.3位。10〜20位ページの既存改善を優先。既存PRとmasterの重複や最新チェックを確認してから承認工程へ進める。",
+      "category": "業界解説",
+      "proposedSlug": "interview-scheduling-while-employed",
+      "riskFlags": [
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "interview-scheduling-while-employed"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "cand_261017b_offer_changed",
+      "title": "労働条件通知書が求人票と違う。内定承諾前に差分をどう確認する？",
+      "primaryKeyword": "労働条件通知書 求人票 違う",
+      "secondaryKeywords": [
+        "内定 条件変更 承諾前",
+        "求人票 給料 違う 入社前"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "新規通常SEOの条件付き候補。070は文書未提示、内定総合記事は全体チェック、077は試用中給与、制作中079は固定残業の内訳比較。本案は文書が届いたが給与・勤務地・仕事内容が以前と異なる場面に限定。差分表→変更理由の質問→未合意項目を残した返答。入社後の即時解除を承諾前へ流用しない。",
+      "reasonToWriteNow": "最新gsc-signalで『労働条件通知書 内定承諾前 貰えない』と070が4〜10位に出現。直接KWの表示/順位/需要母数は未取得。周辺意図として検討するが、強い需要が実証されたとはしない。厚労省Q&Aと2024改正資料で変更明示を検証。",
+      "category": "業界解説",
+      "proposedSlug": "offer-letter-job-posting-conditions-differ",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "offer-letter-before-acceptance-not-provided",
+        "second-new-grad-it-offer-acceptance-checks",
+        "probation-period-lower-salary-checks",
+        "job-offer-fixed-overtime-pay-comparison"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "Drive00/01とWBS運用ルール・1000PV・KPI読込。master75記事/Open34PR/候補ディレクトリ/latest/10-16 batchとqueue/10-14 queueを確認。同日batch/queue未存在。078/079は既選定Draft207/208、head不変。PRに4画像なし・Drive images両方空。チャット側の画像生成進行を未生成と断定しない。再選定・再PR・勝手な日付/時刻変更なし。",
+    "最新成功SEO Opportunity Snapshot run38830720579、2026-10-16 09:40 JST生成。GSC final9/29〜10/12 vs9/15〜9/28。Slack最新NARU_GSC_DAILYで表示771vs194、click27vs8、CTR3.50%vs4.12%、Top3 7vs1/Top10 30vs4/Top20 39vs8、可視query79vs12、新規70。可視行は全体母数でない。前回snapshot699/18/30/39との差は別ローリング窓。未確定日を0にしない。GA4今回新取得なし。",
+    "業務委託優先継続。親121表示/3click/9.7位、辞め方76/2/16.2位、契約終了74/0/16.7位。確定期間が10/12までのため10/14親・契約終了改稿と10/16辞め方更新の効果は未判定。再リライトや新規『更新しない伝え方』は作らない。エージェント新規抑制継続。",
+    "候補1は既存改善PR189再利用。候補2は新規通常SEOの条件付き案。未選定につき記事採番・PR作成・公開予約なし。最新計測と既存進捗を優先し数合わせで3件へ増やさない。新規078/079の完成が先。",
+    "各主KW query直接数値未取得のためsearchEvidence:null。53/1/12.3はpage実測、候補2は関連query/page positionBandのみ。Google SERP/Trends/PAAは今回直接取得なし。スコア・検索量は作らない。無料Web検索で公式Q&Aと条件変更資料を確認。",
+    "公式根拠：https://www.check-roudou.mhlw.go.jp/qa/roudousya/koyou/q5.html ; https://www.mhlw.go.jp/content/001114112.pdf 。求人条件変更と契約締結時明示を区別。070/総合/077/079との重複は構成段階で再判定。",
+    "SES修正は既存PR107と重なるため新規候補/別PR化しない。PR186/191/195/163等も再作成なし。"
+  ]
+}
