@@ -10,17 +10,17 @@
       "blocked": false,
       "blockedReasons": [],
       "searchEvidence": null,
-      "id": "cand_261015a_equipment",
-      "title": "業務委託のパソコン・ソフト代は自腹？貸与・指定購入・契約終了時の確認点",
-      "primaryKeyword": "業務委託 パソコン 自腹",
+      "id": "cand_261016c_training",
+      "title": "業務委託なのに研修が無給？参加義務・報酬・断れるかの確認点",
+      "primaryKeyword": "業務委託 研修 無給",
       "secondaryKeywords": [
-        "業務委託 パソコン 貸与",
-        "フリーランス ソフト代 負担"
+        "業務委託 研修 義務",
+        "偽装フリーランス 研修"
       ],
       "searchIntent": "decide",
-      "differenceFromExisting": "新規独自検証。機材/有料ソフトの費用負担、指定購入、貸与品返却、データ削除・ライセンスの確認に限定。報酬比較記事の費用一覧は総額試算の役割を維持し、詳細確認手順を分離。勤怠記事の労働者性判断を再掲せず、自己負担だけで独立事業者とは断定しない。",
-      "reasonToWriteNow": "10/15 09:47の最新成功snapshot、GSC final9/28〜10/11：関連親120表示/3click/10.2位、契約終了67表示/0click/16.4位。主KW実測なし。10/15未選定案を引継ぎ。公取委10/8特設サイトの購入・利用強制を入口に、単なる自費購入と正当理由のない強制を区別。既存報酬比較の一節を再掲せず、貸与/指定購入/返却の確認に絞る。",
-      "proposedSlug": "contractor-equipment-software-costs",
+      "differenceFromExisting": "機材費案を撤回。社員のような参加義務がある無給研修を疑問の中心にし、契約上の報酬と実態の労働者性を区別。067の通常勤務/勤怠、050の雇用求人の研修制度選びと違い、受講義務・課題・報酬・記録に限定。",
+      "reasonToWriteNow": "ユーザーが元①の論点ズレを指摘し組み直しと②同時進行を依頼。厚労省の研修の労働時間資料と労働者性基準を照合する独自検証。主KW直接GSC実測なし。業務委託なら常に無給/必須研修なら常に労働者とは断定しない。",
+      "proposedSlug": "contractor-unpaid-mandatory-training",
       "riskFlags": [
         "YMYL_SENSITIVE",
         "NO_SEARCH_EVIDENCE",
@@ -67,6 +67,7 @@
     "親/契約終了/データ流出/早期離職は10/14改稿の反応待ち。辞め方はmaster dateModified10/16で更新拒否の意図を反映済み。新規の『契約更新しない 伝え方』記事を重複生成しない。PR189/186/191/195等も既存差分を優先し別PR作成なし。",
     "全候補searchEvidence:null。関連ページ実測を主KWquery実測に代用しない。SERP/Trends/PAA未取得・スコア未算定。GA4新取得なし。WBS既存暫定292PVは今回実測とせず自己アクセス除外未検証の注記を維持。",
     "一次情報再取得：https://www.jftc.go.jp/freelancelaw_2026/index.html 、https://www.check-roudou.mhlw.go.jp/study/roudousya_roudoujouken.html 。主張・法適用条件・公式画像利用権は選定後制作時に追加確認。",
-    "①新規独自検証②新規通常SEO補欠。選択前の採番/記事PR/公開予約は行わない。WBS候補行を10/16へ更新しreadback後報告。"
+    "①新規独自検証②新規通常SEO補欠。選択前の採番/記事PR/公開予約は行わない。WBS候補行を10/16へ更新しreadback後報告。",
+    "2026-10-16ユーザー『1論点ズレてきてるからやり直し。2はそれでいい』『1組み直して、2と同時にすすめて』により①を研修無給へ差替え、②固定残業代と同時制作を選定。元機材費案は撤回。公開時刻・人手Fact Check・Preview承認とは別。"
   ]
 }
