@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T00:47:18.116Z",
+  "generatedAt": "2026-10-16T00:40:15.769Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -32,6 +32,12 @@
     },
     {
       "rank": 4,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員から業務委託に変更",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 5,
       "slug": "agent-not-recommended",
       "query": "転職エージェント 合わない 辞めたい",
       "reason": "position_11_30"
