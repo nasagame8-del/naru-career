@@ -1,0 +1,44 @@
+{
+  "batchId": "batch_2026-10-18_chatgpt",
+  "generatedAt": "2026-10-18T08:04:11+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [
+    {
+      "id": "cand_261018a_training_repayment",
+      "title": "退職したら研修費を返せと言われた。誓約書・費用の内訳・相談前の確認点",
+      "primaryKeyword": "研修費 返還 退職",
+      "secondaryKeywords": [
+        "研修費 返還 誓約書",
+        "退職 資格取得費用 返還"
+      ],
+      "searchIntent": "decide",
+      "differenceFromExisting": "雇用社員が退職時に研修費返還を請求された場面に限定。078は業務委託の受講中の無給・参加義務、研修選び記事は入社前評価、早期離職記事は企業側の見方。本案は請求根拠・業務命令か任意か・費用内訳・署名済み文書を整理する。返還義務を一律断定しない。",
+      "reasonToWriteNow": "関連する早期離職ページは確定9/30〜10/13で75表示/0click/12.4位。ただし直接主KWのGSC実測なし。公的Q&Aで研修費返還という具体的論点を検証できる補欠案。制作中078/079/080と56改稿の仕上げを先行する。",
+      "category": "業界解説",
+      "proposedSlug": "training-cost-repayment-on-resignation",
+      "riskFlags": [
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE",
+        "CANNIBALIZATION"
+      ],
+      "nearestExistingSlugs": [
+        "it-training-program-job-checklist",
+        "how-to-resign-experience",
+        "contractor-unpaid-mandatory-training"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "Drive最新00/01、WBS運用ルール・実行計画・KPI、master75記事/Open PR/候補ディレクトリ/latest/10-16・10-17queueを再取得。同日batchなし。候補は未選定、採番確定・記事PR作成・公開予約なし。数合わせで3件に増やさない。",
+    "最新成功SEO Opportunity Snapshot38987688390、生成10/17 09:44 JST。final9/30〜10/13 vs9/16〜9/29。Slack NARU_GSC_DAILY確認：表示873vs212、click32vs8、CTR3.67%vs3.77%、Top3 7vs2、Top10 31vs5、Top20 39vs9、可視query82vs15・新規70。可視queryは全体母数ではない。10/18成功runは取得範囲で確認できず、最新成功を利用。GA4未取得。",
+    "業務委託親130/3/8.8位、契約終了85/0/15.7位、辞め方77/2/16.2位。10/14以降改稿の効果は確定期間外で未判定。業務委託優先維持、エージェント新規抑制継続。通知書070は36/2/7.8位、関連query『労働条件通知書 内定承諾前 貰えない』10/0/6.9位。既選定080と重複提案しない。",
+    "選定済み065/067/068/066・078/079/080を再選定しない。PR189はOpen Draft mergeable、head7c3635c7af83bc2479cbf29f961e329064fbfaa7、Validation38997287937/Cloudflare38997287832成功、人手確認待ち。078/079/080画像未反映。公開日時を作らない。",
+    "候補の主KW直接実測なし、searchEvidence:null。ページ実測をquery実測に転用しない。Google Trends/PAA/関連検索の直接取得なし、検索量・スコアを捏造しない。本案はGSC強根拠の優先新規ではなく公式資料による独自検証の補欠。",
+    "一次情報：高知県『労務改善Q&A』8-2 https://www.pref.kochi.lg.jp/doc/2018122500153/ 。業務命令研修で使用者当然負担の費用等の場合の返還請求に関する注意を確認。厚労省個別労働紛争制度 https://www.mhlw.go.jp/general/seido/chihou/kaiketu/index.html 。制度・事実ごとの区別を必要とし法的結論を一般化しない。"
+  ]
+}
