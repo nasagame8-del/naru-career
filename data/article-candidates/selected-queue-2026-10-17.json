@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-17",
+  "batchId": "batch_2026-10-17_chatgpt",
+  "selectedAt": "2026-10-17T12:01:20+09:00",
+  "selectionText": "やって",
+  "articles": [
+    {
+      "candidateId": "cand_261017a_interview_existing",
+      "articleId": 56,
+      "slug": "interview-scheduling-while-employed",
+      "workType": "rewrite",
+      "order": 1,
+      "prNumber": 189,
+      "status": "QA_IN_PROGRESS",
+      "latestHeadSha": "44ee74a7fcd4a67688a2f5c095d3d82c9cafb934",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending"
+      }
+    },
+    {
+      "candidateId": "cand_261017b_offer_changed",
+      "articleId": 80,
+      "slug": "offer-letter-job-posting-conditions-differ",
+      "workType": "new",
+      "order": 2,
+      "status": "WRITING",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending"
+      }
+    }
+  ],
+  "notes": [
+    "ユーザーは提示2案を制作指示。公開・目視承認には代用しない。78/79は10-16queueで維持。既存56は再採番なし、新規80をmaster/Open PR/Driveの最大79照合で確保。"
+  ]
+}
