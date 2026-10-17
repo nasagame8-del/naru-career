@@ -11,13 +11,38 @@
       "workType": "rewrite",
       "order": 1,
       "prNumber": 189,
-      "status": "QA_IN_PROGRESS",
-      "latestHeadSha": "44ee74a7fcd4a67688a2f5c095d3d82c9cafb934",
+      "status": "PREVIEW_READY",
+      "latestHeadSha": "7c3635c7af83bc2479cbf29f961e329064fbfaa7",
       "requestedPublishAt": null,
       "qa": {
+        "ci": {
+          "status": "passed",
+          "headSha": "7c3635c7af83bc2479cbf29f961e329064fbfaa7",
+          "runId": 38997287937
+        },
+        "cloudflarePreview": {
+          "status": "passed",
+          "headSha": "7c3635c7af83bc2479cbf29f961e329064fbfaa7",
+          "runId": 38997287832
+        },
+        "assistantBrowser": {
+          "status": "checked",
+          "title": "expected",
+          "articleImagesLoaded": 4,
+          "horizontalOverflow": false,
+          "viewport": "desktop only; mobile human review pending"
+        },
         "previewVisual": "pending",
         "humanFactCheck": "pending"
-      }
+      },
+      "branch": "seo/2026-10-11-56-interview-ctr",
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/189",
+      "previewUrl": "https://naru-pr-189-preview.broad-fuchsia.workers.dev/articles/interview-scheduling-while-employed",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
+      "blockers": [
+        "同一headのHuman Fact Check・ユーザー実画面承認待ち",
+        "公開日時未指定"
+      ]
     },
     {
       "candidateId": "cand_261017b_offer_changed",
@@ -25,12 +50,38 @@
       "slug": "offer-letter-job-posting-conditions-differ",
       "workType": "new",
       "order": 2,
-      "status": "WRITING",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
       "qa": {
+        "sourceReview": {
+          "status": "ai_reviewed",
+          "factScannerBlockers": 0,
+          "headSha": "a2d440c5861bc2d50acc732f2a82078919c7650c"
+        },
+        "ci": {
+          "status": "pending"
+        },
+        "imageQa": {
+          "status": "pending"
+        },
+        "cloudflarePreview": {
+          "status": "pending"
+        },
         "previewVisual": "pending",
         "humanFactCheck": "pending"
-      }
+      },
+      "latestHeadSha": "a2d440c5861bc2d50acc732f2a82078919c7650c",
+      "prNumber": 210,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/210",
+      "branch": "article-factory/2026-10-17-80-offer-conditions-differ",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1WnqseC1Wa7b7maD69usLfNTvu5y64BEf",
+      "driveFolderId": "1WnqseC1Wa7b7maD69usLfNTvu5y64BEf",
+      "imagePromptsUrl": "https://drive.google.com/file/d/1IUAbw7qaTdrEGPcfKQYtH7y79CT2aaBT/view?usp=drivesdk",
+      "blockers": [
+        "ユーザー画像card/01/02/03未反映",
+        "最新head CI・Cloudflare preview・Human Fact Check・実画面承認未完了",
+        "公開日時未指定"
+      ]
     }
   ],
   "notes": [
