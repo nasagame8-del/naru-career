@@ -1,42 +1,52 @@
 {
-  "generatedAt": "2026-10-16T00:40:15.265Z",
+  "generatedAt": "2026-10-17T00:44:19.690Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-29",
-    "endDate": "2026-10-12"
+    "startDate": "2026-09-30",
+    "endDate": "2026-10-13"
   },
   "previousRange": {
-    "startDate": "2026-09-15",
-    "endDate": "2026-09-28"
+    "startDate": "2026-09-16",
+    "endDate": "2026-09-29"
   },
   "visibleQueryCounts": {
-    "current": 79,
-    "previous": 12,
+    "current": 82,
+    "previous": 15,
     "new": 70
   },
   "positionBuckets": {
     "current": {
       "top3": 7,
-      "top10": 30,
+      "top10": 31,
       "top20": 39
     },
     "previous": {
-      "top3": 1,
-      "top10": 4,
-      "top20": 8
+      "top3": 2,
+      "top10": 5,
+      "top20": 9
     }
   },
   "querySignals": [
     {
-      "query": "正社員 から業務委託 クビ",
+      "query": "労働条件通知書 内定承諾前 貰えない",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
       "query": "正社員から業務委託に変更",
       "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "正社員 から業務委託 クビ",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "転職エージェント 求人 微妙",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -60,6 +70,11 @@
       "signal": "rising"
     },
     {
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
       "query": "山田 瑠々 辞め た 会社",
       "positionBand": "21-40",
       "signal": "new"
@@ -80,13 +95,23 @@
       "signal": "new"
     },
     {
+      "query": "業務委託 勤務時間 指定",
+      "positionBand": "41+",
+      "signal": "new"
+    },
+    {
       "query": "業務委託 契約解除",
       "positionBand": "21-40",
       "signal": "new"
     },
     {
-      "query": "業務委託 勤務時間 指定",
-      "positionBand": "41+",
+      "query": "業務委託 有給",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "転職 現職中 面接",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
@@ -95,28 +120,13 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 有給",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "query": "転職 現職中 面接",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "query": "ワークポート",
-      "positionBand": "1-3",
+      "query": "転職 面接 いつ",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
       "query": "偽装フリーランス",
       "positionBand": "41+",
-      "signal": "new"
-    },
-    {
-      "query": "労働条件通知書 内定承諾前 貰えない",
-      "positionBand": "4-10",
       "signal": "new"
     }
   ],
@@ -128,12 +138,27 @@
     },
     {
       "page": "/about",
-      "positionBand": "1-3",
+      "positionBand": "4-10",
       "signal": "rising"
+    },
+    {
+      "page": "/articles/agent-job-mismatch",
+      "positionBand": "11-20",
+      "signal": "new"
     },
     {
       "page": "/articles/contractor-how-to-quit",
       "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/employee-to-contractor-social-insurance",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/offer-letter-before-acceptance-not-provided",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -142,9 +167,9 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/agent-job-mismatch",
-      "positionBand": "11-20",
-      "signal": "new"
+      "page": "/agent-diagnosis",
+      "positionBand": "4-10",
+      "signal": "rising"
     },
     {
       "page": "/articles/alumni-hiring",
@@ -157,24 +182,14 @@
       "signal": "new"
     },
     {
-      "page": "/articles/employee-to-contractor-social-insurance",
-      "positionBand": "11-20",
+      "page": "/articles/employee-contractor-pay-comparison",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
       "page": "/articles/interview-scheduling-while-employed",
       "positionBand": "11-20",
       "signal": "new"
-    },
-    {
-      "page": "/articles/offer-letter-before-acceptance-not-provided",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/reference-check-explained",
-      "positionBand": "4-10",
-      "signal": "rising"
     },
     {
       "page": "/articles/second-new-grad-it-interview-questions",
@@ -184,15 +199,10 @@
     {
       "page": "/articles/second-new-grad-web-agency-vs-inhouse",
       "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/category/taiken",
-      "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/agent-diagnosis",
+      "page": "/category/taiken",
       "positionBand": "4-10",
       "signal": "rising"
     }
