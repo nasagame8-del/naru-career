@@ -59,13 +59,18 @@
           "headSha": "a2d440c5861bc2d50acc732f2a82078919c7650c"
         },
         "ci": {
-          "status": "pending"
+          "status": "pending",
+          "headSha": "a2d440c5861bc2d50acc732f2a82078919c7650c",
+          "runId": 38997471597
         },
         "imageQa": {
           "status": "pending"
         },
         "cloudflarePreview": {
-          "status": "pending"
+          "status": "failed",
+          "reason": "Check four article images: 4 WebP未反映",
+          "headSha": "a2d440c5861bc2d50acc732f2a82078919c7650c",
+          "runId": 38997471599
         },
         "previewVisual": "pending",
         "humanFactCheck": "pending"
