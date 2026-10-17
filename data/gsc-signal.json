@@ -1,42 +1,62 @@
 {
-  "generatedAt": "2026-10-11T01:12:21.981Z",
+  "generatedAt": "2026-10-17T00:44:19.690Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-24",
-    "endDate": "2026-10-07"
+    "startDate": "2026-09-30",
+    "endDate": "2026-10-13"
   },
   "previousRange": {
-    "startDate": "2026-09-10",
-    "endDate": "2026-09-23"
+    "startDate": "2026-09-16",
+    "endDate": "2026-09-29"
   },
   "visibleQueryCounts": {
-    "current": 32,
-    "previous": 7,
-    "new": 27
+    "current": 82,
+    "previous": 15,
+    "new": 70
   },
   "positionBuckets": {
     "current": {
-      "top3": 5,
-      "top10": 11,
-      "top20": 18
+      "top3": 7,
+      "top10": 31,
+      "top20": 39
     },
     "previous": {
-      "top3": 0,
-      "top10": 2,
-      "top20": 4
+      "top3": 2,
+      "top10": 5,
+      "top20": 9
     }
   },
   "querySignals": [
+    {
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "正社員から業務委託に変更",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
     {
       "query": "正社員 から業務委託 クビ",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "正社員 から業務委託 クビ",
+      "query": "転職エージェント 求人 微妙",
       "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "正社員 から業務委託 違法",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "正社員から業務委託に変更",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -46,32 +66,17 @@
     },
     {
       "query": "転職エージェント 求人 微妙",
-      "positionBand": "11-20",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "正社員 から業務委託 違法",
+      "query": "労働条件通知書 内定承諾前 貰えない",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
       "query": "山田 瑠々 辞め た 会社",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "query": "naru 第二新卒",
-      "positionBand": "1-3",
-      "signal": "new"
-    },
-    {
-      "query": "フリーランス 契約解除",
-      "positionBand": "41+",
-      "signal": "new"
-    },
-    {
-      "query": "ワークポート",
-      "positionBand": "1-3",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
@@ -80,33 +85,48 @@
       "signal": "new"
     },
     {
-      "query": "rpg 診断",
+      "query": "転職エージェント 合わない 辞めたい",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "フリーランス 契約解除",
       "positionBand": "41+",
       "signal": "new"
     },
     {
-      "query": "sns調査 (裏アカ調査) 採用",
+      "query": "業務委託 勤務時間 指定",
+      "positionBand": "41+",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 契約解除",
       "positionBand": "21-40",
       "signal": "new"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
+      "query": "業務委託 有給",
       "positionBand": "21-40",
       "signal": "new"
     },
     {
-      "query": "在職中 面接",
-      "positionBand": "1-3",
-      "signal": "new"
-    },
-    {
-      "query": "山田 瑠々 就職 先",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "query": "正社員 業務委託 切り替え",
+      "query": "転職 現職中 面接",
       "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 契約更新しない 伝え方",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "転職 面接 いつ",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "偽装フリーランス",
+      "positionBand": "41+",
       "signal": "new"
     }
   ],
@@ -117,33 +137,33 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/business-outsourcing-conversion-risk",
+      "page": "/about",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/articles/alumni-hiring",
-      "positionBand": "21-40",
-      "signal": "rising"
+      "page": "/articles/agent-job-mismatch",
+      "positionBand": "11-20",
+      "signal": "new"
     },
     {
-      "page": "/articles/reference-check-explained",
-      "positionBand": "4-10",
-      "signal": "rising"
+      "page": "/articles/contractor-how-to-quit",
+      "positionBand": "11-20",
+      "signal": "new"
     },
     {
-      "page": "/articles/second-new-grad-it-interview-questions",
+      "page": "/articles/employee-to-contractor-social-insurance",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/offer-letter-before-acceptance-not-provided",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
-      "page": "/category/taiken",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/about",
-      "positionBand": "4-10",
+      "page": "/shindan",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -152,39 +172,39 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/agent-comparison-2026",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/agent-free-and-cancel",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/agent-job-mismatch",
+      "page": "/articles/alumni-hiring",
       "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "page": "/articles/aio-seo-industry-inside",
+      "page": "/articles/contractor-attendance-control-worker-status",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/employee-contractor-pay-comparison",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
-      "page": "/articles/bizreach-second-new-grad",
-      "positionBand": "4-10",
+      "page": "/articles/interview-scheduling-while-employed",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "page": "/articles/casual-interview",
+      "page": "/articles/second-new-grad-it-interview-questions",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/articles/company-data-hygiene-security-breaches",
+      "page": "/articles/second-new-grad-web-agency-vs-inhouse",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
+    },
+    {
+      "page": "/category/taiken",
+      "positionBand": "4-10",
+      "signal": "rising"
     }
   ]
 }

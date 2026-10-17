@@ -462,25 +462,6 @@ export default function GuideCompletePage() {
           </div>
         </section>
 
-        {/* ── 適職診断 ── */}
-        <section className="mb-10">
-          <h2 className="text-lg font-bold mb-3 border-b-2 border-primary pb-2">
-            あなたに向いている仕事を知る
-          </h2>
-          <p className="text-sm text-ink-soft mb-4">
-            20問のYES／NOに答えるだけ（約2分）で、あなたに合うIT/Web業界の職種タイプが分かります。
-          </p>
-          <Link
-            href="/shindan"
-            className="block border-2 border-primary rounded-lg p-5 text-center hover:bg-primary-soft transition-colors"
-          >
-            <span className="font-bold text-primary">RPG適職診断を受けてみる →</span>
-            <span className="block text-xs text-ink-soft mt-1">
-              16タイプのRPGキャラクターから、あなたの適職タイプを診断します
-            </span>
-          </Link>
-        </section>
-
         {/* ── FAQ ── */}
         <section className="mb-10">
           <h2 className="text-lg font-bold mb-3 border-b-2 border-primary pb-2">

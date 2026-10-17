@@ -3,7 +3,7 @@ title: "正社員から業務委託への切り替えは違法？断るとクビ
 category: "業界解説"
 keyword: "正社員 業務委託 切り替え 違法 クビ"
 datePublished: "2026-08-02"
-dateModified: "2026-10-06"
+dateModified: "2026-10-14"
 naruPoint: "正社員から業務委託への切り替え自体が直ちに違法とは限りません。ただし、本人の合意なく雇用関係の扱いを変える問題と、契約名だけ業務委託にして実態は労働者のままという問題は分けて確認する必要があります。"
 excerpt: "正社員から業務委託への切り替えは違法なのか、断るとクビになるのか。一方的な変更と、契約名だけ業務委託で実態は労働者という問題を分け、厚生労働省の一次情報と2026年の事例から確認点を整理します。"
 summary:
@@ -91,6 +91,8 @@ inlineFaq:
 また、切り替え後も勤務時間・場所・上司からの指示などが正社員時代とほぼ同じなら、契約名だけでなく働き方の実態が問題になります。
 
 （出典：[厚生労働省「労働条件の変更」](https://roukeiseminar.mhlw.go.jp/alteration.html)、[厚生労働省「労働者とは」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/keiyaku/index02.html)）
+
+**切り替えを断っただけで、自動的に解雇が認められるわけではありません。** 会社から「業務委託にしないなら辞めてもらう」と告げられた場合は、雇用契約の終了理由と手続を文書で確認し、退職への同意を急がないことが重要です。雇用契約の終了と、切り替え後の業務委託契約の終了は別の問題です。
 
 すでに業務委託へ移行し、契約終了を告げられている場合は、[業務委託を契約終了されたときの確認ポイント](/articles/outsourcing-contract-termination-worker-status)もあわせて確認してください。切り替え後の報酬差は[正社員から業務委託へ。報酬が増えれば問題ない？](/articles/employee-contractor-pay-comparison)、健康保険・年金は[正社員から業務委託へ切り替えると社会保険はどうなる？](/articles/employee-to-contractor-social-insurance)で分けて整理しています。
 

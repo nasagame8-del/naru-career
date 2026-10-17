@@ -35,7 +35,6 @@ export function Header() {
           <Link href="/guides/second-new-grad-complete-guide" className="header-link">転職完全ガイド</Link>
           <Link href="/about" className="header-link">著者について</Link>
           <Link href="/agent-diagnosis" className="header-link">エージェント相性診断</Link>
-          <Link href="/shindan" className="inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-white hover:bg-primary/90">RPG適職診断 <span aria-hidden="true" className="ml-3">→</span></Link>
         </div>
       </nav>
     </header>

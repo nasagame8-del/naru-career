@@ -9,3 +9,6 @@
 - 有休の既存説明を一次情報 https://www.mhlw.go.jp/shinsai_jouhou/koyou_roudou/2r9852000001auys.html と照合。人間確認は別途、最新headに紐づける。
 - CI/Cloudflare preview/実画面承認: 未取得
 - 公開予定: 未指定
+
+## 2026-10-17 再開
+ユーザーの制作指示により既存PR189を継続。最新masterと同期し、タイトル・導入の変更だけを維持。新規別PRなし。GSC final9/29〜10/12のページ53表示/1click/12.3位。旧Cloudflare previewはassets upload失敗であり本文CI失敗ではない。最新headで再検証。Human Fact Check/実画面承認・公開日時は未確定。
