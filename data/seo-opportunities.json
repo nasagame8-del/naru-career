@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T00:44:20.157Z",
+  "generatedAt": "2026-10-18T00:13:52.190Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -38,6 +38,12 @@
     },
     {
       "rank": 5,
+      "slug": "contractor-paid-leave-overtime",
+      "query": "業務委託 有給",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 6,
       "slug": "interview-scheduling-while-employed",
       "query": "転職 現職中 面接",
       "reason": "position_11_30"
@@ -77,6 +83,7 @@
   "prioritySlugs": [
     "agent-not-recommended",
     "new-grad-early-resignation-career-plan",
+    "contractor-paid-leave-overtime",
     "interview-scheduling-while-employed",
     "business-outsourcing-conversion-risk",
     "offer-letter-before-acceptance-not-provided",
