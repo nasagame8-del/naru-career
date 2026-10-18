@@ -1,0 +1,16 @@
+{
+  "batchId": "batch_2026-10-19_chatgpt",
+  "generatedAt": "2026-10-19T08:05:05+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "Drive最新00/01、WBS運用/実行計画/KPI、GitHub master75記事・Open35PR・候補一覧・latest・10/18batch・10/16/17 selected-queue再取得。同日batchなし。新規候補0件、数合わせしない。既選定56/78/79/80と10/18補欠候補は保持し再提案しない。新規記事を恒久停止する判断ではない。",
+    "最新成功SEO Opportunity Snapshot39081957917、生成2026-10-18 09:13 JST。master gsc-signal dataState final、10/1〜10/14 vs9/17〜9/30。Slack NARU_GSC_DAILY https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1792282433250009 照合。表示972vs223、click34vs9、CTR3.50%vs4.04%、Top3 7vs2・Top10 32vs5・Top20 39vs9、新規可視query74、可視84vs15（全母数ではない）。前回873/32/31/39は別ローリング窓。未確定日0扱いなし。GA4未取得。",
+    "業務委託優先維持：親148表示/3click/8.7位、契約終了95/0/15.0位、辞め方77/2/16.2位。変更query11/0/10.0位、違法10/1/6.8位、クビ6/0/8.5位。小母数の順位を過大評価せず。既存記事・PR191で扱う意図で新規分割しない。確定期間に10/14改稿日は入ったが改稿後効果判定には不足。",
+    "通知書070は56表示/2click/7.8位、主query14/0/6.7位。現行本文は未提示・依頼メール・承諾期限・入社日提示を対応済み。080求人票との差分と079固定残業が既選定。新規重複・本文水増しリライトは避け既選定完成を優先。",
+    "78/79/80 PR207/208/210のheadはqueueと不変・Open。画像未反映とQA/承認待ち継続。56PR189もhead不変Openで既存preview/CI成功、承認/公開日時pending。今回PR変更・予約・マージなし。エージェント新規抑制継続。10/18研修費返還は直接GSC根拠なく補欠を維持。",
+    "Google Trends/SERP/PAAの新取得なし。検索量/スコア/未取得データを作らない。新たな記事化根拠を確認できないため本日候補なし。"
+  ]
+}
