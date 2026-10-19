@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T00:13:52.190Z",
+  "generatedAt": "2026-10-19T00:25:54.218Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -20,30 +20,36 @@
     },
     {
       "rank": 2,
-      "slug": "new-grad-early-resignation-career-plan",
-      "query": "山田 瑠々 辞め た 会社",
-      "reason": "position_11_30"
-    },
-    {
-      "rank": 3,
       "slug": "agent-not-recommended",
       "query": "転職エージェント 求人 微妙",
       "reason": "position_11_30"
     },
     {
-      "rank": 4,
-      "slug": "agent-not-recommended",
-      "query": "転職エージェント 合わない 辞めたい",
+      "rank": 3,
+      "slug": "new-grad-early-resignation-career-plan",
+      "query": "山田 瑠々 辞め た 会社",
       "reason": "position_11_30"
     },
     {
-      "rank": 5,
+      "rank": 4,
       "slug": "contractor-paid-leave-overtime",
       "query": "業務委託 有給",
       "reason": "position_11_30"
     },
     {
+      "rank": 5,
+      "slug": "agent-not-recommended",
+      "query": "転職エージェント 合わない 辞めたい",
+      "reason": "position_11_30"
+    },
+    {
       "rank": 6,
+      "slug": "agent-job-mismatch",
+      "query": "転職エージェント 紹介 微妙",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 7,
       "slug": "interview-scheduling-while-employed",
       "query": "転職 現職中 面接",
       "reason": "position_11_30"
@@ -84,9 +90,9 @@
     "agent-not-recommended",
     "new-grad-early-resignation-career-plan",
     "contractor-paid-leave-overtime",
+    "agent-job-mismatch",
     "interview-scheduling-while-employed",
     "business-outsourcing-conversion-risk",
-    "offer-letter-before-acceptance-not-provided",
-    "agent-job-mismatch"
+    "offer-letter-before-acceptance-not-provided"
   ]
 }

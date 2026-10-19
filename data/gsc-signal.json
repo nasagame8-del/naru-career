@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-18T00:13:51.796Z",
+  "generatedAt": "2026-10-19T00:25:53.609Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-01",
-    "endDate": "2026-10-14"
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-15"
   },
   "previousRange": {
-    "startDate": "2026-09-17",
-    "endDate": "2026-09-30"
+    "startDate": "2026-09-18",
+    "endDate": "2026-10-01"
   },
   "visibleQueryCounts": {
     "current": 84,
-    "previous": 15,
-    "new": 74
+    "previous": 17,
+    "new": 73
   },
   "positionBuckets": {
     "current": {
-      "top3": 7,
-      "top10": 32,
+      "top3": 6,
+      "top10": 31,
       "top20": 39
     },
     "previous": {
-      "top3": 2,
-      "top10": 5,
-      "top20": 9
+      "top3": 3,
+      "top10": 6,
+      "top20": 10
     }
   },
   "querySignals": [
@@ -40,12 +40,12 @@
       "signal": "quick_win"
     },
     {
-      "query": "正社員 から業務委託 クビ",
+      "query": "転職エージェント 求人 微妙",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "転職エージェント 求人 微妙",
+      "query": "正社員 から業務委託 クビ",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -85,17 +85,17 @@
       "signal": "new"
     },
     {
+      "query": "業務委託 有給",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
       "query": "業務委託 退職",
       "positionBand": "41+",
       "signal": "new"
     },
     {
       "query": "転職エージェント 合わない 辞めたい",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "業務委託 有給",
       "positionBand": "21-40",
       "signal": "new"
     },
@@ -125,13 +125,13 @@
       "signal": "new"
     },
     {
-      "query": "偽装フリーランス",
-      "positionBand": "41+",
+      "query": "転職エージェント 紹介 微妙",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "query": "業務委託 契約更新しない 伝え方",
-      "positionBand": "21-40",
+      "query": "偽装フリーランス",
+      "positionBand": "41+",
       "signal": "new"
     }
   ],
@@ -147,6 +147,11 @@
       "signal": "rising"
     },
     {
+      "page": "/articles/offer-letter-before-acceptance-not-provided",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
       "page": "/articles/agent-job-mismatch",
       "positionBand": "11-20",
       "signal": "new"
@@ -159,11 +164,6 @@
     {
       "page": "/articles/employee-to-contractor-social-insurance",
       "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/offer-letter-before-acceptance-not-provided",
-      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -207,9 +207,9 @@
       "signal": "new"
     },
     {
-      "page": "/articles/second-new-grad-web-agency-vs-inhouse",
-      "positionBand": "4-10",
-      "signal": "rising"
+      "page": "/articles/outsourcing-contract-termination-worker-status",
+      "positionBand": "11-20",
+      "signal": "new"
     }
   ]
 }
