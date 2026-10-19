@@ -1,0 +1,15 @@
+{
+  "batchId": "batch_2026-10-20_chatgpt",
+  "generatedAt": "2026-10-20T08:00:20+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "Drive00/01・WBS3タブ・master75記事/Open35PR・候補一覧/latest/10-19batch/10-16と10-17selected-queueを再取得。同日batchなし。選定済み56/78/79/80を維持。新たな未充足意図の根拠なし、新規候補0件。数合わせ・再選定・新規PR・予約・マージなし。",
+    "最新成功SEO Opportunity Snapshot39180670860、2026-10-19 09:25 JST。final10/2〜10/15 vs9/18〜10/1。gsc-signalとSlack https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1792369555625449 を照合。1070vs225表示、38vs9click、CTR3.55%vs4.00%、Top3 6vs3/Top10 31vs6/Top20 39vs10、新規可視query73、可視84vs17。可視行は全母数でない。未確定日0扱いなし、GA4未取得。",
+    "前snapshot972/34/Top3=7/Top10=32/Top20=39との比較は別ローリング窓。表示とクリック増、Top3/10各-1だけで悪化とは判定しない。業務委託親156/5/8.8位、契約終了105/1/15.6位、辞め方77/2/16.2位。通知書070 73/3/7.7位、主query15/0/6.7位。主query母数小。既存記事と079/080で扱う意図の重複新規を作らない。",
+    "業務委託優先・通知書注視・Agent新規抑制を維持。研修費返還は10/18batch補欠を保持。78/79/80はOpen・head不変・画像QA待ち。56改稿PR189もhead不変Open。新しい承認と公開日時を推測しない。",
+    "WBSの既存10/19更新にQuick Win計測anchor不一致が記録されている。今回は計測修正・実験再実行の依頼ではないため履歴を上書きせず保留を維持。10/14以降改稿の効果断定なし。SERP/Trends/PAA新取得なし、検索量/スコア捏造なし。"
+  ]
+}
