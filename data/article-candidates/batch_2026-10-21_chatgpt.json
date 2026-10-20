@@ -1,0 +1,15 @@
+{
+  "batchId": "batch_2026-10-21_chatgpt",
+  "generatedAt": "2026-10-21T08:02:06+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "Drive00/01、WBS運用/実行計画/KPI、master75記事/Open35PR、最新batch/latest、10/16/17queueを再取得。同日batchなし。選定済み56/78/79/80はhead不変・未公開。新規候補0件、重複再提案・新規PR・予約・マージなし。10/18研修費返還補欠を保持。",
+    "最新成功SEO Opportunity Snapshot39352083488。master gsc-signal生成10/20 10:13 JST、final10/3〜10/16 vs9/19〜10/2。Slack https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1792458802851419 照合。表示1092vs262、click41vs8、CTR3.75%vs3.05%、Top3 6vs3/Top10 31vs6/Top20 39vs10、新規可視query73、可視85vs19。可視行は全母数でない。GA4未取得、未確定0扱いなし。",
+    "前snapshot1070/38より+22表示/+3click（別ローリング窓）。通知書070 85/4/7.7位、主query16/0/6.8位。親154/5/9.0位、契約終了96/1/16.5位、失業給付83/1/6.4位、辞め方77/2/16.2位。業務委託優先と通知書周辺仕上げ維持。親・契約終了の前窓比表示減を隠さず、改稿因果を断定しない。",
+    "新規query『転職エージェント 希望と違う』4〜10位は既存agent-job-mismatchと意図重複。同page63表示/2click/11.1位。Agent領域は既存改善観測を優先し新規抑制継続。通知書未提示/求人との差分/固定残業は070/080/079と重複、専用記事追加なし。",
+    "Quick Win計測anchor不一致の既存WBS記録維持。修正済みとは報告しない。10/21は計画最終日だが朝時点で最終実績を確定しない。GA4未取得により1000PV達成判定不可。SERP/Trends/PAA新取得なし、推測の需要・スコアなし。"
+  ]
+}
