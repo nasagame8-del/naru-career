@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-10-19T00:25:53.609Z",
+  "generatedAt": "2026-10-20T01:13:21.071Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-02",
-    "endDate": "2026-10-15"
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-16"
   },
   "previousRange": {
-    "startDate": "2026-09-18",
-    "endDate": "2026-10-01"
+    "startDate": "2026-09-19",
+    "endDate": "2026-10-02"
   },
   "visibleQueryCounts": {
-    "current": 84,
-    "previous": 17,
+    "current": 85,
+    "previous": 19,
     "new": 73
   },
   "positionBuckets": {
@@ -60,6 +60,11 @@
       "signal": "rising"
     },
     {
+      "query": "業務委託 退職",
+      "positionBand": "41+",
+      "signal": "rising"
+    },
+    {
       "query": "正社員から業務委託に変更",
       "positionBand": "4-10",
       "signal": "rising"
@@ -90,7 +95,7 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 退職",
+      "query": "業務委託 勤務時間 指定",
       "positionBand": "41+",
       "signal": "new"
     },
@@ -100,8 +105,13 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 勤務時間 指定",
-      "positionBand": "41+",
+      "query": "転職エージェント 紹介 微妙",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "転職エージェント 希望と違う",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -122,11 +132,6 @@
     {
       "query": "転職エージェント 二度と使わない",
       "positionBand": "41+",
-      "signal": "new"
-    },
-    {
-      "query": "転職エージェント 紹介 微妙",
-      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -168,7 +173,7 @@
     },
     {
       "page": "/shindan",
-      "positionBand": "11-20",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -184,6 +189,11 @@
     {
       "page": "/articles/contractor-attendance-control-worker-status",
       "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/contractor-exclusivity-noncompete-checks",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -203,11 +213,6 @@
     },
     {
       "page": "/articles/interview-scheduling-while-employed",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/outsourcing-contract-termination-worker-status",
       "positionBand": "11-20",
       "signal": "new"
     }
