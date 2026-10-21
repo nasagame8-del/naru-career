@@ -1,0 +1,1207 @@
+{
+  "runDate": "2026-10-04",
+  "generatedAtUtc": "2026-10-04T14:09:30.465Z",
+  "generator": "scripts/research-shokuba-analysis.mjs",
+  "sources": {
+    "shokubaCsv": {
+      "downloadUrl": "https://shokuba.mhlw.go.jp/shokuba/utilize/download010?lang=JA",
+      "sourcePage": "https://shokuba.mhlw.go.jp/shokuba/utilize/utilize010.do",
+      "definitionUrl": "https://shokuba.mhlw.go.jp/manual/aboutcsv.pdf",
+      "downloadBytes": 51120865,
+      "payloadBytes": 410050785,
+      "containerType": "zip:shokuba_20261004.csv",
+      "encoding": "cp932"
+    },
+    "seedCsv": "data\\research\\shokuba\\2026-10-04-information-communications-seed.csv",
+    "recruitmentPages": {
+      "file": "data\\research\\shokuba\\2026-10-04-recruitment-pages-pilot.json",
+      "crawler": "scripts/research-recruitment-pages.mjs",
+      "crawledAtUtc": "2026-10-04T14:00:39.927Z",
+      "settings": {
+        "userAgent": "NARUResearch/1.0 (+https://naru-career.com/; public recruitment-page research)",
+        "timeoutMs": 20000,
+        "maxAttempts": 2,
+        "sameHostDelayMs": 1500,
+        "concurrency": 8,
+        "maxBytes": 2000000,
+        "maxRedirects": 5
+      }
+    },
+    "seedRowsSkippedAsMalformed": 0
+  },
+  "population": {
+    "allShokubaRows": 152392,
+    "informationCommunicationsRows": 8118,
+    "industryFilter": "業種に「情報通信業」を含む行"
+  },
+  "disclosureCoverage": {
+    "population": 8118,
+    "note": "母数は情報通信業の全掲載企業。しょくばらぼは任意開示項目が多く、空欄は「制度なし」ではなく「未開示」。",
+    "homepageUrl": {
+      "count": 3513,
+      "rate": 0.4327
+    },
+    "recruitmentPageUrl": {
+      "rowCount": 196,
+      "distinctUrlCount": 194,
+      "rate": 0.0241
+    },
+    "anyOfFourDevelopmentSystemsDisclosed": {
+      "count": 281,
+      "rate": 0.0346
+    },
+    "allFourDevelopmentSystemsDisclosed": {
+      "count": 269,
+      "rate": 0.0331
+    },
+    "youngUnder35HiringDataDisclosed": {
+      "count": 116,
+      "rate": 0.0143
+    },
+    "midCareerRatioDisclosed": {
+      "count": 53,
+      "rate": 0.0065
+    },
+    "onboardingTextDisclosed": {
+      "count": 2,
+      "rate": 0.0002
+    },
+    "anyYoungTalentSignalDisclosed": {
+      "definition": "4制度のいずれか、または35歳未満採用データ、または採用ページURLのいずれかを開示",
+      "count": 297,
+      "rate": 0.0366
+    }
+  },
+  "developmentSystems": {
+    "training": {
+      "header": "研修制度-有無",
+      "population": 8118,
+      "disclosed": 275,
+      "notDisclosed": 7843,
+      "disclosureRateAmongPopulation": 0.0339,
+      "yes": 238,
+      "no": 37,
+      "other": 0,
+      "yesRateAmongDisclosed": 0.8655
+    },
+    "mentor": {
+      "header": "メンター制度-有無",
+      "population": 8118,
+      "disclosed": 274,
+      "notDisclosed": 7844,
+      "disclosureRateAmongPopulation": 0.0338,
+      "yes": 168,
+      "no": 106,
+      "other": 0,
+      "yesRateAmongDisclosed": 0.6131
+    },
+    "selfDevelopment": {
+      "header": "自己啓発支援制度-有無",
+      "population": 8118,
+      "disclosed": 276,
+      "notDisclosed": 7842,
+      "disclosureRateAmongPopulation": 0.034,
+      "yes": 212,
+      "no": 64,
+      "other": 0,
+      "yesRateAmongDisclosed": 0.7681
+    },
+    "careerConsulting": {
+      "header": "キャリアコンサルティング制度-有無",
+      "population": 8118,
+      "disclosed": 274,
+      "notDisclosed": 7844,
+      "disclosureRateAmongPopulation": 0.0338,
+      "yes": 129,
+      "no": 145,
+      "other": 0,
+      "yesRateAmongDisclosed": 0.4708
+    }
+  },
+  "youngUnder35": {
+    "population": 8118,
+    "rowsWithAnyData": 116,
+    "disclosureRate": 0.0143,
+    "rowsWithAllThreeYearsOnBothFields": 108,
+    "yearPairsUsed": 336,
+    "hiresSumOverYearPairs": 866,
+    "leaversSumOverYearPairs": 278,
+    "leaversPerHireOverYearPairs": 0.321,
+    "companiesWithZeroThreeYearHires": 18,
+    "companiesWithPositiveThreeYearHires": 90,
+    "zeroHireShareAmongFullyDisclosed": 0.1667,
+    "medianThreeYearHiresAmongPositive": 4.5,
+    "hiresSumAmongPositiveCompanies": 852,
+    "leaversSumAmongPositiveCompanies": 275,
+    "leaversPerHireAmongPositiveCompanies": 0.3228,
+    "interpretationWarning": [
+      "「離職者数 ÷ 採用者数」はコホート追跡ではないため、定着率・離職率と呼べない。",
+      "離職者はその年度の35歳未満全体であり、同年度に採用された人だけではない。",
+      "3年合計の単純比であり、企業規模で重み付けしていない。",
+      "開示企業は全体の一部（self-selection）なので情報通信業全体の値ではない。"
+    ]
+  },
+  "bySizeBand": {
+    "1-4人": {
+      "companies": 1276,
+      "recruitmentPageUrl": {
+        "count": 26,
+        "rate": 0.0204
+      },
+      "homepageUrl": {
+        "count": 364,
+        "rate": 0.2853
+      },
+      "systems": {
+        "training": {
+          "disclosed": 45,
+          "disclosureRate": 0.0353,
+          "yes": 24,
+          "no": 21,
+          "yesRateAmongDisclosed": 0.5333
+        },
+        "mentor": {
+          "disclosed": 46,
+          "disclosureRate": 0.0361,
+          "yes": 23,
+          "no": 23,
+          "yesRateAmongDisclosed": 0.5
+        },
+        "selfDevelopment": {
+          "disclosed": 46,
+          "disclosureRate": 0.0361,
+          "yes": 18,
+          "no": 28,
+          "yesRateAmongDisclosed": 0.3913
+        },
+        "careerConsulting": {
+          "disclosed": 46,
+          "disclosureRate": 0.0361,
+          "yes": 7,
+          "no": 39,
+          "yesRateAmongDisclosed": 0.1522
+        }
+      },
+      "youngUnder35Disclosed": 6
+    },
+    "5-9人": {
+      "companies": 927,
+      "recruitmentPageUrl": {
+        "count": 11,
+        "rate": 0.0119
+      },
+      "homepageUrl": {
+        "count": 302,
+        "rate": 0.3258
+      },
+      "systems": {
+        "training": {
+          "disclosed": 25,
+          "disclosureRate": 0.027,
+          "yes": 20,
+          "no": 5,
+          "yesRateAmongDisclosed": 0.8
+        },
+        "mentor": {
+          "disclosed": 24,
+          "disclosureRate": 0.0259,
+          "yes": 14,
+          "no": 10,
+          "yesRateAmongDisclosed": 0.5833
+        },
+        "selfDevelopment": {
+          "disclosed": 26,
+          "disclosureRate": 0.028,
+          "yes": 14,
+          "no": 12,
+          "yesRateAmongDisclosed": 0.5385
+        },
+        "careerConsulting": {
+          "disclosed": 24,
+          "disclosureRate": 0.0259,
+          "yes": 8,
+          "no": 16,
+          "yesRateAmongDisclosed": 0.3333
+        }
+      },
+      "youngUnder35Disclosed": 5
+    },
+    "10-29人": {
+      "companies": 1697,
+      "recruitmentPageUrl": {
+        "count": 41,
+        "rate": 0.0242
+      },
+      "homepageUrl": {
+        "count": 627,
+        "rate": 0.3695
+      },
+      "systems": {
+        "training": {
+          "disclosed": 63,
+          "disclosureRate": 0.0371,
+          "yes": 59,
+          "no": 4,
+          "yesRateAmongDisclosed": 0.9365
+        },
+        "mentor": {
+          "disclosed": 63,
+          "disclosureRate": 0.0371,
+          "yes": 36,
+          "no": 27,
+          "yesRateAmongDisclosed": 0.5714
+        },
+        "selfDevelopment": {
+          "disclosed": 63,
+          "disclosureRate": 0.0371,
+          "yes": 53,
+          "no": 10,
+          "yesRateAmongDisclosed": 0.8413
+        },
+        "careerConsulting": {
+          "disclosed": 63,
+          "disclosureRate": 0.0371,
+          "yes": 27,
+          "no": 36,
+          "yesRateAmongDisclosed": 0.4286
+        }
+      },
+      "youngUnder35Disclosed": 27
+    },
+    "30-99人": {
+      "companies": 1610,
+      "recruitmentPageUrl": {
+        "count": 79,
+        "rate": 0.0491
+      },
+      "homepageUrl": {
+        "count": 721,
+        "rate": 0.4478
+      },
+      "systems": {
+        "training": {
+          "disclosed": 98,
+          "disclosureRate": 0.0609,
+          "yes": 96,
+          "no": 2,
+          "yesRateAmongDisclosed": 0.9796
+        },
+        "mentor": {
+          "disclosed": 98,
+          "disclosureRate": 0.0609,
+          "yes": 65,
+          "no": 33,
+          "yesRateAmongDisclosed": 0.6633
+        },
+        "selfDevelopment": {
+          "disclosed": 97,
+          "disclosureRate": 0.0602,
+          "yes": 92,
+          "no": 5,
+          "yesRateAmongDisclosed": 0.9485
+        },
+        "careerConsulting": {
+          "disclosed": 97,
+          "disclosureRate": 0.0602,
+          "yes": 61,
+          "no": 36,
+          "yesRateAmongDisclosed": 0.6289
+        }
+      },
+      "youngUnder35Disclosed": 55
+    },
+    "100-299人": {
+      "companies": 1537,
+      "recruitmentPageUrl": {
+        "count": 27,
+        "rate": 0.0176
+      },
+      "homepageUrl": {
+        "count": 795,
+        "rate": 0.5172
+      },
+      "systems": {
+        "training": {
+          "disclosed": 32,
+          "disclosureRate": 0.0208,
+          "yes": 32,
+          "no": 0,
+          "yesRateAmongDisclosed": 1
+        },
+        "mentor": {
+          "disclosed": 32,
+          "disclosureRate": 0.0208,
+          "yes": 23,
+          "no": 9,
+          "yesRateAmongDisclosed": 0.7188
+        },
+        "selfDevelopment": {
+          "disclosed": 32,
+          "disclosureRate": 0.0208,
+          "yes": 30,
+          "no": 2,
+          "yesRateAmongDisclosed": 0.9375
+        },
+        "careerConsulting": {
+          "disclosed": 32,
+          "disclosureRate": 0.0208,
+          "yes": 22,
+          "no": 10,
+          "yesRateAmongDisclosed": 0.6875
+        }
+      },
+      "youngUnder35Disclosed": 21
+    },
+    "300-999人": {
+      "companies": 679,
+      "recruitmentPageUrl": {
+        "count": 6,
+        "rate": 0.0088
+      },
+      "homepageUrl": {
+        "count": 454,
+        "rate": 0.6686
+      },
+      "systems": {
+        "training": {
+          "disclosed": 6,
+          "disclosureRate": 0.0088,
+          "yes": 6,
+          "no": 0,
+          "yesRateAmongDisclosed": 1
+        },
+        "mentor": {
+          "disclosed": 6,
+          "disclosureRate": 0.0088,
+          "yes": 5,
+          "no": 1,
+          "yesRateAmongDisclosed": 0.8333
+        },
+        "selfDevelopment": {
+          "disclosed": 6,
+          "disclosureRate": 0.0088,
+          "yes": 4,
+          "no": 2,
+          "yesRateAmongDisclosed": 0.6667
+        },
+        "careerConsulting": {
+          "disclosed": 6,
+          "disclosureRate": 0.0088,
+          "yes": 4,
+          "no": 2,
+          "yesRateAmongDisclosed": 0.6667
+        }
+      },
+      "youngUnder35Disclosed": 2
+    },
+    "1000人以上": {
+      "companies": 266,
+      "recruitmentPageUrl": {
+        "count": 0,
+        "rate": 0
+      },
+      "homepageUrl": {
+        "count": 216,
+        "rate": 0.812
+      },
+      "systems": {
+        "training": {
+          "disclosed": 0,
+          "disclosureRate": 0,
+          "yes": 0,
+          "no": 0,
+          "yesRateAmongDisclosed": null
+        },
+        "mentor": {
+          "disclosed": 0,
+          "disclosureRate": 0,
+          "yes": 0,
+          "no": 0,
+          "yesRateAmongDisclosed": null
+        },
+        "selfDevelopment": {
+          "disclosed": 0,
+          "disclosureRate": 0,
+          "yes": 0,
+          "no": 0,
+          "yesRateAmongDisclosed": null
+        },
+        "careerConsulting": {
+          "disclosed": 0,
+          "disclosureRate": 0,
+          "yes": 0,
+          "no": 0,
+          "yesRateAmongDisclosed": null
+        }
+      },
+      "youngUnder35Disclosed": 0
+    },
+    "0人（開示値）": {
+      "companies": 118,
+      "recruitmentPageUrl": {
+        "count": 3,
+        "rate": 0.0254
+      },
+      "homepageUrl": {
+        "count": 26,
+        "rate": 0.2203
+      },
+      "systems": {
+        "training": {
+          "disclosed": 5,
+          "disclosureRate": 0.0424,
+          "yes": 1,
+          "no": 4,
+          "yesRateAmongDisclosed": 0.2
+        },
+        "mentor": {
+          "disclosed": 4,
+          "disclosureRate": 0.0339,
+          "yes": 2,
+          "no": 2,
+          "yesRateAmongDisclosed": 0.5
+        },
+        "selfDevelopment": {
+          "disclosed": 5,
+          "disclosureRate": 0.0424,
+          "yes": 0,
+          "no": 5,
+          "yesRateAmongDisclosed": 0
+        },
+        "careerConsulting": {
+          "disclosed": 5,
+          "disclosureRate": 0.0424,
+          "yes": 0,
+          "no": 5,
+          "yesRateAmongDisclosed": 0
+        }
+      },
+      "youngUnder35Disclosed": 0
+    },
+    "非開示": {
+      "companies": 8,
+      "recruitmentPageUrl": {
+        "count": 3,
+        "rate": 0.375
+      },
+      "homepageUrl": {
+        "count": 8,
+        "rate": 1
+      },
+      "systems": {
+        "training": {
+          "disclosed": 1,
+          "disclosureRate": 0.125,
+          "yes": 0,
+          "no": 1,
+          "yesRateAmongDisclosed": 0
+        },
+        "mentor": {
+          "disclosed": 1,
+          "disclosureRate": 0.125,
+          "yes": 0,
+          "no": 1,
+          "yesRateAmongDisclosed": 0
+        },
+        "selfDevelopment": {
+          "disclosed": 1,
+          "disclosureRate": 0.125,
+          "yes": 1,
+          "no": 0,
+          "yesRateAmongDisclosed": 1
+        },
+        "careerConsulting": {
+          "disclosed": 1,
+          "disclosureRate": 0.125,
+          "yes": 0,
+          "no": 1,
+          "yesRateAmongDisclosed": 0
+        }
+      },
+      "youngUnder35Disclosed": 0
+    }
+  },
+  "topPrefectures": [
+    {
+      "prefecture": "13:東京都",
+      "companies": 4626,
+      "shareOfPopulation": 0.5698,
+      "recruitmentPageUrlCount": 94,
+      "trainingDisclosed": 132,
+      "trainingYesRateAmongDisclosed": 0.8485
+    },
+    {
+      "prefecture": "27:大阪府",
+      "companies": 628,
+      "shareOfPopulation": 0.0774,
+      "recruitmentPageUrlCount": 14,
+      "trainingDisclosed": 19,
+      "trainingYesRateAmongDisclosed": 0.7368
+    },
+    {
+      "prefecture": "23:愛知県",
+      "companies": 330,
+      "shareOfPopulation": 0.0407,
+      "recruitmentPageUrlCount": 13,
+      "trainingDisclosed": 15,
+      "trainingYesRateAmongDisclosed": 0.9333
+    },
+    {
+      "prefecture": "14:神奈川県",
+      "companies": 317,
+      "shareOfPopulation": 0.039,
+      "recruitmentPageUrlCount": 6,
+      "trainingDisclosed": 9,
+      "trainingYesRateAmongDisclosed": 0.7778
+    },
+    {
+      "prefecture": "40:福岡県",
+      "companies": 265,
+      "shareOfPopulation": 0.0326,
+      "recruitmentPageUrlCount": 4,
+      "trainingDisclosed": 11,
+      "trainingYesRateAmongDisclosed": 0.5455
+    },
+    {
+      "prefecture": "01:北海道",
+      "companies": 188,
+      "shareOfPopulation": 0.0232,
+      "recruitmentPageUrlCount": 8,
+      "trainingDisclosed": 9,
+      "trainingYesRateAmongDisclosed": 1
+    },
+    {
+      "prefecture": "28:兵庫県",
+      "companies": 109,
+      "shareOfPopulation": 0.0134,
+      "recruitmentPageUrlCount": 0,
+      "trainingDisclosed": 0,
+      "trainingYesRateAmongDisclosed": null
+    },
+    {
+      "prefecture": "12:千葉県",
+      "companies": 108,
+      "shareOfPopulation": 0.0133,
+      "recruitmentPageUrlCount": 8,
+      "trainingDisclosed": 9,
+      "trainingYesRateAmongDisclosed": 0.8889
+    },
+    {
+      "prefecture": "47:沖縄県",
+      "companies": 102,
+      "shareOfPopulation": 0.0126,
+      "recruitmentPageUrlCount": 3,
+      "trainingDisclosed": 4,
+      "trainingYesRateAmongDisclosed": 1
+    },
+    {
+      "prefecture": "26:京都府",
+      "companies": 98,
+      "shareOfPopulation": 0.0121,
+      "recruitmentPageUrlCount": 0,
+      "trainingDisclosed": 0,
+      "trainingYesRateAmongDisclosed": null
+    }
+  ],
+  "recruitmentPageQuality": {
+    "listedUrlRows": 196,
+    "distinctUrlsRequested": 194,
+    "duplicateUrlsSharedByMultipleRows": [
+      {
+        "sourceUrl": "https://www.astem.com/asteminfo/recruit/",
+        "companies": [
+          {
+            "corporateNumber": "2120901038546",
+            "company": "Ａｓｔｅｍ　Ｃｌｏｕｄ株式会社"
+          },
+          {
+            "corporateNumber": "6120901005187",
+            "company": "アステム株式会社"
+          }
+        ]
+      },
+      {
+        "sourceUrl": "https://mid-holdings.co.jp/recruit/",
+        "companies": [
+          {
+            "corporateNumber": "1400001002185",
+            "company": "株式会社イーアールアイ"
+          },
+          {
+            "corporateNumber": "9010401144782",
+            "company": "株式会社ムセンコネクト"
+          }
+        ]
+      }
+    ],
+    "companiesWithMultipleRecruitmentUrls": [],
+    "fetchOutcome": {
+      "success": 181,
+      "failure": 13,
+      "successRate": 0.933,
+      "statusCounts": {
+        "200": 181,
+        "403": 1,
+        "404": 8,
+        "500": 1,
+        "none": 3
+      },
+      "errorCounts": {
+        "http_404": 8,
+        "http_403": 1,
+        "http_500": 1,
+        "blocked_by_robots": 1,
+        "TypeError:UNABLE_TO_VERIFY_LEAF_SIGNATURE": 1,
+        "TypeError:CERT_HAS_EXPIRED": 1
+      }
+    },
+    "failureBreakdown": {
+      "http404": 8,
+      "http403": 1,
+      "http429": 0,
+      "http5xx": 1,
+      "blockedByRobots": 1,
+      "timeoutOrTransport": 2,
+      "nonHtml": 0
+    },
+    "robotsStatusCounts": {
+      "allowed": 151,
+      "unavailable": 42,
+      "blocked": 1
+    },
+    "redirects": {
+      "pagesRedirected": 30,
+      "redirectedToDifferentRegistrableDomain": 8,
+      "redirectedIntoJobPlatform": 5
+    },
+    "hostCategoryCounts": {
+      "ownDomain": 149,
+      "otherDomain": 21,
+      "jobPlatform": 17,
+      "atsHosted": 7
+    },
+    "finalHostCategoryCountsAmongSuccess": {
+      "ownDomain": 138,
+      "otherDomain": 22,
+      "jobPlatform": 14,
+      "atsHosted": 7
+    },
+    "pageTypeCountsAmongSuccess": {
+      "recruitment": 147,
+      "homeTop": 24,
+      "otherPage": 8,
+      "topPageAnchor": 2
+    },
+    "notADedicatedRecruitmentPage": {
+      "definition": "pageTypeGuess が homeTop / topPageAnchor / otherPage のもの（トップページやサービスページが採用ページ欄に登録されている）",
+      "count": 34,
+      "denominator": 181
+    },
+    "staleNewGradPages": {
+      "definition": "ページ内で言及される最新の「20XX年卒/年度卒」が2026年より前",
+      "count": 23,
+      "denominator": 37
+    },
+    "newGradOnlyPages": {
+      "definition": "「新卒」に言及し、「中途採用/キャリア採用/経験者採用/第二新卒」に一切言及しないページ",
+      "count": 23,
+      "denominator": 181
+    },
+    "javascriptDependentSuspected": {
+      "definition": "HTTP 200だが本文可視テキストが400文字未満（JS描画・空ページの疑い）",
+      "count": 16,
+      "denominator": 181
+    },
+    "thirdPartyJobPlatformUrls": {
+      "definition": "しょくばらぼの採用ページ欄に第三者求人プラットフォームのURLが登録されているもの。URLと事実のみ記録し、追加クロールはしない。",
+      "count": 17,
+      "denominator": 194,
+      "hosts": {
+        "job.mynavi.jp": 8,
+        "job.rikunabi.com": 3,
+        "job.career-tasu.jp": 2,
+        "wantedly.com": 2,
+        "green-japan.com": 1,
+        "jp.indeed.com": 1
+      }
+    },
+    "pagesLinkingOutToJobPlatforms": {
+      "count": 46,
+      "denominator": 181
+    },
+    "visibleCharsMedianAmongSuccess": 1849
+  },
+  "recruitmentPageMentions": {
+    "note": "キーワードは「ページ上に語が出現した」ことのみを示す。求人条件の確認でも、職種別の条件でもない。取得できなかったページは母数から除外し、0件として扱っていない。",
+    "denominators": {
+      "distinctUrlsRequested": 194,
+      "successfullyFetched": 181,
+      "companyControlledPages": 145,
+      "ownDomainPages": 138,
+      "thirdPartyPlatformPages": 17
+    },
+    "amongSuccessfullyFetched": {
+      "secondNewGrad": {
+        "denominator": 181,
+        "count": 24,
+        "rate": 0.1326
+      },
+      "inexperienced": {
+        "denominator": 181,
+        "count": 52,
+        "rate": 0.2873
+      },
+      "recentGraduate": {
+        "denominator": 181,
+        "count": 16,
+        "rate": 0.0884
+      },
+      "potentialHire": {
+        "denominator": 181,
+        "count": 1,
+        "rate": 0.0055
+      },
+      "training": {
+        "denominator": 181,
+        "count": 65,
+        "rate": 0.3591
+      },
+      "mentor": {
+        "denominator": 181,
+        "count": 13,
+        "rate": 0.0718
+      },
+      "remote": {
+        "denominator": 181,
+        "count": 53,
+        "rate": 0.2928
+      },
+      "fullRemote": {
+        "denominator": 181,
+        "count": 9,
+        "rate": 0.0497
+      },
+      "engineer": {
+        "denominator": 181,
+        "count": 93,
+        "rate": 0.5138
+      },
+      "webMarketing": {
+        "denominator": 181,
+        "count": 18,
+        "rate": 0.0994
+      },
+      "webDirector": {
+        "denominator": 181,
+        "count": 7,
+        "rate": 0.0387
+      },
+      "portfolio": {
+        "denominator": 181,
+        "count": 7,
+        "rate": 0.0387
+      },
+      "practicalExperience": {
+        "denominator": 181,
+        "count": 23,
+        "rate": 0.1271
+      },
+      "salaryMention": {
+        "denominator": 181,
+        "count": 48,
+        "rate": 0.2652
+      },
+      "newGrad": {
+        "denominator": 181,
+        "count": 102,
+        "rate": 0.5635
+      },
+      "midCareer": {
+        "denominator": 181,
+        "count": 76,
+        "rate": 0.4199
+      }
+    },
+    "amongCompanyControlledPages": {
+      "secondNewGrad": {
+        "denominator": 145,
+        "count": 16,
+        "rate": 0.1103
+      },
+      "inexperienced": {
+        "denominator": 145,
+        "count": 40,
+        "rate": 0.2759
+      },
+      "recentGraduate": {
+        "denominator": 145,
+        "count": 11,
+        "rate": 0.0759
+      },
+      "potentialHire": {
+        "denominator": 145,
+        "count": 1,
+        "rate": 0.0069
+      },
+      "training": {
+        "denominator": 145,
+        "count": 48,
+        "rate": 0.331
+      },
+      "mentor": {
+        "denominator": 145,
+        "count": 6,
+        "rate": 0.0414
+      },
+      "remote": {
+        "denominator": 145,
+        "count": 42,
+        "rate": 0.2897
+      },
+      "fullRemote": {
+        "denominator": 145,
+        "count": 8,
+        "rate": 0.0552
+      },
+      "engineer": {
+        "denominator": 145,
+        "count": 75,
+        "rate": 0.5172
+      },
+      "webMarketing": {
+        "denominator": 145,
+        "count": 15,
+        "rate": 0.1034
+      },
+      "webDirector": {
+        "denominator": 145,
+        "count": 7,
+        "rate": 0.0483
+      },
+      "portfolio": {
+        "denominator": 145,
+        "count": 5,
+        "rate": 0.0345
+      },
+      "practicalExperience": {
+        "denominator": 145,
+        "count": 18,
+        "rate": 0.1241
+      },
+      "salaryMention": {
+        "denominator": 145,
+        "count": 35,
+        "rate": 0.2414
+      },
+      "newGrad": {
+        "denominator": 145,
+        "count": 80,
+        "rate": 0.5517
+      },
+      "midCareer": {
+        "denominator": 145,
+        "count": 62,
+        "rate": 0.4276
+      }
+    },
+    "amongOwnDomainPages": {
+      "secondNewGrad": {
+        "denominator": 138,
+        "count": 13,
+        "rate": 0.0942
+      },
+      "inexperienced": {
+        "denominator": 138,
+        "count": 36,
+        "rate": 0.2609
+      },
+      "recentGraduate": {
+        "denominator": 138,
+        "count": 11,
+        "rate": 0.0797
+      },
+      "potentialHire": {
+        "denominator": 138,
+        "count": 1,
+        "rate": 0.0072
+      },
+      "training": {
+        "denominator": 138,
+        "count": 43,
+        "rate": 0.3116
+      },
+      "mentor": {
+        "denominator": 138,
+        "count": 5,
+        "rate": 0.0362
+      },
+      "remote": {
+        "denominator": 138,
+        "count": 37,
+        "rate": 0.2681
+      },
+      "fullRemote": {
+        "denominator": 138,
+        "count": 8,
+        "rate": 0.058
+      },
+      "engineer": {
+        "denominator": 138,
+        "count": 71,
+        "rate": 0.5145
+      },
+      "webMarketing": {
+        "denominator": 138,
+        "count": 15,
+        "rate": 0.1087
+      },
+      "webDirector": {
+        "denominator": 138,
+        "count": 7,
+        "rate": 0.0507
+      },
+      "portfolio": {
+        "denominator": 138,
+        "count": 5,
+        "rate": 0.0362
+      },
+      "practicalExperience": {
+        "denominator": 138,
+        "count": 18,
+        "rate": 0.1304
+      },
+      "salaryMention": {
+        "denominator": 138,
+        "count": 31,
+        "rate": 0.2246
+      },
+      "newGrad": {
+        "denominator": 138,
+        "count": 77,
+        "rate": 0.558
+      },
+      "midCareer": {
+        "denominator": 138,
+        "count": 58,
+        "rate": 0.4203
+      }
+    }
+  },
+  "secondNewGradEntryPoints": {
+    "note": "母数は自社ドメイン/ATS上の採用ページを取得できた企業。語の出現有無であり、実際の応募可否ではない。",
+    "denominator": 145,
+    "anyEntryMention": {
+      "definition": "第二新卒 / 未経験・経験不問 / 既卒 / ポテンシャル採用 のいずれかに言及",
+      "count": 50,
+      "rate": 0.3448
+    },
+    "noEntryMention": {
+      "count": 95,
+      "rate": 0.6552
+    },
+    "secondNewGradAndEngineer": 15,
+    "inexperiencedAndEngineer": 30,
+    "noSalaryMention": {
+      "count": 110,
+      "rate": 0.7586
+    },
+    "newGradOnly": 16,
+    "newGradJobBoardUrls": {
+      "definition": "採用ページ欄に新卒就活サイト（マイナビ/リクナビ/キャリタス就活）のURLが登録されている件数",
+      "denominator": 194,
+      "count": 13,
+      "hosts": {
+        "job.mynavi.jp": 8,
+        "job.rikunabi.com": 3,
+        "job.career-tasu.jp": 2
+      },
+      "redirectedToExpiredOrGenericListing": [
+        {
+          "sourceUrl": "https://job.rikunabi.com/2025/company/r236700004/",
+          "finalUrl": "https://job.rikunabi.com/?mode=intern"
+        },
+        {
+          "sourceUrl": "https://job.rikunabi.com/2024/company/r384700048/",
+          "finalUrl": "https://job.rikunabi.com/?mode=intern"
+        },
+        {
+          "sourceUrl": "https://job.rikunabi.com/2025/company/r449791085/",
+          "finalUrl": "https://job.rikunabi.com/?mode=intern"
+        },
+        {
+          "sourceUrl": "https://job.mynavi.jp/26/pc/search/corp89868/outline.html",
+          "finalUrl": "https://job.mynavi.jp/finish/2026/finish26.html"
+        },
+        {
+          "sourceUrl": "https://job.mynavi.jp/26/pc/search/corp71669/outline.html",
+          "finalUrl": "https://job.mynavi.jp/finish/2026/finish26.html"
+        }
+      ]
+    }
+  },
+  "jobPostingStructuredData": {
+    "denominator": 181,
+    "pagesWithJobPostingJsonLd": 6,
+    "rate": 0.0331,
+    "pagesWithAnyJsonLd": 88,
+    "parsedPostingCount": 6,
+    "postingsWithTitle": 6,
+    "postingsWithEmploymentType": 6,
+    "postingsWithSalaryValue": 4,
+    "postingsWithExperienceRequirements": 1,
+    "postingsWithSkills": 1,
+    "postingsWithLocation": 5,
+    "titles": [
+      "WEB広告の運用コンサルティング職、アカウントプランナー職",
+      "【IT×飲食】フルスタックエンジニア",
+      "WEB戦略コンサルタント",
+      "システムを作る技術者の見習い",
+      "技術職（エンジニア）",
+      "WEBディレクター、WEBデザイナー、コーダー、制作アシスタント"
+    ],
+    "note": "構造化データが少ないため、年収・必須経験年数・スキルの定量集計には母数が足りない。記事で断定的な分布を出さない。"
+  },
+  "recruitmentPageVsDisclosureCrossTab": {
+    "note": "採用ページURLを出している企業と出していない企業の制度開示を比較。相関であり因果ではない。",
+    "withRecruitmentPageUrl": {
+      "companies": 196,
+      "systems": {
+        "training": {
+          "header": "研修制度-有無",
+          "population": 196,
+          "disclosed": 180,
+          "notDisclosed": 16,
+          "disclosureRateAmongPopulation": 0.9184,
+          "yes": 163,
+          "no": 17,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.9056
+        },
+        "mentor": {
+          "header": "メンター制度-有無",
+          "population": 196,
+          "disclosed": 180,
+          "notDisclosed": 16,
+          "disclosureRateAmongPopulation": 0.9184,
+          "yes": 116,
+          "no": 64,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.6444
+        },
+        "selfDevelopment": {
+          "header": "自己啓発支援制度-有無",
+          "population": 196,
+          "disclosed": 180,
+          "notDisclosed": 16,
+          "disclosureRateAmongPopulation": 0.9184,
+          "yes": 150,
+          "no": 30,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.8333
+        },
+        "careerConsulting": {
+          "header": "キャリアコンサルティング制度-有無",
+          "population": 196,
+          "disclosed": 180,
+          "notDisclosed": 16,
+          "disclosureRateAmongPopulation": 0.9184,
+          "yes": 95,
+          "no": 85,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.5278
+        }
+      }
+    },
+    "withoutRecruitmentPageUrl": {
+      "companies": 7922,
+      "systems": {
+        "training": {
+          "header": "研修制度-有無",
+          "population": 7922,
+          "disclosed": 95,
+          "notDisclosed": 7827,
+          "disclosureRateAmongPopulation": 0.012,
+          "yes": 75,
+          "no": 20,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.7895
+        },
+        "mentor": {
+          "header": "メンター制度-有無",
+          "population": 7922,
+          "disclosed": 94,
+          "notDisclosed": 7828,
+          "disclosureRateAmongPopulation": 0.0119,
+          "yes": 52,
+          "no": 42,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.5532
+        },
+        "selfDevelopment": {
+          "header": "自己啓発支援制度-有無",
+          "population": 7922,
+          "disclosed": 96,
+          "notDisclosed": 7826,
+          "disclosureRateAmongPopulation": 0.0121,
+          "yes": 62,
+          "no": 34,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.6458
+        },
+        "careerConsulting": {
+          "header": "キャリアコンサルティング制度-有無",
+          "population": 7922,
+          "disclosed": 94,
+          "notDisclosed": 7828,
+          "disclosureRateAmongPopulation": 0.0119,
+          "yes": 34,
+          "no": 60,
+          "other": 0,
+          "yesRateAmongDisclosed": 0.3617
+        }
+      }
+    }
+  },
+  "disclosedSystemVsPageMentionGap": {
+    "note": "母数は「自社ドメイン/ATS上の採用ページを取得できた企業」に限定。制度の実在性ではなく、採用ページ上で言及しているかを見る。",
+    "joinableCompanies": 145,
+    "training": {
+      "systemHeader": "研修制度-有無",
+      "pageFlag": "training",
+      "disclosedYes": {
+        "denominator": 117,
+        "pagesMentioningIt": 46,
+        "rate": 0.3932
+      },
+      "disclosedNo": {
+        "denominator": 13,
+        "pagesMentioningIt": 0,
+        "rate": 0,
+        "note": "公式データでは「無」だがページに語が出現するケース。表記ゆれ・別文脈の可能性があり、矛盾と断定しない。"
+      }
+    },
+    "mentor": {
+      "systemHeader": "メンター制度-有無",
+      "pageFlag": "mentor",
+      "disclosedYes": {
+        "denominator": 84,
+        "pagesMentioningIt": 6,
+        "rate": 0.0714
+      },
+      "disclosedNo": {
+        "denominator": 46,
+        "pagesMentioningIt": 0,
+        "rate": 0,
+        "note": "公式データでは「無」だがページに語が出現するケース。表記ゆれ・別文脈の可能性があり、矛盾と断定しない。"
+      }
+    }
+  },
+  "guardrails": [
+    "欠損は null。0件や「制度なし」と読み替えない。",
+    "割合は必ず対応する母数と併記する。開示275社の値を8,118社の値として書かない。",
+    "離職者数÷採用者数を定着率・離職率と書かない。",
+    "採用ページのキーワードは出現有無であり、募集条件の裏取りではない。",
+    "しょくばらぼは任意掲載・任意開示なので、情報通信業の母集団を代表しない。",
+    "第三者求人サイトはURLの事実のみ。追加クロールや本文転載はしない。"
+  ]
+}

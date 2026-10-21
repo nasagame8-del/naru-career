@@ -1,0 +1,1001 @@
+{
+  "runDate": "2026-10-04",
+  "stage": "stage5-golden-set",
+  "pageCount": 50,
+  "howExpectationsWereMade": [
+    "300社パイロットのStage 4で採用ページと判定されたページから、構造が異なるものを選択した。",
+    "各ページについて scripts/research-golden.mjs digest が出力した中立な構造ダイジェスト（見出し階層・table/dlのラベルと値・職種語を含むアンカー・JSON-LD）だけを読んで期待値を付けた。抽出器の出力は見ていない。",
+    "expectedJobCount は「そのページ単体から人間が求人として記録する件数」。条件がリンク先にある求人カードも1件として数える。",
+    "expectedJobTitles は照合用の職種名。評価時は正規化して部分一致で突き合わせる（「技術職（システムエンジニア）」と「システムエンジニア」は一致とみなす）。",
+    "社員インタビュー・社員紹介・会社説明会・情報セキュリティ方針・ニュース記事は求人ではないので0件とした。",
+    "新卒採用・中途採用・キャリア採用のような募集区分、Recruit・採用情報・募集要項のようなページ見出しは求人名ではないので期待職種に含めない。",
+    "HTML全文はリポジトリに保存していない。再評価時はリポジトリ外のキャッシュか再取得を使う。"
+  ],
+  "structureTypeCounts": {
+    "ats": 4,
+    "detail_links": 10,
+    "no_jobs_top": 7,
+    "single_role": 2,
+    "mid_career_only": 3,
+    "new_grad_only": 2,
+    "multi_role_single_page": 8,
+    "js_dependent": 4,
+    "jsonld": 1,
+    "job_detail_page": 4,
+    "negative_interview": 4,
+    "negative_other": 1
+  },
+  "pages": [
+    {
+      "digestIndex": 0,
+      "company": "ｈｏｍｉｅ株式会社",
+      "corporateNumber": "2011001127705",
+      "url": "https://herp.careers/v1/homie",
+      "structureType": "ats",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "Webアプリケーションエンジニア(バックエンド)",
+        "オープンポジション",
+        "カスタマーサクセス（キャリア採用）"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2421,
+      "jsonLdJobPostings": 0,
+      "notes": "ATSの求人一覧。h2が各求人。"
+    },
+    {
+      "digestIndex": 1,
+      "company": "東京インタープレイ株式会社",
+      "corporateNumber": "5010001148221",
+      "url": "https://recruit.jobcan.jp/sidebooks/",
+      "structureType": "ats",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 522,
+      "jsonLdJobPostings": 0,
+      "notes": "ATS上だが求人掲載なし。求める人物像のみ。"
+    },
+    {
+      "digestIndex": 2,
+      "company": "株式会社エヴァーグリーン",
+      "corporateNumber": "9020001088561",
+      "url": "https://en-gage.net/evergreen/",
+      "structureType": "ats",
+      "expectedJobCount": 7,
+      "expectedJobTitles": [
+        "エンジニアスペシャリスト",
+        "プログラマー（Web・オープン系）",
+        "システム営業",
+        "プロジェクトリーダー",
+        "営業"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2714,
+      "jsonLdJobPostings": 0,
+      "notes": "engage。h2が各求人で同職種の重複掲載あり。"
+    },
+    {
+      "digestIndex": 3,
+      "company": "Ｚｅｎｋｅｎ株式会社",
+      "corporateNumber": "4011101011096",
+      "url": "https://recruit.zenken.co.jp/",
+      "structureType": "detail_links",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2753,
+      "jsonLdJobPostings": 0,
+      "notes": "採用サイトトップ。職種名も募集条件もページ上に無い。"
+    },
+    {
+      "digestIndex": 4,
+      "company": "株式会社コスモビジネス",
+      "corporateNumber": "6220001002760",
+      "url": "https://www.csn.co.jp/cb/saiyou.html",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 408,
+      "jsonLdJobPostings": 0,
+      "notes": "採用情報の見出しのみ（本文408字）。"
+    },
+    {
+      "digestIndex": 6,
+      "company": "株式会社フルエナジー",
+      "corporateNumber": "6011101047015",
+      "url": "https://fullenergy.co.jp/recruit/",
+      "structureType": "detail_links",
+      "expectedJobCount": 4,
+      "expectedJobTitles": [
+        "データベースエンジニア(アソシエイト)",
+        "データベースエンジニア（プロフェッショナル）",
+        "営業(プリセールス)",
+        "ネットワークエンジニア"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "募集職種"
+      ],
+      "visibleChars": 2272,
+      "jsonLdJobPostings": 0,
+      "notes": "h2「募集職種」配下に4求人のリンク。条件は詳細ページ側。"
+    },
+    {
+      "digestIndex": 7,
+      "company": "株式会社ＶＡＳＥ　ＫＵＪＵ",
+      "corporateNumber": "1011001115413",
+      "url": "https://shogo.co.jp/recruit",
+      "structureType": "single_role",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "花公園 企画・運営スタッフ"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報",
+        "採用について"
+      ],
+      "visibleChars": 682,
+      "jsonLdJobPostings": 0,
+      "notes": "募集職種テーブル1件。IT職ではないが求人。"
+    },
+    {
+      "digestIndex": 8,
+      "company": "株式会社ディーエスブランド",
+      "corporateNumber": "3310001003604",
+      "url": "https://dsbranch.works/careers/",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "プログラマー",
+        "デザイナー",
+        "Webマーケター"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 1575,
+      "jsonLdJobPostings": 0,
+      "notes": "3職種へのリンクのみ。募集職種見出しは無い。"
+    },
+    {
+      "digestIndex": 9,
+      "company": "株式会社日立ソリューションズ東日本",
+      "corporateNumber": "1370001009911",
+      "url": "https://www.hitachi-solutions-east.co.jp/recruitment/",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "About",
+        "Works",
+        "Career",
+        "Recruit",
+        "RECRUIT 採用情報"
+      ],
+      "visibleChars": 1265,
+      "jsonLdJobPostings": 0,
+      "notes": "採用サイトトップ。About/Works/Careerの区分のみ。"
+    },
+    {
+      "digestIndex": 10,
+      "company": "日本ソフトウエア株式会社",
+      "corporateNumber": "7120001093280",
+      "url": "https://www.nsware.co.jp/career/",
+      "structureType": "mid_career_only",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "制御系SE",
+        "Salseforceのエンジニア （SE・プログラマ）"
+      ],
+      "hasCategoryHeadings": true,
+      "categoryHeadings": [
+        "キャリア採用"
+      ],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 2750,
+      "jsonLdJobPostings": 0,
+      "notes": "キャリア採用。募集職種テーブル1件＋もう1職種へのリンク。"
+    },
+    {
+      "digestIndex": 11,
+      "company": "株式会社オフィス・クラフト",
+      "corporateNumber": "1500001023023",
+      "url": "https://office-craft.co.jp/recruit",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": true,
+      "categoryHeadings": [
+        "新卒採用",
+        "キャリア採用"
+      ],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 1126,
+      "jsonLdJobPostings": 0,
+      "notes": "新卒採用/キャリア採用の区分見出しのみ。職種名なし。"
+    },
+    {
+      "digestIndex": 13,
+      "company": "株式会社ＴＥＳ",
+      "corporateNumber": "1021001013186",
+      "url": "https://www.tes.co.jp/entry/new-graduate",
+      "structureType": "new_grad_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "Entry"
+      ],
+      "visibleChars": 1292,
+      "jsonLdJobPostings": 0,
+      "notes": "新卒エントリーページ。職種名なし。"
+    },
+    {
+      "digestIndex": 16,
+      "company": "株式会社ＫＩＳ",
+      "corporateNumber": "5330001001488",
+      "url": "https://www.kis.co.jp/recruit/",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "募集要項"
+      ],
+      "visibleChars": 1792,
+      "jsonLdJobPostings": 0,
+      "notes": "リクルートサイト。募集要項見出しはあるが職種名が無い。"
+    },
+    {
+      "digestIndex": 17,
+      "company": "株式会社テクノ情報シンク",
+      "corporateNumber": "9013301035259",
+      "url": "http://www.tj-think.co.jp/recruit/",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "営業",
+        "プログラマー・システムエンジニア・その他ITエンジニア"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 879,
+      "jsonLdJobPostings": 0,
+      "notes": "テーブルの行ラベルが職種、値が業務内容。"
+    },
+    {
+      "digestIndex": 19,
+      "company": "ジャスティン株式会社",
+      "corporateNumber": "9430001038814",
+      "url": "https://www.justin-inc.com/recruit.html",
+      "structureType": "single_role",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "プロジェクト・マネージャー システム・エンジニア／プログラマー サーバー／インフラ・エンジニア"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 624,
+      "jsonLdJobPostings": 0,
+      "notes": "「職 種」ラベル（全角空白入り）に3職種が1セルで併記。"
+    },
+    {
+      "digestIndex": 20,
+      "company": "株式会社リサージュ",
+      "corporateNumber": "5070001003684",
+      "url": "http://www.lissaj.com/recruit_rookie.html",
+      "structureType": "new_grad_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 576,
+      "jsonLdJobPostings": 0,
+      "notes": "新卒者募集要項だが職種名の記載が無い。"
+    },
+    {
+      "digestIndex": 22,
+      "company": "株式会社フルスケール",
+      "corporateNumber": "2330001007694",
+      "url": "https://fullscale.jp/recruit/",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "【中途】Webデザイナー（実務経験2年以上）",
+        "【中途】Webディレクター・プロジェクトマネージャー",
+        "【中途】Web広告プランナー・運用スタッフ"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報",
+        "募集職種",
+        "採用情報"
+      ],
+      "visibleChars": 1502,
+      "jsonLdJobPostings": 0,
+      "notes": "h2「募集職種」配下に3求人のリンク。"
+    },
+    {
+      "digestIndex": 23,
+      "company": "株式会社ＪＳＰ",
+      "corporateNumber": "6130001021019",
+      "url": "https://jsp.ne.jp/recruit/",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "システム開発エンジニア",
+        "システム提案営業",
+        "ヘルプデスク"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 896,
+      "jsonLdJobPostings": 0,
+      "notes": "求人リンク3件と社員インタビュー3件が同じページに混在。インタビューは求人ではない。"
+    },
+    {
+      "digestIndex": 24,
+      "company": "株式会社ＳＯＦＴＧ",
+      "corporateNumber": "1010401016295",
+      "url": "https://www.softg.co.jp/recruit/recruit-form/",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 249,
+      "jsonLdJobPostings": 0,
+      "notes": "本文249字のフォームページ。"
+    },
+    {
+      "digestIndex": 25,
+      "company": "株式会社ビズリーチ",
+      "corporateNumber": "2011001058413",
+      "url": "https://careers.bizreach.co.jp/?utm_source=bizreach&utm_medium=site&utm_campaign=recruitment",
+      "structureType": "detail_links",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2291,
+      "jsonLdJobPostings": 0,
+      "notes": "キャリア採用サイトトップ。リンクは社員インタビュー。"
+    },
+    {
+      "digestIndex": 26,
+      "company": "株式会社ユードム",
+      "corporateNumber": "5050001002358",
+      "url": "https://www.udom.co.jp/recruit/index.html",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "システムエンジニア"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "Recruit 採用情報",
+        "採用メッセージ",
+        "募集要項"
+      ],
+      "visibleChars": 4714,
+      "jsonLdJobPostings": 0,
+      "notes": "新卒採用とキャリア採用で同一職種の募集要項テーブルが2件。"
+    },
+    {
+      "digestIndex": 30,
+      "company": "株式会社ｇｒｉｎｌｅａｐ",
+      "corporateNumber": "2012701012725",
+      "url": "https://recruit.grinleap.co.jp/",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": true,
+      "categoryHeadings": [
+        "新卒採用",
+        "キャリア採用"
+      ],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 1024,
+      "jsonLdJobPostings": 0,
+      "notes": "新卒採用/キャリア採用の区分のみ。"
+    },
+    {
+      "digestIndex": 34,
+      "company": "三菱電機ソフトウエア株式会社",
+      "corporateNumber": "9010401028746",
+      "url": "https://www.mesw.co.jp/recruit/index.html",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "ABOUT",
+        "RECRUIT"
+      ],
+      "visibleChars": 1681,
+      "jsonLdJobPostings": 0,
+      "notes": "採用サイトトップ。リンクは社員インタビュー（「システムエンジニア Y.K」等）。"
+    },
+    {
+      "digestIndex": 37,
+      "company": "株式会社フロントエンド",
+      "corporateNumber": "8500001014453",
+      "url": "https://www.frontend.co.jp/recruit/",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "システムエンジニア",
+        "プログラマー"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報",
+        "WORK",
+        "募 集 要 項",
+        "採 用 情 報"
+      ],
+      "visibleChars": 2610,
+      "jsonLdJobPostings": 0,
+      "notes": "新入社員対象と中途採用対象で募集要項が2件。職種は1セルに併記。"
+    },
+    {
+      "digestIndex": 38,
+      "company": "株式会社サイバーテック",
+      "corporateNumber": "5011101060984",
+      "url": "https://www.cybertech.co.jp/recruit/",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "ソリューション営業",
+        "サポートエンジニア・フロントエンドエンジニア"
+      ],
+      "hasCategoryHeadings": true,
+      "categoryHeadings": [
+        "新卒採用情報"
+      ],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 3663,
+      "jsonLdJobPostings": 0,
+      "notes": "h2が職種セクション2件。新卒採用情報は区分。"
+    },
+    {
+      "digestIndex": 39,
+      "company": "株式会社ＡＷＡ",
+      "corporateNumber": "5190001029692",
+      "url": "https://a-w-a.co.jp/recruitment/",
+      "structureType": "jsonld",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "ヘアケアメディア記事執筆者",
+        "美容師アシスタント/スタイリスト"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報",
+        "採用情報"
+      ],
+      "visibleChars": 3268,
+      "jsonLdJobPostings": 2,
+      "notes": "JobPosting JSON-LDが2件。"
+    },
+    {
+      "digestIndex": 40,
+      "company": "株式会社ＬｉｎｋＳｔｏｒｙ",
+      "corporateNumber": "7200001030597",
+      "url": "https://recruit.linkstory.co.jp/",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "デザイナー",
+        "エンジニア",
+        "ディレクター",
+        "進行管理",
+        "写植"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2952,
+      "jsonLdJobPostings": 0,
+      "notes": "h2募集要項配下にh3で5職種。進行管理と写植は職種語を含まない。"
+    },
+    {
+      "digestIndex": 41,
+      "company": "株式会社電通総研",
+      "corporateNumber": "7010401053829",
+      "url": "https://www.dentsusoken.com/recruit",
+      "structureType": "mid_career_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 1003,
+      "jsonLdJobPostings": 0,
+      "notes": "キャリア採用の入口リンクのみ。ページ上に職種の募集条件なし。"
+    },
+    {
+      "digestIndex": 42,
+      "company": "使えるねっと株式会社",
+      "corporateNumber": "5100001005339",
+      "url": "https://www.tsukaeru.net/recruit/",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "プリセールス",
+        "マーケティング",
+        "インフラエンジニア",
+        "カスタマーエンジニア",
+        "ITソリューション営業"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 5906,
+      "jsonLdJobPostings": 0,
+      "notes": "h3が5職種、各セクションに雇用形態・給与・勤務地。初回注釈では4件としたが、ダイジェストの表示上限で ITソリューション営業 を見落としていたため、キャッシュしたHTMLの見出しを再確認して5件に訂正した。"
+    },
+    {
+      "digestIndex": 43,
+      "company": "彩ネット株式会社",
+      "corporateNumber": "8030001075015",
+      "url": "https://www.sainet.ne.jp/corporation/recruit/",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "システムエンジニア・プログラマー",
+        "ネットワークエンジニア",
+        "営業",
+        "デザイナー",
+        "事務"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "募集職種"
+      ],
+      "visibleChars": 1612,
+      "jsonLdJobPostings": 0,
+      "notes": "h2募集職種配下にh3で5職種。条件は共通の待遇セクションに分離。"
+    },
+    {
+      "digestIndex": 44,
+      "company": "プロエンジニア株式会社",
+      "corporateNumber": "7130001075856",
+      "url": "https://proengineer.co.jp/393/",
+      "structureType": "no_jobs_top",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2785,
+      "jsonLdJobPostings": 0,
+      "notes": "Stage4が採用ページと判定したニュース記事。求人ではない。本文に京都府・大阪府が出現するため勤務地誤抽出の検査に使う。"
+    },
+    {
+      "digestIndex": 45,
+      "company": "兼松グランクス株式会社",
+      "corporateNumber": "5011101042099",
+      "url": "https://www.granks.co.jp/recruit",
+      "structureType": "detail_links",
+      "expectedJobCount": 5,
+      "expectedJobTitles": [
+        "フロントエンドエンジニア",
+        "ソリューション企画営業",
+        "Webディレクター",
+        "Webデザイナー",
+        "アプリエンジニア"
+      ],
+      "hasCategoryHeadings": true,
+      "categoryHeadings": [
+        "中途採用",
+        "アルバイト採用"
+      ],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 1092,
+      "jsonLdJobPostings": 0,
+      "notes": "中途採用/アルバイト採用の区分見出しと5職種リンク。"
+    },
+    {
+      "digestIndex": 46,
+      "company": "株式会社ムサシ・エービーシー",
+      "corporateNumber": "3010001058678",
+      "url": "https://www.musashi-abc.co.jp/recruit/",
+      "structureType": "detail_links",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "営業部門"
+      ],
+      "hasCategoryHeadings": true,
+      "categoryHeadings": [
+        "新卒採用",
+        "中途採用"
+      ],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2543,
+      "jsonLdJobPostings": 0,
+      "notes": "h2募集中の職種。リンクは営業部門のみ。"
+    },
+    {
+      "digestIndex": 47,
+      "company": "株式会社さくらケーシーエス",
+      "corporateNumber": "3140001007886",
+      "url": "https://www.kcs.co.jp/recruit.html",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 181,
+      "jsonLdJobPostings": 0,
+      "notes": "本文181字。"
+    },
+    {
+      "digestIndex": 52,
+      "company": "株式会社パーソン",
+      "corporateNumber": "6290001024245",
+      "url": "https://www.person3.com/recruit.html",
+      "structureType": "mid_career_only",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "募集要項"
+      ],
+      "visibleChars": 807,
+      "jsonLdJobPostings": 0,
+      "notes": "募集要項テーブルはあるが職種行が無く職種名を特定できない。"
+    },
+    {
+      "digestIndex": 53,
+      "company": "有限会社アイネット",
+      "corporateNumber": "1350002006281",
+      "url": "https://www.iiinet.jp/recruit/",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報 RECRUIT"
+      ],
+      "visibleChars": 247,
+      "jsonLdJobPostings": 0,
+      "notes": "本文247字。"
+    },
+    {
+      "digestIndex": 55,
+      "company": "株式会社アナザーウェア",
+      "corporateNumber": "1020001038458",
+      "url": "https://www.another-ware.co.jp/recruit/",
+      "structureType": "detail_links",
+      "expectedJobCount": 3,
+      "expectedJobTitles": [
+        "システムエンジニア",
+        "プログラマー",
+        "IoT（組込み）エンジニア"
+      ],
+      "hasCategoryHeadings": true,
+      "categoryHeadings": [
+        "新卒採用",
+        "キャリア採用"
+      ],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報",
+        "採用情報"
+      ],
+      "visibleChars": 1981,
+      "jsonLdJobPostings": 0,
+      "notes": "新卒/キャリアの区分見出しと職種リンク。サービス紹介リンクも多数混在。"
+    },
+    {
+      "digestIndex": 56,
+      "company": "株式会社マクロミル",
+      "corporateNumber": "7010001247946",
+      "url": "https://www.macromill.com/recruit/",
+      "structureType": "js_dependent",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 368,
+      "jsonLdJobPostings": 0,
+      "notes": "本文368字。会社説明会と採用コースのリンクのみで募集条件は無い。"
+    },
+    {
+      "digestIndex": 57,
+      "company": "ＳａｉＳプロダクション株式会社",
+      "corporateNumber": "1370001023334",
+      "url": "https://saisproduction.com/recruit/",
+      "structureType": "multi_role_single_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "ITエンジニア募集"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 1304,
+      "jsonLdJobPostings": 0,
+      "notes": "h2「ITエンジニア募集」1件。配下のh5は業務カテゴリ。"
+    },
+    {
+      "digestIndex": 58,
+      "company": "株式会社テイク－ワン",
+      "corporateNumber": "5120001054177",
+      "url": "https://www.tk-1.co.jp/recruit/",
+      "structureType": "detail_links",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2172,
+      "jsonLdJobPostings": 0,
+      "notes": "採用情報トップ。事業紹介とメッセージのみ。"
+    },
+    {
+      "digestIndex": 60,
+      "company": "ｈｏｍｉｅ株式会社",
+      "corporateNumber": "2011001127705",
+      "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215",
+      "structureType": "ats",
+      "expectedJobCount": 2,
+      "expectedJobTitles": [
+        "オープンポジション",
+        "カスタマーサクセス（キャリア採用）"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 743,
+      "jsonLdJobPostings": 0,
+      "notes": "ATSの職種グループページ。h2が各求人。"
+    },
+    {
+      "digestIndex": 61,
+      "company": "株式会社エヴァーグリーン",
+      "corporateNumber": "9020001088561",
+      "url": "https://en-gage.net/evergreen/work_15303536/?via_recruit_page=1",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "システムエンジニア"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2934,
+      "jsonLdJobPostings": 1,
+      "notes": "engageの求人詳細。JobPosting JSON-LDあり。"
+    },
+    {
+      "digestIndex": 62,
+      "company": "Ｚｅｎｋｅｎ株式会社",
+      "corporateNumber": "4011101011096",
+      "url": "https://recruit.zenken.co.jp/people/jim_l/",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 3226,
+      "jsonLdJobPostings": 0,
+      "notes": "社員紹介ページ。求人ではない。"
+    },
+    {
+      "digestIndex": 63,
+      "company": "株式会社フルエナジー",
+      "corporateNumber": "6011101047015",
+      "url": "https://fullenergy.co.jp/recruits/database-associate/",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "データベースエンジニア(アソシエイト)"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2373,
+      "jsonLdJobPostings": 0,
+      "notes": "求人詳細ページ。"
+    },
+    {
+      "digestIndex": 64,
+      "company": "株式会社ディーエスブランド",
+      "corporateNumber": "3310001003604",
+      "url": "https://dsbranch.works/careers/pages/450/",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "プログラマー"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 1985,
+      "jsonLdJobPostings": 0,
+      "notes": "求人詳細ページ（インタビュー形式の設問を含む）。"
+    },
+    {
+      "digestIndex": 65,
+      "company": "日本ソフトウエア株式会社",
+      "corporateNumber": "7120001093280",
+      "url": "https://www.nsware.co.jp/measure/security.html",
+      "structureType": "negative_other",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 3365,
+      "jsonLdJobPostings": 0,
+      "notes": "情報セキュリティへの取り組みページ。求人ではない。"
+    },
+    {
+      "digestIndex": 66,
+      "company": "株式会社フルスケール",
+      "corporateNumber": "2330001007694",
+      "url": "https://fullscale.jp/recruit/4308/",
+      "structureType": "job_detail_page",
+      "expectedJobCount": 1,
+      "expectedJobTitles": [
+        "【中途】Webデザイナー（実務経験2年以上）"
+      ],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": true,
+      "containerHeadings": [
+        "採用情報"
+      ],
+      "visibleChars": 1810,
+      "jsonLdJobPostings": 0,
+      "notes": "求人詳細ページ。募集要項テーブルあり。"
+    },
+    {
+      "digestIndex": 67,
+      "company": "株式会社ＪＳＰ",
+      "corporateNumber": "6130001021019",
+      "url": "https://jsp.ne.jp/recruit/interview/interview_m/",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 1870,
+      "jsonLdJobPostings": 0,
+      "notes": "社員インタビュー。求人ではない。"
+    },
+    {
+      "digestIndex": 68,
+      "company": "株式会社ビズリーチ",
+      "corporateNumber": "2011001058413",
+      "url": "https://careers.bizreach.co.jp/work/interviews/1648/",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2870,
+      "jsonLdJobPostings": 0,
+      "notes": "社員インタビュー。求人ではない。"
+    },
+    {
+      "digestIndex": 69,
+      "company": "株式会社高志インテック",
+      "corporateNumber": "7230001005373",
+      "url": "https://www.koushi-intec.co.jp/recruit/interview/entry-276.html",
+      "structureType": "negative_interview",
+      "expectedJobCount": 0,
+      "expectedJobTitles": [],
+      "hasCategoryHeadings": false,
+      "categoryHeadings": [],
+      "hasContainerHeadings": false,
+      "containerHeadings": [],
+      "visibleChars": 2379,
+      "jsonLdJobPostings": 0,
+      "notes": "社員インタビュー。求人ではない。"
+    }
+  ]
+}
