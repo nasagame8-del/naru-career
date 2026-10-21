@@ -300,3 +300,28 @@ export async function delegateToClaude(input: DelegateInput): Promise<DelegateRe
     reused: false,
   };
 }
+
+
+export interface ClaudeDirectChatInput {
+  slackChannel: string;
+  slackTs: string;
+  userRequest: string;
+  sharedContext?: string;
+}
+
+export async function dispatchClaudeDirectChat(
+  input: ClaudeDirectChatInput
+): Promise<void> {
+  await gh(`/repos/${repo()}/dispatches`, {
+    method: "POST",
+    body: JSON.stringify({
+      event_type: "naru_claude_direct_chat",
+      client_payload: {
+        slack_channel: input.slackChannel,
+        slack_ts: input.slackTs,
+        user_request: input.userRequest.slice(0, 6000),
+        shared_context: (input.sharedContext || "").slice(0, 18000),
+      },
+    }),
+  });
+}
