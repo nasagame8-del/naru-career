@@ -153,18 +153,25 @@ export default async function ArticlePage(props: {
             </p>
 
             {(article.heroImagePath || article.cardImagePath) && (
-              <div className="mb-8 rounded-sm overflow-hidden">
-                {/* hero は1600×600、card（heroが無い記事の代替）は1200×630 */}
-                <Image
-                  src={article.heroImagePath || article.cardImagePath!}
-                  alt={`${article.title}｜${article.category}記事のアイキャッチ画像`}
-                  width={article.heroImagePath ? 1600 : 1200}
-                  height={article.heroImagePath ? 600 : 630}
-                  sizes="(min-width: 1024px) 740px, (min-width: 640px) calc(100vw - 112px), calc(100vw - 40px)"
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
+              <figure className="mb-8">
+                <div className="rounded-sm overflow-hidden">
+                  {/* hero は1600×600、card（heroが無い記事の代替）は1200×630 */}
+                  <Image
+                    src={article.heroImagePath || article.cardImagePath!}
+                    alt={`${article.title}｜${article.category}記事のアイキャッチ画像`}
+                    width={article.heroImagePath ? 1600 : 1200}
+                    height={article.heroImagePath ? 600 : 630}
+                    sizes="(min-width: 1024px) 740px, (min-width: 640px) calc(100vw - 112px), calc(100vw - 40px)"
+                    className="w-full h-auto"
+                    priority
+                  />
+                </div>
+                {article.imageDisclosure && (
+                  <figcaption className="mt-2 text-xs text-ink-soft leading-relaxed">
+                    {article.imageDisclosure}
+                  </figcaption>
+                )}
+              </figure>
             )}
 
             {hasAffiliate && (

@@ -167,6 +167,8 @@ export type ArticleMeta = {
   datePublished: string;
   dateModified: string;
   excerpt: string;
+  /** Voluntary, source-confirmed disclosure for the hero/card illustration. */
+  imageDisclosure?: string;
   faq: FAQ[];
   cta_agents: string[];
   note_published: boolean;
@@ -259,6 +261,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     datePublished: data.datePublished ?? "",
     dateModified: data.dateModified ?? "",
     excerpt: data.excerpt ?? "",
+    imageDisclosure: data.imageDisclosure ?? "",
     faq: data.faq ?? [],
     cta_agents: data.cta_agents ?? [],
     note_published: data.note_published ?? false,
@@ -374,6 +377,7 @@ export async function getArticle(slug: string): Promise<Article> {
     datePublished: data.datePublished ?? "",
     dateModified: data.dateModified ?? "",
     excerpt: data.excerpt ?? "",
+    imageDisclosure: data.imageDisclosure ?? "",
     faq: data.faq ?? [],
     cta_agents: data.cta_agents ?? [],
     note_published: data.note_published ?? false,
