@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-10-20T01:13:21.071Z",
+  "generatedAt": "2026-10-21T00:49:57.706Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-03",
-    "endDate": "2026-10-16"
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-17"
   },
   "previousRange": {
-    "startDate": "2026-09-19",
-    "endDate": "2026-10-02"
+    "startDate": "2026-09-20",
+    "endDate": "2026-10-03"
   },
   "visibleQueryCounts": {
-    "current": 85,
-    "previous": 19,
-    "new": 73
+    "current": 88,
+    "previous": 20,
+    "new": 74
   },
   "positionBuckets": {
     "current": {
       "top3": 6,
       "top10": 31,
-      "top20": 39
+      "top20": 41
     },
     "previous": {
       "top3": 3,
@@ -70,6 +70,11 @@
       "signal": "rising"
     },
     {
+      "query": "転職エージェント 微妙",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
       "query": "転職エージェント 本音",
       "positionBand": "41+",
       "signal": "rising"
@@ -110,13 +115,13 @@
       "signal": "new"
     },
     {
-      "query": "転職エージェント 希望と違う",
-      "positionBand": "4-10",
+      "query": "業務委託 給料未払い",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
-      "query": "フリーランス 契約解除",
-      "positionBand": "41+",
+      "query": "転職エージェント 希望と違う",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -157,12 +162,12 @@
       "signal": "new"
     },
     {
-      "page": "/articles/agent-job-mismatch",
+      "page": "/articles/contractor-how-to-quit",
       "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "page": "/articles/contractor-how-to-quit",
+      "page": "/articles/agent-job-mismatch",
       "positionBand": "11-20",
       "signal": "new"
     },
