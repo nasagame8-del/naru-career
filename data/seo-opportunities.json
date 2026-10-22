@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T00:49:58.099Z",
+  "generatedAt": "2026-10-22T00:51:05.368Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -14,8 +14,8 @@
   "strikingDistance": [
     {
       "rank": 1,
-      "slug": "agent-not-recommended",
-      "query": "転職エージェント 微妙",
+      "slug": "contractor-paid-leave-overtime",
+      "query": "業務委託 有給",
       "reason": "position_11_30"
     },
     {
@@ -26,8 +26,8 @@
     },
     {
       "rank": 3,
-      "slug": "contractor-paid-leave-overtime",
-      "query": "業務委託 有給",
+      "slug": "agent-not-recommended",
+      "query": "転職エージェント 微妙",
       "reason": "position_11_30"
     },
     {
@@ -52,30 +52,36 @@
   "lowCtr": [
     {
       "rank": 1,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 クビ",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 2,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "労働条件通知書 内定承諾前 貰えない",
       "reason": "low_ctr_top10"
     },
     {
+      "rank": 2,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員から業務委託に変更",
+      "reason": "low_ctr_top10"
+    },
+    {
       "rank": 3,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 クビ",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 4,
       "slug": "agent-job-mismatch",
       "query": "転職エージェント 求人 微妙",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
@@ -93,12 +99,12 @@
     }
   ],
   "prioritySlugs": [
-    "agent-not-recommended",
-    "new-grad-early-resignation-career-plan",
     "contractor-paid-leave-overtime",
+    "new-grad-early-resignation-career-plan",
+    "agent-not-recommended",
     "agent-job-mismatch",
     "interview-scheduling-while-employed",
-    "business-outsourcing-conversion-risk",
-    "offer-letter-before-acceptance-not-provided"
+    "offer-letter-before-acceptance-not-provided",
+    "business-outsourcing-conversion-risk"
   ]
 }
