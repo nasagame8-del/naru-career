@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T00:51:05.368Z",
+  "generatedAt": "2026-10-23T00:52:50.409Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -52,26 +52,26 @@
   "lowCtr": [
     {
       "rank": 1,
-      "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前 貰えない",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 2,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員から業務委託に変更",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 3,
+      "rank": 2,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員 から業務委託 クビ",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 4,
+      "rank": 3,
       "slug": "agent-job-mismatch",
       "query": "転職エージェント 求人 微妙",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 4,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
@@ -82,6 +82,18 @@
     },
     {
       "rank": 6,
+      "slug": "agent-comparison-2026",
+      "query": "ワークポート",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 7,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 8,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
@@ -104,7 +116,7 @@
     "agent-not-recommended",
     "agent-job-mismatch",
     "interview-scheduling-while-employed",
-    "offer-letter-before-acceptance-not-provided",
-    "business-outsourcing-conversion-risk"
+    "business-outsourcing-conversion-risk",
+    "agent-comparison-2026"
   ]
 }

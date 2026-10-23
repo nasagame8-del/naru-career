@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-10-22T00:51:04.905Z",
+  "generatedAt": "2026-10-23T00:52:49.810Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-05",
-    "endDate": "2026-10-18"
+    "startDate": "2026-10-06",
+    "endDate": "2026-10-19"
   },
   "previousRange": {
-    "startDate": "2026-09-21",
-    "endDate": "2026-10-04"
+    "startDate": "2026-09-22",
+    "endDate": "2026-10-05"
   },
   "visibleQueryCounts": {
-    "current": 87,
-    "previous": 25,
+    "current": 89,
+    "previous": 28,
     "new": 70
   },
   "positionBuckets": {
@@ -25,17 +25,17 @@
     "previous": {
       "top3": 5,
       "top10": 10,
-      "top20": 13
+      "top20": 16
     }
   },
   "querySignals": [
     {
-      "query": "労働条件通知書 内定承諾前 貰えない",
+      "query": "正社員から業務委託に変更",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "正社員から業務委託に変更",
+      "query": "正社員 から業務委託 違法",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -45,18 +45,18 @@
       "signal": "quick_win"
     },
     {
-      "query": "転職エージェント 微妙",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
       "query": "正社員 から業務委託 クビ",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "正社員 から業務委託 違法",
-      "positionBand": "4-10",
+      "query": "転職エージェント 微妙",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "山田 瑠々 辞め た 会社",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -105,11 +105,6 @@
       "signal": "new"
     },
     {
-      "query": "山田 瑠々 辞め た 会社",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
       "query": "業務委託 勤務時間 指定",
       "positionBand": "41+",
       "signal": "new"
@@ -120,13 +115,13 @@
       "signal": "new"
     },
     {
-      "query": "転職エージェント 紹介 微妙",
-      "positionBand": "11-20",
+      "query": "業務委託 給料未払い",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
-      "query": "業務委託 給料未払い",
-      "positionBand": "21-40",
+      "query": "転職エージェント 紹介 微妙",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -153,9 +148,19 @@
       "query": "偽装フリーランス",
       "positionBand": "41+",
       "signal": "new"
+    },
+    {
+      "query": "業務委託 契約更新しない 伝え方",
+      "positionBand": "21-40",
+      "signal": "new"
     }
   ],
   "pageSignals": [
+    {
+      "page": "/articles/offer-letter-before-acceptance-not-provided",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
     {
       "page": "/",
       "positionBand": "1-3",
@@ -167,9 +172,9 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/offer-letter-before-acceptance-not-provided",
+      "page": "/articles/business-outsourcing-conversion-risk",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/contractor-how-to-quit",
@@ -179,12 +184,12 @@
     {
       "page": "/articles/agent-job-mismatch",
       "positionBand": "11-20",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/employee-to-contractor-social-insurance",
       "positionBand": "11-20",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/employee-to-contractor-unemployment-benefit",
@@ -213,7 +218,7 @@
     },
     {
       "page": "/articles/contractor-exclusivity-noncompete-checks",
-      "positionBand": "11-20",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -225,11 +230,6 @@
       "page": "/articles/employee-contractor-pay-comparison",
       "positionBand": "4-10",
       "signal": "new"
-    },
-    {
-      "page": "/articles/interview-scheduling-while-employed",
-      "positionBand": "11-20",
-      "signal": "rising"
     }
   ]
 }
