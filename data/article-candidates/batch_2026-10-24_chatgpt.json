@@ -1,0 +1,15 @@
+{
+  "batchId": "batch_2026-10-24_chatgpt",
+  "generatedAt": "2026-10-24T08:02:42+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "Drive00/01、WBS運用/計画/KPI、master75記事/Open35PR、latest/batch10/23・selected queue10/16/17を再取得。同日batchなし。56/78/79/80最新head不変、未選定案の制作・新規PRなし。検索意図の重複を避け追加候補0件。",
+    "最新成功SEO Opportunity Snapshot39880647600、master gsc-signal生成2026-10-23T00:52:49.810Z、final10/6〜10/19 vs9/22〜10/5。Slack https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1792716771722639 一致。1285vs335表示、46vs14click、CTR3.58%vs4.18%、Top3 4vs5/Top10 29vs10/Top20 40vs16、可視89vs28/新規70。可視queryは全体母数でない。",
+    "前回rolling1187/46/CTR3.88%から+98表示/click±0/CTR-0.30pt。Top3/10/20=4/29/40横ばい、重複期間比較で独立した日次実績ではない。通知書070は103/5/8.5位→133/8/8.3位、主query29/2/7.1。親169/6/8.9→197/3/8.5でCTR低下。業務委託優先を維持し既存CTR・PR191差分QAを優先、通知書専用意図は070/079/080で対応。",
+    "エージェント求人微妙8/0/7.4、既存page65/2/11.0、新規拡張の明確な反転と判定せず抑制継続。研修費返還補欠は未選定のまま。56改稿PREVIEW_READY、78/79/80画像未反映と承認/公開日時不足は継続、未公開を完了扱いしない。",
+    "WBS10/24事後監査が既に最新実測を反映済みのため保持し選定行のみ同期。GA4外部PV未取得・目標達否未判定、次期繰越要、QuickWin固定アンカー不一致未解消。SERP/Trends/PAA新取得なし、数値/スコア/効果因果を捏造しない。"
+  ]
+}
