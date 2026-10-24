@@ -1,0 +1,14 @@
+{
+  "batchId": "batch_2026-10-25_chatgpt",
+  "generatedAt": "2026-10-25T07:58:54+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "Drive00/01・WBS3tab・master75記事/Open35PR・latest/batch10/24・queue10/16/17再取得。同日batchなし、56/78/79/80 head/工程不変。重複意図を除外し新規候補0件。未選定記事PRなし。",
+    "Snapshot40047673913 success、master final10/7〜10/20 vs9/23〜10/6、Slack https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1792803615417739 。1374vs392表示/50vs16click/CTR3.64%vs4.08%、Top3 5vs5/Top10 28vs11/Top20 43vs18、可視91vs32/新規69。可視queryは全母数でない。",
+    "前回rolling1285/46から+89表示/+4click、Top3+1/Top10-1/Top20+3。重複窓比較。通知書133/8→164/11/8.1位、主query35/3/7.0。親197/3→212/3/8.2位。業務委託優先・既存CTR改善、通知書079/080仕上げ優先を維持。Agent既存59/2/11.0で新規抑制解除根拠なし。",
+    "56Preview承認待ち、78/79/80画像未反映・QA/承認/公開日時待ちは保持。GA4外部PV未取得、目標達否未判定・次期繰越要。SERP/Trends/PAA新取得なし。効果因果・検索量を捏造しない。"
+  ]
+}
