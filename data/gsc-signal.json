@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-23T00:52:49.810Z",
+  "generatedAt": "2026-10-24T01:00:13.672Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-06",
-    "endDate": "2026-10-19"
+    "startDate": "2026-10-07",
+    "endDate": "2026-10-20"
   },
   "previousRange": {
-    "startDate": "2026-09-22",
-    "endDate": "2026-10-05"
+    "startDate": "2026-09-23",
+    "endDate": "2026-10-06"
   },
   "visibleQueryCounts": {
-    "current": 89,
-    "previous": 28,
-    "new": 70
+    "current": 91,
+    "previous": 32,
+    "new": 69
   },
   "positionBuckets": {
     "current": {
-      "top3": 4,
-      "top10": 29,
-      "top20": 40
+      "top3": 5,
+      "top10": 28,
+      "top20": 43
     },
     "previous": {
       "top3": 5,
-      "top10": 10,
-      "top20": 16
+      "top10": 11,
+      "top20": 18
     }
   },
   "querySignals": [
@@ -40,24 +40,24 @@
       "signal": "quick_win"
     },
     {
+      "query": "正社員 から業務委託 クビ",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
       "query": "転職エージェント 求人 微妙",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "正社員 から業務委託 クビ",
-      "positionBand": "4-10",
+      "query": "正社員から業務委託",
+      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
       "query": "転職エージェント 微妙",
       "positionBand": "11-20",
       "signal": "quick_win"
-    },
-    {
-      "query": "山田 瑠々 辞め た 会社",
-      "positionBand": "21-40",
-      "signal": "rising"
     },
     {
       "query": "業務 委託 から 正社員",
@@ -70,8 +70,13 @@
       "signal": "rising"
     },
     {
-      "query": "正社員から業務委託",
-      "positionBand": "4-10",
+      "query": "業務委託契約 切り替え",
+      "positionBand": "21-40",
+      "signal": "rising"
+    },
+    {
+      "query": "正社員 業務委託 切り替え",
+      "positionBand": "1-3",
       "signal": "rising"
     },
     {
@@ -95,12 +100,22 @@
       "signal": "rising"
     },
     {
+      "query": "転職エージェント 紹介 微妙",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
       "query": "労働条件通知書 内定承諾前 貰えない",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
       "query": "業務委託 有給",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 給料未払い",
       "positionBand": "21-40",
       "signal": "new"
     },
@@ -115,16 +130,6 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 給料未払い",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "転職エージェント 紹介 微妙",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
       "query": "転職エージェント 希望と違う",
       "positionBand": "4-10",
       "signal": "new"
@@ -135,8 +140,8 @@
       "signal": "new"
     },
     {
-      "query": "転職 現職中 面接",
-      "positionBand": "21-40",
+      "query": "正社員から業務委託",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -148,11 +153,6 @@
       "query": "偽装フリーランス",
       "positionBand": "41+",
       "signal": "new"
-    },
-    {
-      "query": "業務委託 契約更新しない 伝え方",
-      "positionBand": "21-40",
-      "signal": "new"
     }
   ],
   "pageSignals": [
@@ -160,11 +160,6 @@
       "page": "/articles/offer-letter-before-acceptance-not-provided",
       "positionBand": "4-10",
       "signal": "new"
-    },
-    {
-      "page": "/",
-      "positionBand": "1-3",
-      "signal": "rising"
     },
     {
       "page": "/about",
@@ -202,18 +197,13 @@
       "signal": "rising"
     },
     {
-      "page": "/agent-diagnosis",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/alumni-hiring",
-      "positionBand": "21-40",
-      "signal": "rising"
-    },
-    {
       "page": "/articles/contractor-attendance-control-worker-status",
       "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/contractor-client-cancellation-costs",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -229,7 +219,17 @@
     {
       "page": "/articles/employee-contractor-pay-comparison",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/interview-scheduling-while-employed",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/second-new-grad-web-agency-vs-inhouse",
+      "positionBand": "4-10",
+      "signal": "rising"
     }
   ]
 }
