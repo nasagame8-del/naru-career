@@ -1,0 +1,14 @@
+{
+  "batchId": "batch_2026-10-26_chatgpt",
+  "generatedAt": "2026-10-26T07:56:13+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "10/26確認：Snapshot40146890940成功、final10/8〜21 vs9/24〜10/7。1459vs441表示/58vs15click/CTR3.98%vs3.40%、Top3/10/20=5/27/42（前期5/12/20）、新規可視66。前回rolling1374/50から+85/+8だがTop10/20各-1。通知書189/12/7.9位、親225/4/8.1位、失業給付144/4/6.3位。業務委託CTR・通知書079/080仕上げ優先維持。75記事/Open35PR、56/78/79/80 head/工程不変、新規候補0。GA4外部PV未取得・達否未判定・次期繰越要。",
+    "Drive00/01・WBS3tab・master記事一覧/OpenPR・最新batch/latest・queue10/16/17再取得。同日batchなし。公開/制作/選定と重複する意図は再提案せず。追加PR/マージなし。",
+    "出典 https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1792888207438589 とmaster data/gsc-signal.json整合。可視query89vs37は全母数でない。重複窓比較で日次増分と混同しない。",
+    "主query通知書43/3/6.9位、正社員から業務委託に変更25/0/8.0位、違法12/0/5.3位。既存意図のCTR改善余地、未充足の新規意図の確証なし。Agent新規抑制維持。SERP/Trends/PAA未取得、スコア/検索量/因果捏造なし。"
+  ]
+}
