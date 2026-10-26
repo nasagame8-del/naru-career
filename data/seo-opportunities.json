@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T00:30:06.044Z",
+  "generatedAt": "2026-10-26T00:38:03.765Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -53,13 +53,13 @@
     {
       "rank": 1,
       "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員から業務委託に変更",
+      "query": "正社員 から業務委託 クビ",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 2,
       "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 クビ",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
@@ -70,8 +70,8 @@
     },
     {
       "rank": 4,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
+      "slug": "agent-comparison-2026",
+      "query": "ワークポート",
       "reason": "low_ctr_top10"
     },
     {
@@ -82,8 +82,8 @@
     },
     {
       "rank": 6,
-      "slug": "agent-comparison-2026",
-      "query": "ワークポート",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
@@ -106,12 +106,6 @@
     },
     {
       "rank": 10,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 11,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"

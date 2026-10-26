@@ -1,46 +1,36 @@
 {
-  "generatedAt": "2026-10-25T00:30:05.664Z",
+  "generatedAt": "2026-10-26T00:38:03.219Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-08",
-    "endDate": "2026-10-21"
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-22"
   },
   "previousRange": {
-    "startDate": "2026-09-24",
-    "endDate": "2026-10-07"
+    "startDate": "2026-09-25",
+    "endDate": "2026-10-08"
   },
   "visibleQueryCounts": {
-    "current": 89,
-    "previous": 37,
-    "new": 66
+    "current": 86,
+    "previous": 49,
+    "new": 59
   },
   "positionBuckets": {
     "current": {
-      "top3": 5,
+      "top3": 6,
       "top10": 27,
-      "top20": 42
+      "top20": 43
     },
     "previous": {
       "top3": 5,
-      "top10": 12,
-      "top20": 20
+      "top10": 15,
+      "top20": 23
     }
   },
   "querySignals": [
     {
-      "query": "正社員から業務委託に変更",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
       "query": "正社員 から業務委託 違法",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "正社員 から業務委託 クビ",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -55,9 +45,19 @@
       "signal": "quick_win"
     },
     {
-      "query": "転職エージェント 微妙",
+      "query": "転職エージェント 紹介 微妙",
       "positionBand": "11-20",
       "signal": "quick_win"
+    },
+    {
+      "query": "正社員から業務委託に変更",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "フリーランス 契約解除",
+      "positionBand": "41+",
+      "signal": "rising"
     },
     {
       "query": "ワークポート",
@@ -66,7 +66,7 @@
     },
     {
       "query": "業務 委託 から 正社員",
-      "positionBand": "41+",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -75,18 +75,23 @@
       "signal": "rising"
     },
     {
+      "query": "業務委託から正社員",
+      "positionBand": "21-40",
+      "signal": "rising"
+    },
+    {
       "query": "業務委託契約 切り替え",
       "positionBand": "21-40",
       "signal": "rising"
     },
     {
-      "query": "正社員 業務委託 切り替え",
-      "positionBand": "1-3",
+      "query": "正社員 から業務委託 違法",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "正社員から業務委託に変更",
-      "positionBand": "4-10",
+      "query": "転職エージェント 合わない 辞めたい",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -102,11 +107,6 @@
     {
       "query": "転職エージェント 求人 微妙",
       "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "転職エージェント 紹介 微妙",
-      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -130,13 +130,18 @@
       "signal": "new"
     },
     {
-      "query": "転職エージェント 合わない 辞めたい",
+      "query": "業務委託 契約更新しない 伝え方",
       "positionBand": "21-40",
       "signal": "new"
     },
     {
       "query": "正社員から業務委託",
       "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "正社員 業務委託 切り替え",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -147,11 +152,6 @@
     {
       "query": "業務委託 契約解除",
       "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "転職エージェント 二度と使わない",
-      "positionBand": "41+",
       "signal": "new"
     }
   ],
@@ -179,21 +179,11 @@
     {
       "page": "/articles/contractor-how-to-quit",
       "positionBand": "11-20",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/employee-contractor-pay-comparison",
       "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/agent-job-mismatch",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/employee-to-contractor-social-insurance",
-      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -202,9 +192,9 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-attendance-control-worker-status",
-      "positionBand": "21-40",
-      "signal": "new"
+      "page": "/articles/agent-job-mismatch",
+      "positionBand": "11-20",
+      "signal": "rising"
     },
     {
       "page": "/articles/contractor-client-cancellation-costs",
@@ -222,12 +212,22 @@
       "signal": "new"
     },
     {
-      "page": "/articles/interview-scheduling-while-employed",
+      "page": "/articles/contractor-unpaid-fee-consultation",
       "positionBand": "11-20",
-      "signal": "rising"
+      "signal": "new"
+    },
+    {
+      "page": "/articles/contractor-unpaid-revisions-scope",
+      "positionBand": "4-10",
+      "signal": "new"
     },
     {
       "page": "/articles/second-new-grad-web-agency-vs-inhouse",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/agent-comparison-2026",
       "positionBand": "4-10",
       "signal": "rising"
     }
