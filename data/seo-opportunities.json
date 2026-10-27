@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T00:38:03.765Z",
+  "generatedAt": "2026-10-27T01:36:19.977Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -44,6 +44,12 @@
     },
     {
       "rank": 6,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "業務委託 出社 強制",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 7,
       "slug": "interview-scheduling-while-employed",
       "query": "転職 現職中 面接",
       "reason": "position_11_30"
@@ -127,8 +133,8 @@
     "new-grad-early-resignation-career-plan",
     "agent-not-recommended",
     "agent-job-mismatch",
-    "interview-scheduling-while-employed",
     "business-outsourcing-conversion-risk",
+    "interview-scheduling-while-employed",
     "agent-comparison-2026"
   ]
 }
