@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-27T01:36:19.411Z",
+  "generatedAt": "2026-10-28T01:36:23.989Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-10",
-    "endDate": "2026-10-23"
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-24"
   },
   "previousRange": {
-    "startDate": "2026-09-26",
-    "endDate": "2026-10-09"
+    "startDate": "2026-09-27",
+    "endDate": "2026-10-10"
   },
   "visibleQueryCounts": {
-    "current": 76,
-    "previous": 65,
-    "new": 47
+    "current": 79,
+    "previous": 70,
+    "new": 48
   },
   "positionBuckets": {
     "current": {
       "top3": 6,
-      "top10": 17,
+      "top10": 19,
       "top20": 35
     },
     "previous": {
       "top3": 7,
-      "top10": 26,
-      "top20": 34
+      "top10": 29,
+      "top20": 36
     }
   },
   "querySignals": [
@@ -40,19 +40,24 @@
       "signal": "quick_win"
     },
     {
-      "query": "転職エージェント 求人 微妙",
-      "positionBand": "4-10",
+      "query": "業務委託 出社 強制",
+      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 出社 強制",
-      "positionBand": "11-20",
+      "query": "転職エージェント 求人 微妙",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
       "query": "転職エージェント 紹介 微妙",
       "positionBand": "11-20",
       "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "positionBand": "4-10",
+      "signal": "rising"
     },
     {
       "query": "正社員から業務委託に変更",
@@ -72,6 +77,11 @@
     {
       "query": "業務 委託 から 正社員",
       "positionBand": "21-40",
+      "signal": "rising"
+    },
+    {
+      "query": "業務委託 勤務時間 指定",
+      "positionBand": "41+",
       "signal": "rising"
     },
     {
@@ -100,24 +110,9 @@
       "signal": "rising"
     },
     {
-      "query": "転職エージェント 合わない 辞めたい",
-      "positionBand": "21-40",
-      "signal": "rising"
-    },
-    {
       "query": "転職エージェント 微妙",
       "positionBand": "11-20",
       "signal": "rising"
-    },
-    {
-      "query": "転職エージェント 本音",
-      "positionBand": "41+",
-      "signal": "rising"
-    },
-    {
-      "query": "労働条件通知書 内定承諾前 貰えない",
-      "positionBand": "4-10",
-      "signal": "new"
     },
     {
       "query": "業務委託 有給",
@@ -135,12 +130,12 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 勤務時間 指定",
-      "positionBand": "41+",
+      "query": "正社員 業務委託 切り替え",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "query": "正社員 業務委託 切り替え",
+      "query": "業務委託 出社 強制",
       "positionBand": "11-20",
       "signal": "new"
     },
@@ -150,8 +145,13 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 出社 強制",
+      "query": "労働条件通知書 内定承諾前 メール",
       "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 クビ",
+      "positionBand": "21-40",
       "signal": "new"
     }
   ],
@@ -159,11 +159,6 @@
     {
       "page": "/articles/offer-letter-before-acceptance-not-provided",
       "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/about",
-      "positionBand": "1-3",
       "signal": "rising"
     },
     {
@@ -174,7 +169,7 @@
     {
       "page": "/articles/employee-to-contractor-unemployment-benefit",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/employee-contractor-pay-comparison",
@@ -209,7 +204,7 @@
     {
       "page": "/articles/contractor-paid-leave-overtime",
       "positionBand": "11-20",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/contractor-unpaid-fee-consultation",
@@ -228,6 +223,11 @@
     },
     {
       "page": "/articles/agent-comparison-2026",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/agent-referral-vs-self-apply",
       "positionBand": "4-10",
       "signal": "rising"
     }
