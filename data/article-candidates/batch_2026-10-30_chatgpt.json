@@ -1,0 +1,14 @@
+{
+  "batchId": "batch_2026-10-30_chatgpt",
+  "generatedAt": "2026-10-30T07:57:13+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "10/30確認：Snapshot40803288052成功、final10/12〜25 vs9/28〜10/11。1719vs699表示/71vs18click/CTR4.13%vs2.58%、Top3/10/20=7/20/35（前期7/30/39）、可視76・新規43。前回rolling1620/62から+99表示/+9click、Top3+1/Top10+1/Top20横ばい。親311/7、通知書255/14、失業給付205/11、辞め方109/4/9.2位。75記事/Open35PR、56/78/79/80 head・工程不変、新規候補0。既存CTR・選定済み仕上げ優先維持。GA4外部PV未取得・達否未判定・次期繰越要。",
+    "Drive00/01・WBS3tab・master/OpenPR・latest/batch10/29・queue10/16/17再取得。同日batchなし。既存/制作中/既選定の重複検索意図は除外、新規PR・公開なし。",
+    "出典 https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793238966659749 とmaster final整合。可視queryは全母数でない、rolling窓比較は日次増分ではない。",
+    "失業給付click7→11、辞め方2→4、通知書13→14が増分に寄与。親は283→311表示でも7click横ばい、CTR2.47%→2.25%。主query変更38/1/5.6位、違法12/0/4.7位、有給22/0/20.4位。既存回答・CTR改善が優先、新規未充足意図の確証なし。Agent抑制維持。SERP/Trends/PAA新取得なし。"
+  ]
+}
