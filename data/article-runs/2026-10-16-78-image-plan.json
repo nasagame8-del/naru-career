@@ -1,0 +1,35 @@
+{
+  "articleId": 78,
+  "slug": "contractor-unpaid-mandatory-training",
+  "status": "awaiting_user_images",
+  "card": {
+    "file": "contractor-unpaid-mandatory-training-card.webp",
+    "width": 1200,
+    "height": 630
+  },
+  "bodyImages": [
+    {
+      "slot": "01",
+      "file": "contractor-unpaid-mandatory-training-01.webp",
+      "alt": "業務委託の研修について契約と報酬、働き方の実態を分けて確認する図",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "slot": "02",
+      "file": "contractor-unpaid-mandatory-training-02.webp",
+      "alt": "研修の参加義務、課題、報酬、欠席時の扱いを確かめる図",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "slot": "03",
+      "file": "contractor-unpaid-mandatory-training-03.webp",
+      "alt": "研修案内と回答を保存し、実態を整理して相談する三段階の図",
+      "width": 1200,
+      "height": 675
+    }
+  ],
+  "officialImageDecision": "公式資料は本文リンクで提示。図解はNARU独自制作。公式画像の転載は行わない。",
+  "promptFile": "image-prompts-78.md"
+}
