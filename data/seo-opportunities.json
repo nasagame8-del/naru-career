@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T01:56:05.342Z",
+  "generatedAt": "2026-10-30T02:07:23.901Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -45,31 +45,37 @@
     {
       "rank": 6,
       "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前 メール",
+      "query": "労働条件通知書 内定承諾前",
       "reason": "position_11_30"
     },
     {
       "rank": 7,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 メール",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 8,
       "slug": "business-outsourcing-conversion-risk",
       "query": "業務委託 出社 強制",
       "reason": "position_11_30"
     },
     {
-      "rank": 8,
+      "rank": 9,
+      "slug": "second-new-grad-sns-background-check",
+      "query": "sns調査 (裏アカ調査) 採用",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 10,
       "slug": "agent-not-recommended",
       "query": "転職エージェント 微妙",
       "reason": "position_11_30"
     },
     {
-      "rank": 9,
+      "rank": 11,
       "slug": "interview-scheduling-while-employed",
       "query": "転職 現職中 面接",
-      "reason": "position_11_30"
-    },
-    {
-      "rank": 10,
-      "slug": "second-new-grad-sns-background-check",
-      "query": "sns調査 (裏アカ調査) 採用",
       "reason": "position_11_30"
     }
   ],
@@ -77,7 +83,7 @@
     {
       "rank": 1,
       "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 クビ",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
@@ -89,7 +95,7 @@
     {
       "rank": 3,
       "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
+      "query": "正社員 から業務委託 クビ",
       "reason": "low_ctr_top10"
     },
     {
@@ -112,8 +118,8 @@
     },
     {
       "rank": 7,
-      "slug": "agent-job-mismatch",
-      "query": "転職エージェント 求人 微妙",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
@@ -130,8 +136,14 @@
     },
     {
       "rank": 10,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
+      "slug": "agent-job-mismatch",
+      "query": "転職エージェント 求人 微妙",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 11,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "query": "業務委託 急に辞める",
       "reason": "low_ctr_top10"
     }
   ],
@@ -153,8 +165,9 @@
     "agent-not-recommended",
     "agent-job-mismatch",
     "offer-letter-before-acceptance-not-provided",
-    "interview-scheduling-while-employed",
     "second-new-grad-sns-background-check",
-    "agent-comparison-2026"
+    "interview-scheduling-while-employed",
+    "agent-comparison-2026",
+    "outsourcing-contract-termination-worker-status"
   ]
 }
