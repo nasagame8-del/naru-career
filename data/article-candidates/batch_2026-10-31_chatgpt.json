@@ -1,0 +1,14 @@
+{
+  "batchId": "batch_2026-10-31_chatgpt",
+  "generatedAt": "2026-10-31T07:59:01+09:00",
+  "trigger": "cron",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [],
+  "notes": [
+    "10/31確認：Snapshot40989763168成功、final10/13〜26 vs9/29〜10/12。1838vs771表示/72vs27click/CTR3.92%vs3.50%、Top3/10/20=5/19/35（前期7/30/39）、可視74・新規41。前回rolling1719/71から+119表示/+1click、Top3-2/Top10-1/Top20横ばい。親330/9、通知書288/17、失業給付209/12、有給116/3。75記事/Open35PR、56/78/79/80 head・工程不変、新規候補0。既存CTR・選定済み仕上げ優先維持。GA4外部PV未取得・達否未判定・次期繰越要。",
+    "Drive00/01・WBS3tab・master/OpenPR・latest/batch10/30・queue10/16/17再取得。同日batchなし。既存/制作中/既選定の意図重複を除外。追加PR/公開なし。",
+    "出典 https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793326045471949 とmaster final一致。可視queryは全体母数ではない、rolling窓の差は日次実績ではない。",
+    "通知書主query52/4/6.3位、委託変更36/1/5.1位、有給21/1/20.2位。親・070・068で対応済み。ワークポート8/0/2.0位は小母数でAgent新規抑制解除根拠にせず。新規未充足意図の確証なし。SERP/Trends/PAA未取得、スコア/検索量/効果因果を捏造しない。"
+  ]
+}
