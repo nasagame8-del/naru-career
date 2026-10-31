@@ -13,23 +13,35 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "WAITING_IMAGES",
+      "status": "WAITING_FACT_CHECK_AND_PREVIEW",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
         "articleQa": {
-          "status": "blocked_by_missing_images",
-          "runId": 41186216998,
-          "headSha": "a35c5d33623ae4e9656307886d8de660ec3d3946"
+          "status": "running",
+          "runId": 41187673781,
+          "headSha": "92acff94832c663398d03c430c48fff010a97ca7"
         },
         "imageQa": {
-          "status": "pending"
+          "status": "passed",
+          "sourceImageCount": 4,
+          "driveOriginalsCount": 4,
+          "driveWebpsCount": 4,
+          "githubWebpsCount": 4,
+          "dimensions": {
+            "card": "1200x630",
+            "01": "1200x675",
+            "02": "1200x675",
+            "03": "1200x675"
+          },
+          "metadata": "EXIF/ICC stripped",
+          "headSha": "92acff94832c663398d03c430c48fff010a97ca7"
         },
         "cloudflarePreview": {
-          "status": "blocked_by_missing_images",
-          "runId": 41186217088,
-          "headSha": "a35c5d33623ae4e9656307886d8de660ec3d3946"
+          "status": "running",
+          "runId": 41187673803,
+          "headSha": "92acff94832c663398d03c430c48fff010a97ca7"
         },
         "sourceReview": {
           "status": "ai_reviewed_human_pending",
@@ -38,15 +50,15 @@
         }
       },
       "blockers": [
-        "本文内画像01/02/03とcardのWebP未生成・未反映",
-        "同SHA Article Factory Validation/Cloudflare Preview未成功（画像欠落）",
-        "法律関連の独立Human Fact Check未取得",
-        "画像反映後のプレビュー目視承認と公開時刻未指定"
+        "最新headのGitHub Actions・Cloudflare Preview検証中",
+        "本文のHuman Fact Check未承認",
+        "記事プレビューの目視承認未取得",
+        "公開時刻未指定"
       ],
       "prNumber": 212,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/212",
       "branch": "article-factory/2026-10-31-81-fake-freelancer",
-      "latestHeadSha": "a35c5d33623ae4e9656307886d8de660ec3d3946",
+      "latestHeadSha": "92acff94832c663398d03c430c48fff010a97ca7",
       "driveFolderId": "1zvjqIAAEwYLzqbuyeHrktIgQyBzewb9H",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1zvjqIAAEwYLzqbuyeHrktIgQyBzewb9H",
       "researchUrl": "https://docs.google.com/document/d/1mIjW4asDf9TrqrESJ5YOBUwvbJf2kbP06q8Mq8Ml0wc/edit",
@@ -55,12 +67,19 @@
       "imagePromptsUrl": "https://docs.google.com/document/d/1ezqS1ZxWhRSp-chgLSW2Tr4G1-AeAz2X9NpdWm08doU/edit",
       "imagePromptCopyUrl": "https://docs.google.com/document/d/1WeBroBxkCyeMQD7IHrBdxzjeLJ4REZkKq15yt-TaaTY/edit",
       "originalsFolderId": "1gpTI2tMkMdGv64820sxgTRibjAbsUaf_",
-      "imagesFolderId": "1LYmnLOtQC3AWsiL53H9_7v-qzx7Lu0nY"
+      "imagesFolderId": "1LYmnLOtQC3AWsiL53H9_7v-qzx7Lu0nY",
+      "imageFiles": {
+        "card": "fake-freelancer-worker-status-guide-card.webp",
+        "01": "fake-freelancer-worker-status-guide-01.webp",
+        "02": "fake-freelancer-worker-status-guide-02.webp",
+        "03": "fake-freelancer-worker-status-guide-03.webp"
+      }
     }
   ],
   "notes": [
     "毎朝のバッチおよび既存の78/79/80選定結果は変更しない。",
     "本件はユーザーが明示的に選択した単発の新規記事。",
-    "10/31 17:43指名企画：NARU-081について研究・原稿Draft・画像プラン/プロンプト完了。masterに未反映、PR#212 Draftで画像待ち。"
+    "10/31 17:43指名企画：NARU-081について研究・原稿Draft・画像プラン/プロンプト完了。masterに未反映、PR#212 Draftで画像待ち。",
+    "10/31 画像4枚受領。規定WebP生成、Drive originals/images計8ファイルを保存確認、PR#212 head 92acff94にGitHub4ファイル反映。マージ・本番公開は行わない。"
   ]
 }
