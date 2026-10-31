@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "createdAtJST": "2026-10-31",
+  "instruction": "CTAの出来レース感を解消。本文の『提携先』『広告提携』文言は禁止、広告表記は本文と独立した『広告（PR）』として明示する。",
+  "scope": "Three already-published article CTA redesigns. User has NOT yet approved redesigned previews. Do not merge before new preview approval.",
+  "masterShaAtStart": "2348c41abe6c781ca6446b8dc13fc3f26cc1cc64",
+  "rules": [
+    "Start from real reader problem; don't insert ads as the purpose of the page.",
+    "Give an actionable comparison or decision criterion before any CTA.",
+    "Explain who the service suits, who should choose another method, and what to verify before applying.",
+    "Never claim author used an unused service or imply paid entries rank above the 58 independently researched services.",
+    "Avoid 『提携先』『広告提携』 in editorial body. Keep separate visible PR disclosure, and rel=nofollow sponsored for tracked links.",
+    "Respect ASP banner creative (ZEN 120x60) without inventing an unapproved text link.",
+    "At most one CTA per relevant article except genuine role-based multi-service comparisons.",
+    "Preserve original media, dates of publication, article URLs, and avoid diagnosis CTA."
+  ],
+  "articles": [
+    {
+      "pr": 224,
+      "slug": "agent-not-recommended",
+      "branch": "fix/cta-editorial-agent-not-recommended-20261031",
+      "headSha": "e976419981c3fa8bd6f8461898676a0f1aa98546",
+      "status": "DRAFT_QA_RUNNING",
+      "qaRunId": 41201121873,
+      "previewRunId": 41201121921,
+      "userVisual": "pending",
+      "published": false
+    },
+    {
+      "pr": 225,
+      "slug": "agent-job-mismatch",
+      "branch": "fix/cta-editorial-agent-job-mismatch-20261031",
+      "headSha": "5ab959d4182e13d9d94bf91a1f743239fcfdc6fa",
+      "status": "DRAFT_QA_RUNNING",
+      "qaRunId": 41201136310,
+      "previewRunId": 41201136298,
+      "userVisual": "pending",
+      "published": false
+    },
+    {
+      "pr": 226,
+      "slug": "retirement-agency-second-new-grad-how-to-choose",
+      "branch": "fix/cta-editorial-retirement-comparison-20261031",
+      "headSha": "1c0ba840beaff72b834289f9b7f2e88dbe575084",
+      "status": "DRAFT_QA_RUNNING",
+      "qaRunId": 41201147047,
+      "previewRunId": 41201147048,
+      "userVisual": "pending",
+      "published": false
+    }
+  ],
+  "pausedPriorWork": [
+    {
+      "pr": 221,
+      "reason": "old style CTA pending redesign"
+    },
+    {
+      "pr": 222,
+      "reason": "old style CTA pending redesign"
+    },
+    {
+      "pr": 215,
+      "reason": "legacy PNG and bulk multi-article preview gate"
+    }
+  ]
+}
