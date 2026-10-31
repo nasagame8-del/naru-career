@@ -26,23 +26,26 @@
       "pageClicks": 3,
       "avgPosition": 11.1,
       "action": "title+intro/FAQ/case table/internal links",
-      "status": "PREVIEW_QA_COMPLETE_AWAITING_HUMAN",
-      "humanFactCheck": "pending",
-      "previewVisual": "pending",
+      "status": "APPROVED_PENDING_PREMERGE_GATE",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
       "productionVerified": false,
       "qa": {
         "articleFactoryValidation": "success",
         "cloudflarePreview": "success",
         "validatedHeadSha": "a5586ef94abf1532c62b4b066395f3427b2c654b",
         "previewUrl": "https://naru-pr-213-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime",
-        "previewVisual": "pending",
-        "humanFactCheck": "pending"
+        "previewVisual": "user_confirmed",
+        "humanFactCheck": "user_confirmed",
+        "humanFactCheckApprovedHeadSha": "a5586ef94abf1532c62b4b066395f3427b2c654b",
+        "previewVisualApprovedHeadSha": "a5586ef94abf1532c62b4b066395f3427b2c654b"
       },
       "publication": {
-        "status": "DRAFT_NOT_MERGED",
-        "approved": false,
+        "status": "APPROVED_PENDING_PREMERGE_GATE",
+        "approved": true,
         "merged": false,
-        "productionVerified": false
+        "productionVerified": false,
+        "requestedPublishAt": "immediate"
       }
     },
     {
@@ -54,23 +57,26 @@
       "pageClicks": 2,
       "avgPosition": 15,
       "action": "title+intro decision table/FAQ/consultation navigation",
-      "status": "PREVIEW_QA_COMPLETE_AWAITING_HUMAN",
-      "humanFactCheck": "pending",
-      "previewVisual": "pending",
+      "status": "APPROVED_PENDING_PREMERGE_GATE",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
       "productionVerified": false,
       "qa": {
         "articleFactoryValidation": "success",
         "cloudflarePreview": "success",
         "validatedHeadSha": "5f6705ccea7371900dd598538b335ecd40589169",
         "previewUrl": "https://naru-pr-214-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation",
-        "previewVisual": "pending",
-        "humanFactCheck": "pending"
+        "previewVisual": "user_confirmed",
+        "humanFactCheck": "user_confirmed",
+        "humanFactCheckApprovedHeadSha": "5f6705ccea7371900dd598538b335ecd40589169",
+        "previewVisualApprovedHeadSha": "5f6705ccea7371900dd598538b335ecd40589169"
       },
       "publication": {
-        "status": "DRAFT_NOT_MERGED",
-        "approved": false,
+        "status": "APPROVED_PENDING_PREMERGE_GATE",
+        "approved": true,
         "merged": false,
-        "productionVerified": false
+        "productionVerified": false,
+        "requestedPublishAt": "immediate"
       }
     }
   ],
@@ -106,5 +112,14 @@
     ],
     "avoidClaimsOfLiftWithoutMeasurement": true
   },
-  "masterAtLastReview": "e1101ab1b3fdc6edf644af8286d59b810c56e174"
+  "masterAtLastReview": "e1101ab1b3fdc6edf644af8286d59b810c56e174",
+  "approvalEvidence": {
+    "dateJST": "2026-10-31",
+    "userText": "2本とも本文・プレビューOK、即時公開",
+    "appliesToPrNumbers": [
+      213,
+      214
+    ],
+    "sameHeadShaOnly": true
+  }
 }
