@@ -164,6 +164,12 @@ doda経由で自己応募した会社から内定が出て、入社が決まっ�
 
 [CTA_BUTTON:retirement_jobs]
 
+**もう一つの選択肢：ZENの退職代行（広告）**
+
+ZENの退職代行とも広告提携しています。相談したい内容によって適切な依頼先は変わるため、会社との交渉が必要かどうかも含め、サービスの運営主体・対応範囲・費用を公式案内で比べてください。調査した58サービスの順位付けによる推奨ではありません。
+
+<a href="https://h.accesstrade.net/sp/cc?rk=0100q5nd00ovm3" rel="nofollow sponsored" referrerpolicy="no-referrer-when-downgrade"><img src="https://h.accesstrade.net/sp/rr?rk=0100q5nd00ovm3" alt="ZENの退職代行" border="0" width="120" height="60"></a>
+
 ## 退職代行を選ぶなら、ランキングよりこの順番で確認する
 
 実際にサービスを選ぶ段階では、順位より確認する順番を決めた方が分かりやすいです。
