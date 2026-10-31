@@ -81,6 +81,12 @@ doda経由で自己応募したAIO対策企業から内定をもらい、入社�
 
 [CTA_BUTTON:retirement_jobs]
 
+退職の意思を伝えることに加えて、会社側との話し合いについて相談したい場合は、もう一つの提携先であるZENの退職代行も比較対象になります。どのような相談を受け付けるか、誰が対応するか、料金や利用条件は公式案内を確かめてから判断してください。筆者自身の利用体験を示すものではありません。
+
+**広告：ZENの退職代行**
+
+<a href="https://h.accesstrade.net/sp/cc?rk=0100q5nd00ovm3" rel="nofollow sponsored" referrerpolicy="no-referrer-when-downgrade"><img src="https://h.accesstrade.net/sp/rr?rk=0100q5nd00ovm3" alt="ZENの退職代行" border="0" width="120" height="60"></a>
+
 ## 僕が使ったおすすめエージェント
 
 退職をスムーズに進めるためには、==先に転職先を確保しておくことが最大のポイント==です。僕が実際に使った2社を紹介します。
