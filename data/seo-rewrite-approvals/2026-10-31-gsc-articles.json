@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "existing-article-seo-rewrite-approval",
+  "runDateJST": "2026-10-31",
+  "userMessage": "二つともOK",
+  "source": "chat-preview-approval",
+  "publicationNotAuthorizedByThisRecord": true,
+  "articles": [
+    {
+      "order": 1,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "articleId": "NARU-052",
+      "prNumber": 211,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/211",
+      "branch": "seo/refresh-contract-termination-20261031",
+      "approvedHeadSha": "59d969e5f1b5c9f77de92354b43b3c53a5d866d7",
+      "qa": {
+        "githubActionsLatestHead": "success",
+        "cloudflarePreviewLatestHead": "success",
+        "previewVisual": "user_confirmed",
+        "independentHumanFactCheck": "not_recorded"
+      },
+      "previewUrl": "https://naru-pr-211-preview.broad-fuchsia.workers.dev/articles/outsourcing-contract-termination-worker-status",
+      "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/211#issuecomment-6540652611",
+      "publish": {
+        "status": "HELD",
+        "scheduledAtJST": null,
+        "publishTaskEnabled": false,
+        "merged": false,
+        "productionVerified": false
+      },
+      "blockers": [
+        "independent_human_fact_check_not_recorded",
+        "no_explicit_release_slot_or_active_publish_task"
+      ]
+    },
+    {
+      "order": 2,
+      "slug": "business-outsourcing-conversion-risk",
+      "articleId": "NARU-035",
+      "prNumber": 191,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/191",
+      "branch": "seo/contractor-cluster-navigation-20261012",
+      "approvedHeadSha": "7c2cfea15a632349118ebb9ac9965865c58c533d",
+      "qa": {
+        "githubActionsLatestHead": "success",
+        "cloudflarePreviewLatestHead": "success",
+        "previewVisual": "user_confirmed",
+        "independentHumanFactCheck": "not_recorded"
+      },
+      "previewUrl": "https://naru-pr-191-preview.broad-fuchsia.workers.dev/articles/business-outsourcing-conversion-risk",
+      "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/191#issuecomment-6540652968",
+      "publish": {
+        "status": "HELD",
+        "scheduledAtJST": null,
+        "publishTaskEnabled": false,
+        "merged": false,
+        "productionVerified": false
+      },
+      "blockers": [
+        "independent_human_fact_check_not_recorded",
+        "no_explicit_release_slot_or_active_publish_task"
+      ]
+    }
+  ],
+  "note": "This SEO rewrite run is not a new candidate batch. Store approval independently from same-day article selection to avoid overwriting ongoing queue. The PR head is not modified by this record."
+}
