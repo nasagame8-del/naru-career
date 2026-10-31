@@ -20,8 +20,8 @@
         "humanFactCheck": "pending",
         "articleQa": {
           "status": "running",
-          "runId": 41187673781,
-          "headSha": "92acff94832c663398d03c430c48fff010a97ca7"
+          "runId": 41187973775,
+          "headSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
         },
         "imageQa": {
           "status": "passed",
@@ -36,12 +36,12 @@
             "03": "1200x675"
           },
           "metadata": "EXIF/ICC stripped",
-          "headSha": "92acff94832c663398d03c430c48fff010a97ca7"
+          "headSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
         },
         "cloudflarePreview": {
           "status": "running",
-          "runId": 41187673803,
-          "headSha": "92acff94832c663398d03c430c48fff010a97ca7"
+          "runId": 41187973735,
+          "headSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
         },
         "sourceReview": {
           "status": "ai_reviewed_human_pending",
@@ -51,14 +51,14 @@
       },
       "blockers": [
         "最新headのGitHub Actions・Cloudflare Preview検証中",
-        "本文のHuman Fact Check未承認",
-        "記事プレビューの目視承認未取得",
+        "本人による本文ファクトチェック未完了",
+        "同じheadへのプレビュー目視承認未取得",
         "公開時刻未指定"
       ],
       "prNumber": 212,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/212",
       "branch": "article-factory/2026-10-31-81-fake-freelancer",
-      "latestHeadSha": "92acff94832c663398d03c430c48fff010a97ca7",
+      "latestHeadSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400",
       "driveFolderId": "1zvjqIAAEwYLzqbuyeHrktIgQyBzewb9H",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1zvjqIAAEwYLzqbuyeHrktIgQyBzewb9H",
       "researchUrl": "https://docs.google.com/document/d/1mIjW4asDf9TrqrESJ5YOBUwvbJf2kbP06q8Mq8Ml0wc/edit",
@@ -80,6 +80,7 @@
     "毎朝のバッチおよび既存の78/79/80選定結果は変更しない。",
     "本件はユーザーが明示的に選択した単発の新規記事。",
     "10/31 17:43指名企画：NARU-081について研究・原稿Draft・画像プラン/プロンプト完了。masterに未反映、PR#212 Draftで画像待ち。",
-    "10/31 画像4枚受領。規定WebP生成、Drive originals/images計8ファイルを保存確認、PR#212 head 92acff94にGitHub4ファイル反映。マージ・本番公開は行わない。"
+    "10/31 画像4枚受領。規定WebP生成、Drive originals/images計8ファイルを保存確認、PR#212 head 92acff94にGitHub4ファイル反映。マージ・本番公開は行わない。",
+    "10/31 PR#212画像反映後QA成功。Cloudflare Previewは記事公開日が11/01（未来）でstatic HTML生成されないため失敗。公開日10/31に修正してCI再実行（head d7b67bf...）。Drive原稿も同期済み。"
   ]
 }
