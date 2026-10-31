@@ -23,14 +23,19 @@
       "previewUrl": "https://naru-pr-211-preview.broad-fuchsia.workers.dev/articles/outsourcing-contract-termination-worker-status",
       "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/211#issuecomment-6540652611",
       "publish": {
-        "status": "READY_FOR_IMMEDIATE_PUBLISH",
+        "status": "MERGED_UNVERIFIED",
         "scheduledAtJST": null,
         "publishTaskEnabled": false,
-        "merged": false,
+        "merged": true,
         "productionVerified": false,
-        "requested": "immediate"
+        "requested": "immediate",
+        "mergeSha": "495a15b409d15a805053310c30afdb1eebf84d57",
+        "cloudflareRunId": 41181282357,
+        "productionUrl": "https://naru-career.com/articles/outsourcing-contract-termination-worker-status"
       },
-      "blockers": []
+      "blockers": [
+        "waiting_for_cloudflare_production_deploy_and_canonical_verification"
+      ]
     },
     {
       "order": 2,
@@ -49,14 +54,19 @@
       "previewUrl": "https://naru-pr-191-preview.broad-fuchsia.workers.dev/articles/business-outsourcing-conversion-risk",
       "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/191#issuecomment-6540652968",
       "publish": {
-        "status": "READY_FOR_IMMEDIATE_PUBLISH",
+        "status": "MERGED_UNVERIFIED",
         "scheduledAtJST": null,
         "publishTaskEnabled": false,
-        "merged": false,
+        "merged": true,
         "productionVerified": false,
-        "requested": "immediate"
+        "requested": "immediate",
+        "mergeSha": "57fa3c3b38c039454346779c1ae4bc30e418521e",
+        "cloudflareRunId": 41181301945,
+        "productionUrl": "https://naru-career.com/articles/business-outsourcing-conversion-risk"
       },
-      "blockers": []
+      "blockers": [
+        "waiting_for_cloudflare_production_deploy_and_canonical_verification"
+      ]
     }
   ],
   "note": "This SEO rewrite run is not a new candidate batch. Store approval independently from same-day article selection to avoid overwriting ongoing queue. The PR head is not modified by this record.",
