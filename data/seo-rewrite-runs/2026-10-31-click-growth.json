@@ -26,10 +26,24 @@
       "pageClicks": 3,
       "avgPosition": 11.1,
       "action": "title+intro/FAQ/case table/internal links",
-      "status": "DRAFT_PREVIEW_QA_PENDING_USER",
+      "status": "PREVIEW_QA_COMPLETE_AWAITING_HUMAN",
       "humanFactCheck": "pending",
       "previewVisual": "pending",
-      "productionVerified": false
+      "productionVerified": false,
+      "qa": {
+        "articleFactoryValidation": "success",
+        "cloudflarePreview": "success",
+        "validatedHeadSha": "a5586ef94abf1532c62b4b066395f3427b2c654b",
+        "previewUrl": "https://naru-pr-213-preview.broad-fuchsia.workers.dev/articles/contractor-paid-leave-overtime",
+        "previewVisual": "pending",
+        "humanFactCheck": "pending"
+      },
+      "publication": {
+        "status": "DRAFT_NOT_MERGED",
+        "approved": false,
+        "merged": false,
+        "productionVerified": false
+      }
     },
     {
       "slug": "contractor-unpaid-fee-consultation",
@@ -40,10 +54,24 @@
       "pageClicks": 2,
       "avgPosition": 15,
       "action": "title+intro decision table/FAQ/consultation navigation",
-      "status": "DRAFT_PREVIEW_QA_PENDING_USER",
+      "status": "PREVIEW_QA_COMPLETE_AWAITING_HUMAN",
       "humanFactCheck": "pending",
       "previewVisual": "pending",
-      "productionVerified": false
+      "productionVerified": false,
+      "qa": {
+        "articleFactoryValidation": "success",
+        "cloudflarePreview": "success",
+        "validatedHeadSha": "5f6705ccea7371900dd598538b335ecd40589169",
+        "previewUrl": "https://naru-pr-214-preview.broad-fuchsia.workers.dev/articles/contractor-unpaid-fee-consultation",
+        "previewVisual": "pending",
+        "humanFactCheck": "pending"
+      },
+      "publication": {
+        "status": "DRAFT_NOT_MERGED",
+        "approved": false,
+        "merged": false,
+        "productionVerified": false
+      }
     }
   ],
   "blocked": [
@@ -77,5 +105,6 @@
       "GA4 organic landing pages"
     ],
     "avoidClaimsOfLiftWithoutMeasurement": true
-  }
+  },
+  "masterAtLastReview": "e1101ab1b3fdc6edf644af8286d59b810c56e174"
 }
