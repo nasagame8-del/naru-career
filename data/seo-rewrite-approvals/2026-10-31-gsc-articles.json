@@ -23,7 +23,7 @@
       "previewUrl": "https://naru-pr-211-preview.broad-fuchsia.workers.dev/articles/outsourcing-contract-termination-worker-status",
       "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/211#issuecomment-6540652611",
       "publish": {
-        "status": "MERGED_UNVERIFIED",
+        "status": "DEPLOYED_TARGET_URL_UNVERIFIED",
         "scheduledAtJST": null,
         "publishTaskEnabled": false,
         "merged": true,
@@ -31,10 +31,20 @@
         "requested": "immediate",
         "mergeSha": "495a15b409d15a805053310c30afdb1eebf84d57",
         "cloudflareRunId": 41181282357,
-        "productionUrl": "https://naru-career.com/articles/outsourcing-contract-termination-worker-status"
+        "productionUrl": "https://naru-career.com/articles/outsourcing-contract-termination-worker-status",
+        "cloudflareDeploymentVerified": true,
+        "latestProductionHeadSha": "57fa3c3b38c039454346779c1ae4bc30e418521e",
+        "latestProductionWorkflowRunId": 41181301945,
+        "latestProductionWorkflowAttempt": 2,
+        "latestProductionWorkflowSuccess": true,
+        "workerDeploymentAtJST": "2026-10-31T16:43:15+09:00",
+        "canonicalGeneralSmokeSuccess": true,
+        "adsenseOwnershipVerificationSuccess": true,
+        "targetArticleHtmlHttp200Verified": false,
+        "targetFourImagesHttp200Verified": false
       },
       "blockers": [
-        "waiting_for_cloudflare_production_deploy_and_canonical_verification"
+        "target_article_and_four_image_canonical_http_verification_unavailable_from_connected_tools"
       ]
     },
     {
@@ -54,7 +64,7 @@
       "previewUrl": "https://naru-pr-191-preview.broad-fuchsia.workers.dev/articles/business-outsourcing-conversion-risk",
       "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/191#issuecomment-6540652968",
       "publish": {
-        "status": "MERGED_UNVERIFIED",
+        "status": "DEPLOYED_TARGET_URL_UNVERIFIED",
         "scheduledAtJST": null,
         "publishTaskEnabled": false,
         "merged": true,
@@ -62,10 +72,20 @@
         "requested": "immediate",
         "mergeSha": "57fa3c3b38c039454346779c1ae4bc30e418521e",
         "cloudflareRunId": 41181301945,
-        "productionUrl": "https://naru-career.com/articles/business-outsourcing-conversion-risk"
+        "productionUrl": "https://naru-career.com/articles/business-outsourcing-conversion-risk",
+        "cloudflareDeploymentVerified": true,
+        "latestProductionHeadSha": "57fa3c3b38c039454346779c1ae4bc30e418521e",
+        "latestProductionWorkflowRunId": 41181301945,
+        "latestProductionWorkflowAttempt": 2,
+        "latestProductionWorkflowSuccess": true,
+        "workerDeploymentAtJST": "2026-10-31T16:43:15+09:00",
+        "canonicalGeneralSmokeSuccess": true,
+        "adsenseOwnershipVerificationSuccess": true,
+        "targetArticleHtmlHttp200Verified": false,
+        "targetFourImagesHttp200Verified": false
       },
       "blockers": [
-        "waiting_for_cloudflare_production_deploy_and_canonical_verification"
+        "target_article_and_four_image_canonical_http_verification_unavailable_from_connected_tools"
       ]
     }
   ],
