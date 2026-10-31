@@ -26,7 +26,7 @@
       "pageClicks": 3,
       "avgPosition": 11.1,
       "action": "title+intro/FAQ/case table/internal links",
-      "status": "MERGED_PRODUCTION_PENDING",
+      "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
       "productionVerified": false,
@@ -41,15 +41,17 @@
         "previewVisualApprovedHeadSha": "a5586ef94abf1532c62b4b066395f3427b2c654b"
       },
       "publication": {
-        "status": "MERGED_PRODUCTION_PENDING",
+        "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
         "approved": true,
         "merged": true,
         "productionVerified": false,
         "requestedPublishAt": "immediate",
         "mergeSha": "4a2648f3e25558b4ff20f255d95362d4fa0467dd",
         "productionRunId": 41191664330,
-        "cloudflareProductionVerified": false,
-        "productionUrl": "https://naru-career.com/articles/contractor-paid-leave-overtime"
+        "cloudflareProductionVerified": true,
+        "productionUrl": "https://naru-career.com/articles/contractor-paid-leave-overtime",
+        "articleUrlDirectCheck": false,
+        "imagesDirectCheck": false
       }
     },
     {
@@ -61,7 +63,7 @@
       "pageClicks": 2,
       "avgPosition": 15,
       "action": "title+intro decision table/FAQ/consultation navigation",
-      "status": "APPROVED_PENDING_PREMERGE_GATE",
+      "status": "MERGED_PRODUCTION_PENDING",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
       "productionVerified": false,
@@ -76,11 +78,17 @@
         "previewVisualApprovedHeadSha": "5f6705ccea7371900dd598538b335ecd40589169"
       },
       "publication": {
-        "status": "APPROVED_PENDING_PREMERGE_GATE",
+        "status": "MERGED_PRODUCTION_PENDING",
         "approved": true,
-        "merged": false,
+        "merged": true,
         "productionVerified": false,
-        "requestedPublishAt": "immediate"
+        "requestedPublishAt": "immediate",
+        "mergeSha": "a80b028b9f2920b8658b93b031c158bbc4df7883",
+        "productionRunId": 41191970279,
+        "cloudflareProductionVerified": false,
+        "articleUrlDirectCheck": false,
+        "imagesDirectCheck": false,
+        "productionUrl": "https://naru-career.com/articles/contractor-unpaid-fee-consultation"
       }
     }
   ],
