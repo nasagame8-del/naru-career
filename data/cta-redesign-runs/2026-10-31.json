@@ -20,33 +20,48 @@
       "slug": "agent-not-recommended",
       "branch": "fix/cta-editorial-agent-not-recommended-20261031",
       "headSha": "e976419981c3fa8bd6f8461898676a0f1aa98546",
-      "status": "DRAFT_QA_RUNNING",
+      "status": "DRAFT_PREVIEW_QA_COMPLETE_AWAITING_HUMAN",
       "qaRunId": 41201121873,
       "previewRunId": 41201121921,
       "userVisual": "pending",
-      "published": false
+      "published": false,
+      "qa": "success",
+      "cloudflarePreview": "success",
+      "previewUrl": "https://naru-pr-224-preview.broad-fuchsia.workers.dev/articles/agent-not-recommended",
+      "sameHeadVerified": "e976419981c3fa8bd6f8461898676a0f1aa98546",
+      "notes": "Shared CTA disclosure and registry label updates are identical on all three draft branches; changes must be reconciled when merging sequentially."
     },
     {
       "pr": 225,
       "slug": "agent-job-mismatch",
       "branch": "fix/cta-editorial-agent-job-mismatch-20261031",
       "headSha": "5ab959d4182e13d9d94bf91a1f743239fcfdc6fa",
-      "status": "DRAFT_QA_RUNNING",
+      "status": "DRAFT_PREVIEW_QA_COMPLETE_AWAITING_HUMAN",
       "qaRunId": 41201136310,
       "previewRunId": 41201136298,
       "userVisual": "pending",
-      "published": false
+      "published": false,
+      "qa": "success",
+      "cloudflarePreview": "success",
+      "previewUrl": "https://naru-pr-225-preview.broad-fuchsia.workers.dev/articles/agent-job-mismatch",
+      "sameHeadVerified": "5ab959d4182e13d9d94bf91a1f743239fcfdc6fa",
+      "notes": "Shared CTA disclosure and registry label updates are identical on all three draft branches; changes must be reconciled when merging sequentially."
     },
     {
       "pr": 226,
       "slug": "retirement-agency-second-new-grad-how-to-choose",
       "branch": "fix/cta-editorial-retirement-comparison-20261031",
       "headSha": "1c0ba840beaff72b834289f9b7f2e88dbe575084",
-      "status": "DRAFT_QA_RUNNING",
+      "status": "DRAFT_PREVIEW_QA_COMPLETE_AWAITING_HUMAN",
       "qaRunId": 41201147047,
       "previewRunId": 41201147048,
       "userVisual": "pending",
-      "published": false
+      "published": false,
+      "qa": "success",
+      "cloudflarePreview": "success",
+      "previewUrl": "https://naru-pr-226-preview.broad-fuchsia.workers.dev/articles/retirement-agency-second-new-grad-how-to-choose",
+      "sameHeadVerified": "1c0ba840beaff72b834289f9b7f2e88dbe575084",
+      "notes": "Shared CTA disclosure and registry label updates are identical on all three draft branches; changes must be reconciled when merging sequentially."
     }
   ],
   "pausedPriorWork": [
@@ -62,5 +77,7 @@
       "pr": 215,
       "reason": "legacy PNG and bulk multi-article preview gate"
     }
-  ]
+  ],
+  "status": "THREE_PREVIEWS_QA_COMPLETE_AWAITING_HUMAN",
+  "technicalVerificationNote": "GitHub Actions preview smoke tests passed (article HTTP 200, noindex, image WebPs), but external web viewer could not open Workers preview; actual PC/SP visual confirmation remains with user."
 }
