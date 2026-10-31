@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "recordedDate": "2026-10-31",
+  "scope": "User-requested NARU affiliate CTA placement. Draft only; no publication without QA and visual approval.",
+  "masterAtStart": "a80b028b9f2920b8658b93b031c158bbc4df7883",
+  "offers": {
+    "uzuzGeneral": {
+      "programId": "1119786",
+      "asp": "アクセストレード",
+      "key": "uzuz_general",
+      "url": "https://h.accesstrade.net/sp/cc?rk=0100pw7f00ovm3",
+      "conversion": "新規無料会員登録",
+      "rewardYen": 8791
+    },
+    "retirementJobs": {
+      "programId": "1146802",
+      "asp": "アクセストレード",
+      "key": "retirement_jobs",
+      "url": "https://h.accesstrade.net/sp/cc?rk=0100q25q00ovm3",
+      "conversion": "入金",
+      "rewardYen": 12000
+    },
+    "retirementZen": {
+      "programId": "1157435",
+      "asp": "アクセストレード",
+      "creative": "original120x60banner",
+      "clickUrl": "https://h.accesstrade.net/sp/cc?rk=0100q5nd00ovm3",
+      "imageUrl": "https://h.accesstrade.net/sp/rr?rk=0100q5nd00ovm3",
+      "conversion": "LINE友達追加",
+      "rewardYen": 10989
+    }
+  },
+  "articlePlacements": {
+    "readyForPreview": [
+      {
+        "slug": "agent-not-recommended",
+        "offer": "uzuzGeneral",
+        "pr": 216
+      },
+      {
+        "slug": "agent-job-mismatch",
+        "offer": "uzuzGeneral",
+        "pr": 220
+      },
+      {
+        "slug": "second-new-grad-desired-salary-2026",
+        "offer": "uzuzGeneral",
+        "pr": 221
+      },
+      {
+        "slug": "second-new-grad-it-interview-questions",
+        "offer": "uzuzGeneral",
+        "pr": 222
+      },
+      {
+        "slug": "retirement-agency-second-new-grad-how-to-choose",
+        "offers": [
+          "retirementJobs",
+          "retirementZen"
+        ],
+        "pr": 209
+      }
+    ],
+    "legacyImagesStaged": [
+      {
+        "slug": "agent-comparison-2026",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "agent-free-and-cancel",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "agent-site-vs-agent-usage",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "interview-failure-why-this-job",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "it-industry-quit-myth",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "it-web-industry-real-work-culture",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "job-change-timing-3months",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "resume-writing-second-new-grad",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "second-new-grad-it-career-change",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "second-new-grad-job-change-traps",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "second-new-grad-programming-career-change",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      },
+      {
+        "slug": "what-is-second-new-grad",
+        "offer": "uzuzGeneral",
+        "pr": 215,
+        "reason": "Article uses legacy PNG image set, lacking 4 WebP required by Cloudflare article preview. Bulk Draft is not publication-ready."
+      }
+    ],
+    "separateLegacyResignation": {
+      "slug": "how-to-resign-experience",
+      "offers": [
+        "retirementJobs",
+        "retirementZen"
+      ],
+      "pr": 223,
+      "reason": "Legacy PNG, Cloudflare Preview 4 WebP gate unmet; Jobs CTA also depends on PR209 registry merge"
+    }
+  },
+  "constraints": {
+    "neverPublishWithoutUserApproval": true,
+    "noCopyWrittenExperienceForUnusedOffers": true,
+    "neverTurnZenBannerIntoUnapprovedTextLink": true,
+    "samuraiJobNotPlaced": true,
+    "uzuz28NoNewPlacement": true,
+    "noRpgDiagnosisCTA": true
+  },
+  "nextActions": [
+    "Complete same-head CI for PR209 and verify ZEN original banner rendering",
+    "User preview visual approval for the five ready articles",
+    "Resolve legacy image QA before publishing remaining staged placements",
+    "After publication compare CTA clicks and affiliate conversion, not just pageviews"
+  ],
+  "status": "IN_PROGRESS_DRAFT"
+}
