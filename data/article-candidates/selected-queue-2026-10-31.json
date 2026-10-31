@@ -13,7 +13,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "RESEARCH_APPROVED_DRAFT_PREPARING",
+      "status": "WAITING_IMAGES",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
@@ -26,15 +26,29 @@
         }
       },
       "blockers": [
-        "本文・画像プラン編集中",
-        "画像4枚未提供",
-        "Human Fact CheckとPreview承認未取得",
+        "画像4枚のユーザー生成・添付が未了",
+        "画像反映後のQA/CI/Cloudflare Preview確認待ち",
+        "Human Fact Checkと同SHAのユーザー目視承認が未了",
         "公開時刻未指定"
-      ]
+      ],
+      "prNumber": 212,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/212",
+      "branch": "article-factory/2026-10-31-81-fake-freelancer",
+      "latestHeadSha": "a35c5d33623ae4e9656307886d8de660ec3d3946",
+      "driveFolderId": "1zvjqIAAEwYLzqbuyeHrktIgQyBzewb9H",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1zvjqIAAEwYLzqbuyeHrktIgQyBzewb9H",
+      "researchUrl": "https://docs.google.com/document/d/1mIjW4asDf9TrqrESJ5YOBUwvbJf2kbP06q8Mq8Ml0wc/edit",
+      "articleDraftDriveUrl": "https://docs.google.com/document/d/1WNMhaz_d0_vDyFGjiZFALfd1sXZe3Tde1rc75OIJUBo/edit",
+      "imagePlanDriveUrl": "https://docs.google.com/document/d/1gD8qn3mF53juF9XXPAVIBjl0rJqZ0GKGWbi0EhUh7HA/edit",
+      "imagePromptsUrl": "https://docs.google.com/document/d/1ezqS1ZxWhRSp-chgLSW2Tr4G1-AeAz2X9NpdWm08doU/edit",
+      "imagePromptCopyUrl": "https://docs.google.com/document/d/1WeBroBxkCyeMQD7IHrBdxzjeLJ4REZkKq15yt-TaaTY/edit",
+      "originalsFolderId": "1gpTI2tMkMdGv64820sxgTRibjAbsUaf_",
+      "imagesFolderId": "1LYmnLOtQC3AWsiL53H9_7v-qzx7Lu0nY"
     }
   ],
   "notes": [
     "毎朝のバッチおよび既存の78/79/80選定結果は変更しない。",
-    "本件はユーザーが明示的に選択した単発の新規記事。"
+    "本件はユーザーが明示的に選択した単発の新規記事。",
+    "10/31 17:43指名企画：NARU-081について研究・原稿Draft・画像プラン/プロンプト完了。masterに未反映、PR#212 Draftで画像待ち。"
   ]
 }
