@@ -204,7 +204,8 @@ describe("退職代行の広告リンクとバナー", () => {
     expect(rendered).toContain('src="https://h.accesstrade.net/sp/rr?rk=0100q5nd00ovm3"');
     expect(rendered).toContain('alt="ZENの退職代行"');
     expect(rendered).toContain('rel="nofollow sponsored"');
-    expect(rendered).toContain("※提携先のサービスです");
+    expect(rendered).toContain('<span class="cta-note" aria-label="広告">広告（PR）</span>');
+    expect(rendered).not.toContain("※提携先のサービスです");
     expect(rendered).not.toContain("[CTA_BUTTON:retirement_jobs]");
   });
 });
