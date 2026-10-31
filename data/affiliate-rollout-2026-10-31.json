@@ -41,10 +41,13 @@
         "validation": "success",
         "cloudflarePreview": "success",
         "userVisual": "user_confirmed",
-        "publication": "APPROVED_PENDING_PREMERGE",
+        "publication": "MERGED_PRODUCTION_STATUS_SEPARATELY_CHECKED",
         "humanFactCheck": "user_confirmed",
         "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
-        "approvedHeadSha": "c25ea6ce215b268c3e475b452640902ea6a36077"
+        "approvedHeadSha": "c25ea6ce215b268c3e475b452640902ea6a36077",
+        "merged": true,
+        "mergeSha": "1825baf587c786f288d04b75bc51ddaa24d815f9",
+        "productionRunId": 41199374526
       },
       {
         "slug": "agent-job-mismatch",
@@ -55,10 +58,14 @@
         "validation": "success",
         "cloudflarePreview": "success",
         "userVisual": "user_confirmed",
-        "publication": "APPROVED_PENDING_PREMERGE",
+        "publication": "MERGED_PRODUCTION_STATUS_SEPARATELY_CHECKED",
         "humanFactCheck": "user_confirmed",
         "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
-        "approvedHeadSha": "a305d500f7c9b633c9cab05e56743f35a702fb35"
+        "approvedHeadSha": "a305d500f7c9b633c9cab05e56743f35a702fb35",
+        "merged": true,
+        "mergeSha": "2348c41abe6c781ca6446b8dc13fc3f26cc1cc64",
+        "productionRunId": 41199642345,
+        "cloudflareProductionResult": "success"
       },
       {
         "slug": "second-new-grad-desired-salary-2026",
@@ -68,11 +75,11 @@
         "previewUrl": "https://naru-pr-221-preview.broad-fuchsia.workers.dev/articles/second-new-grad-desired-salary-2026",
         "validation": "success",
         "cloudflarePreview": "success",
-        "userVisual": "user_confirmed",
-        "publication": "APPROVED_PENDING_PREMERGE",
+        "userVisual": "superseded_by_design_feedback",
+        "publication": "DRAFT_PAUSED_USER_REQUEST_CTA_REDESIGN",
         "humanFactCheck": "user_confirmed",
         "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
-        "approvedHeadSha": "d1cb71506259ba00544bddced2375a8482c1660b"
+        "approvedHeadSha": null
       },
       {
         "slug": "second-new-grad-it-interview-questions",
@@ -82,11 +89,11 @@
         "previewUrl": "https://naru-pr-222-preview.broad-fuchsia.workers.dev/articles/second-new-grad-it-interview-questions",
         "validation": "success",
         "cloudflarePreview": "success",
-        "userVisual": "user_confirmed",
-        "publication": "APPROVED_PENDING_PREMERGE",
+        "userVisual": "superseded_by_design_feedback",
+        "publication": "DRAFT_PAUSED_USER_REQUEST_CTA_REDESIGN",
         "humanFactCheck": "user_confirmed",
         "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
-        "approvedHeadSha": "a4c992cb8447b1604b0ab9c333d36b982ec01bb3"
+        "approvedHeadSha": null
       },
       {
         "slug": "retirement-agency-second-new-grad-how-to-choose",
@@ -100,10 +107,13 @@
         "validation": "success",
         "cloudflarePreview": "success",
         "userVisual": "user_confirmed",
-        "publication": "APPROVED_PENDING_PREMERGE",
+        "publication": "MERGED_PRODUCTION_STATUS_SEPARATELY_CHECKED",
         "humanFactCheck": "user_confirmed",
         "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
-        "approvedHeadSha": "eba9b89b12d2ba90cb54ff5a00ad0cd813ed08fa"
+        "approvedHeadSha": "eba9b89b12d2ba90cb54ff5a00ad0cd813ed08fa",
+        "merged": true,
+        "mergeSha": "96e8fabf92b829c8cfc10ad39390cb2dd26b1e50",
+        "productionRunId": 41199108487
       }
     ],
     "legacyImagesStaged": [
@@ -207,7 +217,7 @@
     "Resolve legacy image QA before publishing remaining staged placements",
     "After publication compare CTA clicks and affiliate conversion, not just pageviews"
   ],
-  "status": "FIVE_APPROVED_PENDING_RELEASE",
+  "status": "CTA_REDESIGN_REQUESTED_STOP_NEW_MERGES",
   "reminder": "All five ready article previews need user visual confirmation for their exact head SHA. No article has been merged/published in this rollout.",
   "approval": {
     "userQuote": "問題なし公開して。公開したらURLちょうだい。本番確認する",
@@ -228,5 +238,10 @@
       "221": "d1cb71506259ba00544bddced2375a8482c1660b",
       "222": "a4c992cb8447b1604b0ab9c333d36b982ec01bb3"
     }
+  },
+  "interruption": {
+    "quote": "CTA下手くそすぎる。出来レース感しかない。他のブログやサイトがどのようにCTA組んでるか見てきな",
+    "action": "Stop merging remaining PRs #221 and #222; return them to Draft; do competitor CTA research. Changes already merged #209/#216/#220 are not rolled back without new instruction.",
+    "dateJST": "2026-10-31"
   }
 }
