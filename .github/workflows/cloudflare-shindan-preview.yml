@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - 'src/app/shindan/**'
+      - 'src/app/types/**'
       - 'public/shindan/**'
       - '.github/workflows/cloudflare-shindan-preview.yml'
 permissions:
@@ -76,15 +77,17 @@ jobs:
           test -n "$URL"
           echo "url=$URL/shindan" >> "$GITHUB_OUTPUT"
           echo "Preview: $URL/shindan (head $HEAD_SHA)" >> "$GITHUB_STEP_SUMMARY"
-      - name: Verify diagnosis page and noindex
+      - name: Verify diagnosis routes return 404
         env:
           URL: ${{ steps.deploy.outputs.url }}
         shell: bash
         run: |
           set -euo pipefail
-          curl --retry 10 --retry-delay 3 --retry-all-errors --fail -sS -D /tmp/shindan-headers "$URL" -o /tmp/shindan.html
-          grep -q '適職診断' /tmp/shindan.html
-          grep -qi 'x-robots-tag: noindex' /tmp/shindan-headers
+          SHINDAN_STATUS="$(curl --retry 10 --retry-delay 3 --retry-all-errors -sS -o /tmp/shindan.html -w '%{http_code}' "$URL")"
+          test "$SHINDAN_STATUS" = "404"
+          BASE_URL="${URL%/shindan}"
+          TYPE_STATUS="$(curl --retry 10 --retry-delay 3 --retry-all-errors -sS -o /tmp/type.html -w '%{http_code}' "$BASE_URL/types/wizard")"
+          test "$TYPE_STATUS" = "404"
       - name: Attach direct preview URL
         env:
           GH_TOKEN: ${{ github.token }}

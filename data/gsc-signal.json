@@ -1,119 +1,169 @@
 {
-  "generatedAt": "2026-10-11T01:12:21.981Z",
+  "generatedAt": "2026-10-31T01:46:30.363Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-09-24",
-    "endDate": "2026-10-07"
+    "startDate": "2026-10-14",
+    "endDate": "2026-10-27"
   },
   "previousRange": {
-    "startDate": "2026-09-10",
-    "endDate": "2026-09-23"
+    "startDate": "2026-09-30",
+    "endDate": "2026-10-13"
   },
   "visibleQueryCounts": {
-    "current": 32,
-    "previous": 7,
-    "new": 27
+    "current": 69,
+    "previous": 82,
+    "new": 42
   },
   "positionBuckets": {
     "current": {
       "top3": 5,
-      "top10": 11,
-      "top20": 18
+      "top10": 17,
+      "top20": 32
     },
     "previous": {
-      "top3": 0,
-      "top10": 2,
-      "top20": 4
+      "top3": 7,
+      "top10": 31,
+      "top20": 39
     }
   },
   "querySignals": [
     {
-      "query": "正社員 から業務委託 クビ",
+      "query": "正社員から業務委託",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前 メール",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 出社 強制",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 急に辞める",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
+      "query": "転職 労働条件通知書 来ない",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "業務委託 有給",
+      "positionBand": "21-40",
+      "signal": "rising"
+    },
+    {
       "query": "正社員 から業務委託 クビ",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "転職エージェント 本音",
-      "positionBand": "41+",
-      "signal": "rising"
-    },
-    {
-      "query": "転職エージェント 求人 微妙",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
-      "query": "正社員 から業務委託 違法",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "query": "山田 瑠々 辞め た 会社",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "query": "naru 第二新卒",
       "positionBand": "1-3",
-      "signal": "new"
+      "signal": "rising"
+    },
+    {
+      "query": "正社員から業務委託に変更",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "rpg 診断",
+      "positionBand": "21-40",
+      "signal": "rising"
     },
     {
       "query": "フリーランス 契約解除",
       "positionBand": "41+",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "query": "ワークポート",
       "positionBand": "1-3",
-      "signal": "new"
+      "signal": "rising"
     },
     {
-      "query": "業務委託 退職",
+      "query": "個人事業主 業務委託 辞めたい",
       "positionBand": "41+",
-      "signal": "new"
-    },
-    {
-      "query": "rpg 診断",
-      "positionBand": "41+",
-      "signal": "new"
-    },
-    {
-      "query": "sns調査 (裏アカ調査) 採用",
-      "positionBand": "21-40",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "query": "労働条件通知書 内定承諾前",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "query": "業務 委託 から 正社員",
       "positionBand": "21-40",
-      "signal": "new"
+      "signal": "rising"
     },
     {
-      "query": "在職中 面接",
-      "positionBand": "1-3",
-      "signal": "new"
+      "query": "業務 委託 契約 終了",
+      "positionBand": "21-40",
+      "signal": "rising"
     },
     {
-      "query": "山田 瑠々 就職 先",
+      "query": "業務委託 契約更新しない 伝え方",
+      "positionBand": "21-40",
+      "signal": "rising"
+    },
+    {
+      "query": "正社員から業務委託",
       "positionBand": "11-20",
       "signal": "new"
     },
     {
+      "query": "業務委託 給料未払い",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前 メール",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 勤怠管理",
+      "positionBand": "41+",
+      "signal": "new"
+    },
+    {
       "query": "正社員 業務委託 切り替え",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 出社 強制",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 クビ",
       "positionBand": "21-40",
       "signal": "new"
     }
   ],
   "pageSignals": [
     {
-      "page": "/",
-      "positionBand": "1-3",
+      "page": "/articles/offer-letter-before-acceptance-not-provided",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/employee-to-contractor-unemployment-benefit",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -122,34 +172,49 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/alumni-hiring",
-      "positionBand": "21-40",
+      "page": "/articles/outsourcing-contract-termination-worker-status",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
-      "page": "/articles/reference-check-explained",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/second-new-grad-it-interview-questions",
+      "page": "/articles/contractor-client-cancellation-costs",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
-      "page": "/category/taiken",
+      "page": "/articles/contractor-how-to-quit",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/about",
+      "page": "/articles/contractor-paid-leave-overtime",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/contractor-unpaid-fee-consultation",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/employee-contractor-pay-comparison",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/agent-diagnosis",
+      "page": "/articles/contractor-exclusivity-noncompete-checks",
       "positionBand": "4-10",
-      "signal": "rising"
+      "signal": "new"
+    },
+    {
+      "page": "/articles/contractor-unpaid-revisions-scope",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/probation-period-lower-salary-checks",
+      "positionBand": "11-20",
+      "signal": "new"
     },
     {
       "page": "/articles/agent-comparison-2026",
@@ -157,32 +222,12 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/agent-free-and-cancel",
+      "page": "/articles/agent-referral-vs-self-apply",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
-      "page": "/articles/agent-job-mismatch",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/aio-seo-industry-inside",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/bizreach-second-new-grad",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/casual-interview",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/company-data-hygiene-security-breaches",
+      "page": "/articles/agent-site-vs-agent-usage",
       "positionBand": "4-10",
       "signal": "new"
     }
