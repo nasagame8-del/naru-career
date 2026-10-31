@@ -1,0 +1,58 @@
+{
+  "batchId": "batch_2026-10-31_editorial_fake_freelancer",
+  "generatedAt": "2026-10-31T17:43:00+09:00",
+  "trigger": "manual",
+  "inventorySize": 75,
+  "nextArticleId": 81,
+  "candidates": [
+    {
+      "id": "cand_261031_editorial_fake_freelancer",
+      "title": "偽装フリーランスとは？業務委託なのに社員扱いされる人の判断基準8項目と相談先",
+      "primaryKeyword": "偽装フリーランス 見分け方",
+      "secondaryKeywords": [
+        "偽装フリーランス 労働者性",
+        "業務委託 社員扱い",
+        "偽装フリーランス 相談先"
+      ],
+      "searchIntent": "do",
+      "category": "業界解説",
+      "proposedSlug": "fake-freelancer-worker-status-guide",
+      "differenceFromExisting": "既存記事061は偽装請負との違い、035は正社員から切り替え、052は契約終了、067は勤怠管理。新記事は現在業務委託で働く本人を起点に、厚労省の公式8項目→記録→相談窓口を一気通貫で整理するハブ。既存内容を複製しない。",
+      "reasonToWriteNow": "14日間のGSCで業務委託関連の既存URLが伸長。単独「偽装フリーランス」の需要は未検証なので、KW需要を断定しない。ユーザーが2026-10-31の会話で本企画を選択。",
+      "riskFlags": [
+        "CANNIBALIZATION",
+        "YMYL_SENSITIVE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "disguised-contracting-freelance-difference",
+        "business-outsourcing-conversion-risk",
+        "contractor-attendance-control-worker-status",
+        "outsourcing-contract-termination-worker-status"
+      ],
+      "searchEvidence": null,
+      "selectionEvidence": {
+        "gsc": "medium",
+        "serp": "medium",
+        "trends": "unavailable",
+        "demandExpansions": "unavailable",
+        "clusterFit": "strong",
+        "originalAngle": true,
+        "cannibalizationRisk": "medium",
+        "checkedAt": "2026-10-31T17:43:00+09:00",
+        "notes": [
+          "GSC query『偽装フリーランス』の実数は取得できていない。業務委託クラスターのページ実績のみ根拠にする。",
+          "主要な厚労省の労働者性公式チェックリストと実務の相談先を確認。",
+          "既存61/35/52/67記事との同一意図は避け、事実と事業者としての取引問題を区別する。"
+        ]
+      },
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "2026-10-31朝のcronバッチは空のまま維持し、別のユーザー指名企画として独立記録。",
+    "同日selected-queueは取得時に存在せず。Openの既選定78/79/80を保持し81を新規割当。",
+    "外部検索量・偽装フリーランス単独GSC実測は未取得。"
+  ]
+}
