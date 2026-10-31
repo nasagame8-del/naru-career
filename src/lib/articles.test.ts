@@ -194,3 +194,17 @@ describe("ラベル付き囲みボックス記法", () => {
     expect(rendered).toContain('<div class="naru-box">');
   });
 });
+
+describe("退職代行の広告リンクとバナー", () => {
+  it("Jobs CTAとユーザー提供ZENバナーを広告開示付きで描画する", async () => {
+    const article = await getArticle("retirement-agency-second-new-grad-how-to-choose");
+    const rendered = article.contentHtml;
+    expect(rendered).toContain('href="https://h.accesstrade.net/sp/cc?rk=0100q25q00ovm3"');
+    expect(rendered).toContain('href="https://h.accesstrade.net/sp/cc?rk=0100q5nd00ovm3"');
+    expect(rendered).toContain('src="https://h.accesstrade.net/sp/rr?rk=0100q5nd00ovm3"');
+    expect(rendered).toContain('alt="ZENの退職代行"');
+    expect(rendered).toContain('rel="nofollow sponsored"');
+    expect(rendered).toContain("※提携先のサービスです");
+    expect(rendered).not.toContain("[CTA_BUTTON:retirement_jobs]");
+  });
+});
