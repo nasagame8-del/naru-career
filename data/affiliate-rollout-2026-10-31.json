@@ -40,8 +40,11 @@
         "previewUrl": "https://naru-pr-216-preview.broad-fuchsia.workers.dev/articles/agent-not-recommended",
         "validation": "success",
         "cloudflarePreview": "success",
-        "userVisual": "pending",
-        "publication": "DRAFT_NOT_MERGED"
+        "userVisual": "user_confirmed",
+        "publication": "APPROVED_PENDING_PREMERGE",
+        "humanFactCheck": "user_confirmed",
+        "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
+        "approvedHeadSha": "c25ea6ce215b268c3e475b452640902ea6a36077"
       },
       {
         "slug": "agent-job-mismatch",
@@ -51,8 +54,11 @@
         "previewUrl": "https://naru-pr-220-preview.broad-fuchsia.workers.dev/articles/agent-job-mismatch",
         "validation": "success",
         "cloudflarePreview": "success",
-        "userVisual": "pending",
-        "publication": "DRAFT_NOT_MERGED"
+        "userVisual": "user_confirmed",
+        "publication": "APPROVED_PENDING_PREMERGE",
+        "humanFactCheck": "user_confirmed",
+        "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
+        "approvedHeadSha": "a305d500f7c9b633c9cab05e56743f35a702fb35"
       },
       {
         "slug": "second-new-grad-desired-salary-2026",
@@ -62,8 +68,11 @@
         "previewUrl": "https://naru-pr-221-preview.broad-fuchsia.workers.dev/articles/second-new-grad-desired-salary-2026",
         "validation": "success",
         "cloudflarePreview": "success",
-        "userVisual": "pending",
-        "publication": "DRAFT_NOT_MERGED"
+        "userVisual": "user_confirmed",
+        "publication": "APPROVED_PENDING_PREMERGE",
+        "humanFactCheck": "user_confirmed",
+        "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
+        "approvedHeadSha": "d1cb71506259ba00544bddced2375a8482c1660b"
       },
       {
         "slug": "second-new-grad-it-interview-questions",
@@ -73,8 +82,11 @@
         "previewUrl": "https://naru-pr-222-preview.broad-fuchsia.workers.dev/articles/second-new-grad-it-interview-questions",
         "validation": "success",
         "cloudflarePreview": "success",
-        "userVisual": "pending",
-        "publication": "DRAFT_NOT_MERGED"
+        "userVisual": "user_confirmed",
+        "publication": "APPROVED_PENDING_PREMERGE",
+        "humanFactCheck": "user_confirmed",
+        "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
+        "approvedHeadSha": "a4c992cb8447b1604b0ab9c333d36b982ec01bb3"
       },
       {
         "slug": "retirement-agency-second-new-grad-how-to-choose",
@@ -87,8 +99,11 @@
         "previewUrl": "https://naru-pr-209-preview.broad-fuchsia.workers.dev/articles/retirement-agency-second-new-grad-how-to-choose",
         "validation": "success",
         "cloudflarePreview": "success",
-        "userVisual": "pending",
-        "publication": "DRAFT_NOT_MERGED"
+        "userVisual": "user_confirmed",
+        "publication": "APPROVED_PENDING_PREMERGE",
+        "humanFactCheck": "user_confirmed",
+        "userApprovalStatement": "問題なし公開して。公開したらURLちょうだい。本番確認する",
+        "approvedHeadSha": "eba9b89b12d2ba90cb54ff5a00ad0cd813ed08fa"
       }
     ],
     "legacyImagesStaged": [
@@ -192,6 +207,26 @@
     "Resolve legacy image QA before publishing remaining staged placements",
     "After publication compare CTA clicks and affiliate conversion, not just pageviews"
   ],
-  "status": "FIVE_PREVIEWS_QA_PASSED;THIRTEEN_LEGACY_ARTICLE_UPDATES_PENDING",
-  "reminder": "All five ready article previews need user visual confirmation for their exact head SHA. No article has been merged/published in this rollout."
+  "status": "FIVE_APPROVED_PENDING_RELEASE",
+  "reminder": "All five ready article previews need user visual confirmation for their exact head SHA. No article has been merged/published in this rollout.",
+  "approval": {
+    "userQuote": "問題なし公開して。公開したらURLちょうだい。本番確認する",
+    "approvedPRs": [
+      209,
+      216,
+      220,
+      221,
+      222
+    ],
+    "sameHeadOnly": true,
+    "requestedPublishAt": "immediate",
+    "productionVisualConfirmation": "pending",
+    "headShas": {
+      "209": "eba9b89b12d2ba90cb54ff5a00ad0cd813ed08fa",
+      "216": "c25ea6ce215b268c3e475b452640902ea6a36077",
+      "220": "a305d500f7c9b633c9cab05e56743f35a702fb35",
+      "221": "d1cb71506259ba00544bddced2375a8482c1660b",
+      "222": "a4c992cb8447b1604b0ab9c333d36b982ec01bb3"
+    }
+  }
 }
