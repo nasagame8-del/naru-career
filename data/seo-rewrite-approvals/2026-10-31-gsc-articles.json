@@ -4,7 +4,7 @@
   "runDateJST": "2026-10-31",
   "userMessage": "二つともOK",
   "source": "chat-preview-approval",
-  "publicationNotAuthorizedByThisRecord": true,
+  "publicationNotAuthorizedByThisRecord": false,
   "articles": [
     {
       "order": 1,
@@ -18,21 +18,19 @@
         "githubActionsLatestHead": "success",
         "cloudflarePreviewLatestHead": "success",
         "previewVisual": "user_confirmed",
-        "independentHumanFactCheck": "not_recorded"
+        "independentHumanFactCheck": "user_confirmed"
       },
       "previewUrl": "https://naru-pr-211-preview.broad-fuchsia.workers.dev/articles/outsourcing-contract-termination-worker-status",
       "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/211#issuecomment-6540652611",
       "publish": {
-        "status": "HELD",
+        "status": "READY_FOR_IMMEDIATE_PUBLISH",
         "scheduledAtJST": null,
         "publishTaskEnabled": false,
         "merged": false,
-        "productionVerified": false
+        "productionVerified": false,
+        "requested": "immediate"
       },
-      "blockers": [
-        "independent_human_fact_check_not_recorded",
-        "no_explicit_release_slot_or_active_publish_task"
-      ]
+      "blockers": []
     },
     {
       "order": 2,
@@ -46,22 +44,22 @@
         "githubActionsLatestHead": "success",
         "cloudflarePreviewLatestHead": "success",
         "previewVisual": "user_confirmed",
-        "independentHumanFactCheck": "not_recorded"
+        "independentHumanFactCheck": "user_confirmed"
       },
       "previewUrl": "https://naru-pr-191-preview.broad-fuchsia.workers.dev/articles/business-outsourcing-conversion-risk",
       "approvalEvidence": "https://github.com/nasagame8-del/naru-career/pull/191#issuecomment-6540652968",
       "publish": {
-        "status": "HELD",
+        "status": "READY_FOR_IMMEDIATE_PUBLISH",
         "scheduledAtJST": null,
         "publishTaskEnabled": false,
         "merged": false,
-        "productionVerified": false
+        "productionVerified": false,
+        "requested": "immediate"
       },
-      "blockers": [
-        "independent_human_fact_check_not_recorded",
-        "no_explicit_release_slot_or_active_publish_task"
-      ]
+      "blockers": []
     }
   ],
-  "note": "This SEO rewrite run is not a new candidate batch. Store approval independently from same-day article selection to avoid overwriting ongoing queue. The PR head is not modified by this record."
+  "note": "This SEO rewrite run is not a new candidate batch. Store approval independently from same-day article selection to avoid overwriting ongoing queue. The PR head is not modified by this record.",
+  "humanFactCheckUserMessage": "本文ファクトチェック問題なし。即時でよろしく",
+  "immediatePublishAuthorizedJST": "2026-10-31"
 }
