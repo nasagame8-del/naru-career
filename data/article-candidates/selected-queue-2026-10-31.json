@@ -13,7 +13,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "APPROVED_PENDING_PREMERGE_GATE",
+      "status": "MERGED_AWAITING_PRODUCTION",
       "requestedPublishAt": "immediate",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -51,7 +51,9 @@
         "previewApprovedHeadSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400",
         "factCheckApprovedHeadSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
       },
-      "blockers": [],
+      "blockers": [
+        "Cloudflare Production deployment in progress; need canonical article+four image HTTP status and content check"
+      ],
       "prNumber": 212,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/212",
       "branch": "article-factory/2026-10-31-81-fake-freelancer",
@@ -74,9 +76,15 @@
       "previewUrl": "https://naru-pr-212-preview.broad-fuchsia.workers.dev/articles/fake-freelancer-worker-status-guide",
       "publish": {
         "request": "immediate",
-        "status": "APPROVED_PENDING_PREMERGE_GATE",
-        "merged": false,
-        "productionVerified": false
+        "status": "MERGED_AWAITING_PRODUCTION",
+        "merged": true,
+        "productionVerified": false,
+        "mergeSha": "e1101ab1b3fdc6edf644af8286d59b810c56e174",
+        "cloudflareProductionRunId": 41188572483,
+        "cloudflareProductionVerified": false,
+        "productionUrl": "https://naru-career.com/articles/fake-freelancer-worker-status-guide",
+        "productionHtmlVerified": false,
+        "productionImagesVerified": false
       }
     }
   ],
@@ -87,6 +95,7 @@
     "10/31 画像4枚受領。規定WebP生成、Drive originals/images計8ファイルを保存確認、PR#212 head 92acff94にGitHub4ファイル反映。マージ・本番公開は行わない。",
     "10/31 PR#212画像反映後QA成功。Cloudflare Previewは記事公開日が11/01（未来）でstatic HTML生成されないため失敗。公開日10/31に修正してCI再実行（head d7b67bf...）。Drive原稿も同期済み。",
     "10/31 NARU-081 head d7b67bf5...のArticle Factory Validation run 41187973775成功・Cloudflare Preview run 41187973735成功。記事固有URLはPR#212 bot comment #6541610977より確認。ユーザー承認前につきDraft維持。",
-    "2026-10-31 user explicit statement '本文・プレビューOK、即時公開' recorded for NARU-081 head d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400. Existing CI and Cloudflare Preview succeeded; premerge verification is next."
+    "2026-10-31 user explicit statement '本文・プレビューOK、即時公開' recorded for NARU-081 head d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400. Existing CI and Cloudflare Preview succeeded; premerge verification is next.",
+    "2026-10-31 PR#212 user-approved same head d7b67bf..., squash merged e1101ab1...; Cloudflare Production run #41188572483 started, pending final success and target URLs."
   ]
 }
