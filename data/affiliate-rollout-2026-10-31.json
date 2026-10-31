@@ -35,22 +35,46 @@
       {
         "slug": "agent-not-recommended",
         "offer": "uzuzGeneral",
-        "pr": 216
+        "pr": 216,
+        "headSha": "c25ea6ce215b268c3e475b452640902ea6a36077",
+        "previewUrl": "https://naru-pr-216-preview.broad-fuchsia.workers.dev/articles/agent-not-recommended",
+        "validation": "success",
+        "cloudflarePreview": "success",
+        "userVisual": "pending",
+        "publication": "DRAFT_NOT_MERGED"
       },
       {
         "slug": "agent-job-mismatch",
         "offer": "uzuzGeneral",
-        "pr": 220
+        "pr": 220,
+        "headSha": "a305d500f7c9b633c9cab05e56743f35a702fb35",
+        "previewUrl": "https://naru-pr-220-preview.broad-fuchsia.workers.dev/articles/agent-job-mismatch",
+        "validation": "success",
+        "cloudflarePreview": "success",
+        "userVisual": "pending",
+        "publication": "DRAFT_NOT_MERGED"
       },
       {
         "slug": "second-new-grad-desired-salary-2026",
         "offer": "uzuzGeneral",
-        "pr": 221
+        "pr": 221,
+        "headSha": "d1cb71506259ba00544bddced2375a8482c1660b",
+        "previewUrl": "https://naru-pr-221-preview.broad-fuchsia.workers.dev/articles/second-new-grad-desired-salary-2026",
+        "validation": "success",
+        "cloudflarePreview": "success",
+        "userVisual": "pending",
+        "publication": "DRAFT_NOT_MERGED"
       },
       {
         "slug": "second-new-grad-it-interview-questions",
         "offer": "uzuzGeneral",
-        "pr": 222
+        "pr": 222,
+        "headSha": "a4c992cb8447b1604b0ab9c333d36b982ec01bb3",
+        "previewUrl": "https://naru-pr-222-preview.broad-fuchsia.workers.dev/articles/second-new-grad-it-interview-questions",
+        "validation": "success",
+        "cloudflarePreview": "success",
+        "userVisual": "pending",
+        "publication": "DRAFT_NOT_MERGED"
       },
       {
         "slug": "retirement-agency-second-new-grad-how-to-choose",
@@ -58,7 +82,13 @@
           "retirementJobs",
           "retirementZen"
         ],
-        "pr": 209
+        "pr": 209,
+        "headSha": "eba9b89b12d2ba90cb54ff5a00ad0cd813ed08fa",
+        "previewUrl": "https://naru-pr-209-preview.broad-fuchsia.workers.dev/articles/retirement-agency-second-new-grad-how-to-choose",
+        "validation": "success",
+        "cloudflarePreview": "success",
+        "userVisual": "pending",
+        "publication": "DRAFT_NOT_MERGED"
       }
     ],
     "legacyImagesStaged": [
@@ -142,7 +172,10 @@
         "retirementZen"
       ],
       "pr": 223,
-      "reason": "Legacy PNG, Cloudflare Preview 4 WebP gate unmet; Jobs CTA also depends on PR209 registry merge"
+      "reason": "Legacy PNG, Cloudflare Preview 4 WebP gate unmet; Jobs CTA also depends on PR209 registry merge",
+      "validation": "failure",
+      "cloudflarePreview": "failure_missing_four_WebP",
+      "publication": "DRAFT_NOT_MERGED"
     }
   },
   "constraints": {
@@ -159,5 +192,6 @@
     "Resolve legacy image QA before publishing remaining staged placements",
     "After publication compare CTA clicks and affiliate conversion, not just pageviews"
   ],
-  "status": "IN_PROGRESS_DRAFT"
+  "status": "FIVE_PREVIEWS_QA_PASSED;THIRTEEN_LEGACY_ARTICLE_UPDATES_PENDING",
+  "reminder": "All five ready article previews need user visual confirmation for their exact head SHA. No article has been merged/published in this rollout."
 }
