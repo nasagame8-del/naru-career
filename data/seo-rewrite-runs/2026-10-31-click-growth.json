@@ -51,7 +51,10 @@
         "cloudflareProductionVerified": true,
         "productionUrl": "https://naru-career.com/articles/contractor-paid-leave-overtime",
         "articleUrlDirectCheck": false,
-        "imagesDirectCheck": false
+        "imagesDirectCheck": false,
+        "latestProductionRunId": 41191970279,
+        "latestProductionSha": "a80b028b9f2920b8658b93b031c158bbc4df7883",
+        "technicalNote": "Cloudflare Production completed/success; canonical verification action checks only 2026-10-31 newest article, not this URL. Direct target HTTP checks remain unverified."
       }
     },
     {
@@ -63,7 +66,7 @@
       "pageClicks": 2,
       "avgPosition": 15,
       "action": "title+intro decision table/FAQ/consultation navigation",
-      "status": "MERGED_PRODUCTION_PENDING",
+      "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
       "productionVerified": false,
@@ -78,17 +81,20 @@
         "previewVisualApprovedHeadSha": "5f6705ccea7371900dd598538b335ecd40589169"
       },
       "publication": {
-        "status": "MERGED_PRODUCTION_PENDING",
+        "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
         "approved": true,
         "merged": true,
         "productionVerified": false,
         "requestedPublishAt": "immediate",
         "mergeSha": "a80b028b9f2920b8658b93b031c158bbc4df7883",
         "productionRunId": 41191970279,
-        "cloudflareProductionVerified": false,
+        "cloudflareProductionVerified": true,
         "articleUrlDirectCheck": false,
         "imagesDirectCheck": false,
-        "productionUrl": "https://naru-career.com/articles/contractor-unpaid-fee-consultation"
+        "productionUrl": "https://naru-career.com/articles/contractor-unpaid-fee-consultation",
+        "latestProductionRunId": 41191970279,
+        "latestProductionSha": "a80b028b9f2920b8658b93b031c158bbc4df7883",
+        "technicalNote": "Cloudflare Production completed/success; canonical verification action checks only 2026-10-31 newest article, not this URL. Direct target HTTP checks remain unverified."
       }
     }
   ],
@@ -133,5 +139,12 @@
       214
     ],
     "sameHeadShaOnly": true
+  },
+  "lastProductionVerification": {
+    "latestMasterSha": "a80b028b9f2920b8658b93b031c158bbc4df7883",
+    "latestCloudflareProductionRunId": 41191970279,
+    "conclusion": "success",
+    "verifiedAtJST": "2026-10-31T19:17:52+09:00",
+    "targetArticleDirectHttpChecks": "unavailable"
   }
 }
