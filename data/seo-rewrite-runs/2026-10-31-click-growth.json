@@ -26,7 +26,7 @@
       "pageClicks": 3,
       "avgPosition": 11.1,
       "action": "title+intro/FAQ/case table/internal links",
-      "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
+      "status": "PRODUCTION_USER_VISUAL_CONFIRMED_HTTP_UNVERIFIED",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
       "productionVerified": false,
@@ -41,7 +41,7 @@
         "previewVisualApprovedHeadSha": "a5586ef94abf1532c62b4b066395f3427b2c654b"
       },
       "publication": {
-        "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
+        "status": "PRODUCTION_USER_VISUAL_CONFIRMED_HTTP_UNVERIFIED",
         "approved": true,
         "merged": true,
         "productionVerified": false,
@@ -54,7 +54,11 @@
         "imagesDirectCheck": false,
         "latestProductionRunId": 41191970279,
         "latestProductionSha": "a80b028b9f2920b8658b93b031c158bbc4df7883",
-        "technicalNote": "Cloudflare Production completed/success; canonical verification action checks only 2026-10-31 newest article, not this URL. Direct target HTTP checks remain unverified."
+        "technicalNote": "Cloudflare Production completed/success; canonical verification action checks only 2026-10-31 newest article, not this URL. Direct target HTTP checks remain unverified.",
+        "userProductionVisual": "user_confirmed",
+        "userProductionVisualText": "問題ない",
+        "userProductionVisualConfirmedAtJST": "2026-10-31",
+        "followUp": "Specific canonical URL and WebP HTTP200 checks remain unverified by available connector"
       }
     },
     {
@@ -66,7 +70,7 @@
       "pageClicks": 2,
       "avgPosition": 15,
       "action": "title+intro decision table/FAQ/consultation navigation",
-      "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
+      "status": "PRODUCTION_USER_VISUAL_CONFIRMED_HTTP_UNVERIFIED",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
       "productionVerified": false,
@@ -81,7 +85,7 @@
         "previewVisualApprovedHeadSha": "5f6705ccea7371900dd598538b335ecd40589169"
       },
       "publication": {
-        "status": "PRODUCTION_DEPLOYED_TARGET_URL_UNVERIFIED",
+        "status": "PRODUCTION_USER_VISUAL_CONFIRMED_HTTP_UNVERIFIED",
         "approved": true,
         "merged": true,
         "productionVerified": false,
@@ -94,7 +98,11 @@
         "productionUrl": "https://naru-career.com/articles/contractor-unpaid-fee-consultation",
         "latestProductionRunId": 41191970279,
         "latestProductionSha": "a80b028b9f2920b8658b93b031c158bbc4df7883",
-        "technicalNote": "Cloudflare Production completed/success; canonical verification action checks only 2026-10-31 newest article, not this URL. Direct target HTTP checks remain unverified."
+        "technicalNote": "Cloudflare Production completed/success; canonical verification action checks only 2026-10-31 newest article, not this URL. Direct target HTTP checks remain unverified.",
+        "userProductionVisual": "user_confirmed",
+        "userProductionVisualText": "問題ない",
+        "userProductionVisualConfirmedAtJST": "2026-10-31",
+        "followUp": "Specific canonical URL and WebP HTTP200 checks remain unverified by available connector"
       }
     }
   ],
@@ -146,5 +154,8 @@
     "conclusion": "success",
     "verifiedAtJST": "2026-10-31T19:17:52+09:00",
     "targetArticleDirectHttpChecks": "unavailable"
-  }
+  },
+  "notes": [
+    "2026-10-31 user confirmed production visuals of PR#213 and PR#214 ('問題ない'). Cloudflare Production succeeded; target URLs and image HTTP200 remain independently unverified."
+  ]
 }
