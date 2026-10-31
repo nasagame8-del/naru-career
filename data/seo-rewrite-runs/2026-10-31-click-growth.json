@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "runDateJST": "2026-10-31",
+  "goal": "Grow Google organic clicks through evidence-led existing-article rewrites; exclude /shindan from planning",
+  "baseline": {
+    "period": "2026-10-14_to_2026-10-27",
+    "siteGoogleSearchImpressions": 1924,
+    "siteGoogleSearchClicks": 74,
+    "siteCtr": 0.0385,
+    "ga4Period": "2026-10-01_to_2026-10-30",
+    "ga4SiteViews": 711,
+    "ga4ShindanViews": 44,
+    "ga4NonShindanViewsUpperBound": 667,
+    "notes": [
+      "GA4 667 is 711-44 only; other diagnostic paths and internal/QA traffic may remain.",
+      "Do not equate Search Console impressions or clicks with GA4 Views."
+    ]
+  },
+  "items": [
+    {
+      "slug": "contractor-paid-leave-overtime",
+      "prNumber": 213,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/213",
+      "headSha": "a5586ef94abf1532c62b4b066395f3427b2c654b",
+      "pageImpressions": 118,
+      "pageClicks": 3,
+      "avgPosition": 11.1,
+      "action": "title+intro/FAQ/case table/internal links",
+      "status": "DRAFT_PREVIEW_QA_PENDING_USER",
+      "humanFactCheck": "pending",
+      "previewVisual": "pending",
+      "productionVerified": false
+    },
+    {
+      "slug": "contractor-unpaid-fee-consultation",
+      "prNumber": 214,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/214",
+      "headSha": "5f6705ccea7371900dd598538b335ecd40589169",
+      "pageImpressions": 72,
+      "pageClicks": 2,
+      "avgPosition": 15,
+      "action": "title+intro decision table/FAQ/consultation navigation",
+      "status": "DRAFT_PREVIEW_QA_PENDING_USER",
+      "humanFactCheck": "pending",
+      "previewVisual": "pending",
+      "productionVerified": false
+    }
+  ],
+  "blocked": [
+    {
+      "slug": "contractor-how-to-quit",
+      "currentOpenPr": 195,
+      "currentOpenPrUrl": "https://github.com/nasagame8-del/naru-career/pull/195",
+      "reason": "Open design pilot PR has unmerged article edits and 6 file changes, mergeable=false; avoid duplicate PR or inheriting unapproved design changes",
+      "plannedSEOAction": "test question-led title『業務委託を辞めたいときは何日前に伝える？途中解除と更新拒否の確認点』and add new fake-freelancer hub link after conflict resolved",
+      "pageImpressions": 123,
+      "pageClicks": 4,
+      "avgPosition": 8.1
+    }
+  ],
+  "protectedArticles": [
+    "business-outsourcing-conversion-risk",
+    "outsourcing-contract-termination-worker-status",
+    "fake-freelancer-worker-status-guide"
+  ],
+  "protectedReason": "Recently rewritten/published on 2026-10-31; measure outcomes before further changing",
+  "evaluation": {
+    "targetClicksPer14Days": 100,
+    "compareNonOverlapping14Days": true,
+    "minimumObservationWindowDays": 14,
+    "primaryMetric": "Google Search Console organic clicks",
+    "secondaryMetrics": [
+      "impressions",
+      "CTR",
+      "average position",
+      "query-page matching",
+      "GA4 organic landing pages"
+    ],
+    "avoidClaimsOfLiftWithoutMeasurement": true
+  }
+}
