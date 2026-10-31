@@ -13,13 +13,13 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "WAITING_FACT_CHECK_AND_PREVIEW",
+      "status": "WAITING_USER_FACTCHECK_AND_PREVIEW_APPROVAL",
       "requestedPublishAt": null,
       "qa": {
         "previewVisual": "pending",
         "humanFactCheck": "pending",
         "articleQa": {
-          "status": "running",
+          "status": "passed",
           "runId": 41187973775,
           "headSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
         },
@@ -39,7 +39,7 @@
           "headSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
         },
         "cloudflarePreview": {
-          "status": "running",
+          "status": "passed",
           "runId": 41187973735,
           "headSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
         },
@@ -50,10 +50,9 @@
         }
       },
       "blockers": [
-        "最新headのGitHub Actions・Cloudflare Preview検証中",
-        "本人による本文ファクトチェック未完了",
-        "同じheadへのプレビュー目視承認未取得",
-        "公開時刻未指定"
+        "最新headの本文Human Fact Check未承認",
+        "同一headのCloudflareプレビュー目視承認未取得",
+        "公開希望時刻未指定"
       ],
       "prNumber": 212,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/212",
@@ -73,7 +72,8 @@
         "01": "fake-freelancer-worker-status-guide-01.webp",
         "02": "fake-freelancer-worker-status-guide-02.webp",
         "03": "fake-freelancer-worker-status-guide-03.webp"
-      }
+      },
+      "previewUrl": "https://naru-pr-212-preview.broad-fuchsia.workers.dev/articles/fake-freelancer-worker-status-guide"
     }
   ],
   "notes": [
@@ -81,6 +81,7 @@
     "本件はユーザーが明示的に選択した単発の新規記事。",
     "10/31 17:43指名企画：NARU-081について研究・原稿Draft・画像プラン/プロンプト完了。masterに未反映、PR#212 Draftで画像待ち。",
     "10/31 画像4枚受領。規定WebP生成、Drive originals/images計8ファイルを保存確認、PR#212 head 92acff94にGitHub4ファイル反映。マージ・本番公開は行わない。",
-    "10/31 PR#212画像反映後QA成功。Cloudflare Previewは記事公開日が11/01（未来）でstatic HTML生成されないため失敗。公開日10/31に修正してCI再実行（head d7b67bf...）。Drive原稿も同期済み。"
+    "10/31 PR#212画像反映後QA成功。Cloudflare Previewは記事公開日が11/01（未来）でstatic HTML生成されないため失敗。公開日10/31に修正してCI再実行（head d7b67bf...）。Drive原稿も同期済み。",
+    "10/31 NARU-081 head d7b67bf5...のArticle Factory Validation run 41187973775成功・Cloudflare Preview run 41187973735成功。記事固有URLはPR#212 bot comment #6541610977より確認。ユーザー承認前につきDraft維持。"
   ]
 }
