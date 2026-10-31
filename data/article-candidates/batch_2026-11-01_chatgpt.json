@@ -1,0 +1,15 @@
+{
+  "batchId": "batch_2026-11-01_chatgpt",
+  "generatedAt": "2026-11-01T08:02:07+09:00",
+  "trigger": "cron",
+  "inventorySize": 76,
+  "nextArticleId": 82,
+  "candidates": [],
+  "notes": [
+    "Drive00/01・WBS運用ルール/計画/KPI、master76記事・Open40PR、latest/10-31batch・selected queue10/16/17/31を再取得。同日batchなし。新規投稿抑制を維持し、重複・数合わせ候補は追加しない。",
+    "最新成功SEO Opportunity Snapshot41156832537（10/31 10:45 JST）。11/1分の成功runはまだなし。master final10/14〜27、Slack NARU_GSC_DAILY10/31 10:46一致。1924表示vs873、74clickvs32、CTR3.85%vs3.67%、Top3/10/20=5/17/32 vs7/31/39、可視69vs82、新規42。前回日次選定のfinal10/13〜26（1838/72/5/19/35）から+86表示/+2click、Top3±0/Top10-2/Top20-3。移動14日窓差であり日次増分ではない。プライバシー処理済queryは全母数ではない。",
+    "親344/10/7.3位、通知書300/19/7.5位、契約終了241/5/14.7位、失業給付217/12/6.8位。正社員→業務委託優先・通知書次点を維持。Agentのワークポート8表示0clickは抑制解除の根拠不足。",
+    "NARU081偽装フリーランスはPR212 merge e1101ab1、selectedqueue PRODUCTION_PUBLISHED。親PR191もmerge57fa3c3。いずれも10/31反映で最新確定期間より後。重複記事・重複改稿を作らず7〜14日後の確定query×page/CTRを観測。56/78/79/80は既存queueで保持。",
+    "GA4外部PV未取得、10/21目標達否未判定。SERP/Trends/PAAは未取得、スコア/検索量/因果を捏造しない。出典 https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793411192020269"
+  ]
+}
