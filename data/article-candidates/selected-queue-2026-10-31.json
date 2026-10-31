@@ -13,7 +13,7 @@
       "genre": "通常SEO",
       "workType": "new",
       "order": 1,
-      "status": "MERGED_AWAITING_PRODUCTION",
+      "status": "PRODUCTION_PUBLISHED",
       "requestedPublishAt": "immediate",
       "qa": {
         "previewVisual": "user_confirmed",
@@ -51,9 +51,7 @@
         "previewApprovedHeadSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400",
         "factCheckApprovedHeadSha": "d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400"
       },
-      "blockers": [
-        "Cloudflare Production deployment in progress; need canonical article+four image HTTP status and content check"
-      ],
+      "blockers": [],
       "prNumber": 212,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/212",
       "branch": "article-factory/2026-10-31-81-fake-freelancer",
@@ -76,15 +74,41 @@
       "previewUrl": "https://naru-pr-212-preview.broad-fuchsia.workers.dev/articles/fake-freelancer-worker-status-guide",
       "publish": {
         "request": "immediate",
-        "status": "MERGED_AWAITING_PRODUCTION",
+        "status": "PRODUCTION_PUBLISHED",
         "merged": true,
-        "productionVerified": false,
+        "productionVerified": true,
         "mergeSha": "e1101ab1b3fdc6edf644af8286d59b810c56e174",
         "cloudflareProductionRunId": 41188572483,
-        "cloudflareProductionVerified": false,
+        "cloudflareProductionVerified": true,
         "productionUrl": "https://naru-career.com/articles/fake-freelancer-worker-status-guide",
-        "productionHtmlVerified": false,
-        "productionImagesVerified": false
+        "productionHtmlVerified": true,
+        "productionImagesVerified": true,
+        "productionResponseHttpStatus": 200,
+        "productionImages": [
+          {
+            "slot": "card",
+            "httpStatus": 200,
+            "bytes": 110948
+          },
+          {
+            "slot": "01",
+            "httpStatus": 200,
+            "bytes": 50988
+          },
+          {
+            "slot": "02",
+            "httpStatus": 200,
+            "bytes": 49100
+          },
+          {
+            "slot": "03",
+            "httpStatus": 200,
+            "bytes": 46670
+          }
+        ],
+        "productionVerificationAtJST": "2026-10-31T18:27:39+09:00",
+        "adsenseOwnershipVerificationSuccess": true,
+        "source": "GitHub Actions production deploy and canonical 200/image verification run #41188572483"
       }
     }
   ],
@@ -96,6 +120,7 @@
     "10/31 PR#212画像反映後QA成功。Cloudflare Previewは記事公開日が11/01（未来）でstatic HTML生成されないため失敗。公開日10/31に修正してCI再実行（head d7b67bf...）。Drive原稿も同期済み。",
     "10/31 NARU-081 head d7b67bf5...のArticle Factory Validation run 41187973775成功・Cloudflare Preview run 41187973735成功。記事固有URLはPR#212 bot comment #6541610977より確認。ユーザー承認前につきDraft維持。",
     "2026-10-31 user explicit statement '本文・プレビューOK、即時公開' recorded for NARU-081 head d7b67bf5b0006e67b07ea7e7e9ec2f7b9db33400. Existing CI and Cloudflare Preview succeeded; premerge verification is next.",
-    "2026-10-31 PR#212 user-approved same head d7b67bf..., squash merged e1101ab1...; Cloudflare Production run #41188572483 started, pending final success and target URLs."
+    "2026-10-31 PR#212 user-approved same head d7b67bf..., squash merged e1101ab1...; Cloudflare Production run #41188572483 started, pending final success and target URLs.",
+    "NARU-081 canonical verified HTTP 200 plus card/01/02/03 HTTP 200 on production 2026-10-31 18:27:39 JST, merge e1101ab1, deploy run 41188572483 completed success."
   ]
 }
