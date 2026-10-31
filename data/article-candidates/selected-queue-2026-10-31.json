@@ -19,17 +19,29 @@
         "previewVisual": "pending",
         "humanFactCheck": "pending",
         "articleQa": {
-          "status": "pending"
+          "status": "blocked_by_missing_images",
+          "runId": 41186216998,
+          "headSha": "a35c5d33623ae4e9656307886d8de660ec3d3946"
         },
         "imageQa": {
           "status": "pending"
+        },
+        "cloudflarePreview": {
+          "status": "blocked_by_missing_images",
+          "runId": 41186217088,
+          "headSha": "a35c5d33623ae4e9656307886d8de660ec3d3946"
+        },
+        "sourceReview": {
+          "status": "ai_reviewed_human_pending",
+          "headSha": "a35c5d33623ae4e9656307886d8de660ec3d3946",
+          "explanation": "法律制度のREVIEW行は一次情報で裏取りしたがAI確認のみ。ユーザーのHuman Fact Check未了。"
         }
       },
       "blockers": [
-        "画像4枚のユーザー生成・添付が未了",
-        "画像反映後のQA/CI/Cloudflare Preview確認待ち",
-        "Human Fact Checkと同SHAのユーザー目視承認が未了",
-        "公開時刻未指定"
+        "本文内画像01/02/03とcardのWebP未生成・未反映",
+        "同SHA Article Factory Validation/Cloudflare Preview未成功（画像欠落）",
+        "法律関連の独立Human Fact Check未取得",
+        "画像反映後のプレビュー目視承認と公開時刻未指定"
       ],
       "prNumber": 212,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/212",
