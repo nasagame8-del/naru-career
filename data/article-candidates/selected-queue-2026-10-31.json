@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-31",
+  "batchId": "batch_2026-10-31_editorial_fake_freelancer",
+  "selectionText": "それで作ろう。その方向性で、研究してみる",
+  "selectedAt": "2026-10-31T17:43:00+09:00",
+  "articles": [
+    {
+      "candidateId": "cand_261031_editorial_fake_freelancer",
+      "articleId": 81,
+      "slug": "fake-freelancer-worker-status-guide",
+      "title": "偽装フリーランスとは？業務委託なのに社員扱いされる人の判断基準8項目と相談先",
+      "primaryKeyword": "偽装フリーランス 見分け方",
+      "genre": "通常SEO",
+      "workType": "new",
+      "order": 1,
+      "status": "RESEARCH_APPROVED_DRAFT_PREPARING",
+      "requestedPublishAt": null,
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending",
+        "articleQa": {
+          "status": "pending"
+        },
+        "imageQa": {
+          "status": "pending"
+        }
+      },
+      "blockers": [
+        "本文・画像プラン編集中",
+        "画像4枚未提供",
+        "Human Fact CheckとPreview承認未取得",
+        "公開時刻未指定"
+      ]
+    }
+  ],
+  "notes": [
+    "毎朝のバッチおよび既存の78/79/80選定結果は変更しない。",
+    "本件はユーザーが明示的に選択した単発の新規記事。"
+  ]
+}
