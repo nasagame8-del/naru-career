@@ -1,0 +1,11 @@
+{
+  "batchId": "batch_2026-11-03_chatgpt",
+  "generatedAt": "2026-11-03T08:01:54+09:00",
+  "trigger": "cron",
+  "inventorySize": 76,
+  "nextArticleId": 82,
+  "candidates": [],
+  "notes": [
+    "11/3選定：最新成功Snapshot41374058238、master/Slack final10/16〜29 vs10/2〜15。2102vs1070表示・75vs38click・CTR3.57%vs3.55%、Top3/10/20=6/19/37 vs6/31/39、可視71vs84・新規46。前回移動14日窓2008/74から+94表示/+1click、Top3±0/Top10+1/Top20+2。親374/8、070通知書332/22、契約終了273/6、辞め方151/4。76記事/Open39PR。11/2 PR225/227/228/229 merged確認、WBSの本番反映記録と整合。最新GSCは改稿前、効果未判定。新規投稿抑制維持、既存/制作中/選定済みと重複する案を除外、新規候補0。56/78/79/80保持。GA4外部PV未取得、SERP/Trends/PAA未取得。可視queryは全母数でなく、移動窓差を日別成長としない。出典 https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793583963492889"
+  ]
+}
