@@ -1,30 +1,30 @@
 {
-  "generatedAt": "2026-11-01T01:25:26.718Z",
+  "generatedAt": "2026-11-02T01:46:01.413Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-15",
-    "endDate": "2026-10-28"
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-29"
   },
   "previousRange": {
-    "startDate": "2026-10-01",
-    "endDate": "2026-10-14"
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-15"
   },
   "visibleQueryCounts": {
-    "current": 68,
+    "current": 71,
     "previous": 84,
-    "new": 43
+    "new": 46
   },
   "positionBuckets": {
     "current": {
       "top3": 6,
-      "top10": 18,
-      "top20": 35
+      "top10": 19,
+      "top20": 37
     },
     "previous": {
-      "top3": 7,
-      "top10": 32,
+      "top3": 6,
+      "top10": 31,
       "top20": 39
     }
   },
@@ -45,18 +45,23 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 出社 強制",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
       "query": "業務委託 急に辞める",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
+      "query": "業務委託 出社 強制",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
       "query": "業務委託 急に 切 られる",
       "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "社員から業務委託へ",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -135,17 +140,12 @@
       "signal": "new"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
       "query": "正社員 業務委託 切り替え",
       "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "query": "業務委託 出社 強制",
+      "query": "労働条件通知書 内定承諾前",
       "positionBand": "11-20",
       "signal": "new"
     },
@@ -187,6 +187,11 @@
       "signal": "rising"
     },
     {
+      "page": "/articles/contractor-exclusivity-noncompete-checks",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "page": "/articles/contractor-paid-leave-overtime",
       "positionBand": "11-20",
       "signal": "rising"
@@ -202,24 +207,14 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-exclusivity-noncompete-checks",
-      "positionBand": "4-10",
-      "signal": "new"
-    },
-    {
       "page": "/articles/contractor-unpaid-revisions-scope",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/probation-period-lower-salary-checks",
       "positionBand": "11-20",
       "signal": "new"
-    },
-    {
-      "page": "/articles/agent-comparison-2026",
-      "positionBand": "4-10",
-      "signal": "rising"
     },
     {
       "page": "/articles/agent-referral-vs-self-apply",
@@ -228,8 +223,13 @@
     },
     {
       "page": "/articles/agent-site-vs-agent-usage",
-      "positionBand": "11-20",
+      "positionBand": "21-40",
       "signal": "new"
+    },
+    {
+      "page": "/articles/bizreach-second-new-grad",
+      "positionBand": "4-10",
+      "signal": "rising"
     }
   ]
 }
