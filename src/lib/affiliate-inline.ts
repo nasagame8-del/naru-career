@@ -92,6 +92,9 @@ export function renderAgentCTAComparison(registry: Record<string, CTAEntry>, slu
 /** Replace legacy [CTA_BUTTON:key] with a recognizable, measurable in-body action. */
 export function renderInlineAffiliateCTA(entry: CTAEntry, key: string, slug: string): string {
   if (!validURL(entry.url)) return "";
+  const sourceCreative = approvedCreativeHtml(key, entry);
+  // Do not output invented affiliate anchors. Only original full ad tags may appear.
+  if (entry.affiliate !== false && !sourceCreative) return "";
   const action = entry.cta_text.trim() === "詳細を見る"
     ? entry.name + "の対象条件を確認する"
     : entry.cta_text;
