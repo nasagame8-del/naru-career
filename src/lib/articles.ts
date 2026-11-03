@@ -1,3 +1,4 @@
+import { renderAgentCTAComparison, renderInlineAffiliateCTA } from "./affiliate-inline";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -280,17 +281,33 @@ export async function getArticle(slug: string): Promise<Article> {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
 
-  // Process CTA placeholders before markdown rendering
+  // Consolidate the article's three different target audiences into one useful
+  // comparison where the old layout repeated indistinguishable CTA buttons.
   const ctaRegistry = getCTARegistry();
-  let processedContent = convertBoldMarkers(convertLabeledBoxes(content)).replace(
+  let processedContent = convertBoldMarkers(convertLabeledBoxes(content));
+  if (slug === "agent-comparison-2026") {
+    const first = "マイナビジョブ20'sは20代・第二新卒・既卒向けの転職エージェントです。";
+    const last = "[CTA_BUTTON:techclips]";
+    const start = processedContent.indexOf(first);
+    const end = start < 0 ? -1 : processedContent.indexOf(last, start);
+    if (start >= 0 && end >= start) {
+      const segment = processedContent.slice(start, end + last.length);
+      if (segment.includes("[CTA_BUTTON:mynavi_job20s]") &&
+          segment.includes("[CTA_BUTTON:uzuz_28]") &&
+          !/^#{2,3} /m.test(segment)) {
+        processedContent = processedContent.slice(0, start) +
+          renderAgentCTAComparison(ctaRegistry, slug) +
+          processedContent.slice(end + last.length);
+      }
+    }
+  }
+
+  // Unconfigured, invalid or non-HTTP(S) partner URLs do not become dead links.
+  processedContent = processedContent.replace(
     /\[CTA_BUTTON:(\w+)\]/g,
     (_match, key: string) => {
       const cta = ctaRegistry[key];
-      if (!cta) return "";
-      const href = cta.url || "#";
-      const relAttr = cta.affiliate === false ? "nofollow" : "nofollow sponsored";
-      const noteText = cta.affiliate === false ? "" : `<span class="cta-note" aria-label="広告">広告（PR）</span>`;
-      return `<a href="${href}" class="cta-button" rel="${relAttr}" target="_blank">${cta.cta_text}（${cta.name}）</a>${noteText}`;
+      return cta ? renderInlineAffiliateCTA(cta, key, slug) : "";
     }
   );
 
