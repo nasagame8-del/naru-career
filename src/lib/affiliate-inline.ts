@@ -108,10 +108,12 @@ export function renderInlineAffiliateCTA(entry: CTAEntry, key: string, slug: str
     '<span class="affiliate-inline-cta__desc">利用対象・支援内容・申込条件を事前に確認してください。</span>',
     '</div>',
     '<div class="affiliate-inline-cta__actions">',
-    '<a class="affiliate-choice__button" href="' + escapeAttribute(entry.url) + '" target="_blank" rel="' + rel +
-    '" data-track-event="contextual_cta_click" data-track-key="' + escapeAttribute(key) +
-    '" data-track-slug="' + escapeAttribute(slug) +
-    '" data-track-placement="article_inline">' + escapeHtml(action) + ' <span aria-hidden="true">↗</span></a>',
+    sourceCreative
+      ? '<div class="approved-affiliate-creative" data-cta-key="' + escapeAttribute(key) + '" data-cta-slug="' + escapeAttribute(slug) + '" data-cta-placement="article_inline">' + sourceCreative + '</div>'
+      : '<a class="affiliate-choice__button" href="' + escapeAttribute(entry.url) + '" target="_blank" rel="' + rel +
+        '" data-track-event="contextual_cta_click" data-track-key="' + escapeAttribute(key) +
+        '" data-track-slug="' + escapeAttribute(slug) +
+        '" data-track-placement="article_inline">' + escapeHtml(action) + '</a>',
     pr,
     '</div>',
     '</aside>'
