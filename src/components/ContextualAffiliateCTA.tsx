@@ -70,7 +70,7 @@ export function ContextualAffiliateCTA({ category, keyword, ctaAgents, registry,
 
   const comparison = services.length > 1;
   return (
-    <section aria-label="転職サービスと次の行動の比較" className="mt-12 overflow-hidden rounded-2xl border border-[#D6E1DC] bg-[#FBF8F3]">
+    <section aria-label="転職サービスと次の行動の比較" data-cta-impression="true" data-cta-id="contextual-article-end" data-cta-placement="article_end" data-cta-slug={slug} className="mt-12 overflow-hidden rounded-2xl border border-[#D6E1DC] bg-[#FBF8F3]">
       <div className="h-1.5 bg-[#1F6F66]" aria-hidden="true" />
       <div className="p-5 sm:p-7">
         <p className="mb-2 text-[11px] font-bold tracking-widest text-[#1F6F66]">NEXT STEP  |  選び方ガイド</p>
