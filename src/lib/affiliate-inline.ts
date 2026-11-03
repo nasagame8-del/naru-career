@@ -1,4 +1,5 @@
 import type { CTAEntry } from "./articles";
+import { approvedCreativeHtml, isSafeEditorialLink } from "./approved-affiliate-creative";
 
 function escapeHtml(value: string): string {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -45,8 +46,10 @@ export function renderAgentCTAComparison(registry: Record<string, CTAEntry>, slu
   const cards = comparisonOptions.flatMap((option) => {
     const entry = registry[option.key];
     if (!entry || !validURL(entry.url)) return [];
-    const rel = entry.affiliate === false ? "noopener noreferrer" : "noopener noreferrer nofollow sponsored";
-    const pr = entry.affiliate === false ? "" : '<span class="affiliate-choice__pr">広告・PR</span>';
+    const originalCreative = approvedCreativeHtml(option.key, entry);
+    const safeLink = isSafeEditorialLink(entry);
+    const rel = "noopener noreferrer";
+    const pr = originalCreative ? '<span class="affiliate-choice__pr">広告・PR</span>' : "";
     return [
       '<article class="affiliate-choice__card" data-cta-impression="true" data-cta-key="' + escapeAttribute(option.key) + '" data-cta-id="' + escapeAttribute(option.key) + '" data-cta-placement="article_inline_comparison" data-cta-slug="' + escapeAttribute(slug) + '">' +
       '<div class="affiliate-choice__info">' +
