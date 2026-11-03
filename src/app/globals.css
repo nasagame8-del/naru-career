@@ -959,3 +959,154 @@ time, .date-text {
   font-weight: 700;
   flex-shrink: 0;
 }
+
+/* Contextual in-article CTAs: decision-first presentation, not a banner stack. */
+.prose .affiliate-choice {
+  margin: 2.5rem 0 3rem;
+  border: 1px solid #c7d9d0;
+  border-top: 5px solid #1f6f66;
+  border-radius: 14px;
+  background: #fbf8f3;
+  padding: 1.3rem;
+  line-height: 1.65;
+}
+.prose .affiliate-choice__header { margin-bottom: 1.2rem; }
+.prose .affiliate-choice__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  color: #1f6f66;
+}
+.prose h3.affiliate-choice__title {
+  margin: 0 0 0.5rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  color: #193d38;
+}
+.prose .affiliate-choice__intro {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #4a5c54;
+}
+.prose .affiliate-choice__cards { display: grid; gap: 0.85rem; }
+.prose .affiliate-choice__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 1.2rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #d5e3dc;
+  box-shadow: 0 2px 9px rgba(31, 111, 102, 0.04);
+}
+.prose .affiliate-choice__info { min-width: 0; }
+.prose .affiliate-choice__audience {
+  display: inline-block;
+  margin: 0 0 0.55rem;
+  padding: 0.12rem 0.6rem;
+  border-radius: 3px;
+  background: #e9f1ed;
+  color: #1b5b53;
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+.prose h4.affiliate-choice__card-title {
+  margin: 0 0 0.25rem;
+  padding: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #193d38;
+  line-height: 1.55;
+}
+.prose h4.affiliate-choice__card-title::before { display: none; }
+.prose .affiliate-choice__reason,
+.prose .affiliate-choice__check {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #43564f;
+  line-height: 1.75;
+}
+.prose .affiliate-choice__check { margin-top: 0.35rem; }
+.prose .affiliate-choice__check strong { color: #1f6f66; }
+.prose .affiliate-choice__actions,
+.prose .affiliate-inline-cta__actions { display: flex; flex-direction: column; align-items: stretch; gap: 0.35rem; }
+.prose a.affiliate-choice__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: #1f6f66;
+  color: #fff;
+  padding: 0.72rem 0.8rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+.prose a.affiliate-choice__button:hover { background: #15564f; color: #fff; }
+.prose a.affiliate-choice__button:focus-visible {
+  outline: 3px solid #b5691b;
+  outline-offset: 3px;
+}
+.prose .affiliate-choice__pr {
+  color: #566960;
+  font-size: 0.67rem;
+  line-height: 1.3;
+  text-align: right;
+}
+.prose .affiliate-choice__footnote {
+  margin: 0.95rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: #5c6a64;
+}
+.prose .affiliate-inline-cta {
+  margin: 1.8rem 0;
+  padding: 1.15rem;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(185px, 40%);
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #d1e0d8;
+  border-left: 4px solid #1f6f66;
+  border-radius: 10px;
+  background: #fbf8f3;
+}
+.prose .affiliate-inline-cta__info { display: grid; gap: 0.22rem; }
+.prose .affiliate-inline-cta__eyebrow {
+  color: #1f6f66;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.prose .affiliate-inline-cta__name {
+  color: #193d38;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.prose .affiliate-inline-cta__desc {
+  color: #50645b;
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+@media (max-width: 640px) {
+  .prose .affiliate-choice { padding: 1rem; margin: 2rem 0 2.4rem; }
+  .prose h3.affiliate-choice__title { font-size: 1.16rem; }
+  .prose .affiliate-choice__card { grid-template-columns: 1fr; gap: 0.8rem; padding: 1rem; }
+  .prose .affiliate-inline-cta { grid-template-columns: 1fr; gap: 0.8rem; padding: 1rem; }
+  .prose .affiliate-choice__pr { text-align: left; }
+}
