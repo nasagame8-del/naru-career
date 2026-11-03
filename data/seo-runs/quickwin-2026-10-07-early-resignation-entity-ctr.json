@@ -88,6 +88,7 @@
       "Top10 query count"
     ],
     "command": "npm run data:seo-experiments -- --run quickwin-2026-10-07-early-resignation-entity-ctr",
-    "gscSettledThroughAtBaselineCapture": "2026-10-03"
+    "gscSettledThroughAtBaselineCapture": "2026-10-03",
+    "anchorDate": "2026-10-07"
   }
 }

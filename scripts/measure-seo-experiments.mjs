@@ -82,10 +82,29 @@ function selectedRunId() {
   return argValue("--run");
 }
 
-async function resolveAnchorDate(run) {
+function validIsoDate(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const parsed = new Date(`${value}T00:00:00Z`);
+  return Number.isFinite(parsed.getTime()) && isoDate(parsed) === value;
+}
+
+/**
+ * A run's original intervention date must stay fixed when an article is
+ * subsequently updated. dateModified remains a legacy-only fallback.
+ */
+export async function resolveAnchorDate(run) {
   const explicit = argValue("--anchor");
-  if (explicit && /^\d{4}-\d{2}-\d{2}$/.test(explicit)) {
+  if (explicit !== null) {
+    if (!validIsoDate(explicit)) throw new Error("Invalid --anchor date (expected YYYY-MM-DD)");
     return { date: explicit, source: "cli_anchor" };
+  }
+
+  const pinned = run.measurementPlan?.anchorDate || run.measurementPlan?.interventionDate;
+  if (pinned !== undefined) {
+    if (!validIsoDate(pinned)) {
+      throw new Error(`Invalid measurementPlan anchor for ${run.id || "run"}`);
+    }
+    return { date: pinned, source: "measurement_plan_fixed" };
   }
 
   const targets = run.actionDecision?.decisions
