@@ -56,7 +56,9 @@ function validUrl(value: string): boolean {
 }
 
 export function ContextualAffiliateCTA({ category, keyword, ctaAgents, registry, slug }: Props) {
-  const services = resolveContextualCTAKeys(slug, ctaAgents)
+  const candidateKeys = resolveContextualCTAKeys(slug, ctaAgents);
+  if (candidateKeys.length === 0) return null;
+  const services = candidateKeys
     .map((key) => ({ key, entry: registry[key] }))
     .filter(({ entry }) => entry && entry.affiliate === false && validUrl(entry.url))
     .slice(0, 2);
