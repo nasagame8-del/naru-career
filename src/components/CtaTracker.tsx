@@ -40,7 +40,32 @@ export function CtaTracker() {
     }
 
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+
+    // Visibility measures potential CTA exposure, not conversions. Only count
+    // each block once after at least half its area enters the viewport.
+    const elements = document.querySelectorAll<HTMLElement>('[data-cta-impression="true"]');
+    const observer = typeof IntersectionObserver === "undefined"
+      ? null
+      : new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const el = entry.target as HTMLElement;
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "cta_impression",
+              cta_id: el.dataset.ctaId || "unknown",
+              placement: el.dataset.ctaPlacement || "unknown",
+              article_slug: el.dataset.ctaSlug || "unknown",
+            });
+            observer?.unobserve(el);
+          }
+        }, { threshold: 0.5 });
+    if (observer) elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+      observer?.disconnect();
+    };
   }, []);
 
   return null;
