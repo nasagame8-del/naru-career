@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { renderAgentCTAComparison, renderInlineAffiliateCTA } from "./affiliate-inline";
-import type { CTAEntry } from "./articles";
+import { getArticle, type CTAEntry } from "./articles";
 
 const mk = (name: string, url: string): CTAEntry => ({
   name,
@@ -48,4 +48,12 @@ describe("editorial CTA presentation", () => {
     expect(html).toContain("相談 &quot;サービス&quot;のご案内");
     expect(renderInlineAffiliateCTA(mk("No link", ""), "disabled", "example")).toBe("");
   });
+  it("renders the existing three-button article as a single comparison section", async () => {
+    const article = await getArticle("agent-comparison-2026");
+    expect(article.contentHtml).toContain('class="affiliate-choice"');
+    expect(article.contentHtml).toContain("何を重視するかで");
+    expect(article.contentHtml.match(/data-track-placement="article_inline_comparison"/g)).toHaveLength(3);
+    expect(article.contentHtml).not.toContain("[CTA_BUTTON:");
+  });
+
 });
