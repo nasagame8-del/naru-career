@@ -1,0 +1,11 @@
+{
+  "batchId": "batch_2026-11-04_chatgpt",
+  "generatedAt": "2026-11-04T08:01:12+09:00",
+  "trigger": "cron",
+  "inventorySize": 76,
+  "nextArticleId": 82,
+  "candidates": [],
+  "notes": [
+    "11/4：Snapshot41573517895成功、master/Slack final10/17〜30 vs10/3〜16一致。2204vs1092表示・74vs41click・CTR3.36%vs3.75%、Top3/10/20=6/19/35 vs6/31/39、可視68vs85・新規45。前回移動14日窓2102/75から+102表示/-1click、Top20-2。親383/8、通知書353/21、契約終了298/6・12.9位。業務委託/通知書優先維持、Agent新規抑制。76記事/Open39PR。PR189はmerged caf97dce確認、旧queue PREVIEW_READYは不整合につきMERGED_PRODUCTION_UNVERIFIEDへ訂正（本番再検証未実施）。078/079/080は未公開維持。新規追加0件、11/3承認済み春向け『3月末退職・いつ伝える・引き止め』第一候補/『入社前研修無給』次点は撤回せず企画維持、PR210先行方針を継承。両春案の直接GSC・無料SERP需要は未取得でSEO根拠通過済みとしない。11/2改稿は最新確定期間外。GA4全PV10/8〜21=429で700/1000未達、外部PV未確定。出典 https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793677262309309"
+  ]
+}
