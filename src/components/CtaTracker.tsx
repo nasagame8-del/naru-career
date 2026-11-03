@@ -28,6 +28,10 @@ export function CtaTracker() {
         for (const [key, value] of Object.entries(rest)) {
           if (key.startsWith("track")) params[key.slice(5).toLowerCase()] = value;
         }
+        if (trackEvent === "contextual_cta_click") {
+          params.cta_key = params.key ?? "unknown";
+          params.article_slug = params.slug ?? "unknown";
+        }
         window.dataLayer.push(params);
         return;
       }
@@ -54,6 +58,7 @@ export function CtaTracker() {
             window.dataLayer.push({
               event: "cta_impression",
               cta_id: el.dataset.ctaId || "unknown",
+              cta_key: el.dataset.ctaKey || el.dataset.ctaId || "unknown",
               placement: el.dataset.ctaPlacement || "unknown",
               article_slug: el.dataset.ctaSlug || "unknown",
             });
