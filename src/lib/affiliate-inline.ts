@@ -48,7 +48,7 @@ export function renderAgentCTAComparison(registry: Record<string, CTAEntry>, slu
     const rel = entry.affiliate === false ? "noopener noreferrer" : "noopener noreferrer nofollow sponsored";
     const pr = entry.affiliate === false ? "" : '<span class="affiliate-choice__pr">広告・PR</span>';
     return [
-      '<article class="affiliate-choice__card">' +
+      '<article class="affiliate-choice__card" data-cta-impression="true" data-cta-key="' + escapeAttribute(option.key) + '" data-cta-id="' + escapeAttribute(option.key) + '" data-cta-placement="article_inline_comparison" data-cta-slug="' + escapeAttribute(slug) + '">' +
       '<div class="affiliate-choice__info">' +
       '<p class="affiliate-choice__audience">' + escapeHtml(option.audience) + '</p>' +
       '<h4 class="affiliate-choice__card-title">' + escapeHtml(entry.name) + '</h4>' +
@@ -68,7 +68,7 @@ export function renderAgentCTAComparison(registry: Record<string, CTAEntry>, slu
 
   if (!cards.length) return "";
   return [
-    '<section class="affiliate-choice" aria-label="第二新卒向け転職支援サービスの選び分け" data-cta-impression="true" data-cta-placement="article_inline_comparison" data-cta-id="young-agent-comparison" data-cta-slug="' + escapeAttribute(slug) + '">',
+    '<section class="affiliate-choice" aria-label="第二新卒向け転職支援サービスの選び分け" data-cta-slug="' + escapeAttribute(slug) + '">',
     '<div class="affiliate-choice__header">',
     '<p class="affiliate-choice__eyebrow">CAREER GUIDE / 3社の選び分け</p>',
     '<h3 class="affiliate-choice__title">何を重視するかで、選ぶサービスは変わる</h3>',
@@ -91,7 +91,7 @@ export function renderInlineAffiliateCTA(entry: CTAEntry, key: string, slug: str
   const rel = entry.affiliate === false ? "noopener noreferrer" : "noopener noreferrer nofollow sponsored";
   const pr = entry.affiliate === false ? "" : '<span class="affiliate-choice__pr">広告・PR</span>';
   return [
-    '<aside class="affiliate-inline-cta" aria-label="' + escapeAttribute(entry.name) + 'のご案内" data-cta-impression="true" data-cta-placement="article_inline" data-cta-id="' + escapeAttribute(key) + '" data-cta-slug="' + escapeAttribute(slug) + '">',
+    '<aside class="affiliate-inline-cta" aria-label="' + escapeAttribute(entry.name) + 'のご案内" data-cta-impression="true" data-cta-placement="article_inline" data-cta-key="' + escapeAttribute(key) + '" data-cta-id="' + escapeAttribute(key) + '" data-cta-slug="' + escapeAttribute(slug) + '">',
     '<div class="affiliate-inline-cta__info">',
     '<span class="affiliate-inline-cta__eyebrow">サービスを確認する</span>',
     '<strong class="affiliate-inline-cta__name">' + escapeHtml(entry.name) + '</strong>',
