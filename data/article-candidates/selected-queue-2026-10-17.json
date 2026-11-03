@@ -11,7 +11,7 @@
       "workType": "rewrite",
       "order": 1,
       "prNumber": 189,
-      "status": "PREVIEW_READY",
+      "status": "MERGED_PRODUCTION_UNVERIFIED",
       "latestHeadSha": "7c3635c7af83bc2479cbf29f961e329064fbfaa7",
       "requestedPublishAt": null,
       "qa": {
@@ -40,9 +40,9 @@
       "previewUrl": "https://naru-pr-189-preview.broad-fuchsia.workers.dev/articles/interview-scheduling-while-employed",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1sjTiMQHdqPwrgkd9IMfwmO2dIU_JkWwl",
       "blockers": [
-        "同一headのHuman Fact Check・ユーザー実画面承認待ち",
-        "公開日時未指定"
-      ]
+        "PR189はmerged確認済み。本番デプロイ/canonicalの今回の再検証は未実施"
+      ],
+      "mergeSha": "caf97dce1956b77252726736814ce9db2fb5fd86"
     },
     {
       "candidateId": "cand_261017b_offer_changed",
@@ -90,6 +90,7 @@
     }
   ],
   "notes": [
-    "ユーザーは提示2案を制作指示。公開・目視承認には代用しない。78/79は10-16queueで維持。既存56は再採番なし、新規80をmaster/Open PR/Driveの最大79照合で確保。"
+    "ユーザーは提示2案を制作指示。公開・目視承認には代用しない。78/79は10-16queueで維持。既存56は再採番なし、新規80をmaster/Open PR/Driveの最大79照合で確保。",
+    "11/4朝：PR189 closed/mergedを再取得、古いPREVIEW_READYを訂正。本番公開済みとは今回断定しない。"
   ]
 }
