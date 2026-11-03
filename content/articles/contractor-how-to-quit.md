@@ -113,6 +113,8 @@ note_published: false
 
 報酬条件そのものを見直したい場合は、[仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？](/articles/employee-contractor-pay-comparison)も確認してください。
 
+最終報酬の支払期日を過ぎても入金されない場合は、[業務委託の報酬が未払いになったときの証拠整理と相談先](/articles/contractor-unpaid-fee-consultation)で、請求までの確認事項を整理できます。
+
 ### 5. 違約金・損害賠償の記載
 
 契約書に違約金や損害賠償の条項がある場合でも、その一文だけを見て自己判断で支払ったり、逆に無視したりしない方が安全です。
@@ -155,7 +157,7 @@ note_published: false
 
 ただ、「事業者間の契約だから何も言えない」と諦める必要もありません。
 
-働き方が気になる場合は、[偽装請負と偽装フリーランスは同じ？](/articles/disguised-contracting-freelance-difference)もあわせて確認してください。
+働き方が気になる場合は、[偽装フリーランスの判断基準8項目と相談先](/articles/fake-freelancer-worker-status-guide)で自分の状況を整理できます。企業間の請負と労働者性の違いは、[偽装請負と偽装フリーランスの違い](/articles/disguised-contracting-freelance-difference)で確認してください。
 
 ![契約終了の条件と実際の働き方を分けて確認する図](/images/articles/contractor-how-to-quit-03.webp)
 
