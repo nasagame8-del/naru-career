@@ -60,7 +60,20 @@ export function ContextualAffiliateCTA({ category, keyword, ctaAgents, registry,
     .map((key) => ({ key, entry: registry[key] }))
     .filter(({ entry }) => entry && entry.affiliate === false && validUrl(entry.url))
     .slice(0, 2);
-  if (services.length === 0) return null;
+  if (services.length === 0) {
+    if (slug === "agent-comparison-2026") return null;
+    return (
+      <section aria-label="転職サービスの比較" className="mt-12 rounded-xl border border-[#D6E1DC] bg-[#FBF8F3] p-5">
+        <h2 className="mb-2 text-lg font-bold text-[#173F39]">相談先を決める前に、支援対象を比較する</h2>
+        <p className="mb-3 text-sm text-[#4C6059]">希望職種や支援内容が自分に合うか、比較してから判断できます。</p>
+        <Link href="/articles/agent-comparison-2026"
+          data-track-event="contextual_cta_internal_click" data-track-slug={slug}
+          data-track-placement="article_end" className="inline-block rounded-lg border border-[#1F6F66] px-4 py-3 font-bold text-[#1F6F66]">
+          転職エージェントの比較を読む
+        </Link>
+      </section>
+    );
+  }
 
   const topic = /業務委託|偽装請負|フリーランス|契約/.test(keyword)
     ? "働き方を見直したいとき、次の一手は？"
