@@ -1,4 +1,4 @@
-import { ContextualAffiliateCTA } from "@/components/ContextualAffiliateCTA";
+import { ContextualAffiliateCTA, resolveContextualCTAKeys } from "@/components/ContextualAffiliateCTA";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -87,10 +87,20 @@ export default async function ArticlePage(props: {
 
   // affiliate判定
   const ctaRegistry = getCTARegistry();
-  const hasAffiliate = article.cta_agents.some(
+  const eligibleCTAKeys = resolveContextualCTAKeys(article.slug, article.cta_agents)
+    .filter((key) => {
+      const url = ctaRegistry[key]?.url;
+      if (!url) return false;
+      try {
+        return ["http:", "https:"].includes(new URL(url).protocol);
+      } catch {
+        return false;
+      }
+    });
+  const hasAffiliate = eligibleCTAKeys.some(
     (key) => ctaRegistry[key]?.affiliate !== false
   );
-  const hasNonAffiliate = article.cta_agents.some(
+  const hasNonAffiliate = eligibleCTAKeys.some(
     (key) => ctaRegistry[key]?.affiliate === false
   );
   const isMixed = hasAffiliate && hasNonAffiliate;
