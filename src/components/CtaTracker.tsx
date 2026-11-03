@@ -18,10 +18,22 @@ export function CtaTracker() {
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       const target = e.target as HTMLElement;
-      const link = target.closest<HTMLAnchorElement>("a[data-track-event], a.cta-button");
+      const link = target.closest<HTMLAnchorElement>("a[data-track-event], a.cta-button, .approved-affiliate-creative a");
       if (!link) return;
 
       window.dataLayer = window.dataLayer || [];
+      // Measure original, unchanged ASP creatives by their surrounding element.
+      // Do not add attributes to the provider-supplied ad link itself.
+      const originalCreative = link.closest<HTMLElement>(".approved-affiliate-creative");
+      if (originalCreative) {
+        window.dataLayer.push({
+          event: "contextual_cta_click",
+          cta_key: originalCreative.dataset.ctaKey || "unknown",
+          article_slug: originalCreative.dataset.ctaSlug || "unknown",
+          placement: originalCreative.dataset.ctaPlacement || "unknown",
+        });
+        return;
+      }
       const { trackEvent, ...rest } = link.dataset;
       if (trackEvent) {
         const params: Record<string, unknown> = { event: trackEvent };
