@@ -45,7 +45,7 @@ describe("editorial CTA presentation", () => {
       "retirement_jobs",
       "example"
     );
-    expect(approved).toContain('data-track-placement="article_inline"');
+    expect(approved).toContain('data-cta-placement="article_inline"');
     expect(approved).toContain("広告・PR");
     expect(approved).toContain('src="https://h.accesstrade.net/sp/rr?rk=0100q25q00ovm3"');
     expect(approved).toContain('rel="nofollow"');
