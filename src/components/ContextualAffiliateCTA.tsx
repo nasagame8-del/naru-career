@@ -18,9 +18,24 @@ const validUrl = (url: string) => {
   }
 };
 
-/** Editorial CTA: editorially selected services only, never infer a partner from keyword alone. */
+/**
+ * Explicit editorial assignments for articles that do not yet declare cta_agents.
+ * Keep this list narrowly scoped to articles whose reader intent matches the service.
+ * The registry is still the single source of URLs and partner status.
+ */
+const ARTICLE_PARTNER_KEYS: Record<string, string[]> = {
+  "second-new-grad-web-marketing-career": ["uzuz_general"],
+  "second-new-grad-web-director-career": ["uzuz_general"],
+  "second-new-grad-it-company-research": ["uzuz_general"],
+};
+
+export function resolveContextualCTAKeys(slug: string, configured: string[]): string[] {
+  return [...new Set([...configured, ...(ARTICLE_PARTNER_KEYS[slug] ?? [])])];
+}
+
+/** Editorial CTA: only explicitly configured or curated partners; no keyword-driven partner guesses. */
 export function ContextualAffiliateCTA({ category, keyword, ctaAgents, registry, slug }: Props) {
-  const services = [...new Set(ctaAgents)]
+  const services = resolveContextualCTAKeys(slug, ctaAgents)
     .map((key) => ({ key, entry: registry[key] }))
     .filter(({ entry }) => entry && validUrl(entry.url))
     .slice(0, 2);
