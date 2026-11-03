@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-11-02T01:46:01.413Z",
+  "generatedAt": "2026-11-03T03:41:00.308Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-16",
-    "endDate": "2026-10-29"
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-30"
   },
   "previousRange": {
-    "startDate": "2026-10-02",
-    "endDate": "2026-10-15"
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-16"
   },
   "visibleQueryCounts": {
-    "current": 71,
-    "previous": 84,
-    "new": 46
+    "current": 68,
+    "previous": 85,
+    "new": 45
   },
   "positionBuckets": {
     "current": {
       "top3": 6,
       "top10": 19,
-      "top20": 37
+      "top20": 35
     },
     "previous": {
       "top3": 6,
@@ -40,13 +40,13 @@
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
-      "positionBand": "11-20",
+      "query": "業務委託 急に辞める",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 急に辞める",
-      "positionBand": "4-10",
+      "query": "労働条件通知書 内定承諾前",
+      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
@@ -140,6 +140,11 @@
       "signal": "new"
     },
     {
+      "query": "業務委託 急に辞める",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
       "query": "正社員 業務委託 切り替え",
       "positionBand": "11-20",
       "signal": "new"
@@ -147,11 +152,6 @@
     {
       "query": "労働条件通知書 内定承諾前",
       "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "query": "業務委託 急に辞める",
-      "positionBand": "4-10",
       "signal": "new"
     }
   ],
@@ -187,11 +187,6 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-exclusivity-noncompete-checks",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
       "page": "/articles/contractor-paid-leave-overtime",
       "positionBand": "11-20",
       "signal": "rising"
@@ -207,6 +202,11 @@
       "signal": "rising"
     },
     {
+      "page": "/articles/contractor-exclusivity-noncompete-checks",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "page": "/articles/contractor-unpaid-revisions-scope",
       "positionBand": "4-10",
       "signal": "rising"
@@ -214,12 +214,12 @@
     {
       "page": "/articles/probation-period-lower-salary-checks",
       "positionBand": "11-20",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/agent-referral-vs-self-apply",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/agent-site-vs-agent-usage",
