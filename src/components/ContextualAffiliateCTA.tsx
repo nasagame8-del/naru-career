@@ -70,7 +70,7 @@ export function ContextualAffiliateCTA({ category, keyword, ctaAgents, registry,
 
   const comparison = services.length > 1;
   return (
-    <section aria-label="転職サービスと次の行動の比較" data-cta-impression="true" data-cta-id="contextual-article-end" data-cta-placement="article_end" data-cta-slug={slug} className="mt-12 overflow-hidden rounded-2xl border border-[#D6E1DC] bg-[#FBF8F3]">
+    <section aria-label="転職サービスと次の行動の比較" className="mt-12 overflow-hidden rounded-2xl border border-[#D6E1DC] bg-[#FBF8F3]">
       <div className="h-1.5 bg-[#1F6F66]" aria-hidden="true" />
       <div className="p-5 sm:p-7">
         <p className="mb-2 text-[11px] font-bold tracking-widest text-[#1F6F66]">NEXT STEP  |  選び方ガイド</p>
@@ -84,7 +84,7 @@ export function ContextualAffiliateCTA({ category, keyword, ctaAgents, registry,
           {services.map(({ key, entry }, index) => {
             const profile = PROFILE[key];
             return (
-              <div key={key} className="flex flex-col rounded-xl border border-[#BFD4CB] bg-white shadow-[0_3px_14px_rgba(19,61,52,0.05)]">
+              <div key={key} data-cta-impression="true" data-cta-key={key} data-cta-id={key} data-cta-slug={slug} data-cta-placement="article_end" className="flex flex-col rounded-xl border border-[#BFD4CB] bg-white shadow-[0_3px_14px_rgba(19,61,52,0.05)]">
                 <div className="flex items-center justify-between gap-2 border-b border-[#E6EDE8] px-4 py-3">
                   <span className="rounded-sm bg-[#EAF3EE] px-2 py-1 text-[11px] font-bold text-[#1F6F66]">
                     {comparison ? `選択肢 ${index + 1}` : "相談して進めたい人"}
