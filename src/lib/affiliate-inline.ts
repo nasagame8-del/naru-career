@@ -59,10 +59,14 @@ export function renderAgentCTAComparison(registry: Record<string, CTAEntry>, slu
       '<p class="affiliate-choice__check"><strong>確認ポイント</strong> ' + escapeHtml(option.check) + '</p>' +
       '</div>' +
       '<div class="affiliate-choice__actions">' +
-      '<a class="affiliate-choice__button" href="' + escapeAttribute(entry.url) + '" target="_blank" rel="' + rel +
-      '" data-track-event="contextual_cta_click" data-track-key="' + escapeAttribute(option.key) +
-      '" data-track-slug="' + escapeAttribute(slug) +
-      '" data-track-placement="article_inline_comparison">' + escapeHtml(option.action) + ' <span aria-hidden="true">↗</span></a>' +
+      (originalCreative
+        ? '<div class="approved-affiliate-creative" data-cta-key="' + escapeAttribute(option.key) + '" data-cta-slug="' + escapeAttribute(slug) + '" data-cta-placement="article_inline_comparison">' + originalCreative + '</div>'
+        : safeLink
+          ? '<a class="affiliate-choice__button" href="' + escapeAttribute(entry.url) + '" target="_blank" rel="' + rel +
+            '" data-track-event="contextual_cta_click" data-track-key="' + escapeAttribute(option.key) +
+            '" data-track-slug="' + escapeAttribute(slug) +
+            '" data-track-placement="article_inline_comparison">' + escapeHtml(option.action) + '</a>'
+          : '<span class="affiliate-choice__unlinked">支援対象と利用条件を比較</span>') +
       pr +
       '</div>' +
       '</article>'
