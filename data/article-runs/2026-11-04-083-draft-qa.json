@@ -1,0 +1,155 @@
+{
+  "slug": "winter-bonus-job-change-timing",
+  "bodyCharacters": 2930,
+  "requiredFrontmatter": "passed",
+  "internalLinks": [
+    "how-to-resign-experience",
+    "second-new-grad-it-offer-acceptance-checks"
+  ],
+  "errors": [],
+  "images": [
+    {
+      "alt": "査定期間・在籍条件・支給日を分けて確認する図",
+      "path": "/images/articles/winter-bonus-job-change-timing-01.webp",
+      "exists": false
+    },
+    {
+      "alt": "賞与・次の給与・無収入期間・引き継ぎを比較する図",
+      "path": "/images/articles/winter-bonus-job-change-timing-02.webp",
+      "exists": false
+    },
+    {
+      "alt": "規程を読む、理由を聞く、記録をそろえて相談する三段階",
+      "path": "/images/articles/winter-bonus-job-change-timing-03.webp",
+      "exists": false
+    }
+  ],
+  "factScanner": {
+    "blockers": [],
+    "reviewTargets": [
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 96
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 6
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 13
+      },
+      {
+        "type": "法制度・規制",
+        "match": "厚生労働省",
+        "line": 24
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 26
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 26
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 32
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 37
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 48
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 52
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 74
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 76
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 80
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 82
+      },
+      {
+        "type": "法制度・規制",
+        "match": "厚生労働省",
+        "line": 82
+      },
+      {
+        "type": "法制度・規制",
+        "match": "規程",
+        "line": 88
+      },
+      {
+        "type": "法制度・規制",
+        "match": "厚生労働省",
+        "line": 92
+      },
+      {
+        "type": "法制度・規制",
+        "match": "厚生労働省",
+        "line": 94
+      },
+      {
+        "type": "断定・推奨",
+        "match": "必ず",
+        "line": 4
+      },
+      {
+        "type": "断定・推奨",
+        "match": "必ず",
+        "line": 11
+      },
+      {
+        "type": "断定・推奨",
+        "match": "正解",
+        "line": 39
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 46
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 70
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 86
+      }
+    ]
+  },
+  "fullLocalQa": "not_run_images_missing_or_legacy",
+  "humanFactCheck": "pending",
+  "previewApproval": "pending"
+}
