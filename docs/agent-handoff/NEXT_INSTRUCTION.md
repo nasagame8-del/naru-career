@@ -28,3 +28,20 @@ Claude must execute only that instruction, update `REPORT.md`, and stop. ChatGPT
 - no recursive self-trigger
 - no direct push to master
 - no production merge/deploy without the normal NARU gates and required approval
+
+## UI decoration review — USER-UI-DECORATION-20261005
+
+User requested implementation using the Xserver readability article as reference. Authorized: dedicated `ui/article-decoration-refresh` branch, Draft PR, isolated Cloudflare preview. No master push, merge or production deploy. No Claude task is requested.
+
+
+## USER-ARTICLE69-DATE-20261010
+ユーザーの「それ直して」に基づき、記事69のdatePublished/dateModifiedを実公開日2026-10-09へ修正する。専用PR作成、同head CI確認、squash mergeとCloudflare本番検証を許可。本文・画像・他PRは変更しない。Claudeタスクは起動しない。
+
+## USER-SHINDAN-RPG-PUBLISH-20261010
+ユーザーが「公開していいよ細かい修正はこっちでする」と明示承認。PR #180のReady化、masterへのPR経由マージ、Cloudflare本番デプロイ、実際の /shindan の確認を許可。追加のUI修正・他PRのマージは行わない。master直接pushなし。Claudeタスクは起動しない。
+
+## USER-NARU073-CATEGORY-FIX
+ユーザー「修正してすぐ」に基づき記事73のcategoryを独自調査から業界解説へ修正する。専用PR作成、CI確認、head固定squash merge、Cloudflare本番確認を許可。本文・画像・他記事は変更しない。Claude起動なし。
+
+## USER-HIDE-RPG-CTA-20261014
+ユーザー「RPG診断のCTA全部非表示にしといて」。専用PRで全サイトのRPG診断CTAを非表示にし、CI確認後head固定squash mergeとCloudflare本番反映・検証を許可。master直接push・Claude起動なし。

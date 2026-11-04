@@ -2,9 +2,10 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { CATEGORIES, getCategorySlug } from "@/lib/categories";
+import { CATEGORIES, getCategorySlug, getCategoryTheme } from "@/lib/categories";
 import type { ArticleMeta } from "@/lib/articles";
 import { ArticleList } from "./ArticleList";
+import { MobileCareerCTA } from "./MobileCareerCTA";
 import {
   SORT_OPTIONS,
   sortArticles,
@@ -68,7 +69,7 @@ export function ArticleBrowser({
 
   const filtered = useMemo(() => {
     const scoped =
-      filter === ALL ? articles : articles.filter((a) => a.categories.includes(filter));
+      filter === ALL ? articles : articles.filter((a) => a.category === filter || a.categories.includes(filter));
     return sortArticles(scoped, sort, { popularityOrder, recommendedOrder });
   }, [articles, filter, sort, popularityOrder, recommendedOrder]);
 
@@ -98,28 +99,30 @@ export function ArticleBrowser({
       {/* カテゴリタブ（ページ遷移せずその場で切り替える） */}
       <div className="relative">
         <div
-          role="tablist"
+          role="group"
           aria-label="記事のカテゴリ"
           className="flex overflow-x-auto border-b border-line mb-6 scrollbar-hide"
         >
           {tabs.map((tab) => {
             const isActive = tab === filter;
             const label = tab === ALL ? "すべて" : tab;
+            const theme = tab === ALL ? null : getCategoryTheme(tab);
+            const stateClass =
+              tab === ALL
+                ? isActive
+                  ? "bg-primary-soft text-primary font-bold shadow-sm"
+                  : "text-ink-soft hover:text-ink"
+                : `${theme!.tag} ${isActive ? "font-bold shadow-sm opacity-100" : "opacity-70 hover:opacity-100"}`;
             return (
               <button
                 key={tab}
                 type="button"
-                role="tab"
-                aria-selected={isActive}
+                aria-pressed={isActive}
                 onClick={() => selectFilter(tab)}
-                className={`px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-colors relative ${
-                  isActive
-                    ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary"
-                    : "text-ink-soft hover:text-ink"
-                }`}
+                className={`min-h-11 px-4 py-2 mx-0.5 my-1 text-sm font-medium whitespace-nowrap transition-all rounded-full ${stateClass}`}
               >
                 {label}
-                <span className="ml-1.5 font-mono text-[11px] text-ink-soft">
+                <span className="ml-1.5 font-mono text-[11px] opacity-70">
                   {counts.get(tab) ?? 0}
                 </span>
               </button>
@@ -141,7 +144,7 @@ export function ArticleBrowser({
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => selectSort(option.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                className={`min-h-11 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
                   isActive
                     ? "border-primary bg-primary-soft text-primary"
                     : "border-line text-ink-soft hover:text-ink hover:border-ink-soft"
@@ -162,7 +165,11 @@ export function ArticleBrowser({
       </p>
 
       {displayed.length > 0 ? (
-        <ArticleList articles={displayed} />
+        <>
+          <ArticleList articles={displayed.slice(0, 6)} />
+          <MobileCareerCTA />
+          {displayed.length > 6 && <div className="mt-6"><ArticleList articles={displayed.slice(6)} /></div>}
+        </>
       ) : (
         <p className="py-10 text-center text-sm text-ink-soft">
           このカテゴリの記事はまだありません。
@@ -174,7 +181,7 @@ export function ArticleBrowser({
           <button
             type="button"
             onClick={() => setShowAll(true)}
-            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full border border-line text-sm font-medium text-ink-soft hover:text-ink hover:border-ink-soft transition-colors"
+            className="inline-flex items-center gap-1.5 min-h-11 px-6 py-2.5 rounded-full border border-line text-sm font-medium text-ink-soft hover:text-ink hover:border-ink-soft transition-colors"
           >
             さらに見る（残り {remaining} 件）
           </button>
@@ -186,7 +193,7 @@ export function ArticleBrowser({
           <button
             type="button"
             onClick={() => setShowAll(false)}
-            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full border border-line text-sm font-medium text-ink-soft hover:text-ink hover:border-ink-soft transition-colors"
+            className="inline-flex items-center gap-1.5 min-h-11 px-6 py-2.5 rounded-full border border-line text-sm font-medium text-ink-soft hover:text-ink hover:border-ink-soft transition-colors"
           >
             閉じる
           </button>

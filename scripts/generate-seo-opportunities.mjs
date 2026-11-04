@@ -12,6 +12,11 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import {
+  getSearchConsoleSiteUrl,
+  querySearchAnalytics,
+  resolveSearchConsoleAuth,
+} from "./lib/gsc-auth.mjs";
 
 const OUT_PATH = path.join(process.cwd(), "data", "seo-opportunities.json");
 const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
@@ -123,38 +128,31 @@ function daysAgo(n) {
 }
 
 async function main() {
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n");
-  const siteUrl = process.env.SEARCH_CONSOLE_SITE_URL;
+  let rows;
 
-  if (!email || !privateKey || !siteUrl) {
-    console.error("Search Console の環境変数が未設定です。既存スナップショットは変更しません。");
-    process.exit(1);
-  }
-
-  const { google } = await import("googleapis");
-  const auth = new google.auth.JWT({
-    email,
-    key: privateKey,
-    scopes: ["https://www.googleapis.com/auth/webmasters.readonly"],
-  });
-
-  const endDate = daysAgo(-3);
-  const startDate = daysAgo(-30);
-  const searchconsole = google.searchconsole({ version: "v1", auth });
-  const res = await searchconsole.searchanalytics.query({
-    siteUrl,
-    requestBody: {
+  if (process.env.GSC_SNAPSHOT_INPUT) {
+    const snapshot = JSON.parse(
+      await fs.readFile(path.resolve(process.env.GSC_SNAPSHOT_INPUT), "utf8")
+    );
+    rows = snapshot?.current28?.pageQueries ?? [];
+  } else {
+    const siteUrl = getSearchConsoleSiteUrl();
+    const auth = await resolveSearchConsoleAuth();
+    const endDate = daysAgo(-3);
+    const startDate = daysAgo(-30);
+    const response = await querySearchAnalytics(auth, siteUrl, {
       startDate,
       endDate,
       dimensions: ["page", "query"],
       rowLimit: 25000,
       type: "web",
-    },
-  });
+      dataState: "final",
+    });
+    rows = response.rows ?? [];
+  }
 
   const known = await knownArticleSlugs();
-  const opportunities = buildSeoOpportunities(res.data.rows ?? [], known);
+  const opportunities = buildSeoOpportunities(rows, known);
 
   const snapshot = {
     generatedAt: new Date().toISOString(),

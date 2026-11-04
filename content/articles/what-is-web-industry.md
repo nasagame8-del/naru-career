@@ -128,11 +128,15 @@ Web業界の将来性は高いです。むしろ、AIの進化によって市場
 
 ==Web業界は「変化が早い分、新しい領域に先に飛び込んだ人が有利になる」業界==です。経験がないことを不利と捉えるのではなく、「まだ誰も経験者がいない領域で先行者になれる」とポジティブに考えてほしいです。
 
-## あわせて読みたい記事
+## Web業界の職種・会社選びを深掘りする
 
-- [IT/Web業界のリアルな働き方・文化](/articles/it-web-industry-real-work-culture)
-- [AIO対策の会社で働くってどんな仕事？未経験入社のリアル](/articles/web-industry-guide)
-- [プログラミング未経験でもIT転職できる？](/articles/second-new-grad-programming-career-change)
+Web業界の全体像をつかんだら、次は「どの職種・どの会社側で働くか」を分けて考えると選びやすくなります。
+
+- [第二新卒からWebマーケターを目指す方法](/articles/second-new-grad-web-marketing-career)：SEO・広告・SNSなど、集客側の仕事を詳しく知りたい人向け
+- [第二新卒からWebディレクターを目指す方法](/articles/second-new-grad-web-director-career)：要件整理・制作進行・調整の仕事を知りたい人向け
+- [Web制作会社と事業会社の違い](/articles/second-new-grad-web-agency-vs-inhouse)：制作会社と事業会社の働き方を比較したい人向け
+- [AIO対策の会社で働くってどんな仕事？](/articles/web-industry-guide)：Web業界に未経験入社した実体験を読みたい人向け
+- [IT/Web業界のリアルな働き方・文化](/articles/it-web-industry-real-work-culture)：業界に入った後のカルチャーを知りたい人向け
 
 ## よくある質問
 
