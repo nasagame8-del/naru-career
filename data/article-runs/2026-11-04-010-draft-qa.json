@@ -1,0 +1,189 @@
+{
+  "slug": "what-is-second-new-grad",
+  "bodyCharacters": 4139,
+  "requiredFrontmatter": "passed",
+  "internalLinks": [
+    "promotion-blocked-by-boss",
+    "unfair-evaluation-not-spoiled",
+    "resume-writing-second-new-grad",
+    "second-new-grad-it-career-change",
+    "second-new-grad-it-career-change",
+    "second-new-grad-retirement-pay",
+    "job-change-timing-3months"
+  ],
+  "errors": [],
+  "images": [],
+  "factScanner": {
+    "blockers": [],
+    "reviewTargets": [
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 4
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 6
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 9
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 11
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "4年",
+        "line": 13
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 16
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 21
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 21
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 25
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 27
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 31
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 33
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 37
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 38
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2024",
+        "line": 42
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 42
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 42
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2024",
+        "line": 46
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 46
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 46
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 63
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3ヶ月",
+        "line": 109
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 113
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "4年",
+        "line": 117
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 123
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 135
+      },
+      {
+        "type": "法制度・規制",
+        "match": "制度",
+        "line": 108
+      },
+      {
+        "type": "法制度・規制",
+        "match": "厚生労働省",
+        "line": 133
+      },
+      {
+        "type": "断定・推奨",
+        "match": "必須",
+        "line": 18
+      },
+      {
+        "type": "断定・推奨",
+        "match": "必須",
+        "line": 39
+      },
+      {
+        "type": "断定・推奨",
+        "match": "必須",
+        "line": 58
+      },
+      {
+        "type": "断定・推奨",
+        "match": "必須",
+        "line": 61
+      },
+      {
+        "type": "断定・推奨",
+        "match": "必須",
+        "line": 127
+      }
+    ]
+  },
+  "fullLocalQa": "not_run_images_missing_or_legacy",
+  "humanFactCheck": "pending",
+  "previewApproval": "pending"
+}
