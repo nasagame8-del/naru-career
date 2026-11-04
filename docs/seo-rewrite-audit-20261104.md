@@ -64,3 +64,20 @@ base: 1b52ab6efc553b393c6af0361ceef5f07484d68c
 - 29記事の旧画像はユーザー指定と現行ルールを確認して対処。無断で画像を生成・差し替えない。
 - 低表示・未返却記事はURL検査とquery×pageで原因を分離し、削除・統合を自動決定しない。
 - 既存のSEO定期確認へ今回の監査と11/7〜14の観測を引き継ぐ。
+
+
+## 7記事の本番反映完了（2026-11-04）
+
+ユーザー「両方とも全部問題ない」を提示7記事のHuman Fact Check/プレビュー承認として各headへ紐付け、記録readback後にCI最新runを再確認しhead固定squash merge。
+
+- PR #112: approved `263279f5d049860be3bee7f444957510429ef998` → merge `cf53b97dea179f9972ab16695386e078583a629c` / https://naru-career.com/articles/it-training-program-job-checklist
+- PR #186: approved `02104d9643d6a7261811c2dff78d0c601c54395c` → merge `4e029586e806cb3a140068b09019b6256bd0cd06` / https://naru-career.com/articles/new-grad-early-resignation-career-plan
+- PR #160: approved `7e72e71e65a3cb14c33e1869d605064a8c6e003e` → merge `ac386423478bdbc3570591035ba719a80355f6ce` / https://naru-career.com/articles/second-new-grad-it-company-research
+- PR #164: approved `0b80fec5e73f2412f90a7eb0868e799fb44331ca` → merge `721dd74ce730cbdb5dd4a93851f129dab9cb4f26` / https://naru-career.com/articles/second-new-grad-it-interview-questions
+- PR #163: approved `0c4b2904cbf3f6e25aa97883f83261d2b4fa4f78` → merge `d9481d076dea1420ffe40275e20ec73be74e9741` / https://naru-career.com/articles/second-new-grad-it-offer-acceptance-checks
+- PR #161: approved `c09f5352644ae65e41dbb60817b6adbd18ad4f11` → merge `44917a3bbf1c0108208597790d9aefdcf437bf25` / https://naru-career.com/articles/second-new-grad-it-portfolio-guide
+- PR #252: approved `0f8475b1c8da69c0744becf7bf7f0ae459900546` → merge `1723e2d7bfe9016f52299093bb6f8994d40c4d5c` / https://naru-career.com/articles/second-new-grad-web-marketing-career
+
+7件の対象merge SHAのCloudflare本番runはすべてsuccess。最終head `1723e2d7bfe9016f52299093bb6f8994d40c4d5c` / run41794687247およびcanonical検証success。最終デプロイ後、記事7本の新内容・canonical・noindexなしと画像28枚（WebP）のHTTP200、計35URLを直接確認。旧画像29記事は未マージで保留。
+
+承認・merge・本番確認の正本: article-factory/candidates:data/article-runs/rewrite-release-2026-11-04.json。
