@@ -5,7 +5,7 @@ import {
   baselineWindow,
   checkpointWindow,
   summarizeRows,
-  pinnedAnchorDate,
+  resolveAnchorDate,
 } from "./measure-seo-experiments.mjs";
 
 test("SEO experiment windows use comparable trailing seven-day periods", () => {
@@ -35,9 +35,29 @@ test("summarizeRows uses impression-weighted average position", () => {
   assert.equal(summary.position, 12.5);
 });
 
-test("SEO rewrite keeps the original experiment anchor after later article updates", () => {
-  const run = { measurementPlan: { anchorDate: "2026-10-07" } };
-  assert.equal(pinnedAnchorDate(run), "2026-10-07");
-  assert.equal(pinnedAnchorDate({ measurementPlan: { anchorDate: "today" } }), null);
-  assert.equal(pinnedAnchorDate({}), null);
+test("SEO experiment uses the immutable intervention date despite later article edits", async () => {
+  const run = {
+    id: "quickwin-2026-10-02-business-outsourcing-conversion-risk",
+    measurementPlan: { anchor: "article_dateModified", anchorDate: "2026-10-02" },
+    actionDecision: { decisions: [{ targetType: "article", target: "business-outsourcing-conversion-risk", action: "REWRITE" }] },
+  };
+  assert.deepEqual(await resolveAnchorDate(run), {
+    date: "2026-10-02",
+    source: "measurement_plan_fixed",
+  });
+  assert.deepEqual(baselineWindow("2026-10-02"), {
+    startDate: "2026-09-25",
+    endDate: "2026-10-01",
+  });
+  assert.deepEqual(checkpointWindow("2026-10-02", 7), {
+    startDate: "2026-10-03",
+    endDate: "2026-10-09",
+  });
+});
+
+test("SEO experiment refuses invalid configured dates instead of silently shifting the baseline", async () => {
+  await assert.rejects(
+    resolveAnchorDate({ id: "bad-date", measurementPlan: { anchorDate: "2026-02-30" } }),
+    /Invalid measurementPlan anchor/
+  );
 });

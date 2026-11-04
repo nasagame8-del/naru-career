@@ -17,9 +17,6 @@ export function Footer() {
             <Link href="/guides/second-new-grad-complete-guide" className="inline-flex min-h-11 items-center hover:text-white transition-colors">
               転職完全ガイド
             </Link>
-            <Link href="/shindan" className="inline-flex min-h-11 items-center hover:text-white transition-colors">
-              RPG適職診断
-            </Link>
             <Link href="/agent-diagnosis" className="inline-flex min-h-11 items-center hover:text-white transition-colors">
               エージェント相性診断
             </Link>

@@ -60,13 +60,19 @@ jobs:
             /articles/agent-comparison-2026 \
             /articles/agent-job-mismatch \
             /robots.txt \
-            /sitemap.xml \
-            /shindan
+            /sitemap.xml
           do
             code="$(curl -L -sS -o /tmp/body -w '%{http_code}' "$WORKER_URL$path")"
             echo "$path -> $code"
             test "$code" -ge 200
             test "$code" -lt 400
+          done
+
+          # Diagnosis feature intentionally disabled; all its public routes must return 404.
+          for path in /shindan /shindan/result/wizard /types/wizard; do
+            code="$(curl -sS -o /tmp/body -w '%{http_code}' "$WORKER_URL$path")"
+            echo "$path -> $code"
+            test "$code" = "404"
           done
 
           curl -L -sS "$WORKER_URL/" -o /tmp/naru-home

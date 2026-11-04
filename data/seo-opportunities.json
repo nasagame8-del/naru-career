@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T01:53:57.773Z",
+  "generatedAt": "2026-11-04T02:39:06.528Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -14,20 +14,80 @@
   "strikingDistance": [
     {
       "rank": 1,
+      "slug": "contractor-paid-leave-overtime",
+      "query": "業務委託 有給",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 2,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員から業務委託",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 3,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 メール",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 4,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 5,
+      "slug": "new-grad-early-resignation-career-plan",
+      "query": "山田 瑠々 辞め た 会社",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 6,
+      "slug": "agent-not-recommended",
+      "query": "転職エージェント 合わない 辞めたい",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 7,
+      "slug": "agent-job-mismatch",
+      "query": "転職エージェント 紹介 微妙",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 8,
+      "slug": "second-new-grad-sns-background-check",
+      "query": "sns調査 (裏アカ調査) 採用",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 9,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "業務委託 出社 強制",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 10,
+      "slug": "employee-to-contractor-unemployment-benefit",
+      "query": "業務委託失業保険",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 11,
       "slug": "agent-not-recommended",
       "query": "転職エージェント 微妙",
       "reason": "position_11_30"
     },
     {
-      "rank": 2,
-      "slug": "agent-not-recommended",
-      "query": "転職エージェント 求人 微妙",
+      "rank": 12,
+      "slug": "interview-scheduling-while-employed",
+      "query": "転職 現職中 面接",
       "reason": "position_11_30"
     },
     {
-      "rank": 3,
-      "slug": "new-grad-early-resignation-career-plan",
-      "query": "山田 瑠々 辞め た 会社",
+      "rank": 13,
+      "slug": "contractor-unpaid-fee-consultation",
+      "query": "業務委託 報酬未払い",
       "reason": "position_11_30"
     }
   ],
@@ -35,14 +95,135 @@
     {
       "rank": 1,
       "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 クビ",
+      "query": "正社員から業務委託に変更",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 2,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 3,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 4,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 5,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 6,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 7,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 8,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 9,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 10,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 11,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 12,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 13,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 14,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "query": "業務委託 急に辞める",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 15,
+      "slug": "agent-comparison-2026",
+      "query": "ワークポート",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 16,
+      "slug": "agent-job-mismatch",
+      "query": "転職エージェント 求人 微妙",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 17,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "社員から業務委託へ",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 18,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "転職 労働条件通知書 来ない",
       "reason": "low_ctr_top10"
     }
   ],
-  "cannibalization": [],
+  "cannibalization": [
+    {
+      "rank": 1,
+      "query": "転職エージェント 求人 微妙",
+      "slugs": [
+        "agent-job-mismatch",
+        "agent-not-recommended"
+      ],
+      "reason": "multiple_articles_same_query"
+    }
+  ],
   "prioritySlugs": [
-    "agent-not-recommended",
+    "contractor-paid-leave-overtime",
+    "business-outsourcing-conversion-risk",
+    "offer-letter-before-acceptance-not-provided",
     "new-grad-early-resignation-career-plan",
-    "business-outsourcing-conversion-risk"
+    "agent-not-recommended",
+    "agent-job-mismatch",
+    "second-new-grad-sns-background-check",
+    "employee-to-contractor-unemployment-benefit",
+    "interview-scheduling-while-employed",
+    "contractor-unpaid-fee-consultation",
+    "outsourcing-contract-termination-worker-status",
+    "agent-comparison-2026"
   ]
 }
