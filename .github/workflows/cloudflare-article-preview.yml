@@ -62,7 +62,7 @@ jobs:
 
           # UI-only branches preview an existing representative article.
           # Article PRs still require exactly one changed Markdown file.
-          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* ]]; then
+          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* || "$HEAD_REF" == fix/* ]]; then
             ARTICLES=("content/articles/employee-contractor-pay-comparison.md")
             test -s "${ARTICLES[0]}"
           fi
@@ -225,6 +225,7 @@ jobs:
           test "$STATUS" = "200"
           grep -qi '<h1' /tmp/preview-article.html || { echo "::error::article HTML is missing <h1>"; exit 1; }
           grep -qi 'x-robots-tag: noindex' /tmp/preview-headers || { echo "::error::article response is missing X-Robots-Tag noindex"; exit 1; }
+          grep -q 'GTM-KWH6XZJR' /tmp/preview-article.html || { echo "::error::preview HTML is missing GTM-KWH6XZJR"; exit 1; }
 
           CATEGORY_PATH="$(node --input-type=module <<'NODE'
           import fs from 'node:fs';
