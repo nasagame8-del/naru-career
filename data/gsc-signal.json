@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-10-31T01:46:30.363Z",
+  "generatedAt": "2026-11-04T02:39:06.036Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-14",
-    "endDate": "2026-10-27"
+    "startDate": "2026-10-18",
+    "endDate": "2026-10-31"
   },
   "previousRange": {
-    "startDate": "2026-09-30",
-    "endDate": "2026-10-13"
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-17"
   },
   "visibleQueryCounts": {
     "current": 69,
-    "previous": 82,
-    "new": 42
+    "previous": 88,
+    "new": 45
   },
   "positionBuckets": {
     "current": {
-      "top3": 5,
+      "top3": 6,
       "top10": 17,
-      "top20": 32
+      "top20": 35
     },
     "previous": {
-      "top3": 7,
+      "top3": 6,
       "top10": 31,
-      "top20": 39
+      "top20": 41
     }
   },
   "querySignals": [
@@ -35,13 +35,8 @@
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "労働条件通知書 内定承諾前 メール",
-      "positionBand": "11-20",
+      "query": "業務委託 急に辞める",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -50,8 +45,8 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 急に辞める",
-      "positionBand": "4-10",
+      "query": "業務委託 急に 切 られる",
+      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
@@ -65,8 +60,13 @@
       "signal": "rising"
     },
     {
+      "query": "労働条件通知書 内定承諾前",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
       "query": "業務委託 有給",
-      "positionBand": "21-40",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -80,7 +80,7 @@
       "signal": "rising"
     },
     {
-      "query": "rpg 診断",
+      "query": "sns調査 (裏アカ調査) 採用",
       "positionBand": "21-40",
       "signal": "rising"
     },
@@ -100,11 +100,6 @@
       "signal": "rising"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
       "query": "業務 委託 から 正社員",
       "positionBand": "21-40",
       "signal": "rising"
@@ -115,8 +110,8 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 契約更新しない 伝え方",
-      "positionBand": "21-40",
+      "query": "業務委託 出社 強制",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -125,18 +120,13 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 給料未払い",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
       "query": "労働条件通知書 内定承諾前 メール",
       "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "query": "業務委託 勤怠管理",
-      "positionBand": "41+",
+      "query": "業務委託 急に辞める",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -145,13 +135,23 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 出社 強制",
-      "positionBand": "11-20",
+      "query": "業務委託失業保険",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
       "query": "業務委託 クビ",
       "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 報酬未払い",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 急に 切 られる",
+      "positionBand": "11-20",
       "signal": "new"
     }
   ],
@@ -179,10 +179,15 @@
     {
       "page": "/articles/contractor-client-cancellation-costs",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/contractor-how-to-quit",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/employee-contractor-pay-comparison",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -197,38 +202,33 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/employee-contractor-pay-comparison",
-      "positionBand": "4-10",
+      "page": "/articles/contractor-attendance-control-worker-status",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
       "page": "/articles/contractor-exclusivity-noncompete-checks",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/contractor-unpaid-revisions-scope",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/probation-period-lower-salary-checks",
       "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
-      "page": "/articles/agent-comparison-2026",
-      "positionBand": "4-10",
       "signal": "rising"
     },
     {
       "page": "/articles/agent-referral-vs-self-apply",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/agent-site-vs-agent-usage",
-      "positionBand": "4-10",
+      "positionBand": "21-40",
       "signal": "new"
     }
   ]

@@ -5,25 +5,103 @@
       "status": "approved",
       "updatedAt": "2026-07-18",
       "programs": [
-        { "name": "ハタラクティブ", "key": "agent_hataraku", "status": "approved" },
-        { "name": "AXIS Agent", "key": "axis_agent", "status": "pending" },
-        { "name": "キャリアチケット", "key": "career_ticket", "status": "pending" }
+        {
+          "name": "ハタラクティブ",
+          "key": "agent_hataraku",
+          "status": "approved"
+        },
+        {
+          "name": "AXIS Agent",
+          "key": "axis_agent",
+          "status": "pending"
+        },
+        {
+          "name": "キャリアチケット",
+          "key": "career_ticket",
+          "status": "pending"
+        }
       ]
     },
     {
       "name": "アクセストレード",
       "status": "approved",
-      "updatedAt": "2026-07-18",
+      "updatedAt": "2026-10-31",
       "programs": [
-        { "name": "第二新卒エージェントneo", "key": "agent_neo", "status": "pending" }
-      ]
+        {
+          "name": "第二新卒エージェントneo",
+          "key": "agent_neo",
+          "status": "pending"
+        },
+        {
+          "name": "チアジョブ登販",
+          "key": "cheerjob_hanbai",
+          "programId": "1154924",
+          "status": "approved",
+          "rewardYen": 9600,
+          "conversionAction": "会員登録（無料）"
+        },
+        {
+          "name": "ZENの退職代行",
+          "key": "retirement_zen",
+          "programId": "1157435",
+          "status": "approved",
+          "rewardYen": 10989,
+          "conversionAction": "LINE友達追加"
+        },
+        {
+          "name": "ELECAREER（エレキャリア）",
+          "key": "elecareer",
+          "programId": "1147860",
+          "status": "approved",
+          "rewardYen": 7326,
+          "conversionAction": "新規会員登録",
+          "budgetLimit": true
+        },
+        {
+          "name": "Samurai Job",
+          "key": "samurai_job",
+          "programId": "1161087",
+          "status": "approved",
+          "rewardYen": 10989,
+          "conversionAction": "会員登録完了"
+        },
+        {
+          "name": "退職代行Jobs",
+          "key": "retirement_jobs",
+          "programId": "1146802",
+          "status": "approved",
+          "rewardYen": 12000,
+          "conversionAction": "入金"
+        },
+        {
+          "name": "UZUZ（一般向け）",
+          "key": "uzuz_general",
+          "programId": "1119786",
+          "status": "approved",
+          "rewardYen": 8791,
+          "conversionAction": "新規無料会員登録"
+        },
+        {
+          "name": "UZUZ 28新卒",
+          "key": "uzuz_28",
+          "programId": "1099323",
+          "status": "approved",
+          "rewardYen": null,
+          "conversionAction": null
+        }
+      ],
+      "sourceNote": "User-confirmed AccessTrade 提携中画面（2026-10-31）; 報酬と成果条件は変動し得る。UZUZ28の詳細条件未確認。"
     },
     {
       "name": "バリューコマース",
       "status": "pending",
       "updatedAt": "2026-07-18",
       "programs": [
-        { "name": "ビズリーチ", "key": "bizreach", "status": "pending" }
+        {
+          "name": "ビズリーチ",
+          "key": "bizreach",
+          "status": "pending"
+        }
       ]
     },
     {

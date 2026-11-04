@@ -289,7 +289,7 @@ export async function getArticle(slug: string): Promise<Article> {
       if (!cta) return "";
       const href = cta.url || "#";
       const relAttr = cta.affiliate === false ? "nofollow" : "nofollow sponsored";
-      const noteText = cta.affiliate === false ? "" : `<span class="cta-note">※提携先のサービスです</span>`;
+      const noteText = cta.affiliate === false ? "" : `<span class="cta-note" aria-label="広告">広告（PR）</span>`;
       return `<a href="${href}" class="cta-button" rel="${relAttr}" target="_blank">${cta.cta_text}（${cta.name}）</a>${noteText}`;
     }
   );
