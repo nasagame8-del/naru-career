@@ -1,13 +1,16 @@
 import type { FAQ, ArticleMeta } from "@/lib/articles";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com";
+const websiteId = `${baseUrl}/#website`;
+const publisherId = `${baseUrl}/#organization`;
+const authorId = `${baseUrl}/about#person`;
 
 const authorPerson = {
   "@type": "Person",
+  "@id": authorId,
   name: "磯貝アルト",
   alternateName: "アルト",
   url: `${baseUrl}/about`,
-  image: `${baseUrl}/images/author-avatar.webp`,
   jobTitle: "AIO対策企業・営業職 / 転職メディア運営",
   description:
     "第二新卒で飲食業界からIT/Web業界へ転職。AIO対策企業で人材紹介・人材派遣会社を中心にSEO・AIO領域の法人営業を担当。転職メディア「NARU」を個人運営。",
@@ -17,19 +20,32 @@ const authorPerson = {
   ],
 };
 
+const publisherOrganization = {
+  "@type": "Organization",
+  "@id": publisherId,
+  name: "NARU",
+  url: baseUrl,
+  logo: {
+    "@type": "ImageObject",
+    "@id": `${baseUrl}/#logo`,
+    url: `${baseUrl}/logo-wordmark.png`,
+  },
+  founder: {
+    "@id": authorId,
+  },
+};
+
 export function ArticleJsonLd({ article }: { article: ArticleMeta }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${baseUrl}/articles/${article.slug}#article`,
     headline: article.title,
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
     author: authorPerson,
-    publisher: {
-      "@type": "Organization",
-      name: "NARU",
-      url: baseUrl,
-    },
+    image: `${baseUrl}${article.heroImagePath || article.cardImagePath || "/logo-wordmark.png"}`,
+    publisher: publisherOrganization,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${baseUrl}/articles/${article.slug}`,
@@ -111,17 +127,14 @@ export function WebSiteJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": websiteId,
     name: "NARU",
+    alternateName: ["NARU（ナル）", "naru-career.com"],
     url: baseUrl,
     description:
       "第二新卒のIT/Web転職ガイド。著者・磯貝アルトの実体験をベースに、転職エージェント比較・業界解説・体験談を掲載。",
     author: authorPerson,
-    publisher: {
-      "@type": "Organization",
-      name: "NARU",
-      url: baseUrl,
-      founder: authorPerson,
-    },
+    publisher: publisherOrganization,
   };
 
   return (

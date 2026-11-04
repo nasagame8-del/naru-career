@@ -55,6 +55,21 @@ note_published: false
 
 転職活動に完璧な準備は不要です。まずはエージェントに登録して、市場を知ることから始めるのがおすすめです。
 
+## 第二新卒×IT転職で次に確認したいこと
+
+この記事は、NARUの「第二新卒×IT転職」クラスターの入口です。転職活動の段階ごとに、必要な情報を次の記事へ分けています。
+
+- [IT企業の企業研究で見るポイント](/articles/second-new-grad-it-company-research)：サービス・顧客・収益・配属を確認する
+- [IT/Web転職の面接で聞かれやすい質問](/articles/second-new-grad-it-interview-questions)：退職理由・志望動機・学習実績を整理する
+- [内定承諾前に確認したい労働条件と仕事内容](/articles/second-new-grad-it-offer-acceptance-checks)：入社後のミスマッチを減らす
+- [IT/Web転職にポートフォリオは必要？](/articles/second-new-grad-it-portfolio-guide)：職種別に見せる成果物を整理する
+- [未経験IT求人の研修制度の見抜き方](/articles/it-training-program-job-checklist)：研修期間だけでなく配属後支援まで見る
+- [IT企業に入社した最初の90日](/articles/second-new-grad-it-first-90-days)：入社後の学び方を整理する
+- [プログラミング未経験でもIT転職できる？](/articles/second-new-grad-programming-career-change)：エンジニア以外の入口も含めて考える
+- [SESとは？第二新卒が知っておくべき仕組み](/articles/ses-explained)：SES・受託・自社開発の違いを理解する
+
+このページでは「実際にどう転職したか」を中心に扱い、職種別・選考別の細かい論点は各記事へ分けます。
+
 ## IT/Web業界を選んだ理由と入社後のリアルなギャップ
 
 IT/Web業界を選ぶ理由は、「将来性」と「裁量権」の2つに集約されます。

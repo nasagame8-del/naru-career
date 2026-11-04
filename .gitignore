@@ -43,3 +43,7 @@ next-env.d.ts
 .vercel
 src/app/shindan/.next/
 /.swc
+
+# Cloudflare / OpenNext
+/.open-next/
+/.wrangler/
