@@ -623,3 +623,70 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 
 - 実記事で `:::box` を使い始めるかはコンテンツ側の判断。運用ルールは `docs/article-decoration.md` が正本。
 - 既存記事への `:::box` 追加は、一括ではなく記事単位で必要性を判断する。
+
+
+## 記事69公開日修正 — 2026-10-10
+- reportId / completedInstructionId: USER-ARTICLE69-DATE-20261010
+- status: READY_FOR_CI
+- branch: fix/article-69-published-date / PR175
+- 実施内容: 実公開日10/9にdatePublished/dateModifiedを一致させる。本文・画像は不変。
+- 変更ファイル: 記事69 Markdown、NEXT_INSTRUCTION、REPORT
+- diff: frontmatter日付2行と作業記録のみ。
+- 検証: 元本文との比較で日付2行以外の一致を確認。CI/Cloudflare本番はPR最新headで確認する。
+- 既知の問題: なし。判断項目: なし（ユーザー修正指示済み）。
+- 次: CI成功後マージ、本番日付とトップ導線、queue/WBS記録readback。
+
+## USER-SHINDAN-RPG-MOCK-20261010
+- reportId: USER-SHINDAN-RPG-MOCK-20261010
+- completedInstructionId: pending (direct user request)
+- status: IMPLEMENTED_QA_IN_PROGRESS
+- branch: feat/shindan-faithful-rpg-mock
+- 実施内容: モックに基づく6画面、独立イラスト素材、詳細タブ、PC/スマホ比較3回。PR179未継承。
+- テスト結果: TypeScript・変更TSX ESLint・既存npm test成功。最終build/E2E/previewは確認中。
+- 変更ファイル: shindan page/layout/ResultContent/StatusDetails/rpg.css、public/shindan/rpg、専用preview workflow、docs/shindan-rpg。
+- git diff概要: UIのみ。質問/判定/正式データ/CTA定義/計測定義は未変更。
+- 既知の問題: 大型キャラクターは正式デザイン維持のためモックの仮キャラクターとは異なる。最終差分評価中。
+- 判断が必要な項目: ユーザー目視承認。マージ/本番公開は禁止。
+- 次: 最新headのQAとCloudflare Preview実画面確認。
+
+### 最終レビュー提出
+- status: READY_FOR_VISUAL_REVIEW
+- PR: #180 (Draft)
+- Preview: https://naru-pr-180-shindan-preview.broad-fuchsia.workers.dev/shindan
+- QA: TypeScript、変更ファイルESLint、既存380テスト、本番ビルド成功。Previewで全16パターン×20回答、詳細遷移を確認。
+- 全体ESLintは既存未変更18ファイルに61エラー。実機共有・GA4管理画面到達は未確認。
+- PC1440/スマホ390で6画面撮影、5回の比較修正を記録。詳細は docs/shindan-rpg/QA.md。
+- モックとの差分: 生成画の細部、正式タイプのキャラクター、根拠のないレーダー省略、スマホ2列図鑑。ユーザー目視承認待ち。
+- マージ・本番公開禁止を維持。master直接pushなし。
+
+### USER-SHINDAN-RPG-PUBLISH-20261010
+- reportId / completedInstructionId: USER-SHINDAN-RPG-PUBLISH-20261010
+- status: APPROVED_FOR_PRODUCTION
+- branch: feat/shindan-faithful-rpg-mock / PR180
+- 実施内容: ユーザーの明示公開承認を記録。UIの細かい追加修正はユーザーが担当。
+- テスト結果: コードhead e5d1cf0 のCloudflare Preview CI成功、PC/スマホ6画面再撮影成功。既存380テスト等は上記QAを参照。
+- 変更ファイル / diff: NEXT_INSTRUCTION・REPORTに公開承認の追記のみ。実装変更なし。
+- 既知の問題: 上記QA記載の既存lint・実機/GA4未確認は継続。
+- 判断が必要な項目: 公開承認取得済み。
+- 次: PR経由マージ後、対応merge SHAのCloudflare deployと本番 /shindan の20問回答を確認。
+
+## USER-NARU073-CATEGORY-FIX
+- reportId / completedInstructionId: USER-NARU073-CATEGORY-FIX
+- status: READY_FOR_CI
+- branch: fix/naru-073-category
+- 実施内容: 公取委等の公式資料による解説記事73を業界解説へ訂正。
+- 変更ファイル: 記事73 frontmatter、NEXT_INSTRUCTION、REPORT。
+- diff: category一行のみ。本文・画像・日付は同一。
+- 検証: 既存カテゴリ定義と業務委託記事65の業界解説分類を確認。CI/本番は最新headで検証。
+- 既知の問題/判断: なし。ユーザー即時修正指示済み。
+- 次: CI成功後head固定mergeとCloudflare/canonicalカテゴリ確認。
+
+## USER-HIDE-RPG-CTA-20261014
+- reportId / completedInstructionId: USER-HIDE-RPG-CTA-20261014
+- status: IMPLEMENTED_CI_PENDING
+- branch: fix/hide-rpg-diagnosis-ctas-20261014
+- 実施内容: サイドバー・スマホ・記事下・ガイドのRPG CTA削除、追従バナーのRPG遷移非表示、旧本文HTML内CTAを共通レンダラで除去。
+- テスト結果: CTA除去パターンの確認済み。PR CIとCloudflare build/本番DOM検証を実施予定。
+- 変更ファイル: EditorialSidebar, MobileCareerCTA, DiagnosisBanner, article page, guide page, articles renderer, NEXT_INSTRUCTION, REPORT。
+- git diff概要: RPG診断導線のみ非表示。エージェント診断等は維持。
+- 既知の問題: なし。判断項目: なし。推奨次作業: CI成功後PR mergeと本番検証。

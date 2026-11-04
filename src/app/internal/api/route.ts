@@ -220,6 +220,7 @@ async function fetchGA4Data() {
 
 // ── GSC: Search Console API直接取得（lib層に分離）──
 import { fetchSearchConsoleData } from "@/lib/search-console";
+import { buildGrowthLab, type GrowthArticleInput, type ResearchSource, type ResearchSourceStatus } from "@/lib/growth-lab";
 
 export async function GET() {
   const dataDir = path.join(process.cwd(), "data");
@@ -336,8 +337,46 @@ export async function GET() {
     internalLinks.push({ slug, outgoing, incoming });
   }
 
+  // Growth Lab用の記事特徴量。外部AI APIは使わず、Markdownとfrontmatterだけを解析する。
+  const growthArticles: GrowthArticleInput[] = articleFiles.map((f) => {
+    const slug = f.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(articlesDir, f), "utf-8");
+    const { data, content } = matter(raw);
+    const outgoing = [...content.matchAll(/\[[^\]]*\]\(\/articles\/([\w-]+)\)/g)]
+      .map((match) => match[1])
+      .filter((target) => target && target !== slug);
+    return {
+      slug,
+      title: data.title || slug,
+      keyword: data.keyword || "",
+      body: content,
+      outgoing: [...new Set(outgoing)],
+      faqCount: Array.isArray(data.faq) ? data.faq.length : 0,
+      summaryCount: Array.isArray(data.summary) ? data.summary.length : 0,
+      hasAuthoritativeSource: /厚生労働省|経済産業省|総務省|公正取引委員会|個人情報保護委員会|IPA|出典|参考：|参照：|https?:\/\/(?:www\.)?(?:mhlw\.go\.jp|meti\.go\.jp|soumu\.go\.jp|jftc\.go\.jp|ppc\.go\.jp|ipa\.go\.jp)/i.test(content),
+      hasUpdateHistory: Array.isArray(data.updateHistory) && data.updateHistory.length > 0,
+      hasImage: ["webp", "png"].some((extension) =>
+        fs.existsSync(path.join(process.cwd(), "public", "images", "articles", `${slug}-card.${extension}`))
+      ),
+      hasComparisonTable:
+        /\|[^\n]+\|\s*\n\|[-: |]+\|/m.test(content) ||
+        /COMPARISON_TABLE|comparison-table/i.test(content),
+    };
+  });
+
+  const researchConfig = readJson(path.join(dataDir, "research-sources.json"));
+  const researchStatus = readJson(path.join(dataDir, "research", "source-status.json"));
+  const researchSources = (researchConfig?.sources || []) as ResearchSource[];
+  const researchStatuses = (researchStatus?.sources || []) as ResearchSourceStatus[];
+
   // GA4 & GSC（並列取得）
   const [ga4, gsc] = await Promise.all([fetchGA4Data(), fetchSearchConsoleData()]);
+  const growthLab = buildGrowthLab({
+    gsc,
+    articles: growthArticles,
+    researchSources,
+    researchStatuses,
+  });
 
   return NextResponse.json({
     summary: {
@@ -357,5 +396,6 @@ export async function GET() {
     gsc,
     aioChecklist,
     internalLinks,
+    growthLab,
   });
 }

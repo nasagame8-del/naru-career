@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllArticleMetas } from "@/lib/articles";
 import { CATEGORIES } from "@/lib/categories";
-import { ALL_SLUGS as TYPE_SLUGS } from "@/app/shindan/_lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://naru-career.com";
@@ -18,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // カテゴリの更新日は、そのカテゴリに属する記事の最新更新日
   const categoryEntries: MetadataRoute.Sitemap = Object.entries(CATEGORIES).map(
     ([slug, cat]) => {
       const latest = articles
@@ -34,12 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     }
   );
-
-  const typeEntries: MetadataRoute.Sitemap = TYPE_SLUGS.map((slug) => ({
-    url: `${baseUrl}/types/${slug}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-  }));
 
   return [
     {
@@ -63,11 +55,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/glossary`,
       changeFrequency: "monthly",
       priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/shindan`,
-      changeFrequency: "monthly",
-      priority: 0.7,
     },
     {
       url: `${baseUrl}/agent-diagnosis`,
@@ -95,7 +82,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.2,
     },
     ...categoryEntries,
-    ...typeEntries,
     ...articleEntries,
   ];
 }
