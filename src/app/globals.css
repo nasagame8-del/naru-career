@@ -1,7 +1,22 @@
 @import "tailwindcss";
 
+/* 日付専用: YDW バナナスリップplus（数字と日付記号だけのサブセット） */
+@font-face {
+  font-family: "YDW Bananaslip Plus Date";
+  src: url("/fonts/ydw-bananaslip-plus-date.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+002D-003A, U+5E74, U+6708, U+65E5;
+}
+
 /* ── Editorial Modern Design System ── */
 :root {
+  --site-width: 1200px;
+  --article-width: 812px;
+  --sidebar-width: 272px;
+  --editorial-gap: 36px;
+  --card-gap: 24px;
+  --editorial-radius: 4px;
+  --sidebar-top: 24px;
   --bg: #FBF8F3;
   --bg-soft: #F3EDE4;
   --surface: #FFFFFF;
@@ -16,6 +31,14 @@
   --accent-soft: #F6E9DA;
   --amber: #B5691B;
   --amber-soft: #F6E9DA;
+  /* 帯見出しのアンバーはティーグリーン上では沈むため、アイコンだけ明度を上げる */
+  --amber-on-primary: #F0B860;
+  /* ラベルの折り返し部分 */
+  --primary-deep: #124A43;
+  /* 帯見出しの二重山形（装飾。読み上げ・目次には含めない） */
+  --chevron-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 5l6.5 7-6.5 7M13 5l6.5 7L13 19'/%3E%3C/svg%3E");
+  /* 囲みボックスのチェック */
+  --check-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5.5 5.5L20 6.5'/%3E%3C/svg%3E");
 }
 
 @theme inline {
@@ -36,16 +59,21 @@
   /* 補助色: 雑記カテゴリ */
   --color-navy: #2F4A6B;
   --color-navy-soft: #E4EAF1;
+  /* 補助色: 独自調査カテゴリ */
+  --color-research: #7A4E61;
+  --color-research-soft: #F1E5EA;
+  --color-research-ink: #633F4F;
   /* 成功・完了などの状態表示 */
   --color-sage: #5E7F68;
   --color-sage-soft: #E5EDE7;
   /* 淡色背景の上に置く小さい文字用（コントラスト4.5:1以上） */
   --color-amber-ink: #8F5214;
   --color-sage-ink: #46624F;
-  --font-sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  --font-heading: "Shippori Mincho", "Yu Mincho", serif;
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-heading: "Noto Serif JP", serif;
   --font-serif: var(--font-heading);
-  --font-mono: "JetBrains Mono", monospace;
+  --font-mono: var(--font-sans);
+  --font-date: "YDW Bananaslip Plus Date", var(--font-sans);
 }
 
 body {
@@ -120,49 +148,113 @@ h1 {
 
 /* Article prose styles */
 .prose {
-  line-height: 1.85;
+  font-size: 17px;
+  line-height: 1.95;
+  /* 1行に収まらない長いURL・英数字だけを折り返す（日本語・通常の英単語は分割しない） */
+  overflow-wrap: break-word;
 }
 
+/* H2: 本文幅いっぱいのベタ塗りの帯。左のアンバーの二重山形はCSS装飾のみで、
+   見出し文字・目次・読み上げには入らない（IDとテキストはMarkdownのまま）。 */
 .prose h2 {
+  position: relative;
   font-size: 1.625rem;
   font-weight: 700;
   margin-top: 3.5rem;
   margin-bottom: 1.25rem;
-  padding-left: 0.875rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--line);
-  border-left: 3px solid var(--category-color, var(--accent));
+  /* 2行以上でもアイコン幅ぶんの余白を全行で確保し、文字と重ならないようにする */
+  padding: 0.9rem 1.25rem 0.9rem calc(1.25rem + 1.05em + 0.5rem);
+  background: var(--primary);
+  color: #fff;
+  border-radius: 2px;
+  line-height: 1.55;
 }
 
+.prose h2::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  /* 1行目の中央に合わせる（padding-top + line-heightの半分） */
+  top: calc(0.9rem + 0.775em);
+  transform: translateY(-50%);
+  width: 1.05em;
+  height: 1.05em;
+  background-color: var(--amber-on-primary);
+  -webkit-mask: var(--chevron-mask) no-repeat center / contain;
+  mask: var(--chevron-mask) no-repeat center / contain;
+}
+
+/* 帯の上では本文リンク色が沈むため、白のままにする */
+.prose h2 a:not(.cta-button),
+.prose h2 a:not(.cta-button):hover {
+  color: #fff;
+}
+
+/* H3: 下線の左だけティーグリーン、残りは淡い緑 */
 .prose h3 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+  padding-bottom: 0.625rem;
+  line-height: 1.6;
+  background-image: linear-gradient(
+    to right,
+    var(--primary) 0 4.5rem,
+    var(--primary-soft) 4.5rem 100%
+  );
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 3px;
 }
 
+/* H4: 小さなアンバーの四角と太字 */
 .prose h4 {
+  position: relative;
   font-size: 1.0625rem;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  padding-left: 1.125rem;
+}
+
+.prose h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  transform: translateY(-50%);
+  width: 0.625rem;
+  height: 0.625rem;
+  background: var(--amber);
 }
 
 @media (max-width: 639px) {
+  .prose { font-size: 16px; }
   .prose h2 {
     font-size: 1.375rem;
     margin-top: 2.75rem;
+    padding: 0.8rem 1rem 0.8rem calc(1rem + 1.05em + 0.45rem);
+  }
+  .prose h2::before {
+    left: 1rem;
+    top: calc(0.8rem + 0.775em);
   }
   .prose h3 {
     font-size: 1.125rem;
+    background-image: linear-gradient(
+      to right,
+      var(--primary) 0 3.25rem,
+      var(--primary-soft) 3.25rem 100%
+    );
   }
 }
 
 /* 画像 */
 .prose img {
   width: 100%;
-  border-radius: 8px;
-  margin-top: 1.5rem;
+  border-radius: var(--editorial-radius);
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
 
@@ -185,13 +277,16 @@ h1 {
 }
 
 .prose li::marker {
-  color: var(--ink-soft);
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .prose blockquote {
   margin: 1.5rem 0;
-  padding: 0.25rem 0 0.25rem 1.25rem;
-  border-left: 3px solid var(--line);
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-soft);
+  border-left: 4px solid #b9b2a8;
+  border-radius: 0 8px 8px 0;
   color: var(--ink-soft);
 }
 
@@ -211,18 +306,18 @@ h1 {
 
 /* インラインFAQ（H2直後の一問一答） */
 .inline-faq {
-  background: var(--bg-soft);
-  border-left: 3px solid var(--accent);
+  background: var(--primary-soft);
+  border-left: 3px solid var(--primary);
   border-radius: 0 8px 8px 0;
   padding: 0.875rem 1.25rem;
   margin: 1rem 0 1.5rem;
   font-size: 0.9rem;
 }
-.inline-faq-q {
+.prose .inline-faq-q {
   margin: 0 0 0.375rem;
   color: var(--ink);
 }
-.inline-faq-a {
+.prose .inline-faq-a {
   margin: 0;
   color: var(--ink-soft);
   line-height: 1.7;
@@ -239,7 +334,8 @@ h1 {
 .prose a:not(.cta-button) {
   color: var(--primary);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
 }
 
 .prose a:not(.cta-button):hover {
@@ -291,8 +387,16 @@ h1 {
 }
 
 .prose th:not(.comparison-table th) {
-  background: var(--bg-soft);
+  background: var(--primary-soft);
   font-weight: 700;
+}
+
+.prose table:not(.comparison-table) tbody tr:nth-child(even) {
+  background: var(--bg);
+}
+
+.prose td:not(.comparison-table td) {
+  vertical-align: top;
 }
 
 /* ── Comparison Table ── */
@@ -507,9 +611,103 @@ h1 {
 .prose a.x-post-screenshot { display:block; width:100%; max-width:100%; overflow:hidden; }
 .prose a.x-post-screenshot img { display:block; width:100%; max-width:100%; height:auto; box-sizing:border-box; }
 
+/* External source preview cards used inside articles.
+   They behave like a compact link preview rather than an inline citation. */
+.prose a.source-preview {
+  display: block;
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(37, 37, 37, 0.04);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.prose a.source-preview:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--line));
+  box-shadow: 0 5px 16px rgba(37, 37, 37, 0.08);
+  transform: translateY(-1px);
+}
+
+.source-preview-topline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.625rem;
+  min-width: 0;
+}
+
+.source-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 24px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.source-preview-badge-news {
+  background: var(--navy-soft);
+  color: var(--navy);
+}
+
+.source-preview-domain {
+  min-width: 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.source-preview-title,
+.source-preview-desc,
+.source-preview-cta {
+  display: block;
+}
+
+.source-preview-title {
+  color: var(--ink);
+  font-size: 0.975rem;
+  font-weight: 700;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.source-preview-desc {
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.source-preview-cta {
+  margin-top: 0.7rem;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 639px) {
+  .prose a.source-preview {
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.875rem 0.95rem;
+  }
+  .source-preview-title { font-size: 0.9375rem; }
+  .source-preview-desc { font-size: 0.78rem; }
+}
+
 /* Mobile article overflow guard */
 @media (max-width: 639px) {
-  .prose { min-width: 0; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; }
+  .prose { min-width: 0; max-width: 100%; }
   .prose > *, .prose > div > * { max-width: 100%; }
   .prose pre, .prose table { max-width: 100%; overflow-x: auto; }
   /* 表のセルは1文字ずつ折り返さず、足りなければ横スクロールさせる */
@@ -523,4 +721,241 @@ h1 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Editorial media: shared widths, grid and reading surface. */
+.site-container {
+  width: min(calc(100% - 40px), var(--site-width));
+  margin-inline: auto;
+}
+.header-link { display: inline-flex; align-items: center; min-height: 44px; }
+.header-link:hover { color: var(--primary); }
+.editorial-layout { display: grid; gap: var(--editorial-gap); }
+.article-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--card-gap); }
+.article-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; background: var(--surface); border-radius: var(--editorial-radius); }
+.editorial-hero h1 { font-family: var(--font-sans); }
+.editorial-title { font-family: var(--font-sans); font-weight: 700; line-height: 1.45; font-size: clamp(26px, 1.25vw + 22px, 33px); letter-spacing: 0.01em; }
+.article-sheet { min-width: 0; background: var(--surface); padding: 28px; border-radius: var(--editorial-radius); }
+.editorial-sticky { position: sticky; top: var(--sidebar-top); }
+:where(a, button, summary, input, select):focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+footer :where(a, button):focus-visible { outline-color: white; }
+.prose :where(h2, h3, h4) { scroll-margin-top: 24px; }
+@media (min-width: 640px) {
+  .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .article-sheet { padding: 36px; }
+}
+@media (min-width: 1024px) {
+  .editorial-layout { grid-template-columns: minmax(0, 1fr) var(--sidebar-width); }
+  .article-detail-layout { grid-template-columns: minmax(0, var(--article-width)) var(--sidebar-width); justify-content: space-between; }
+}
+/* サイドバー併設時、3列ではタイトル幅が約10字まで狭まり文節が割れるため1200px以上で3列 */
+@media (min-width: 1200px) {
+  .article-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 639px) {
+  .article-sheet { padding: 24px 20px; margin-inline: -20px; border-radius: 0; }
+}
+
+/* ── Japanese typography ──
+   見出し・カードタイトルは文節単位で改行し、1文字だけの孤立行や行頭の句読点を避ける。
+   overflow-wrap: anywhere は日本語の見出し・本文には使わない（長いURL・英数字は .prose の break-word で吸収）。 */
+html { line-break: strict; }
+:where(h1, h2, h3, h4, h5, h6),
+.jp-title,
+footer nav a {
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+@supports (word-break: auto-phrase) {
+  :where(h1, h2, h3, h4, h5, h6),
+  .jp-title,
+  footer nav a {
+    word-break: auto-phrase;
+  }
+}
+/* コードは単語を壊さず横スクロール */
+.prose pre { overflow-x: auto; white-space: pre; word-break: normal; overflow-wrap: normal; }
+.prose :not(pre) > code { overflow-wrap: break-word; }
+
+/* 記事カードのタイトル（一覧・PICKUP・関連記事・note） */
+.card-title {
+  font-size: 15px;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .card-title { font-size: 15.5px; }
+}
+
+/* UIラベル: 短い要素は折り返さない */
+.ui-nowrap { white-space: nowrap; }
+
+/* 日付 */
+time, .date-text {
+  font-family: var(--font-date);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* パンくず: 見た目上は1行に収め、現在ページ（記事タイトル）は省略表示。JSON-LDは別出力で全文のまま */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 0;
+  white-space: nowrap;
+}
+.breadcrumb > * { flex-shrink: 0; }
+.breadcrumb > [aria-current="page"] {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 639px) {
+  .breadcrumb > [aria-current="page"] { max-width: 14em; }
+}
+
+/* ── ラベル付き囲みボックス ──
+   記事冒頭の「この記事の要点」「この記事で分かること」と、本文中の `:::box` が
+   同じ部品を共有する。ラベルは絶対配置ではなく通常フローに置いているため、
+   長いラベルやスマホ幅では折り返し、本文へ重ならない。
+   ボックスは左に0.75rem寄せ、ラベルが同じだけ左へ出る。
+   これでラベルの左端は本文の左端と揃い、どの幅でも横へはみ出さない。 */
+.naru-box {
+  margin: 2rem 0 2rem 0.75rem;
+  padding: 0.9rem 1.5rem 1.25rem;
+  background: var(--primary-soft);
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+.naru-box-label {
+  position: relative;
+  display: block;
+  width: fit-content;
+  /* 右端は本文領域の内側に収める。長いラベルはここで折り返す */
+  max-width: calc(100% + 2.25rem);
+  margin: 0 0 0.9rem -2.25rem;
+  padding: 0.4rem 1.125rem;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  border-radius: 2px;
+}
+
+/* ラベル左下の小さな折り返し */
+.naru-box-label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.4rem 0.45rem 0 0;
+  border-color: var(--primary-deep) transparent transparent transparent;
+}
+
+/* 本文と同じ文字色のまま、ボックス内の余白だけ詰める */
+.naru-box p {
+  margin-bottom: 0.75rem;
+  line-height: 1.85;
+}
+
+.naru-box ul,
+.naru-box ol {
+  margin-bottom: 0.75rem;
+}
+
+.naru-box li {
+  margin-bottom: 0.35rem;
+  line-height: 1.9;
+}
+
+.naru-box > :last-child {
+  margin-bottom: 0;
+}
+
+/* チェックリスト: 記号はティーグリーン。装飾なので読み上げには出さない */
+.naru-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.naru-box ul > li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.naru-box ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.95em;
+  transform: translateY(-50%);
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: var(--primary);
+  -webkit-mask: var(--check-mask) no-repeat center / contain;
+  mask: var(--check-mask) no-repeat center / contain;
+}
+
+.naru-box ol {
+  list-style: decimal;
+  padding-left: 1.4rem;
+}
+
+.naru-box ol > li::marker {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* 冒頭に2つ並べても過密にならないよう、要点側は背景と文字を一段落ち着かせる */
+.naru-box--quiet {
+  background: var(--bg-soft);
+  padding-bottom: 1.1rem;
+}
+
+.naru-box--quiet .naru-box-label {
+  font-size: 0.8125rem;
+  padding: 0.3rem 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 639px) {
+  .naru-box {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .naru-box-label {
+    margin-left: -2rem;
+    max-width: calc(100% + 2rem);
+  }
+}
+
+/* Article FAQ keeps its own card language, distinct from boxes and blockquotes. */
+.article-faq-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+.article-faq-question {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.article-faq-question::before {
+  content: "Q";
+  color: var(--primary);
+  font-weight: 700;
+  flex-shrink: 0;
 }
