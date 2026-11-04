@@ -1,0 +1,112 @@
+{
+  "batchId": "batch_2026-11-04_seasonal",
+  "generatedAt": "2026-11-04T07:26:16.160Z",
+  "trigger": "manual",
+  "inventorySize": 76,
+  "nextArticleId": 86,
+  "candidates": [
+    {
+      "id": "seasonal-20261104-1",
+      "title": "第二新卒で2027年4月入社を目指すなら？IT・Web転職の逆算スケジュール",
+      "primaryKeyword": "第二新卒 4月入社 転職 いつから",
+      "secondaryKeywords": [],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の転職時期体験談と分け、2027年4月入社の日程調整を扱う",
+      "reasonToWriteNow": "年末から2027年春に向けたユーザー指名企画",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-april-entry-schedule",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "seasonal-20261104-2",
+      "title": "冬のボーナスをもらって転職したい。退職を伝える前に確認すること",
+      "primaryKeyword": "冬 ボーナス 転職 退職 タイミング",
+      "secondaryKeywords": [],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の退職体験談と分け、冬賞与の規程と入社日を照合する",
+      "reasonToWriteNow": "年末から2027年春に向けたユーザー指名企画",
+      "category": "業界解説",
+      "proposedSlug": "winter-bonus-job-change-timing",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE",
+        "YMYL_SENSITIVE"
+      ],
+      "nearestExistingSlugs": [],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "seasonal-20261104-3",
+      "title": "年末年始も転職活動は進められる。応募・返信待ち・休暇中の準備の進め方",
+      "primaryKeyword": "年末年始 転職活動 応募 返信",
+      "secondaryKeywords": [],
+      "searchIntent": "do",
+      "differenceFromExisting": "休業中の応募受付と連絡待ち・準備に絞る",
+      "reasonToWriteNow": "年末から2027年春に向けたユーザー指名企画",
+      "category": "業界解説",
+      "proposedSlug": "year-end-new-year-job-search",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "seasonal-20261104-4",
+      "title": "第二新卒の4月入社、研修は新卒と一緒？参加条件と途中入社の扱いを確認",
+      "primaryKeyword": "第二新卒 4月入社 研修 新卒と一緒",
+      "secondaryKeywords": [],
+      "searchIntent": "do",
+      "differenceFromExisting": "既存の研修一般論と分け、春の集合研修と入社日を照合する",
+      "reasonToWriteNow": "年末から2027年春に向けたユーザー指名企画",
+      "category": "業界解説",
+      "proposedSlug": "second-new-grad-april-training",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    },
+    {
+      "id": "seasonal-20261104-5",
+      "title": "第二新卒とは？定義・第二新卒枠で使える年齢/年数の目安",
+      "primaryKeyword": "第二新卒 いつまで 3年目 3月",
+      "secondaryKeywords": [],
+      "searchIntent": "do",
+      "differenceFromExisting": "新規作成せず、定義記事の期限・FAQを更新する",
+      "reasonToWriteNow": "年末から2027年春に向けたユーザー指名企画",
+      "category": "業界解説",
+      "proposedSlug": "what-is-second-new-grad",
+      "riskFlags": [
+        "TIME_SENSITIVE_CLAIMS",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "what-is-second-new-grad"
+      ],
+      "searchEvidence": null,
+      "blocked": false,
+      "blockedReasons": []
+    }
+  ],
+  "notes": [
+    "11/4朝の既存batchと未着手企画は維持。新規GSC根拠は未取得。SEO需要スコア通過と扱わず、ユーザー明示選択で制作。",
+    "①〜④新規82〜85、⑤既存10更新。画像16枚未受領。公開予定なし。",
+    "既存『3月末退職・いつ伝える・引き止め』『入社前研修無給』の企画は撤回・削除していない。"
+  ]
+}

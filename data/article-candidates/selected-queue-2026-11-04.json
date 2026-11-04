@@ -1,0 +1,812 @@
+{
+  "date": "2026-11-04",
+  "batchId": "batch_2026-11-04_seasonal",
+  "selectionText": "1〜5全部作るか → そこまでやって。",
+  "selectedAt": "2026-11-04T07:26:16.161Z",
+  "articles": [
+    {
+      "candidateId": "seasonal-20261104-1",
+      "articleId": 82,
+      "order": 1,
+      "slug": "second-new-grad-april-entry-schedule",
+      "title": "第二新卒で2027年4月入社を目指すなら？IT・Web転職の逆算スケジュール",
+      "workType": "new",
+      "branch": "article-factory/2026-11-04-82-second-new-grad-april-entry-schedule",
+      "latestHeadSha": "18dc68430cadff0e720b2e28d98a2387fd1d8798",
+      "prNumber": 234,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/234",
+      "status": "WAITING_IMAGES",
+      "driveFolderId": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
+      "driveFiles": {
+        "article.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1tmG2Zgg1VEB2BYbCy6upCZoAfHAkxTVD",
+          "title": "article.md",
+          "file_name": "article.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1tmG2Zgg1VEB2BYbCy6upCZoAfHAkxTVD/view?usp=drivesdk",
+          "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1tmG2Zgg1VEB2BYbCy6upCZoAfHAkxTVD",
+            "title": "article.md",
+            "file_name": "article.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1tmG2Zgg1VEB2BYbCy6upCZoAfHAkxTVD/view?usp=drivesdk",
+            "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt"
+          }
+        },
+        "image-plan.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1WIg18qEd6JEAhZCCc6VLJ1gX63RURK53",
+          "title": "image-plan.md",
+          "file_name": "image-plan.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1WIg18qEd6JEAhZCCc6VLJ1gX63RURK53/view?usp=drivesdk",
+          "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1WIg18qEd6JEAhZCCc6VLJ1gX63RURK53",
+            "title": "image-plan.md",
+            "file_name": "image-plan.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1WIg18qEd6JEAhZCCc6VLJ1gX63RURK53/view?usp=drivesdk",
+            "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt"
+          }
+        },
+        "image-prompts.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1LHMFBEfDhpmffq7CIozza76N1zav9V4x",
+          "title": "image-prompts.md",
+          "file_name": "image-prompts.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1LHMFBEfDhpmffq7CIozza76N1zav9V4x/view?usp=drivesdk",
+          "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1LHMFBEfDhpmffq7CIozza76N1zav9V4x",
+            "title": "image-prompts.md",
+            "file_name": "image-prompts.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1LHMFBEfDhpmffq7CIozza76N1zav9V4x/view?usp=drivesdk",
+            "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt"
+          }
+        },
+        "qa.json": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1k4WFV-TCehvYY5vdeO17hkdWvNY3Rhei",
+          "title": "qa.json",
+          "file_name": "qa.json",
+          "mime_type": "application/json",
+          "url": "https://drive.google.com/file/d/1k4WFV-TCehvYY5vdeO17hkdWvNY3Rhei/view?usp=drivesdk",
+          "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1k4WFV-TCehvYY5vdeO17hkdWvNY3Rhei",
+            "title": "qa.json",
+            "file_name": "qa.json",
+            "mime_type": "application/json",
+            "url": "https://drive.google.com/file/d/1k4WFV-TCehvYY5vdeO17hkdWvNY3Rhei/view?usp=drivesdk",
+            "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt"
+          }
+        }
+      },
+      "imagePrompts": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "19f7P7VuGJy8CdDdob9fOrxKVZjLZnyBV",
+        "title": "NARU-082_画像生成プロンプト.md",
+        "file_name": "NARU-082_画像生成プロンプト.md",
+        "mime_type": "text/markdown",
+        "url": "https://drive.google.com/file/d/19f7P7VuGJy8CdDdob9fOrxKVZjLZnyBV/view?usp=drivesdk",
+        "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF",
+        "structuredContent": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "19f7P7VuGJy8CdDdob9fOrxKVZjLZnyBV",
+          "title": "NARU-082_画像生成プロンプト.md",
+          "file_name": "NARU-082_画像生成プロンプト.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/19f7P7VuGJy8CdDdob9fOrxKVZjLZnyBV/view?usp=drivesdk",
+          "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF"
+        }
+      },
+      "imagesFolder": {
+        "success": true,
+        "id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM",
+        "url": "https://drive.google.com/drive/folders/1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM",
+        "title": "images",
+        "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt"
+      },
+      "originalsFolder": {
+        "success": true,
+        "id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH",
+        "url": "https://drive.google.com/drive/folders/1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH",
+        "title": "originals",
+        "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt"
+      },
+      "readbackVerified": true,
+      "requestedPublishAt": null,
+      "qa": {
+        "draftStructure": "passed",
+        "sourceReview": "assistant_checked_not_independent_human_approval",
+        "factPlaceholderCount": 0,
+        "fullLocalQa": "not_run",
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
+        "ci": {
+          "workflow_runs": [
+            {
+              "id": 41791939178,
+              "name": "Article Factory Validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 322,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939178/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939178/logs",
+              "workflow_id": 364678305
+            },
+            {
+              "id": 41791939153,
+              "name": "NARU article Cloudflare preview",
+              "status": "completed",
+              "conclusion": "failure",
+              "run_number": 306,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939153/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939153/logs",
+              "workflow_id": 374276063
+            }
+          ]
+        }
+      },
+      "publish": {
+        "scheduled": false,
+        "merged": false,
+        "productionVerified": false
+      }
+    },
+    {
+      "candidateId": "seasonal-20261104-2",
+      "articleId": 83,
+      "order": 2,
+      "slug": "winter-bonus-job-change-timing",
+      "title": "冬のボーナスをもらって転職したい。退職を伝える前に確認すること",
+      "workType": "new",
+      "branch": "article-factory/2026-11-04-83-winter-bonus-job-change-timing",
+      "latestHeadSha": "a416c4d800f3cce22299288b1c8fed0912124687",
+      "prNumber": 235,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/235",
+      "status": "WAITING_IMAGES",
+      "driveFolderId": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
+      "driveFiles": {
+        "article.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1aYPNDm9z3DQoM9I3e3YWIWISEoE_j5DT",
+          "title": "article.md",
+          "file_name": "article.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1aYPNDm9z3DQoM9I3e3YWIWISEoE_j5DT/view?usp=drivesdk",
+          "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1aYPNDm9z3DQoM9I3e3YWIWISEoE_j5DT",
+            "title": "article.md",
+            "file_name": "article.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1aYPNDm9z3DQoM9I3e3YWIWISEoE_j5DT/view?usp=drivesdk",
+            "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1"
+          }
+        },
+        "image-plan.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1qWvbHHFxHMJRHCBI3SgnS4HRYCcSBcWg",
+          "title": "image-plan.md",
+          "file_name": "image-plan.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1qWvbHHFxHMJRHCBI3SgnS4HRYCcSBcWg/view?usp=drivesdk",
+          "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1qWvbHHFxHMJRHCBI3SgnS4HRYCcSBcWg",
+            "title": "image-plan.md",
+            "file_name": "image-plan.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1qWvbHHFxHMJRHCBI3SgnS4HRYCcSBcWg/view?usp=drivesdk",
+            "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1"
+          }
+        },
+        "image-prompts.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1IJ7gvVtO0D5-OCe6Q_qCmnAT8olnxm1J",
+          "title": "image-prompts.md",
+          "file_name": "image-prompts.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1IJ7gvVtO0D5-OCe6Q_qCmnAT8olnxm1J/view?usp=drivesdk",
+          "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1IJ7gvVtO0D5-OCe6Q_qCmnAT8olnxm1J",
+            "title": "image-prompts.md",
+            "file_name": "image-prompts.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1IJ7gvVtO0D5-OCe6Q_qCmnAT8olnxm1J/view?usp=drivesdk",
+            "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1"
+          }
+        },
+        "qa.json": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1J7Jnb-WekjDl7HilForuqKxugqekVmZ9",
+          "title": "qa.json",
+          "file_name": "qa.json",
+          "mime_type": "application/json",
+          "url": "https://drive.google.com/file/d/1J7Jnb-WekjDl7HilForuqKxugqekVmZ9/view?usp=drivesdk",
+          "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1J7Jnb-WekjDl7HilForuqKxugqekVmZ9",
+            "title": "qa.json",
+            "file_name": "qa.json",
+            "mime_type": "application/json",
+            "url": "https://drive.google.com/file/d/1J7Jnb-WekjDl7HilForuqKxugqekVmZ9/view?usp=drivesdk",
+            "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1"
+          }
+        }
+      },
+      "imagePrompts": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1479FsGrqgd-yLQ_YF421gow4rOnXRR2E",
+        "title": "NARU-083_画像生成プロンプト.md",
+        "file_name": "NARU-083_画像生成プロンプト.md",
+        "mime_type": "text/markdown",
+        "url": "https://drive.google.com/file/d/1479FsGrqgd-yLQ_YF421gow4rOnXRR2E/view?usp=drivesdk",
+        "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF",
+        "structuredContent": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1479FsGrqgd-yLQ_YF421gow4rOnXRR2E",
+          "title": "NARU-083_画像生成プロンプト.md",
+          "file_name": "NARU-083_画像生成プロンプト.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1479FsGrqgd-yLQ_YF421gow4rOnXRR2E/view?usp=drivesdk",
+          "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF"
+        }
+      },
+      "imagesFolder": {
+        "success": true,
+        "id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj",
+        "url": "https://drive.google.com/drive/folders/1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj",
+        "title": "images",
+        "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1"
+      },
+      "originalsFolder": {
+        "success": true,
+        "id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab",
+        "url": "https://drive.google.com/drive/folders/1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab",
+        "title": "originals",
+        "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1"
+      },
+      "readbackVerified": true,
+      "requestedPublishAt": null,
+      "qa": {
+        "draftStructure": "passed",
+        "sourceReview": "assistant_checked_not_independent_human_approval",
+        "factPlaceholderCount": 0,
+        "fullLocalQa": "not_run",
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
+        "ci": {
+          "workflow_runs": [
+            {
+              "id": 41791947521,
+              "name": "NARU article Cloudflare preview",
+              "status": "completed",
+              "conclusion": "failure",
+              "run_number": 310,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947521/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947521/logs",
+              "workflow_id": 374276063
+            },
+            {
+              "id": 41791947614,
+              "name": "Article Factory Validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 326,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947614/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947614/logs",
+              "workflow_id": 364678305
+            }
+          ]
+        }
+      },
+      "publish": {
+        "scheduled": false,
+        "merged": false,
+        "productionVerified": false
+      }
+    },
+    {
+      "candidateId": "seasonal-20261104-3",
+      "articleId": 84,
+      "order": 3,
+      "slug": "year-end-new-year-job-search",
+      "title": "年末年始も転職活動は進められる。応募・返信待ち・休暇中の準備の進め方",
+      "workType": "new",
+      "branch": "article-factory/2026-11-04-84-year-end-new-year-job-search",
+      "latestHeadSha": "551c39c78354ebda1332a3f5f7321cd2b0b1e54b",
+      "prNumber": 236,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/236",
+      "status": "WAITING_IMAGES",
+      "driveFolderId": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz",
+      "driveFiles": {
+        "article.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1U6qFquio78q1QWzz0IFmcYWeAfsXQy1G",
+          "title": "article.md",
+          "file_name": "article.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1U6qFquio78q1QWzz0IFmcYWeAfsXQy1G/view?usp=drivesdk",
+          "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1U6qFquio78q1QWzz0IFmcYWeAfsXQy1G",
+            "title": "article.md",
+            "file_name": "article.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1U6qFquio78q1QWzz0IFmcYWeAfsXQy1G/view?usp=drivesdk",
+            "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz"
+          }
+        },
+        "image-plan.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1c22gAHI4t3L_lYLuLenbiIEmwjvcV86L",
+          "title": "image-plan.md",
+          "file_name": "image-plan.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1c22gAHI4t3L_lYLuLenbiIEmwjvcV86L/view?usp=drivesdk",
+          "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1c22gAHI4t3L_lYLuLenbiIEmwjvcV86L",
+            "title": "image-plan.md",
+            "file_name": "image-plan.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1c22gAHI4t3L_lYLuLenbiIEmwjvcV86L/view?usp=drivesdk",
+            "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz"
+          }
+        },
+        "image-prompts.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1qjcAsGi3BiRBXRgNlAwK5EM-EyHwF4U5",
+          "title": "image-prompts.md",
+          "file_name": "image-prompts.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1qjcAsGi3BiRBXRgNlAwK5EM-EyHwF4U5/view?usp=drivesdk",
+          "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1qjcAsGi3BiRBXRgNlAwK5EM-EyHwF4U5",
+            "title": "image-prompts.md",
+            "file_name": "image-prompts.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1qjcAsGi3BiRBXRgNlAwK5EM-EyHwF4U5/view?usp=drivesdk",
+            "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz"
+          }
+        },
+        "qa.json": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1r1ApfzN1PN72dRglpKZShlAQ4GGK5nJS",
+          "title": "qa.json",
+          "file_name": "qa.json",
+          "mime_type": "application/json",
+          "url": "https://drive.google.com/file/d/1r1ApfzN1PN72dRglpKZShlAQ4GGK5nJS/view?usp=drivesdk",
+          "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1r1ApfzN1PN72dRglpKZShlAQ4GGK5nJS",
+            "title": "qa.json",
+            "file_name": "qa.json",
+            "mime_type": "application/json",
+            "url": "https://drive.google.com/file/d/1r1ApfzN1PN72dRglpKZShlAQ4GGK5nJS/view?usp=drivesdk",
+            "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz"
+          }
+        }
+      },
+      "imagePrompts": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1UMkdZ-MxL-ZLsAK4aAH2-2V7NDcdcrlC",
+        "title": "NARU-084_画像生成プロンプト.md",
+        "file_name": "NARU-084_画像生成プロンプト.md",
+        "mime_type": "text/markdown",
+        "url": "https://drive.google.com/file/d/1UMkdZ-MxL-ZLsAK4aAH2-2V7NDcdcrlC/view?usp=drivesdk",
+        "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF",
+        "structuredContent": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1UMkdZ-MxL-ZLsAK4aAH2-2V7NDcdcrlC",
+          "title": "NARU-084_画像生成プロンプト.md",
+          "file_name": "NARU-084_画像生成プロンプト.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1UMkdZ-MxL-ZLsAK4aAH2-2V7NDcdcrlC/view?usp=drivesdk",
+          "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF"
+        }
+      },
+      "imagesFolder": {
+        "success": true,
+        "id": "1LlCerP-SsSSYjqAxm1SWJbN0AtWoHC0z",
+        "url": "https://drive.google.com/drive/folders/1LlCerP-SsSSYjqAxm1SWJbN0AtWoHC0z",
+        "title": "images",
+        "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz"
+      },
+      "originalsFolder": {
+        "success": true,
+        "id": "18LGoDvAwj6V6JYcbNpm1ZM6gxVIhqjt9",
+        "url": "https://drive.google.com/drive/folders/18LGoDvAwj6V6JYcbNpm1ZM6gxVIhqjt9",
+        "title": "originals",
+        "parent_id": "1LnTdRFfsYXq6XU5iqS2C9IK7gydH2vZz"
+      },
+      "readbackVerified": true,
+      "requestedPublishAt": null,
+      "qa": {
+        "draftStructure": "passed",
+        "sourceReview": "assistant_checked_not_independent_human_approval",
+        "factPlaceholderCount": 0,
+        "fullLocalQa": "not_run",
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
+        "ci": {
+          "workflow_runs": [
+            {
+              "id": 41791955214,
+              "name": "NARU article Cloudflare preview",
+              "status": "completed",
+              "conclusion": "failure",
+              "run_number": 311,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791955214/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791955214/logs",
+              "workflow_id": 374276063
+            },
+            {
+              "id": 41791954846,
+              "name": "Article Factory Validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 327,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791954846/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791954846/logs",
+              "workflow_id": 364678305
+            }
+          ]
+        }
+      },
+      "publish": {
+        "scheduled": false,
+        "merged": false,
+        "productionVerified": false
+      }
+    },
+    {
+      "candidateId": "seasonal-20261104-4",
+      "articleId": 85,
+      "order": 4,
+      "slug": "second-new-grad-april-training",
+      "title": "第二新卒の4月入社、研修は新卒と一緒？参加条件と途中入社の扱いを確認",
+      "workType": "new",
+      "branch": "article-factory/2026-11-04-85-second-new-grad-april-training",
+      "latestHeadSha": "be7aa55d0fde560b3d11be646d2ca819e0220a89",
+      "prNumber": 238,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/238",
+      "status": "WAITING_IMAGES",
+      "driveFolderId": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL",
+      "driveFiles": {
+        "article.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1zsXQOvwH8RlVSY892I08DceIDElMfVk8",
+          "title": "article.md",
+          "file_name": "article.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1zsXQOvwH8RlVSY892I08DceIDElMfVk8/view?usp=drivesdk",
+          "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1zsXQOvwH8RlVSY892I08DceIDElMfVk8",
+            "title": "article.md",
+            "file_name": "article.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1zsXQOvwH8RlVSY892I08DceIDElMfVk8/view?usp=drivesdk",
+            "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL"
+          }
+        },
+        "image-plan.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1mLMjS7NWGFkZ8qsvhx7exravzJsLA7Gy",
+          "title": "image-plan.md",
+          "file_name": "image-plan.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1mLMjS7NWGFkZ8qsvhx7exravzJsLA7Gy/view?usp=drivesdk",
+          "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1mLMjS7NWGFkZ8qsvhx7exravzJsLA7Gy",
+            "title": "image-plan.md",
+            "file_name": "image-plan.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1mLMjS7NWGFkZ8qsvhx7exravzJsLA7Gy/view?usp=drivesdk",
+            "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL"
+          }
+        },
+        "image-prompts.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1F4X5a_MRHyFsF69dnseBBLuA1t6iSISw",
+          "title": "image-prompts.md",
+          "file_name": "image-prompts.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1F4X5a_MRHyFsF69dnseBBLuA1t6iSISw/view?usp=drivesdk",
+          "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1F4X5a_MRHyFsF69dnseBBLuA1t6iSISw",
+            "title": "image-prompts.md",
+            "file_name": "image-prompts.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1F4X5a_MRHyFsF69dnseBBLuA1t6iSISw/view?usp=drivesdk",
+            "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL"
+          }
+        },
+        "qa.json": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1NRbKaaJ37npR0Sfmkk3U7fEIMt1PxGBr",
+          "title": "qa.json",
+          "file_name": "qa.json",
+          "mime_type": "application/json",
+          "url": "https://drive.google.com/file/d/1NRbKaaJ37npR0Sfmkk3U7fEIMt1PxGBr/view?usp=drivesdk",
+          "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1NRbKaaJ37npR0Sfmkk3U7fEIMt1PxGBr",
+            "title": "qa.json",
+            "file_name": "qa.json",
+            "mime_type": "application/json",
+            "url": "https://drive.google.com/file/d/1NRbKaaJ37npR0Sfmkk3U7fEIMt1PxGBr/view?usp=drivesdk",
+            "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL"
+          }
+        }
+      },
+      "imagePrompts": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1JIGwGc7rAFfE2AfJyBbbS61UdSXI_2Qk",
+        "title": "NARU-085_画像生成プロンプト.md",
+        "file_name": "NARU-085_画像生成プロンプト.md",
+        "mime_type": "text/markdown",
+        "url": "https://drive.google.com/file/d/1JIGwGc7rAFfE2AfJyBbbS61UdSXI_2Qk/view?usp=drivesdk",
+        "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF",
+        "structuredContent": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1JIGwGc7rAFfE2AfJyBbbS61UdSXI_2Qk",
+          "title": "NARU-085_画像生成プロンプト.md",
+          "file_name": "NARU-085_画像生成プロンプト.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1JIGwGc7rAFfE2AfJyBbbS61UdSXI_2Qk/view?usp=drivesdk",
+          "parent_id": "1qSXBsD0CHZYUMycsMGBfV0sbnV-KmPzF"
+        }
+      },
+      "imagesFolder": {
+        "success": true,
+        "id": "1SNoVoEbJgpyuNJZCcgkw3K90y0C9We4i",
+        "url": "https://drive.google.com/drive/folders/1SNoVoEbJgpyuNJZCcgkw3K90y0C9We4i",
+        "title": "images",
+        "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL"
+      },
+      "originalsFolder": {
+        "success": true,
+        "id": "1Of0tFr6DTHqTrlCjPiJHOkPnjiuDHWFp",
+        "url": "https://drive.google.com/drive/folders/1Of0tFr6DTHqTrlCjPiJHOkPnjiuDHWFp",
+        "title": "originals",
+        "parent_id": "1SzGh0pWw_NVbEcsbgp491oSBZmevaDyL"
+      },
+      "readbackVerified": true,
+      "requestedPublishAt": null,
+      "qa": {
+        "draftStructure": "passed",
+        "sourceReview": "assistant_checked_not_independent_human_approval",
+        "factPlaceholderCount": 0,
+        "fullLocalQa": "not_run",
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
+        "ci": {
+          "workflow_runs": [
+            {
+              "id": 41791963867,
+              "name": "Article Factory Validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 328,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791963867/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791963867/logs",
+              "workflow_id": 364678305
+            },
+            {
+              "id": 41791963834,
+              "name": "NARU article Cloudflare preview",
+              "status": "completed",
+              "conclusion": "failure",
+              "run_number": 312,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791963834/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791963834/logs",
+              "workflow_id": 374276063
+            }
+          ]
+        }
+      },
+      "publish": {
+        "scheduled": false,
+        "merged": false,
+        "productionVerified": false
+      }
+    },
+    {
+      "candidateId": "seasonal-20261104-5",
+      "articleId": 10,
+      "order": 5,
+      "slug": "what-is-second-new-grad",
+      "title": "第二新卒とは？定義・第二新卒枠で使える年齢/年数の目安",
+      "workType": "rewrite",
+      "branch": "rewrite/2026-11-04-second-new-grad-deadline",
+      "latestHeadSha": "e1613a6c4f4fbd1641d4c7385406dcf2a36556d2",
+      "prNumber": 242,
+      "prUrl": "https://github.com/nasagame8-del/naru-career/pull/242",
+      "status": "DRAFT_REVIEW",
+      "driveFolderId": "1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL",
+      "driveFiles": {
+        "article.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1XKdjZsUPwC0Yfl-OEe1GaFWymItUbfCj",
+          "title": "article.md",
+          "file_name": "article.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1XKdjZsUPwC0Yfl-OEe1GaFWymItUbfCj/view?usp=drivesdk",
+          "parent_id": "1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1XKdjZsUPwC0Yfl-OEe1GaFWymItUbfCj",
+            "title": "article.md",
+            "file_name": "article.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1XKdjZsUPwC0Yfl-OEe1GaFWymItUbfCj/view?usp=drivesdk",
+            "parent_id": "1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL"
+          }
+        },
+        "image-plan.md": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "1T22t6qhMlPMBpojsUeoTTk-ZEAV-7Tta",
+          "title": "image-plan.md",
+          "file_name": "image-plan.md",
+          "mime_type": "text/markdown",
+          "url": "https://drive.google.com/file/d/1T22t6qhMlPMBpojsUeoTTk-ZEAV-7Tta/view?usp=drivesdk",
+          "parent_id": "1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1T22t6qhMlPMBpojsUeoTTk-ZEAV-7Tta",
+            "title": "image-plan.md",
+            "file_name": "image-plan.md",
+            "mime_type": "text/markdown",
+            "url": "https://drive.google.com/file/d/1T22t6qhMlPMBpojsUeoTTk-ZEAV-7Tta/view?usp=drivesdk",
+            "parent_id": "1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL"
+          }
+        },
+        "qa.json": {
+          "accepted_input": "file_uri",
+          "success": true,
+          "id": "103uzwdx1TPUuq30xKTpUMKKnUFeakCSG",
+          "title": "qa.json",
+          "file_name": "qa.json",
+          "mime_type": "application/json",
+          "url": "https://drive.google.com/file/d/103uzwdx1TPUuq30xKTpUMKKnUFeakCSG/view?usp=drivesdk",
+          "parent_id": "1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL",
+          "structuredContent": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "103uzwdx1TPUuq30xKTpUMKKnUFeakCSG",
+            "title": "qa.json",
+            "file_name": "qa.json",
+            "mime_type": "application/json",
+            "url": "https://drive.google.com/file/d/103uzwdx1TPUuq30xKTpUMKKnUFeakCSG/view?usp=drivesdk",
+            "parent_id": "1SjcKDXlhQ_YuoDNSYg821sMO5NDSdgZL"
+          }
+        }
+      },
+      "imagePrompts": null,
+      "imagesFolder": null,
+      "originalsFolder": null,
+      "readbackVerified": true,
+      "requestedPublishAt": null,
+      "qa": {
+        "draftStructure": "passed",
+        "sourceReview": "assistant_checked_not_independent_human_approval",
+        "factPlaceholderCount": 0,
+        "fullLocalQa": "not_run",
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
+        "ci": {
+          "workflow_runs": [
+            {
+              "id": 41791971952,
+              "name": "Article Factory Validation",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 329,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791971952/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791971952/logs",
+              "workflow_id": 364678305
+            },
+            {
+              "id": 41791971572,
+              "name": "NARU article Cloudflare preview",
+              "status": "queued",
+              "conclusion": null,
+              "run_number": 313,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791971572/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791971572/logs",
+              "workflow_id": 374276063
+            }
+          ]
+        }
+      },
+      "publish": {
+        "scheduled": false,
+        "merged": false,
+        "productionVerified": false
+      }
+    }
+  ],
+  "notes": [
+    "11/4朝の既存batchと未着手企画は維持。新規GSC根拠は未取得。SEO需要スコア通過と扱わず、ユーザー明示選択で制作。",
+    "①〜④新規82〜85、⑤既存10更新。画像16枚未受領。公開予定なし。",
+    "既存『3月末退職・いつ伝える・引き止め』『入社前研修無給』の企画は撤回・削除していない。"
+  ]
+}
