@@ -1,0 +1,53 @@
+# NARU Fact Check Gate
+
+Googleの生成AIコンテンツ利用ガイド更新を受け、AI生成・AI補助コンテンツは公開前に人間が事実確認する。
+
+## 対象
+本文だけでなく、以下をすべて確認対象とする。
+
+- title
+- excerpt / description
+- summary
+- FAQ
+- H2/H3
+- 表・箇条書き
+- 数値、割合、年次、金額
+- 法律、制度、施行日、行政機関の説明
+- 「増えている」「最多」「最大級」などの時系列・比較表現
+- 転職サービスの料金、求人数、サポート、採用条件
+- 著者の一人称経験
+- 画像内テキスト、数字、図解内容
+- alt
+
+## 3分類
+各主張を次のどれかに置く。
+
+1. Fact: 外部で検証できる事実。一次情報を優先して確認する。
+2. Experience: 著者本人の実体験。本人が実際に経験した範囲だけを書く。
+3. Interpretation: Fact / Experience からの編集上の解釈。事実と混同しない。
+
+## 公開ゲート
+1. `node scripts/article-fact-check.mjs --slug <slug>` で確認対象を抽出。
+2. BLOCK が1件でもあれば修正する。
+3. REVIEW対象を一次情報または著者実体験で確認する。
+4. 画像内の文言・数字・altも確認する。
+5. PRコメントに確認結果を記録する。
+6. 最終Previewを人間が確認し、対象head SHAへ明示的にOKを出す。
+7. 表示に関わるコミット後は再確認する。
+
+## 禁止
+- AIが自分で「事実確認済み」と宣言して人間確認を代替しない。
+- 検索スニペット用のtitle/excerptだけ事実確認を省略しない。
+- 古い統計を現在値として扱わない。
+- 個人の体験を業界全体へ一般化しない。
+- 架空の成功率・年収差・求人件数・実績を作らない。
+
+
+## CI pre-scan
+
+Article Factory Validation では、記事PRの最新headに対して `npm run article:fact-check -- --slug <slug>` をフルローカルQAの前に実行する。
+
+- `BLOCK` が1件でもあればCIを失敗させ、公開工程へ進めない。
+- `REVIEW` はログへ抽出するだけで、自動合格にはしない。
+- CI success は Human Fact Check の代替ではない。REVIEW対象は一次情報または著者本人の実体験で人間が確認し、同じhead SHAへ承認を記録する。
+- 表示に関わるcommitでhead SHAが変わった場合、古いHuman Fact Check承認を継承しない。
