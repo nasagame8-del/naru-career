@@ -12,10 +12,10 @@
       "title": "第二新卒で2027年4月入社を目指すなら？IT・Web転職の逆算スケジュール",
       "workType": "new",
       "branch": "article-factory/2026-11-04-82-second-new-grad-april-entry-schedule",
-      "latestHeadSha": "18dc68430cadff0e720b2e28d98a2387fd1d8798",
+      "latestHeadSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
       "prNumber": 234,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/234",
-      "status": "WAITING_IMAGES",
+      "status": "QA",
       "driveFolderId": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFiles": {
@@ -140,38 +140,225 @@
         "draftStructure": "passed",
         "sourceReview": "assistant_checked_not_independent_human_approval",
         "factPlaceholderCount": 0,
-        "fullLocalQa": "not_run",
+        "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
         "humanFactCheck": "pending",
         "previewVisual": "pending",
         "ci": {
           "workflow_runs": [
             {
-              "id": 41791939178,
+              "id": 41794246981,
+              "name": "NARU article Cloudflare preview",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 321,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246981/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246981/logs",
+              "workflow_id": 374276063
+            },
+            {
+              "id": 41794246975,
               "name": "Article Factory Validation",
               "status": "in_progress",
               "conclusion": null,
-              "run_number": 322,
-              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939178/jobs",
-              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939178/logs",
+              "run_number": 330,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246975/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246975/logs",
               "workflow_id": 364678305
-            },
-            {
-              "id": 41791939153,
-              "name": "NARU article Cloudflare preview",
-              "status": "completed",
-              "conclusion": "failure",
-              "run_number": 306,
-              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939153/jobs",
-              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791939153/logs",
-              "workflow_id": 374276063
             }
           ]
+        },
+        "imageQa": {
+          "status": "passed",
+          "headSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
+          "driveOriginals": 4,
+          "driveWebps": 4,
+          "githubWebps": 4,
+          "card": "1200x630",
+          "body": "1200x675",
+          "metadata": "stripped",
+          "visual": "passed"
+        },
+        "articleLocalStructure": {
+          "status": "passed",
+          "scope": "first_9_checks_only",
+          "heavyChecks": "skipped",
+          "headSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f"
         }
       },
       "publish": {
         "scheduled": false,
         "merged": false,
         "productionVerified": false
+      },
+      "imageFiles": {
+        "card": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1t5IVpcjX4gnxrTu6Q7jx5zGp6Nmai_G2",
+            "title": "second-new-grad-april-entry-schedule-card-original.jpeg",
+            "file_name": "second-new-grad-april-entry-schedule-card-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/1t5IVpcjX4gnxrTu6Q7jx5zGp6Nmai_G2/view?usp=drivesdk",
+            "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1t5IVpcjX4gnxrTu6Q7jx5zGp6Nmai_G2",
+              "title": "second-new-grad-april-entry-schedule-card-original.jpeg",
+              "file_name": "second-new-grad-april-entry-schedule-card-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/1t5IVpcjX4gnxrTu6Q7jx5zGp6Nmai_G2/view?usp=drivesdk",
+              "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1_cJwVRglJVNTs1O9ePdeK3CNRIKFcBoa",
+            "title": "second-new-grad-april-entry-schedule-card.webp",
+            "file_name": "second-new-grad-april-entry-schedule-card.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1_cJwVRglJVNTs1O9ePdeK3CNRIKFcBoa/view?usp=drivesdk",
+            "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1_cJwVRglJVNTs1O9ePdeK3CNRIKFcBoa",
+              "title": "second-new-grad-april-entry-schedule-card.webp",
+              "file_name": "second-new-grad-april-entry-schedule-card.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1_cJwVRglJVNTs1O9ePdeK3CNRIKFcBoa/view?usp=drivesdk",
+              "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM"
+            }
+          }
+        },
+        "01": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1i-TdiLBDnnG39xYAMBMv4-lPbRtXzG-x",
+            "title": "second-new-grad-april-entry-schedule-01-original.jpeg",
+            "file_name": "second-new-grad-april-entry-schedule-01-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/1i-TdiLBDnnG39xYAMBMv4-lPbRtXzG-x/view?usp=drivesdk",
+            "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1i-TdiLBDnnG39xYAMBMv4-lPbRtXzG-x",
+              "title": "second-new-grad-april-entry-schedule-01-original.jpeg",
+              "file_name": "second-new-grad-april-entry-schedule-01-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/1i-TdiLBDnnG39xYAMBMv4-lPbRtXzG-x/view?usp=drivesdk",
+              "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1sxgL1cl59wA_G_CsTizLmsb_65FfUm8S",
+            "title": "second-new-grad-april-entry-schedule-01.webp",
+            "file_name": "second-new-grad-april-entry-schedule-01.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1sxgL1cl59wA_G_CsTizLmsb_65FfUm8S/view?usp=drivesdk",
+            "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1sxgL1cl59wA_G_CsTizLmsb_65FfUm8S",
+              "title": "second-new-grad-april-entry-schedule-01.webp",
+              "file_name": "second-new-grad-april-entry-schedule-01.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1sxgL1cl59wA_G_CsTizLmsb_65FfUm8S/view?usp=drivesdk",
+              "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM"
+            }
+          }
+        },
+        "02": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1L3ZS3242qm9kWz6VLhZdgMPnS3hWMt55",
+            "title": "second-new-grad-april-entry-schedule-02-original.jpeg",
+            "file_name": "second-new-grad-april-entry-schedule-02-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/1L3ZS3242qm9kWz6VLhZdgMPnS3hWMt55/view?usp=drivesdk",
+            "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1L3ZS3242qm9kWz6VLhZdgMPnS3hWMt55",
+              "title": "second-new-grad-april-entry-schedule-02-original.jpeg",
+              "file_name": "second-new-grad-april-entry-schedule-02-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/1L3ZS3242qm9kWz6VLhZdgMPnS3hWMt55/view?usp=drivesdk",
+              "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1KaaFGvxzqq_M3ro_-sGEHkKOrzd9UN5b",
+            "title": "second-new-grad-april-entry-schedule-02.webp",
+            "file_name": "second-new-grad-april-entry-schedule-02.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1KaaFGvxzqq_M3ro_-sGEHkKOrzd9UN5b/view?usp=drivesdk",
+            "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1KaaFGvxzqq_M3ro_-sGEHkKOrzd9UN5b",
+              "title": "second-new-grad-april-entry-schedule-02.webp",
+              "file_name": "second-new-grad-april-entry-schedule-02.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1KaaFGvxzqq_M3ro_-sGEHkKOrzd9UN5b/view?usp=drivesdk",
+              "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM"
+            }
+          }
+        },
+        "03": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1bbHfpXmaXzvT8pq_Nwr5NewXbd_4UKTr",
+            "title": "second-new-grad-april-entry-schedule-03-original.jpeg",
+            "file_name": "second-new-grad-april-entry-schedule-03-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/1bbHfpXmaXzvT8pq_Nwr5NewXbd_4UKTr/view?usp=drivesdk",
+            "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1bbHfpXmaXzvT8pq_Nwr5NewXbd_4UKTr",
+              "title": "second-new-grad-april-entry-schedule-03-original.jpeg",
+              "file_name": "second-new-grad-april-entry-schedule-03-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/1bbHfpXmaXzvT8pq_Nwr5NewXbd_4UKTr/view?usp=drivesdk",
+              "parent_id": "1Z5rnYVFcH33pXXzAvcLsFaPgRqcvSpxH"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1kMJ9e--hoVeflAEb0mah239zvToauKft",
+            "title": "second-new-grad-april-entry-schedule-03.webp",
+            "file_name": "second-new-grad-april-entry-schedule-03.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1kMJ9e--hoVeflAEb0mah239zvToauKft/view?usp=drivesdk",
+            "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1kMJ9e--hoVeflAEb0mah239zvToauKft",
+              "title": "second-new-grad-april-entry-schedule-03.webp",
+              "file_name": "second-new-grad-april-entry-schedule-03.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1kMJ9e--hoVeflAEb0mah239zvToauKft/view?usp=drivesdk",
+              "parent_id": "1Ze5PWmGEb4RiIDGpeFOFKUL_76HkPjIM"
+            }
+          }
+        }
       }
     },
     {
@@ -182,10 +369,10 @@
       "title": "冬のボーナスをもらって転職したい。退職を伝える前に確認すること",
       "workType": "new",
       "branch": "article-factory/2026-11-04-83-winter-bonus-job-change-timing",
-      "latestHeadSha": "a416c4d800f3cce22299288b1c8fed0912124687",
+      "latestHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
       "prNumber": 235,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/235",
-      "status": "WAITING_IMAGES",
+      "status": "QA",
       "driveFolderId": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFiles": {
@@ -310,38 +497,225 @@
         "draftStructure": "passed",
         "sourceReview": "assistant_checked_not_independent_human_approval",
         "factPlaceholderCount": 0,
-        "fullLocalQa": "not_run",
+        "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
         "humanFactCheck": "pending",
         "previewVisual": "pending",
         "ci": {
           "workflow_runs": [
             {
-              "id": 41791947521,
-              "name": "NARU article Cloudflare preview",
-              "status": "completed",
-              "conclusion": "failure",
-              "run_number": 310,
-              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947521/jobs",
-              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947521/logs",
-              "workflow_id": 374276063
-            },
-            {
-              "id": 41791947614,
+              "id": 41794254785,
               "name": "Article Factory Validation",
               "status": "in_progress",
               "conclusion": null,
-              "run_number": 326,
-              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947614/jobs",
-              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41791947614/logs",
+              "run_number": 331,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254785/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254785/logs",
               "workflow_id": 364678305
+            },
+            {
+              "id": 41794254743,
+              "name": "NARU article Cloudflare preview",
+              "status": "in_progress",
+              "conclusion": null,
+              "run_number": 322,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254743/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254743/logs",
+              "workflow_id": 374276063
             }
           ]
+        },
+        "imageQa": {
+          "status": "passed",
+          "headSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
+          "driveOriginals": 4,
+          "driveWebps": 4,
+          "githubWebps": 4,
+          "card": "1200x630",
+          "body": "1200x675",
+          "metadata": "stripped",
+          "visual": "passed"
+        },
+        "articleLocalStructure": {
+          "status": "passed",
+          "scope": "first_9_checks_only",
+          "heavyChecks": "skipped",
+          "headSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf"
         }
       },
       "publish": {
         "scheduled": false,
         "merged": false,
         "productionVerified": false
+      },
+      "imageFiles": {
+        "card": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1F9izmxgGOVgugJFByrM8qjzOYoSVzpy_",
+            "title": "winter-bonus-job-change-timing-card-original.jpeg",
+            "file_name": "winter-bonus-job-change-timing-card-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/1F9izmxgGOVgugJFByrM8qjzOYoSVzpy_/view?usp=drivesdk",
+            "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1F9izmxgGOVgugJFByrM8qjzOYoSVzpy_",
+              "title": "winter-bonus-job-change-timing-card-original.jpeg",
+              "file_name": "winter-bonus-job-change-timing-card-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/1F9izmxgGOVgugJFByrM8qjzOYoSVzpy_/view?usp=drivesdk",
+              "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1yAiETYKyHuuWfOC1Qx4L4_Bbd8Z2JKuX",
+            "title": "winter-bonus-job-change-timing-card.webp",
+            "file_name": "winter-bonus-job-change-timing-card.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1yAiETYKyHuuWfOC1Qx4L4_Bbd8Z2JKuX/view?usp=drivesdk",
+            "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1yAiETYKyHuuWfOC1Qx4L4_Bbd8Z2JKuX",
+              "title": "winter-bonus-job-change-timing-card.webp",
+              "file_name": "winter-bonus-job-change-timing-card.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1yAiETYKyHuuWfOC1Qx4L4_Bbd8Z2JKuX/view?usp=drivesdk",
+              "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj"
+            }
+          }
+        },
+        "01": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1J0mEDFKBuMZAY96dbdR0-LL-QMkA-8Fg",
+            "title": "winter-bonus-job-change-timing-01-original.jpeg",
+            "file_name": "winter-bonus-job-change-timing-01-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/1J0mEDFKBuMZAY96dbdR0-LL-QMkA-8Fg/view?usp=drivesdk",
+            "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1J0mEDFKBuMZAY96dbdR0-LL-QMkA-8Fg",
+              "title": "winter-bonus-job-change-timing-01-original.jpeg",
+              "file_name": "winter-bonus-job-change-timing-01-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/1J0mEDFKBuMZAY96dbdR0-LL-QMkA-8Fg/view?usp=drivesdk",
+              "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "14S9wJHB6h8Om1jgwwv-_Qljtuu-rlPzr",
+            "title": "winter-bonus-job-change-timing-01.webp",
+            "file_name": "winter-bonus-job-change-timing-01.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/14S9wJHB6h8Om1jgwwv-_Qljtuu-rlPzr/view?usp=drivesdk",
+            "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "14S9wJHB6h8Om1jgwwv-_Qljtuu-rlPzr",
+              "title": "winter-bonus-job-change-timing-01.webp",
+              "file_name": "winter-bonus-job-change-timing-01.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/14S9wJHB6h8Om1jgwwv-_Qljtuu-rlPzr/view?usp=drivesdk",
+              "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj"
+            }
+          }
+        },
+        "02": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "16jKuQlk6ZVkI2OeNsYnuFBVA-5F6LmuN",
+            "title": "winter-bonus-job-change-timing-02-original.jpeg",
+            "file_name": "winter-bonus-job-change-timing-02-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/16jKuQlk6ZVkI2OeNsYnuFBVA-5F6LmuN/view?usp=drivesdk",
+            "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "16jKuQlk6ZVkI2OeNsYnuFBVA-5F6LmuN",
+              "title": "winter-bonus-job-change-timing-02-original.jpeg",
+              "file_name": "winter-bonus-job-change-timing-02-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/16jKuQlk6ZVkI2OeNsYnuFBVA-5F6LmuN/view?usp=drivesdk",
+              "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1duVeIMS7SMfrQyvB6sDXEhcNGPMTJa_q",
+            "title": "winter-bonus-job-change-timing-02.webp",
+            "file_name": "winter-bonus-job-change-timing-02.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1duVeIMS7SMfrQyvB6sDXEhcNGPMTJa_q/view?usp=drivesdk",
+            "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1duVeIMS7SMfrQyvB6sDXEhcNGPMTJa_q",
+              "title": "winter-bonus-job-change-timing-02.webp",
+              "file_name": "winter-bonus-job-change-timing-02.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1duVeIMS7SMfrQyvB6sDXEhcNGPMTJa_q/view?usp=drivesdk",
+              "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj"
+            }
+          }
+        },
+        "03": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1XPVJbw1nHglYnqNOxLcEzfynyfC0sLjd",
+            "title": "winter-bonus-job-change-timing-03-original.jpeg",
+            "file_name": "winter-bonus-job-change-timing-03-original.jpeg",
+            "mime_type": "image/jpeg",
+            "url": "https://drive.google.com/file/d/1XPVJbw1nHglYnqNOxLcEzfynyfC0sLjd/view?usp=drivesdk",
+            "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1XPVJbw1nHglYnqNOxLcEzfynyfC0sLjd",
+              "title": "winter-bonus-job-change-timing-03-original.jpeg",
+              "file_name": "winter-bonus-job-change-timing-03-original.jpeg",
+              "mime_type": "image/jpeg",
+              "url": "https://drive.google.com/file/d/1XPVJbw1nHglYnqNOxLcEzfynyfC0sLjd/view?usp=drivesdk",
+              "parent_id": "1cPAmxucXi5ze6uhoR6XAMubMfOnEEAab"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1pw56oZil5x42-NT56_TeKBaQgHFLqRf1",
+            "title": "winter-bonus-job-change-timing-03.webp",
+            "file_name": "winter-bonus-job-change-timing-03.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1pw56oZil5x42-NT56_TeKBaQgHFLqRf1/view?usp=drivesdk",
+            "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1pw56oZil5x42-NT56_TeKBaQgHFLqRf1",
+              "title": "winter-bonus-job-change-timing-03.webp",
+              "file_name": "winter-bonus-job-change-timing-03.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1pw56oZil5x42-NT56_TeKBaQgHFLqRf1/view?usp=drivesdk",
+              "parent_id": "1TtOik0rLklt9HDvUUNQsxtgQAHbM_JFj"
+            }
+          }
+        }
       }
     },
     {
