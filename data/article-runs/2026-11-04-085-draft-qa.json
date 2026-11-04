@@ -1,0 +1,67 @@
+{
+  "slug": "second-new-grad-april-training",
+  "bodyCharacters": 2934,
+  "requiredFrontmatter": "passed",
+  "internalLinks": [
+    "it-training-program-job-checklist",
+    "probation-period-lower-salary-checks",
+    "second-new-grad-it-offer-acceptance-checks",
+    "second-new-grad-it-first-90-days"
+  ],
+  "errors": [],
+  "images": [
+    {
+      "alt": "同じ内容と同じ受講クラスの違いを整理する図",
+      "path": "/images/articles/second-new-grad-april-training-01.webp",
+      "exists": false
+    },
+    {
+      "alt": "開始日・対象職種・途中参加・代替研修の四項目を確認する図",
+      "path": "/images/articles/second-new-grad-april-training-02.webp",
+      "exists": false
+    },
+    {
+      "alt": "募集要項を読む、条件を質問する、入社日を調整する三段階",
+      "path": "/images/articles/second-new-grad-april-training-03.webp",
+      "exists": false
+    }
+  ],
+  "factScanner": {
+    "blockers": [],
+    "reviewTargets": [
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3か月",
+        "line": 39
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 45
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 93
+      },
+      {
+        "type": "法制度・規制",
+        "match": "制度",
+        "line": 20
+      },
+      {
+        "type": "法制度・規制",
+        "match": "義務",
+        "line": 68
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 72
+      }
+    ]
+  },
+  "fullLocalQa": "not_run_images_missing_or_legacy",
+  "humanFactCheck": "pending",
+  "previewApproval": "pending"
+}
