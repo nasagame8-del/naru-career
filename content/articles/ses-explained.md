@@ -3,7 +3,7 @@ title: "SESとは？第二新卒が知っておくべき仕組み・メリット
 category: "業界解説"
 keyword: "SESとは 第二新卒"
 datePublished: "2026-07-18"
-dateModified: "2026-10-03"
+dateModified: "2026-11-04"
 excerpt: "SES（System Engineering Service）の仕組みを中立的に解説。SES・自社開発・受託開発の比較表、「SESはやめとけ」の検証、企業の見極めチェックリスト、SES以外のIT/Web業界の選択肢まで、第二新卒の視点でまとめます。"
 summary:
   - "SES（System Engineering Service）の仕組みと契約形態"

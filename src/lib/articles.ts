@@ -76,6 +76,56 @@ export function convertBoldMarkers(markdown: string): string {
 }
 
 /**
+ * 記事本文Markdownを、本番と同じ設定でHTMLへ変換する。
+ * プレースホルダ変換の結果が実際にどうレンダリングされるかをテストから確認できるよう、
+ * `getArticle` と同じ経路をここに切り出している。
+ */
+export async function renderArticleMarkdown(markdown: string): Promise<string> {
+  const result = await remark()
+    .use(remarkGfm)
+    .use(remarkBreaks)
+    .use(html, { sanitize: false })
+    .process(markdown);
+  return result.toString();
+}
+
+/** ラベルは本文の一部ではなく属性値に近いので、タグとして解釈されないようにする */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+/**
+ * 記事本文のラベル付き囲みボックス記法を、`.naru-box` のHTMLへ変換する。
+ *
+ *   :::box 選考前に確認すること
+ *   - 項目1
+ *   - 項目2
+ *   :::
+ *
+ * ラベルは省略できる（`:::box` だけの行）。
+ *
+ * 開きタグと中身の間に空行を入れるのは、CommonMarkのHTMLブロックが空行で終わり、
+ * 続く箇条書き・段落が通常のMarkdownとして解釈されるようにするため。
+ * これでラベル・本文・箇条書きのいずれも既存の変換（太字・リンク・用語集）を通る。
+ * 入れ子は扱わない。
+ */
+export function convertLabeledBoxes(markdown: string): string {
+  return markdown.replace(
+    /^:::box[^\S\r\n]*([^\r\n]*?)[^\S\r\n]*\r?\n([\s\S]*?)^:::[^\S\r\n]*\r?$/gm,
+    (_match, label: string, body: string) => {
+      const trimmedLabel = label.trim();
+      const labelHtml = trimmedLabel
+        ? `<p class="naru-box-label">${escapeHtml(trimmedLabel)}</p>\n\n`
+        : "";
+      return `<div class="naru-box">\n\n${labelHtml}${body.trim()}\n\n</div>`;
+    }
+  );
+}
+
+/**
  * 本文の「## よくある質問」セクションだけを取り除く（FAQSectionで別途表示するため）。
  * 次のH2以降の本文は残す。
  */
@@ -94,7 +144,7 @@ export type InlineFAQ = {
   answer: string;
 };
 
-export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "雑記";
+export type ArticleCategory = "体験談" | "エージェント比較" | "業界解説" | "独自調査" | "雑記";
 
 /** 主カテゴリに、frontmatter.subCategories（追加で掲載するカテゴリ）を重複なしで足す */
 function resolveCategories(
@@ -132,6 +182,14 @@ export type ArticleMeta = {
   heroImagePath: string | null;
 };
 
+/** 主カテゴリを常に優先し、subCategories も含めて所属判定する */
+export function articleHasCategory(
+  article: Pick<ArticleMeta, "category" | "categories">,
+  category: ArticleCategory
+): boolean {
+  return article.category === category || article.categories.includes(category);
+}
+
 export type Heading = {
   id: string;
   text: string;
@@ -144,6 +202,8 @@ export type Article = ArticleMeta & {
 
 /** 公開日が今日以前かどうか判定（日本時間基準） */
 function isPublished(datePublished: string): boolean {
+  // Preview deployments must expose scheduled articles for review before publication.
+  if (process.env.VERCEL_ENV === "preview") return true;
   if (!datePublished) return true; // 日付なしは公開扱い
   const today = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
@@ -222,14 +282,14 @@ export async function getArticle(slug: string): Promise<Article> {
 
   // Process CTA placeholders before markdown rendering
   const ctaRegistry = getCTARegistry();
-  let processedContent = convertBoldMarkers(content).replace(
+  let processedContent = convertBoldMarkers(convertLabeledBoxes(content)).replace(
     /\[CTA_BUTTON:(\w+)\]/g,
     (_match, key: string) => {
       const cta = ctaRegistry[key];
       if (!cta) return "";
       const href = cta.url || "#";
       const relAttr = cta.affiliate === false ? "nofollow" : "nofollow sponsored";
-      const noteText = cta.affiliate === false ? "" : `<span class="cta-note">※提携先のサービスです</span>`;
+      const noteText = cta.affiliate === false ? "" : `<span class="cta-note" aria-label="広告">広告（PR）</span>`;
       return `<a href="${href}" class="cta-button" rel="${relAttr}" target="_blank">${cta.cta_text}（${cta.name}）</a>${noteText}`;
     }
   );
@@ -260,14 +320,13 @@ export async function getArticle(slug: string): Promise<Article> {
     (_match, text: string) => `<mark>${text}</mark>`
   );
 
-  const result = await remark()
-    .use(remarkGfm)
-    .use(remarkBreaks)
-    .use(html, { sanitize: false })
-    .process(processedContent);
-
   // h2見出しを抽出し、IDを付与
-  let htmlStr = result.toString();
+  let htmlStr = await renderArticleMarkdown(processedContent);
+  // Retired RPG diagnosis CTAs embedded in older Markdown/HTML must not render.
+  const rpgLink = /<a\b[^>]*\bhref=["'](?:https:\/\/naru-career\.com)?\/shindan(?:[/?#][^"']*)?["']/i;
+  htmlStr = htmlStr.replace(/<blockquote\b[^>]*>[\s\S]*?<\/blockquote>/gi, (block) => rpgLink.test(block) ? "" : block);
+  htmlStr = htmlStr.replace(/<p\b[^>]*>[\s\S]*?<\/p>/gi, (paragraph) => rpgLink.test(paragraph) ? "" : paragraph);
+  htmlStr = htmlStr.replace(/<a\b(?=[^>]*\bhref=["'](?:https:\/\/naru-career\.com)?\/shindan(?:[/?#][^"']*)?["'])[^>]*>[\s\S]*?<\/a>/gi, "");
   const headings: Heading[] = [];
   let headingIndex = 0;
   htmlStr = htmlStr.replace(/<h2>(.*?)<\/h2>/g, (_match, inner: string) => {

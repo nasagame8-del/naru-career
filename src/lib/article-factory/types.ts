@@ -20,6 +20,36 @@ export type CandidateRiskFlag =
 /** 検索意図の分類 */
 export type SearchIntent = "know" | "do" | "compare" | "decide";
 
+/** 無料SEOシグナルの候補選定評価。外部有料APIは前提にしない。 */
+export type GscSignal = "strong" | "medium" | "weak" | "none";
+export type SerpOpportunity = "high" | "medium" | "low" | "unchecked";
+export type TrendSignal = "rising" | "stable" | "falling" | "unavailable";
+export type DemandExpansionSignal = "high" | "medium" | "low" | "unavailable";
+export type ClusterFitSignal = "strong" | "medium" | "weak";
+export type CannibalizationRisk = "none" | "medium" | "high";
+export type CandidateSelectionGrade = "A" | "B" | "C" | "D";
+
+export interface CandidateSelectionEvidence {
+  /** GSC実測。候補自身または関連クラスターの反応を段階評価する */
+  gsc: GscSignal;
+  /** Google検索結果上位の競合強度・検索意図の満たされ方 */
+  serp: SerpOpportunity;
+  /** Google Trends。取得不能なら unavailable のままにして推測しない */
+  trends: TrendSignal;
+  /** サジェスト・関連検索・PAAにある意味の異なる周辺需要 */
+  demandExpansions: DemandExpansionSignal;
+  /** 既存の優先クラスターと内部リンク網を強化できる度合い */
+  clusterFit: ClusterFitSignal;
+  /** 一次情報・求人票検証・時事公式資料など独自角度があるか */
+  originalAngle: boolean;
+  /** 既存記事との検索意図重複リスク */
+  cannibalizationRisk: CannibalizationRisk;
+  /** ISO8601 */
+  checkedAt: string;
+  /** 人間が読める根拠メモ。数値を取得していない項目は推測で埋めない */
+  notes: string[];
+}
+
 export interface ArticleCandidate {
   /** バッチ内で一意。選択時にこのIDを指定する */
   id: string;
@@ -46,6 +76,13 @@ export interface ArticleCandidate {
    * データが無い場合は必ず null。**捏造しない**。
    */
   searchEvidence: SearchEvidence | null;
+  /** GSC + 無料Webシグナルで採点した場合のみ保存する。未評価なら省略可。 */
+  selectionEvidence?: CandidateSelectionEvidence;
+  /** 0〜100。selectionEvidenceを点数化した結果。 */
+  selectionScore?: number;
+  selectionGrade?: CandidateSelectionGrade;
+  /** 無料SEOシグナルの最低根拠ゲートを通ったか。 */
+  selectionGatePassed?: boolean;
   /** この候補をそのまま実行してよいか（機械判定の結果） */
   blocked: boolean;
   /** blocked の理由。blocked が false なら空配列 */

@@ -3,6 +3,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* Vercelではoutput: "export"不要。SSG/ISRはネイティブサポート */
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.naru-career.com" }],
+        destination: "https://naru-career.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 /**

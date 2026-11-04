@@ -1,0 +1,286 @@
+name: NARU article Cloudflare preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - master
+    paths:
+      - "content/articles/**"
+      - "public/images/articles/**"
+      - "data/article-runs/**"
+      - "src/app/globals.css"
+      - "src/app/articles/**"
+      - "src/components/**"
+      - "src/lib/articles.ts"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: naru-article-preview-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      NEXT_TELEMETRY_DISABLED: "1"
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      HEAD_REF: ${{ github.event.pull_request.head.ref }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Verify credentials
+        run: test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID"
+
+      - name: Detect single article
+        id: article
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "$BASE_SHA" "$HEAD_SHA"
+          mapfile -t ARTICLES < <(
+            git diff --name-only --diff-filter=AM "$BASE_SHA...$HEAD_SHA" -- 'content/articles/*.md' |
+            grep -E '^content/articles/[a-z0-9]+([a-z0-9-]*[a-z0-9])?\.md$' || true
+          )
+
+          # UI-only branches preview an existing representative article.
+          # Article PRs still require exactly one changed Markdown file.
+          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* || "$HEAD_REF" == fix/* ]]; then
+            ARTICLES=("content/articles/employee-contractor-pay-comparison.md")
+            test -s "${ARTICLES[0]}"
+          fi
+
+          if [ "${#ARTICLES[@]}" -ne 1 ]; then
+            echo "::error::Cloudflare article preview requires exactly one changed article Markdown; found ${#ARTICLES[@]}"
+            printf '%s\n' "${ARTICLES[@]}"
+            exit 1
+          fi
+
+          ARTICLE_FILE="${ARTICLES[0]}"
+          SLUG="$(basename "$ARTICLE_FILE" .md)"
+          echo "file=$ARTICLE_FILE" >> "$GITHUB_OUTPUT"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+          echo "Detected article: $SLUG"
+
+      - name: Check four article images
+        id: images
+        shell: bash
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        run: |
+          set -euo pipefail
+          MISSING=()
+          for SLOT in card 01 02 03; do
+            FILE="public/images/articles/$ARTICLE_SLUG-$SLOT.webp"
+            [ -s "$FILE" ] || MISSING+=("$FILE")
+          done
+
+          if [ "${#MISSING[@]}" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Preview deploy is waiting for all four WebP images:" >> "$GITHUB_STEP_SUMMARY"
+            printf -- '- %s\n' "${MISSING[@]}" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - run: npm ci
+        if: steps.images.outputs.ready == 'true'
+
+      - name: Build Cloudflare output
+        if: steps.images.outputs.ready == 'true'
+        run: npm run build:cloudflare
+
+      - name: Prepare isolated read-only noindex preview
+        if: steps.images.outputs.ready == 'true'
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const slug = process.env.ARTICLE_SLUG;
+          const pr = process.env.PR_NUMBER;
+          if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('Invalid article slug');
+          if (!pr || !/^\d+$/.test(pr)) throw new Error('Invalid PR number');
+
+          const builtHtml = '.next/server/app/articles/' + slug + '.html';
+          if (!fs.existsSync(builtHtml)) throw new Error('Built article HTML not found: ' + builtHtml);
+
+          const articleHtml = fs.readFileSync(builtHtml, 'utf8');
+          const categoryDir = '.next/server/app/category';
+          const categoryHtml = {};
+          function collectCategoryHtml(dir) {
+            if (!fs.existsSync(dir)) return;
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = dir + '/' + entry.name;
+              if (entry.isDirectory()) {
+                collectCategoryHtml(full);
+                continue;
+              }
+              if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
+              const name = entry.name.replace(/\.html$/, '');
+              if (!/^[a-z0-9-]+$/.test(name)) continue;
+              categoryHtml['/category/' + name] = fs.readFileSync(full, 'utf8');
+            }
+          }
+          collectCategoryHtml(categoryDir);
+          const embeddedHtml = JSON.stringify(articleHtml);
+          const embeddedCategories = JSON.stringify(categoryHtml);
+          fs.writeFileSync('.open-next/article-preview.js', `
+          import worker from './worker.js';
+          const ARTICLE_HTML = ${embeddedHtml};
+          const CATEGORY_HTML = ${embeddedCategories};
+          export default {...worker, async fetch(request, env, ctx) {
+            const url = new URL(request.url);
+            if (!['GET','HEAD'].includes(request.method) || /^\\/(api|internal|members|_workflow)(\\/|$)/.test(url.pathname))
+              return new Response('Preview is read-only', {status:403, headers:{'X-Robots-Tag':'noindex, nofollow'}});
+            const isAsset = url.pathname.startsWith('/_next/static/') || url.pathname.startsWith('/images/') || ['.ico','.png','.svg','.webp','.woff2'].some(ext => url.pathname.endsWith(ext));
+            const articleRequest = url.pathname === '/articles/${slug}';
+            const categoryPage = CATEGORY_HTML[url.pathname];
+            let response;
+            if (articleRequest) {
+              response = new Response(request.method === 'HEAD' ? null : ARTICLE_HTML, {
+                status: 200,
+                headers: {'Content-Type':'text/html; charset=utf-8'}
+              });
+            } else if (categoryPage) {
+              response = new Response(request.method === 'HEAD' ? null : categoryPage, {
+                status: 200,
+                headers: {'Content-Type':'text/html; charset=utf-8'}
+              });
+            } else if (isAsset) {
+              response = await env.ASSETS.fetch(request);
+            } else {
+              response = await worker.fetch(request, env, ctx);
+            }
+            const result = new Response(response.body, response);
+            result.headers.set('X-Robots-Tag', 'noindex, nofollow');
+            return result;
+          }};
+          `);
+
+          fs.writeFileSync('wrangler.article-preview.json', JSON.stringify({
+            name: 'naru-pr-' + pr + '-preview',
+            main: '.open-next/article-preview.js',
+            compatibility_date: '2026-10-03',
+            compatibility_flags: ['nodejs_compat'],
+            workers_dev: true,
+            assets: {directory: '.open-next/assets', binding: 'ASSETS', run_worker_first: true}
+          }));
+          NODE
+
+      - name: Deploy isolated preview
+        if: steps.images.outputs.ready == 'true'
+        id: deploy
+        shell: bash
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        run: |
+          set -euo pipefail
+          npx wrangler deploy --config wrangler.article-preview.json 2>&1 | tee /tmp/article-preview.log
+          URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/article-preview.log | tail -n 1)"
+          test -n "$URL"
+          ARTICLE_URL="$URL/articles/$ARTICLE_SLUG"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "article_url=$ARTICLE_URL" >> "$GITHUB_OUTPUT"
+          echo "Preview URL: $ARTICLE_URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "Head SHA: $HEAD_SHA" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Smoke test article and noindex
+        if: steps.images.outputs.ready == 'true'
+        shell: bash
+        env:
+          URL: ${{ steps.deploy.outputs.url }}
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        run: |
+          set -euo pipefail
+          STATUS=""
+          for ATTEMPT in {1..12}; do
+            STATUS="$(curl -sS -D /tmp/preview-headers -o /tmp/preview-article.html -w '%{http_code}' "$URL/articles/$ARTICLE_SLUG" || true)"
+            echo "article attempt=$ATTEMPT status=$STATUS"
+            if [ "$STATUS" = "200" ]; then
+              break
+            fi
+            sleep 5
+          done
+          echo "article bytes=$(wc -c < /tmp/preview-article.html | tr -d ' ')"
+          test "$STATUS" = "200"
+          grep -qi '<h1' /tmp/preview-article.html || { echo "::error::article HTML is missing <h1>"; exit 1; }
+          grep -qi 'x-robots-tag: noindex' /tmp/preview-headers || { echo "::error::article response is missing X-Robots-Tag noindex"; exit 1; }
+          grep -q 'GTM-KWH6XZJR' /tmp/preview-article.html || { echo "::error::preview HTML is missing GTM-KWH6XZJR"; exit 1; }
+
+          CATEGORY_PATH="$(node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const file = process.env.ARTICLE_SLUG;
+          const raw = fs.readFileSync('content/articles/' + file + '.md', 'utf8');
+          const m = raw.match(/^category:\s*["']?([^"'\r\n]+)["']?\s*$/m);
+          const name = m?.[1]?.trim() || '';
+          const map = {
+            '体験談': 'taiken',
+            'エージェント比較': 'agent-comparison',
+            '業界解説': 'industry-guide',
+            '独自調査': 'original-research',
+            '雑記': 'zakki'
+          };
+          process.stdout.write(map[name] ? '/category/' + map[name] : '');
+          NODE
+          )"
+          if [ -n "$CATEGORY_PATH" ]; then
+            CATEGORY_STATUS="$(curl -sS -o /tmp/preview-category.html -w '%{http_code}' "$URL$CATEGORY_PATH")"
+            echo "category path=$CATEGORY_PATH status=$CATEGORY_STATUS"
+            test "$CATEGORY_STATUS" = "200"
+            grep -q "$ARTICLE_SLUG" /tmp/preview-category.html || { echo "::error::category preview is missing article slug $ARTICLE_SLUG"; exit 1; }
+          fi
+
+          for SLOT in card 01 02 03; do
+            IMAGE_STATUS=""
+            for ATTEMPT in {1..6}; do
+              IMAGE_STATUS="$(curl -sS -o "/tmp/$SLOT.webp" -w '%{http_code}' "$URL/images/articles/$ARTICLE_SLUG-$SLOT.webp" || true)"
+              echo "$SLOT attempt=$ATTEMPT status=$IMAGE_STATUS"
+              if [ "$IMAGE_STATUS" = "200" ] && [ -s "/tmp/$SLOT.webp" ]; then
+                break
+              fi
+              sleep 3
+            done
+            echo "$SLOT bytes=$(wc -c < "/tmp/$SLOT.webp" | tr -d ' ')"
+            test "$IMAGE_STATUS" = "200"
+            test -s "/tmp/$SLOT.webp"
+          done
+
+      - name: Publish direct preview URL to PR
+        if: steps.images.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTICLE_URL: ${{ steps.deploy.outputs.article_url }}
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          MARKER='<!-- naru-cloudflare-article-preview -->'
+          BODY="$(printf '%s\n\n### Cloudflare article preview\n\n- Article: %s\n- Direct preview: %s\n- Head SHA: `%s`\n- Robots: `noindex, nofollow`\n' "$MARKER" "$ARTICLE_SLUG" "$ARTICLE_URL" "$HEAD_SHA")"
+          COMMENT_ID="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" --paginate --jq '.[] | select(.body | contains("<!-- naru-cloudflare-article-preview -->")) | .id' | head -n1)"
+
+          if [ -n "$COMMENT_ID" ]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" -f body="$BODY" >/dev/null
+          else
+            gh pr comment "$PR_NUMBER" --body "$BODY"
+          fi
+
