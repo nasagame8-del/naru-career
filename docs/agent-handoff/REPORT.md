@@ -690,3 +690,14 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 変更ファイル: EditorialSidebar, MobileCareerCTA, DiagnosisBanner, article page, guide page, articles renderer, NEXT_INSTRUCTION, REPORT。
 - git diff概要: RPG診断導線のみ非表示。エージェント診断等は維持。
 - 既知の問題: なし。判断項目: なし。推奨次作業: CI成功後PR mergeと本番検証。
+
+## リライト全件照合 — 2026-11-04
+- reportId / completedInstructionId: USER-NARU-REWRITE-ALL-20261104
+- status: IMPLEMENTED_PENDING_HUMAN_REVIEW / LEGACY_IMAGES_BLOCKED
+- branch: audit/rewrite-review-20261104（監査記録のみ）＋記事別36branch
+- 実施: 現行masterで未反映の事実/出典・内部リンクを修正し36記事のDraft PRへ反映。既存17PR再利用、19記事を複数記事PRから分離。76記事の検索露出とcanonical/noindexを棚卸し。
+- 検証: 保存本文・head・1記事差分のreadback36件一致。Vitest333＋Node52=385件成功、TypeScript成功、ローカルbuild exit0・76記事HTML生成。軽量QAは7件成功、29件は旧画像構成により画像4枚/参照要件で失敗。
+- 変更ファイル / diff: 各PRは記事Markdown1本、監査PRは本記録・NEXT_INSTRUCTION・docs/seo-rewrite-audit-20261104.md。画像・計測コード・依存を変更しない。
+- 既知の問題: 29記事の旧画像要件、全36記事の独立Human Fact Checkと同headユーザー目視は未完了。11/2改稿効果は確定期間外。
+- 判断が必要な項目: 7記事のプレビュー確認、旧画像29記事の対応方針。公開承認を自動的に補完しない。
+- 推奨次作業: WBSとdocs/seo-rewrite-audit-20261104.mdを参照して不足工程だけを再開。詳細実数は公開せずprivate report/WBSに保存。
