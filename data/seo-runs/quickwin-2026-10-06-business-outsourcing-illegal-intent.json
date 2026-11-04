@@ -1,0 +1,94 @@
+{
+  "id": "quickwin-2026-10-06-business-outsourcing-illegal-intent",
+  "createdAt": "2026-10-06",
+  "source": "gsc_query_intent_rewrite",
+  "target": {
+    "slug": "business-outsourcing-conversion-risk",
+    "url": "https://naru-career.com/articles/business-outsourcing-conversion-risk",
+    "priorModified": "2026-10-02"
+  },
+  "evidenceWindow": {
+    "startDate": "2026-09-20",
+    "endDate": "2026-10-03",
+    "settledThrough": "2026-10-03",
+    "page": {
+      "clicks": 3,
+      "impressions": 120,
+      "ctr": 0.025,
+      "position": 9.7916666667
+    },
+    "queries": [
+      {
+        "query": "正社員 から業務委託 クビ",
+        "clicks": 0,
+        "impressions": 13,
+        "ctr": 0,
+        "position": 9.3846153846
+      },
+      {
+        "query": "正社員 から業務委託 違法",
+        "clicks": 1,
+        "impressions": 6,
+        "ctr": 0.1666666667,
+        "position": 9.1666666667
+      },
+      {
+        "query": "正社員 業務委託 切り替え",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 21.5
+      },
+      {
+        "query": "正社員から業務委託",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 16
+      },
+      {
+        "query": "正社員から業務委託に変更",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 14
+      }
+    ],
+    "caveat": "GSC query rows are privacy-filtered and do not represent all impressions."
+  },
+  "action": {
+    "type": "REWRITE",
+    "decisions": [
+      "Move the '違法か' intent to the title and first H2.",
+      "Answer immediately that the switch itself is not automatically illegal.",
+      "Separate employment-contract handling from post-switch worker-status analysis.",
+      "Preserve the existing URL and article rather than creating a competing article.",
+      "Add internal links to the live pay, social-insurance and disguised-freelance cluster pages."
+    ]
+  },
+  "measurementPlan": {
+    "interventionDate": "2026-10-06",
+    "checkpointDays": [
+      7,
+      14,
+      28
+    ],
+    "primaryQueries": [
+      "正社員 から業務委託 クビ",
+      "正社員 から業務委託 違法"
+    ],
+    "primaryMetrics": [
+      "clicks",
+      "impressions",
+      "ctr",
+      "position"
+    ],
+    "secondaryMetrics": [
+      "page impressions",
+      "page clicks",
+      "Top10 query count",
+      "Top20 query count"
+    ],
+    "note": "Do not compare against the 2026-10-02 rewrite as if this were an untouched experiment; this is a second intervention."
+  }
+}

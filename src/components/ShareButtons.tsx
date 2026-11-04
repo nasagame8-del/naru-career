@@ -31,7 +31,7 @@ export function ShareButtons({ slug, title }: { slug: string; title: string }) {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-xs text-ink-soft font-mono">SHARE</span>
+      <span className="text-xs text-ink-soft font-mono">共有</span>
       <a
         href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
         target="_blank"

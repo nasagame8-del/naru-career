@@ -9,6 +9,8 @@ import { ThemeSummary } from "./gsc/ThemeSummary";
 import { DecayingPages, QuickWinPages, RewriteCandidates, LowCtrPages, SurgingPagesTable, NewlyVisibleList } from "./gsc/InsightCards";
 import { SeoEditorTab } from "./seo/SeoEditorTab";
 import { NewArticleTab } from "./article-factory/NewArticleTab";
+import { GrowthLabTab } from "./growth/GrowthLabTab";
+import type { GrowthLabData } from "@/lib/growth-lab";
 
 // ── Dashboard-only Types ──
 
@@ -43,6 +45,7 @@ type DashboardData = {
   gsc: GSCData;
   aioChecklist: AIOCheckItem[];
   internalLinks: { slug: string; outgoing: number; incoming: number }[];
+  growthLab: GrowthLabData;
 };
 
 type AIOCheckItem = {
@@ -59,10 +62,11 @@ type AIOCheckItem = {
   };
 };
 
-type TabId = "performance" | "new-article" | "seo" | "site" | "asp" | "cta" | "aio";
+type TabId = "performance" | "growth" | "new-article" | "seo" | "site" | "asp" | "cta" | "aio";
 
 const TABS: { id: TabId; label: string }[] = [
   { id: "performance", label: "パフォーマンス" },
+  { id: "growth", label: "Growth Lab" },
   { id: "new-article", label: "新規記事" },
   { id: "seo", label: "SEO Editor" },
   { id: "site", label: "サイト管理" },
@@ -121,11 +125,24 @@ export function DashboardClient() {
   const [tab, setTab] = useState<TabId>("performance");
 
   useEffect(() => {
-    fetch("/internal/api").then((r) => r.json()).then(setData).finally(() => setLoading(false));
+    fetch("/internal/api", { cache: "no-store" })
+      .then((r) => {
+        if (!r.ok) throw new Error(`Dashboard API: HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(setData)
+      .catch(() => setData(null))
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><p className="text-gray-500">Loading...</p></div>;
-  if (!data) return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><p className="text-red-500">Failed to load</p></div>;
+  if (!data) return (
+    <main className="max-w-6xl mx-auto px-6 py-8">
+      <h1 className="text-xl font-bold mb-2">NARU Dashboard — ASP管理</h1>
+      <p className="text-sm text-amber-800 mb-6">統合ダッシュボードAPIに接続できません。ASP管理は独立したAPIで表示します。</p>
+      <AspTab />
+    </main>
+  );
 
   const s = data.summary;
 
@@ -168,10 +185,11 @@ export function DashboardClient() {
 
         {/* ── Tab Content ── */}
         {tab === "performance" && <PerformanceTab ga4={data.ga4} gsc={data.gsc} />}
+        {tab === "growth" && <GrowthLabTab data={data.growthLab} />}
         {tab === "new-article" && <NewArticleTab />}
         {tab === "seo" && <SeoEditorTab />}
         {tab === "site" && <SiteTab site={data.site} keywords={data.keywords} />}
-        {tab === "asp" && <AspTab asps={data.asp?.asps || []} />}
+        {tab === "asp" && <AspTab />}
         {tab === "cta" && <CtaTab cta={data.cta} />}
         {tab === "aio" && (
           <>
@@ -416,7 +434,29 @@ const ASP_URLS: Record<string, string> = {
   "afb": "https://www.afi-b.com/",
 };
 
-function AspTab({ asps }: { asps: Asp[] }) {
+function AspTab() {
+  const [asps, setAsps] = useState<Asp[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/internal/api/asp", { cache: "no-store" })
+      .then(async (r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((payload: { asps?: Asp[] }) => {
+        if (!Array.isArray(payload?.asps)) throw new Error("ASPデータの形式が不正です");
+        setAsps(payload.asps);
+      })
+      .catch((e) => setError(e instanceof Error ? e.message : String(e)))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <p className="text-sm text-gray-500">ASP一覧を読み込み中…</p>;
+  if (error) return <p role="alert" className="text-sm text-red-700">ASP一覧を取得できません：{error}</p>;
+  if (asps.length === 0) return <p className="text-sm text-gray-500">ASPデータは0件です。</p>;
+
   return (
     <div className="space-y-4">
       {asps.map((asp) => (
