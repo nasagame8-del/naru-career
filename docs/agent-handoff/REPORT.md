@@ -707,3 +707,15 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 画像4枚未受領。CI/Cloudflare Previewの画像ゲートは未充足。 datePublishedは新規原稿の作成日で、公開日・公開時刻は未確定。
 - 判断が必要な項目: 画像とユーザーの本文・プレビュー承認。
 - 推奨する次の作業: 画像受領後QA、最新head CI/Cloudflare検証、同headプレビュー承認。本番公開しない。
+
+
+## USER-SEASONAL-IMAGES-20261104-83
+- reportId / completedInstructionId: USER-SEASONAL-IMAGES-20261104-83
+- status: IMAGES_REFLECTED_QA_PENDING
+- branch: article-factory/2026-11-04-83-winter-bonus-job-change-timing
+- 実施内容: ユーザー画像4枚を照合し、公式CLIでWebP変換。card1200×630、本文1200×675、埋込メタデータ除去。文字・見切れ・ロゴ・本文整合を確認。
+- 変更ファイル: public/images/articles/winter-bonus-job-change-timing-{card,01,02,03}.webp、画像QA記録、このREPORT。
+- git diff概要: 当記事の画像4枚を新規追加。
+- テスト結果: 寸法・形式確認済み。最新headのCIとCloudflare Previewはこのコミット後に確認する。
+- 既知の問題: 独立Human Fact Check、ユーザーの実画面承認が未完了。
+- 推奨する次の作業: CI/Previewを確認し記事直リンクを提示。承認前にマージ・予約・公開しない。
