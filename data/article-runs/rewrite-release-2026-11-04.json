@@ -1,0 +1,79 @@
+{
+  "runId": "rewrite-release-2026-11-04",
+  "status": "USER_APPROVED_TECHNICAL_RECHECK",
+  "userStatement": "両方とも全部問題ない",
+  "approvalScope": "提示7記事のHuman Fact Checkおよびプレビュー目視",
+  "heldLegacyArticles": 29,
+  "articles": [
+    {
+      "pr": 112,
+      "slug": "it-training-program-job-checklist",
+      "preview": "https://naru-pr-112-preview.broad-fuchsia.workers.dev/articles/it-training-program-job-checklist",
+      "sha": "263279f5d049860be3bee7f444957510429ef998",
+      "previewApprovedHeadSha": "263279f5d049860be3bee7f444957510429ef998",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
+      "publication": "PENDING_FINAL_CHECK"
+    },
+    {
+      "pr": 186,
+      "slug": "new-grad-early-resignation-career-plan",
+      "preview": "https://naru-pr-186-preview.broad-fuchsia.workers.dev/articles/new-grad-early-resignation-career-plan",
+      "sha": "02104d9643d6a7261811c2dff78d0c601c54395c",
+      "previewApprovedHeadSha": "02104d9643d6a7261811c2dff78d0c601c54395c",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
+      "publication": "PENDING_FINAL_CHECK"
+    },
+    {
+      "pr": 160,
+      "slug": "second-new-grad-it-company-research",
+      "preview": "https://naru-pr-160-preview.broad-fuchsia.workers.dev/articles/second-new-grad-it-company-research",
+      "sha": "7e72e71e65a3cb14c33e1869d605064a8c6e003e",
+      "previewApprovedHeadSha": "7e72e71e65a3cb14c33e1869d605064a8c6e003e",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
+      "publication": "PENDING_FINAL_CHECK"
+    },
+    {
+      "pr": 164,
+      "slug": "second-new-grad-it-interview-questions",
+      "preview": "https://naru-pr-164-preview.broad-fuchsia.workers.dev/articles/second-new-grad-it-interview-questions",
+      "sha": "0b80fec5e73f2412f90a7eb0868e799fb44331ca",
+      "previewApprovedHeadSha": "0b80fec5e73f2412f90a7eb0868e799fb44331ca",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
+      "publication": "PENDING_FINAL_CHECK"
+    },
+    {
+      "pr": 163,
+      "slug": "second-new-grad-it-offer-acceptance-checks",
+      "preview": "https://naru-pr-163-preview.broad-fuchsia.workers.dev/articles/second-new-grad-it-offer-acceptance-checks",
+      "sha": "0c4b2904cbf3f6e25aa97883f83261d2b4fa4f78",
+      "previewApprovedHeadSha": "0c4b2904cbf3f6e25aa97883f83261d2b4fa4f78",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
+      "publication": "PENDING_FINAL_CHECK"
+    },
+    {
+      "pr": 161,
+      "slug": "second-new-grad-it-portfolio-guide",
+      "preview": "https://naru-pr-161-preview.broad-fuchsia.workers.dev/articles/second-new-grad-it-portfolio-guide",
+      "sha": "c09f5352644ae65e41dbb60817b6adbd18ad4f11",
+      "previewApprovedHeadSha": "c09f5352644ae65e41dbb60817b6adbd18ad4f11",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
+      "publication": "PENDING_FINAL_CHECK"
+    },
+    {
+      "pr": 252,
+      "slug": "second-new-grad-web-marketing-career",
+      "preview": "https://naru-pr-252-preview.broad-fuchsia.workers.dev/articles/second-new-grad-web-marketing-career",
+      "sha": "0f8475b1c8da69c0744becf7bf7f0ae459900546",
+      "previewApprovedHeadSha": "0f8475b1c8da69c0744becf7bf7f0ae459900546",
+      "humanFactCheck": "user_confirmed",
+      "previewVisual": "user_confirmed",
+      "publication": "PENDING_FINAL_CHECK"
+    }
+  ]
+}
