@@ -1,0 +1,36 @@
+name: SEO Experiment Measurement
+
+on:
+  schedule:
+    # 07:45 JST, after the 07:35 GSC snapshot.
+    - cron: "45 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GSC_BRIDGE_URL: https://naru-career.com/api/gsc-snapshot
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: master
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Measure 7/14/28-day SEO checkpoints
+        run: npm run data:seo-experiments
+      - name: Upload private measurement artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: naru-seo-experiments-${{ github.run_id }}
+          path: data/seo-experiments/*.json
+          if-no-files-found: warn
+          retention-days: 30

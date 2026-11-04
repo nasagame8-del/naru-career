@@ -7,7 +7,6 @@ import { Footer } from "@/components/Footer";
 import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/GoogleTagManager";
 import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { CtaTracker } from "@/components/CtaTracker";
-import { WebSiteJsonLd } from "@/components/JsonLd";
 import { CATEGORIES } from "@/lib/categories";
 import { getAuthorProfileLabel } from "@/lib/author";
 
@@ -52,6 +51,13 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head>
+        <meta name="google-adsense-account" content="ca-pub-5535543234748003" />
+        {/* AdSense ownership verification: load Google's supplied site code on every public page. */}
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5535543234748003"
+          strategy="beforeInteractive"
+          crossOrigin="anonymous"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -60,12 +66,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
-        <WebSiteJsonLd />
         <Script id="google-fonts-loader" strategy="afterInteractive">
           {`
             var link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap';
+            link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap';
             document.head.appendChild(link);
           `}
         </Script>

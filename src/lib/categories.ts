@@ -137,6 +137,37 @@ export const CATEGORIES: Record<string, CategoryDef> = {
       },
     ],
   },
+  "original-research": {
+    name: "独自調査",
+    label: "独自調査",
+    description:
+      "公的データや企業公式情報をNARU独自に収集・集計し、第二新卒×IT/Web転職の見えにくい傾向を検証する記事一覧。",
+    longDescription:
+      "このカテゴリでは、厚生労働省などの公的データ、企業公式サイト、公開求人などをNARU独自に収集・整理し、通常の解説だけでは見えにくい傾向を検証します。母集団、取得条件、欠損、誤検出などの限界も明記し、数字だけを切り取って断定しません。『実際に調べるとどう見えるか』を、第二新卒の企業選びや転職活動に使える形へ落とし込んでいます。",
+    theme: {
+      tag: "bg-research-soft text-research-ink",
+      badge: "bg-surface border border-research/50 text-research-ink",
+      border: "border-research",
+      cssColor: "#7A4E61",
+    },
+    readingOrder: [
+      "it-company-recruitment-page-research",
+    ],
+    crossLinks: [
+      {
+        slug: "industry-guide",
+        label: "業界解説",
+        message:
+          "調査で見えた傾向の背景を体系的に知りたい方は、業界解説カテゴリもあわせてどうぞ。",
+      },
+      {
+        slug: "zakki",
+        label: "雑記",
+        message:
+          "直近ニュースや話題からキャリアの論点を考えたい方は、雑記カテゴリもチェックしてみてください。",
+      },
+    ],
+  },
   zakki: {
     name: "雑記",
     label: "雑記",

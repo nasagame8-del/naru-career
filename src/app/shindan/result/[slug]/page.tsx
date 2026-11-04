@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TYPES16, SLUG_TO_ID, ALL_SLUGS } from "../../_lib/data";
 import ResultContent from "../../_components/ResultContent";
@@ -45,7 +47,9 @@ export default async function ResultPage({ params }: Props) {
   const typeInfo = TYPES16[id];
 
   return (
-    <section id="result-screen" className="screen">
+    <section id="result-screen" className="screen rpg-direct-result">
+      <Image className="rpg-backdrop" src="/shindan/rpg/world.webp" alt="" fill sizes="100vw" preload unoptimized />
+      <header className="rpg-header"><Link href="/" className="rpg-brand">NARU</Link><Link href="/shindan">診断トップ</Link></header>
       <ResultContent typeId={id} typeInfo={typeInfo} />
     </section>
   );
