@@ -55,7 +55,8 @@ export function DiagnosisBanner({ href, ctaFocus }: Props) {
     sessionStorage.setItem(DISMISS_KEY, "1");
   };
 
-  if (!visible) return null;
+  const destination = (ctaFocus && CTA_FOCUS_MAP[ctaFocus]?.href) || href;
+  if (!visible || destination === "/shindan" || destination.startsWith("/shindan/")) return null;
 
   // ctaFocusがマップにあればそれを使い、なければ既存の2択ロジック
   const config: BannerConfig = ctaFocus && CTA_FOCUS_MAP[ctaFocus]

@@ -24,11 +24,19 @@ type SearchConsoleAuth =
 // ── 日付ヘルパー（太平洋時間を考慮） ──
 
 function getPacificDate(offsetDays: number): string {
-  const now = new Date();
-  // UTC-7 (PDT) or UTC-8 (PST) — 簡易的にUTC-8で計算
-  const pacific = new Date(now.getTime() - 8 * 60 * 60 * 1000);
-  pacific.setDate(pacific.getDate() + offsetDays);
-  return pacific.toISOString().slice(0, 10);
+  const target = new Date(Date.now() + offsetDays * 24 * 60 * 60 * 1000);
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+      .formatToParts(target)
+      .filter((part) => part.type !== "literal")
+      .map((part) => [part.type, part.value])
+  );
+  return `${parts.year}-${parts.month}-${parts.day}`;
 }
 
 // ── API呼び出し ──
@@ -488,7 +496,7 @@ export async function fetchSearchConsoleData(): Promise<SCData> {
   if ((!hasServiceAccount && !hasOAuth) || !siteUrl) {
     return {
       configured: false,
-      error: "Search Console環境変数が未設定です（GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY, SEARCH_CONSOLE_SITE_URL）",
+      error: "Search Console認証が未設定です（Google OAuth 3点セット、または既存サービスアカウント。SEARCH_CONSOLE_SITE_URLも確認してください）",
     };
   }
 
@@ -549,7 +557,7 @@ export async function fetchSearchConsoleData(): Promise<SCData> {
     const safeMsg = msg.includes("private_key")
       ? "認証エラー（秘密鍵の形式を確認してください）"
       : msg.includes("403")
-        ? "権限エラー（Search Consoleプロパティにサービスアカウントを追加してください）"
+        ? "権限エラー（OAuthユーザーまたは既存サービスアカウントのSearch Console権限を確認してください）"
         : msg.includes("404")
           ? "プロパティが見つかりません（SEARCH_CONSOLE_SITE_URLを確認してください）"
           : `Search Console APIエラー: ${msg.slice(0, 200)}`;

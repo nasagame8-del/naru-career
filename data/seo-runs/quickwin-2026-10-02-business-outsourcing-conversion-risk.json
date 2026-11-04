@@ -47,6 +47,7 @@
     "query": "正社員 から業務委託 クビ",
     "relatedPage": "https://naru-career.com/articles/business-outsourcing-conversion-risk",
     "command": "npm run data:seo-experiments -- --run quickwin-2026-10-02-business-outsourcing-conversion-risk",
-    "gscSettledThroughAtBaselineCapture": "2026-09-28"
+    "gscSettledThroughAtBaselineCapture": "2026-09-28",
+    "anchorDate": "2026-10-02"
   }
 }
