@@ -3,22 +3,7 @@ import Link from "next/link";
 import { getAuthorProfileLabel } from "@/lib/author";
 
 export function CareerDiscoveryCard() {
-  return (
-    <Link href="/shindan" className="group block overflow-hidden rounded-sm bg-primary text-white">
-      <div className="relative">
-      <Image src="/images/editorial/career-discovery.webp" alt="" width={900} height={600}
-        sizes="(min-width: 1024px) 272px, (min-width: 640px) 400px, calc(100vw - 40px)"
-        className="w-full h-auto" />
-      <p className="absolute top-3 inset-x-3 text-center text-primary text-lg font-bold leading-snug">自分らしい仕事を、<br />見つけよう。</p>
-      </div>
-      <div className="px-5 pt-4 pb-5">
-        <span className="flex min-h-11 items-center justify-between gap-2 rounded-full bg-white px-4 text-sm font-bold text-primary">
-          RPG適職診断 <span aria-hidden="true">→</span>
-        </span>
-        <p className="mt-2 text-center text-[11px] text-white/80">約2分で、あなたの適職タイプへ</p>
-      </div>
-    </Link>
-  );
+  return null;
 }
 
 export function EditorialSidebar() {
@@ -33,11 +18,12 @@ export function EditorialSidebar() {
         <section className="border-t border-line pt-5">
           <p className="text-xs text-ink-soft mb-3">著者について</p>
           <Link href="/about" className="group flex items-center gap-3">
-            <Image src="/images/author-avatar.webp" alt="磯貝アルトのイラストアバター" width={48} height={48} className="rounded-full" />
+            <Image src="/images/author-avatar-illustration.webp" alt="磯貝アルトの著者イメージイラスト" width={48} height={48} className="rounded-full" />
             <span className="text-sm font-bold group-hover:text-primary">磯貝アルト <span className="block text-[11px] font-normal text-ink-soft">{getAuthorProfileLabel()}</span></span>
             <span className="ml-auto text-primary" aria-hidden="true">→</span>
           </Link>
-          <p className="mt-3 text-xs leading-loose text-ink-soft">飲食からIT/Webへ。失敗も、迷いも、ぜんぶ書きます。</p>
+          <p className="mt-1 text-[10px] text-ink-soft">著者イメージイラスト</p>
+          <p className="mt-3 text-xs leading-loose text-ink-soft">飲食業界から第二新卒でIT/Web業界へ転職。約30社に応募し2社から内定を獲得。実体験と調査をもとに発信しています。</p>
         </section>
       </div>
     </aside>
