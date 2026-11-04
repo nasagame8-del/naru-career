@@ -11,7 +11,7 @@ const faq = obj({ question: str, answer: str });
  */
 const frontmatter = obj({
   title: str,
-  category: enumStr(["体験談", "エージェント比較", "業界解説", "雑記"]),
+  category: enumStr(["体験談", "エージェント比較", "業界解説", "独自調査", "雑記"]),
   keyword: str,
   excerpt: str,
   summary: strArr,

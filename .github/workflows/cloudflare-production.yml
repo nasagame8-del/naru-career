@@ -1,0 +1,272 @@
+name: Deploy NARU to Cloudflare
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Verify Cloudflare credentials are configured
+        shell: bash
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy to Cloudflare Workers
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run deploy:cloudflare 2>&1 | tee /tmp/cloudflare-deploy.log
+
+          WORKER_URL="$(grep -oE 'https://[^[:space:]]+\.workers\.dev' /tmp/cloudflare-deploy.log | tail -n 1 || true)"
+          if [ -n "$WORKER_URL" ]; then
+            echo "WORKER_URL=$WORKER_URL" >> "$GITHUB_ENV"
+            echo "Cloudflare deployment: $WORKER_URL"
+          fi
+
+      - name: Smoke test deployment
+        if: env.WORKER_URL != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in \
+            / \
+            /about \
+            /articles \
+            /articles/agent-comparison-2026 \
+            /articles/agent-job-mismatch \
+            /robots.txt \
+            /sitemap.xml
+          do
+            code="$(curl -L -sS -o /tmp/body -w '%{http_code}' "$WORKER_URL$path")"
+            echo "$path -> $code"
+            test "$code" -ge 200
+            test "$code" -lt 400
+          done
+
+          # Diagnosis feature intentionally disabled; all its public routes must return 404.
+          for path in /shindan /shindan/result/wizard /types/wizard; do
+            code="$(curl -sS -o /tmp/body -w '%{http_code}' "$WORKER_URL$path")"
+            echo "$path -> $code"
+            test "$code" = "404"
+          done
+
+          curl -L -sS "$WORKER_URL/" -o /tmp/naru-home
+          if ! grep -q "GTM-KWH6XZJR" /tmp/naru-home; then
+            echo "GTM-KWH6XZJR is missing from the deployed homepage HTML"
+            exit 1
+          fi
+          echo "GTM marker verified on Cloudflare Worker"
+
+      - name: Verify latest published articles on canonical domain
+        env:
+          CANONICAL_ORIGIN: https://naru-career.com
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import matter from 'gray-matter';
+
+          const origin = process.env.CANONICAL_ORIGIN;
+          const dir = 'content/articles';
+          const slots = ['card', '01', '02', '03'];
+          const tokyoParts = Object.fromEntries(
+            new Intl.DateTimeFormat('en', {
+              timeZone: 'Asia/Tokyo',
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+            }).formatToParts(new Date()).map((part) => [part.type, part.value])
+          );
+          const tokyoDate = `${tokyoParts.year}-${tokyoParts.month}-${tokyoParts.day}`;
+
+          function normalizeDate(value) {
+            if (!value) return null;
+            if (value instanceof Date) return value.toISOString().slice(0, 10);
+            const text = String(value);
+            const match = text.match(/\d{4}-\d{2}-\d{2}/);
+            return match ? match[0] : null;
+          }
+
+          function escapeHtml(text) {
+            return String(text)
+              .replaceAll('&', '&amp;')
+              .replaceAll('<', '&lt;')
+              .replaceAll('>', '&gt;')
+              .replaceAll('"', '&quot;')
+              .replaceAll("'", '&#39;');
+          }
+
+          const articles = fs.readdirSync(dir)
+            .filter((name) => name.endsWith('.md'))
+            .map((name) => {
+              const file = path.join(dir, name);
+              const { data } = matter(fs.readFileSync(file, 'utf8'));
+              return {
+                slug: name.slice(0, -3),
+                title: String(data.title ?? ''),
+                datePublished: normalizeDate(data.datePublished),
+              };
+            })
+            .filter((article) =>
+              article.title &&
+              article.datePublished &&
+              article.datePublished <= tokyoDate
+            );
+
+          if (articles.length === 0) {
+            throw new Error('No published article metadata found');
+          }
+
+          const latestDate = articles
+            .map((article) => article.datePublished)
+            .sort()
+            .at(-1);
+          const targets = articles
+            .filter((article) => article.datePublished === latestDate)
+            .sort((a, b) => a.slug.localeCompare(b.slug));
+
+          async function fetchOk(url, attempts = 12, delayMs = 5000) {
+            let lastStatus = 0;
+            let lastError = null;
+            for (let attempt = 1; attempt <= attempts; attempt += 1) {
+              try {
+                const response = await fetch(url, {
+                  redirect: 'follow',
+                  headers: { 'cache-control': 'no-cache' },
+                });
+                lastStatus = response.status;
+                if (response.ok) {
+                  return response;
+                }
+              } catch (error) {
+                lastError = error;
+              }
+              console.log(`retry ${attempt}/${attempts}: ${url} status=${lastStatus}`);
+              await new Promise((resolve) => setTimeout(resolve, delayMs));
+            }
+            throw new Error(
+              `Canonical verification failed: ${url} status=${lastStatus} ${lastError ?? ''}`
+            );
+          }
+
+          async function verifyHtmlMarker(url, marker, attempts = 12, delayMs = 5000) {
+            let lastStatus = 0;
+            for (let attempt = 1; attempt <= attempts; attempt += 1) {
+              const response = await fetch(url, {
+                redirect: 'follow',
+                headers: { 'cache-control': 'no-cache' },
+              });
+              lastStatus = response.status;
+              const html = response.ok ? await response.text() : '';
+              if (response.ok && html.includes(marker)) {
+                console.log(`marker ok: ${marker} on ${url}`);
+                return;
+              }
+              console.log(`marker retry ${attempt}/${attempts}: ${url} status=${lastStatus}`);
+              await new Promise((resolve) => setTimeout(resolve, delayMs));
+            }
+            throw new Error(`Missing HTML marker ${marker} on ${url}; status=${lastStatus}`);
+          }
+
+          await verifyHtmlMarker(`${origin}/`, 'GTM-KWH6XZJR');
+
+          console.log(`Canonical verification date: ${latestDate}; targets=${targets.length}`);
+
+          for (const article of targets) {
+            const articleUrl = `${origin}/articles/${article.slug}`;
+            const response = await fetchOk(articleUrl);
+            const html = await response.text();
+
+            if (!/<h1\b/i.test(html)) {
+              throw new Error(`Missing <h1> on ${articleUrl}`);
+            }
+            if (!html.includes(article.title) && !html.includes(escapeHtml(article.title))) {
+              throw new Error(`Title mismatch on ${articleUrl}: ${article.title}`);
+            }
+            console.log(`article ok: ${article.slug} status=${response.status}`);
+
+            for (const slot of slots) {
+              const local = `public/images/articles/${article.slug}-${slot}.webp`;
+              if (!fs.existsSync(local)) continue;
+
+              const imageUrl = `${origin}/images/articles/${article.slug}-${slot}.webp`;
+              const imageResponse = await fetchOk(imageUrl, 6, 3000);
+              const bytes = (await imageResponse.arrayBuffer()).byteLength;
+              if (bytes <= 0) {
+                throw new Error(`Empty production image: ${imageUrl}`);
+              }
+              console.log(`image ok: ${article.slug}-${slot} status=${imageResponse.status} bytes=${bytes}`);
+            }
+          }
+          NODE
+      - name: Verify AdSense ownership on the canonical domain
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          const origin = 'https://naru-career.com';
+          const publisherId = 'ca-pub-5535543234748003';
+          const adsRecord = 'google.com, pub-5535543234748003, DIRECT, f08c47fec0942fa0';
+          let lastError;
+          for (let attempt = 1; attempt <= 12; attempt++) {
+            try {
+              for (const userAgent of ['Mozilla/5.0', 'Mediapartners-Google']) {
+                const response = await fetch(origin + '/', {
+                  redirect: 'follow',
+                  headers: { 'user-agent': userAgent, 'cache-control': 'no-cache' },
+                });
+                if (!response.ok) {
+                  throw new Error('Homepage ' + userAgent + ': HTTP ' + response.status);
+                }
+                const html = await response.text();
+                const head = html.split(/<\/head>/i)[0];
+                if (!/<meta\b[^>]*name=["']google-adsense-account["'][^>]*content=["']ca-pub-5535543234748003["'][^>]*>/i.test(head)) {
+                  throw new Error('AdSense account meta missing from initial <head> for ' + userAgent);
+                }
+                console.log('AdSense meta OK in <head> for ' + userAgent);
+              }
+              const adsResponse = await fetch(origin + '/ads.txt', {
+                redirect: 'follow',
+                headers: { 'cache-control': 'no-cache' },
+              });
+              if (!adsResponse.ok) {
+                throw new Error('ads.txt HTTP ' + adsResponse.status);
+              }
+              const adsText = await adsResponse.text();
+              if (!adsText.split(/\r?\n/).some(line => line.trim() === adsRecord)) {
+                throw new Error('ads.txt does not contain the expected seller record');
+              }
+              console.log('AdSense seller record OK on /ads.txt');
+              process.exit(0);
+            } catch (error) {
+              lastError = error;
+              console.log('AdSense check ' + attempt + '/12: ' + error.message);
+              if (attempt < 12) await new Promise(resolve => setTimeout(resolve, 5000));
+            }
+          }
+          throw lastError;
+          NODE
