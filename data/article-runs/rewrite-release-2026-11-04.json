@@ -1,6 +1,6 @@
 {
   "runId": "rewrite-release-2026-11-04",
-  "status": "MERGED_PRODUCTION_PENDING",
+  "status": "PUBLISHED_VERIFIED",
   "userStatement": "両方とも全部問題ない",
   "approvalScope": "提示7記事のHuman Fact Checkおよびプレビュー目視",
   "heldLegacyArticles": 29,
@@ -13,12 +13,15 @@
       "previewApprovedHeadSha": "263279f5d049860be3bee7f444957510429ef998",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
-      "publication": "MERGED_PRODUCTION_PENDING",
+      "publication": "PUBLISHED_VERIFIED",
       "merge": {
         "sha": "cf53b97dea179f9972ab16695386e078583a629c",
         "merged": true,
         "message": "Pull Request successfully merged"
-      }
+      },
+      "productionUrl": "https://naru-career.com/articles/it-training-program-job-checklist",
+      "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+      "productionRun": 41794687247
     },
     {
       "pr": 186,
@@ -28,12 +31,15 @@
       "previewApprovedHeadSha": "02104d9643d6a7261811c2dff78d0c601c54395c",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
-      "publication": "MERGED_PRODUCTION_PENDING",
+      "publication": "PUBLISHED_VERIFIED",
       "merge": {
         "sha": "4e029586e806cb3a140068b09019b6256bd0cd06",
         "merged": true,
         "message": "Pull Request successfully merged"
-      }
+      },
+      "productionUrl": "https://naru-career.com/articles/new-grad-early-resignation-career-plan",
+      "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+      "productionRun": 41794687247
     },
     {
       "pr": 160,
@@ -43,12 +49,15 @@
       "previewApprovedHeadSha": "7e72e71e65a3cb14c33e1869d605064a8c6e003e",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
-      "publication": "MERGED_PRODUCTION_PENDING",
+      "publication": "PUBLISHED_VERIFIED",
       "merge": {
         "sha": "ac386423478bdbc3570591035ba719a80355f6ce",
         "merged": true,
         "message": "Pull Request successfully merged"
-      }
+      },
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-it-company-research",
+      "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+      "productionRun": 41794687247
     },
     {
       "pr": 164,
@@ -58,12 +67,15 @@
       "previewApprovedHeadSha": "0b80fec5e73f2412f90a7eb0868e799fb44331ca",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
-      "publication": "MERGED_PRODUCTION_PENDING",
+      "publication": "PUBLISHED_VERIFIED",
       "merge": {
         "sha": "721dd74ce730cbdb5dd4a93851f129dab9cb4f26",
         "merged": true,
         "message": "Pull Request successfully merged"
-      }
+      },
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-it-interview-questions",
+      "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+      "productionRun": 41794687247
     },
     {
       "pr": 163,
@@ -73,12 +85,15 @@
       "previewApprovedHeadSha": "0c4b2904cbf3f6e25aa97883f83261d2b4fa4f78",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
-      "publication": "MERGED_PRODUCTION_PENDING",
+      "publication": "PUBLISHED_VERIFIED",
       "merge": {
         "sha": "d9481d076dea1420ffe40275e20ec73be74e9741",
         "merged": true,
         "message": "Pull Request successfully merged"
-      }
+      },
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-it-offer-acceptance-checks",
+      "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+      "productionRun": 41794687247
     },
     {
       "pr": 161,
@@ -88,12 +103,15 @@
       "previewApprovedHeadSha": "c09f5352644ae65e41dbb60817b6adbd18ad4f11",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
-      "publication": "MERGED_PRODUCTION_PENDING",
+      "publication": "PUBLISHED_VERIFIED",
       "merge": {
         "sha": "44917a3bbf1c0108208597790d9aefdcf437bf25",
         "merged": true,
         "message": "Pull Request successfully merged"
-      }
+      },
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-it-portfolio-guide",
+      "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+      "productionRun": 41794687247
     },
     {
       "pr": 252,
@@ -103,12 +121,26 @@
       "previewApprovedHeadSha": "0f8475b1c8da69c0744becf7bf7f0ae459900546",
       "humanFactCheck": "user_confirmed",
       "previewVisual": "user_confirmed",
-      "publication": "MERGED_PRODUCTION_PENDING",
+      "publication": "PUBLISHED_VERIFIED",
       "merge": {
         "sha": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
         "merged": true,
         "message": "Pull Request successfully merged"
-      }
+      },
+      "productionUrl": "https://naru-career.com/articles/second-new-grad-web-marketing-career",
+      "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+      "productionRun": 41794687247
     }
-  ]
+  ],
+  "productionHead": "1723e2d7bfe9016f52299093bb6f8994d40c4d5c",
+  "productionRun": 41794687247,
+  "productionChecks": {
+    "deploy": "success",
+    "canonicalWorkflow": "success",
+    "articlesHttp200": 7,
+    "webpImagesHttp200": 28,
+    "newContent": 7,
+    "canonicalMatches": 7,
+    "noindexAbsent": 7
+  }
 }
