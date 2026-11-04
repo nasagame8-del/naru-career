@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T03:41:00.807Z",
+  "generatedAt": "2026-11-04T02:39:06.528Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -32,14 +32,14 @@
     },
     {
       "rank": 4,
-      "slug": "new-grad-early-resignation-career-plan",
-      "query": "山田 瑠々 辞め た 会社",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
       "reason": "position_11_30"
     },
     {
       "rank": 5,
-      "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前",
+      "slug": "new-grad-early-resignation-career-plan",
+      "query": "山田 瑠々 辞め た 会社",
       "reason": "position_11_30"
     },
     {
@@ -68,18 +68,24 @@
     },
     {
       "rank": 10,
+      "slug": "employee-to-contractor-unemployment-benefit",
+      "query": "業務委託失業保険",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 11,
       "slug": "agent-not-recommended",
       "query": "転職エージェント 微妙",
       "reason": "position_11_30"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "slug": "interview-scheduling-while-employed",
       "query": "転職 現職中 面接",
       "reason": "position_11_30"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "slug": "contractor-unpaid-fee-consultation",
       "query": "業務委託 報酬未払い",
       "reason": "position_11_30"
@@ -106,14 +112,14 @@
     },
     {
       "rank": 4,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 5,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
       "reason": "low_ctr_top10"
     },
     {
@@ -130,8 +136,8 @@
     },
     {
       "rank": 8,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
       "reason": "low_ctr_top10"
     },
     {
@@ -148,38 +154,38 @@
     },
     {
       "rank": 11,
-      "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前 貰えない",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 12,
-      "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前 貰えない",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 13,
-      "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前 貰えない",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 14,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "query": "業務委託 急に辞める",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 15,
       "slug": "agent-comparison-2026",
       "query": "ワークポート",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "slug": "agent-job-mismatch",
       "query": "転職エージェント 求人 微妙",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 16,
-      "slug": "outsourcing-contract-termination-worker-status",
-      "query": "業務委託 急に辞める",
       "reason": "low_ctr_top10"
     },
     {
@@ -214,9 +220,10 @@
     "agent-not-recommended",
     "agent-job-mismatch",
     "second-new-grad-sns-background-check",
+    "employee-to-contractor-unemployment-benefit",
     "interview-scheduling-while-employed",
     "contractor-unpaid-fee-consultation",
-    "agent-comparison-2026",
-    "outsourcing-contract-termination-worker-status"
+    "outsourcing-contract-termination-worker-status",
+    "agent-comparison-2026"
   ]
 }

@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-03T03:41:00.308Z",
+  "generatedAt": "2026-11-04T02:39:06.036Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-17",
-    "endDate": "2026-10-30"
+    "startDate": "2026-10-18",
+    "endDate": "2026-10-31"
   },
   "previousRange": {
-    "startDate": "2026-10-03",
-    "endDate": "2026-10-16"
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-17"
   },
   "visibleQueryCounts": {
-    "current": 68,
-    "previous": 85,
+    "current": 69,
+    "previous": 88,
     "new": 45
   },
   "positionBuckets": {
     "current": {
       "top3": 6,
-      "top10": 19,
+      "top10": 17,
       "top20": 35
     },
     "previous": {
       "top3": 6,
       "top10": 31,
-      "top20": 39
+      "top20": 41
     }
   },
   "querySignals": [
@@ -35,18 +35,8 @@
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 内定承諾前 メール",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
       "query": "業務委託 急に辞める",
       "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "労働条件通知書 内定承諾前",
-      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
@@ -60,11 +50,6 @@
       "signal": "quick_win"
     },
     {
-      "query": "社員から業務委託へ",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
       "query": "転職 労働条件通知書 来ない",
       "positionBand": "4-10",
       "signal": "quick_win"
@@ -72,6 +57,11 @@
     {
       "query": "労働条件通知書 内定承諾前 貰えない",
       "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -120,13 +110,8 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 勤怠管理",
-      "positionBand": "41+",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 契約更新しない 伝え方",
-      "positionBand": "21-40",
+      "query": "業務委託 出社 強制",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -150,7 +135,22 @@
       "signal": "new"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
+      "query": "業務委託失業保険",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 クビ",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 報酬未払い",
+      "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "業務委託 急に 切 られる",
       "positionBand": "11-20",
       "signal": "new"
     }
@@ -187,6 +187,11 @@
       "signal": "rising"
     },
     {
+      "page": "/articles/employee-contractor-pay-comparison",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "page": "/articles/contractor-paid-leave-overtime",
       "positionBand": "11-20",
       "signal": "rising"
@@ -197,8 +202,8 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/employee-contractor-pay-comparison",
-      "positionBand": "4-10",
+      "page": "/articles/contractor-attendance-control-worker-status",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -225,11 +230,6 @@
       "page": "/articles/agent-site-vs-agent-usage",
       "positionBand": "21-40",
       "signal": "new"
-    },
-    {
-      "page": "/articles/bizreach-second-new-grad",
-      "positionBand": "4-10",
-      "signal": "rising"
     }
   ]
 }

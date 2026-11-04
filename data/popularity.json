@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T03:41:00.685Z",
+  "generatedAt": "2026-11-04T02:39:06.400Z",
   "window": "過去28日",
   "order": [
     "offer-letter-before-acceptance-not-provided",
@@ -8,8 +8,8 @@
     "outsourcing-contract-termination-worker-status",
     "contractor-how-to-quit",
     "contractor-client-cancellation-costs",
-    "contractor-paid-leave-overtime",
     "employee-contractor-pay-comparison",
+    "contractor-paid-leave-overtime",
     "contractor-unpaid-fee-consultation",
     "agent-job-mismatch",
     "contractor-exclusivity-noncompete-checks",
@@ -28,18 +28,17 @@
     "agent-comparison-2026",
     "second-new-grad-sns-background-check",
     "contractor-no-written-contract",
-    "second-new-grad-desired-salary-2026",
     "agent-site-vs-agent-usage",
+    "second-new-grad-desired-salary-2026",
     "disguised-contracting-freelance-difference",
     "beginner-engineer-tutorial-portfolio",
     "retirement-agency-second-new-grad-how-to-choose",
     "agent-referral-vs-self-apply",
     "space-industry-it-career-entry",
-    "bizreach-second-new-grad",
     "it-training-program-job-checklist",
     "second-new-grad-it-interview-questions",
+    "bizreach-second-new-grad",
     "it-industry-quit-myth",
-    "pc8001-modern-it-job-application",
     "casual-interview",
     "ai-interview-screening",
     "aio-seo-industry-inside",
@@ -55,7 +54,6 @@
     "promotion-blocked-by-boss",
     "second-new-grad-retirement-pay",
     "second-new-grad-web-director-career",
-    "second-new-grad-web-marketing-career",
-    "unfair-evaluation-not-spoiled"
+    "second-new-grad-web-marketing-career"
   ]
 }
