@@ -19,15 +19,23 @@
  *
  * ## 必要な環境変数（値は出力しない）
  *
- *   GOOGLE_SERVICE_ACCOUNT_EMAIL
- *   GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
- *   SEARCH_CONSOLE_SITE_URL
+ *   GOOGLE_OAUTH_CLIENT_ID (or WAR_ROOM_GOOGLE_CLIENT_ID)
+ *   GOOGLE_OAUTH_CLIENT_SECRET (or WAR_ROOM_GOOGLE_CLIENT_SECRET)
+ *   GOOGLE_OAUTH_REFRESH_TOKEN (or WAR_ROOM_GOOGLE_REFRESH_TOKEN)
+ *   SEARCH_CONSOLE_SITE_URL (optional for NARU; defaults to sc-domain:naru-career.com)
+ *
+ * Service-account auth remains a backwards-compatible fallback only.
  *
  * 未設定なら何も書かずに終了する（既存スナップショットを壊さない）。
  */
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import {
+  getSearchConsoleSiteUrl,
+  querySearchAnalytics,
+  resolveSearchConsoleAuth,
+} from "./lib/gsc-auth.mjs";
 
 const OUT_PATH = path.join(process.cwd(), "data", "popularity.json");
 const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
@@ -95,43 +103,38 @@ async function knownArticleSlugs() {
 }
 
 async function main() {
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n");
-  const siteUrl = process.env.SEARCH_CONSOLE_SITE_URL;
+  let rows;
+  let startDate;
+  let endDate;
 
-  if (!email || !privateKey || !siteUrl) {
-    console.error(
-      "Search Console の環境変数が未設定です（GOOGLE_SERVICE_ACCOUNT_EMAIL / GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY / SEARCH_CONSOLE_SITE_URL）。"
+  if (process.env.GSC_SNAPSHOT_INPUT) {
+    const snapshot = JSON.parse(
+      await fs.readFile(path.resolve(process.env.GSC_SNAPSHOT_INPUT), "utf8")
     );
-    console.error("スナップショットは更新していません。");
-    process.exit(1);
-  }
+    rows = snapshot?.current28?.pages ?? [];
+    startDate = snapshot?.current28?.startDate ?? "unknown";
+    endDate = snapshot?.current28?.endDate ?? "unknown";
+  } else {
+    const siteUrl = getSearchConsoleSiteUrl();
+    const auth = await resolveSearchConsoleAuth();
 
-  const { google } = await import("googleapis");
-  const auth = new google.auth.JWT({
-    email,
-    key: privateKey,
-    scopes: ["https://www.googleapis.com/auth/webmasters.readonly"],
-  });
+    // GSCのデータは数日遅れるため、3日前を終了日にする
+    endDate = daysAgo(-3);
+    startDate = daysAgo(-30);
 
-  // GSCのデータは数日遅れるため、3日前を終了日にする
-  const endDate = daysAgo(-3);
-  const startDate = daysAgo(-30);
-
-  const searchconsole = google.searchconsole({ version: "v1", auth });
-  const res = await searchconsole.searchanalytics.query({
-    siteUrl,
-    requestBody: {
+    const response = await querySearchAnalytics(auth, siteUrl, {
       startDate,
       endDate,
       dimensions: ["page"],
       rowLimit: 500,
       type: "web",
-    },
-  });
+      dataState: "final",
+    });
+    rows = response.rows ?? [];
+  }
 
   const known = await knownArticleSlugs();
-  const order = buildOrder(res.data.rows ?? [], known);
+  const order = buildOrder(rows, known);
 
   if (order.length === 0) {
     console.error(

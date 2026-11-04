@@ -7,7 +7,8 @@ const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
 export async function POST(req: NextRequest) {
   // Simple auth: require a secret to prevent abuse
   const secret = req.headers.get("x-indexnow-secret");
-  if (secret !== process.env.INDEXNOW_SECRET) {
+  const expectedSecret = process.env.INDEXNOW_SECRET || process.env.CRON_SECRET;
+  if (!expectedSecret || secret !== expectedSecret) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

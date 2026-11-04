@@ -41,6 +41,55 @@ async function processMessage(
     return;
   }
 
+  const directClaudeMention = event.text.includes("<@U0C66M6ASLW>");
+
+  if (directClaudeMention) {
+    try {
+      if (!githubDelegationReady() || !envelope.event_id) return;
+
+      const threadContext = await fetchThreadContext({
+        token: botToken,
+        channel: event.channel,
+        threadTs,
+        currentMessageTs: event.ts,
+      }).catch(() => "");
+
+      const drive = await buildDriveContextFromText(
+        [event.text, threadContext].filter(Boolean).join("\n"),
+        { vercelOidcToken }
+      );
+
+      const sharedContext = [
+        drive.context ? `## Google Drive context\n${drive.context}` : "",
+        drive.warning ? `## Drive access note\n${drive.warning}` : "",
+        threadContext ? `## Slack thread context\n${threadContext}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n\n")
+        .slice(0, 18000);
+
+      await delegateToClaude({
+        eventId: envelope.event_id,
+        slackChannel: event.channel,
+        slackTs: threadTs,
+        userRequest: userText,
+        chatgptPosition:
+          "DIRECT_CLAUDE_NO_REVIEW: This is a direct request from the Slack user. There is no ChatGPT proposal to debate.",
+        claudeInstruction: [
+          "ユーザーからClaudeへの直接依頼です。ChatGPTの返答を待たず、ユーザー本人に直接回答してください。",
+          "実装や編集を明示的に頼まれていない場合は、回答だけ行い、不要な変更はしないでください。",
+          sharedContext
+            ? "\n同じSlackスレッドと参照Driveの共有コンテキストです。必要な範囲だけ根拠として使ってください。\n" + sharedContext
+            : "",
+          "\nREPORT.mdにはSlackへ返す日本語回答を '## Slack reply' 見出しで必ず記載してください。",
+        ].join("\n"),
+      });
+    } catch {
+      // Direct-Claude mode stays silent on the ChatGPT identity.
+    }
+    return;
+  }
+
   try {
     await postSlackMessage({
       token: botToken,

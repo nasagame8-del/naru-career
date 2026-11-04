@@ -5,9 +5,20 @@ on:
     # 07:35 JST (22:35 UTC previous day), before the 08:00 candidate selection.
     - cron: "35 22 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/seo-opportunity-snapshot.yml"
+      - "src/app/api/gsc-snapshot/**"
+      - "scripts/generate-gsc-daily-snapshot.mjs"
+      - "scripts/generate-popularity.mjs"
+      - "scripts/generate-seo-opportunities.mjs"
+      - "scripts/lib/gsc-auth.mjs"
 
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: seo-opportunity-snapshot
@@ -16,42 +27,123 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
-      GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
-      GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY }}
-      SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
+      GSC_BRIDGE_URL: https://naru-career.com/api/gsc-snapshot
+      GSC_SNAPSHOT_INPUT: tmp/gsc-daily-snapshot.json
+      SLACK_CHATGPT_WEBHOOK_URL: ${{ secrets.SLACK_CHATGPT_WEBHOOK_URL }}
+      SLACK_OBSERVER_WEBHOOK_URL: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: master
-      - uses: actions/setup-node@v4
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
+
       - run: npm ci
 
-      - name: Verify Search Console secrets
+      - name: Fetch private GSC snapshot through GitHub OIDC
         shell: bash
         run: |
-          test -n "$GOOGLE_SERVICE_ACCOUNT_EMAIL" || { echo "::error::Missing GOOGLE_SERVICE_ACCOUNT_EMAIL"; exit 1; }
-          test -n "$GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY" || { echo "::error::Missing GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY"; exit 1; }
-          test -n "$SEARCH_CONSOLE_SITE_URL" || { echo "::error::Missing SEARCH_CONSOLE_SITE_URL"; exit 1; }
+          set -euo pipefail
+          mkdir -p tmp
 
-      - name: Refresh SEO data
+          OIDC_JSON="$(curl --fail-with-body --silent --show-error \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=naru-gsc-snapshot-v1")"
+          OIDC_TOKEN="$(printf '%s' "$OIDC_JSON" | jq -r '.value // empty')"
+          test -n "$OIDC_TOKEN" || { echo "::error::GitHub OIDC token was not issued"; exit 1; }
+
+          STATUS=""
+          for ATTEMPT in {1..24}; do
+            STATUS="$(curl -L -sS -X POST \
+              -H "Authorization: Bearer $OIDC_TOKEN" \
+              -H "Content-Type: application/json" \
+              -o "$GSC_SNAPSHOT_INPUT" \
+              -w '%{http_code}' \
+              "$GSC_BRIDGE_URL" || true)"
+
+            if [ "$STATUS" = "200" ] &&
+               jq -e '.current14.total and .previous14.total and .current28.pages and .current28.pageQueries' "$GSC_SNAPSHOT_INPUT" >/dev/null 2>&1; then
+              echo "GSC bridge ready on attempt $ATTEMPT"
+              break
+            fi
+
+            ERROR_CODE="$(jq -r '.error // "non_json_or_unavailable"' "$GSC_SNAPSHOT_INPUT" 2>/dev/null || echo non_json_or_unavailable)"
+            echo "GSC bridge attempt=$ATTEMPT status=$STATUS error=$ERROR_CODE"
+            sleep 15
+          done
+
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::GSC bridge did not return 200 after retries (last status=$STATUS)"
+            exit 1
+          fi
+          jq -e '.current14.total and .previous14.total and .current28.pages and .current28.pageQueries' "$GSC_SNAPSHOT_INPUT" >/dev/null
+
+      - name: Generate privacy-safe SEO snapshots
+        shell: bash
         run: |
+          set -euo pipefail
+          npm run data:gsc-daily
           npm run data:popularity
           npm run data:seo-opportunities
 
-      - name: Commit snapshot when changed
+      - name: Upload private detailed GSC artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: naru-gsc-daily-${{ github.run_id }}
+          path: tmp/gsc-daily-snapshot.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Post private GSC digest to NARU Slack
+        continue-on-error: true
         shell: bash
         run: |
+          set -euo pipefail
+          if [ -z "$SLACK_CHATGPT_WEBHOOK_URL" ]; then
+            echo "::warning::SLACK_CHATGPT_WEBHOOK_URL is not configured; artifact remains available."
+            exit 0
+          fi
+          test -s tmp/gsc-daily-slack.txt
+          jq -Rs '{text:.}' < tmp/gsc-daily-slack.txt > /tmp/gsc-slack.json
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @/tmp/gsc-slack.json \
+            "$SLACK_CHATGPT_WEBHOOK_URL"
+
+      - name: Commit privacy-safe snapshots when changed
+        shell: bash
+        run: |
+          set -euo pipefail
           git config user.name "naru-seo-bot"
           git config user.email "naru-seo-bot@users.noreply.github.com"
-          git add data/popularity.json data/seo-opportunities.json
+          git add data/popularity.json data/seo-opportunities.json data/gsc-signal.json
           if git diff --cached --quiet; then
-            echo "No SEO snapshot changes."
+            echo "No public SEO snapshot changes."
             exit 0
           fi
           git commit -m "data: refresh Search Console SEO snapshots"
+          git fetch origin master
+          git rebase origin/master
           git push origin HEAD:master
+
+      - name: Alert NARU Observer when GSC refresh fails
+        if: failure()
+        continue-on-error: true
+        shell: bash
+        run: |
+          if [ -z "$SLACK_OBSERVER_WEBHOOK_URL" ]; then
+            echo "::warning::SLACK_OBSERVER_WEBHOOK_URL is not configured"
+            exit 0
+          fi
+          TEXT="🚨 *NARU GSC snapshot failure*\nGitHub OIDC→Cloudflare→Search Console日次取得に失敗しました。\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          jq -n --arg text "$TEXT" '{text:$text}' > /tmp/gsc-failure-slack.json
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @/tmp/gsc-failure-slack.json \
+            "$SLACK_OBSERVER_WEBHOOK_URL"
