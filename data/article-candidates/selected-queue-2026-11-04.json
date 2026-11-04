@@ -15,7 +15,7 @@
       "latestHeadSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
       "prNumber": 234,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/234",
-      "status": "QA",
+      "status": "PREVIEW_READY",
       "driveFolderId": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFiles": {
@@ -146,24 +146,24 @@
         "ci": {
           "workflow_runs": [
             {
-              "id": 41794246981,
-              "name": "NARU article Cloudflare preview",
-              "status": "in_progress",
-              "conclusion": null,
-              "run_number": 321,
-              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246981/jobs",
-              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246981/logs",
-              "workflow_id": 374276063
-            },
-            {
               "id": 41794246975,
               "name": "Article Factory Validation",
-              "status": "in_progress",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "run_number": 330,
               "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246975/jobs",
               "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246975/logs",
               "workflow_id": 364678305
+            },
+            {
+              "id": 41794246981,
+              "name": "NARU article Cloudflare preview",
+              "status": "completed",
+              "conclusion": "success",
+              "run_number": 321,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246981/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794246981/logs",
+              "workflow_id": 374276063
             }
           ]
         },
@@ -183,6 +183,11 @@
           "scope": "first_9_checks_only",
           "heavyChecks": "skipped",
           "headSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f"
+        },
+        "cloudflarePreview": {
+          "status": "passed",
+          "headSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
+          "url": "https://naru-pr-234-preview.broad-fuchsia.workers.dev/articles/second-new-grad-april-entry-schedule"
         }
       },
       "publish": {
@@ -359,7 +364,8 @@
             }
           }
         }
-      }
+      },
+      "previewUrl": "https://naru-pr-234-preview.broad-fuchsia.workers.dev/articles/second-new-grad-april-entry-schedule"
     },
     {
       "candidateId": "seasonal-20261104-2",
@@ -372,7 +378,7 @@
       "latestHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
       "prNumber": 235,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/235",
-      "status": "QA",
+      "status": "PREVIEW_READY",
       "driveFolderId": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFiles": {
@@ -503,24 +509,24 @@
         "ci": {
           "workflow_runs": [
             {
-              "id": 41794254785,
-              "name": "Article Factory Validation",
-              "status": "in_progress",
-              "conclusion": null,
-              "run_number": 331,
-              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254785/jobs",
-              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254785/logs",
-              "workflow_id": 364678305
-            },
-            {
               "id": 41794254743,
               "name": "NARU article Cloudflare preview",
-              "status": "in_progress",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "run_number": 322,
               "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254743/jobs",
               "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254743/logs",
               "workflow_id": 374276063
+            },
+            {
+              "id": 41794254785,
+              "name": "Article Factory Validation",
+              "status": "completed",
+              "conclusion": "success",
+              "run_number": 331,
+              "jobs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254785/jobs",
+              "logs_url": "https://api.github.com/repos/nasagame8-del/naru-career/actions/runs/41794254785/logs",
+              "workflow_id": 364678305
             }
           ]
         },
@@ -540,6 +546,11 @@
           "scope": "first_9_checks_only",
           "heavyChecks": "skipped",
           "headSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf"
+        },
+        "cloudflarePreview": {
+          "status": "passed",
+          "headSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
+          "url": "https://naru-pr-235-preview.broad-fuchsia.workers.dev/articles/winter-bonus-job-change-timing"
         }
       },
       "publish": {
@@ -716,7 +727,8 @@
             }
           }
         }
-      }
+      },
+      "previewUrl": "https://naru-pr-235-preview.broad-fuchsia.workers.dev/articles/winter-bonus-job-change-timing"
     },
     {
       "candidateId": "seasonal-20261104-3",
