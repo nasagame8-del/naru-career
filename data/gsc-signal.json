@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-04T02:39:06.036Z",
+  "generatedAt": "2026-11-05T02:43:42.827Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-18",
-    "endDate": "2026-10-31"
+    "startDate": "2026-10-19",
+    "endDate": "2026-11-01"
   },
   "previousRange": {
-    "startDate": "2026-10-04",
-    "endDate": "2026-10-17"
+    "startDate": "2026-10-05",
+    "endDate": "2026-10-18"
   },
   "visibleQueryCounts": {
-    "current": 69,
-    "previous": 88,
-    "new": 45
+    "current": 74,
+    "previous": 87,
+    "new": 49
   },
   "positionBuckets": {
     "current": {
-      "top3": 6,
-      "top10": 17,
-      "top20": 35
+      "top3": 7,
+      "top10": 19,
+      "top20": 40
     },
     "previous": {
-      "top3": 6,
-      "top10": 31,
-      "top20": 41
+      "top3": 4,
+      "top10": 29,
+      "top20": 40
     }
   },
   "querySignals": [
@@ -40,18 +40,13 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 出社 強制",
-      "positionBand": "11-20",
+      "query": "転職 労働条件通知書 来ない",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
       "query": "業務委託 急に 切 られる",
       "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "転職 労働条件通知書 来ない",
-      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -110,14 +105,9 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 出社 強制",
-      "positionBand": "11-20",
+      "query": "業務委託 勤怠管理",
+      "positionBand": "41+",
       "signal": "rising"
-    },
-    {
-      "query": "正社員から業務委託",
-      "positionBand": "11-20",
-      "signal": "new"
     },
     {
       "query": "労働条件通知書 内定承諾前 メール",
@@ -135,8 +125,18 @@
       "signal": "new"
     },
     {
+      "query": "パート 業務委託 切り替え",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
       "query": "業務委託失業保険",
       "positionBand": "21-40",
+      "signal": "new"
+    },
+    {
+      "query": "転職 労働条件通知書 来ない",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
