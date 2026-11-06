@@ -49,3 +49,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-SEASONAL-20261104-82
 ユーザー指示により記事82の本文、出典確認、画像プラン・プロンプト、専用ブランチとDraft PRを許可。master直接push、merge、本番deployは行わない。Claudeタスクは起動しない。
+
+
+## USER-SEASONAL-20261104-83
+ユーザー指示により記事83の本文、出典確認、画像プラン・プロンプト、専用ブランチとDraft PRを許可。master直接push、merge、本番deployは行わない。Claudeタスクは起動しない。
