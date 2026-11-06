@@ -1,0 +1,107 @@
+{
+  "slug": "second-new-grad-april-entry-schedule",
+  "bodyCharacters": 2857,
+  "requiredFrontmatter": "passed",
+  "internalLinks": [
+    "it-web-industry-real-work-culture",
+    "interview-scheduling-while-employed",
+    "it-training-program-job-checklist",
+    "second-new-grad-it-offer-acceptance-checks"
+  ],
+  "errors": [],
+  "images": [
+    {
+      "alt": "4月入社に向けて準備・選考・入社調整を進める計画例",
+      "path": "/images/articles/second-new-grad-april-entry-schedule-01.webp",
+      "exists": false
+    },
+    {
+      "alt": "応募資格・入社日・研修開始日・締切を確認する四つのチェック",
+      "path": "/images/articles/second-new-grad-april-entry-schedule-02.webp",
+      "exists": false
+    },
+    {
+      "alt": "労働条件の確認から入社日相談、現職との調整へ進む手順",
+      "path": "/images/articles/second-new-grad-april-entry-schedule-03.webp",
+      "exists": false
+    }
+  ],
+  "factScanner": {
+    "blockers": [],
+    "reviewTargets": [
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 2
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 20
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 28
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 80
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "3年",
+        "line": 81
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 83
+      },
+      {
+        "type": "法制度・規制",
+        "match": "制度",
+        "line": 58
+      },
+      {
+        "type": "法制度・規制",
+        "match": "制度",
+        "line": 58
+      },
+      {
+        "type": "法制度・規制",
+        "match": "厚生労働省",
+        "line": 81
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 4
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 60
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 64
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 64
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 70
+      }
+    ]
+  },
+  "fullLocalQa": "not_run_images_missing_or_legacy",
+  "humanFactCheck": "pending",
+  "previewApproval": "pending"
+}

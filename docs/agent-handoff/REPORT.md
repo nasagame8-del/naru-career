@@ -690,3 +690,71 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 変更ファイル: EditorialSidebar, MobileCareerCTA, DiagnosisBanner, article page, guide page, articles renderer, NEXT_INSTRUCTION, REPORT。
 - git diff概要: RPG診断導線のみ非表示。エージェント診断等は維持。
 - 既知の問題: なし。判断項目: なし。推奨次作業: CI成功後PR mergeと本番検証。
+
+
+---
+
+# Seasonal editorial draft
+
+- reportId: SEASONAL-20261104-82
+- completedInstructionId: USER-SEASONAL-20261104 (direct user instruction)
+- status: DRAFT_WAITING_IMAGES
+- branch: article-factory/2026-11-04-82-second-new-grad-april-entry-schedule
+- 実施内容: 本文・出典照合・画像プラン・4枚の完成画像プロンプト。他記事の同時変更なし。
+- テスト結果: 必須frontmatter、内部リンク、画像参照・alt、fact placeholder 0。全文の独立Human Fact Check・フルQA・画面承認は未完了。
+- 変更ファイル: content/articles/second-new-grad-april-entry-schedule.md、当記事のdata/article-runs資料、このREPORT。
+- git diff概要: 新規記事1本。
+- 既知の問題: 画像4枚未受領。CI/Cloudflare Previewの画像ゲートは未充足。 datePublishedは新規原稿の作成日で、公開日・公開時刻は未確定。
+- 判断が必要な項目: 画像とユーザーの本文・プレビュー承認。
+- 推奨する次の作業: 画像受領後QA、最新head CI/Cloudflare検証、同headプレビュー承認。本番公開しない。
+
+
+## USER-SEASONAL-IMAGES-20261104-82
+- reportId / completedInstructionId: USER-SEASONAL-IMAGES-20261104-82
+- status: IMAGES_REFLECTED_QA_PENDING
+- branch: article-factory/2026-11-04-82-second-new-grad-april-entry-schedule
+- 実施内容: ユーザー画像4枚を照合し、公式CLIでWebP変換。card1200×630、本文1200×675、埋込メタデータ除去。文字・見切れ・ロゴ・本文整合を確認。
+- 変更ファイル: public/images/articles/second-new-grad-april-entry-schedule-{card,01,02,03}.webp、画像QA記録、このREPORT。
+- git diff概要: 当記事の画像4枚を新規追加。
+- テスト結果: 寸法・形式確認済み。最新headのCIとCloudflare Previewはこのコミット後に確認する。
+- 既知の問題: 独立Human Fact Check、ユーザーの実画面承認が未完了。
+- 推奨する次の作業: CI/Previewを確認し記事直リンクを提示。承認前にマージ・予約・公開しない。
+
+
+---
+
+# Seasonal editorial draft
+
+- reportId: SEASONAL-20261104-83
+- completedInstructionId: USER-SEASONAL-20261104 (direct user instruction)
+- status: DRAFT_WAITING_IMAGES
+- branch: article-factory/2026-11-04-83-winter-bonus-job-change-timing
+- 実施内容: 本文・出典照合・画像プラン・4枚の完成画像プロンプト。他記事の同時変更なし。
+- テスト結果: 必須frontmatter、内部リンク、画像参照・alt、fact placeholder 0。全文の独立Human Fact Check・フルQA・画面承認は未完了。
+- 変更ファイル: content/articles/winter-bonus-job-change-timing.md、当記事のdata/article-runs資料、このREPORT。
+- git diff概要: 新規記事1本。
+- 既知の問題: 画像4枚未受領。CI/Cloudflare Previewの画像ゲートは未充足。 datePublishedは新規原稿の作成日で、公開日・公開時刻は未確定。
+- 判断が必要な項目: 画像とユーザーの本文・プレビュー承認。
+- 推奨する次の作業: 画像受領後QA、最新head CI/Cloudflare検証、同headプレビュー承認。本番公開しない。
+
+
+## USER-SEASONAL-IMAGES-20261104-83
+- reportId / completedInstructionId: USER-SEASONAL-IMAGES-20261104-83
+- status: IMAGES_REFLECTED_QA_PENDING
+- branch: article-factory/2026-11-04-83-winter-bonus-job-change-timing
+- 実施内容: ユーザー画像4枚を照合し、公式CLIでWebP変換。card1200×630、本文1200×675、埋込メタデータ除去。文字・見切れ・ロゴ・本文整合を確認。
+- 変更ファイル: public/images/articles/winter-bonus-job-change-timing-{card,01,02,03}.webp、画像QA記録、このREPORT。
+- git diff概要: 当記事の画像4枚を新規追加。
+- テスト結果: 寸法・形式確認済み。最新headのCIとCloudflare Previewはこのコミット後に確認する。
+- 既知の問題: 独立Human Fact Check、ユーザーの実画面承認が未完了。
+- 推奨する次の作業: CI/Previewを確認し記事直リンクを提示。承認前にマージ・予約・公開しない。
+
+## USER-INTERNAL-LINK-20261106
+- reportId / completedInstructionId: USER-INTERNAL-LINK-20261106
+- status: DRAFT_REVIEW
+- branch: seo/internal-link-contractor-paid-leave-20261106
+- 実施内容: 勤怠管理記事の「社員と同じ」の節から、有給・残業代記事へ本文リンクを1本追加。
+- 検証: リンク先の実在・重複なしを確認。GitHub CIと画面確認は別途。
+- 変更ファイル: content/articles/contractor-attendance-control-worker-status.md、引き継ぎ記録。
+- 既知の問題: GSC直接取得不可。確定スナップショットの順位帯を使用し、クエリとURLの組は未確認。
+- 次の作業: 最新headのCIとプレビューを確認。
