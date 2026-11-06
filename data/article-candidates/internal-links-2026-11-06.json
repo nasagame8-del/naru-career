@@ -19,9 +19,18 @@
     },
     {
       "pr": 223,
-      "head": "d3a033a34c8b9865211ef27c1cc402cd3a371feb",
-      "status": "HELD",
-      "reason": "旧画像はPNG2枚。WebP4枚のプレビュー検査に不合格。"
+      "head": "0096ca5f51b5ddb1f656eef7842b1a3a9423f499",
+      "status": "QA",
+      "imageQa": {
+        "webps": 4,
+        "originals": 4,
+        "dimensions": "1200×630 card / 1200×675 body",
+        "visual": "passed"
+      },
+      "ci": [
+        42186499904,
+        42186499936
+      ]
     }
   ]
 }
