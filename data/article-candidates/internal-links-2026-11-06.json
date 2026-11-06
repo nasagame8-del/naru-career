@@ -20,7 +20,7 @@
     {
       "pr": 223,
       "head": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
-      "status": "PREVIEW_APPROVED",
+      "status": "PRODUCTION_PUBLISHED",
       "imageQa": {
         "webps": 4,
         "originals": 4,
@@ -39,7 +39,11 @@
       "publicationBlockers": [],
       "factCheckApprovedHeadSha": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
       "advertisingApprovedHeadSha": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
-      "publicationApproval": "両方OK"
+      "publicationApproval": "両方OK",
+      "mergeSha": "c65e4f52e600d966218989b0834fd83829757375",
+      "productionRun": 42189442850,
+      "productionUrl": "https://naru-career.com/articles/how-to-resign-experience",
+      "verified": "記事・WebP4枚・冬賞与記事へのリンク確認"
     }
   ]
 }
