@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T02:43:43.472Z",
+  "generatedAt": "2026-11-06T02:47:18.747Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -44,62 +44,86 @@
     },
     {
       "rank": 6,
-      "slug": "agent-not-recommended",
-      "query": "転職エージェント 合わない 辞めたい",
-      "reason": "position_11_30"
-    },
-    {
-      "rank": 7,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "パート 業務委託 切り替え",
-      "reason": "position_11_30"
-    },
-    {
-      "rank": 8,
-      "slug": "agent-job-mismatch",
-      "query": "転職エージェント 紹介 微妙",
-      "reason": "position_11_30"
-    },
-    {
-      "rank": 9,
       "slug": "employee-to-contractor-unemployment-benefit",
       "query": "業務委託失業保険",
       "reason": "position_11_30"
     },
     {
+      "rank": 7,
+      "slug": "agent-not-recommended",
+      "query": "転職エージェント 合わない 辞めたい",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 8,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "パート 業務委託 切り替え",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 9,
+      "slug": "agent-job-mismatch",
+      "query": "転職エージェント 紹介 微妙",
+      "reason": "position_11_30"
+    },
+    {
       "rank": 10,
-      "slug": "second-new-grad-sns-background-check",
-      "query": "sns調査 (裏アカ調査) 採用",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
       "reason": "position_11_30"
     },
     {
       "rank": 11,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 12,
       "slug": "business-outsourcing-conversion-risk",
       "query": "業務委託 出社 強制",
       "reason": "position_11_30"
     },
     {
-      "rank": 12,
+      "rank": 13,
+      "slug": "second-new-grad-sns-background-check",
+      "query": "sns調査 (裏アカ調査) 採用",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 14,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 15,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 16,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 17,
       "slug": "interview-scheduling-while-employed",
       "query": "転職 現職中 面接",
       "reason": "position_11_30"
     },
     {
-      "rank": 13,
+      "rank": 18,
       "slug": "contractor-unpaid-fee-consultation",
       "query": "業務委託 報酬未払い",
       "reason": "position_11_30"
     },
     {
-      "rank": 14,
+      "rank": 19,
       "slug": "outsourcing-contract-termination-worker-status",
       "query": "業務委託 クビ",
-      "reason": "position_11_30"
-    },
-    {
-      "rank": 15,
-      "slug": "agent-not-recommended",
-      "query": "転職エージェント 微妙",
       "reason": "position_11_30"
     }
   ],
@@ -130,8 +154,8 @@
     },
     {
       "rank": 5,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員 から業務委託 違法",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
       "reason": "low_ctr_top10"
     },
     {
@@ -148,8 +172,8 @@
     },
     {
       "rank": 8,
-      "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前 貰えない",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
@@ -184,30 +208,36 @@
     },
     {
       "rank": 14,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員 から業務委託 違法",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 15,
       "slug": "outsourcing-contract-termination-worker-status",
       "query": "業務委託 急に辞める",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "slug": "agent-comparison-2026",
       "query": "ワークポート",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "slug": "agent-job-mismatch",
       "query": "転職エージェント 求人 微妙",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "転職 労働条件通知書 来ない",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "slug": "business-outsourcing-conversion-risk",
       "query": "社員から業務委託へ",
       "reason": "low_ctr_top10"
@@ -229,9 +259,9 @@
     "business-outsourcing-conversion-risk",
     "offer-letter-before-acceptance-not-provided",
     "new-grad-early-resignation-career-plan",
+    "employee-to-contractor-unemployment-benefit",
     "agent-not-recommended",
     "agent-job-mismatch",
-    "employee-to-contractor-unemployment-benefit",
     "second-new-grad-sns-background-check",
     "interview-scheduling-while-employed",
     "contractor-unpaid-fee-consultation",

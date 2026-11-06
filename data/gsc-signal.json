@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-11-05T02:43:42.827Z",
+  "generatedAt": "2026-11-06T02:47:18.199Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-19",
-    "endDate": "2026-11-01"
+    "startDate": "2026-10-20",
+    "endDate": "2026-11-02"
   },
   "previousRange": {
-    "startDate": "2026-10-05",
-    "endDate": "2026-10-18"
+    "startDate": "2026-10-06",
+    "endDate": "2026-10-19"
   },
   "visibleQueryCounts": {
-    "current": 74,
-    "previous": 87,
-    "new": 49
+    "current": 79,
+    "previous": 89,
+    "new": 50
   },
   "positionBuckets": {
     "current": {
-      "top3": 7,
-      "top10": 19,
-      "top20": 40
+      "top3": 9,
+      "top10": 21,
+      "top20": 43
     },
     "previous": {
       "top3": 4,
@@ -100,7 +100,7 @@
       "signal": "rising"
     },
     {
-      "query": "業務 委託 契約 終了",
+      "query": "業務 委託 時間 管理",
       "positionBand": "21-40",
       "signal": "rising"
     },
@@ -125,11 +125,6 @@
       "signal": "new"
     },
     {
-      "query": "パート 業務委託 切り替え",
-      "positionBand": "11-20",
-      "signal": "new"
-    },
-    {
       "query": "業務委託失業保険",
       "positionBand": "21-40",
       "signal": "new"
@@ -137,6 +132,11 @@
     {
       "query": "転職 労働条件通知書 来ない",
       "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "query": "パート 業務委託 切り替え",
+      "positionBand": "11-20",
       "signal": "new"
     },
     {
@@ -228,7 +228,7 @@
     },
     {
       "page": "/articles/agent-site-vs-agent-usage",
-      "positionBand": "21-40",
+      "positionBand": "11-20",
       "signal": "new"
     }
   ]
