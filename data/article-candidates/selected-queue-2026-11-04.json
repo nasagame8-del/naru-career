@@ -15,7 +15,7 @@
       "latestHeadSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
       "prNumber": 234,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/234",
-      "status": "PREVIEW_APPROVED",
+      "status": "MERGED_PRODUCTION_UNVERIFIED",
       "driveFolderId": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFiles": {
@@ -196,9 +196,12 @@
       },
       "publish": {
         "scheduled": false,
-        "merged": false,
+        "merged": true,
         "productionVerified": false,
-        "request": "immediate"
+        "request": "immediate",
+        "mergeSha": "0b7ffb7ba831d908268a43a7db0923fbbfdab16d",
+        "cloudflareProductionRunId": 42183155669,
+        "productionUrl": "https://naru-career.com/articles/second-new-grad-april-entry-schedule"
       },
       "imageFiles": {
         "card": {
@@ -380,10 +383,10 @@
       "title": "冬のボーナスをもらって転職したい。退職を伝える前に確認すること",
       "workType": "new",
       "branch": "article-factory/2026-11-04-83-winter-bonus-job-change-timing",
-      "latestHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
+      "latestHeadSha": "85a1f48393070d1ca54d1e108ac27d443c92adac",
       "prNumber": 235,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/235",
-      "status": "PREVIEW_APPROVED",
+      "status": "QA",
       "driveFolderId": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFiles": {
@@ -509,8 +512,8 @@
         "sourceReview": "assistant_checked_not_independent_human_approval",
         "factPlaceholderCount": 0,
         "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
-        "humanFactCheck": "user_confirmed",
-        "previewVisual": "user_confirmed",
+        "humanFactCheck": "pending",
+        "previewVisual": "pending",
         "ci": {
           "workflow_runs": [
             {
@@ -566,7 +569,8 @@
         "scheduled": false,
         "merged": false,
         "productionVerified": false,
-        "request": "immediate"
+        "request": "immediate",
+        "blocker": "New head after resolving handoff-document conflicts requires new approval"
       },
       "imageFiles": {
         "card": {
