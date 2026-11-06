@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-06",
+  "articles": [
+    {
+      "pr": 258,
+      "head": "979d27fe2434ca3643f03277acdb98d640a9eae6",
+      "preview": "https://naru-pr-258-preview.broad-fuchsia.workers.dev/articles/contractor-attendance-control-worker-status",
+      "approval": "プレビュー確認問題ないやって",
+      "scope": "本文の関連記事リンク1本、既存の事実記述と画像は同一",
+      "ci": [
+        42184709930,
+        42184709874
+      ],
+      "status": "PREVIEW_APPROVED"
+    },
+    {
+      "pr": 223,
+      "head": "d3a033a34c8b9865211ef27c1cc402cd3a371feb",
+      "status": "HELD",
+      "reason": "旧画像はPNG2枚。WebP4枚のプレビュー検査に不合格。"
+    }
+  ]
+}
