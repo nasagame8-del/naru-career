@@ -45,3 +45,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-HIDE-RPG-CTA-20261014
 ユーザー「RPG診断のCTA全部非表示にしといて」。専用PRで全サイトのRPG診断CTAを非表示にし、CI確認後head固定squash mergeとCloudflare本番反映・検証を許可。master直接push・Claude起動なし。
+
+
+## USER-SEASONAL-20261104-10
+ユーザー指示により記事10の本文、出典確認、画像プラン・プロンプト、専用ブランチとDraft PRを許可。master直接push、merge、本番deployは行わない。Claudeタスクは起動しない。
