@@ -11,7 +11,11 @@
         42184709930,
         42184709874
       ],
-      "status": "PREVIEW_APPROVED"
+      "status": "PRODUCTION_PUBLISHED",
+      "mergeSha": "1f95e3cc1150ddc48ed5facb73380dcfeaf0f1c5",
+      "productionRun": 42185109735,
+      "productionUrl": "https://naru-career.com/articles/contractor-attendance-control-worker-status",
+      "verified": "本文の追加リンクと画像4枚"
     },
     {
       "pr": 223,
