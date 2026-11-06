@@ -20,7 +20,7 @@
     {
       "pr": 223,
       "head": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
-      "status": "PREVIEW_READY",
+      "status": "PREVIEW_APPROVED",
       "imageQa": {
         "webps": 4,
         "originals": 4,
@@ -32,7 +32,14 @@
         42186928919
       ],
       "preview": "https://naru-pr-223-preview.broad-fuchsia.workers.dev/articles/how-to-resign-experience",
-      "validation": "success"
+      "validation": "success",
+      "previewApprovedHeadSha": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
+      "approval": "問題なし",
+      "approvalDateJST": "2026-11-06",
+      "publicationBlockers": [
+        "Human fact check pending",
+        "Jobs/ZEN advertising conditions pending"
+      ]
     }
   ]
 }
