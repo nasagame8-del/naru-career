@@ -748,3 +748,13 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - テスト結果: 寸法・形式確認済み。最新headのCIとCloudflare Previewはこのコミット後に確認する。
 - 既知の問題: 独立Human Fact Check、ユーザーの実画面承認が未完了。
 - 推奨する次の作業: CI/Previewを確認し記事直リンクを提示。承認前にマージ・予約・公開しない。
+
+## USER-INTERNAL-LINK-20261106
+- reportId / completedInstructionId: USER-INTERNAL-LINK-20261106
+- status: DRAFT_REVIEW
+- branch: seo/internal-link-contractor-paid-leave-20261106
+- 実施内容: 勤怠管理記事の「社員と同じ」の節から、有給・残業代記事へ本文リンクを1本追加。
+- 検証: リンク先の実在・重複なしを確認。GitHub CIと画面確認は別途。
+- 変更ファイル: content/articles/contractor-attendance-control-worker-status.md、引き継ぎ記録。
+- 既知の問題: GSC直接取得不可。確定スナップショットの順位帯を使用し、クエリとURLの組は未確認。
+- 次の作業: 最新headのCIとプレビューを確認。
