@@ -1,0 +1,67 @@
+{
+  "slug": "year-end-new-year-job-search",
+  "bodyCharacters": 2899,
+  "requiredFrontmatter": "passed",
+  "internalLinks": [
+    "it-company-recruitment-page-research",
+    "resume-writing-second-new-grad",
+    "second-new-grad-it-interview-questions",
+    "interview-scheduling-while-employed"
+  ],
+  "errors": [],
+  "images": [
+    {
+      "alt": "応募受付・企業の休業・連絡予定を分けて確認する図",
+      "path": "/images/articles/year-end-new-year-job-search-01.webp",
+      "exists": false
+    },
+    {
+      "alt": "職務経歴書・応募先比較・面接準備の三つを整える図",
+      "path": "/images/articles/year-end-new-year-job-search-02.webp",
+      "exists": false
+    },
+    {
+      "alt": "受付確認から連絡予定の確認、必要時の問い合わせへ進む図",
+      "path": "/images/articles/year-end-new-year-job-search-03.webp",
+      "exists": false
+    }
+  ],
+  "factScanner": {
+    "blockers": [],
+    "reviewTargets": [
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 4
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 4
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 20
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2027",
+        "line": 20
+      },
+      {
+        "type": "数字・割合・金額・年次",
+        "match": "2026",
+        "line": 99
+      },
+      {
+        "type": "転職サービス・採用条件",
+        "match": "内定",
+        "line": 92
+      }
+    ]
+  },
+  "fullLocalQa": "not_run_images_missing_or_legacy",
+  "humanFactCheck": "pending",
+  "previewApproval": "pending"
+}
