@@ -130,6 +130,8 @@ IT・Webの業務委託では、発注者が成果物の仕様を示すこと自
 
 正社員からの切り替え全体については、[正社員から業務委託への切り替えはクビ？断れる？](/articles/business-outsourcing-conversion-risk)で整理しています。
 
+社員と同じ時間帯に働いていて、休んだ日の扱いや追加で働いた分の報酬が気になる場合は、[業務委託の有給休暇・残業代と契約上の報酬の違い](/articles/contractor-paid-leave-overtime)も確認してください。
+
 ## 朝会・Slack・日報があるだけでは決まらない
 
 IT・Webでは、リモートワークでも朝会、Slack、Notion、Backlog、GitHubなどで共同作業をします。
