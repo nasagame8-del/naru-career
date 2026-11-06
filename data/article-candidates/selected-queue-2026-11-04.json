@@ -390,7 +390,7 @@
       "latestHeadSha": "85a1f48393070d1ca54d1e108ac27d443c92adac",
       "prNumber": 235,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/235",
-      "status": "MERGED_PRODUCTION_UNVERIFIED",
+      "status": "PRODUCTION_PUBLISHED",
       "driveFolderId": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFiles": {
@@ -554,11 +554,15 @@
       "publish": {
         "scheduled": false,
         "merged": true,
-        "productionVerified": false,
+        "productionVerified": true,
         "request": "immediate",
         "mergeSha": "b2bd51f7900fd7cf3301c984828e40dde7d52d57",
         "cloudflareProductionRunId": 42183842601,
-        "productionUrl": "https://naru-career.com/articles/winter-bonus-job-change-timing"
+        "productionUrl": "https://naru-career.com/articles/winter-bonus-job-change-timing",
+        "productionVerifiedAt": "2026-11-06T07:56:21.941Z",
+        "productionResponseHttpStatus": 200,
+        "productionImagesVerified": true,
+        "cloudflareProductionVerified": true
       },
       "imageFiles": {
         "card": {
