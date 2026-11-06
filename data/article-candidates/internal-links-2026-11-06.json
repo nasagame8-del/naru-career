@@ -20,7 +20,7 @@
     {
       "pr": 223,
       "head": "0096ca5f51b5ddb1f656eef7842b1a3a9423f499",
-      "status": "QA",
+      "status": "PREVIEW_READY",
       "imageQa": {
         "webps": 4,
         "originals": 4,
@@ -30,7 +30,9 @@
       "ci": [
         42186499904,
         42186499936
-      ]
+      ],
+      "preview": "https://naru-pr-223-preview.broad-fuchsia.workers.dev/articles/how-to-resign-experience",
+      "validation": "failure"
     }
   ]
 }
