@@ -390,7 +390,7 @@
       "latestHeadSha": "85a1f48393070d1ca54d1e108ac27d443c92adac",
       "prNumber": 235,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/235",
-      "status": "PREVIEW_READY",
+      "status": "PREVIEW_APPROVED",
       "driveFolderId": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFiles": {
@@ -516,8 +516,8 @@
         "sourceReview": "assistant_checked_not_independent_human_approval",
         "factPlaceholderCount": 0,
         "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
-        "humanFactCheck": "pending",
-        "previewVisual": "pending",
+        "humanFactCheck": "user_confirmed",
+        "previewVisual": "user_confirmed",
         "ci": {
           "status": "passed",
           "headSha": "85a1f48393070d1ca54d1e108ac27d443c92adac",
@@ -545,17 +545,17 @@
           "headSha": "85a1f48393070d1ca54d1e108ac27d443c92adac",
           "runId": 42183240241
         },
-        "previewApprovedHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
+        "previewApprovedHeadSha": "85a1f48393070d1ca54d1e108ac27d443c92adac",
         "previewApprovalDateJST": "2026-11-06",
-        "previewApprovalText": "両方とも問題ない",
-        "factCheckApprovedHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf"
+        "previewApprovalText": "ふyubo-nasumoOK",
+        "factCheckApprovedHeadSha": "85a1f48393070d1ca54d1e108ac27d443c92adac",
+        "factCheckBasis": "Previously approved article and all four image blobs are identical on the new head"
       },
       "publish": {
         "scheduled": false,
         "merged": false,
         "productionVerified": false,
-        "request": "immediate",
-        "blocker": "New head after resolving handoff-document conflicts requires new approval"
+        "request": "immediate"
       },
       "imageFiles": {
         "card": {
