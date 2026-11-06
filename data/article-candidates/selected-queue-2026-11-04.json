@@ -135,13 +135,13 @@
         "parent_id": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt"
       },
       "readbackVerified": true,
-      "requestedPublishAt": null,
+      "requestedPublishAt": "immediate",
       "qa": {
         "draftStructure": "passed",
         "sourceReview": "assistant_checked_not_independent_human_approval",
         "factPlaceholderCount": 0,
         "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "user_confirmed",
         "previewVisual": "user_confirmed",
         "ci": {
           "workflow_runs": [
@@ -191,12 +191,14 @@
         },
         "previewApprovedHeadSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
         "previewApprovalDateJST": "2026-11-06",
-        "previewApprovalText": "両方とも問題ない"
+        "previewApprovalText": "両方とも問題ない",
+        "factCheckApprovedHeadSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f"
       },
       "publish": {
         "scheduled": false,
         "merged": false,
-        "productionVerified": false
+        "productionVerified": false,
+        "request": "immediate"
       },
       "imageFiles": {
         "card": {
@@ -501,13 +503,13 @@
         "parent_id": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1"
       },
       "readbackVerified": true,
-      "requestedPublishAt": null,
+      "requestedPublishAt": "immediate",
       "qa": {
         "draftStructure": "passed",
         "sourceReview": "assistant_checked_not_independent_human_approval",
         "factPlaceholderCount": 0,
         "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
-        "humanFactCheck": "pending",
+        "humanFactCheck": "user_confirmed",
         "previewVisual": "user_confirmed",
         "ci": {
           "workflow_runs": [
@@ -557,12 +559,14 @@
         },
         "previewApprovedHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
         "previewApprovalDateJST": "2026-11-06",
-        "previewApprovalText": "両方とも問題ない"
+        "previewApprovalText": "両方とも問題ない",
+        "factCheckApprovedHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf"
       },
       "publish": {
         "scheduled": false,
         "merged": false,
-        "productionVerified": false
+        "productionVerified": false,
+        "request": "immediate"
       },
       "imageFiles": {
         "card": {
