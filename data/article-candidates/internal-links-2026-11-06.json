@@ -36,10 +36,10 @@
       "previewApprovedHeadSha": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
       "approval": "問題なし",
       "approvalDateJST": "2026-11-06",
-      "publicationBlockers": [
-        "Human fact check pending",
-        "Jobs/ZEN advertising conditions pending"
-      ]
+      "publicationBlockers": [],
+      "factCheckApprovedHeadSha": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
+      "advertisingApprovedHeadSha": "1af0e04c66fe11c747b10af991c753d5d54f2b4c",
+      "publicationApproval": "両方OK"
     }
   ]
 }
