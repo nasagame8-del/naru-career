@@ -3,7 +3,7 @@ title: "第二新卒でWebマーケターに転職するには？未経験から
 category: "業界解説"
 keyword: "第二新卒 Webマーケティング 転職 未経験"
 datePublished: "2026-09-24"
-dateModified: "2026-09-24"
+dateModified: "2026-11-04"
 naruPoint: "第二新卒でIT/Web業界へ転職した立場として、未経験転職では「興味があります」だけでなく、学んだことを自分の言葉で説明できる準備が大事だと感じます。"
 excerpt: "第二新卒で未経験からWebマーケターを目指す人向けに、仕事内容、SEO・広告・SNS・CRMなどの職種理解、応募前の準備、ポートフォリオ、求人の見極め方を解説します。"
 summary:
@@ -29,7 +29,7 @@ note_published: false
 
 ## 結論：第二新卒でも準備次第でWebマーケターは狙える
 
-<a href="/guides/second-new-grad-complete-guide">第二新卒で未経験からWebマーケターを目指すことは</a>、十分に現実的です。採用実務上の「<a href="/articles/what-is-second-new-grad">第二新卒</a>」は、企業ごとの定義に差はあるものの、学校卒業後おおむね3年以内の若手を指す文脈で使われることが一般的です（参考：[厚生労働省資料](https://mhlw.go.jp/topics/2010/01/tp0127-2/21/dl/houkoku01a.pdf)）。
+<a href="/guides/second-new-grad-complete-guide">第二新卒で未経験からWebマーケターを目指す場合</a>は、求人ごとの応募条件を確認するところから始めます。「<a href="/articles/what-is-second-new-grad">第二新卒</a>」の対象範囲は企業によって異なり、未経験可でも学習実績や担当業務への理解を求める求人があります。若者向けの公的支援は、[厚生労働省「若者への就職支援」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/jakunen/index.html)で確認できます。
 
 また、経済産業省の報告でも、DXやデジタル化の進展に伴うデジタル人材の育成・確保がテーマとして扱われており、Web／デジタル領域の人材需要は社会的にも重要度が高い領域です（参考：[経済産業省 令和6年度地域デジタル人材育成・確保推進事業](https://meti.go.jp/meti_lib/report/2024FY/1000136.pdf)）。
 
