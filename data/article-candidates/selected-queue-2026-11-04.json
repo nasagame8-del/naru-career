@@ -15,7 +15,7 @@
       "latestHeadSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
       "prNumber": 234,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/234",
-      "status": "PREVIEW_READY",
+      "status": "PREVIEW_APPROVED",
       "driveFolderId": "1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1XBhG6uLqN5KPxcuSpJtXhpGDKCr8xndt",
       "driveFiles": {
@@ -142,7 +142,7 @@
         "factPlaceholderCount": 0,
         "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
         "humanFactCheck": "pending",
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "ci": {
           "workflow_runs": [
             {
@@ -188,7 +188,10 @@
           "status": "passed",
           "headSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
           "url": "https://naru-pr-234-preview.broad-fuchsia.workers.dev/articles/second-new-grad-april-entry-schedule"
-        }
+        },
+        "previewApprovedHeadSha": "e03a2ee9f4147d13f45decb5e889e6c04899982f",
+        "previewApprovalDateJST": "2026-11-06",
+        "previewApprovalText": "両方とも問題ない"
       },
       "publish": {
         "scheduled": false,
@@ -378,7 +381,7 @@
       "latestHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
       "prNumber": 235,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/235",
-      "status": "PREVIEW_READY",
+      "status": "PREVIEW_APPROVED",
       "driveFolderId": "1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1oBCNBMv-cyQPaZUvopFybc1sTcHct8C1",
       "driveFiles": {
@@ -505,7 +508,7 @@
         "factPlaceholderCount": 0,
         "fullLocalQa": "blocked_by_automatic_review_note_com_connection",
         "humanFactCheck": "pending",
-        "previewVisual": "pending",
+        "previewVisual": "user_confirmed",
         "ci": {
           "workflow_runs": [
             {
@@ -551,7 +554,10 @@
           "status": "passed",
           "headSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
           "url": "https://naru-pr-235-preview.broad-fuchsia.workers.dev/articles/winter-bonus-job-change-timing"
-        }
+        },
+        "previewApprovedHeadSha": "1aa54eb96bd868f323e99e6f8295773ff06b5baf",
+        "previewApprovalDateJST": "2026-11-06",
+        "previewApprovalText": "両方とも問題ない"
       },
       "publish": {
         "scheduled": false,
