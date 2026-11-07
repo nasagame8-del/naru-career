@@ -3,16 +3,16 @@
   "generatedAt": "2026-11-06T22:56:44.000Z",
   "trigger": "cron",
   "inventorySize": 78,
-  "nextArticleId": 86,
+  "nextArticleId": 87,
   "candidates": [
     {
       "id": "author-20261107-career-axis",
-      "title": "2回目の転職で会社選びの軸が変わった。待遇・成長から「解決したい課題」へ",
+      "title": "2回目の転職で会社選びの軸が変わった。安定性・労働条件・キャリアを見直した話",
       "primaryKeyword": "2回目の転職 転職軸",
       "secondaryKeywords": [],
       "searchIntent": "know",
-      "differenceFromExisting": "初回転職・辞めたい理由の一般論に対し、再転職で実際に変わった選社基準と意思決定を体験談にする。",
-      "reasonToWriteNow": "ユーザーが人材業界への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
+      "differenceFromExisting": "初回の失敗や内定承諾の一般手順ではなく、2回目の転職で会社の規模・契約と働き方・生活条件・キャリアを判断した過程。",
+      "reasonToWriteNow": "ユーザーがIT/Web企業への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
       "category": "体験談",
       "proposedSlug": "second-career-change-job-selection-axis",
       "riskFlags": [
@@ -24,10 +24,8 @@
         "vaguely-want-to-quit"
       ],
       "searchEvidence": null,
-      "blocked": true,
-      "blockedReasons": [
-        "ユーザーの候補選択と体験詳細の確認待ち。検索需要は未確認。入社後の経験・実績は記載しない。"
-      ]
+      "blocked": false,
+      "blockedReasons": []
     },
     {
       "id": "author-20261107-inside-sales",
@@ -36,7 +34,7 @@
       "secondaryKeywords": [],
       "searchIntent": "know",
       "differenceFromExisting": "初回の志望動機失敗談と分け、法人営業経験後の職種選択に限定する。",
-      "reasonToWriteNow": "ユーザーが人材業界への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
+      "reasonToWriteNow": "ユーザーがIT/Web企業への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
       "category": "体験談",
       "proposedSlug": "sales-to-inside-sales-career-reason",
       "riskFlags": [
@@ -59,7 +57,7 @@
       "secondaryKeywords": [],
       "searchIntent": "know",
       "differenceFromExisting": "初回面接や一般的な質問集と分け、2社の経歴と転職軸の変化を実際の回答で説明する。",
-      "reasonToWriteNow": "ユーザーが人材業界への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
+      "reasonToWriteNow": "ユーザーがIT/Web企業への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
       "category": "体験談",
       "proposedSlug": "second-career-change-interview-career-story",
       "riskFlags": [
@@ -79,6 +77,7 @@
   ],
   "notes": [
     "11/7：最新成功Snapshot42152417677（11/6）、master/Slack一致。確定10/20〜11/2：2375表示/86click/CTR3.62%、Top3/10/20=9/21/43、可視79・新規50。前期10/6〜19は1285/46/3.58%、4/29/40、可視89。前回の移動窓比+13表示/+1click。070通知書401/33、業務委託親379/7、契約終了333/7、失業給付233/12。S業務委託・A通知書維持、Agent新規抑制。master78記事・Open54PR。082/083は11/6本番公開確認済み、084/085画像待ち、010改稿QA待ち。追加候補0・次ID86。11/2改稿後の比較期間不足、11/4改稿は集計期間外。未確定日を0補完しない。https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793933240391609",
-    "2026-11-07追記: 著者情報更新に伴う体験談3候補をユーザー依頼で追加。朝の候補0件という記録は当時の履歴として維持。未選択・未執筆。SEO需要の検証済み候補ではない。企画詳細はPR #271。"
+    "2026-11-07追記: 著者情報更新に伴う体験談3候補をユーザー依頼で追加。朝の候補0件という記録は当時の履歴として維持。未選択・未執筆。SEO需要の検証済み候補ではない。企画詳細はPR #271。",
+    "本人の最新説明・提供した壁打ち再構成記録を根拠に会社選び記事を選択。本人指示「OKやって」。記事86を予約、画像・QA・プレビュー承認前は公開不可。検索サービスで競合調査、Google実SERP順位の直接確認・GSC query×pageは未取得。"
   ]
 }

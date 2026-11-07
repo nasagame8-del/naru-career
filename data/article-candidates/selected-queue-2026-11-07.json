@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-07",
+  "batchId": "batch_2026-11-07_chatgpt",
+  "selectionText": "会社選びの実体験記事の構成に対し「OKやって」",
+  "articles": [
+    {
+      "candidateId": "author-20261107-career-axis",
+      "articleId": 86,
+      "order": 1,
+      "slug": "second-career-change-job-selection-axis",
+      "title": "2回目の転職で会社選びの軸が変わった。安定性・労働条件・キャリアを見直した話",
+      "workType": "new",
+      "branch": "article-factory/2026-11-07-86-company-selection",
+      "status": "WRITING",
+      "driveFolderId": "1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
+      "qa": {
+        "previewVisual": "pending",
+        "humanFactCheck": "pending",
+        "images": "pending"
+      },
+      "publish": {
+        "scheduled": false,
+        "merged": false,
+        "productionVerified": false
+      }
+    }
+  ],
+  "notes": [
+    "他の日付の選定キューを保持。面接AI活用記事は未選択。"
+  ]
+}
