@@ -27,6 +27,8 @@ cta_agents:
 note_published: false
 ---
 
+![未経験からIT転職するためのロードマップ](/images/articles/second-new-grad-it-career-change-card.webp)
+
 ## 結論：第二新卒・未経験からIT業界への転職はできる
 
 結論、[第二新卒](/glossary)・未経験からIT業界への転職は十分に可能です。僕自身、飲食業界の現場職からIT/Web業界の法人営業に、約3ヶ月の転職活動で内定を獲得しました。
@@ -47,6 +49,8 @@ note_published: false
 
 ## 転職活動の詳細——3ヶ月で内定を掴むまで
 
+![IT転職までの自己分析・企業研究・応募面接の3ステップ](/images/articles/second-new-grad-it-career-change-01.webp)
+
 転職活動は、始めてから内定まで約3ヶ月で完了できます。
 
 「第二新卒の転職は時間がかかる」と思われがちですが、エージェントをうまく活用すれば、働きながらでも効率的に進められます。ポイントは複数のエージェント・サービスを併用し、自分に合うルートを見つけることです。
@@ -57,11 +61,14 @@ note_published: false
 
 ## 第二新卒×IT転職で次に確認したいこと
 
+![内定前に確認する仕事内容・給与評価・労働条件通知書](/images/articles/second-new-grad-it-career-change-02.webp)
+
 この記事は、NARUの「第二新卒×IT転職」クラスターの入口です。転職活動の段階ごとに、必要な情報を次の記事へ分けています。
 
 - [IT企業の企業研究で見るポイント](/articles/second-new-grad-it-company-research)：サービス・顧客・収益・配属を確認する
 - [IT/Web転職の面接で聞かれやすい質問](/articles/second-new-grad-it-interview-questions)：退職理由・志望動機・学習実績を整理する
 - [内定承諾前に確認したい労働条件と仕事内容](/articles/second-new-grad-it-offer-acceptance-checks)：入社後のミスマッチを減らす
+- [労働条件通知書が届かないときの依頼メールと確認点](/articles/offer-letter-before-acceptance-not-provided)：書面が未提示なら承諾期限と提示日を相談する
 - [IT/Web転職にポートフォリオは必要？](/articles/second-new-grad-it-portfolio-guide)：職種別に見せる成果物を整理する
 - [未経験IT求人の研修制度の見抜き方](/articles/it-training-program-job-checklist)：研修期間だけでなく配属後支援まで見る
 - [IT企業に入社した最初の90日](/articles/second-new-grad-it-first-90-days)：入社後の学び方を整理する
@@ -71,6 +78,8 @@ note_published: false
 このページでは「実際にどう転職したか」を中心に扱い、職種別・選考別の細かい論点は各記事へ分けます。
 
 ## IT/Web業界を選んだ理由と入社後のリアルなギャップ
+
+![入社前と入社後の仕事内容・評価制度・働き方の比較](/images/articles/second-new-grad-it-career-change-03.webp)
 
 IT/Web業界を選ぶ理由は、「将来性」と「裁量権」の2つに集約されます。
 
