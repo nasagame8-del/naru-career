@@ -20,6 +20,7 @@ faq:
   - question: "内定承諾期限は延長してもらえますか？"
     answer: "書面の受領予定日と確認に必要な時間を伝えて相談します。延長が必ず認められるとは限らないため、希望する返答日と相手の回答を記録してください。"
 cta_agents: []
+sidebar_ad: "kosmo"
 note_published: false
 ---
 
