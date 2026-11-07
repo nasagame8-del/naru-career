@@ -62,6 +62,7 @@ note_published: false
 - [IT企業の企業研究で見るポイント](/articles/second-new-grad-it-company-research)：サービス・顧客・収益・配属を確認する
 - [IT/Web転職の面接で聞かれやすい質問](/articles/second-new-grad-it-interview-questions)：退職理由・志望動機・学習実績を整理する
 - [内定承諾前に確認したい労働条件と仕事内容](/articles/second-new-grad-it-offer-acceptance-checks)：入社後のミスマッチを減らす
+- [労働条件通知書が届かないときの依頼メールと確認点](/articles/offer-letter-before-acceptance-not-provided)：書面が未提示なら承諾期限と提示日を相談する
 - [IT/Web転職にポートフォリオは必要？](/articles/second-new-grad-it-portfolio-guide)：職種別に見せる成果物を整理する
 - [未経験IT求人の研修制度の見抜き方](/articles/it-training-program-job-checklist)：研修期間だけでなく配属後支援まで見る
 - [IT企業に入社した最初の90日](/articles/second-new-grad-it-first-90-days)：入社後の学び方を整理する
