@@ -1,3 +1,5 @@
+import { AffiliateBanner } from "@/components/AffiliateBanner";
+import type { ArticleAd } from "@/lib/article-ads";
 import Image from "next/image";
 import Link from "next/link";
 import { getAuthorProfileLabel } from "@/lib/author";
@@ -6,7 +8,7 @@ export function CareerDiscoveryCard() {
   return null;
 }
 
-export function EditorialSidebar() {
+export function EditorialSidebar({ ad, slug = "" }: { ad?: ArticleAd; slug?: string } = {}) {
   return (
     <aside aria-label="キャリアを考えるヒント" className="hidden lg:block min-w-0">
       <div className="editorial-sticky space-y-6">
@@ -25,6 +27,7 @@ export function EditorialSidebar() {
           <p className="mt-1 text-[10px] text-ink-soft">著者イメージイラスト</p>
           <p className="mt-3 text-xs leading-loose text-ink-soft">飲食業界から第二新卒でIT/Web業界へ転職。約30社に応募し2社から内定を獲得。実体験と調査をもとに発信しています。</p>
         </section>
+        {ad && <AffiliateBanner ad={ad} slug={slug} placement="article_sidebar" />}
       </div>
     </aside>
   );

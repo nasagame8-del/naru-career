@@ -959,3 +959,6 @@ time, .date-text {
   font-weight: 700;
   flex-shrink: 0;
 }
+
+/* A8 300×250素材の原寸を確保。広告のないページの幅は維持する。 */
+.article-with-ad { --sidebar-width: 300px; }
