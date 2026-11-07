@@ -59,3 +59,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-SIDEBAR-AD-20261107
 ユーザーの添付写真の丸印に基づき、著者紹介直下の右サイドバーへ広告を配置する。保存済み最多表示記事 offer-letter-before-acceptance-not-provided にユーザー提供KOSMOバナーと計測画像を設定する専用ブランチ・Draft PR・Cloudflareプレビューを許可。既存のスマホ非表示を維持。master直接push、未承認のmerge/本番公開、Claude起動は行わない。
+
+## USER-AD-EXPANSION-20261107
+ユーザー「増やせるところは増やして。横に広告入れるやつも増やしたい」に基づき、既存PR #263を再利用し広告の明示的記事別マッピング、原寸300×250サイドバー、スマホ記事末尾を実装・検証する。24記事+通知書へKOSMO、既掲載の兼業・競業記事へAnycrew横枠。既存広告PRの本文変更を重複させない。Draft PR更新とプレビューは許可。表示変更後の同head目視承認前はマージ・本番公開しない。
