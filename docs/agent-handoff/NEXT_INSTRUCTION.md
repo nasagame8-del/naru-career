@@ -62,3 +62,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-AD-EXPANSION-20261107
 ユーザー「増やせるところは増やして。横に広告入れるやつも増やしたい」に基づき、既存PR #263を再利用し広告の明示的記事別マッピング、原寸300×250サイドバー、スマホ記事末尾を実装・検証する。24記事+通知書へKOSMO、既掲載の兼業・競業記事へAnycrew横枠。既存広告PRの本文変更を重複させない。Draft PR更新とプレビューは許可。表示変更後の同head目視承認前はマージ・本番公開しない。
+
+
+## USER-AUTHOR-BIO-20261107
+ユーザー「OK。それの方針でやろう」に基づき、著者情報をSEO・AIO法人営業の経験、人材業界への転職決定・内定承諾済み・入社前へ更新する。勤務先名は掲載しない。初回転職実績の350→400万円・約30社・2社内定は初回と明記。専用fixブランチ・Draft PR・既存CloudflareプレビューとQAを許可する。公開は新headのプレビュー目視承認後。記事候補は提案のみ、選択前に記事化しない。master直接push・Claude起動なし。

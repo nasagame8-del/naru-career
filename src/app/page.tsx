@@ -35,7 +35,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-center px-6 py-1 border-l border-line">
             <span className="font-mono text-xl font-medium text-ink">1</span>
-            <span className="text-[11px] text-ink-soft mt-0.5">回の転職経験</span>
+            <span className="text-[11px] text-ink-soft mt-0.5">回の転職・入社経験</span>
           </div>
           <div className="flex flex-col items-center px-6 py-1 border-l border-line">
             <span className="font-mono text-xl font-medium text-ink">2</span>
@@ -43,7 +43,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-center px-6 py-1 border-l border-line">
             <span className="text-sm font-medium text-ink">AIO対策</span>
-            <span className="text-[11px] text-ink-soft mt-0.5">企業に勤務</span>
+            <span className="text-[11px] text-ink-soft mt-0.5">法人営業を経験</span>
           </div>
         </div>
       </section>

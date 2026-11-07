@@ -11,9 +11,9 @@ const authorPerson = {
   name: "磯貝アルト",
   alternateName: "アルト",
   url: `${baseUrl}/about`,
-  jobTitle: "AIO対策企業・営業職 / 転職メディア運営",
+  jobTitle: "転職メディア「NARU」運営",
   description:
-    "第二新卒で飲食業界からIT/Web業界へ転職。AIO対策企業で人材紹介・人材派遣会社を中心にSEO・AIO領域の法人営業を担当。転職メディア「NARU」を個人運営。",
+    "飲食業界から第二新卒でIT/Web業界へ転職し、SEO・AIO領域の法人営業を経験。その後、再び転職活動に取り組み、人材業界への転職が決まりました。自身の転職経験と法人営業の経験をもとに、第二新卒の仕事選びや転職活動に役立つ情報を発信しています。",
   sameAs: [
     "https://x.com/AIAlto2026",
     "https://note.com/altogenerative20",
