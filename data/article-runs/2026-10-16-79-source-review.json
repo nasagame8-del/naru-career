@@ -1,0 +1,29 @@
+{
+  "articleId": 79,
+  "slug": "job-offer-fixed-overtime-pay-comparison",
+  "reviewType": "AI source review; not Human Fact Check",
+  "factScanner": {
+    "blockerCount": 0,
+    "status": "review_targets_checked_against_official_sources"
+  },
+  "humanFactCheck": {
+    "status": "pending",
+    "approvedHeadSha": null
+  },
+  "imageQa": {
+    "status": "pending",
+    "reason": "4 user images not supplied"
+  },
+  "preview": {
+    "status": "pending"
+  },
+  "sources": [
+    "https://www.check-roudou.mhlw.go.jp/study/roudousya_roudoujouken.html",
+    "https://www.startup-roudou.mhlw.go.jp/qa/zigyonushi/chingin/q11.html",
+    "https://www.mhlw.go.jp/content/001114112.pdf"
+  ],
+  "notes": [
+    "28万円比較は架空の説明例。固定時間数と法定額の算定を示す例ではない",
+    "固定残業の時間数と実際の残業を同一視しない"
+  ]
+}
