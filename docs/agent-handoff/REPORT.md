@@ -771,3 +771,15 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 判断が必要な項目: ユーザーによる新しい広告位置のプレビュー目視承認。
 - 推奨する次の作業: 同headのCI/プレビューと対象記事の配置を確認し、記事直接URLを提示する。
 
+
+## USER-AD-EXPANSION-20261107
+- reportId / completedInstructionId: USER-AD-EXPANSION-20261107
+- status: DRAFT_REVIEW
+- branch: affiliate/kosmo-offer-sidebar-20261107
+- 実施内容: PR263を再利用。明示リスト26記事に横広告（KOSMO25・Anycrew1）。KOSMO25記事はスマホで本文後にも表示。Anycrewは既存本文バナーを残しスマホ重複追加なし。既存14記事との合計掲載対象39記事。
+- 修正: 上記旧REPORTの272px縮小案を廃止し、広告対象記事だけ300px列へ変更。ASPのリンク・バナー・計測URLを維持し原寸300×250表示。一般的なカテゴリ一括適用なし。
+- 変更ファイル: article-ads.ts、AffiliateBanner.tsx、EditorialSidebar.tsx、articles.ts、記事ページ、globals.css、NEXT_INSTRUCTION、このREPORT。本文・公開日・既存画像は変更しない。
+- テスト結果: npx tsc --noEmit成功。記事テスト20件＋広告対象/未対象テスト2件の計22件成功。変更TS/TSXのeslint成功。最新headのCI・Cloudflare Previewは別途確認。
+- 既知の問題: GA4イベント受信・成果報酬は未確認。旧headの目視承認は新headへ継承しない。スマホ幅320px以上でバナーを中央配置する設計。
+- 判断が必要な項目: 新headの横枠とスマホ記事末尾の目視確認。
+- 推奨する次の作業: CI・Cloudflare preview確認後、同headプレビュー承認。本番未公開。
