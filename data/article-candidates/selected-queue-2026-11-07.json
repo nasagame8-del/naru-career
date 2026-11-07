@@ -11,7 +11,7 @@
       "title": "2回目の転職で会社選びの軸が変わった。安定性・労働条件・キャリアを見直した話",
       "workType": "new",
       "branch": "article-factory/2026-11-07-86-company-selection",
-      "status": "WAITING_USER_PREVIEW",
+      "status": "APPROVED_PUBLISHING",
       "driveFolderId": "1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
       "qa": {
@@ -21,8 +21,8 @@
         "bodyImageReferences": 3,
         "internalLinks": 3,
         "images": "received_and_reflected",
-        "humanFactCheck": "pending_revised_text",
-        "previewVisual": "assistant_desktop_checked_new_head",
+        "humanFactCheck": "author_confirmed",
+        "previewVisual": "user_confirmed",
         "fullLocalQa": "passed_ci",
         "ci": {
           "status": "success",
@@ -408,7 +408,13 @@
           "userApproval": "問題ないです。ただ具体的に何をどうしたとか行動ベースのものがあればみんなの参考になるんやない？",
           "supersededBy": "e0501a860fd89f261b7708cd7cacc84fbd2fe353"
         }
-      ]
+      ],
+      "approval": {
+        "headSha": "e0501a860fd89f261b7708cd7cacc84fbd2fe353",
+        "userText": "いいんじゃない？",
+        "scope": "revised_article_preview",
+        "recordedAt": "2026-11-07T14:05:03.421Z"
+      }
     }
   ],
   "notes": [
