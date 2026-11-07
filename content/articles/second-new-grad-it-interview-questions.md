@@ -669,3 +669,7 @@ NG例：
 - [未経験IT転職で絶対聞かれる面接質問50選｜AI Job Lab](https://ai-job-lab.com/it-beginner-interview-questions-50)
 - [採用企業の声｜愛知労働局](https://jsite.mhlw.go.jp/aichi-roudoukyoku/content/contents/002085597.pdf)
 - [News Release｜ウィルオブ・ワーク](https://willof-work.co.jp/corp/news/20240808/7704)
+
+## 次に読む：面接の前後で確認すること
+
+応募企業への理解がまだ曖昧なら、[IT企業の企業研究で確認するポイント](/articles/second-new-grad-it-company-research)でサービス・顧客・収益と応募職種の関係を整理しましょう。内定後は[内定承諾前に確認したい労働条件・仕事内容・研修体制](/articles/second-new-grad-it-offer-acceptance-checks)を確認してください。書面が届かない場合は、[労働条件通知書を内定承諾前にもらえないときの対応](/articles/offer-letter-before-acceptance-not-provided)が参考になります。
