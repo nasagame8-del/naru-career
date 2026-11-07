@@ -20,14 +20,15 @@
         "driveReadback": "matched",
         "bodyImageReferences": 3,
         "internalLinks": 3,
-        "images": "not_received",
-        "humanFactCheck": "pending_user",
-        "previewVisual": "pending_user",
-        "fullLocalQa": "passed_in_github_actions_12_checks",
+        "images": "received_and_reflected",
+        "humanFactCheck": "pending_revised_text",
+        "previewVisual": "assistant_desktop_checked_new_head",
+        "fullLocalQa": "passed_ci",
         "ci": {
-          "headSha": "5fd3372a86dc1f7bf45270d2b78b422b39b6417b",
-          "articleFactoryValidation": "success",
-          "cloudflarePreview": "success"
+          "status": "success",
+          "headSha": "e0501a860fd89f261b7708cd7cacc84fbd2fe353",
+          "validationRun": 42379196631,
+          "previewRun": 42379196803
         },
         "imageQa": {
           "visual": "assistant_checked",
@@ -72,10 +73,9 @@
           ]
         },
         "cloudflarePreview": {
-          "url": "https://naru-pr-273-preview.broad-fuchsia.workers.dev/articles/second-career-change-job-selection-axis",
-          "headSha": "5fd3372a86dc1f7bf45270d2b78b422b39b6417b",
-          "status": "passed",
-          "allFourImagesLoaded": true
+          "status": "success",
+          "headSha": "e0501a860fd89f261b7708cd7cacc84fbd2fe353",
+          "url": "https://naru-pr-273-preview.broad-fuchsia.workers.dev/articles/second-career-change-job-selection-axis"
         },
         "browserVisual": "desktop_checked",
         "mobileVisual": "not_checked"
@@ -87,7 +87,7 @@
       },
       "prNumber": 273,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/273",
-      "latestHeadSha": "5fd3372a86dc1f7bf45270d2b78b422b39b6417b",
+      "latestHeadSha": "e0501a860fd89f261b7708cd7cacc84fbd2fe353",
       "driveFiles": {
         "article.md": {
           "accepted_input": "file_uri",
@@ -401,7 +401,14 @@
           "sha256": "3c8356ac7c4f2fd1253e675a0aadf76ba3fe65f79d91a51ba36efeedaedc9740",
           "gitBlobSha": "8dc8d7ee5cdec1762e644aae7958ca37105d726a"
         }
-      }
+      },
+      "revisionHistory": [
+        {
+          "headSha": "5fd3372a86dc1f7bf45270d2b78b422b39b6417b",
+          "userApproval": "問題ないです。ただ具体的に何をどうしたとか行動ベースのものがあればみんなの参考になるんやない？",
+          "supersededBy": "e0501a860fd89f261b7708cd7cacc84fbd2fe353"
+        }
+      ]
     }
   ],
   "notes": [
