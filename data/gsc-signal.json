@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-06T02:47:18.199Z",
+  "generatedAt": "2026-11-07T02:18:34.587Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-20",
-    "endDate": "2026-11-02"
+    "startDate": "2026-10-21",
+    "endDate": "2026-11-03"
   },
   "previousRange": {
-    "startDate": "2026-10-06",
-    "endDate": "2026-10-19"
+    "startDate": "2026-10-07",
+    "endDate": "2026-10-20"
   },
   "visibleQueryCounts": {
-    "current": 79,
-    "previous": 89,
-    "new": 50
+    "current": 91,
+    "previous": 91,
+    "new": 57
   },
   "positionBuckets": {
     "current": {
       "top3": 9,
-      "top10": 21,
-      "top20": 43
+      "top10": 29,
+      "top20": 53
     },
     "previous": {
-      "top3": 4,
-      "top10": 29,
-      "top20": 40
+      "top3": 5,
+      "top10": 28,
+      "top20": 43
     }
   },
   "querySignals": [
@@ -40,18 +40,18 @@
       "signal": "quick_win"
     },
     {
+      "query": "業務委託 急に切られる",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
       "query": "転職 労働条件通知書 来ない",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 急に 切 られる",
+      "query": "労働条件通知書 内定承諾前 メール",
       "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "労働条件通知書 内定承諾前 貰えない",
-      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -65,13 +65,8 @@
       "signal": "rising"
     },
     {
-      "query": "正社員 から業務委託 クビ",
-      "positionBand": "1-3",
-      "signal": "rising"
-    },
-    {
-      "query": "正社員から業務委託に変更",
-      "positionBand": "4-10",
+      "query": "正社員 業務委託 切り替え",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -81,16 +76,16 @@
     },
     {
       "query": "フリーランス 契約解除",
-      "positionBand": "41+",
-      "signal": "rising"
-    },
-    {
-      "query": "ワークポート",
-      "positionBand": "1-3",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
       "query": "個人事業主 業務委託 辞めたい",
+      "positionBand": "41+",
+      "signal": "rising"
+    },
+    {
+      "query": "偽装フリーランス",
       "positionBand": "41+",
       "signal": "rising"
     },
@@ -110,9 +105,9 @@
       "signal": "rising"
     },
     {
-      "query": "労働条件通知書 内定承諾前 メール",
-      "positionBand": "11-20",
-      "signal": "new"
+      "query": "業務委託 契約更新しない 伝え方",
+      "positionBand": "21-40",
+      "signal": "rising"
     },
     {
       "query": "業務委託 急に辞める",
@@ -120,18 +115,13 @@
       "signal": "new"
     },
     {
-      "query": "正社員 業務委託 切り替え",
-      "positionBand": "11-20",
+      "query": "業務委託 急に切られる",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
       "query": "業務委託失業保険",
       "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
-      "query": "転職 労働条件通知書 来ない",
-      "positionBand": "4-10",
       "signal": "new"
     },
     {
@@ -150,8 +140,18 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 急に 切 られる",
+      "query": "内定 労働条件通知書 ない",
       "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "query": "正社員 から業務委託 収入",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "query": "doda ワークポート",
+      "positionBand": "4-10",
       "signal": "new"
     }
   ],
@@ -177,17 +177,22 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-client-cancellation-costs",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
       "page": "/articles/contractor-how-to-quit",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
       "page": "/articles/employee-contractor-pay-comparison",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/contractor-client-cancellation-costs",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/contractor-exclusivity-noncompete-checks",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -207,8 +212,8 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-exclusivity-noncompete-checks",
-      "positionBand": "4-10",
+      "page": "/articles/contractor-no-written-contract",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -225,11 +230,6 @@
       "page": "/articles/agent-referral-vs-self-apply",
       "positionBand": "4-10",
       "signal": "rising"
-    },
-    {
-      "page": "/articles/agent-site-vs-agent-usage",
-      "positionBand": "11-20",
-      "signal": "new"
     }
   ]
 }
