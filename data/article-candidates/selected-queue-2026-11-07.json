@@ -11,7 +11,7 @@
       "title": "2回目の転職で会社選びの軸が変わった。安定性・労働条件・キャリアを見直した話",
       "workType": "new",
       "branch": "article-factory/2026-11-07-86-company-selection",
-      "status": "APPROVED_PUBLISHING",
+      "status": "PUBLISHED",
       "driveFolderId": "1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
       "qa": {
@@ -82,8 +82,21 @@
       },
       "publish": {
         "scheduled": false,
-        "merged": false,
-        "productionVerified": false
+        "merged": true,
+        "mergeSha": "d6f88a382f15a73fa746d50c537b3c256fc87271",
+        "productionVerified": true,
+        "deployRunId": 42379936589,
+        "deployStatus": "success",
+        "url": "https://naru-career.com/articles/second-career-change-job-selection-axis",
+        "articleHttpStatus": 200,
+        "imagesHttpStatus": [
+          200,
+          200,
+          200,
+          200
+        ],
+        "browser": "title_and_revised_body_verified",
+        "verifiedAt": "2026-11-07T14:08:51.782Z"
       },
       "prNumber": 273,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/273",
