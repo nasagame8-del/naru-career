@@ -66,3 +66,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-AUTHOR-BIO-20261107
 ユーザー「OK。それの方針でやろう」に基づき、著者情報をSEO・AIO法人営業の経験、人材業界への転職決定・内定承諾済み・入社前へ更新する。勤務先名は掲載しない。初回転職実績の350→400万円・約30社・2社内定は初回と明記。専用fixブランチ・Draft PR・既存CloudflareプレビューとQAを許可する。公開は新headのプレビュー目視承認後。記事候補は提案のみ、選択前に記事化しない。master直接push・Claude起動なし。
+
+
+## USER-AUTHOR-CORRECTION-20261107
+ユーザーの明示修正「内定を承諾し入社を控えていますってのいらない」「ビズリーチ人材業界じゃないし」を優先。著者ページ・サイドバー・JSON-LDの転職先表現を「IT/Web企業への転職が決まりました」に訂正し、内定承諾・入社前の説明を削除する。既承認の著者更新への指定文言訂正として専用PR、CI/Cloudflare検証、PR経由マージ、本番確認を許可。勤務先名は非掲載。その他記事制作は未選択のまま。
