@@ -141,3 +141,7 @@ IT企業では、配属先や顧客先が未定という説明もあり得ます
 - [厚生労働省：2024年4月からの労働条件明示ルール](https://www.mhlw.go.jp/stf/newpage_32105.html)
 - [厚生労働省：電子的な労働条件明示の制度](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/keiyaku/meiji/index.html)
 - [厚生労働省：総合労働相談コーナー](https://www.mhlw.go.jp/general/seido/chihou/kaiketu/soudan.html)
+
+## 関連記事：書面を受け取った後の確認と入社準備
+
+書面を受け取れたら、[第二新卒がIT企業の内定承諾前に確認したいこと](/articles/second-new-grad-it-offer-acceptance-checks)で給与・業務内容・勤務地・研修の条件を照合しましょう。入社後の準備を進めたい方には、[未経験でIT企業に入った最初の90日の学び方](/articles/second-new-grad-it-first-90-days)も参考になります。
