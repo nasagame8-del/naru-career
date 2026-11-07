@@ -62,8 +62,8 @@ jobs:
 
           # UI-only branches preview an existing representative article.
           # Article PRs still require exactly one changed Markdown file.
-          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* || "$HEAD_REF" == fix/* ]]; then
-            ARTICLES=("content/articles/employee-contractor-pay-comparison.md")
+          if [ "${#ARTICLES[@]}" -eq 0 ] && [[ "$HEAD_REF" == ui/* || "$HEAD_REF" == fix/* || "$HEAD_REF" == feature/contextual-affiliate-cta-* ]]; then
+            ARTICLES=("content/articles/second-new-grad-web-marketing-career.md")
             test -s "${ARTICLES[0]}"
           fi
 
@@ -103,6 +103,10 @@ jobs:
 
       - run: npm ci
         if: steps.images.outputs.ready == 'true'
+
+      - name: Verify CTA rendering and link safeguards
+        if: steps.images.outputs.ready == 'true'
+        run: npx vitest run src/lib/affiliate-inline.test.ts
 
       - name: Build Cloudflare output
         if: steps.images.outputs.ready == 'true'

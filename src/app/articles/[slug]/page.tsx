@@ -1,3 +1,4 @@
+import { ContextualAffiliateCTA, resolveContextualCTAKeys } from "@/components/ContextualAffiliateCTA";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -86,10 +87,20 @@ export default async function ArticlePage(props: {
 
   // affiliate判定
   const ctaRegistry = getCTARegistry();
-  const hasAffiliate = article.cta_agents.some(
+  const eligibleCTAKeys = resolveContextualCTAKeys(article.slug, article.cta_agents)
+    .filter((key) => {
+      const url = ctaRegistry[key]?.url;
+      if (!url) return false;
+      try {
+        return ["http:", "https:"].includes(new URL(url).protocol);
+      } catch {
+        return false;
+      }
+    });
+  const hasAffiliate = eligibleCTAKeys.some(
     (key) => ctaRegistry[key]?.affiliate !== false
   );
-  const hasNonAffiliate = article.cta_agents.some(
+  const hasNonAffiliate = eligibleCTAKeys.some(
     (key) => ctaRegistry[key]?.affiliate === false
   );
   const isMixed = hasAffiliate && hasNonAffiliate;
@@ -240,24 +251,13 @@ export default async function ArticlePage(props: {
               </div>
             )}
 
-            {article.cta_agents.length > 0 && (
-              <section className="mt-12 p-6 bg-primary-soft rounded-lg relative">
-                <div className="absolute -top-6 right-4 hidden sm:block">
-                  <MiniAlto pose="guide" size={56} />
-                </div>
-                <h2 className="text-lg font-bold mb-3">
-                  まずは無料相談から始めてみませんか？
-                </h2>
-                <p className="text-sm text-ink-soft mb-4">
-                  書類添削や面接対策、求人紹介など、自分だけでは進めにくい部分を無料で相談できます。
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/articles/agent-comparison-2026" className="cta-button justify-center">
-                    エージェント比較を見る
-                  </Link>
-                </div>
-              </section>
-            )}
+            <ContextualAffiliateCTA
+              category={article.category}
+              keyword={article.keyword}
+              slug={article.slug}
+              ctaAgents={article.cta_agents}
+              registry={ctaRegistry}
+            />
 
             <div className="mt-10 pt-6 border-t border-line">
               <ShareButtons slug={slug} title={article.title} />
