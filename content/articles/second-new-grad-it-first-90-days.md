@@ -101,3 +101,7 @@ IT企業の仕事を一括りにすると、学習内容が広がりすぎます
 - [厚生労働省：職業情報提供サイト job tag](https://shigoto.mhlw.go.jp/)
 - [IPA：デジタルスキル標準](https://www.ipa.go.jp/jinzai/skill-standard/dss/)
 - [IPA：DXリテラシー標準の概要](https://www.ipa.go.jp/jinzai/skill-standard/dss/about_dss-l.html)
+
+## 入社前に確認しておきたい関連記事
+
+入社後に担当業務や研修内容が想定と違うと感じたときは、募集時・面接時・契約時の説明を整理しましょう。[第二新卒がIT企業の内定承諾前に確認したいこと](/articles/second-new-grad-it-offer-acceptance-checks)では、仕事内容・配属・研修の確認項目をまとめています。これから転職活動を始める方は、[未経験からIT転職した実体験とロードマップ](/articles/second-new-grad-it-career-change)から全体像をつかめます。
