@@ -95,3 +95,7 @@ IT企業には自社サービスを提供する会社も、顧客から開発を
 
 - [厚生労働省 job tag「IT・通信の仕事」](https://shigoto.mhlw.go.jp/User/ITOccupations)
 - [厚生労働省 job tag「システムエンジニア（受託開発）」](https://shigoto.mhlw.go.jp/User/Occupation/Detail/312)
+
+## 次に読む：企業研究から面接準備へ
+
+企業のサービス・顧客・収益の仕組みを調べたら、次は面接で確認したいことを質問に変えましょう。[第二新卒のIT/Web転職で聞かれやすい面接質問と答え方](/articles/second-new-grad-it-interview-questions)では、志望動機と逆質問の準備を整理しています。選考が進んで条件提示を受けた場合は、[内定承諾前の確認チェックリスト](/articles/second-new-grad-it-offer-acceptance-checks)へ進んでください。
