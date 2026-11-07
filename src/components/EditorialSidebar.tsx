@@ -55,6 +55,7 @@ export function EditorialSidebar({ ad }: { ad?: "kosmo" } = {}) {
               alt=""
               width={1}
               height={1}
+              loading="lazy"
               style={{ width: 1, height: 1, margin: 0, border: 0 }}
             />
           </section>
