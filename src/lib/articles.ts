@@ -1,3 +1,4 @@
+import { getArticleAd, type ArticleAd } from "./article-ads";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -176,7 +177,7 @@ export type ArticleMeta = {
   updateHistory: { date: string; description: string }[];
   resume_template: boolean;
   ctaFocus: string;
-  sidebarAd?: "kosmo";
+  sidebarAd?: ArticleAd;
   hasCardImage: boolean;
   hasHeroImage: boolean;
   cardImagePath: string | null;
@@ -269,7 +270,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     updateHistory: data.updateHistory ?? [],
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
-    sidebarAd: data.sidebar_ad === "kosmo" ? "kosmo" : undefined,
+    sidebarAd: getArticleAd(slug),
     hasCardImage: cardImagePath !== null,
     hasHeroImage: heroImagePath !== null,
     cardImagePath,
@@ -385,7 +386,7 @@ export async function getArticle(slug: string): Promise<Article> {
     updateHistory: data.updateHistory ?? [],
     resume_template: data.resume_template ?? false,
     ctaFocus: data.ctaFocus ?? "",
-    sidebarAd: data.sidebar_ad === "kosmo" ? "kosmo" : undefined,
+    sidebarAd: getArticleAd(slug),
     hasCardImage: cardImagePath !== null,
     hasHeroImage: heroImagePath !== null,
     cardImagePath,
