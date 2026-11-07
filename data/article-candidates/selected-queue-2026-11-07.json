@@ -11,7 +11,7 @@
       "title": "2回目の転職で会社選びの軸が変わった。安定性・労働条件・キャリアを見直した話",
       "workType": "new",
       "branch": "article-factory/2026-11-07-86-company-selection",
-      "status": "WAITING_IMAGES",
+      "status": "WAITING_USER_PREVIEW",
       "driveFolderId": "1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
       "driveFolderUrl": "https://drive.google.com/drive/folders/1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ",
       "qa": {
@@ -21,21 +21,64 @@
         "bodyImageReferences": 3,
         "internalLinks": 3,
         "images": "not_received",
-        "humanFactCheck": "pending",
-        "previewVisual": "pending",
-        "fullLocalQa": "not_run",
-        "ci": [
-          {
-            "name": "preview",
-            "status": "completed",
-            "conclusion": "failure"
-          },
-          {
-            "name": "article-factory-validation",
-            "status": "in_progress",
-            "conclusion": null
-          }
-        ]
+        "humanFactCheck": "pending_user",
+        "previewVisual": "pending_user",
+        "fullLocalQa": "passed_in_github_actions_12_checks",
+        "ci": {
+          "headSha": "5fd3372a86dc1f7bf45270d2b78b422b39b6417b",
+          "articleFactoryValidation": "success",
+          "cloudflarePreview": "success"
+        },
+        "imageQa": {
+          "visual": "assistant_checked",
+          "format": "webp",
+          "metadata": "stripped",
+          "card": "1200x630",
+          "body": "1200x675",
+          "crop": "none; contain with cream padding",
+          "files": [
+            {
+              "slot": "card",
+              "bytes": 77482,
+              "sha256": "fc1d1b81d560c0781905f807dd7d753453bdb69a7cdd47ae18d5dc4322ff328e",
+              "gitBlobSha": "8c4fd971c7f6f903fed2414d7931e337958a9f0b",
+              "originalDriveId": "1FTYYGrIc6lEDAoRDTg6TAFnRGVibOSZk",
+              "webpDriveId": "18djk3Ln_F__SMHy1jvfXZhlmcIXHW91E"
+            },
+            {
+              "slot": "01",
+              "bytes": 50262,
+              "sha256": "c72a1c4caab5aad836f28fde0d7a1c2ed5ec70c04d772f310ef52ad282ae238d",
+              "gitBlobSha": "a690db0bc29f5c222e19ea6ab3ce4d3680535c4b",
+              "originalDriveId": "1u5bxtZMb28r3NR9heemx8v8UqwDfZnrG",
+              "webpDriveId": "1UqxBAeiLyIawWuLdJ9qcdYBks0nq1Blx"
+            },
+            {
+              "slot": "02",
+              "bytes": 46990,
+              "sha256": "b7862626bcdb73fab7085ea4495653442b21a6a9deba0cbff3dc72f92b46a547",
+              "gitBlobSha": "a33bf45d8a5ce70a0379eca91fbfd51250b5d19f",
+              "originalDriveId": "1_rHcLpiNuXuVLP9SosJXcbht-Sdct6nX",
+              "webpDriveId": "1bS1-tD3tFR01UFAv31Yfe16B_O0q7QgH"
+            },
+            {
+              "slot": "03",
+              "bytes": 50844,
+              "sha256": "3c8356ac7c4f2fd1253e675a0aadf76ba3fe65f79d91a51ba36efeedaedc9740",
+              "gitBlobSha": "8dc8d7ee5cdec1762e644aae7958ca37105d726a",
+              "originalDriveId": "1zYwJBZrsH2nILcGbLxdyu7ivdZIIBwOF",
+              "webpDriveId": "1-i5YAyhWj50nvgpYvRzKvVg6Ps3H_10L"
+            }
+          ]
+        },
+        "cloudflarePreview": {
+          "url": "https://naru-pr-273-preview.broad-fuchsia.workers.dev/articles/second-career-change-job-selection-axis",
+          "headSha": "5fd3372a86dc1f7bf45270d2b78b422b39b6417b",
+          "status": "passed",
+          "allFourImagesLoaded": true
+        },
+        "browserVisual": "desktop_checked",
+        "mobileVisual": "not_checked"
       },
       "publish": {
         "scheduled": false,
@@ -44,7 +87,7 @@
       },
       "prNumber": 273,
       "prUrl": "https://github.com/nasagame8-del/naru-career/pull/273",
-      "latestHeadSha": "76bdc65fdf5c08c47ca39bfbdf88f00856654254",
+      "latestHeadSha": "5fd3372a86dc1f7bf45270d2b78b422b39b6417b",
       "driveFiles": {
         "article.md": {
           "accepted_input": "file_uri",
@@ -180,6 +223,184 @@
         "url": "https://drive.google.com/drive/folders/14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY",
         "title": "originals",
         "parent_id": "1ajhR1ciHHzW68xRcolj38iXWmCTuL0EJ"
+      },
+      "imageFiles": {
+        "card": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1FTYYGrIc6lEDAoRDTg6TAFnRGVibOSZk",
+            "title": "second-career-change-job-selection-axis-card-original.png",
+            "file_name": "second-career-change-job-selection-axis-card-original.png",
+            "mime_type": "image/png",
+            "url": "https://drive.google.com/file/d/1FTYYGrIc6lEDAoRDTg6TAFnRGVibOSZk/view?usp=drivesdk",
+            "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1FTYYGrIc6lEDAoRDTg6TAFnRGVibOSZk",
+              "title": "second-career-change-job-selection-axis-card-original.png",
+              "file_name": "second-career-change-job-selection-axis-card-original.png",
+              "mime_type": "image/png",
+              "url": "https://drive.google.com/file/d/1FTYYGrIc6lEDAoRDTg6TAFnRGVibOSZk/view?usp=drivesdk",
+              "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "18djk3Ln_F__SMHy1jvfXZhlmcIXHW91E",
+            "title": "second-career-change-job-selection-axis-card.webp",
+            "file_name": "second-career-change-job-selection-axis-card.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/18djk3Ln_F__SMHy1jvfXZhlmcIXHW91E/view?usp=drivesdk",
+            "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "18djk3Ln_F__SMHy1jvfXZhlmcIXHW91E",
+              "title": "second-career-change-job-selection-axis-card.webp",
+              "file_name": "second-career-change-job-selection-axis-card.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/18djk3Ln_F__SMHy1jvfXZhlmcIXHW91E/view?usp=drivesdk",
+              "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu"
+            }
+          },
+          "sha256": "fc1d1b81d560c0781905f807dd7d753453bdb69a7cdd47ae18d5dc4322ff328e",
+          "gitBlobSha": "8c4fd971c7f6f903fed2414d7931e337958a9f0b"
+        },
+        "01": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1u5bxtZMb28r3NR9heemx8v8UqwDfZnrG",
+            "title": "second-career-change-job-selection-axis-01-original.png",
+            "file_name": "second-career-change-job-selection-axis-01-original.png",
+            "mime_type": "image/png",
+            "url": "https://drive.google.com/file/d/1u5bxtZMb28r3NR9heemx8v8UqwDfZnrG/view?usp=drivesdk",
+            "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1u5bxtZMb28r3NR9heemx8v8UqwDfZnrG",
+              "title": "second-career-change-job-selection-axis-01-original.png",
+              "file_name": "second-career-change-job-selection-axis-01-original.png",
+              "mime_type": "image/png",
+              "url": "https://drive.google.com/file/d/1u5bxtZMb28r3NR9heemx8v8UqwDfZnrG/view?usp=drivesdk",
+              "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1UqxBAeiLyIawWuLdJ9qcdYBks0nq1Blx",
+            "title": "second-career-change-job-selection-axis-01.webp",
+            "file_name": "second-career-change-job-selection-axis-01.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1UqxBAeiLyIawWuLdJ9qcdYBks0nq1Blx/view?usp=drivesdk",
+            "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1UqxBAeiLyIawWuLdJ9qcdYBks0nq1Blx",
+              "title": "second-career-change-job-selection-axis-01.webp",
+              "file_name": "second-career-change-job-selection-axis-01.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1UqxBAeiLyIawWuLdJ9qcdYBks0nq1Blx/view?usp=drivesdk",
+              "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu"
+            }
+          },
+          "sha256": "c72a1c4caab5aad836f28fde0d7a1c2ed5ec70c04d772f310ef52ad282ae238d",
+          "gitBlobSha": "a690db0bc29f5c222e19ea6ab3ce4d3680535c4b"
+        },
+        "02": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1_rHcLpiNuXuVLP9SosJXcbht-Sdct6nX",
+            "title": "second-career-change-job-selection-axis-02-original.png",
+            "file_name": "second-career-change-job-selection-axis-02-original.png",
+            "mime_type": "image/png",
+            "url": "https://drive.google.com/file/d/1_rHcLpiNuXuVLP9SosJXcbht-Sdct6nX/view?usp=drivesdk",
+            "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1_rHcLpiNuXuVLP9SosJXcbht-Sdct6nX",
+              "title": "second-career-change-job-selection-axis-02-original.png",
+              "file_name": "second-career-change-job-selection-axis-02-original.png",
+              "mime_type": "image/png",
+              "url": "https://drive.google.com/file/d/1_rHcLpiNuXuVLP9SosJXcbht-Sdct6nX/view?usp=drivesdk",
+              "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1bS1-tD3tFR01UFAv31Yfe16B_O0q7QgH",
+            "title": "second-career-change-job-selection-axis-02.webp",
+            "file_name": "second-career-change-job-selection-axis-02.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1bS1-tD3tFR01UFAv31Yfe16B_O0q7QgH/view?usp=drivesdk",
+            "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1bS1-tD3tFR01UFAv31Yfe16B_O0q7QgH",
+              "title": "second-career-change-job-selection-axis-02.webp",
+              "file_name": "second-career-change-job-selection-axis-02.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1bS1-tD3tFR01UFAv31Yfe16B_O0q7QgH/view?usp=drivesdk",
+              "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu"
+            }
+          },
+          "sha256": "b7862626bcdb73fab7085ea4495653442b21a6a9deba0cbff3dc72f92b46a547",
+          "gitBlobSha": "a33bf45d8a5ce70a0379eca91fbfd51250b5d19f"
+        },
+        "03": {
+          "original": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1zYwJBZrsH2nILcGbLxdyu7ivdZIIBwOF",
+            "title": "second-career-change-job-selection-axis-03-original.png",
+            "file_name": "second-career-change-job-selection-axis-03-original.png",
+            "mime_type": "image/png",
+            "url": "https://drive.google.com/file/d/1zYwJBZrsH2nILcGbLxdyu7ivdZIIBwOF/view?usp=drivesdk",
+            "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1zYwJBZrsH2nILcGbLxdyu7ivdZIIBwOF",
+              "title": "second-career-change-job-selection-axis-03-original.png",
+              "file_name": "second-career-change-job-selection-axis-03-original.png",
+              "mime_type": "image/png",
+              "url": "https://drive.google.com/file/d/1zYwJBZrsH2nILcGbLxdyu7ivdZIIBwOF/view?usp=drivesdk",
+              "parent_id": "14JDy0S9Q_ASAkBEaa2tDDqfEJta5JOYY"
+            }
+          },
+          "webp": {
+            "accepted_input": "file_uri",
+            "success": true,
+            "id": "1-i5YAyhWj50nvgpYvRzKvVg6Ps3H_10L",
+            "title": "second-career-change-job-selection-axis-03.webp",
+            "file_name": "second-career-change-job-selection-axis-03.webp",
+            "mime_type": "image/webp",
+            "url": "https://drive.google.com/file/d/1-i5YAyhWj50nvgpYvRzKvVg6Ps3H_10L/view?usp=drivesdk",
+            "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu",
+            "structuredContent": {
+              "accepted_input": "file_uri",
+              "success": true,
+              "id": "1-i5YAyhWj50nvgpYvRzKvVg6Ps3H_10L",
+              "title": "second-career-change-job-selection-axis-03.webp",
+              "file_name": "second-career-change-job-selection-axis-03.webp",
+              "mime_type": "image/webp",
+              "url": "https://drive.google.com/file/d/1-i5YAyhWj50nvgpYvRzKvVg6Ps3H_10L/view?usp=drivesdk",
+              "parent_id": "1JCSmCqJoKMu_LHyxNs8hHM_U3H5-GIiu"
+            }
+          },
+          "sha256": "3c8356ac7c4f2fd1253e675a0aadf76ba3fe65f79d91a51ba36efeedaedc9740",
+          "gitBlobSha": "8dc8d7ee5cdec1762e644aae7958ca37105d726a"
+        }
       }
     }
   ],
