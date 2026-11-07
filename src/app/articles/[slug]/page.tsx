@@ -1,3 +1,4 @@
+import { shouldShowMobileArticleAd } from "@/lib/article-ads";
 import { AffiliateBanner } from "@/components/AffiliateBanner";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -219,7 +220,7 @@ export default async function ArticlePage(props: {
               widgets={ARTICLE_WIDGETS[slug] ?? []}
             />
 
-            {article.sidebarAd && slug !== "contractor-exclusivity-noncompete-checks" && (
+            {article.sidebarAd && shouldShowMobileArticleAd(slug) && (
               <AffiliateBanner ad={article.sidebarAd} slug={slug} placement="article_end_mobile" className="mt-8 lg:hidden" />
             )}
 
