@@ -3,7 +3,7 @@ title: "業務委託なのに他社の仕事は禁止？専属・競業避止・
 category: "業界解説"
 keyword: "業務委託 他社の仕事 禁止"
 datePublished: "2026-10-12"
-dateModified: "2026-10-12"
+dateModified: "2026-11-07"
 excerpt: "業務委託なのに他社の案件を受けてはいけないと言われた。専属・競業避止・秘密保持を分け、制限の対象、期間、例外、契約終了後の扱いを確認する方法と質問文を整理します。"
 summary:
   - "他社案件の禁止は、契約名だけで適法・違法を決めず具体的な制限を確認する"
@@ -107,6 +107,14 @@ note_published: false
 契約を終えることまで考えている場合は、[業務委託を辞める前の確認点](/articles/contractor-how-to-quit)へ。終了の手続きと、終了後も残るとされる制限は別々に確認してください。
 
 自由な働き方を選ぶつもりだったなら、他社案件の制限は小さな注意書きではありません。自分の仕事の選択肢がどこまで残るのかを、契約前に具体的な言葉へ直しておくことが大切です。
+
+<aside class="affiliate-banner" aria-label="広告：Anycrew">
+<p><strong>広告（PR）｜Anycrew</strong></p>
+<p>契約の制限を確認したうえで、他社の業務委託・副業案件を探したい人には、Anycrewという選択肢もあります。案件ごとの業務内容・必要な経験・稼働条件を確認し、今の契約と両立できるかを先に照合してください。登録によって既存の契約上の制限がなくなるわけではありません。</p>
+<p>筆者の利用体験に基づく紹介ではありません。</p>
+<a href="https://px.a8.net/svt/ejp?a8mat=4BEHXF+53YYPE+4V6Y+5ZMCH" rel="nofollow sponsored" data-track-event="cta_click" data-track-agent_name="Anycrew" data-track-format="banner" data-track-placement="contractor-exclusivity-noncompete-checks"><img border="0" width="300" height="250" alt="Anycrewのサービス案内（広告）" src="https://www25.a8.net/svt/bgt?aid=261016899309&wid=001&eno=01&mid=s00000022705001006000&mc=1" style="width:300px;max-width:100%;height:auto"></a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BEHXF+53YYPE+4V6Y+5ZMCH" alt="" style="width:1px;height:1px;margin:0;border:0" />
+</aside>
 
 ## 参考資料
 
