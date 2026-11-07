@@ -848,3 +848,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 質問例は実際の入力文の引用ではなく読者向け。旧headへのユーザー「問題ない」は新headへ継承しない。
 - 判断が必要な項目: 改訂版の体験記述とプレビュー目視承認。
 - 推奨する次の作業: CI/Cloudflare成功、本文readback後、新headのプレビューを提示。
+
+## USER-ASP-CREATIVES-20261107
+- reportId / completedInstructionId: USER-ASP-CREATIVES-20261107
+- status: DRAFT_REVIEW
+- branch: fix/affiliate-creatives-20261107
+- 実施内容: UZUZ3・Jobs3・ZEN3の計9素材のURL/寸法/alt/referrerpolicyを登録。原寸のPC300×250、UZUZスマホ200×200を採用。既存A8の1×1計測は維持し、アクセストレードに未提供の計測画像は作らない。
+- 配置: 既存KOSMO21記事をUZUZへ。報酬比較にもUZUZ。退職体験Jobs・退職代行比較ZENの横枠追加。GA4上位の切替リスク/失業給付/社会保険にKOSMO追加。横枠26→32、既存本文広告との和集合39→43記事。退職代行2記事とAnycrew既掲載記事はスマホ末尾重複なし。
+- 変更ファイル: affiliate-creatives.ts、AffiliateBanner.tsx、article-ads.tsとテスト、記事ページ、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 共通広告レイヤーのみ。記事本文・日時・画像・既存CTAは保持。
+- テスト結果: TypeScript成功。記事/広告対象/ASP素材テスト25件成功。変更TS/TSX eslint成功。最新headのCI/CloudflareはPR作成後。
+- 既知の問題: GA4実受信/ASP成果未確認。小型横長とJobs/ZEN250角は登録のみ。今回テキスト広告コードなし。既存広告PRは変更しない。
+- 判断が必要な項目: 新headのプレビュー確認。
+- 推奨する次の作業: ローカルQA→CI/Cloudflare→直接プレビュー。未マージ・未公開。
