@@ -56,3 +56,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-INTERNAL-LINK-20261106
 ユーザー指示に基づき、業務委託の関連記事への本文リンク追加とDraft PRを許可。プレビュー確認後に公開判断。
+
+## USER-SIDEBAR-AD-20261107
+ユーザーの添付写真の丸印に基づき、著者紹介直下の右サイドバーへ広告を配置する。保存済み最多表示記事 offer-letter-before-acceptance-not-provided にユーザー提供KOSMOバナーと計測画像を設定する専用ブランチ・Draft PR・Cloudflareプレビューを許可。既存のスマホ非表示を維持。master直接push、未承認のmerge/本番公開、Claude起動は行わない。
