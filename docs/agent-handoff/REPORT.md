@@ -809,3 +809,42 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 過去の著者更新記録は当時の履歴であり、本訂正を優先。
 - 判断が必要な項目: なし。ユーザー明示訂正に基づく。
 - 推奨する次の作業: 同headのCI、Cloudflareプレビュー、本番デプロイとページ確認。
+
+
+## USER-ARTICLE086-20261107
+- reportId / completedInstructionId: USER-ARTICLE086-20261107
+- status: DRAFT_WAITING_IMAGES
+- branch: article-factory/2026-11-07-86-company-selection
+- 実施内容: 本人の提供した壁打ち再構成と最新発言から会社選び体験記事を作成。画像プラン・完成プロンプト4枚・出典と編集QA記録を作成。既存一般解説と役割分離。
+- テスト結果: Python YAMLでfrontmatter必須項目・FAQ、画像参照3・alt、placeholderなしを確認。内部リンク3件のmaster実在を確認。フルローカルQA未実施。最新head CIはPR作成後確認。画像なしのため公開QA未完了。
+- 変更ファイル: 新規記事1本、当記事data/article-runs資料、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 既存記事・画像・UIは変更しない。
+- 既知の問題: 画像4枚未受領。Google実SERP順位・GSC query×page未取得。契約の法的認定、異動保証、入社後評価は断定しない。日付は作成日で公開時に整合が必要。
+- 判断が必要な項目: 画像4枚、本人の体験記述確認、独立Human Fact Check、同headのプレビュー承認。
+- 推奨する次の作業: 画像受領→WebP変換・保存・同PR反映→QA/Cloudflare→プレビュー提示。未公開・未予約。
+
+
+## USER-ARTICLE086-IMAGES-20261107
+- reportId / completedInstructionId: USER-ARTICLE086-IMAGES-20261107
+- status: IMAGES_REFLECTED_QA_PENDING
+- branch: article-factory/2026-11-07-86-company-selection / PR273
+- 実施内容: 受領4画像をプランと照合、文字・見切れ・本文整合を目視確認。Pillowでcontain変換し、card1200x630・本文1200x675のWebPへ。既存CLIがローカル未配置のためPillowを使用、重要箇所のcropなし・metadata除去。originals/とimages/へ保存。GitHub blob SHAはローカルGit blob計算と全4枚一致。
+- テスト結果: 全4枚の形式・寸法・metadata、本文画像参照を確認。最新headのCI/フル記事QA/Cloudflare Previewはこの後確認。独立Human Fact Checkと本人目視承認はpending。
+- 変更ファイル: 当記事WebP4枚、当記事QA記録、このREPORT。
+- git diff概要: 当PRの画像のみ追加。原稿は前headと同一。
+- 既知の問題: ユーザー提供素材の体験記述は本人確認待ち。画像提供は原稿・最終プレビューの承認とは扱わない。
+- 判断が必要な項目: 同headの本文・画像の本人確認。
+- 推奨する次の作業: CI/Cloudflare確認、記事直接URLを提示。未マージ・未予約・未公開。
+
+
+## USER-ARTICLE086-REWRITE-CHATGPT-20261107
+- reportId / completedInstructionId: USER-ARTICLE086-REWRITE-CHATGPT-20261107
+- status: REVISED_QA_PENDING
+- branch: article-factory/2026-11-07-86-company-selection / PR273
+- 実施内容: ChatGPTを使った具体行動と読者向け質問例3本を追加。会社選び・条件/生活費・キャリアの入力情報、問い返し、資料/担当者への確認を記述。議事録等への言及なし。本文画像4枚は維持。
+- テスト結果: ローカルYAML・必須項目・本文3画像・コードフェンス・固有名/禁止表現不使用を確認。最新headフルQA/Cloudflareはこの後。
+- 変更ファイル: 当記事、編集QA・QA記録、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 既存原稿の改訂。画像・他記事は不変。
+- 既知の問題: 質問例は実際の入力文の引用ではなく読者向け。旧headへのユーザー「問題ない」は新headへ継承しない。
+- 判断が必要な項目: 改訂版の体験記述とプレビュー目視承認。
+- 推奨する次の作業: CI/Cloudflare成功、本文readback後、新headのプレビューを提示。

@@ -1,0 +1,11 @@
+{
+  "articleId": 86,
+  "status": "REVISED_WAITING_QA",
+  "draftStructure": "passed",
+  "images": "unchanged_four_verified_webps",
+  "humanFactCheck": "pending_revised_article_user_confirmation",
+  "previewVisual": "pending_new_head",
+  "fullLocalQa": "pending_ci",
+  "published": false,
+  "revision": "ChatGPTの具体的な使い方、質問例3本、事実と仮定の照合。議事録等への言及なし。"
+}
