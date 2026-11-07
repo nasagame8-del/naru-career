@@ -5,7 +5,7 @@ subCategories:
   - "業界解説"
 keyword: "山田瑠々 退職 LiveDash 新卒 半年 退職 第二新卒 早期離職"
 datePublished: "2026-09-30"
-dateModified: "2026-11-04"
+dateModified: "2026-11-07"
 excerpt: "山田瑠々さんの退職報告とLiveDashの公式経歴を確認。公式サイトでは会社設立・商号変更の後に一般企業を退職したと紹介されています。前職の社名は確認できず、第二新卒が早期離職前に考えたい5つのことも整理します。"
 summary:
   - "山田瑠々さんの退職報告と、退職前の会社設立・商号変更を公式経歴から確認"
@@ -209,6 +209,14 @@ SNSでは、短期離職という目立つ事実から「会社に貢献して�
 短期離職を善悪で決めるのではなく、**辞める前と辞めた後まで含めて、自分のキャリアに責任を持つ。**
 
 今回の話題から考えたいのは、そこです。
+
+<aside class="affiliate-banner" aria-label="広告：KOSMO">
+<p><strong>広告（PR）｜KOSMO</strong></p>
+<p>ここからは、記事を読んで自分の転職を考えている人への案内です。退職理由や次に希望する仕事を整理し、転職支援サービスへの相談も検討するなら、KOSMOの案内を確認できます。希望する職種・勤務地が支援対象かを確かめ、利用するかを判断してください。この記事で取り上げた人物が利用・推奨しているという意味ではありません。</p>
+<p>筆者の利用体験に基づく紹介ではありません。</p>
+<a href="https://px.a8.net/svt/ejp?a8mat=4BEHXF+56CP4I+59SS+BXIYP" rel="nofollow sponsored" data-track-event="cta_click" data-track-agent_name="KOSMO" data-track-format="banner" data-track-placement="new-grad-early-resignation-career-plan"><img border="0" width="300" height="250" alt="KOSMOのサービス案内（広告）" src="https://www22.a8.net/svt/bgt?aid=261016899313&wid=001&eno=01&mid=s00000024598002004000&mc=1" style="width:300px;max-width:100%;height:auto"></a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BEHXF+56CP4I+59SS+BXIYP" alt="" style="width:1px;height:1px;margin:0;border:0" />
+</aside>
 
 ## 出典
 
