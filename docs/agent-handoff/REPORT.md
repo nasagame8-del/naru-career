@@ -796,3 +796,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 入社後の人材業界実務は未経験として扱う。旧勤務の記述を含む過去記事と制作中PRは個別監査が必要。
 - 判断が必要な項目: ユーザーによる最新headのプレビュー目視確認。新規記事の選択・体験詳細。
 - 推奨する次の作業: CIと/about・トップ・記事サイドバーのプレビュー確認。承認前のmerge/公開なし。
+
+
+## USER-AUTHOR-CORRECTION-20261107
+- reportId / completedInstructionId: USER-AUTHOR-CORRECTION-20261107
+- status: CORRECTION_CI_PENDING
+- branch: fix/author-industry-wording-20261107
+- 実施内容: ユーザー指定の不要な内定承諾・入社前の説明を削除。誤った人材業界という転職先分類をIT/Web企業へ訂正。著者ページ・サイドバー・JSON-LDを整合。
+- 変更ファイル: about/page.tsx、EditorialSidebar.tsx、JsonLd.tsx、引き継ぎ2ファイル。
+- テスト結果: 文字列照合済み。最新head CI/Cloudflare確認はこれから。ローカル重複テストは実行していない。
+- git diff概要: 表現訂正のみ。既存記事・画像・勤務先名は変更しない。
+- 既知の問題: 過去の著者更新記録は当時の履歴であり、本訂正を優先。
+- 判断が必要な項目: なし。ユーザー明示訂正に基づく。
+- 推奨する次の作業: 同headのCI、Cloudflareプレビュー、本番デプロイとページ確認。
