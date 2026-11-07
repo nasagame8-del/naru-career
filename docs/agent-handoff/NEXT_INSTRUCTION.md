@@ -74,3 +74,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-ARTICLE086-20261107
 ユーザーが会社選びの実体験記事の構成に「OKやって」。記事86（second-career-change-job-selection-axis）の原稿、調査、画像4枚の完成プロンプト、専用ブランチ・Draft PR・Drive保存を許可。提供素材と本人の最新発言を優先。勤務先・担当者実名と個別金額は非掲載。AI面接対策の記事は未選択。画像未受領、本人による体験内容確認・Human Fact Check・最新headのCI/Cloudflare Preview・ユーザー目視承認前はmerge/予約/公開禁止。Claude起動なし。
+
+
+## USER-ARTICLE086-REWRITE-CHATGPT-20261107
+ユーザーの追加指示に従い、既存PR273を再利用。ChatGPTに何を伝え、問い返しで何を整理し、どの資料や会社説明と照合したかを具体化する。質問例は読者向け例と明記。議事録等の取得には言及しない。画像4枚は維持。改訂版へのユーザー目視確認前はmerge・公開禁止。

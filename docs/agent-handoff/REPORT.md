@@ -835,3 +835,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: ユーザー提供素材の体験記述は本人確認待ち。画像提供は原稿・最終プレビューの承認とは扱わない。
 - 判断が必要な項目: 同headの本文・画像の本人確認。
 - 推奨する次の作業: CI/Cloudflare確認、記事直接URLを提示。未マージ・未予約・未公開。
+
+
+## USER-ARTICLE086-REWRITE-CHATGPT-20261107
+- reportId / completedInstructionId: USER-ARTICLE086-REWRITE-CHATGPT-20261107
+- status: REVISED_QA_PENDING
+- branch: article-factory/2026-11-07-86-company-selection / PR273
+- 実施内容: ChatGPTを使った具体行動と読者向け質問例3本を追加。会社選び・条件/生活費・キャリアの入力情報、問い返し、資料/担当者への確認を記述。議事録等への言及なし。本文画像4枚は維持。
+- テスト結果: ローカルYAML・必須項目・本文3画像・コードフェンス・固有名/禁止表現不使用を確認。最新headフルQA/Cloudflareはこの後。
+- 変更ファイル: 当記事、編集QA・QA記録、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 既存原稿の改訂。画像・他記事は不変。
+- 既知の問題: 質問例は実際の入力文の引用ではなく読者向け。旧headへのユーザー「問題ない」は新headへ継承しない。
+- 判断が必要な項目: 改訂版の体験記述とプレビュー目視承認。
+- 推奨する次の作業: CI/Cloudflare成功、本文readback後、新headのプレビューを提示。
