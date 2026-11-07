@@ -758,3 +758,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 変更ファイル: content/articles/contractor-attendance-control-worker-status.md、引き継ぎ記録。
 - 既知の問題: GSC直接取得不可。確定スナップショットの順位帯を使用し、クエリとURLの組は未確認。
 - 次の作業: 最新headのCIとプレビューを確認。
+
+## USER-SIDEBAR-AD-20261107
+- reportId / completedInstructionId: USER-SIDEBAR-AD-20261107
+- status: DRAFT_REVIEW
+- branch: affiliate/kosmo-offer-sidebar-20261107
+- 実施内容: 通知書未提示記事だけsidebar_adを指定し、著者紹介の直下にKOSMOの広告を配置。A8リンク・300x250素材・1x1計測を維持。幅272pxのサイドバーに収まる可変幅、PRラベル、既存cta_click属性を付加。lg未満は既存サイドバー同様非表示。
+- 変更ファイル: 通知書記事frontmatter、articles.ts、記事ページ、EditorialSidebar.tsx、NEXT_INSTRUCTION、このREPORT。
+- git diff概要: 記事本文・更新日・既存画像を保持し、広告表示設定とサイドバー出力のみ変更。
+- テスト結果: ローカルTypeScript成功、記事既存テスト20件成功。最新head CI/Cloudflare Preview・画面確認は別途記録。
+- 既知の問題: 保存済みGSC実測10/20〜11/2の401表示/33clickを選定根拠とし、最新の表示回数は未取得。GA4受信未確認。目視承認前につき未マージ・未公開。
+- 判断が必要な項目: ユーザーによる新しい広告位置のプレビュー目視承認。
+- 推奨する次の作業: 同headのCI/プレビューと対象記事の配置を確認し、記事直接URLを提示する。
+
