@@ -1,3 +1,4 @@
+import { AffiliateBanner } from "@/components/AffiliateBanner";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -86,7 +87,7 @@ export default async function ArticlePage(props: {
 
   // affiliate判定
   const ctaRegistry = getCTARegistry();
-  const hasAffiliate = article.cta_agents.some(
+  const hasAffiliate = Boolean(article.sidebarAd) || article.cta_agents.some(
     (key) => ctaRegistry[key]?.affiliate !== false
   );
   const hasNonAffiliate = article.cta_agents.some(
@@ -124,7 +125,7 @@ export default async function ArticlePage(props: {
           <span className="text-ink" aria-current="page" title={article.title}>{article.title}</span>
         </nav>
 
-        <div className="editorial-layout article-detail-layout">
+        <div className={`editorial-layout article-detail-layout${article.sidebarAd ? " article-with-ad" : ""}`}>
           <article className="article-sheet">
             <span
               className={`ui-nowrap inline-block text-xs font-mono font-medium px-2 py-0.5 rounded ${theme.tag}`}
@@ -217,6 +218,10 @@ export default async function ArticlePage(props: {
               contentHtml={article.contentHtml}
               widgets={ARTICLE_WIDGETS[slug] ?? []}
             />
+
+            {article.sidebarAd && slug !== "contractor-exclusivity-noncompete-checks" && (
+              <AffiliateBanner ad={article.sidebarAd} slug={slug} placement="article_end_mobile" className="mt-8 lg:hidden" />
+            )}
 
             <MobileCareerCTA />
 
@@ -339,7 +344,7 @@ export default async function ArticlePage(props: {
             )}
           </article>
 
-          <EditorialSidebar ad={article.sidebarAd} />
+          <EditorialSidebar ad={article.sidebarAd} slug={slug} />
         </div>
       </div>
 
