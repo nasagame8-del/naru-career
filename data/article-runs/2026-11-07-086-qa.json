@@ -1,0 +1,14 @@
+{
+  "articleId": 86,
+  "slug": "second-career-change-job-selection-axis",
+  "status": "WAITING_IMAGES",
+  "draftStructure": "passed",
+  "frontmatter": "passed",
+  "bodyImages": 3,
+  "imageFiles": "not_received",
+  "fullLocalQa": "not_run",
+  "ci": "pending",
+  "humanFactCheck": "pending",
+  "previewVisual": "pending",
+  "published": false
+}

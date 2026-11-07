@@ -809,3 +809,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 過去の著者更新記録は当時の履歴であり、本訂正を優先。
 - 判断が必要な項目: なし。ユーザー明示訂正に基づく。
 - 推奨する次の作業: 同headのCI、Cloudflareプレビュー、本番デプロイとページ確認。
+
+
+## USER-ARTICLE086-20261107
+- reportId / completedInstructionId: USER-ARTICLE086-20261107
+- status: DRAFT_WAITING_IMAGES
+- branch: article-factory/2026-11-07-86-company-selection
+- 実施内容: 本人の提供した壁打ち再構成と最新発言から会社選び体験記事を作成。画像プラン・完成プロンプト4枚・出典と編集QA記録を作成。既存一般解説と役割分離。
+- テスト結果: Python YAMLでfrontmatter必須項目・FAQ、画像参照3・alt、placeholderなしを確認。内部リンク3件のmaster実在を確認。フルローカルQA未実施。最新head CIはPR作成後確認。画像なしのため公開QA未完了。
+- 変更ファイル: 新規記事1本、当記事data/article-runs資料、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 既存記事・画像・UIは変更しない。
+- 既知の問題: 画像4枚未受領。Google実SERP順位・GSC query×page未取得。契約の法的認定、異動保証、入社後評価は断定しない。日付は作成日で公開時に整合が必要。
+- 判断が必要な項目: 画像4枚、本人の体験記述確認、独立Human Fact Check、同headのプレビュー承認。
+- 推奨する次の作業: 画像受領→WebP変換・保存・同PR反映→QA/Cloudflare→プレビュー提示。未公開・未予約。

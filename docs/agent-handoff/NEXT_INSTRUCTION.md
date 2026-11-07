@@ -70,3 +70,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-AUTHOR-CORRECTION-20261107
 ユーザーの明示修正「内定を承諾し入社を控えていますってのいらない」「ビズリーチ人材業界じゃないし」を優先。著者ページ・サイドバー・JSON-LDの転職先表現を「IT/Web企業への転職が決まりました」に訂正し、内定承諾・入社前の説明を削除する。既承認の著者更新への指定文言訂正として専用PR、CI/Cloudflare検証、PR経由マージ、本番確認を許可。勤務先名は非掲載。その他記事制作は未選択のまま。
+
+
+## USER-ARTICLE086-20261107
+ユーザーが会社選びの実体験記事の構成に「OKやって」。記事86（second-career-change-job-selection-axis）の原稿、調査、画像4枚の完成プロンプト、専用ブランチ・Draft PR・Drive保存を許可。提供素材と本人の最新発言を優先。勤務先・担当者実名と個別金額は非掲載。AI面接対策の記事は未選択。画像未受領、本人による体験内容確認・Human Fact Check・最新headのCI/Cloudflare Preview・ユーザー目視承認前はmerge/予約/公開禁止。Claude起動なし。
