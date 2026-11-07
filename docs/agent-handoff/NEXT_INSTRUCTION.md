@@ -78,3 +78,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-ARTICLE086-REWRITE-CHATGPT-20261107
 ユーザーの追加指示に従い、既存PR273を再利用。ChatGPTに何を伝え、問い返しで何を整理し、どの資料や会社説明と照合したかを具体化する。質問例は読者向け例と明記。議事録等の取得には言及しない。画像4枚は維持。改訂版へのユーザー目視確認前はmerge・公開禁止。
+
+## USER-ASP-CREATIVES-20261107
+ユーザー提供UZUZ/Jobs/ZENの9素材を元コード・寸法のまま登録し、既承認の広告拡張方針に基づき記事別広告を使い分ける。専用fixブランチ・Draft PR・CI/Cloudflare previewを許可。本文/画像/既存CTAは保持し、既存広告PRは再作成・マージしない。修正後headのプレビュー目視承認前は本番公開しない。Claude起動なし。
