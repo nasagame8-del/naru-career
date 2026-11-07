@@ -783,3 +783,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: GA4イベント受信・成果報酬は未確認。旧headの目視承認は新headへ継承しない。スマホ幅320px以上でバナーを中央配置する設計。
 - 判断が必要な項目: 新headの横枠とスマホ記事末尾の目視確認。
 - 推奨する次の作業: CI・Cloudflare preview確認後、同headプレビュー承認。本番未公開。
+
+
+## USER-AUTHOR-BIO-20261107
+- reportId / completedInstructionId: USER-AUTHOR-BIO-20261107
+- status: IMPLEMENTED_CI_PENDING
+- branch: fix/author-bio-career-update-20261107
+- 実施内容: 著者ページ・metadata・共通サイドバー・Person/Article/WebSite JSON-LD・トップの旧職表示を更新。内定承諾・入社前を明記し勤務先名は非掲載。初回転職実績の時点を明記。入社前につき完了済み転職・入社経験は1回を維持。
+- 変更ファイル: about/page.tsx、EditorialSidebar.tsx、JsonLd.tsx、app/page.tsx、NEXT_INSTRUCTION、REPORT、記事企画メモ。
+- テスト結果: 変更対象文字列と事実関係を照合。ローカルNext.js依存未配置のためローカルbuild/型検査は未実行。既存CI/Cloudflareで最新headを検証する。
+- git diff概要: 著者情報の文言のみ。既存記事本文・画像・著者名は変更しない。
+- 既知の問題: 入社後の人材業界実務は未経験として扱う。旧勤務の記述を含む過去記事と制作中PRは個別監査が必要。
+- 判断が必要な項目: ユーザーによる最新headのプレビュー目視確認。新規記事の選択・体験詳細。
+- 推奨する次の作業: CIと/about・トップ・記事サイドバーのプレビュー確認。承認前のmerge/公開なし。

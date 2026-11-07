@@ -25,7 +25,7 @@ export function EditorialSidebar({ ad, slug = "" }: { ad?: ArticleAd; slug?: str
             <span className="ml-auto text-primary" aria-hidden="true">→</span>
           </Link>
           <p className="mt-1 text-[10px] text-ink-soft">著者イメージイラスト</p>
-          <p className="mt-3 text-xs leading-loose text-ink-soft">飲食業界から第二新卒でIT/Web業界へ転職。約30社に応募し2社から内定を獲得。実体験と調査をもとに発信しています。</p>
+          <p className="mt-3 text-xs leading-loose text-ink-soft">飲食業界から第二新卒でIT/Web業界へ転職し、SEO・AIO領域の法人営業を経験。人材業界への転職が決まり、入社を控えています。実体験と調査をもとに発信しています。</p>
         </section>
         {ad && <AffiliateBanner ad={ad} slug={slug} placement="article_sidebar" />}
       </div>
