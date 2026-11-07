@@ -100,3 +100,7 @@ note_published: false
 - [厚生労働省：2024年4月から労働条件明示のルールが変わります](https://www.mhlw.go.jp/stf/newpage_32105.html)
 - [厚生労働省：求人票と実際の労働条件が異なる場合の対処法](https://www.check-roudou.mhlw.go.jp/qa/roudousya/koyou/q5.html)
 - [厚生労働省：求人票の条件と実際の条件に関するFAQ](https://www.mhlw.go.jp/bunya/roudoukijun/faq_kijyunhou_5.html)
+
+## 次に読む：承諾前の不安を解消したら
+
+労働条件を示す書面が届かず確認が進まない場合は、[労働条件通知書を承諾前にもらえないときの依頼方法](/articles/offer-letter-before-acceptance-not-provided)を参照してください。承諾後の準備に進む方は、[IT企業に入社した最初の90日の学び方](/articles/second-new-grad-it-first-90-days)で、仕事の覚え方と相談の進め方を確認できます。
