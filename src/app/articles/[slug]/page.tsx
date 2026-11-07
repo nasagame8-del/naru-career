@@ -339,7 +339,7 @@ export default async function ArticlePage(props: {
             )}
           </article>
 
-          <EditorialSidebar />
+          <EditorialSidebar ad={article.sidebarAd} />
         </div>
       </div>
 
