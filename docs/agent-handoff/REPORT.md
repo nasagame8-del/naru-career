@@ -822,3 +822,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: 画像4枚未受領。Google実SERP順位・GSC query×page未取得。契約の法的認定、異動保証、入社後評価は断定しない。日付は作成日で公開時に整合が必要。
 - 判断が必要な項目: 画像4枚、本人の体験記述確認、独立Human Fact Check、同headのプレビュー承認。
 - 推奨する次の作業: 画像受領→WebP変換・保存・同PR反映→QA/Cloudflare→プレビュー提示。未公開・未予約。
+
+
+## USER-ARTICLE086-IMAGES-20261107
+- reportId / completedInstructionId: USER-ARTICLE086-IMAGES-20261107
+- status: IMAGES_REFLECTED_QA_PENDING
+- branch: article-factory/2026-11-07-86-company-selection / PR273
+- 実施内容: 受領4画像をプランと照合、文字・見切れ・本文整合を目視確認。Pillowでcontain変換し、card1200x630・本文1200x675のWebPへ。既存CLIがローカル未配置のためPillowを使用、重要箇所のcropなし・metadata除去。originals/とimages/へ保存。GitHub blob SHAはローカルGit blob計算と全4枚一致。
+- テスト結果: 全4枚の形式・寸法・metadata、本文画像参照を確認。最新headのCI/フル記事QA/Cloudflare Previewはこの後確認。独立Human Fact Checkと本人目視承認はpending。
+- 変更ファイル: 当記事WebP4枚、当記事QA記録、このREPORT。
+- git diff概要: 当PRの画像のみ追加。原稿は前headと同一。
+- 既知の問題: ユーザー提供素材の体験記述は本人確認待ち。画像提供は原稿・最終プレビューの承認とは扱わない。
+- 判断が必要な項目: 同headの本文・画像の本人確認。
+- 推奨する次の作業: CI/Cloudflare確認、記事直接URLを提示。未マージ・未予約・未公開。

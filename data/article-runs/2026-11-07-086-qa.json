@@ -1,13 +1,53 @@
 {
   "articleId": 86,
   "slug": "second-career-change-job-selection-axis",
-  "status": "WAITING_IMAGES",
+  "status": "IMAGES_REFLECTED_QA_PENDING",
+  "imageQa": {
+    "visual": "assistant_checked",
+    "format": "webp",
+    "metadata": "stripped",
+    "card": "1200x630",
+    "body": "1200x675",
+    "crop": "none; contain with cream padding",
+    "files": [
+      {
+        "slot": "card",
+        "bytes": 77482,
+        "sha256": "fc1d1b81d560c0781905f807dd7d753453bdb69a7cdd47ae18d5dc4322ff328e",
+        "gitBlobSha": "8c4fd971c7f6f903fed2414d7931e337958a9f0b",
+        "originalDriveId": "1FTYYGrIc6lEDAoRDTg6TAFnRGVibOSZk",
+        "webpDriveId": "18djk3Ln_F__SMHy1jvfXZhlmcIXHW91E"
+      },
+      {
+        "slot": "01",
+        "bytes": 50262,
+        "sha256": "c72a1c4caab5aad836f28fde0d7a1c2ed5ec70c04d772f310ef52ad282ae238d",
+        "gitBlobSha": "a690db0bc29f5c222e19ea6ab3ce4d3680535c4b",
+        "originalDriveId": "1u5bxtZMb28r3NR9heemx8v8UqwDfZnrG",
+        "webpDriveId": "1UqxBAeiLyIawWuLdJ9qcdYBks0nq1Blx"
+      },
+      {
+        "slot": "02",
+        "bytes": 46990,
+        "sha256": "b7862626bcdb73fab7085ea4495653442b21a6a9deba0cbff3dc72f92b46a547",
+        "gitBlobSha": "a33bf45d8a5ce70a0379eca91fbfd51250b5d19f",
+        "originalDriveId": "1_rHcLpiNuXuVLP9SosJXcbht-Sdct6nX",
+        "webpDriveId": "1bS1-tD3tFR01UFAv31Yfe16B_O0q7QgH"
+      },
+      {
+        "slot": "03",
+        "bytes": 50844,
+        "sha256": "3c8356ac7c4f2fd1253e675a0aadf76ba3fe65f79d91a51ba36efeedaedc9740",
+        "gitBlobSha": "8dc8d7ee5cdec1762e644aae7958ca37105d726a",
+        "originalDriveId": "1zYwJBZrsH2nILcGbLxdyu7ivdZIIBwOF",
+        "webpDriveId": "1-i5YAyhWj50nvgpYvRzKvVg6Ps3H_10L"
+      }
+    ]
+  },
   "draftStructure": "passed",
-  "frontmatter": "passed",
-  "bodyImages": 3,
-  "imageFiles": "not_received",
-  "fullLocalQa": "not_run",
-  "ci": "pending",
+  "bodyImageReferences": 3,
+  "internalLinks": 3,
+  "fullLocalQa": "pending_ci",
   "humanFactCheck": "pending",
   "previewVisual": "pending",
   "published": false
