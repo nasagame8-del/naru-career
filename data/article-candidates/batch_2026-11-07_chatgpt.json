@@ -4,8 +4,81 @@
   "trigger": "cron",
   "inventorySize": 78,
   "nextArticleId": 86,
-  "candidates": [],
+  "candidates": [
+    {
+      "id": "author-20261107-career-axis",
+      "title": "2回目の転職で会社選びの軸が変わった。待遇・成長から「解決したい課題」へ",
+      "primaryKeyword": "2回目の転職 転職軸",
+      "secondaryKeywords": [],
+      "searchIntent": "know",
+      "differenceFromExisting": "初回転職・辞めたい理由の一般論に対し、再転職で実際に変わった選社基準と意思決定を体験談にする。",
+      "reasonToWriteNow": "ユーザーが人材業界への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
+      "category": "体験談",
+      "proposedSlug": "second-career-change-job-selection-axis",
+      "riskFlags": [
+        "REQUIRES_PERSONAL_EXPERIENCE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "second-new-grad-job-change-traps",
+        "vaguely-want-to-quit"
+      ],
+      "searchEvidence": null,
+      "blocked": true,
+      "blockedReasons": [
+        "ユーザーの候補選択と体験詳細の確認待ち。検索需要は未確認。入社後の経験・実績は記載しない。"
+      ]
+    },
+    {
+      "id": "author-20261107-inside-sales",
+      "title": "営業からインサイドセールスを選んだ理由。転職前に整理した仕事内容とキャリア",
+      "primaryKeyword": "営業からインサイドセールス 転職理由",
+      "secondaryKeywords": [],
+      "searchIntent": "know",
+      "differenceFromExisting": "初回の志望動機失敗談と分け、法人営業経験後の職種選択に限定する。",
+      "reasonToWriteNow": "ユーザーが人材業界への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
+      "category": "体験談",
+      "proposedSlug": "sales-to-inside-sales-career-reason",
+      "riskFlags": [
+        "REQUIRES_PERSONAL_EXPERIENCE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "interview-failure-why-this-job"
+      ],
+      "searchEvidence": null,
+      "blocked": true,
+      "blockedReasons": [
+        "ユーザーの候補選択と体験詳細の確認待ち。検索需要は未確認。入社後の経験・実績は記載しない。"
+      ]
+    },
+    {
+      "id": "author-20261107-two-employers",
+      "title": "2回目の転職面接で、2社分の退職理由と志望動機をどうつないだか",
+      "primaryKeyword": "2回目の転職 面接 退職理由",
+      "secondaryKeywords": [],
+      "searchIntent": "know",
+      "differenceFromExisting": "初回面接や一般的な質問集と分け、2社の経歴と転職軸の変化を実際の回答で説明する。",
+      "reasonToWriteNow": "ユーザーが人材業界への転職決定・内定承諾を報告し、著者情報更新に伴う記事制作を希望。",
+      "category": "体験談",
+      "proposedSlug": "second-career-change-interview-career-story",
+      "riskFlags": [
+        "REQUIRES_PERSONAL_EXPERIENCE",
+        "NO_SEARCH_EVIDENCE"
+      ],
+      "nearestExistingSlugs": [
+        "interview-failure-why-this-job",
+        "second-new-grad-it-interview-questions"
+      ],
+      "searchEvidence": null,
+      "blocked": true,
+      "blockedReasons": [
+        "ユーザーの候補選択と体験詳細の確認待ち。検索需要は未確認。入社後の経験・実績は記載しない。"
+      ]
+    }
+  ],
   "notes": [
-    "11/7：最新成功Snapshot42152417677（11/6）、master/Slack一致。確定10/20〜11/2：2375表示/86click/CTR3.62%、Top3/10/20=9/21/43、可視79・新規50。前期10/6〜19は1285/46/3.58%、4/29/40、可視89。前回の移動窓比+13表示/+1click。070通知書401/33、業務委託親379/7、契約終了333/7、失業給付233/12。S業務委託・A通知書維持、Agent新規抑制。master78記事・Open54PR。082/083は11/6本番公開確認済み、084/085画像待ち、010改稿QA待ち。追加候補0・次ID86。11/2改稿後の比較期間不足、11/4改稿は集計期間外。未確定日を0補完しない。https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793933240391609"
+    "11/7：最新成功Snapshot42152417677（11/6）、master/Slack一致。確定10/20〜11/2：2375表示/86click/CTR3.62%、Top3/10/20=9/21/43、可視79・新規50。前期10/6〜19は1285/46/3.58%、4/29/40、可視89。前回の移動窓比+13表示/+1click。070通知書401/33、業務委託親379/7、契約終了333/7、失業給付233/12。S業務委託・A通知書維持、Agent新規抑制。master78記事・Open54PR。082/083は11/6本番公開確認済み、084/085画像待ち、010改稿QA待ち。追加候補0・次ID86。11/2改稿後の比較期間不足、11/4改稿は集計期間外。未確定日を0補完しない。https://naru-mk93466.slack.com/archives/C0C71TPTSHW/p1793933240391609",
+    "2026-11-07追記: 著者情報更新に伴う体験談3候補をユーザー依頼で追加。朝の候補0件という記録は当時の履歴として維持。未選択・未執筆。SEO需要の検証済み候補ではない。企画詳細はPR #271。"
   ]
 }
