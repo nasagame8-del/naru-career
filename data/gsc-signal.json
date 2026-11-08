@@ -1,42 +1,42 @@
 {
-  "generatedAt": "2026-11-07T02:18:34.587Z",
+  "generatedAt": "2026-11-08T01:45:41.623Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-21",
-    "endDate": "2026-11-03"
+    "startDate": "2026-10-22",
+    "endDate": "2026-11-04"
   },
   "previousRange": {
-    "startDate": "2026-10-07",
-    "endDate": "2026-10-20"
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-21"
   },
   "visibleQueryCounts": {
-    "current": 91,
-    "previous": 91,
-    "new": 57
+    "current": 95,
+    "previous": 89,
+    "new": 58
   },
   "positionBuckets": {
     "current": {
       "top3": 9,
-      "top10": 29,
-      "top20": 53
+      "top10": 34,
+      "top20": 57
     },
     "previous": {
       "top3": 5,
-      "top10": 28,
-      "top20": 43
+      "top10": 27,
+      "top20": 42
     }
   },
   "querySignals": [
     {
-      "query": "正社員から業務委託",
-      "positionBand": "11-20",
+      "query": "業務委託 急に辞める",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 急に辞める",
-      "positionBand": "4-10",
+      "query": "正社員から業務委託",
+      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
@@ -50,9 +50,9 @@
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 内定承諾前 メール",
-      "positionBand": "11-20",
-      "signal": "rising"
+      "query": "社員から業務委託へ",
+      "positionBand": "4-10",
+      "signal": "quick_win"
     },
     {
       "query": "労働条件通知書 内定承諾前",
@@ -60,7 +60,7 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 有給",
+      "query": "労働条件通知書 内定承諾前 メール",
       "positionBand": "11-20",
       "signal": "rising"
     },
@@ -110,7 +110,12 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 急に辞める",
+      "query": "業務委託 契約書なし",
+      "positionBand": "41+",
+      "signal": "rising"
+    },
+    {
+      "query": "業務委託 辞める時",
       "positionBand": "4-10",
       "signal": "new"
     },
@@ -135,22 +140,17 @@
       "signal": "new"
     },
     {
-      "query": "業務委託 報酬未払い",
-      "positionBand": "21-40",
-      "signal": "new"
-    },
-    {
       "query": "内定 労働条件通知書 ない",
       "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "query": "正社員 から業務委託 収入",
-      "positionBand": "4-10",
+      "query": "業務委託 報酬未払い",
+      "positionBand": "21-40",
       "signal": "new"
     },
     {
-      "query": "doda ワークポート",
+      "query": "正社員 から業務委託 収入",
       "positionBand": "4-10",
       "signal": "new"
     }
@@ -167,6 +167,11 @@
       "signal": "rising"
     },
     {
+      "page": "/articles/contractor-how-to-quit",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "page": "/articles/business-outsourcing-conversion-risk",
       "positionBand": "4-10",
       "signal": "rising"
@@ -174,11 +179,6 @@
     {
       "page": "/articles/outsourcing-contract-termination-worker-status",
       "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/contractor-how-to-quit",
-      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -207,8 +207,13 @@
       "signal": "rising"
     },
     {
+      "page": "/articles/agent-site-vs-agent-usage",
+      "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
       "page": "/articles/contractor-attendance-control-worker-status",
-      "positionBand": "21-40",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -224,11 +229,6 @@
     {
       "page": "/articles/probation-period-lower-salary-checks",
       "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/agent-referral-vs-self-apply",
-      "positionBand": "4-10",
       "signal": "rising"
     }
   ]

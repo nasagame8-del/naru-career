@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T02:18:35.046Z",
+  "generatedAt": "2026-11-08T01:45:42.008Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -26,14 +26,14 @@
     },
     {
       "rank": 3,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員から業務委託",
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前",
       "reason": "position_11_30"
     },
     {
       "rank": 4,
-      "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員から業務委託",
       "reason": "position_11_30"
     },
     {
@@ -110,6 +110,12 @@
     },
     {
       "rank": 17,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "内定 労働条件通知書 ない",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 18,
       "slug": "contractor-unpaid-fee-consultation",
       "query": "業務委託 報酬未払い",
       "reason": "position_11_30"
@@ -202,44 +208,65 @@
     },
     {
       "rank": 15,
-      "slug": "outsourcing-contract-termination-worker-status",
+      "slug": "contractor-how-to-quit",
       "query": "業務委託 急に辞める",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 16,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "query": "業務委託 急に辞める",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 17,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "社員から業務委託へ",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 18,
       "slug": "agent-comparison-2026",
       "query": "ワークポート",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 17,
+      "rank": 19,
       "slug": "outsourcing-contract-termination-worker-status",
       "query": "業務委託 急に切られる",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 18,
+      "rank": 20,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "転職 労働条件通知書 来ない",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 19,
+      "rank": 21,
       "slug": "agent-job-mismatch",
       "query": "転職エージェント 求人 微妙",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 20,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "社員から業務委託へ",
+      "rank": 22,
+      "slug": "employee-contractor-pay-comparison",
+      "query": "正社員 から業務委託 収入",
       "reason": "low_ctr_top10"
     }
   ],
   "cannibalization": [
     {
       "rank": 1,
+      "query": "業務委託 急に辞める",
+      "slugs": [
+        "contractor-how-to-quit",
+        "outsourcing-contract-termination-worker-status"
+      ],
+      "reason": "multiple_articles_same_query"
+    },
+    {
+      "rank": 2,
       "query": "業務委託 契約更新しない 伝え方",
       "slugs": [
         "contractor-how-to-quit",
@@ -258,6 +285,8 @@
     "agent-job-mismatch",
     "outsourcing-contract-termination-worker-status",
     "contractor-unpaid-fee-consultation",
-    "agent-comparison-2026"
+    "contractor-how-to-quit",
+    "agent-comparison-2026",
+    "employee-contractor-pay-comparison"
   ]
 }
