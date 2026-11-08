@@ -112,6 +112,8 @@ note_published: false
 
 を確認します。
 
+契約書が見当たらない場合は、[業務委託の契約書がないときに整理したい取引条件と記録](/articles/contractor-no-written-contract)も確認してください。
+
 ### 2. いつ・どの方法で終了を告げられたか
 
 口頭だけだったのか、メール・チャット・書面があるのかを確認し、日時が分かる状態で保存します。
@@ -123,6 +125,8 @@ note_published: false
 ### 4. 未払い報酬・経費・成果物の扱い
 
 契約終了日だけでなく、終了までに提供した業務の報酬、立替経費、納品済み成果物なども確認します。
+
+支払期日を過ぎても入金がない場合は、[業務委託の報酬未払いで残したい証拠・請求メール・相談先](/articles/contractor-unpaid-fee-consultation)で、支払いの問題を別に整理できます。
 
 ### 5. 正社員時代と業務委託後で働き方が本当に変わったか
 
@@ -153,7 +157,7 @@ note_published: false
 
 出社や時間の指定が続いている場合は、[業務委託の勤務時間・出社管理と労働者性の確認点](/articles/contractor-attendance-control-worker-status)も参考になります。
 
-詳しい判断要素は、[正社員から業務委託への切り替えリスクと偽装フリーランスの見分け方](/articles/business-outsourcing-conversion-risk)で整理しています。
+詳しい判断要素は、[偽装フリーランスの判断基準8項目と相談先](/articles/fake-freelancer-worker-status-guide)で整理しています。
 
 ## 対応1：契約書だけでなく「実際の働き方」の証拠を残す
 
