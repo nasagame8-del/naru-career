@@ -873,3 +873,15 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: GA4受信・広告視認数・ASP成果未確認。クリック属性article_body_mobileを付け配置を区別。テキスト広告コード未受領につきバナーリンクの文字リンク化なし。
 - 判断が必要な項目: 新headのプレビュー目視確認。
 - 推奨する次の作業: ローカルQA/Cloudflare preview確認、代表記事直リンク提示。未マージ・本番未反映。
+
+## USER-LONGTAIL-PAY-20261108
+- reportId / completedInstructionId: USER-LONGTAIL-PAY-20261108
+- status: DRAFT_REVIEW
+- branch: seo/longtail-pay-links-20261108
+- 実施内容: 報酬・休業の説明後に有給/残業代記事、入金と支出の説明内に振込手数料記事の本文リンクを各1本追加。
+- テスト結果: article:local-qa --skip-heavyで当記事の画像4枚・寸法/形式/metadata・alt・frontmatter・内部リンク実在を確認。test/tsc/buildはローカル省略、最新headのCI/Cloudflare previewはPR作成後確認。
+- 変更ファイル: content/articles/employee-contractor-pay-comparison.md、NEXT_INSTRUCTION、REPORT、長尾施策案。
+- git diff概要: 文脈に合う内部リンクのみ。法的説明・画像・タイトル・日時・広告は維持。
+- 既知の問題: GSCはquery×page対応・前期比較がない。検索ツール予備調査でGoogle実順位は未取得。新規候補は未選択・未執筆。
+- 判断が必要な項目: 最新headの実画面承認。
+- 推奨する次の作業: CI/Cloudflare成功、本文リンク目視確認。未マージ・本番未反映。
