@@ -96,3 +96,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-LONGTAIL-PUBLISH-20261108
 ユーザー「本番反映よろしく」によりPR276/277/278の目視承認と本番公開を受領。承認済み記事blobを維持し、共通進捗記録の競合回避用統合のみ行う。最新headのCI/Cloudflare preview成功・mergeable確認後、expected head固定のPR経由マージと本番検証を許可。master直接push・他PR公開・Claude起動なし。
+
+
+## USER-VALUECOMMERCE-20261108
+ユーザー提供ValueCommerce 10素材（TechClips/Geekly/ASSIGN/リクルートエージェント）を現物確認し、対象記事の明示マッピングと原コード保持で掲載する。専用fixブランチ、Draft PR、CI、Cloudflare previewを許可。素材の寸法・SID/PID・noscript・テキスト広告の1px計測画像は保持。記事本文/画像/旧CTAは変更しない。ユーザーによる最新プレビュー目視承認前のmerge/本番公開は禁止。Claude起動なし。
