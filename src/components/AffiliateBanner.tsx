@@ -1,3 +1,4 @@
+import { ValueCommerceAd } from "./ValueCommerceAd";
 import type { ArticleAd } from "@/lib/article-ads";
 import { ARTICLE_AD_SERVICES, getAffiliateCreative, type AffiliatePlacement } from "@/lib/affiliate-creatives";
 
@@ -17,6 +18,7 @@ export function AffiliateBanner({ ad, placement, slug, className = "", intro }: 
     <section aria-label={`広告：${service.name}`} className={`border-t border-line pt-5 ${className}`}>
       <p className="mb-3 text-[11px] text-ink-soft">広告（PR）｜{service.name}</p>
       {placement !== "article_sidebar" && <p className="mb-4 text-sm leading-relaxed text-ink-soft">{description}</p>}
+      {creative.valueCommercePid ? <ValueCommerceAd pid={creative.valueCommercePid} width={creative.width} height={creative.height} name={service.name} /> : <>
       <a href={creative.href} rel="nofollow sponsored" referrerPolicy={creative.referrerPolicy}
         data-track-event="cta_click" data-track-agent_name={service.name}
         data-track-format="banner" data-track-placement={placement} data-track-article_slug={slug}
@@ -30,6 +32,7 @@ export function AffiliateBanner({ ad, placement, slug, className = "", intro }: 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       {creative.pixel && <img src={creative.pixel} alt="" width={1} height={1} loading="lazy"
         style={{ width: 1, height: 1, margin: 0, border: 0 }} />}
+      </>}
     </section>
   );
 }

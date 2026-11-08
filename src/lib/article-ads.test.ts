@@ -5,7 +5,7 @@ import { ARTICLE_ADS, getArticleAd, shouldShowMobileArticleAd } from "./article-
 
 describe("article advertising allowlist", () => {
   it("only enables reviewed, existing articles", () => {
-    expect(Object.keys(ARTICLE_ADS)).toHaveLength(32);
+    expect(Object.keys(ARTICLE_ADS)).toHaveLength(36);
     for (const slug of Object.keys(ARTICLE_ADS)) {
       expect(fs.existsSync(path.join(process.cwd(), "content/articles", `${slug}.md`))).toBe(true);
     }
