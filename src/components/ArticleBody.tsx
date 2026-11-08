@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ComparisonTable } from "./ComparisonTable";
 import { FlowDiagram } from "./FlowDiagram";
 import type { ArticleWidget } from "@/lib/article-widgets";
@@ -7,11 +8,23 @@ type Props = {
   widgets: ArticleWidget[];
   className?: string;
   style?: React.CSSProperties;
+  inlineAd?: { index: number; content: ReactNode };
 };
 
 const WIDGET_RE = /<div data-widget="([\w-]+)" data-widget-id="([\w-]+)"><\/div>/g;
 
-export function ArticleBody({ contentHtml, widgets, className, style }: Props) {
+export function ArticleBody({ contentHtml, widgets, className, style, inlineAd }: Props) {
+  // Split only at a validated top-level paragraph/heading boundary. Keep widget rendering intact.
+  if (inlineAd && inlineAd.index > 0 && inlineAd.index < contentHtml.length) {
+    return (
+      <div className={className} style={style}>
+        <ArticleBody contentHtml={contentHtml.slice(0, inlineAd.index)} widgets={widgets} />
+        <div className="not-prose">{inlineAd.content}</div>
+        <ArticleBody contentHtml={contentHtml.slice(inlineAd.index)} widgets={widgets} />
+      </div>
+    );
+  }
+
   // ウィジェットが無ければ従来通り
   if (widgets.length === 0) {
     return (
