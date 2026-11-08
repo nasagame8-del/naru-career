@@ -81,3 +81,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-ASP-CREATIVES-20261107
 ユーザー提供UZUZ/Jobs/ZENの9素材を元コード・寸法のまま登録し、既承認の広告拡張方針に基づき記事別広告を使い分ける。専用fixブランチ・Draft PR・CI/Cloudflare previewを許可。本文/画像/既存CTAは保持し、既存広告PRは再作成・マージしない。修正後headのプレビュー目視承認前は本番公開しない。Claude起動なし。
+
+## USER-CONTEXTUAL-ADS-20261108
+ユーザー「やれる部分だけあってほしい」を広告配置改善の実施指示として受領。3記事（企業研究・ポートフォリオ・報酬比較）の既存スマホ末尾バナーを文脈に合う本文位置へ移す。元コード/原寸・PR表示を維持。広告数・本文原稿・既存横広告は維持。専用fixブランチ・Draft PR・ローカルQA・Cloudflare previewを許可。プレビュー未承認で本番公開しない。Claudeタスクなし。
