@@ -874,6 +874,18 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 判断が必要な項目: 新headのプレビュー目視確認。
 - 推奨する次の作業: ローカルQA/Cloudflare preview確認、代表記事直リンク提示。未マージ・本番未反映。
 
+## USER-LONGTAIL-PAY-20261108
+- reportId / completedInstructionId: USER-LONGTAIL-PAY-20261108
+- status: DRAFT_REVIEW
+- branch: seo/longtail-pay-links-20261108
+- 実施内容: 報酬・休業の説明後に有給/残業代記事、入金と支出の説明内に振込手数料記事の本文リンクを各1本追加。
+- テスト結果: article:local-qa --skip-heavyで当記事の画像4枚・寸法/形式/metadata・alt・frontmatter・内部リンク実在を確認。test/tsc/buildはローカル省略、最新headのCI/Cloudflare previewはPR作成後確認。
+- 変更ファイル: content/articles/employee-contractor-pay-comparison.md、NEXT_INSTRUCTION、REPORT、長尾施策案。
+- git diff概要: 文脈に合う内部リンクのみ。法的説明・画像・タイトル・日時・広告は維持。
+- 既知の問題: GSCはquery×page対応・前期比較がない。検索ツール予備調査でGoogle実順位は未取得。新規候補は未選択・未執筆。
+- 判断が必要な項目: 最新headの実画面承認。
+- 推奨する次の作業: CI/Cloudflare成功、本文リンク目視確認。未マージ・本番未反映。
+
 ## USER-LONGTAIL-QUIT-20261108
 - reportId / completedInstructionId: USER-LONGTAIL-QUIT-20261108
 - status: DRAFT_REVIEW
@@ -885,3 +897,26 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: GSCはquery×page対応・前期比較がない。検索ツール予備調査でGoogle実順位は未取得。新規候補は未選択・未執筆。
 - 判断が必要な項目: 最新headの実画面承認。
 - 推奨する次の作業: CI/Cloudflare成功、本文リンク目視確認。未マージ・本番未反映。
+
+## USER-LONGTAIL-TERMINATION-20261108
+- reportId / completedInstructionId: USER-LONGTAIL-TERMINATION-20261108
+- status: DRAFT_REVIEW
+- branch: seo/longtail-termination-links-20261108
+- 実施内容: 契約確認の節から契約書なし記事、精算の節から未払い記事へ各1本追加。判断要素の案内は既に複数ある親記事リンクの1本を偽装フリーランス専用記事へ付け替え。
+- テスト結果: article:local-qa --skip-heavyで当記事の画像4枚・寸法/形式/metadata・alt・frontmatter・内部リンク実在を確認。test/tsc/buildはローカル省略、最新headのCI/Cloudflare previewはPR作成後確認。
+- 変更ファイル: content/articles/outsourcing-contract-termination-worker-status.md、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 文脈に合う内部リンクのみ。法的説明・画像・タイトル・日時・広告は維持。
+- 既知の問題: GSCはquery×page対応・前期比較がない。検索ツール予備調査でGoogle実順位は未取得。新規候補は未選択・未執筆。
+- 判断が必要な項目: 最新headの実画面承認。
+- 推奨する次の作業: CI/Cloudflare成功、本文リンク目視確認。未マージ・本番未反映。
+
+## USER-LONGTAIL-PUBLISH-20261108
+- reportId / completedInstructionId: USER-LONGTAIL-PUBLISH-20261108
+- status: USER_APPROVED_CI_REFRESH_PENDING
+- branch: PR276/277/278の各専用ブランチ
+- 実施内容: ユーザー承認を旧head bcc91b820d00ad3d32c681f6f2b1e78919ba6833 / c983f3783db99fb760ca10b459958cd35dd1a2b2 / f788210a8d22b8ce8cb6ba7b6d970366d02b7a45の各記事に記録。記事・UIは変更せず、3PRで共通の進捗記録を同一内容へ統合しマージ競合を回避。
+- テスト結果: 承認headのCI/Cloudflare previewは各success。記録統合後の最新headで再確認する。
+- 変更ファイル: NEXT_INSTRUCTION、REPORTのみ（統合工程）。
+- 既知の問題: デプロイ・本番URLはこの工程では未確認。
+- 判断が必要な項目: なし。ユーザーの明示公開指示あり。
+- 推奨する次の作業: 記事blob不変確認、最新head CI成功後3PR経由マージ、本番確認。
