@@ -84,3 +84,6 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-CONTEXTUAL-ADS-20261108
 ユーザー「やれる部分だけあってほしい」を広告配置改善の実施指示として受領。3記事（企業研究・ポートフォリオ・報酬比較）の既存スマホ末尾バナーを文脈に合う本文位置へ移す。元コード/原寸・PR表示を維持。広告数・本文原稿・既存横広告は維持。専用fixブランチ・Draft PR・ローカルQA・Cloudflare previewを許可。プレビュー未承認で本番公開しない。Claudeタスクなし。
+
+## USER-LONGTAIL-TERMINATION-20261108
+ユーザーのGSC上位以外を伸ばす指示に基づき、契約確認の節から契約書なし記事、精算の節から未払い記事へ各1本追加。判断要素の案内は既に複数ある親記事リンクの1本を偽装フリーランス専用記事へ付け替え。 当記事専用ブランチ・Draft PR・既存QA/Cloudflare previewを許可。GSC生データ・数値はGitへ保存しない。未承認の本番公開、他記事/広告の変更、Claude起動なし。
