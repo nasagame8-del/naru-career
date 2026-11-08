@@ -920,3 +920,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: デプロイ・本番URLはこの工程では未確認。
 - 判断が必要な項目: なし。ユーザーの明示公開指示あり。
 - 推奨する次の作業: 記事blob不変確認、最新head CI成功後3PR経由マージ、本番確認。
+
+
+## USER-VALUECOMMERCE-20261108
+- reportId / completedInstructionId: USER-VALUECOMMERCE-20261108
+- status: DRAFT_REVIEW
+- branch: fix/valuecommerce-creatives-20261108
+- 実施内容: 提供10素材を現物確認。原JS+noscriptをiframe srcDoc内で保持しdocument.write対応。TechClips/Geekly/ASSIGN/リクルートの4枠を10記事に設定（6枠置換・4枠追加）。TechClips/ASSIGNは提供テキスト広告も併記。未使用の横長・縦長も登録するが強制掲載しない。
+- テスト結果: 広告allowlist/既存素材/新素材/本文広告位置の11テスト成功。TypeScript/eslintと最新head CI/previewは完了時PRへ追記する。
+- 変更ファイル: src/lib/article-ads.ts/.test.ts, affiliate-creatives.ts, contextual-article-ads.ts, valuecommerce.ts/.test.ts, src/components/AffiliateBanner.tsx, ValueCommerceAd.tsx, docs/affiliate-valuecommerce-20261108.md, NEXT_INSTRUCTION, REPORT。
+- git diff概要: 記事Markdown/画像/旧CTA非変更。PC横枠とSP既存枠を利用。SP本文重複のある3記事は末尾非掲載を追加。
+- 既知の問題: iframe内クリックは親の既存GA4 listenerでは計測できない。広告効果はASP集計を確認。GA4実受信・報酬発生・全広告リンククリック遷移は未確認。素材提供は本番公開承認として扱わない。
+- 判断が必要な項目: 新プレビューのユーザー目視承認。
+- 推奨する次の作業: CI/Cloudflare previewと実バナー確認後プレビューを提示。未マージ・本番未反映。
