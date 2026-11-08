@@ -100,3 +100,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-VALUECOMMERCE-20261108
 ユーザー提供ValueCommerce 10素材（TechClips/Geekly/ASSIGN/リクルートエージェント）を現物確認し、対象記事の明示マッピングと原コード保持で掲載する。専用fixブランチ、Draft PR、CI、Cloudflare previewを許可。素材の寸法・SID/PID・noscript・テキスト広告の1px計測画像は保持。記事本文/画像/旧CTAは変更しない。ユーザーによる最新プレビュー目視承認前のmerge/本番公開は禁止。Claude起動なし。
+
+
+## USER-VALUECOMMERCE-PUBLISH-20261108
+ユーザー「問題なし」によりPR279のプレビューhead c88a633dcdf7bcdd827aa1f20bb972ab05c432a0を目視承認。本承認を記録する文書のみ更新し、表示・コードは不変。最新head CI/Cloudflare preview成功とmergeable確認後、head固定squash mergeとCloudflare本番反映・10記事の検証を許可。master直接push・他PR公開・Claude起動なし。
