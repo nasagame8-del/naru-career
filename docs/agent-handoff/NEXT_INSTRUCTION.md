@@ -87,3 +87,12 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-LONGTAIL-PAY-20261108
 ユーザーのGSC上位以外を伸ばす指示に基づき、報酬・休業の説明後に有給/残業代記事、入金と支出の説明内に振込手数料記事の本文リンクを各1本追加。 当記事専用ブランチ・Draft PR・既存QA/Cloudflare previewを許可。GSC生データ・数値はGitへ保存しない。未承認の本番公開、他記事/広告の変更、Claude起動なし。
+
+## USER-LONGTAIL-QUIT-20261108
+ユーザーのGSC上位以外を伸ばす指示に基づき、契約書が手元にない読者を条件明示記事へ案内。勤怠報告の既存箇条書きから勤怠/労働者性記事へリンク。各1本追加。 当記事専用ブランチ・Draft PR・既存QA/Cloudflare previewを許可。GSC生データ・数値はGitへ保存しない。未承認の本番公開、他記事/広告の変更、Claude起動なし。
+
+## USER-LONGTAIL-TERMINATION-20261108
+ユーザーのGSC上位以外を伸ばす指示に基づき、契約確認の節から契約書なし記事、精算の節から未払い記事へ各1本追加。判断要素の案内は既に複数ある親記事リンクの1本を偽装フリーランス専用記事へ付け替え。 当記事専用ブランチ・Draft PR・既存QA/Cloudflare previewを許可。GSC生データ・数値はGitへ保存しない。未承認の本番公開、他記事/広告の変更、Claude起動なし。
+
+## USER-LONGTAIL-PUBLISH-20261108
+ユーザー「本番反映よろしく」によりPR276/277/278の目視承認と本番公開を受領。承認済み記事blobを維持し、共通進捗記録の競合回避用統合のみ行う。最新headのCI/Cloudflare preview成功・mergeable確認後、expected head固定のPR経由マージと本番検証を許可。master直接push・他PR公開・Claude起動なし。
