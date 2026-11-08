@@ -1,21 +1,22 @@
 import type { ArticleAd } from "@/lib/article-ads";
-import { ARTICLE_AD_SERVICES, getAffiliateCreative } from "@/lib/affiliate-creatives";
+import { ARTICLE_AD_SERVICES, getAffiliateCreative, type AffiliatePlacement } from "@/lib/affiliate-creatives";
 
-export function AffiliateBanner({ ad, placement, slug, className = "" }: {
+export function AffiliateBanner({ ad, placement, slug, className = "", intro }: {
   ad: ArticleAd;
-  placement: "article_sidebar" | "article_end_mobile";
+  placement: AffiliatePlacement;
   slug: string;
   className?: string;
+  intro?: string;
 }) {
   const service = ARTICLE_AD_SERVICES[ad];
   const creative = getAffiliateCreative(ad, placement);
-  const description = ad === "kosmo" && ["contractor-how-to-quit", "outsourcing-contract-termination-worker-status", "business-outsourcing-conversion-risk", "employee-to-contractor-unemployment-benefit", "employee-to-contractor-social-insurance"].includes(slug)
+  const description = intro ?? (ad === "kosmo" && ["contractor-how-to-quit", "outsourcing-contract-termination-worker-status", "business-outsourcing-conversion-risk", "employee-to-contractor-unemployment-benefit", "employee-to-contractor-social-insurance"].includes(slug)
     ? "現在の契約や制度を確認し、必要な窓口へ相談したうえで、雇用される働き方も検討したい方へ。KOSMOの転職サポート案内です。契約トラブルの相談窓口ではありません。"
-    : service.description;
+    : service.description);
   return (
     <section aria-label={`広告：${service.name}`} className={`border-t border-line pt-5 ${className}`}>
       <p className="mb-3 text-[11px] text-ink-soft">広告（PR）｜{service.name}</p>
-      {placement === "article_end_mobile" && <p className="mb-4 text-sm leading-relaxed text-ink-soft">{description}</p>}
+      {placement !== "article_sidebar" && <p className="mb-4 text-sm leading-relaxed text-ink-soft">{description}</p>}
       <a href={creative.href} rel="nofollow sponsored" referrerPolicy={creative.referrerPolicy}
         data-track-event="cta_click" data-track-agent_name={service.name}
         data-track-format="banner" data-track-placement={placement} data-track-article_slug={slug}

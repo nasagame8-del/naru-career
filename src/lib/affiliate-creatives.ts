@@ -95,7 +95,9 @@ export const ARTICLE_AD_SERVICES: Record<ArticleAd, {
     description: "退職代行を比較している方へ。ZENの退職代行の案内です。対応範囲・料金・契約条件は公式ページでご確認ください。" },
 };
 
-export function getAffiliateCreative(ad: ArticleAd, placement: "article_sidebar" | "article_end_mobile") {
+export type AffiliatePlacement = "article_sidebar" | "article_end_mobile" | "article_body_mobile";
+
+export function getAffiliateCreative(ad: ArticleAd, placement: AffiliatePlacement) {
   const service = ARTICLE_AD_SERVICES[ad];
   return AFFILIATE_CREATIVES[placement === "article_sidebar" ? service.sidebar : service.mobile];
 }

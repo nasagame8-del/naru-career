@@ -1,3 +1,4 @@
+import { getContextualMobileAd } from "@/lib/contextual-article-ads";
 import { shouldShowMobileArticleAd } from "@/lib/article-ads";
 import { AffiliateBanner } from "@/components/AffiliateBanner";
 import type { Metadata } from "next";
@@ -71,6 +72,8 @@ export default async function ArticlePage(props: {
   if (!getArticleSlugs().includes(slug)) notFound();
 
   const article = await getArticle(slug);
+  const contextualAd = article.sidebarAd && shouldShowMobileArticleAd(slug)
+    ? getContextualMobileAd(slug, article.contentHtml) : null;
   const allArticles = getAllArticleMetas();
   const relatedArticles = allArticles
     .filter(
@@ -218,9 +221,13 @@ export default async function ArticlePage(props: {
               style={{ "--category-color": theme.cssColor } as React.CSSProperties}
               contentHtml={article.contentHtml}
               widgets={ARTICLE_WIDGETS[slug] ?? []}
+              inlineAd={contextualAd && article.sidebarAd ? {
+                index: contextualAd.index,
+                content: <AffiliateBanner ad={article.sidebarAd} slug={slug} placement="article_body_mobile" intro={contextualAd.intro} className="my-8 lg:hidden" />,
+              } : undefined}
             />
 
-            {article.sidebarAd && shouldShowMobileArticleAd(slug) && (
+            {article.sidebarAd && shouldShowMobileArticleAd(slug) && !contextualAd && (
               <AffiliateBanner ad={article.sidebarAd} slug={slug} placement="article_end_mobile" className="mt-8 lg:hidden" />
             )}
 

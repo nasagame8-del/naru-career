@@ -861,3 +861,15 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: GA4実受信/ASP成果未確認。小型横長とJobs/ZEN250角は登録のみ。今回テキスト広告コードなし。既存広告PRは変更しない。
 - 判断が必要な項目: 新headのプレビュー確認。
 - 推奨する次の作業: ローカルQA→CI/Cloudflare→直接プレビュー。未マージ・未公開。
+
+## USER-CONTEXTUAL-ADS-20261108
+- reportId / completedInstructionId: USER-CONTEXTUAL-ADS-20261108
+- status: DRAFT_REVIEW
+- branch: fix/contextual-mobile-ads-20261108
+- 実施内容: 企業研究は質問への変換後、ポートフォリオは書類/面接への使い方説明後、報酬比較は実態/収支/相談先説明後に既存スマホバナーを移動。報酬比較は契約/税/保険窓口と就職支援を区別。未確認の添削機能や成果は断定しない。
+- 変更ファイル: contextual-article-ads.tsとテスト、ArticleBody.tsx、AffiliateBanner.tsx、affiliate-creatives.ts、記事ページ、NEXT_INSTRUCTION、REPORT。
+- git diff概要: 原稿・画像・日付は変更なし。PC横枠と対象外記事の表示は維持。スマホ本文へ移せた場合だけ末尾を抑止。アンカー不一致/重複時は末尾にフォールバック。
+- テスト結果: TypeScript成功。記事/広告対象/ASP素材/文脈アンカーの計28テスト成功。変更TS/TSX eslint成功。最新head Cloudflare previewはこの後確認。
+- 既知の問題: GA4受信・広告視認数・ASP成果未確認。クリック属性article_body_mobileを付け配置を区別。テキスト広告コード未受領につきバナーリンクの文字リンク化なし。
+- 判断が必要な項目: 新headのプレビュー目視確認。
+- 推奨する次の作業: ローカルQA/Cloudflare preview確認、代表記事直リンク提示。未マージ・本番未反映。
