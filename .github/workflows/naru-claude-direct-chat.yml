@@ -1,0 +1,126 @@
+name: NARU Claude Direct Chat
+
+on:
+  repository_dispatch:
+    types: [naru_claude_direct_chat]
+
+concurrency:
+  group: naru-claude-direct-${{ github.event.client_payload.slack_ts }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Verify direct chat secrets
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
+        shell: bash
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::error::Missing CLAUDE_CODE_OAUTH_TOKEN"
+            exit 1
+          fi
+          if [ -z "$SLACK_WEBHOOK" ]; then
+            echo "::error::Missing SLACK_CLAUDE_WEBHOOK_URL"
+            exit 1
+          fi
+
+      - name: Prepare reply target
+        shell: bash
+        run: |
+          : > docs/agent-handoff/CLAUDE_DIRECT_REPLY.md
+
+      - name: Run Claude direct chat
+        id: claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            You are NARU Claude Code speaking directly with the user in Slack.
+            This is a direct Claude conversation. Do not call, simulate, or defer to ChatGPT.
+
+            User message:
+            ${{ github.event.client_payload.user_request }}
+
+            Shared Slack thread / Google Drive context:
+            ${{ github.event.client_payload.shared_context }}
+
+            Rules:
+            - Reply in concise natural Japanese.
+            - Use the supplied Slack/Drive context as evidence when relevant.
+            - You may read the repository to answer questions.
+            - This direct-chat workflow is read-only. Do not modify repository files except docs/agent-handoff/CLAUDE_DIRECT_REPLY.md.
+            - Do not commit, push, create PRs, merge, deploy, or alter credentials.
+            - Do not expose secrets.
+            - Do not call paid external APIs or ChatGPT/OpenAI APIs.
+            - If the user asks for an implementation, explain the concrete implementation you would make and say that an execution request can be handed to the existing guarded PR workflow.
+            - Write only the final Slack response into docs/agent-handoff/CLAUDE_DIRECT_REPLY.md.
+            - Keep the final response under 1200 Japanese characters.
+
+          claude_args: |
+            --max-turns 4
+            --allowedTools "Read,Write,Glob,Grep"
+
+      - name: Guard direct chat from repository changes
+        if: always() && steps.claude.outcome == 'success'
+        shell: bash
+        run: |
+          BAD="$(
+            git status --porcelain |
+              awk '{print $2}' |
+              grep -v '^docs/agent-handoff/CLAUDE_DIRECT_REPLY.md$' || true
+          )"
+          if [ -n "$BAD" ]; then
+            echo "::error::Claude direct chat attempted repository changes:"
+            printf '%s\n' "$BAD"
+            exit 1
+          fi
+
+      - name: Post Claude reply to Slack
+        if: success()
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_CLAUDE_WEBHOOK_URL }}
+          THREAD_TS: ${{ github.event.client_payload.slack_ts }}
+        shell: bash
+        run: |
+          REPLY="$(head -c 3600 docs/agent-handoff/CLAUDE_DIRECT_REPLY.md)"
+          if [ -z "$REPLY" ]; then
+            REPLY="返答を生成できませんでした。もう一度送ってください。"
+          fi
+          REPLY="$(printf '%s' "$REPLY" | sed -E 's/xox[baprs]-[A-Za-z0-9-]+/[redacted]/g; s/sk-[A-Za-z0-9_-]{12,}/[redacted]/g')"
+          TEXT="*NARU Claude Code*\n$REPLY"
+          jq -n --arg text "$TEXT" --arg thread "$THREAD_TS" '
+            if $thread == "" then {text:$text} else {text:$text, thread_ts:$thread} end
+          ' > /tmp/slack-claude-direct.json
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @/tmp/slack-claude-direct.json \
+            "$SLACK_WEBHOOK"
+
+      - name: Alert Observer on direct-chat failure
+        if: failure()
+        continue-on-error: true
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_OBSERVER_WEBHOOK_URL }}
+          THREAD_TS: ${{ github.event.client_payload.slack_ts }}
+        shell: bash
+        run: |
+          if [ -z "$SLACK_WEBHOOK" ]; then exit 0; fi
+          TEXT="🚨 *NARU Observer*\nClaude直通チャットの実行に失敗しました。\nActions: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          jq -n --arg text "$TEXT" --arg thread "$THREAD_TS" '
+            if $thread == "" then {text:$text} else {text:$text, thread_ts:$thread} end
+          ' > /tmp/slack-observer.json
+          curl --fail-with-body --silent --show-error \
+            -H 'Content-Type: application/json' \
+            --data @/tmp/slack-observer.json \
+            "$SLACK_WEBHOOK"
