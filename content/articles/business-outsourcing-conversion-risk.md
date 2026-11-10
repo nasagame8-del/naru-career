@@ -287,7 +287,7 @@ Web制作、デザイン、マーケティング、エンジニアリングな�
 
 取引開始時の書面がそろっていないなら[業務委託の契約書がない場合の確認点](/articles/contractor-no-written-contract)、報酬の支払いが止まっているなら[業務委託の未払い報酬への対応](/articles/contractor-unpaid-fee-consultation)が該当します。入金額が請求額より少ない場合には、[振込手数料を報酬から差し引かれたときの確認点](/articles/contractor-bank-transfer-fee-deduction)も参考になります。いずれも契約内容と取引条件を個別に確かめるための内容です。
 
-（出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2024/)、[公正取引委員会「令和7年度におけるフリーランス法の運用状況」](https://www.jftc.go.jp/houdou/pressrelease/2026/jun/260610_FL.html)）
+（出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2026/)、[公正取引委員会「令和7年度におけるフリーランス法の運用状況」](https://www.jftc.go.jp/houdou/pressrelease/2026/jun/260610_FL.html)）
 
 ## 切り替えを打診されたら、契約前にこの5項目を確認する
 
