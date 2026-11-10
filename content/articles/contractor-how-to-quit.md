@@ -69,7 +69,7 @@ note_published: false
 
 これは「フリーランス本人が自分から辞める場合は30日前に言えば必ず終了できる」というルールではありません。
 
-（出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2025/)、[厚生労働省「フリーランス法に基づく就業環境整備のポイント」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/bunya/freelance_00006.html)）
+（出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2026/)、[厚生労働省「フリーランス法に基づく就業環境整備のポイント」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/bunya/freelance_00006.html)）
 
 発注者から突然契約終了を告げられた場合は、[正社員から業務委託に切り替えた後、契約終了されたら？](/articles/outsourcing-contract-termination-worker-status)で別に整理しています。
 
@@ -111,7 +111,7 @@ note_published: false
 
 フリーランス法の対象となる取引では、発注時の取引条件や報酬額、支払期日などを書面や電磁的方法で明示する義務があります。
 
-（出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2025/)）
+（出典：[公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2026/)）
 
 報酬条件そのものを見直したい場合は、[仕事は同じなのに正社員から業務委託へ。報酬が増えれば問題ない？](/articles/employee-contractor-pay-comparison)も確認してください。
 
@@ -193,7 +193,7 @@ note_published: false
 
 ## 参考資料
 
-- [公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2025/)
+- [公正取引委員会「フリーランス法特設サイト」](https://www.jftc.go.jp/freelancelaw_2026/)
 - [公正取引委員会「フリーランス法 Q&A」](https://www.jftc.go.jp/fllaw_limited/fllaw_qa.html)
 - [厚生労働省「フリーランス・事業者間取引適正化等法に基づく就業環境整備のポイント」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/bunya/freelance_00006.html)
 - [厚生労働省「労働者とは」](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/keiyaku/index02.html)
