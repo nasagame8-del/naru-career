@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T04:17:03.173Z",
+  "generatedAt": "2026-11-11T02:11:24.224Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "thresholds": {
@@ -38,14 +38,14 @@
     },
     {
       "rank": 5,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "業務 委託 から 正社員",
+      "slug": "contractor-how-to-quit",
+      "query": "業務委託 退職",
       "reason": "position_11_30"
     },
     {
       "rank": 6,
-      "slug": "contractor-how-to-quit",
-      "query": "業務委託 退職",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "業務 委託 から 正社員",
       "reason": "position_11_30"
     },
     {
@@ -100,12 +100,6 @@
       "rank": 15,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "内定 労働条件通知書 ない",
-      "reason": "position_11_30"
-    },
-    {
-      "rank": 16,
-      "slug": "agent-not-recommended",
-      "query": "転職エージェント 合わない 辞めたい",
       "reason": "position_11_30"
     }
   ],
@@ -220,14 +214,14 @@
     },
     {
       "rank": 19,
-      "slug": "agent-comparison-2026",
-      "query": "ワークポート",
+      "slug": "outsourcing-contract-termination-worker-status",
+      "query": "業務委託 急に切られる",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 20,
-      "slug": "outsourcing-contract-termination-worker-status",
-      "query": "業務委託 急に切られる",
+      "slug": "agent-comparison-2026",
+      "query": "ワークポート",
       "reason": "low_ctr_top10"
     },
     {
@@ -238,20 +232,20 @@
     },
     {
       "rank": 22,
+      "slug": "contractor-how-to-quit",
+      "query": "業務委託 辞める 言い方",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 23,
       "slug": "agent-job-mismatch",
       "query": "転職エージェント 求人 微妙",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 23,
-      "slug": "contractor-how-to-quit",
-      "query": "業務委託辞める時",
-      "reason": "low_ctr_top10"
-    },
-    {
       "rank": 24,
       "slug": "contractor-how-to-quit",
-      "query": "業務委託 辞める 言い方",
+      "query": "業務委託辞める時",
       "reason": "low_ctr_top10"
     },
     {
@@ -300,7 +294,6 @@
     "contractor-unpaid-fee-consultation",
     "outsourcing-contract-termination-worker-status",
     "agent-job-mismatch",
-    "agent-not-recommended",
     "agent-comparison-2026",
     "employee-contractor-pay-comparison"
   ]
