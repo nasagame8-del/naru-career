@@ -1,0 +1,31 @@
+{
+  "articleId": 78,
+  "slug": "contractor-unpaid-mandatory-training",
+  "reviewType": "AI source review; not Human Fact Check",
+  "factScanner": {
+    "blockerCount": 0,
+    "status": "review_targets_checked_against_official_sources"
+  },
+  "humanFactCheck": {
+    "status": "pending",
+    "approvedHeadSha": null
+  },
+  "imageQa": {
+    "status": "pending",
+    "reason": "4 user images not supplied"
+  },
+  "preview": {
+    "status": "pending"
+  },
+  "sources": [
+    "https://www.jftc.go.jp/file/flpamph.pdf",
+    "https://www.mhlw.go.jp/content/11200000/001717824.pdf",
+    "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/keiyaku/index02.html",
+    "https://freelance110.mhlw.go.jp/",
+    "https://www.mhlw.go.jp/stf/newpage_44487.html"
+  ],
+  "notes": [
+    "労働者向け研修の労働時間ルールを真正な事業者へ自動適用しない",
+    "研修必須一項目だけで労働者・違法と断定しない"
+  ]
+}
