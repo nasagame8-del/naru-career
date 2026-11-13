@@ -1,3 +1,218 @@
+# NARU Research｜3,419社フルラン（Stage 4確定 / Stage 5 provisional） — 2026-10-04
+
+- reportId: USER-SHOKUBA-FULLRUN-3419-20261004
+- completedInstructionId: USER-SHOKUBA-FULLRUN-3419-20261004（ユーザー直接依頼。`NEXT_INSTRUCTION.md` は `IDLE`）
+- status: DONE_PENDING_REVIEW（Draft PR #143 のブランチへpush済み。master未反映・記事未作成・未公開）
+- branch: `research/shokuba-20261004`
+- 指示書: `docs/research/shokuba-full-run-3419-claude.md`
+- 詳細レポート: `docs/research/shokuba-2026-10-04-full-run-report.md`
+
+## 実施内容
+
+- Stage 4を3,419社全件で完走（`--expect 3419` でフレームサイズをassert）
+- high 2,354 / medium 141 / low 172 / none 752 = **3,419**（`confidenceSumCheck` 一致）
+- 採用ページ発見2,495社（72.97%）。全数調査のため加重発見率は粗率と同値
+- Stage 5を2,436社で実行し `provisional: true` で保存。求人レコード7,622件、到達1,464社
+- `TypeError: terminated` 対策の回帰テスト `scripts/research-web.test.mjs` を追加
+- Stage 4確定データから記事候補8件、Stage 5 provisionalから5件を導出
+- 300社パイロット成果物は一切変更していない
+
+## テスト結果
+
+- `node --test scripts/research-web.test.mjs`: 5 tests / 5 pass / 0 fail（新規）
+- `node --test scripts/research-jobs.test.mjs`: 53 tests / 53 pass / 0 fail
+- `node --check` 5ファイル: エラーなし
+- 実ランでの `TypeError: terminated` 再発: 0件
+- `body_read_failed` ガード発火: 2件（いずれもページ単位の失敗として記録しrun継続）
+- `runPool` の `onItemError`（企業単位の明示failure）発火: 0件
+
+## 変更ファイル
+
+- `scripts/research-web.test.mjs`（新規）
+- `docs/research/shokuba-2026-10-04-full-run-report.md`（新規）
+- `data/research/shokuba/2026-10-04-discovery-full-3419.json` / `.csv`（新規）
+- `data/research/shokuba/2026-10-04-discovery-sample-full-3419.csv`（新規）
+- `data/research/shokuba/2026-10-04-jobs-full-3419-provisional.json` / `.csv`（新規）
+- `data/research/shokuba/2026-10-04-full-analysis.json`（新規）
+- `data/research/shokuba/checkpoints/*.jsonl`（新規・resume用）
+- `docs/agent-handoff/REPORT.md`（本追記）
+
+## git diff概要
+
+スクリプトの挙動変更なし。追加はテスト1本とデータ成果物・レポートのみ。
+既存の `scripts/research-*.mjs` と300社パイロットの成果物に差分はない。
+
+## 既知の問題
+
+1. **Stage 5は precision 0.97 / recall 0.47**。求人件数系の数字はすべて過小評価。確定値として記事化できない
+2. 採用求人レコードの55.2%が `job_section`（ページ内セクション分解）。1求人=1レコード未達成
+3. 「職種 / 募集ポジション」等のテーブル見出しを求人名と誤検出（40件）
+4. `employmentType` 未正規化（`正社員`/`FULL_TIME`、`CONTRACTOR`/`Contractor` 併存）
+5. 求人レコードの重複14.0%（1,067件）
+6. `scripts/research-stage45-analysis.mjs` のフィールド名がStage 5側のリネームに未追従。
+   分析JSONの `jobs.granularity.roleNamedJobRecords` と `jobs.sourceCounts` がnullになる（実データはjobs JSON側にある）
+7. 採用ページの誤検出1件（日本IBMにIBMカタール/アラビア語ケーススタディページを割当）。
+   ユニーク採用ページ数は2,495ではなく2,492
+8. Stage 4の `httpAccounting` は最終ラン（2,531社）のみの計測。3,419社全体のリクエスト総数は実測値がない
+9. `2026-10-04-jobs-full-3419-provisional-excluded.json`（20MB・除外10,724件）は
+   300社パイロットの前例に合わせてcommitしていない。再実行で再生成可能
+
+## 判断が必要な項目
+
+- Stage 5の精度改善（recall 0.47 → 一覧ページ側の取りこぼし解消）を次工程にするか、
+  Stage 4の確定データだけで記事を1本作るかの優先順位
+- `excluded.json`（20MB）をリポジトリに含めるかどうか
+
+## 推奨する次の作業
+
+1. Stage 4確定データで記事候補1（国DB 5.1% vs 実在73.0% ＝14.3倍）を執筆
+2. Stage 5の一覧ページ抽出を改善し recall を上げてから求人単位の数字を確定値へ昇格
+3. `research-stage45-analysis.mjs` のフィールド名をStage 5側へ追従させる
+4. `employmentType` の正規化（日本語/JSON-LD enum の統合）
+
+## 運用上の事故（データの素性に関わるため記録）
+
+同一リポジトリで並行作業していた別セッションにより2件発生。詳細は詳細レポート第5節。
+
+1. 作業ツリーが `ui/article-decoration-refresh` へcheckoutされ、`scripts/research-*.mjs` が消失
+2. `git stash --include-untracked`（23:02・stash `b443d08`）が実行中の未追跡成果物を巻き上げ、
+   **Stage 5の約1,695社分の結果が消失**（checkpointに残ったのは165社）。再開ランで再取得済み
+
+以降は専用worktree（`C:\Users\nasaz\naru-shokuba-research`）で作業し、メインツリーから隔離した。
+Stage 4のcheckpointは事故前に完走していたため3,419行が完全な状態で保全されている。
+復元時のCRLF変換はバイト単位でLFへ戻し、`discovery-full-3419.json` は元の7,286,743バイトと一致を確認。
+
+---
+
+# NARU Research｜Stage 4 採用ページDiscovery / Stage 5 求人単位化 — 2026-10-04
+
+- reportId: USER-SHOKUBA-STAGE45-20261004
+- completedInstructionId: USER-SHOKUBA-STAGE45-20261004（ユーザー直接依頼。NEXT_INSTRUCTIONはIDLE）
+- status: DONE_PENDING_REVIEW（Draft PR #143 のブランチへpush済み。master未反映・記事未作成）
+- branch: `research/shokuba-20261004`
+- 詳細レポート: `docs/research/shokuba-2026-10-04-stage4-5-report.md`
+
+## 実施内容
+
+- 旧194URL（しょくばらぼ採用ページ欄）はパイロットとして保持し、主母集団から外した
+- 母集団を「情報通信業 × 企業HPあり」3,512社 → 層化可能3,478社 → ホスト重複除外3,419社に定義
+- 企業規模7区分 × 都道府県3区分の21セルへ均等割当で300社を抽出（seed固定・再現可能）
+- Stage 4 Discoveryを実装（トップページのアンカー / robots.txtのSitemap / sitemap内URL /
+  自社サイト内採用ページ / 企業サイトから直リンクされた公式ATS のみ）
+- confidence high/medium/low を付与し、lowは自動採用しない設計
+- Stage 5で採用ページから求人詳細へ遷移し、1求人=1レコードで構造化（JSON-LD優先・HTML補完）
+- 共通ライブラリ `scripts/research-web.mjs` を切り出し、抽出ロジックのユニットテストを追加
+- 未解決97社のみでサイトルートへのフォールバックを検証（+10社、合算71.0%）
+- 3,419社への拡大コストを実測から外挿し、拡大可否を判断
+
+## テスト結果
+
+- `node --test scripts/research-jobs.test.mjs`: 26 tests / 26 pass / 0 fail
+  - テストで実データに影響する2件のバグを検出・修正（勤務地「東京都渋谷区」から京都府を生成していた／
+    サイト見出し「Recruit 採用情報」を求人名にしていた）
+- `npx eslint scripts/research-*.mjs`: 0 errors / 0 warnings
+- `node --check` 4ファイル: エラーなし
+- Stage 4本番ラン: 300社 / 259.3秒 / HP成功273 / 採用ページ203 / 403=5 / 429=0 / robots block=1
+- Stage 5本番ラン: 202社 / 182.0秒 / 到達106社 / 求人248件 / 非求人ページ221件除外
+- 未実施: リポジトリ全体の `npm test`（アプリコード・既存テスト対象に変更なし）
+
+## 変更ファイル
+
+- 追加: `scripts/research-web.mjs`, `scripts/research-discover-recruitment.mjs`,
+  `scripts/research-jobs.mjs`, `scripts/research-jobs.test.mjs`,
+  `scripts/research-stage45-analysis.mjs`,
+  `data/research/shokuba/2026-10-04-discovery-sample-300.csv`,
+  `data/research/shokuba/2026-10-04-discovery-300.json` / `.csv`,
+  `data/research/shokuba/2026-10-04-discovery-300-retry.json`,
+  `data/research/shokuba/2026-10-04-jobs-300.json` / `.csv`,
+  `data/research/shokuba/2026-10-04-discovery-analysis.json`,
+  `docs/research/shokuba-2026-10-04-stage4-5-report.md`
+- 変更なし: 旧パイロットの `2026-10-04-recruitment-pages-pilot.*`（保持）
+
+## git diff概要
+
+12 files added（データ中心）。アプリコード・既存スクリプトへの変更なし。
+
+## 既知の問題
+
+- Stage 5の「1求人=1レコード」達成度が53.6%。1ページ内複数求人の分解が未実装
+- `isJobLevelRecord` の判定順を直すとコミット済みデータと再現しなくなるため、拡大ランと同時に修正すべき
+- JobPosting JSON-LDは採用ページ203社中1社（0.5%）。構造化データ経由は当てにできない
+- 年収33件・必要経験年数40件と母数が小さく、分布を記事に出せない
+
+## 判断が必要な項目
+
+- Stage 4を3,419社へ拡大するか（レポートの結論は「拡大する価値あり」。約49分・約7,000リクエスト）
+- Stage 5は改良後に拡大するか（レポートの結論は「改良が前提」）
+
+## 推奨する次の作業
+
+1. Stage 5の改良（1ページ内複数求人の分解、recordLevelの型分け、判定順の修正）
+2. その後にStage 4を全3,419社へ拡大（Stage 5も同時に再実行）
+3. 四半期ごとの定点観測として同スクリプトを再実行
+
+---
+
+# NARU Research｜しょくばらぼ × 公開採用ページ — 2026-10-04
+
+- reportId: USER-SHOKUBA-RESEARCH-20261004
+- completedInstructionId: USER-SHOKUBA-RESEARCH-20261004（ユーザー直接依頼。NEXT_INSTRUCTIONはIDLE。正本は `docs/research/shokuba-claude-handoff.md`）
+- status: DONE_PENDING_REVIEW（Draft PR #143 のブランチへpush済み。master未反映・記事未作成）
+- branch: `research/shokuba-20261004`
+- 詳細レポート: `docs/research/shokuba-2026-10-04-report.md`
+
+## 実施内容
+
+- 既存成果物（stage 1のsummary/seed、旧パイロット）を確認し、未完了工程のみ実施
+- stage 2を再実装（`scripts/research-recruitment-pages.mjs`）。採用ページ一意194件を取得し、
+  指示書の必須スキーマ（fetchedAt / pageTitle / httpStatus / JobPosting詳細）、リダイレクト追跡、
+  第三者求人サイト判定、ページ種別判定、古い新卒ページ判定を追加
+- stage 3を新規作成（`scripts/research-shokuba-analysis.mjs`）。母数併記の集計10種＋品質レポートを出力
+- 公式データの「制度あり」回答と採用ページ上の記載を法人番号で突合（新規指標）
+- `docs/research/shokuba-2026-10-04-report.md` に記事候補10件を導出
+- CIワークフローを `workflow_dispatch` のみに変更（pushで再クロールしデータを上書きする事故を防止）
+- 旧Python版stage 2に非推奨コメントを追記（初回パイロットの出所として保持）
+
+## テスト結果
+
+- `node --check scripts/research-recruitment-pages.mjs` / `scripts/research-shokuba-analysis.mjs`: PASS
+- スモークラン（8件・4件、`--out-tag smoke` で本データを汚さず）: 8/8, 4/4 取得成功
+- 本番ラン: 対象194件 / 成功181件（93.3%）/ 失敗13件（404×8, 403×1, 500×1, robots拒否×1, 証明書エラー×2）
+- 集計の再現性: 2回実行し `generatedAtUtc` 以外の差分なし
+- 検算: 失敗内訳合計=13、制度開示件数がstage 1のsummaryと一致、規模帯の企業数合計=8,118
+- 未実施: リポジトリ全体の `vitest`（アプリコード・テスト対象コードに変更なし）
+
+## 変更ファイル
+
+- 追加: `scripts/research-recruitment-pages.mjs`, `scripts/research-shokuba-analysis.mjs`,
+  `data/research/shokuba/2026-10-04-analysis.json`, `docs/research/shokuba-2026-10-04-report.md`
+- 更新: `data/research/shokuba/2026-10-04-recruitment-pages-pilot.json` / `.csv`,
+  `.github/workflows/shokuba-research.yml`, `scripts/research-recruitment-pages.py`（非推奨コメント）
+- 変更なし: `scripts/research-shokuba.py`, `2026-10-04-summary.json`, `*-information-communications-seed.csv`
+
+## git diff概要
+
+8 files changed, 15,875 insertions(+), 3,654 deletions(-)（大半は再取得したパイロットJSONの差分）
+
+## 既知の問題
+
+- stage 2のスクリプトが新旧2本あり、旧Python版は出力先が同一なので誤実行で上書きされる
+- このマシンにPythonがないため、stage 2/3はリポジトリ慣習に合わせNodeで実装（stage 1はPythonのまま）
+- 職種単位の粒度がないため、ポートフォリオ等一部指標は件数が一桁
+
+## 判断が必要な項目
+
+- 旧 `scripts/research-recruitment-pages.py` を削除してよいか
+- 記事化する候補の選定（候補1/2/3を推奨）
+
+## 推奨する次の作業
+
+- 記事候補1〜3のいずれかを選び、SEO Editorの通常フローで執筆（本セッションでは未着手）
+- 145社の自社採用ページを職種単位で再構造化し、職種×第二新卒×年収のクロスを作る
+- 四半期ごとの定点観測として同スクリプトを再実行
+
+---
+
 # NARU 全サイト Typography QA — 2026-10-04
 
 - reportId: USER-TYPOGRAPHY-QA-20261004

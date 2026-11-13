@@ -1,0 +1,63 @@
+name: NARU Shokuba Research
+
+# Manual only. The previous `push` trigger re-ran the crawl on every script
+# change and committed the result back, which would overwrite the dataset that
+# the research branch already carries. Research runs are now explicit.
+on:
+  workflow_dispatch:
+    inputs:
+      refresh_official_csv:
+        description: 'Re-download the Shokuba Rabo CSV and rebuild the seed (stage 1)'
+        type: boolean
+        default: false
+      crawl_recruitment_pages:
+        description: 'Re-crawl the published recruitment pages (stage 2)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/shokuba-20261004
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Download and analyze official Shokuba Rabo CSV (stage 1)
+        if: ${{ inputs.refresh_official_csv }}
+        run: python scripts/research-shokuba.py
+
+      # Note: GitHub-hosted runners time out on a large share of Japanese
+      # corporate sites (136/194 from CI vs 181/194 from a local run), so a CI
+      # crawl is a fallback, not the source of truth.
+      - name: Crawl official recruitment pages (stage 2)
+        if: ${{ inputs.crawl_recruitment_pages }}
+        run: node scripts/research-recruitment-pages.mjs --concurrency 6
+
+      - name: Aggregate (stage 3)
+        run: node scripts/research-shokuba-analysis.mjs
+
+      - name: Commit research outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research/shokuba/
+          if git diff --cached --quiet; then
+            echo "No research output changes."
+            exit 0
+          fi
+          git commit -m "research: snapshot shokuba 2026-10-04"
+          git push origin HEAD:research/shokuba-20261004
