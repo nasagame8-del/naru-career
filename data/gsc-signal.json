@@ -1,61 +1,36 @@
 {
-  "generatedAt": "2026-11-12T03:18:18.444Z",
+  "generatedAt": "2026-11-13T02:52:22.635Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-26",
-    "endDate": "2026-11-08"
+    "startDate": "2026-10-27",
+    "endDate": "2026-11-09"
   },
   "previousRange": {
-    "startDate": "2026-10-12",
-    "endDate": "2026-10-25"
+    "startDate": "2026-10-13",
+    "endDate": "2026-10-26"
   },
   "visibleQueryCounts": {
-    "current": 114,
-    "previous": 76,
-    "new": 69
+    "current": 123,
+    "previous": 74,
+    "new": 80
   },
   "positionBuckets": {
     "current": {
-      "top3": 11,
-      "top10": 46,
-      "top20": 68
+      "top3": 13,
+      "top10": 45,
+      "top20": 72
     },
     "previous": {
-      "top3": 7,
-      "top10": 20,
+      "top3": 5,
+      "top10": 19,
       "top20": 35
     }
   },
   "querySignals": [
     {
-      "query": "業務委託 急に辞める",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
       "query": "正社員から業務委託に変更",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "正社員から業務委託",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 急に切られる",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 退職 何 日前",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "社員から業務委託へ",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -65,7 +40,12 @@
       "signal": "quick_win"
     },
     {
-      "query": "正社員 業務委託 切り替え",
+      "query": "業務委託 退職 何 日前",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "正社員から業務委託",
       "positionBand": "11-20",
       "signal": "quick_win"
     },
@@ -75,8 +55,28 @@
       "signal": "quick_win"
     },
     {
-      "query": "パート 業務委託 切り替え",
+      "query": "正社員 業務委託 切り替え",
       "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "社員から業務委託へ",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 急に切られる",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "第二新卒 4月入社",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 入社前 もらえない",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -100,8 +100,8 @@
       "signal": "rising"
     },
     {
-      "query": "パート 業務委託 切り替え",
-      "positionBand": "11-20",
+      "query": "業務委託 急に辞める",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -115,12 +115,12 @@
       "signal": "rising"
     },
     {
-      "query": "業務 委託 から 正社員",
-      "positionBand": "21-40",
+      "query": "労働条件通知書 入社前 もらえない",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "業務 委託 時間 管理",
+      "query": "業務 委託 から 正社員",
       "positionBand": "21-40",
       "signal": "rising"
     },
@@ -140,13 +140,13 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 契約解除",
-      "positionBand": "21-40",
+      "query": "業務委託 急に切られる",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "業務委託 急に切られる",
-      "positionBand": "4-10",
+      "query": "業務委託 退職",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -172,8 +172,8 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/outsourcing-contract-termination-worker-status",
-      "positionBand": "11-20",
+      "page": "/articles/contractor-exclusivity-noncompete-checks",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -182,7 +182,7 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-exclusivity-noncompete-checks",
+      "page": "/",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -190,11 +190,6 @@
       "page": "/articles/agent-site-vs-agent-usage",
       "positionBand": "21-40",
       "signal": "new"
-    },
-    {
-      "page": "/articles/contractor-client-cancellation-costs",
-      "positionBand": "4-10",
-      "signal": "rising"
     },
     {
       "page": "/articles/contractor-no-written-contract",
@@ -207,27 +202,32 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/probation-period-lower-salary-checks",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/reference-check-explained",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
       "page": "/articles",
       "positionBand": "11-20",
       "signal": "new"
     },
     {
-      "page": "/articles/ai-interview-screening",
+      "page": "/articles/business-outsourcing-conversion-risk",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
-      "page": "/articles/bizreach-second-new-grad",
+      "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/business-outsourcing-conversion-risk",
       "positionBand": "4-10",
       "signal": "rising"
     }
