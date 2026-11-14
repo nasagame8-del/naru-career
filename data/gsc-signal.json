@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-13T02:52:22.635Z",
+  "generatedAt": "2026-11-14T02:39:24.239Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-27",
-    "endDate": "2026-11-09"
+    "startDate": "2026-10-28",
+    "endDate": "2026-11-10"
   },
   "previousRange": {
-    "startDate": "2026-10-13",
-    "endDate": "2026-10-26"
+    "startDate": "2026-10-14",
+    "endDate": "2026-10-27"
   },
   "visibleQueryCounts": {
-    "current": 123,
-    "previous": 74,
-    "new": 80
+    "current": 126,
+    "previous": 69,
+    "new": 79
   },
   "positionBuckets": {
     "current": {
-      "top3": 13,
-      "top10": 45,
-      "top20": 72
+      "top3": 12,
+      "top10": 46,
+      "top20": 76
     },
     "previous": {
       "top3": 5,
-      "top10": 19,
-      "top20": 35
+      "top10": 17,
+      "top20": 32
     }
   },
   "querySignals": [
@@ -45,16 +45,6 @@
       "signal": "quick_win"
     },
     {
-      "query": "正社員から業務委託",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "転職 労働条件通知書 来ない",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
       "query": "正社員 業務委託 切り替え",
       "positionBand": "11-20",
       "signal": "quick_win"
@@ -65,13 +55,28 @@
       "signal": "quick_win"
     },
     {
+      "query": "第二新卒 4月入社",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "転職 労働条件通知書 来ない",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
       "query": "業務委託 急に切られる",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "第二新卒 4月入社",
+      "query": "正社員から業務委託",
       "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 辞め方",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -81,11 +86,6 @@
     },
     {
       "query": "業務委託 すぐ辞めれる",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 辞め方",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -125,6 +125,11 @@
       "signal": "rising"
     },
     {
+      "query": "業務委託 切られる",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "query": "業務委託 勤怠管理",
       "positionBand": "41+",
       "signal": "rising"
@@ -142,11 +147,6 @@
     {
       "query": "業務委託 急に切られる",
       "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 退職",
-      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -189,7 +189,7 @@
     {
       "page": "/articles/agent-site-vs-agent-usage",
       "positionBand": "21-40",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/contractor-no-written-contract",
@@ -197,8 +197,13 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-unpaid-fee-consultation",
+      "page": "/articles/fake-freelancer-worker-status-guide",
       "positionBand": "11-20",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/reference-check-explained",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -207,27 +212,22 @@
       "signal": "new"
     },
     {
-      "page": "/articles/business-outsourcing-conversion-risk",
+      "page": "/articles/casual-interview",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/articles/business-outsourcing-conversion-risk",
+      "page": "/articles/certification-exam-on-hold",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "page": "/articles/business-outsourcing-conversion-risk",
-      "positionBand": "4-10",
+      "page": "/articles/contractor-unpaid-fee-consultation",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
-      "page": "/articles/business-outsourcing-conversion-risk",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/business-outsourcing-conversion-risk",
+      "page": "/articles/contractor-unpaid-revisions-scope",
       "positionBand": "4-10",
       "signal": "rising"
     }
