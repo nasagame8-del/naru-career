@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-15T02:05:38.016Z",
+  "generatedAt": "2026-11-16T02:22:20.846Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-29",
-    "endDate": "2026-11-11"
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-12"
   },
   "previousRange": {
-    "startDate": "2026-10-15",
-    "endDate": "2026-10-28"
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-29"
   },
   "visibleQueryCounts": {
-    "current": 129,
-    "previous": 68,
-    "new": 82
+    "current": 132,
+    "previous": 71,
+    "new": 81
   },
   "positionBuckets": {
     "current": {
       "top3": 13,
       "top10": 47,
-      "top20": 77
+      "top20": 80
     },
     "previous": {
       "top3": 6,
-      "top10": 18,
-      "top20": 35
+      "top10": 19,
+      "top20": 37
     }
   },
   "querySignals": [
@@ -45,8 +45,23 @@
       "signal": "quick_win"
     },
     {
+      "query": "業務委託辞める時",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
       "query": "第二新卒 4月入社",
       "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 入社前 もらえない",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 急に切られる",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -65,28 +80,13 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 急に切られる",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
       "query": "業務委託 辞め方",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 入社前 もらえない",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "正社員から業務委託",
+      "query": "労働条件通知書 事前にもらえない",
       "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 すぐ辞めれる",
-      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -105,8 +105,8 @@
       "signal": "rising"
     },
     {
-      "query": "フリーランス 契約解除",
-      "positionBand": "41+",
+      "query": "フリーランス 未払い 契約書なし",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -120,13 +120,8 @@
       "signal": "rising"
     },
     {
-      "query": "業務 委託 から 正社員",
-      "positionBand": "21-40",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 勤怠管理",
-      "positionBand": "41+",
+      "query": "業務委託 切られる",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -146,6 +141,11 @@
     },
     {
       "query": "業務委託 退職",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "query": "業務委託失業保険",
       "positionBand": "11-20",
       "signal": "rising"
     },
@@ -177,19 +177,9 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-exclusivity-noncompete-checks",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
       "page": "/articles/fake-freelancer-worker-status-guide",
       "positionBand": "11-20",
       "signal": "new"
-    },
-    {
-      "page": "/",
-      "positionBand": "4-10",
-      "signal": "rising"
     },
     {
       "page": "/articles/agent-site-vs-agent-usage",
@@ -212,6 +202,11 @@
       "signal": "new"
     },
     {
+      "page": "/articles/agent-not-recommended",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "page": "/articles/casual-interview",
       "positionBand": "4-10",
       "signal": "new"
@@ -222,14 +217,19 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/contractor-unpaid-fee-consultation",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
       "page": "/articles/contractor-unpaid-revisions-scope",
       "positionBand": "4-10",
       "signal": "rising"
+    },
+    {
+      "page": "/articles/direct-recruiting",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/employee-to-contractor-unemployment-benefit",
+      "positionBand": "4-10",
+      "signal": "new"
     }
   ]
 }
