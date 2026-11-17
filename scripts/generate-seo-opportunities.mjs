@@ -29,32 +29,71 @@ const LOW_CTR_POSITION_MAX = 10;
 
 export function slugFromPage(pageUrl) {
   try {
-    const pathname = pageUrl.startsWith("/") ? pageUrl : new URL(pageUrl).pathname;
-    const m = pathname.match(/^\/articles\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
-    return m ? m[1] : null;
+    // URL parsing removes query strings and fragments for both absolute and
+    // relative Search Console page keys before extracting the canonical path.
+    const url = new URL(pageUrl, "https://naru-career.com");
+    const match = url.pathname.match(/^\/articles\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
+    return match ? match[1] : null;
   } catch {
     return null;
   }
 }
 
 function normalizedRow(row, knownSlugs) {
-  const [page, query] = row?.keys ?? [];
+  const [page, rawQuery] = row?.keys ?? [];
   const slug = page ? slugFromPage(page) : null;
+  const query = typeof rawQuery === "string" ? rawQuery.trim() : "";
   if (!slug || !query || !knownSlugs.has(slug)) return null;
-  return {
-    slug,
-    query: String(query).trim(),
-    clicks: Number(row.clicks ?? 0),
-    impressions: Number(row.impressions ?? 0),
-    ctr: Number(row.ctr ?? 0),
-    position: Number(row.position ?? 0),
-  };
+
+  const clicks = Number(row.clicks ?? 0);
+  const impressions = Number(row.impressions ?? 0);
+  const position = Number(row.position ?? 0);
+  if (![clicks, impressions, position].every(Number.isFinite)) return null;
+
+  return { slug, query, clicks, impressions, position };
+}
+
+/**
+ * Collapse URL variants (fragment/query/trailing slash) to one slug × query.
+ * Counts are additive; CTR is recomputed from totals and position is weighted
+ * by impressions, matching Search Console's aggregation semantics.
+ */
+export function aggregatePageQueryRows(rows, knownSlugs) {
+  const grouped = new Map();
+
+  for (const source of rows ?? []) {
+    const row = normalizedRow(source, knownSlugs);
+    if (!row) continue;
+
+    const key = JSON.stringify([row.slug, row.query]);
+    const current = grouped.get(key) ?? {
+      slug: row.slug,
+      query: row.query,
+      clicks: 0,
+      impressions: 0,
+      weightedPosition: 0,
+    };
+
+    current.clicks += row.clicks;
+    current.impressions += row.impressions;
+    current.weightedPosition += row.position * row.impressions;
+    grouped.set(key, current);
+  }
+
+  return [...grouped.values()]
+    .filter((row) => row.impressions > 0)
+    .map((row) => ({
+      slug: row.slug,
+      query: row.query,
+      clicks: row.clicks,
+      impressions: row.impressions,
+      ctr: row.clicks / row.impressions,
+      position: row.weightedPosition / row.impressions,
+    }));
 }
 
 export function buildSeoOpportunities(rows, knownSlugs) {
-  const valid = (rows ?? [])
-    .map((row) => normalizedRow(row, knownSlugs))
-    .filter(Boolean)
+  const valid = aggregatePageQueryRows(rows, knownSlugs)
     .filter((row) => row.impressions >= MIN_IMPRESSIONS);
 
   const strikingDistance = valid
@@ -158,6 +197,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     window: WINDOW_LABEL,
     privacy: "metrics_omitted",
+    aggregation: "canonical_slug_query; additive_clicks_impressions; impression_weighted_position",
     thresholds: {
       minImpressions: MIN_IMPRESSIONS,
       strikingDistancePosition: [STRIKING_MIN, STRIKING_MAX],
