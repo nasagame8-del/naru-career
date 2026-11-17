@@ -1,30 +1,30 @@
 {
-  "generatedAt": "2026-11-17T04:44:10.606Z",
+  "generatedAt": "2026-11-17T13:42:21.577Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-10-31",
-    "endDate": "2026-11-13"
+    "startDate": "2026-11-01",
+    "endDate": "2026-11-14"
   },
   "previousRange": {
-    "startDate": "2026-10-17",
-    "endDate": "2026-10-30"
+    "startDate": "2026-10-18",
+    "endDate": "2026-10-31"
   },
   "visibleQueryCounts": {
-    "current": 135,
-    "previous": 68,
-    "new": 84
+    "current": 138,
+    "previous": 69,
+    "new": 85
   },
   "positionBuckets": {
     "current": {
       "top3": 13,
       "top10": 46,
-      "top20": 82
+      "top20": 83
     },
     "previous": {
       "top3": 6,
-      "top10": 19,
+      "top10": 17,
       "top20": 35
     }
   },
@@ -80,13 +80,13 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 急に切られる",
+      "query": "業務委託 切られる",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 事前にもらえない",
-      "positionBand": "11-20",
+      "query": "業務委託 急に切られる",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
@@ -96,6 +96,16 @@
     },
     {
       "query": "労働条件通知書 内定承諾前 メール",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "query": "内定 労働条件通知書 ない",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "query": "労働条件通知書 内定 前",
       "positionBand": "11-20",
       "signal": "rising"
     },
@@ -137,16 +147,6 @@
     {
       "query": "業務委託 急に切られる",
       "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 退職",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託失業保険",
-      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -217,17 +217,17 @@
       "signal": "rising"
     },
     {
+      "page": "/articles/beginner-engineer-tutorial-portfolio",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "page": "/articles/casual-interview",
       "positionBand": "4-10",
       "signal": "new"
     },
     {
       "page": "/articles/certification-exam-on-hold",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/contractor-unpaid-revisions-scope",
       "positionBand": "4-10",
       "signal": "rising"
     }
