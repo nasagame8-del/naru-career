@@ -280,3 +280,19 @@ NARU本番では以下の識別子を安全な非機密デフォルトとして�
 - service account: `naru-war-room@project-bb3a6643-e6ec-4b14-979.iam.gserviceaccount.com`
 
 この4値は秘密情報ではない。長期credentialは保存しない。
+
+
+### Claude direct cloud chat
+
+Slackの `#naru-war-room` で `@NARU Claude Code`、または文頭に `Claude` / `クロード` と書いた発言は、ChatGPT plannerを通さずClaudeへ直接ルーティングする。
+
+経路:
+
+`Slack message.channels → Vercel War Room ingress → repository_dispatch → GitHub Actions → Claude Code OAuth → Claude Slack webhook`
+
+- ローカルPC不要
+- OpenAI API不使用
+- Anthropic API key不使用（既存の `CLAUDE_CODE_OAUTH_TOKEN` のみ）
+- 通常の直通会話ではPRを作らない
+- 直通会話はread-only。実装が必要な場合は既存のguarded PR workflowへ切り替える
+- Drive/Slack thread contextはVercel側で取得してClaudeへ渡す
