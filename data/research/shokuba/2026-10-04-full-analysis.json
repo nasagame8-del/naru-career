@@ -1,0 +1,906 @@
+{
+  "runDate": "2026-10-04",
+  "stage": "stage4-5-analysis",
+  "integrityChecks": {
+    "companies": 3419,
+    "duplicateCorporateNumbers": 0,
+    "confidenceBucketsSumToCompanies": true,
+    "recruitmentUrlsSharedByMultipleCompanies": 2,
+    "jobUrlsSharedByMultipleCompanies": 13,
+    "nullsPreserved": "このパイプラインでは未取得値を null のまま保持しており、0 や false に変換していない。"
+  },
+  "generator": "scripts/research-stage45-analysis.mjs",
+  "generatedAtUtc": "2026-10-05T15:42:58.054Z",
+  "inputs": {
+    "discovery": "2026-10-04-discovery-full-3419.json",
+    "jobs": "2026-10-04-jobs-full-3419.json",
+    "stage3Analysis": "2026-10-04-analysis.json"
+  },
+  "sampling": {
+    "strategy": "企業規模7区分 × 都道府県3区分の21セルへ均等割当（上限はセルの実数）。比例配分だと東京57%・零細企業偏重になるため均等化し、populationWeight で母集団換算も可能にしている。",
+    "seed": 20261004,
+    "frame": {
+      "eligibleWithHomepage": 3478,
+      "afterHostDeduplication": 3419,
+      "cells": {
+        "1-4人 / その他": 50,
+        "1-4人 / 主要都市圏": 119,
+        "1-4人 / 東京": 189,
+        "10-29人 / その他": 129,
+        "10-29人 / 主要都市圏": 189,
+        "10-29人 / 東京": 299,
+        "100-299人 / その他": 170,
+        "100-299人 / 主要都市圏": 186,
+        "100-299人 / 東京": 432,
+        "1000人以上 / その他": 8,
+        "1000人以上 / 主要都市圏": 54,
+        "1000人以上 / 東京": 147,
+        "30-99人 / その他": 169,
+        "30-99人 / 主要都市圏": 188,
+        "30-99人 / 東京": 352,
+        "300-999人 / その他": 76,
+        "300-999人 / 主要都市圏": 86,
+        "300-999人 / 東京": 277,
+        "5-9人 / その他": 65,
+        "5-9人 / 主要都市圏": 77,
+        "5-9人 / 東京": 157
+      }
+    },
+    "sampleSize": 3419,
+    "strata": {
+      "300-999人 / 東京": 277,
+      "100-299人 / 東京": 432,
+      "1000人以上 / 東京": 147,
+      "30-99人 / 主要都市圏": 188,
+      "10-29人 / 東京": 299,
+      "1-4人 / 東京": 189,
+      "30-99人 / 東京": 352,
+      "5-9人 / 東京": 157,
+      "10-29人 / 主要都市圏": 189,
+      "300-999人 / 主要都市圏": 86,
+      "30-99人 / その他": 169,
+      "100-299人 / 主要都市圏": 186,
+      "1-4人 / 主要都市圏": 119,
+      "5-9人 / 主要都市圏": 77,
+      "1-4人 / その他": 50,
+      "100-299人 / その他": 170,
+      "10-29人 / その他": 129,
+      "300-999人 / その他": 76,
+      "5-9人 / その他": 65,
+      "1000人以上 / 主要都市圏": 54,
+      "1000人以上 / その他": 8
+    },
+    "sampleFile": "data\\research\\shokuba\\2026-10-04-discovery-sample-full-3419.csv",
+    "excluded": "企業規模が0人/非開示の34社は層化対象外"
+  },
+  "executionTime": {
+    "discoveryElapsedSeconds": 2676.7,
+    "discoveryResume": {
+      "checkpoint": "data\\research\\shokuba\\checkpoints\\2026-10-04-discovery-full-3419.jsonl",
+      "companiesFromCheckpoint": 888,
+      "companiesCrawledThisRun": 2531,
+      "frameSize": 3419
+    },
+    "jobsElapsedSeconds": 4401,
+    "jobsResume": {
+      "checkpoint": "data\\research\\shokuba\\checkpoints\\2026-10-04-jobs-full-3419-provisional.jsonl",
+      "companiesFromCheckpoint": 165,
+      "companiesCrawledThisRun": 2271
+    }
+  },
+  "discoveryFunnel": {
+    "companiesAttempted": 3419,
+    "homepageFetchSuccess": 3126,
+    "homepageFetchSuccessRate": 0.9143,
+    "weightedRate": 0.9143,
+    "weightedDenominator": 3419,
+    "anyCandidateFound": 2667,
+    "recruitmentPageAdopted": 2495,
+    "adoptionRateAmongAttempted": 0.7297,
+    "adoptionRateAmongHomepageSuccess": 0.7981,
+    "confidence": {
+      "high": 2354,
+      "medium": 141,
+      "low": 172,
+      "none": 752
+    },
+    "verifiedAsRecruitmentPage": 2495,
+    "officialAtsAdopted": 43,
+    "discoveryMethodCounts": {
+      "homepageAnchor": 2359,
+      "null": 752,
+      "robotsSitemap": 91,
+      "homepageUrlPattern": 85,
+      "homepageLinkOffDomain": 52,
+      "homepageLinkToOfficialAts": 43,
+      "homepageLinkToJobPlatform": 23,
+      "homepageAnchorNegativePath": 14
+    },
+    "hostCategoryCountsAmongAdopted": {
+      "ownDomain": 2393,
+      "otherDomain": 59,
+      "atsHosted": 43
+    },
+    "sitemapsChecked": 1009,
+    "companiesWhereSitemapWasTheOnlyRoute": 67
+  },
+  "weightedAdoption": {
+    "weightedRate": 0.7297,
+    "weightedDenominator": 3419
+  },
+  "rootFallbackRetry": null,
+  "accessOutcomes": {
+    "totalHttpRequests": 10889,
+    "httpStatusCountsAcrossAllRequests": {
+      "200": 5070,
+      "301": 916,
+      "302": 153,
+      "303": 1,
+      "307": 10,
+      "308": 19,
+      "400": 1,
+      "401": 1,
+      "403": 52,
+      "404": 59,
+      "429": 2,
+      "500": 2,
+      "502": 1,
+      "503": 2,
+      "525": 2
+    },
+    "hostsStoppedAfter429": [
+      "global.fujitsu",
+      "wevnal.co.jp"
+    ],
+    "failureClassesOnHomepage": {
+      "dns": 79,
+      "tls": 46,
+      "http404": 46,
+      "http403": 45,
+      "timeout": 28,
+      "http5xx": 18,
+      "robotsBlocked": 9,
+      "nonHtml": 8,
+      "connection": 5,
+      "http429": 4,
+      "other": 3,
+      "http401": 1,
+      "http400": 1
+    },
+    "failureClassesOnRecruitmentPage": {
+      "http404": 9,
+      "http5xx": 7,
+      "robotsBlocked": 4,
+      "nonHtml": 3,
+      "http403": 2,
+      "other": 1,
+      "tls": 1,
+      "timeout": 1
+    },
+    "originFallbackUsed": 205,
+    "originFallbackLedToDiscovery": 63,
+    "companiesWithRedirects": 278,
+    "homepageStatusCounts": {
+      "200": 3136,
+      "301": 8,
+      "302": 3,
+      "400": 1,
+      "401": 1,
+      "403": 45,
+      "404": 46,
+      "429": 3,
+      "500": 2,
+      "502": 13,
+      "503": 2,
+      "525": 1,
+      "null": 158
+    },
+    "homepageErrorCounts": {
+      "TypeError:ENOTFOUND": 73,
+      "http_404": 46,
+      "http_403": 45,
+      "TypeError:UNABLE_TO_VERIFY_LEAF_SIGNATURE": 25,
+      "TypeError:UND_ERR_CONNECT_TIMEOUT": 22,
+      "http_502": 13,
+      "blocked_by_robots": 9,
+      "TypeError:CERT_HAS_EXPIRED": 9,
+      "non_html_content": 8,
+      "TypeError:EAI_AGAIN": 6,
+      "TimeoutError": 6,
+      "TypeError:ERR_TLS_CERT_ALTNAME_INVALID": 6,
+      "TypeError:ECONNRESET": 4,
+      "http_429_host_stopped": 3,
+      "http_500": 2,
+      "TypeError:DEPTH_ZERO_SELF_SIGNED_CERT": 2,
+      "body_read_failed:TypeError:HPE_INVALID_CHUNK_SIZE": 2,
+      "TypeError:UNABLE_TO_GET_ISSUER_CERT_LOCALLY": 2,
+      "http_503": 2,
+      "TypeError:ECONNREFUSED": 1,
+      "http_401": 1,
+      "TypeError": 1,
+      "host_stopped_after_429": 1,
+      "http_400": 1,
+      "TypeError:ERR_SSL_SSLV3_ALERT_HANDSHAKE_FAILURE": 1,
+      "TypeError:ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED": 1,
+      "http_525": 1
+    },
+    "recruitmentPageStatusCounts": {
+      "200": 2555,
+      "403": 2,
+      "404": 9,
+      "500": 1,
+      "502": 6
+    },
+    "http403": 47,
+    "http429": 3,
+    "robotsBlocked": 12,
+    "robotsStatusCountsOnHomepage": {
+      "allowed": 2286,
+      "unavailable": 1123,
+      "blocked": 9,
+      "null": 1
+    },
+    "companiesLinkingToJobPlatformsFromHomepage": 164,
+    "jobPlatformHostsSeenOnHomepages": {
+      "job.mynavi.jp": 102,
+      "job.rikunabi.com": 27,
+      "wantedly.com": 22,
+      "tenshoku.mynavi.jp": 7,
+      "job.career-tasu.jp": 4,
+      "jp.indeed.com": 4,
+      "employment.en-japan.com": 4,
+      "type.jp": 3,
+      "onecareer.jp": 3,
+      "hire.wantedly.com": 1,
+      "paiza.jp": 1,
+      "crowdworks.jp": 1,
+      "saiyo.employment.en-japan.com": 1,
+      "business.openwork.jp": 1,
+      "career.openwork.jp": 1,
+      "openwork.jp": 1,
+      "green-japan.com": 1,
+      "hellowork.mhlw.go.jp": 1,
+      "lancers.jp": 1,
+      "linkedin.com": 1,
+      "plus.onecareer.jp": 1,
+      "portal.onecareer.jp": 1,
+      "news.mynavi.jp": 1,
+      "doda.jp": 1
+    }
+  },
+  "coverageGainVsShokubaColumn": {
+    "note": "しょくばらぼの「採用ページ」欄に自分でURLを書いていた企業は情報通信業8,118社の2.4%しかない。Discoveryは企業HPを起点にそれを拡張できるかを測る。",
+    "sampleCompanies": 3419,
+    "hadShokubaRecruitmentUrl": 174,
+    "adoptedRecruitmentPage": 2495,
+    "newlyDiscoveredNotInShokuba": 2348,
+    "multiplierVsShokubaColumn": 14.34,
+    "shokubaColumnRateInPopulation": 0.0241,
+    "estimatedFindableRateAmongCompaniesWithHomepage": 0.7297
+  },
+  "breakdowns": {
+    "adoptionBySizeBand": {
+      "1-4人": {
+        "companies": 358,
+        "found": 135,
+        "rate": 0.3771
+      },
+      "10-29人": {
+        "companies": 617,
+        "found": 423,
+        "rate": 0.6856
+      },
+      "100-299人": {
+        "companies": 788,
+        "found": 671,
+        "rate": 0.8515
+      },
+      "1000人以上": {
+        "companies": 209,
+        "found": 177,
+        "rate": 0.8469
+      },
+      "30-99人": {
+        "companies": 709,
+        "found": 554,
+        "rate": 0.7814
+      },
+      "300-999人": {
+        "companies": 439,
+        "found": 383,
+        "rate": 0.8724
+      },
+      "5-9人": {
+        "companies": 299,
+        "found": 152,
+        "rate": 0.5084
+      }
+    },
+    "adoptionByPrefectureTier": {
+      "その他": {
+        "companies": 667,
+        "found": 513,
+        "rate": 0.7691
+      },
+      "主要都市圏": {
+        "companies": 899,
+        "found": 650,
+        "rate": 0.723
+      },
+      "東京": {
+        "companies": 1853,
+        "found": 1332,
+        "rate": 0.7188
+      }
+    },
+    "homepageSuccessBySizeBand": {
+      "1-4人": {
+        "companies": 358,
+        "found": 329,
+        "rate": 0.919
+      },
+      "10-29人": {
+        "companies": 617,
+        "found": 554,
+        "rate": 0.8979
+      },
+      "100-299人": {
+        "companies": 788,
+        "found": 730,
+        "rate": 0.9264
+      },
+      "1000人以上": {
+        "companies": 209,
+        "found": 183,
+        "rate": 0.8756
+      },
+      "30-99人": {
+        "companies": 709,
+        "found": 649,
+        "rate": 0.9154
+      },
+      "300-999人": {
+        "companies": 439,
+        "found": 401,
+        "rate": 0.9134
+      },
+      "5-9人": {
+        "companies": 299,
+        "found": 280,
+        "rate": 0.9365
+      }
+    },
+    "atsUseBySizeBand": {
+      "1-4人": {
+        "companies": 358,
+        "found": 1,
+        "rate": 0.0028
+      },
+      "10-29人": {
+        "companies": 617,
+        "found": 13,
+        "rate": 0.0211
+      },
+      "100-299人": {
+        "companies": 788,
+        "found": 12,
+        "rate": 0.0152
+      },
+      "1000人以上": {
+        "companies": 209,
+        "found": 1,
+        "rate": 0.0048
+      },
+      "30-99人": {
+        "companies": 709,
+        "found": 11,
+        "rate": 0.0155
+      },
+      "300-999人": {
+        "companies": 439,
+        "found": 2,
+        "rate": 0.0046
+      },
+      "5-9人": {
+        "companies": 299,
+        "found": 3,
+        "rate": 0.01
+      }
+    },
+    "jobPostingJsonLdBySizeBand": {
+      "1-4人": {
+        "companies": 135,
+        "found": 8,
+        "rate": 0.0593
+      },
+      "10-29人": {
+        "companies": 423,
+        "found": 11,
+        "rate": 0.026
+      },
+      "100-299人": {
+        "companies": 671,
+        "found": 5,
+        "rate": 0.0075
+      },
+      "1000人以上": {
+        "companies": 177,
+        "found": 0,
+        "rate": 0
+      },
+      "30-99人": {
+        "companies": 554,
+        "found": 9,
+        "rate": 0.0162
+      },
+      "300-999人": {
+        "companies": 383,
+        "found": 1,
+        "rate": 0.0026
+      },
+      "5-9人": {
+        "companies": 152,
+        "found": 5,
+        "rate": 0.0329
+      }
+    }
+  },
+  "jobs": {
+    "companiesEligible": 2436,
+    "companiesReachingJobRecords": 1464,
+    "companyReachRateAmongEligible": 0.601,
+    "companyReachRateAmongAllSampled": 0.4282,
+    "weightedRate": 0.601,
+    "weightedDenominator": 2436,
+    "provisional": true,
+    "provisionalReason": "1求人=1レコードの達成度が未完成のため、求人件数および求人単位の割合は暫定値。記事の確定数値として使用しないこと。Golden Set 50ページでの precision は 0.97 だが recall は 0.47 で、一覧ページ側の求人を取りこぼす。",
+    "elapsedSeconds": 4401,
+    "totalHttpRequests": 17038,
+    "companiesTruncatedAtCap": 83,
+    "maxJobsPerCompany": 20,
+    "suspiciousJobTitles": 756,
+    "categoryOrContainerLikeRecords": 3398,
+    "duplicateCandidateRecords": 3046,
+    "jobPostingJsonLdRecords": 974,
+    "jobRecords": 7622,
+    "granularity": {
+      "note": "1求人=1レコードがどれだけ達成できたかの精度指標。roleNamed は職種名を含むタイトルのレコード。",
+      "roleNamedJobRecords": null,
+      "roleNamedShare": 0,
+      "rejectedNonJobPages": null,
+      "jobTitleSourceCounts": {
+        "null": 7622
+      },
+      "duplicateTitlesWithinCompany": 1385
+    },
+    "medianJobRecordsPerReachingCompany": 2,
+    "medianJobRecordsPerEligibleCompany": 1,
+    "jobRecordsPerReachingCompanyMean": 5.21,
+    "sourceCounts": {
+      "null": 7622
+    },
+    "flagScopeCounts": {
+      "posting+page": 780,
+      "posting": 194
+    },
+    "fieldCoverage": {
+      "denominator": 7622,
+      "jobTitle": 7622,
+      "employmentType": 4075,
+      "location": 2945,
+      "salaryMin": 1634,
+      "salaryMax": 979,
+      "experienceYearsMin": 1123,
+      "requiredSkills": 2634,
+      "preferredSkills": 1456,
+      "salaryUnitCounts": {
+        "MONTH": 840,
+        "YEAR": 762,
+        "HOUR": 24,
+        "MON": 1
+      },
+      "salarySourceCounts": {
+        "jsonld:baseSalary": 506,
+        "html:月給下限のみ": 254,
+        "html:年収レンジ": 219,
+        "html:年収下限のみ": 215,
+        "html:月給レンジ(円)": 191,
+        "html:月給下限のみ(万円)": 154,
+        "html:月給レンジ(万円)": 95
+      }
+    },
+    "flagCounts": {
+      "secondNewGrad": {
+        "denominator": 7622,
+        "count": 254,
+        "rate": 0.0333
+      },
+      "inexperienced": {
+        "denominator": 7622,
+        "count": 981,
+        "rate": 0.1287
+      },
+      "recentGraduate": {
+        "denominator": 7622,
+        "count": 212,
+        "rate": 0.0278
+      },
+      "potentialHire": {
+        "denominator": 7622,
+        "count": 38,
+        "rate": 0.005
+      },
+      "training": {
+        "denominator": 7622,
+        "count": 1824,
+        "rate": 0.2393
+      },
+      "mentor": {
+        "denominator": 7622,
+        "count": 201,
+        "rate": 0.0264
+      },
+      "remote": {
+        "denominator": 7622,
+        "count": 1863,
+        "rate": 0.2444
+      },
+      "fullRemote": {
+        "denominator": 7622,
+        "count": 259,
+        "rate": 0.034
+      },
+      "engineer": {
+        "denominator": 7622,
+        "count": 4162,
+        "rate": 0.5461
+      },
+      "webMarketing": {
+        "denominator": 7622,
+        "count": 412,
+        "rate": 0.0541
+      },
+      "webDirector": {
+        "denominator": 7622,
+        "count": 155,
+        "rate": 0.0203
+      },
+      "portfolio": {
+        "denominator": 7622,
+        "count": 209,
+        "rate": 0.0274
+      },
+      "practicalExperience": {
+        "denominator": 7622,
+        "count": 1166,
+        "rate": 0.153
+      },
+      "salaryMention": {
+        "denominator": 7622,
+        "count": 3420,
+        "rate": 0.4487
+      },
+      "newGrad": {
+        "denominator": 7622,
+        "count": 1736,
+        "rate": 0.2278
+      },
+      "midCareer": {
+        "denominator": 7622,
+        "count": 1515,
+        "rate": 0.1988
+      }
+    },
+    "employmentTypeCounts": {
+      "正社員": 1729,
+      "FULL_TIME": 514,
+      "正社員 | パート": 386,
+      "パート": 340,
+      "正社員 | 契約社員": 176,
+      "インターン": 150,
+      "正社員 | 時短勤務": 61,
+      "時短勤務": 58,
+      "業務委託": 51,
+      "アルバイト": 46,
+      "アルバイト | パート": 39,
+      "契約社員": 37,
+      "正社員 | 業務委託": 37,
+      "正社員 | インターン": 34,
+      "正社員 | アルバイト | パート": 31,
+      "パート | インターン": 25,
+      "正社員 | 契約社員 | パート": 24,
+      "正社員 | アルバイト": 24,
+      "パート | 時短勤務": 21,
+      "正社員 | 契約社員 | 業務委託": 17,
+      "アルバイト | インターン": 16,
+      "PART_TIME": 15,
+      "正社員 | 契約社員 | アルバイト": 14,
+      "正社員 | 業務委託 | パート": 14,
+      "正社員 | 契約社員 | インターン": 12,
+      "業務委託 | パート": 11,
+      "CONTRACTOR": 11,
+      "FULL_TIME, 正社員": 11,
+      "正社員 | パート | 時短勤務": 10,
+      "正社員 | 嘱託": 8,
+      "正社員 | インターン | 時短勤務": 7,
+      "契約社員 | パート": 6,
+      "正社員 | アルバイト | インターン | 時短勤務": 6,
+      "インターン | 時短勤務": 6,
+      "業務委託 | インターン": 6,
+      "アルバイト | パート | インターン": 6,
+      "INTERN": 6,
+      "正社員 | 契約社員 | 時短勤務": 6,
+      "正社員 | 業務委託 | インターン": 5,
+      "正社員 | アルバイト | パート | インターン": 5,
+      "正社員 | パート | インターン": 5,
+      "正社員 | 契約社員 | アルバイト | パート": 5,
+      "業務委託 | アルバイト": 4,
+      "正社員 | 業務委託 | アルバイト": 4,
+      "嘱託": 4,
+      "正社員 | 契約社員 | 業務委託 | アルバイト | パート | インターン": 4,
+      "契約社員 | インターン": 4,
+      "正社員 | 契約社員 | 業務委託 | アルバイト | パート": 3,
+      "正社員 | アルバイト | インターン": 3,
+      "OTHER": 3,
+      "FULL_TIME | PART_TIME | CONTRACTOR": 3,
+      "派遣社員": 3,
+      "契約社員 | アルバイト | インターン": 3,
+      "正社員 | 業務委託 | アルバイト | インターン": 3,
+      "正社員 | 派遣社員 | インターン": 3,
+      "業務委託 | パート | インターン": 2,
+      "契約社員 | アルバイト | パート": 2,
+      "業務委託 | アルバイト | パート": 2,
+      "契約社員 | 業務委託": 2,
+      "アルバイト・パート": 2,
+      "正社員 | 契約社員 | アルバイト | パート | インターン": 2,
+      "正社員 | 業務委託 | パート | インターン": 2,
+      "業務委託 | アルバイト | インターン": 2,
+      "契約社員 | パート | インターン": 2,
+      "契約社員 | 業務委託 | パート": 2,
+      "FULL_TIME | PART_TIME": 1,
+      "TEMPORARY": 1,
+      "アルバイト | パート | インターン | 時短勤務": 1,
+      "アルバイト | パート | 時短勤務": 1,
+      "正社員 | 契約社員 | 嘱託": 1,
+      "パート | 派遣社員": 1,
+      "正社員 | パート | 派遣社員": 1,
+      "CONTRACT": 1,
+      "正社員 | 業務委託 | アルバイト | パート | インターン": 1,
+      "正社員 | アルバイト | パート | 時短勤務": 1,
+      "正社員 | 契約社員 | 業務委託 | アルバイト": 1,
+      "CONTRACTOR | FULL_TIME": 1,
+      "Contractor": 1,
+      "正社員 | 契約社員 | 業務委託 | アルバイト | パート | 時短勤務": 1,
+      "FULL_TIME | CONTRACTOR": 1,
+      "正社員 | 契約社員 | アルバイト | パート | 時短勤務": 1,
+      "正社員 | 契約社員 | 業務委託 | パート | 派遣社員": 1,
+      "アルバイト | 時短勤務": 1,
+      "正社員 | 派遣社員": 1,
+      "正社員 | 業務委託 | アルバイト | パート": 1
+    },
+    "salaryUnitCounts": {
+      "MONTH": 840,
+      "YEAR": 762,
+      "HOUR": 24,
+      "MON": 1
+    },
+    "annualSalary": {
+      "denominator": 762,
+      "note": "年収表記のみ。月給表記のレコードとは絶対に混ぜない。母数が小さい場合は記事で分布を示さない。",
+      "medianSalaryMin": 4500000,
+      "medianSalaryMax": 7500000
+    },
+    "experienceYears": {
+      "denominator": 1123,
+      "median": 3,
+      "counts": {
+        "1": 206,
+        "2": 251,
+        "3": 460,
+        "4": 15,
+        "5": 167,
+        "7": 4,
+        "8": 6,
+        "10": 7,
+        "20": 5,
+        "40": 2
+      }
+    },
+    "jobRecordsReachedBySizeBand": {
+      "1-4人": {
+        "companies": 134,
+        "found": 72,
+        "rate": 0.5373
+      },
+      "10-29人": {
+        "companies": 417,
+        "found": 230,
+        "rate": 0.5516
+      },
+      "100-299人": {
+        "companies": 657,
+        "found": 409,
+        "rate": 0.6225
+      },
+      "1000人以上": {
+        "companies": 173,
+        "found": 105,
+        "rate": 0.6069
+      },
+      "30-99人": {
+        "companies": 531,
+        "found": 319,
+        "rate": 0.6008
+      },
+      "300-999人": {
+        "companies": 375,
+        "found": 246,
+        "rate": 0.656
+      },
+      "5-9人": {
+        "companies": 149,
+        "found": 83,
+        "rate": 0.557
+      }
+    },
+    "accessOutcomes": {
+      "recruitmentPageStatusCounts": {
+        "200": 2435,
+        "null": 1
+      },
+      "recruitmentPageErrorCounts": {
+        "TypeError:UND_ERR_CONNECT_TIMEOUT": 1
+      },
+      "robotsStatusCounts": {
+        "allowed": 1773,
+        "unavailable": 663
+      }
+    },
+    "topJobTitles": [
+      [
+        "システムエンジニア",
+        146
+      ],
+      [
+        "インフラエンジニア",
+        62
+      ],
+      [
+        "営業",
+        52
+      ],
+      [
+        "エンジニア",
+        48
+      ],
+      [
+        "職種 / 募集ポジション",
+        40
+      ],
+      [
+        "プロジェクトマネージャー",
+        30
+      ],
+      [
+        "プログラマー",
+        29
+      ],
+      [
+        "ITエンジニア",
+        28
+      ],
+      [
+        "営業職",
+        27
+      ],
+      [
+        "ネットワークエンジニア",
+        24
+      ],
+      [
+        "プログラマ",
+        23
+      ],
+      [
+        "データベース",
+        20
+      ],
+      [
+        "バックエンドエンジニア",
+        20
+      ],
+      [
+        "デザイナー",
+        19
+      ],
+      [
+        "法人営業",
+        19
+      ],
+      [
+        "フロントエンドエンジニア",
+        18
+      ],
+      [
+        "中途:セールス",
+        18
+      ],
+      [
+        "中途:セールスフォースセールス",
+        18
+      ],
+      [
+        "新卒:セールス",
+        18
+      ],
+      [
+        "中途:プログラマー",
+        18
+      ],
+      [
+        "Webデザイナー",
+        17
+      ],
+      [
+        "総合職",
+        17
+      ],
+      [
+        "システムエンジニア、プログラマー",
+        16
+      ],
+      [
+        "開発エンジニア",
+        16
+      ],
+      [
+        "システムエンジニア・プログラマー",
+        15
+      ]
+    ],
+    "flagKeys": [
+      "secondNewGrad",
+      "inexperienced",
+      "recentGraduate",
+      "potentialHire",
+      "training",
+      "mentor",
+      "remote",
+      "fullRemote",
+      "engineer",
+      "webMarketing",
+      "webDirector",
+      "portfolio",
+      "practicalExperience",
+      "salaryMention",
+      "newGrad",
+      "midCareer"
+    ]
+  },
+  "scaleUpProjection": {
+    "frameSize": 3419,
+    "note": "パイロット実測値の線形外挿。同時実行数とホスト間隔を変えない前提。",
+    "stage4": {
+      "measuredElapsedSeconds": 2676.7,
+      "secondsPerCompany": 0.78,
+      "projectedMinutesForFrame": 44.4,
+      "projectedRequests": 7009
+    },
+    "stage5": {
+      "measuredElapsedSeconds": 4401,
+      "secondsPerEligibleCompany": 1.81,
+      "projectedEligibleCompaniesForFrame": 2495,
+      "projectedMinutes": 75.3,
+      "projectedJobRecords": 7812
+    }
+  },
+  "guardrails": [
+    "サンプルは層化均等割当。未加重の値は「300社のうち」であり母集団比ではない。母集団換算は populationWeight 加重値を使う。",
+    "母集団は「情報通信業かつ企業HP URLがある3,419ホスト」。情報通信業8,118社でも日本のIT企業全体でもない。",
+    "confidence low は採用していない。発見できなかった企業＝採用ページが存在しない、ではない。",
+    "求人レコードは1社最大8件の上限付き。大企業の求人数を過小評価する。",
+    "salaryUnit が YEAR と MONTH のレコードを混ぜて平均しない。",
+    "キーワードフラグは出現有無。求人条件の裏取りではない。",
+    "不明値は null。0 や false ではない。"
+  ]
+}
