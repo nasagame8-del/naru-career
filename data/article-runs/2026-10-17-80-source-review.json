@@ -1,0 +1,42 @@
+{
+  "articleId": 80,
+  "checkedAt": "2026-10-17",
+  "sourceReview": "AI review, not Human Fact Check",
+  "factScannerBlockers": 0,
+  "internalLinks": [
+    {
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "exists": true
+    },
+    {
+      "slug": "probation-period-lower-salary-checks",
+      "exists": true
+    },
+    {
+      "slug": "second-new-grad-it-offer-acceptance-checks",
+      "exists": true
+    }
+  ],
+  "claims": [
+    "条件相違だけで一律違法・契約内容を確定しない",
+    "募集途中の変更明示と当事者合意を区別",
+    "内定で契約成立の場合あり。入社前=未契約としない",
+    "入社後の契約解除制度を承諾前へ流用しない"
+  ],
+  "humanFactCheck": {
+    "status": "pending",
+    "approvedHeadSha": null
+  },
+  "preview": {
+    "status": "pending"
+  },
+  "imageQa": {
+    "status": "pending"
+  },
+  "blockers": [
+    "4 user images not supplied",
+    "CI/Cloudflare preview not yet passed",
+    "Human Fact Check and visual approval pending",
+    "Publish date/time not confirmed"
+  ]
+}
