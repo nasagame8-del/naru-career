@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T03:48:03.819Z",
+  "generatedAt": "2026-11-20T03:42:10.793Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "aggregation": "canonical_slug_query; additive_clicks_impressions; impression_weighted_position",
@@ -126,55 +126,55 @@
     {
       "rank": 1,
       "slug": "offer-letter-before-acceptance-not-provided",
-      "query": "労働条件通知書 内定承諾前 貰えない",
+      "query": "労働条件通知書 内定承諾前",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 2,
+      "slug": "offer-letter-before-acceptance-not-provided",
+      "query": "労働条件通知書 内定承諾前 貰えない",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 3,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員 から業務委託 違法",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 3,
+      "rank": 4,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "労働条件通知書 欲しい メール例文",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "労働条件通知書 入社前 もらえない",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "slug": "business-outsourcing-conversion-risk",
       "query": "正社員から業務委託に変更",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "slug": "contractor-how-to-quit",
       "query": "業務委託 辞める 言い方",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "slug": "contractor-how-to-quit",
       "query": "業務委託 退職 何 日前",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "転職 労働条件通知書 来ない",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 9,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "社員から業務委託へ",
       "reason": "low_ctr_top10"
     },
     {
@@ -191,48 +191,66 @@
     },
     {
       "rank": 12,
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "社員から業務委託へ",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 13,
       "slug": "outsourcing-contract-termination-worker-status",
       "query": "業務委託 切られる",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "slug": "contractor-how-to-quit",
       "query": "業務委託辞める時",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 14,
-      "slug": "contractor-how-to-quit",
-      "query": "業務委託 辞め方",
-      "reason": "low_ctr_top10"
-    },
-    {
       "rank": 15,
-      "slug": "agent-comparison-2026",
-      "query": "ワークポート",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 16,
-      "slug": "employee-contractor-pay-comparison",
-      "query": "正社員 から業務委託 収入",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 17,
       "slug": "contractor-how-to-quit",
       "query": "業務委託 退職届",
       "reason": "low_ctr_top10"
     },
     {
+      "rank": 16,
+      "slug": "contractor-how-to-quit",
+      "query": "業務委託 辞め方",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 17,
+      "slug": "employee-contractor-pay-comparison",
+      "query": "正社員 から業務委託 収入",
+      "reason": "low_ctr_top10"
+    },
+    {
       "rank": 18,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "query": "業務委託 急に 切 られる",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 19,
+      "slug": "agent-comparison-2026",
+      "query": "ワークポート",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 20,
       "slug": "contractor-how-to-quit",
       "query": "業務委託 すぐ辞めれる",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 19,
+      "rank": 21,
+      "slug": "contractor-how-to-quit",
+      "query": "業務委託 辞める 何日前",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 22,
       "slug": "fake-freelancer-worker-status-guide",
       "query": "業務委託 社員扱い",
       "reason": "low_ctr_top10"
@@ -269,8 +287,8 @@
     "second-new-grad-sns-background-check",
     "outsourcing-contract-termination-worker-status",
     "contractor-attendance-control-worker-status",
-    "agent-comparison-2026",
     "employee-contractor-pay-comparison",
+    "agent-comparison-2026",
     "fake-freelancer-worker-status-guide"
   ]
 }
