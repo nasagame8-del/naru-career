@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T03:25:51.257Z",
+  "generatedAt": "2026-11-22T02:36:31.715Z",
   "window": "過去28日",
   "privacy": "metrics_omitted",
   "aggregation": "canonical_slug_query; additive_clicks_impressions; impression_weighted_position",
@@ -21,14 +21,14 @@
     },
     {
       "rank": 2,
-      "slug": "business-outsourcing-conversion-risk",
-      "query": "正社員から業務委託",
+      "slug": "contractor-how-to-quit",
+      "query": "業務委託 退職",
       "reason": "position_11_30"
     },
     {
       "rank": 3,
-      "slug": "contractor-how-to-quit",
-      "query": "業務委託 退職",
+      "slug": "business-outsourcing-conversion-risk",
+      "query": "正社員から業務委託",
       "reason": "position_11_30"
     },
     {
@@ -57,14 +57,14 @@
     },
     {
       "rank": 8,
-      "slug": "contractor-how-to-quit",
-      "query": "業務委託契約 解除",
+      "slug": "second-new-grad-sns-background-check",
+      "query": "sns調査 (裏アカ調査) 採用",
       "reason": "position_11_30"
     },
     {
       "rank": 9,
-      "slug": "second-new-grad-sns-background-check",
-      "query": "sns調査 (裏アカ調査) 採用",
+      "slug": "contractor-how-to-quit",
+      "query": "業務委託契約 解除",
       "reason": "position_11_30"
     },
     {
@@ -100,23 +100,29 @@
     {
       "rank": 15,
       "slug": "employee-to-contractor-unemployment-benefit",
-      "query": "業務委託 失業保険",
+      "query": "失業保険 業務委託",
       "reason": "position_11_30"
     },
     {
       "rank": 16,
+      "slug": "employee-to-contractor-unemployment-benefit",
+      "query": "業務委託 失業保険",
+      "reason": "position_11_30"
+    },
+    {
+      "rank": 17,
       "slug": "offer-letter-before-acceptance-not-provided",
       "query": "労働条件通知書 メール",
       "reason": "position_11_30"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "slug": "contractor-paid-leave-overtime",
       "query": "委託 有給",
       "reason": "position_11_30"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "slug": "contractor-attendance-control-worker-status",
       "query": "業務委託 勤怠管理 違法",
       "reason": "position_11_30"
@@ -186,13 +192,13 @@
     {
       "rank": 11,
       "slug": "outsourcing-contract-termination-worker-status",
-      "query": "業務委託 急に切られる",
+      "query": "業務委託 切られる",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 12,
       "slug": "outsourcing-contract-termination-worker-status",
-      "query": "業務委託 急に辞める",
+      "query": "業務委託 急に切られる",
       "reason": "low_ctr_top10"
     },
     {
@@ -203,26 +209,26 @@
     },
     {
       "rank": 14,
-      "slug": "outsourcing-contract-termination-worker-status",
-      "query": "業務委託 切られる",
-      "reason": "low_ctr_top10"
-    },
-    {
-      "rank": 15,
       "slug": "contractor-how-to-quit",
       "query": "業務委託辞める時",
       "reason": "low_ctr_top10"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "slug": "contractor-how-to-quit",
-      "query": "業務委託 退職届",
+      "query": "業務委託 辞め方",
+      "reason": "low_ctr_top10"
+    },
+    {
+      "rank": 16,
+      "slug": "outsourcing-contract-termination-worker-status",
+      "query": "業務委託 急に辞める",
       "reason": "low_ctr_top10"
     },
     {
       "rank": 17,
       "slug": "contractor-how-to-quit",
-      "query": "業務委託 辞め方",
+      "query": "業務委託 退職届",
       "reason": "low_ctr_top10"
     },
     {
@@ -272,8 +278,8 @@
   ],
   "prioritySlugs": [
     "contractor-paid-leave-overtime",
-    "business-outsourcing-conversion-risk",
     "contractor-how-to-quit",
+    "business-outsourcing-conversion-risk",
     "second-new-grad-april-entry-schedule",
     "offer-letter-before-acceptance-not-provided",
     "employee-to-contractor-unemployment-benefit",
