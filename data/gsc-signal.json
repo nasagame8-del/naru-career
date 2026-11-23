@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-22T02:36:31.323Z",
+  "generatedAt": "2026-11-23T03:02:43.262Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-11-05",
-    "endDate": "2026-11-18"
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-19"
   },
   "previousRange": {
-    "startDate": "2026-10-22",
-    "endDate": "2026-11-04"
+    "startDate": "2026-10-23",
+    "endDate": "2026-11-05"
   },
   "visibleQueryCounts": {
-    "current": 146,
-    "previous": 95,
-    "new": 80
+    "current": 145,
+    "previous": 98,
+    "new": 78
   },
   "positionBuckets": {
     "current": {
       "top3": 9,
-      "top10": 52,
-      "top20": 86
+      "top10": 51,
+      "top20": 85
     },
     "previous": {
-      "top3": 9,
-      "top10": 34,
-      "top20": 57
+      "top3": 8,
+      "top10": 33,
+      "top20": 56
     }
   },
   "querySignals": [
@@ -50,27 +50,17 @@
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 事前にもらえない",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
       "query": "業務委託 切られる",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
+      "query": "労働条件通知書 事前にもらえない",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
       "query": "労働条件通知書 入社前 もらえない",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託辞める時",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 辞め方",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -81,6 +71,16 @@
     },
     {
       "query": "転職 労働条件通知書 来ない",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 辞め方",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託辞める時",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -125,6 +125,11 @@
       "signal": "rising"
     },
     {
+      "query": "労働条件通知書 もらって ない",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
       "query": "労働条件通知書 事前にもらえない",
       "positionBand": "11-20",
       "signal": "rising"
@@ -135,23 +140,18 @@
       "signal": "rising"
     },
     {
+      "query": "業務委託 すぐ辞めれる",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "query": "業務委託 切られる",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "業務委託 契約更新しない 伝え方",
-      "positionBand": "21-40",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 契約書なし",
-      "positionBand": "41+",
-      "signal": "rising"
-    },
-    {
-      "query": "第二新卒 4月入社",
-      "positionBand": "11-20",
+      "query": "労働条件通知書 欲しい メール例文",
+      "positionBand": "4-10",
       "signal": "new"
     }
   ],
@@ -167,14 +167,9 @@
       "signal": "rising"
     },
     {
-      "page": "/articles/employee-contractor-pay-comparison",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/reference-check-explained",
-      "positionBand": "4-10",
-      "signal": "rising"
+      "page": "/articles/job-change-timing-3months",
+      "positionBand": "21-40",
+      "signal": "new"
     },
     {
       "page": "/category/zakki",
@@ -197,24 +192,14 @@
       "signal": "new"
     },
     {
-      "page": "/",
+      "page": "/articles/agent-comparison-2026",
       "positionBand": "4-10",
       "signal": "rising"
-    },
-    {
-      "page": "/articles",
-      "positionBand": "11-20",
-      "signal": "new"
     },
     {
       "page": "/articles/agent-free-and-cancel",
       "positionBand": "11-20",
       "signal": "new"
-    },
-    {
-      "page": "/articles/agent-job-mismatch",
-      "positionBand": "4-10",
-      "signal": "rising"
     },
     {
       "page": "/articles/agent-not-recommended",
@@ -223,13 +208,28 @@
     },
     {
       "page": "/articles/aio-seo-industry-inside",
-      "positionBand": "1-3",
+      "positionBand": "4-10",
       "signal": "new"
+    },
+    {
+      "page": "/articles/alumni-hiring",
+      "positionBand": "21-40",
+      "signal": "rising"
     },
     {
       "page": "/articles/beginner-engineer-tutorial-portfolio",
       "positionBand": "4-10",
       "signal": "rising"
+    },
+    {
+      "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "new"
     }
   ]
 }
