@@ -1,46 +1,41 @@
 {
-  "generatedAt": "2026-11-23T03:02:43.262Z",
+  "generatedAt": "2026-11-24T06:20:13.895Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-11-06",
-    "endDate": "2026-11-19"
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-20"
   },
   "previousRange": {
-    "startDate": "2026-10-23",
-    "endDate": "2026-11-05"
+    "startDate": "2026-10-24",
+    "endDate": "2026-11-06"
   },
   "visibleQueryCounts": {
-    "current": 145,
-    "previous": 98,
-    "new": 78
+    "current": 144,
+    "previous": 106,
+    "new": 72
   },
   "positionBuckets": {
     "current": {
-      "top3": 9,
-      "top10": 51,
-      "top20": 85
+      "top3": 8,
+      "top10": 46,
+      "top20": 83
     },
     "previous": {
-      "top3": 8,
-      "top10": 33,
-      "top20": 56
+      "top3": 7,
+      "top10": 38,
+      "top20": 65
     }
   },
   "querySignals": [
     {
+      "query": "労働条件通知書 内定承諾前",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
       "query": "正社員から業務委託に変更",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 辞める 言い方",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 退職 何 日前",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -50,7 +45,7 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 切られる",
+      "query": "業務委託 退職 何 日前",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -65,12 +60,12 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 辞める 何日前",
+      "query": "業務委託 切られる",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "転職 労働条件通知書 来ない",
+      "query": "業務委託 辞める 何日前",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -80,22 +75,32 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託辞める時",
+      "query": "業務委託 退職 言い方",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 すぐ辞めれる",
+      "query": "正社員から業務委託",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "転職 労働条件通知書 来ない",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
+      "query": "労働条件通知書 内定承諾前 メール",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "労働条件通知書 内定承諾前 メール",
+      "query": "業務委託なのに社員扱い",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -105,8 +110,8 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 辞める時",
-      "positionBand": "11-20",
+      "query": "業務委託 辞める 言い方",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -140,13 +145,8 @@
       "signal": "rising"
     },
     {
-      "query": "業務委託 すぐ辞めれる",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 切られる",
-      "positionBand": "4-10",
+      "query": "失業保険 業務委託",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
