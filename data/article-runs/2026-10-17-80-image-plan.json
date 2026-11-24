@@ -1,0 +1,39 @@
+{
+  "articleId": 80,
+  "slug": "offer-letter-job-posting-conditions-differ",
+  "status": "WAITING_USER_IMAGES",
+  "card": {
+    "file": "offer-letter-job-posting-conditions-differ-card.webp",
+    "width": 1200,
+    "height": 630,
+    "message": "求人票と提示条件の相違に気付く",
+    "composition": "タイポグラフィと二つの書類",
+    "alt": "求人票と届いた条件を見比べる記事の表紙"
+  },
+  "bodyImages": [
+    {
+      "slot": "01",
+      "file": "offer-letter-job-posting-conditions-differ-01.webp",
+      "alt": "求人票、面接での説明、提示された書面を同じ項目で比較する図",
+      "width": 1200,
+      "height": 675,
+      "heading": "違っている項目を、応募時の資料と並べる"
+    },
+    {
+      "slot": "02",
+      "file": "offer-letter-job-posting-conditions-differ-02.webp",
+      "alt": "給与の内訳、最初の勤務地、最初の業務の三点を確認する図",
+      "width": 1200,
+      "height": 675,
+      "heading": "給与・勤務地・業務は、違いの種類を聞き分ける"
+    },
+    {
+      "slot": "03",
+      "file": "offer-letter-job-posting-conditions-differ-03.webp",
+      "alt": "資料の差分を整理し、回答を保存し、必要な場合に相談する三段階の手順",
+      "width": 1200,
+      "height": 675,
+      "heading": "回答を受けても判断できないときは、記録を持って相談する"
+    }
+  ]
+}
