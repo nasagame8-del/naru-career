@@ -1,0 +1,845 @@
+{
+  "runDate": "2026-10-04",
+  "note": "明示URLリストの構造ダイジェスト（求人詳細ページ）。",
+  "cacheDir": "C:\\Users\\nasaz\\AppData\\Local\\Temp\\naru-golden-cache",
+  "digests": [
+    {
+      "company": "ｈｏｍｉｅ株式会社",
+      "corporateNumber": "2011001127705",
+      "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215",
+      "anchorText": "カスタマーサクセス 2件",
+      "fromPage": "https://herp.careers/v1/homie",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "カスタマーサクセス の求人一覧 - homie株式会社",
+      "visibleChars": 743,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "カスタマーサクセス の求人一覧 - homie株式会社",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "オープンポジション",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "カスタマーサクセス（キャリア採用）",
+          "titleClass": "role"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "カスタマーサクセス",
+          "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215"
+        },
+        {
+          "text": "カスタマーサクセス（キャリア採用）",
+          "url": "https://herp.careers/v1/homie/o9wPL4Qxma_n"
+        },
+        {
+          "text": "カスタマーサクセス",
+          "url": "https://herp.careers/v1/homie/requisition-groups/4d5d8759-caf1-4830-a44b-68b93dde8215"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社エヴァーグリーン",
+      "corporateNumber": "9020001088561",
+      "url": "https://en-gage.net/evergreen/work_15303536/?via_recruit_page=1",
+      "anchorText": "【技術に自信がある方大歓迎★】受託開発案件のエンジニアスペシャリスト！ 月給&ensp;350,000円～500,000",
+      "fromPage": "https://en-gage.net/evergreen/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "【技術に自信がある方大歓迎★】受託開発案件のエンジニアスペシャリスト！&ensp;株式会社エヴァーグリーン（15303536）-engage",
+      "visibleChars": 2934,
+      "jsonLdJobPostings": 1,
+      "jsonLdJobTitles": [
+        "システムエンジニア"
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "システムエンジニア / 株式会社エヴァーグリーン",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "仕事内容",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "応募資格・条件",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "募集人数・募集背景",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "勤務地",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "アクセス",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "勤務時間",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "給与",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "休日休暇",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "福利厚生",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "システムエンジニア / 株式会社エヴァーグリーン",
+          "titleClass": "role",
+          "chars": 2829
+        },
+        {
+          "level": 2,
+          "heading": "給与",
+          "titleClass": "other",
+          "chars": 316
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "会社名",
+          "value": "株式会社エヴァーグリーン"
+        },
+        {
+          "label": "事業 内容",
+          "value": "ソフトウェアならびにインフラの設計、開発業務。 主にWebシステムを中心とした業務用システムの開発やスマートフォンアプリの開発。"
+        },
+        {
+          "label": "写真",
+          "value": "レセプション カフェ風エリア◎休憩はもちろん仕事も可能です コーナーにはソファースペースも♪ 広いワークスペースはフリーアドレス。お好きなところで作業OK 個人"
+        }
+      ],
+      "roleLikeAnchors": [],
+      "tableCount": 1,
+      "dlCount": 10
+    },
+    {
+      "company": "Ｚｅｎｋｅｎ株式会社",
+      "corporateNumber": "4011101011096",
+      "url": "https://recruit.zenken.co.jp/people/jim_l/",
+      "anchorText": "エンジニア",
+      "fromPage": "https://recruit.zenken.co.jp/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "【社員紹介】JIM.L｜Zenken 採用求人サイト",
+      "visibleChars": 3226,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "JIM.L",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "私的 Zenken相関図",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [
+        {
+          "label": "人物データ",
+          "value": "スウェーデン出身。立教大学異文化コミュニケーション学部で言語、多文化社会、国際紛争について学ぶ。2019年にZenkenへ新卒入社。IT事業の研究開発部門にて、"
+        },
+        {
+          "label": "Zenkenの 魅力的なところは?",
+          "value": "コアに“アントレプレナーシップ” がある会社 私がZenkenを選んだ理由は、他の企業と違う、色々挑戦できる環境だな、と思ったからです。また、国籍関係なく様々な"
+        },
+        {
+          "label": "Zenkenに入社して びっくりしたことは?",
+          "value": "ホウレンソウが徹底されている! 報告・連絡・相談(ホウレンソウ)が徹底されていること。 私が新卒で入社したばかりの頃は、なんでも自分一人で仕事や勉強をして、一人"
+        },
+        {
+          "label": "仕事でやりがいを感じる 瞬間は?",
+          "value": "価値あるものを生み出せた と思うとき たくさんありますね。 一つ目は開発現場で、お客様や社内のアイデアを何もない状態からしっかりとしたアプリが出来上がったとき。"
+        },
+        {
+          "label": "Zenkenには どんな人が多い印象?",
+          "value": "前向きで、 知識やスキルの幅が広い人が多い 前向きな人。常にゴールラインに向かって、次に何をしよう、と考えているメンバーがたくさんいます。 あとは、何でも知って"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "ITエンジニア人材採用",
+          "url": "https://recruit.zenken.co.jp/it-engineer/"
+        },
+        {
+          "text": "営業",
+          "url": "https://recruit.zenken.co.jp/people/n_daichi/"
+        },
+        {
+          "text": "営業",
+          "url": "https://recruit.zenken.co.jp/people/a_manami/"
+        },
+        {
+          "text": "エンジニア",
+          "url": "https://recruit.zenken.co.jp/people/jeong_d/"
+        },
+        {
+          "text": "自社メディア ディレクター",
+          "url": "https://recruit.zenken.co.jp/people/s_yosuke/"
+        },
+        {
+          "text": "アートディレクター ・デザイナー",
+          "url": "https://recruit.zenken.co.jp/people/o_moe/"
+        },
+        {
+          "text": "動画ディレクター ・プランナー",
+          "url": "https://recruit.zenken.co.jp/people/k_atsuhiro/"
+        },
+        {
+          "text": "ディレクター・ 編集",
+          "url": "https://recruit.zenken.co.jp/people/i_yosuke/"
+        },
+        {
+          "text": "セールス オペレーション",
+          "url": "https://recruit.zenken.co.jp/people/s_sara/"
+        },
+        {
+          "text": "営業",
+          "url": "https://recruit.zenken.co.jp/people/h_koji/"
+        },
+        {
+          "text": "営業",
+          "url": "https://recruit.zenken.co.jp/people/m_miho/"
+        },
+        {
+          "text": "エンジニア",
+          "url": "https://recruit.zenken.co.jp/people/n_naoki/"
+        },
+        {
+          "text": "ITエンジニア人材採用",
+          "url": "https://recruit.zenken.co.jp/it-engineer/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 5
+    },
+    {
+      "company": "株式会社フルエナジー",
+      "corporateNumber": "6011101047015",
+      "url": "https://fullenergy.co.jp/recruits/database-associate/",
+      "anchorText": "データベースエンジニア(アソシエイト) >>",
+      "fromPage": "https://fullenergy.co.jp/recruit/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "データベースエンジニア(アソシエイト) | Fullenergy",
+      "visibleChars": 2373,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "データベースエンジニア(アソシエイト)",
+          "titleClass": "role"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 2,
+          "heading": "データベースエンジニア(アソシエイト)",
+          "titleClass": "role",
+          "chars": 2161
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "データベースエンジニア(アソシエイト) >>",
+          "url": "https://fullenergy.co.jp/recruits/database-associate/"
+        },
+        {
+          "text": "データベースエンジニア（プロフェッショナル） >>",
+          "url": "https://fullenergy.co.jp/recruits/database/"
+        },
+        {
+          "text": "営業(プリセールス) >>",
+          "url": "https://fullenergy.co.jp/recruits/sales/"
+        },
+        {
+          "text": "ネットワークエンジニア >>",
+          "url": "https://fullenergy.co.jp/recruits/network-engineer/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ディーエスブランド",
+      "corporateNumber": "3310001003604",
+      "url": "https://dsbranch.works/careers/pages/450/",
+      "anchorText": "プログラマー",
+      "fromPage": "https://dsbranch.works/careers/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "プログラマー｜株式会社ディーエスブランド｜求人・採用情報サイト",
+      "visibleChars": 1985,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "プログラマー",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "プログラマーの仕事について",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "今の自分が、成長またはやりがいを感じるのはどんなときですか?",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "今後、この会社で挑戦したいこと",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "会社を一言で表すなら？",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "応募する方へメッセージをお願いします",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "プログラマーの取り組み",
+          "titleClass": "role"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "プログラマー",
+          "titleClass": "role",
+          "chars": 1779
+        },
+        {
+          "level": 2,
+          "heading": "プログラマーの取り組み",
+          "titleClass": "role",
+          "chars": 414
+        }
+      ],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "プログラマー",
+          "url": "https://dsbranch.works/careers/pages/450/"
+        },
+        {
+          "text": "デザイナー",
+          "url": "https://dsbranch.works/careers/pages/381/"
+        },
+        {
+          "text": "Webマーケター",
+          "url": "https://dsbranch.works/careers/pages/717/"
+        },
+        {
+          "text": "プログラマー",
+          "url": "https://dsbranch.works/careers/pages/450/"
+        },
+        {
+          "text": "デザイナー",
+          "url": "https://dsbranch.works/careers/pages/381/"
+        },
+        {
+          "text": "Webマーケター",
+          "url": "https://dsbranch.works/careers/pages/717/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "日本ソフトウエア株式会社",
+      "corporateNumber": "7120001093280",
+      "url": "https://www.nsware.co.jp/measure/security.html",
+      "anchorText": "情報セキュリティへの取り組み",
+      "fromPage": "https://www.nsware.co.jp/career/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "情報セキュリティへの取り組み－日本ソフトウエアの取り組み－日本ソフトウエア株式会社",
+      "visibleChars": 3365,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "日本ソフトウエアの取り組み",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "情報セキュリティへの取り組み",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "ISMS基本方針",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "情報セキュリティの目標",
+          "titleClass": "role"
+        },
+        {
+          "level": 3,
+          "text": "行動指針",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "情報セキュリティへの取り組み",
+          "url": "https://www.nsware.co.jp/measure/security.html"
+        },
+        {
+          "text": "開発者の声",
+          "url": "https://www.nsware.co.jp/development/traffic.html"
+        },
+        {
+          "text": "情報セキュリティへの取り組み",
+          "url": "https://www.nsware.co.jp/measure/security.html"
+        },
+        {
+          "text": "開発者の声",
+          "url": "https://www.nsware.co.jp/development/traffic.html"
+        },
+        {
+          "text": "情報セキュリティへの取り組み",
+          "url": "https://www.nsware.co.jp/measure/security.html"
+        },
+        {
+          "text": "開発者の声",
+          "url": "https://www.nsware.co.jp/development/traffic.html"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社フルスケール",
+      "corporateNumber": "2330001007694",
+      "url": "https://fullscale.jp/recruit/4308/",
+      "anchorText": "【中途】Webデザイナー（実務経験2年以上）",
+      "fromPage": "https://fullscale.jp/recruit/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "【中途】Webデザイナー（実務経験2年以上） | 採用情報 | フルスケール（熊本）",
+      "visibleChars": 1810,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "【中途】Webデザイナー（実務経験2年以上）",
+          "titleClass": "role"
+        },
+        {
+          "level": 2,
+          "text": "お問い合わせ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "採用情報",
+          "titleClass": "container"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "【中途】Webデザイナー（実務経験2年以上）",
+          "titleClass": "role",
+          "chars": 1742
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "業務内容",
+          "value": "クライアント企業のブランドサイト、コーポレートサイト、キャンペーンサイトといったオウンドメディアにおけるWebデザイン。希望・状況により、HTML/CSS/Ja"
+        },
+        {
+          "label": "応募における注意事項",
+          "value": "本募集は正社員での採用を前提とした募集となります。業務委託・外部パートナーの募集ではございません。そのため、上記に該当する方のエントリーはご遠慮ください。"
+        },
+        {
+          "label": "求める人物像(MUST)",
+          "value": "・当社実績を見て「こんな仕事がしたい!」と思っていただける方 ・明るく、元気な方 ・熱意を持ち、ユーザー目線で仕事に取り組める方 ・Web、デザインが好きな方 "
+        },
+        {
+          "label": "歓迎するスキル・経験(WANT)",
+          "value": "・ノーコードツール(STUDIOなど)での制作スキル、経験 ・グラフィックやイラスト制作の経験 ・実務における基本的なコーディング経験&知識 ・動画編集の経験 "
+        },
+        {
+          "label": "応募条件",
+          "value": "2年以上(または左記期間に値する)の実務経験(広告会社・制作会社)がある方。"
+        },
+        {
+          "label": "雇用区分",
+          "value": "正社員(中途)"
+        },
+        {
+          "label": "勤務地",
+          "value": "熊本市南区馬渡1丁目5-1 (アクセスマップ)"
+        },
+        {
+          "label": "給与",
+          "value": "相談の上、決定"
+        },
+        {
+          "label": "賞与",
+          "value": "年2回/7月、12月"
+        },
+        {
+          "label": "昇給",
+          "value": "年1回"
+        },
+        {
+          "label": "勤務時間",
+          "value": "9:00〜18:00"
+        },
+        {
+          "label": "試用期間",
+          "value": "3ヶ月"
+        },
+        {
+          "label": "休日・休暇",
+          "value": "完全週休2日制(土・日・祝日) 夏季/年末年始休暇/GW休暇 年次有給休暇"
+        },
+        {
+          "label": "福利厚生",
+          "value": "各種社会保険(健康保険 ・厚生年金保険 ・労災保険及び雇用保険) 定期健康診断 書籍購入支援制度 慶弔見舞金 バースデイプレゼント フリーコーヒー(ホット・アイ"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "【中途】Webデザイナー（実務経験2年以上）",
+          "url": "https://fullscale.jp/recruit/4308/"
+        },
+        {
+          "text": "【中途】Webディレクター・プロジェクトマネージャー",
+          "url": "https://fullscale.jp/recruit/353/"
+        },
+        {
+          "text": "【中途】Web広告プランナー・運用スタッフ",
+          "url": "https://fullscale.jp/recruit/354/"
+        },
+        {
+          "text": "【中途】Webデザイナー（実務経験2年以上）",
+          "url": "https://fullscale.jp/recruit/4308/"
+        },
+        {
+          "text": "【中途】Webディレクター・プロジェクトマネージャー",
+          "url": "https://fullscale.jp/recruit/353/"
+        },
+        {
+          "text": "【中途】Web広告プランナー・運用スタッフ",
+          "url": "https://fullscale.jp/recruit/354/"
+        }
+      ],
+      "tableCount": 1,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社ＪＳＰ",
+      "corporateNumber": "6130001021019",
+      "url": "https://jsp.ne.jp/recruit/interview/interview_m/",
+      "anchorText": "INTERVIEW 営業",
+      "fromPage": "https://jsp.ne.jp/recruit/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "M.T｜社員インタビュー｜株式会社メディカルJSP",
+      "visibleChars": 1870,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "社員インタビュー",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [
+        {
+          "level": 1,
+          "heading": "社員インタビュー",
+          "titleClass": "other",
+          "chars": 1710
+        }
+      ],
+      "tableAndDlLabels": [
+        {
+          "label": "PRODUCTS",
+          "value": "製品情報 医療DXツール 電子カルテ Ex-Karte IJIα-5 MightyChecker 共同仕入れサービス オンライン診療"
+        },
+        {
+          "label": "BUSINESS",
+          "value": "事業内容"
+        },
+        {
+          "label": "COMPANY",
+          "value": "企業情報 企業理念 会社概要 沿革"
+        },
+        {
+          "label": "NEWS",
+          "value": "お知らせ"
+        },
+        {
+          "label": "RECRUIT",
+          "value": "採用情報 インタビュー 募集要項"
+        }
+      ],
+      "roleLikeAnchors": [
+        {
+          "text": "INTERVIEW エンジニア",
+          "url": "https://jsp.ne.jp/recruit/interview/interview_n/"
+        },
+        {
+          "text": "INTERVIEW ヘルプデスク",
+          "url": "https://jsp.ne.jp/recruit/interview/interview_t/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 5
+    },
+    {
+      "company": "株式会社ビズリーチ",
+      "corporateNumber": "2011001058413",
+      "url": "https://careers.bizreach.co.jp/work/interviews/1648/",
+      "anchorText": "お客様を深く理解し、 意義と価値のあるデザインを。 お客様を深く理解し、 意義と価値のあるデザインを。 K.Funako",
+      "fromPage": "https://careers.bizreach.co.jp/?utm_source=bizreach&utm_medium=site&utm_campaign=recruitment",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "お客様を深く理解し、意義と価値のあるデザインを。｜社員インタビュー｜株式会社ビズリーチ キャリア採用サイト",
+      "visibleChars": 2870,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "お客様を深く理解し、 意義と価値のあるデザインを。 お客様を深く理解し、 意義と価値のあるデザインを。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "課題から目を背けず、チームで挑戦する姿勢に惹かれた。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "お客様を理解することが自信につながった。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "立場関係なく、チーム全員で「価値」に向き合う。",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "プロダクトの意義を明文化し、ユーザーと事業に価値を。",
+          "titleClass": "other"
+        },
+        {
+          "level": 3,
+          "text": "その他の社員インタビュー",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "「正解のなき問い」に 自らの意思で最適解を導き出し、 事業を牽引するエンジニアへ。 「正解のなき問い」に 自らの意思で最適解を導き出し、 事業を牽引するエンジニ",
+          "titleClass": "role"
+        },
+        {
+          "level": 4,
+          "text": "複雑な課題を、 デザインのチカラで価値に変える。 複雑な課題を、 デザインのチカラで価値に変える。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "SREとして開発チームと伴走し、 サービスの信頼性向上に挑む。 SREとして開発チームと伴走し、 サービスの信頼性向上に挑む。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "理想の環境で働き、 お客様の理想の体験を実現する。 理想の環境で働き、 お客様の理想の体験を実現する。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "「素早く、高品質」をモットーに、 確かな価値をお客様に届ける。 「素早く、高品質」をモットーに、 確かな価値をお客様に届ける。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "組織が一丸となり、 粘り強く挑むという働き方。 組織が一丸となり、 粘り強く挑むという働き方。",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "ホーム",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "ビズリーチを知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "仕事を知る",
+          "titleClass": "other"
+        },
+        {
+          "level": 4,
+          "text": "働く環境を知る",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [
+        {
+          "text": "「正解のなき問い」に 自らの意思で最適解を導き出し、 事業を牽引するエンジニアへ。 「正解のなき問い」に 自らの意思で最",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1497/"
+        },
+        {
+          "text": "複雑な課題を、 デザインのチカラで価値に変える。 複雑な課題を、 デザインのチカラで価値に変える。 部室長 Y.Okaw",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1509/"
+        },
+        {
+          "text": "SREとして開発チームと伴走し、 サービスの信頼性向上に挑む。 SREとして開発チームと伴走し、 サービスの信頼性向上に",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1346/"
+        },
+        {
+          "text": "理想の環境で働き、 お客様の理想の体験を実現する。 理想の環境で働き、 お客様の理想の体験を実現する。 R.Kato エ",
+          "url": "https://careers.bizreach.co.jp/work/interviews/1406/"
+        },
+        {
+          "text": "「素早く、高品質」をモットーに、 確かな価値をお客様に届ける。 「素早く、高品質」をモットーに、 確かな価値をお客様に届",
+          "url": "https://careers.bizreach.co.jp/work/interviews/540/"
+        },
+        {
+          "text": "組織が一丸となり、 粘り強く挑むという働き方。 組織が一丸となり、 粘り強く挑むという働き方。 部室長 Y.Matsuz",
+          "url": "https://careers.bizreach.co.jp/work/interviews/497/"
+        }
+      ],
+      "tableCount": 0,
+      "dlCount": 0
+    },
+    {
+      "company": "株式会社高志インテック",
+      "corporateNumber": "7230001005373",
+      "url": "https://www.koushi-intec.co.jp/recruit/interview/entry-276.html",
+      "anchorText": "好きな富山で暮らしながら、好きな仕事に取り組める日々。 総務部経理課 経理（2022年入社）） M.I",
+      "fromPage": "https://www.koushi-intec.co.jp/recruit/",
+      "structureType": "job_detail_page",
+      "guessedStructureType": "job_detail_page",
+      "httpStatus": 200,
+      "pageTitle": "総務部経理課：経理（2022年入社） M.I | 社員インタビュー | 採用情報 | 高志インテック",
+      "visibleChars": 2379,
+      "jsonLdJobPostings": 0,
+      "jsonLdJobTitles": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "社員インタビュー",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "01 志望動機について",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "02 業務について",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "03 オフの楽しみ",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "04 目標について",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "05 1日のスケジュール",
+          "titleClass": "other"
+        },
+        {
+          "level": 2,
+          "text": "06 応募者へのメッセージ",
+          "titleClass": "other"
+        }
+      ],
+      "sectionsWithJobFields": [],
+      "tableAndDlLabels": [],
+      "roleLikeAnchors": [],
+      "tableCount": 0,
+      "dlCount": 0
+    }
+  ]
+}
