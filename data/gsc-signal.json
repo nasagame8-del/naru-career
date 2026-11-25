@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-24T06:20:13.895Z",
+  "generatedAt": "2026-11-25T05:00:54.725Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-11-07",
-    "endDate": "2026-11-20"
+    "startDate": "2026-11-08",
+    "endDate": "2026-11-21"
   },
   "previousRange": {
-    "startDate": "2026-10-24",
-    "endDate": "2026-11-06"
+    "startDate": "2026-10-25",
+    "endDate": "2026-11-07"
   },
   "visibleQueryCounts": {
-    "current": 144,
-    "previous": 106,
-    "new": 72
+    "current": 146,
+    "previous": 107,
+    "new": 75
   },
   "positionBuckets": {
     "current": {
-      "top3": 8,
+      "top3": 7,
       "top10": 46,
-      "top20": 83
+      "top20": 84
     },
     "previous": {
-      "top3": 7,
-      "top10": 38,
-      "top20": 65
+      "top3": 9,
+      "top10": 40,
+      "top20": 64
     }
   },
   "querySignals": [
@@ -50,11 +50,6 @@
       "signal": "quick_win"
     },
     {
-      "query": "労働条件通知書 事前にもらえない",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
       "query": "労働条件通知書 入社前 もらえない",
       "positionBand": "4-10",
       "signal": "quick_win"
@@ -62,6 +57,11 @@
     {
       "query": "業務委託 切られる",
       "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 事前にもらえない",
+      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
@@ -80,12 +80,12 @@
       "signal": "quick_win"
     },
     {
-      "query": "正社員から業務委託",
+      "query": "業務委託辞める時",
       "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
-      "query": "転職 労働条件通知書 来ない",
+      "query": "正社員 から業務委託 違法",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -120,6 +120,11 @@
       "signal": "rising"
     },
     {
+      "query": "sns調査 (裏アカ調査) 採用",
+      "positionBand": "21-40",
+      "signal": "rising"
+    },
+    {
       "query": "個人事業主 業務委託 辞めたい",
       "positionBand": "41+",
       "signal": "rising"
@@ -142,11 +147,6 @@
     {
       "query": "労働条件通知書 入社前 もらえない",
       "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "失業保険 業務委託",
-      "positionBand": "11-20",
       "signal": "rising"
     },
     {
