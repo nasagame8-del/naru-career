@@ -945,3 +945,16 @@ PR #15 のマージ / master への push / 本番デプロイ / 実記事生成 
 - 既知の問題: iframeクリックのGA4計測/ASP成果/クリック後遷移は未確認。本番デプロイ・10記事表示確認はこの時点で未完了。
 - 判断が必要な項目: なし。承認済み表示を維持して公開する。
 - 推奨する次の作業: 最新head CI成功後、PR279のみマージし本番確認。結果はPRへ追記する。
+
+## 既存4記事の検索意図に合わせた改善
+
+- reportId / completedInstructionId: USER-REWRITE-20261126
+- status: 原稿修正済み、レビュー待ち
+- branch: `codex/naru-rewrite-<対象slug>`
+- 変更ファイル: 各ブランチにつき `content/articles/<対象slug>.md` 1本と引き継ぎ記録
+- contractor-how-to-quit: 冒頭の状況別案内、更新しない場合と途中終了を相談する場合のメール、検索説明文を更新
+- offer-letter-before-acceptance-not-provided: タイトルと検索説明文を更新
+- business-outsourcing-conversion-risk: 冒頭の案内リンクと有給関連記事の案内文を更新
+- contractor-paid-leave-overtime: 報酬の計算方法別に契約の確認箇所を追加
+- 確認: 差分の空白チェックと本文内リンクの到達先を確認。Cloudflareの表示確認はPRで行う
+- 次の作業: 記事ごとのプレビューを確認し、公開判断へ進む
