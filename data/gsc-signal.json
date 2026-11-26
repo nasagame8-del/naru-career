@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-25T05:00:54.725Z",
+  "generatedAt": "2026-11-26T04:19:53.852Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-11-08",
-    "endDate": "2026-11-21"
+    "startDate": "2026-11-09",
+    "endDate": "2026-11-22"
   },
   "previousRange": {
-    "startDate": "2026-10-25",
-    "endDate": "2026-11-07"
+    "startDate": "2026-10-26",
+    "endDate": "2026-11-08"
   },
   "visibleQueryCounts": {
-    "current": 146,
-    "previous": 107,
-    "new": 75
+    "current": 143,
+    "previous": 114,
+    "new": 70
   },
   "positionBuckets": {
     "current": {
       "top3": 7,
-      "top10": 46,
-      "top20": 84
+      "top10": 44,
+      "top20": 81
     },
     "previous": {
-      "top3": 9,
-      "top10": 40,
-      "top20": 64
+      "top3": 11,
+      "top10": 46,
+      "top20": 68
     }
   },
   "querySignals": [
@@ -75,6 +75,11 @@
       "signal": "quick_win"
     },
     {
+      "query": "doda dodax 違い",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
       "query": "業務委託 退職 言い方",
       "positionBand": "4-10",
       "signal": "quick_win"
@@ -85,12 +90,12 @@
       "signal": "quick_win"
     },
     {
-      "query": "正社員 から業務委託 違法",
+      "query": "労働条件通知書 内定承諾前 メール",
       "positionBand": "4-10",
-      "signal": "quick_win"
+      "signal": "rising"
     },
     {
-      "query": "労働条件通知書 内定承諾前 メール",
+      "query": "労働条件通知書 欲しい メール例文",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -115,18 +120,13 @@
       "signal": "rising"
     },
     {
-      "query": "正社員 業務委託 切り替え",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
       "query": "sns調査 (裏アカ調査) 採用",
       "positionBand": "21-40",
       "signal": "rising"
     },
     {
       "query": "個人事業主 業務委託 辞めたい",
-      "positionBand": "41+",
+      "positionBand": "21-40",
       "signal": "rising"
     },
     {
@@ -150,8 +150,8 @@
       "signal": "rising"
     },
     {
-      "query": "労働条件通知書 欲しい メール例文",
-      "positionBand": "4-10",
+      "query": "業務委託 時間外",
+      "positionBand": "21-40",
       "signal": "new"
     }
   ],
@@ -214,7 +214,7 @@
     {
       "page": "/articles/alumni-hiring",
       "positionBand": "21-40",
-      "signal": "rising"
+      "signal": "new"
     },
     {
       "page": "/articles/beginner-engineer-tutorial-portfolio",
