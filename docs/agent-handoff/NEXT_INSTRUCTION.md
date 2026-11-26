@@ -108,3 +108,7 @@ User requested implementation using the Xserver readability article as reference
 ## USER-REWRITE-20261126
 
 ユーザー「改善まで手をつけて」に基づき、提案した4記事の本文・検索表示を修正する。1記事ずつ専用ブランチとDraft PRでレビューに出し、既存のCloudflare記事プレビューを使用する。本番反映は別途判断する。Claudeタスクは起動しない。
+
+## USER-REWRITE-PUBLISH-20261126
+
+ユーザー「本番反映まで持って行って」により、PR #295〜#298の本番公開を承認。対象記事のプレビューとCIを確認し、対象headを指定してPR経由でマージする。Cloudflare本番デプロイと対象4記事の表示を確認する。
