@@ -104,3 +104,7 @@ User requested implementation using the Xserver readability article as reference
 
 ## USER-VALUECOMMERCE-PUBLISH-20261108
 ユーザー「問題なし」によりPR279のプレビューhead c88a633dcdf7bcdd827aa1f20bb972ab05c432a0を目視承認。本承認を記録する文書のみ更新し、表示・コードは不変。最新head CI/Cloudflare preview成功とmergeable確認後、head固定squash mergeとCloudflare本番反映・10記事の検証を許可。master直接push・他PR公開・Claude起動なし。
+
+## USER-REWRITE-20261126
+
+ユーザー「改善まで手をつけて」に基づき、提案した4記事の本文・検索表示を修正する。1記事ずつ専用ブランチとDraft PRでレビューに出し、既存のCloudflare記事プレビューを使用する。本番反映は別途判断する。Claudeタスクは起動しない。
