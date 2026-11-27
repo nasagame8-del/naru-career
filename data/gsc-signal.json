@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-26T04:19:53.852Z",
+  "generatedAt": "2026-11-27T04:29:50.846Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-11-09",
-    "endDate": "2026-11-22"
+    "startDate": "2026-11-10",
+    "endDate": "2026-11-23"
   },
   "previousRange": {
-    "startDate": "2026-10-26",
-    "endDate": "2026-11-08"
+    "startDate": "2026-10-27",
+    "endDate": "2026-11-09"
   },
   "visibleQueryCounts": {
-    "current": 143,
-    "previous": 114,
-    "new": 70
+    "current": 140,
+    "previous": 123,
+    "new": 64
   },
   "positionBuckets": {
     "current": {
-      "top3": 7,
-      "top10": 44,
-      "top20": 81
+      "top3": 3,
+      "top10": 43,
+      "top20": 82
     },
     "previous": {
-      "top3": 11,
-      "top10": 46,
-      "top20": 68
+      "top3": 13,
+      "top10": 45,
+      "top20": 72
     }
   },
   "querySignals": [
@@ -35,22 +35,12 @@
       "signal": "quick_win"
     },
     {
+      "query": "業務委託 急に辞める",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
       "query": "正社員から業務委託に変更",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "第二新卒 4月入社",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 退職 何 日前",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "労働条件通知書 入社前 もらえない",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -60,7 +50,37 @@
       "signal": "quick_win"
     },
     {
+      "query": "業務委託 退職 何 日前",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "第二新卒 4月入社",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 辞め方",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
       "query": "労働条件通知書 事前にもらえない",
+      "positionBand": "11-20",
+      "signal": "quick_win"
+    },
+    {
+      "query": "doda dodax 違い",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 入社前 もらえない",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "業務委託 正社員",
       "positionBand": "11-20",
       "signal": "quick_win"
     },
@@ -70,33 +90,13 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 辞め方",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "doda dodax 違い",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託 退職 言い方",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "業務委託辞める時",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "労働条件通知書 内定承諾前 メール",
+      "query": "労働条件通知書 欲しい メール例文",
       "positionBand": "4-10",
       "signal": "rising"
     },
     {
-      "query": "労働条件通知書 欲しい メール例文",
-      "positionBand": "4-10",
+      "query": "労働条件通知書 内定承諾前 メール",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -106,11 +106,6 @@
     },
     {
       "query": "労働条件通知書 内定承諾前",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 急に辞める",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -145,8 +140,13 @@
       "signal": "rising"
     },
     {
-      "query": "労働条件通知書 入社前 もらえない",
-      "positionBand": "4-10",
+      "query": "業務 委託 契約 終了",
+      "positionBand": "41+",
+      "signal": "rising"
+    },
+    {
+      "query": "業務委託 クビ",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
@@ -157,13 +157,13 @@
   ],
   "pageSignals": [
     {
-      "page": "/articles/contractor-how-to-quit",
-      "positionBand": "4-10",
+      "page": "/articles/fake-freelancer-worker-status-guide",
+      "positionBand": "11-20",
       "signal": "rising"
     },
     {
-      "page": "/articles/fake-freelancer-worker-status-guide",
-      "positionBand": "11-20",
+      "page": "/articles/employee-to-contractor-social-insurance",
+      "positionBand": "4-10",
       "signal": "rising"
     },
     {
@@ -174,7 +174,7 @@
     {
       "page": "/category/zakki",
       "positionBand": "11-20",
-      "signal": "rising"
+      "signal": "new"
     },
     {
       "page": "/articles/company-reputation-search-reality",
