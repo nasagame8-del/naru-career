@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-27T04:29:50.846Z",
+  "generatedAt": "2026-11-28T04:10:29.722Z",
   "source": "Google Search Console API via NARU Cloudflare Worker",
   "dataState": "final",
   "privacy": "traffic_metrics_omitted",
   "currentRange": {
-    "startDate": "2026-11-10",
-    "endDate": "2026-11-23"
+    "startDate": "2026-11-11",
+    "endDate": "2026-11-24"
   },
   "previousRange": {
-    "startDate": "2026-10-27",
-    "endDate": "2026-11-09"
+    "startDate": "2026-10-28",
+    "endDate": "2026-11-10"
   },
   "visibleQueryCounts": {
-    "current": 140,
-    "previous": 123,
-    "new": 64
+    "current": 138,
+    "previous": 126,
+    "new": 60
   },
   "positionBuckets": {
     "current": {
@@ -23,14 +23,19 @@
       "top20": 82
     },
     "previous": {
-      "top3": 13,
-      "top10": 45,
-      "top20": 72
+      "top3": 12,
+      "top10": 46,
+      "top20": 76
     }
   },
   "querySignals": [
     {
       "query": "労働条件通知書 内定承諾前",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 内定承諾前 貰えない",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -50,27 +55,12 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 退職 何 日前",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
       "query": "第二新卒 4月入社",
       "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 辞め方",
-      "positionBand": "4-10",
-      "signal": "quick_win"
-    },
-    {
-      "query": "労働条件通知書 事前にもらえない",
-      "positionBand": "11-20",
-      "signal": "quick_win"
-    },
-    {
-      "query": "doda dodax 違い",
+      "query": "業務委託 退職 何 日前",
       "positionBand": "4-10",
       "signal": "quick_win"
     },
@@ -80,13 +70,23 @@
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 正社員",
-      "positionBand": "11-20",
+      "query": "業務委託 辞め方",
+      "positionBand": "4-10",
       "signal": "quick_win"
     },
     {
-      "query": "業務委託 辞める 何日前",
+      "query": "業務委託 退職 言い方",
       "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "doda dodax 違い",
+      "positionBand": "4-10",
+      "signal": "quick_win"
+    },
+    {
+      "query": "労働条件通知書 事前にもらえない",
+      "positionBand": "11-20",
       "signal": "quick_win"
     },
     {
@@ -105,12 +105,7 @@
       "signal": "rising"
     },
     {
-      "query": "労働条件通知書 内定承諾前",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
-    {
-      "query": "業務委託 辞める 言い方",
+      "query": "業務委託 辞める時 言い方",
       "positionBand": "4-10",
       "signal": "rising"
     },
@@ -125,17 +120,17 @@
       "signal": "rising"
     },
     {
-      "query": "偽装フリーランス",
-      "positionBand": "41+",
-      "signal": "rising"
-    },
-    {
       "query": "労働条件通知書 もらって ない",
       "positionBand": "11-20",
       "signal": "rising"
     },
     {
       "query": "労働条件通知書 事前にもらえない",
+      "positionBand": "11-20",
+      "signal": "rising"
+    },
+    {
+      "query": "失業手当 業務委託",
       "positionBand": "11-20",
       "signal": "rising"
     },
@@ -150,22 +145,17 @@
       "signal": "rising"
     },
     {
+      "query": "業務委託 切られる",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
       "query": "業務委託 時間外",
       "positionBand": "21-40",
       "signal": "new"
     }
   ],
   "pageSignals": [
-    {
-      "page": "/articles/fake-freelancer-worker-status-guide",
-      "positionBand": "11-20",
-      "signal": "rising"
-    },
-    {
-      "page": "/articles/employee-to-contractor-social-insurance",
-      "positionBand": "4-10",
-      "signal": "rising"
-    },
     {
       "page": "/articles/job-change-timing-3months",
       "positionBand": "21-40",
@@ -198,13 +188,13 @@
     },
     {
       "page": "/articles/agent-free-and-cancel",
-      "positionBand": "11-20",
+      "positionBand": "4-10",
       "signal": "new"
     },
     {
       "page": "/articles/agent-not-recommended",
       "positionBand": "4-10",
-      "signal": "new"
+      "signal": "rising"
     },
     {
       "page": "/articles/aio-seo-industry-inside",
@@ -228,6 +218,16 @@
     },
     {
       "page": "/articles/business-outsourcing-conversion-risk",
+      "positionBand": "4-10",
+      "signal": "new"
+    },
+    {
+      "page": "/articles/direct-recruiting",
+      "positionBand": "4-10",
+      "signal": "rising"
+    },
+    {
+      "page": "/articles/employee-contractor-pay-comparison",
       "positionBand": "4-10",
       "signal": "new"
     }
